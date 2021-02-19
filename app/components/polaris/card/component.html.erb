@@ -1,0 +1,21 @@
+<%= content_tag('div', content_tag_options) do %>
+  <% if @title.present? && !header.present? %>
+    <div class="Polaris-Card__Header">
+      <h2 class="Polaris-Heading"><%= @title %></h2>
+    </div>
+  <% end %>
+
+  <% if header.present? %>
+    <%= header %>
+  <% end %>
+
+  <%= content.html_safe %>
+
+  <% if footer? %>
+    <div class="Polaris-Card__Footer">
+      <%= render Polaris::ButtonGroup::Component.new do %>
+        <%= render_primary_complex_action_button(@primary_footer_action) %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= content_tag('div', content_tag_options) do %>
+  <progress class="Polaris-ProgressBar__Progress" value="<%= @progress %>" max="100"></progress>
+
+  <div class="Polaris-ProgressBar__Indicator" style="width: <%= @progress %>%;">
+    <span class="Polaris-ProgressBar__Label"><%= @progress %>%</span>
+  </div>
+<% end %>

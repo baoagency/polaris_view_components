@@ -1,0 +1,31 @@
+<%= content_tag('div', content_tag_options) do %>
+  <div class="Polaris-Page-Header Polaris-Page-Header--mobileView Polaris-Page-Header--noBreadcrumbs Polaris-Page-Header--mediumTitle <%= classes_header %>">
+    <div class="Polaris-Page-Header__Row">
+      <div class="Polaris-Page-Header__TitleWrapper">
+        <div>
+          <div class="Polaris-Header-Title__TitleAndSubtitleWrapper">
+            <h1 class="Polaris-Header-Title"><%= @title %></h1>
+
+            <% if @subtitle.present? %>
+              <div class="Polaris-Header-Title__SubTitle">
+                <p><%= @subtitle.html_safe %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% if @primary_action.present? %>
+        <div class="Polaris-Page-Header__RightAlign">
+          <div class="Polaris-Page-Header__PrimaryActionWrapper">
+            <%= render_primary_complex_action_button(@primary_action) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="Polaris-Page__Content">
+    <%= content %>
+  </div>
+<% end %>

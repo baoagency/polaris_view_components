@@ -1,0 +1,37 @@
+<%= content_tag('div', content_tag_options) do %>
+  <div class="Polaris-EmptyState__Section">
+    <div class="Polaris-EmptyState__DetailsContainer">
+      <div class="Polaris-EmptyState__Details">
+          <%= render Polaris::TextContainer::Component.new do %>
+          <%= render Polaris::DisplayText::Component.new(element: 'h1', size: 'medium') do %>
+            <%= @heading %>
+          <% end %>
+
+          <div class="Polaris-EmptyState__Content">
+            <%= content %>
+          </div>
+        <% end %>
+
+        <div class="Polaris-EmptyState__Actions">
+          <%= render Polaris::Stack::Component.new(
+            alignment: 'center',
+            distribution: 'center',
+            spacing: 'tight'
+          ) do %>
+            <% if @action.present? %>
+              <%= render_primary_complex_action_button(@action) %>
+            <% end %>
+
+            <% if @secondary_action.present? %>
+              <%= render_complex_action_button(@secondary_action) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="Polaris-EmptyState__ImageContainer">
+      <img src="<%= @image %>" role="presentation" alt="" class="Polaris-EmptyState__Image">
+    </div>
+  </div>
+<% end %>
