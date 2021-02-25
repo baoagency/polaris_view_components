@@ -8,6 +8,12 @@ module Polaris
 
         @href = href
       end
+
+      private
+
+        def classes
+          ['Polaris-Link']
+        end
     end
   end
 end

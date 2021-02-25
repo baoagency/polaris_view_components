@@ -1,0 +1,7 @@
+<%= content_tag('span', content_tag_options) do %>
+  <% if @progress.present? %>
+    <span class="Polaris-Badge__Pip"><span class="Polaris-VisuallyHidden"> <%= @progress.humanize %></span></span>
+  <% end %>
+
+  <%= content %>
+<% end %>

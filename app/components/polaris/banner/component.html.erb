@@ -1,0 +1,36 @@
+<%= content_tag('div', content_tag_options) do %>
+  <% if @can_dismiss %>
+    <div class="Polaris-Banner__Dismiss">
+      <%= render Polaris::Button::Component.new(accessibility_label: 'Dismiss notification', plain: true) %>
+      <button class="Polaris-Button Polaris-Button--plain Polaris-Button--iconOnly" aria-label="Dismiss notification" type="button">
+        <span class="Polaris-Button__Content">
+          <span class="Polaris-Button__Icon">
+            <span class="Polaris-Icon">
+              <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                <path d="M11.414 10l4.293-4.293a.999.999 0 1 0-1.414-1.414L10 8.586 5.707 4.293a.999.999 0 1 0-1.414 1.414L8.586 10l-4.293 4.293a.999.999 0 1 0 1.414 1.414L10 11.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L11.414 10z"></path>
+              </svg>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  <% end %>
+
+  <div class="Polaris-Banner__Ribbon">
+    <span class="Polaris-Icon Polaris-Icon--colorBase">
+      <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 20c5.514 0 10-4.486 10-10S15.514 0 10 0 0 4.486 0 10s4.486 10 10 10zm1-6a1 1 0 1 1-2 0v-4a1 1 0 1 1 2 0v4zm-1-9a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
+      </svg>
+    </span>
+  </div>
+
+  <div class="Polaris-Banner__ContentWrapper">
+    <div class="Polaris-Banner__Heading" id="PolarisBanner2Heading">
+      <p class="Polaris-Heading">Order archived</p>
+    </div>
+
+    <div class="Polaris-Banner__Content" id="PolarisBanner2Content">
+      <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+    </div>
+  </div>
+<% end %>

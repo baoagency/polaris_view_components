@@ -39,7 +39,7 @@ module Polaris
 
           classes << "Polaris-Stack--spacing#{@spacing.camelize}" if @spacing.present?
           classes << "Polaris-Stack--alignment#{@alignment.camelize}" if @alignment.present?
-          classes << "Polaris-Stack-distribution#{@distribution.camelize}" if @distribution.present?
+          classes << "Polaris-Stack--distribution#{@distribution.camelize}" if @distribution.present?
           classes << "Polaris-Stack--vertical" if @vertical
           classes << "Polaris-Stack--noWrap" unless @wrap
 

@@ -4,6 +4,8 @@ module Polaris
   module StackItem
     class Component < Polaris::Component
       def initialize(fill: false, **args)
+        super
+
         @fill = fill
       end
 
