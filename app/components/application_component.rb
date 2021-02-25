@@ -24,8 +24,6 @@ class ApplicationComponent < ViewComponent::Base
     end
 
     def content_tag_options
-      puts 'data', @data, 'aria', @aria, 'ad', additional_data, 'aa', additional_aria
-
       {
         class: classes.compact,
         data: @data.merge(additional_data),
