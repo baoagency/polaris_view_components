@@ -36,14 +36,14 @@ class ApplicationComponent < ViewComponent::Base
     end
 
     def wrap_children!(css_class)
-      return unless @content.present?
+      return unless content.present?
 
-      doc = Nokogiri::HTML(@content)
+      doc = Nokogiri::HTML(content)
 
       doc.css("body > *:not(.#{css_class})").each do |item|
         item.wrap("<div class='#{css_class}'></div>")
       end
 
-      @content = doc.css('body').first.inner_html
+      @_content = doc.css('body').first.inner_html
     end
 end
