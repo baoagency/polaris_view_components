@@ -1,10 +1,4 @@
-<div>
-  <div class="Polaris-Labelled__LabelWrapper">
-    <div class="Polaris-Label">
-      <%= @form.label(@attribute, @label, { class: 'Polaris-Label__Text' }) %>
-    </div>
-  </div>
-
+<%= render Polaris::Labelled::Component.new(**labelled_attrs) do %>
   <div class="Polaris-Connected">
     <% if connected_left.present? %>
       <div class="Polaris-Connected__Item">
@@ -20,7 +14,8 @@
               {
                 class: 'Polaris-TextField__Input',
                 placeholder: @placeholder,
-                rows: @multiline || nil
+                rows: @multiline || nil,
+                index: @index,
               }
             ) %>
         <div class="Polaris-TextField__Backdrop"></div>
@@ -33,16 +28,4 @@
       </div>
     <% end %>
   </div>
-
-  <% if @error.present? %>
-    <div class="Polaris-Labelled__Error">
-      <div class="Polaris-InlineError">
-        <div class="Polaris-InlineError__Icon">
-          <%= render Polaris::Icon::Component.new do %>
-            <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM9 9a1 1 0 0 0 2 0V7a1 1 0 1 0-2 0v2zm0 4a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"></path>
-          <% end %>
-        </div> <%= @error.capitalize %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<% end %>
