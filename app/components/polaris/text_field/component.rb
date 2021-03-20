@@ -2,13 +2,29 @@
 module Polaris
   module TextField
     class Component < Polaris::Component
+      include ActionHelper
+
       with_content_areas :connected_left, :connected_right
 
+      validates :label_action, type: Action, allow_nil: true
       validates :index, numericality: { only_integer: true }, allow_nil: true
 
-      attr_reader :index
+      attr_reader :label_action, :index
 
-      def initialize(form:, attribute:, placeholder: "", type: "text", error: "", label: nil, label_hidden: false, multiline: false, help_text: "", index: nil, **args)
+      def initialize(
+        form:,
+        attribute:,
+        placeholder: "",
+        type: "text",
+        error: "",
+        label: nil,
+        label_action: nil,
+        label_hidden: false,
+        multiline: false,
+        help_text: "",
+        index: nil,
+        **args
+      )
         super
         @placeholder = placeholder
         @type = type
@@ -16,6 +32,7 @@ module Polaris
         @attribute = attribute
         @error = error
         @label = label
+        @label_action = label_action
         @label_hidden = label_hidden
         @multiline = multiline
         @index = index
@@ -30,7 +47,7 @@ module Polaris
           label_hidden: @label_hidden,
           help_text: @help_text,
           index: @index,
-        #  action
+          action: @label_action
         }
       end
 

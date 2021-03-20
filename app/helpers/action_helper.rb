@@ -1,17 +1,21 @@
 module ActionHelper
   class Action
+    attr_reader :content
+
     def initialize(
       content:,
       url:,
       accessibility_label: '',
       external: false,
-      id: ''
+      id: '',
+      data: {}
     )
       @content = content
       @accessibility_label = accessibility_label
       @external = external
       @id = id
       @url = url
+      @data = data
     end
 
     def to_h
@@ -21,6 +25,7 @@ module ActionHelper
         external: @external,
         id: @id,
         url: @url,
+        data: @data,
       }
     end
   end
@@ -78,6 +83,12 @@ module ActionHelper
 
   def render_action(action)
     render Polaris::Button::Component.new(**action.to_h.except(:content)) do
+      action.content
+    end
+  end
+
+  def render_plain_action(action)
+    render Polaris::Button::Component.new(**action.to_h.except(:content), plain: true) do
       action.content
     end
   end
