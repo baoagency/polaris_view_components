@@ -35,15 +35,18 @@ class ApplicationComponent < ViewComponent::Base
       validate!
     end
 
-    def wrap_children!(css_class)
+    def wrap_children!(css_class, additional_classes: [], exclusions: nil)
       return unless content.present?
 
       doc = Nokogiri::HTML(content)
 
-      doc.css("body > *:not(.#{css_class})").each do |item|
-        item.wrap("<div class='#{css_class}'></div>")
+      not_wrap = ":not(.#{css_class})"
+      not_wrap << ":not(#{exclusions})" if exclusions.present?
+
+      doc.css("body > *#{not_wrap}").each do |item|
+        item.wrap("<div class='#{css_class} #{additional_classes.join(' ')}'></div>")
       end
 
-      @_content = doc.css('body').first.inner_html
+      @_content = doc.css("body").first.inner_html
     end
 end
