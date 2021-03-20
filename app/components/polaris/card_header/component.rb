@@ -3,7 +3,7 @@
 module Polaris
   module CardHeader
     class Component < Polaris::Component
-      include ComplexActionHelper
+      include ActionHelper
 
       with_content_areas :title
 

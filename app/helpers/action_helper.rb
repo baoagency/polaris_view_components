@@ -1,4 +1,4 @@
-module ComplexActionHelper
+module ActionHelper
   class Action
     def initialize(
       content:,

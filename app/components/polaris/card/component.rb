@@ -2,7 +2,7 @@
 module Polaris
   module Card
     class Component < Polaris::Component
-      include ComplexActionHelper
+      include ActionHelper
 
       validates :primary_footer_action, type: ComplexAction, allow_nil: true
 
