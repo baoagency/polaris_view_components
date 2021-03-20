@@ -1,0 +1,62 @@
+<%= content_tag('div', content_tag_options) do %>
+  <%= conditional_wrapping_element('div', {show: label_hidden?, class: 'Polaris-Labelled--hidden'}) do %>
+    <div class="Polaris-Labelled__LabelWrapper">
+      <div class="Polaris-Label">
+        <label id="PolarisSelect6Label" for="PolarisSelect6" class="Polaris-Label__Text">
+          <%= @form.label(@attribute, @label, {class: 'Polaris-Label__Text'}) %>
+        </label>
+      </div>
+    </div>
+
+    <div
+      class="Polaris-Select
+        <% if @disabled %> Polaris-Select--disabled
+        <% end %>"
+    >
+      <% if @form.present? && @attribute.present? && options.present? %>
+        <%= @form.select(
+              @attribute,
+              options_for_select(options, @value),
+              {},
+              select_content
+            ) %>
+      <% else %>
+        <%= select_tag(
+              @name,
+              select_content,
+              options_for_select(options, @value),
+            ) %>
+      <% end %>
+      <div
+        class="Polaris-Select__Content"
+        aria-hidden="true"
+        <% if @disabled %> aria-disabled="true"
+      <% end %>
+      >
+        <% if @label_inline.present? %>
+          <span class="Polaris-Select__InlineLabel"><%= @label_inline %></span>
+        <% end %>
+        <span
+          class="Polaris-Select__SelectedOption"
+          data-polaris--select-target="currentLabel"
+        >
+          <%= selected_option %>
+        </span>
+        <span class="Polaris-Select__Icon">
+          <span class="Polaris-Icon">
+            <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+              <path d="M10 16l-4-4h8l-4 4zm0-12l4 4H6l4-4z"></path>
+            </svg>
+          </span>
+        </span>
+      </div>
+      <div class="Polaris-Select__Backdrop"></div>
+    </div>
+
+    <% if @help_text.present? %>
+      <div class="Polaris-Labelled__HelpText" id="PolarisSelect1HelpText">
+        <%= @help_text %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
