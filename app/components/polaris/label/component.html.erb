@@ -1,0 +1,11 @@
+<%= content_tag('div', content_tag_options) do %>
+  <% if @label.present? %>
+    <%= @form.label(@attr, @label, { class: "Polaris-Label__Text", index: @index }) %>
+  <% elsif content.present? %>
+    <%= @form.label(@attr, { class: "Polaris-Label__Text", index: @index }) do %>
+      <%= content %>
+    <% end %>
+  <% else %>
+    <%= @form.label(@attr, { class: "Polaris-Label__Text", index: @index }) %>
+  <% end %>
+<% end %>

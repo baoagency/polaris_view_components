@@ -1,0 +1,31 @@
+<%= content_tag('div', content_tag_options) do %>
+  <div class="Polaris-Labelled__LabelWrapper">
+    <% if @label.present? %>
+      <%= render Polaris::Label::Component.new(**label_attrs) do %>
+        <%= @label %>
+      <% end %>
+    <% else %>
+      <%= render Polaris::Label::Component.new(**label_attrs) %>
+    <% end %>
+
+    <% if @action.present? %>
+      <div class="Polaris-Labelled__Action">
+        <%= render_action(@action) %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= content %>
+
+  <% if error? %>
+    <div class="Polaris-Labelled__Error">
+      <%= render Polaris::InlineError::Component.new(error: @error) %>
+    </div>
+  <% end %>
+
+  <% if @help_text.present? %>
+    <div class="Polaris-Labelled__HelpText">
+      <%= @help_text %>
+    </div>
+  <% end %>
+<% end %>
