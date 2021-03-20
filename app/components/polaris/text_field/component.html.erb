@@ -1,7 +1,7 @@
 <div>
   <div class="Polaris-Labelled__LabelWrapper">
     <div class="Polaris-Label">
-      <%= @form.label @label, { class: 'Polaris-Label__Text' } %>
+      <%= @form.label(@attribute, @label, { class: 'Polaris-Label__Text' }) %>
     </div>
   </div>
 
@@ -13,9 +13,16 @@
     <% end %>
 
     <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
-      <div class="Polaris-TextField Polaris-TextField--hasValue">
-        <%= @form.text_field @label, { class: 'Polaris-TextField__Input', placeholder: @placeholder } %>
-
+      <div class="Polaris-TextField Polaris-TextField--hasValue<%if @error.present? %> Polaris-TextField--error<% end %>">
+        <%= @form.send(
+              input,
+              @attribute,
+              {
+                class: 'Polaris-TextField__Input',
+                placeholder: @placeholder,
+                rows: @multiline || nil
+              }
+            ) %>
         <div class="Polaris-TextField__Backdrop"></div>
       </div>
     </div>
@@ -26,4 +33,16 @@
       </div>
     <% end %>
   </div>
+
+  <% if @error.present? %>
+    <div class="Polaris-Labelled__Error">
+      <div class="Polaris-InlineError">
+        <div class="Polaris-InlineError__Icon">
+          <%= render Polaris::Icon::Component.new do %>
+            <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zM9 9a1 1 0 0 0 2 0V7a1 1 0 1 0-2 0v2zm0 4a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"></path>
+          <% end %>
+        </div> <%= @error.capitalize %>
+      </div>
+    </div>
+  <% end %>
 </div>
