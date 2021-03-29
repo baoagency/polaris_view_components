@@ -54,6 +54,16 @@ module Polaris
       def input
         @multiline ? "text_area" : "text_field"
       end
+
+      private
+
+        def classes
+          classes = ['Polaris-TextField']
+
+          classes << 'Polaris-TextField--error' if @error.present?
+
+          classes
+        end
     end
   end
 end

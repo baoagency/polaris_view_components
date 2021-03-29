@@ -7,7 +7,7 @@
     <% end %>
 
     <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
-      <div class="Polaris-TextField Polaris-TextField--hasValue<%if @error.present? %> Polaris-TextField--error<% end %>">
+      <%= content_tag('div', content_tag_options) do %>
         <%= @form.send(
               input,
               @attribute,
@@ -19,7 +19,7 @@
               }
             ) %>
         <div class="Polaris-TextField__Backdrop"></div>
-      </div>
+      <% end %>
     </div>
 
     <% if connected_right.present? %>
