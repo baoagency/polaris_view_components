@@ -1,12 +1,6 @@
 <%= content_tag('div', content_tag_options) do %>
   <div class="Polaris-Labelled__LabelWrapper">
-    <% if @label.present? %>
-      <%= render Polaris::Label::Component.new(**label_attrs) do %>
-        <%= @label %>
-      <% end %>
-    <% else %>
-      <%= render Polaris::Label::Component.new(**label_attrs) %>
-    <% end %>
+    <%= render Polaris::Label::Component.new(**label_attrs) %>
 
     <% if @action.present? %>
       <div class="Polaris-Labelled__Action">

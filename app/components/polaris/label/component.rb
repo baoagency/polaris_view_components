@@ -20,7 +20,7 @@ module Polaris
 
       def label_attrs
         attrs = {
-          class: "Polaris-Label__Text"
+          class: "Polaris-Label__Text",
         }
 
         attrs[:index] = @index if @index.present?

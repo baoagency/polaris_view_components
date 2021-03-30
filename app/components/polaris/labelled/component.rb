@@ -32,6 +32,7 @@ module Polaris
         }
 
         attrs[:index] = @index if @index.present?
+        attrs[:label] = @label if @label.present?
 
         attrs
       end
