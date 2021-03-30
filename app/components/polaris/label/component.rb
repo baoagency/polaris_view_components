@@ -18,6 +18,16 @@ module Polaris
         @index = index
       end
 
+      def label_attrs
+        attrs = {
+          class: "Polaris-Label__Text"
+        }
+
+        attrs[:index] = @index if @index.present?
+
+        attrs
+      end
+
       private
 
         def classes

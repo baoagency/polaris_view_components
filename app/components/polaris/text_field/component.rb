@@ -55,6 +55,20 @@ module Polaris
         @multiline ? "text_area" : "text_field"
       end
 
+      def input_attrs
+        attrs = {
+          class: 'Polaris-TextField__Input',
+          placeholder: @placeholder,
+          rows: @multiline || nil,
+        }
+
+        if @index.present?
+          attrs[:index] = @index
+        end
+
+        attrs
+      end
+
       private
 
         def classes

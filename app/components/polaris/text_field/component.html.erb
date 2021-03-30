@@ -11,12 +11,7 @@
         <%= @form.send(
               input,
               @attribute,
-              {
-                class: 'Polaris-TextField__Input',
-                placeholder: @placeholder,
-                rows: @multiline || nil,
-                index: @index,
-              }
+              input_attrs
             ) %>
         <div class="Polaris-TextField__Backdrop"></div>
       <% end %>

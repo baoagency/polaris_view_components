@@ -25,12 +25,15 @@ module Polaris
       end
 
       def label_attrs
-        {
+        attrs = {
           form: @form,
           attr: @attr,
           hidden: false,
-          index: @index,
         }
+
+        attrs[:index] = @index if @index.present?
+
+        attrs
       end
 
       def error?
