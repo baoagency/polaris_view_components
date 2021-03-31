@@ -13,6 +13,37 @@
               @attribute,
               input_attrs
             ) %>
+
+        <% if number? %>
+          <div class="Polaris-TextField__Spinner" aria-hidden="true">
+            <div
+              role="button"
+              class="Polaris-TextField__Segment"
+              tabindex="-1"
+              data-action="click->polaris--text-field#onPlusClick"
+            >
+              <div class="Polaris-TextField__SpinnerIcon">
+                <%= render Polaris::Icon::Component.new do %>
+                  <path d="M15 12l-5-5-5 5h10z"></path>
+                <% end %>
+              </div>
+            </div>
+
+            <div
+              role="button"
+              class="Polaris-TextField__Segment"
+              tabindex="-1"
+              data-action="click->polaris--text-field#onMinusClick"
+            >
+              <div class="Polaris-TextField__SpinnerIcon">
+                <%= render Polaris::Icon::Component.new do %>
+                  <path d="M5 8l5 5 5-5H5z"></path>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
         <div class="Polaris-TextField__Backdrop"></div>
       <% end %>
     </div>

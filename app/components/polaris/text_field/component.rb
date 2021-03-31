@@ -23,6 +23,10 @@ module Polaris
         multiline: false,
         help_text: "",
         index: nil,
+        step: 1,
+        max: 1_000_000,
+        min: 0,
+        value: nil,
         **args
       )
         super
@@ -36,6 +40,10 @@ module Polaris
         @label_hidden = label_hidden
         @multiline = multiline
         @index = index
+        @step = step
+        @max = max
+        @min = min
+        @value = value
       end
 
       def labelled_attrs
@@ -52,7 +60,13 @@ module Polaris
       end
 
       def input
+        return 'number_field' if number?
+
         @multiline ? "text_area" : "text_field"
+      end
+
+      def number?
+        @type == 'number' && @step != 0
       end
 
       def input_attrs
@@ -66,10 +80,36 @@ module Polaris
           attrs[:index] = @index
         end
 
+        if number?
+          attrs[:step] = @step
+          attrs[:min] = @min
+          attrs[:max] = @max
+
+          attrs[:data] = {
+            "polaris--text-field-target": "input",
+            "action": "input->polaris--text-field#handleInput"
+          }
+        end
+
+        if @value.present?
+          attrs[:value] = @value
+        end
+
         attrs
       end
 
       private
+
+        def additional_data
+          return {} unless number?
+
+          {
+            "controller": "polaris--text-field",
+            "polaris--text-field-min-value": @min,
+            "polaris--text-field-max-value": @max,
+            "polaris--text-field-value-value": @value,
+          }
+        end
 
         def classes
           classes = ['Polaris-TextField']
