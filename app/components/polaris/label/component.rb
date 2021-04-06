@@ -7,11 +7,11 @@ module Polaris
 
       attr_reader :index
 
-      def initialize(form:, attr:, label: "", id: "", hidden: false, index: nil, **args)
+      def initialize(form:, attribute:, label: "", id: "", hidden: false, index: nil, **args)
         super
 
         @form = form
-        @attr = attr
+        @attribute = attribute
         @label = label
         @id = id
         @hidden = hidden

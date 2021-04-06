@@ -49,7 +49,7 @@ module Polaris
       def labelled_attrs
         {
           form: @form,
-          attr: @attribute,
+          attribute: @attribute,
           error: @error,
           label: @label,
           label_hidden: @label_hidden,

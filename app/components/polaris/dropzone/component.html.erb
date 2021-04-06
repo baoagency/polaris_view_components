@@ -32,7 +32,7 @@
     </div>
 
     <%= render Polaris::VisuallyHidden::Component.new do %>
-      <%= @form.file_field(@attr, input_attrs) %>
+      <%= @form.file_field(@attribute, input_attrs) %>
     <% end %>
 
     <template data-polaris--dropzone-target="itemsTemplate">

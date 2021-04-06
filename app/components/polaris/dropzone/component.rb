@@ -22,7 +22,7 @@ module Polaris
 
       def initialize(
         form:,
-        attr:,
+        attribute:,
         accept: "",
         active: false,
         allow_multiple: true,
@@ -42,7 +42,7 @@ module Polaris
         super
 
         @form = form
-        @attr = attr
+        @attribute = attribute
         @accept = accept
         @active = active
         @allow_multiple = allow_multiple
@@ -62,7 +62,7 @@ module Polaris
       def labelled_attrs
         {
           form: @form,
-          attr: @attr,
+          attribute: @attribute,
           error: @error,
           label: @label,
           label_hidden: @label_hidden,

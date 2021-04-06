@@ -1,11 +1,11 @@
 <%= content_tag('div', content_tag_options) do %>
   <% if @label.present? %>
-    <%= @form.label(@attr, @label, label_attrs) %>
+    <%= @form.label(@attribute, @label, label_attrs) %>
   <% elsif content.present? %>
-    <%= @form.label(@attr, label_attrs) do %>
+    <%= @form.label(@attribute, label_attrs) do %>
       <%= content %>
     <% end %>
   <% else %>
-    <%= @form.label(@attr, label_attrs) %>
+    <%= @form.label(@attribute, label_attrs) %>
   <% end %>
 <% end %>
