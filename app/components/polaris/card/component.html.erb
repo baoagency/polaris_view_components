@@ -12,9 +12,21 @@
   <%= content.html_safe %>
 
   <% if footer? %>
-    <div class="Polaris-Card__Footer">
+    <div class="Polaris-Card__Footer<% if @footer_action_alignment == 'left' %> Polaris-Card__LeftJustified<% end %>">
       <%= render Polaris::ButtonGroup::Component.new do %>
-        <%= render_primary_complex_action_button(@primary_footer_action) %>
+        <% if @footer_action_alignment == 'right' %>
+          <% if @secondary_footer_actions.size == 1 %>
+            <%= render_complex_action_button(@secondary_footer_actions.first) %>
+          <% end %>
+
+          <%= render_primary_complex_action_button(@primary_footer_action) %>
+        <% else %>
+          <%= render_primary_complex_action_button(@primary_footer_action) %>
+
+          <% if @secondary_footer_actions.size == 1 %>
+            <%= render_complex_action_button(@secondary_footer_actions.first) %>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
