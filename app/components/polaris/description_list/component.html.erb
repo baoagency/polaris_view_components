@@ -1,0 +1,6 @@
+<%= content_tag('dl', content_tag_options) do %>
+  <% @items.each do |item| %>
+    <dt class="Polaris-DescriptionList__Term"><%= item[:term] %></dt>
+    <dd class="Polaris-DescriptionList__Description"><%= item[:description] %></dd>
+  <% end %>
+<% end %>
