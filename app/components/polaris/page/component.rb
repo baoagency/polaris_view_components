@@ -9,13 +9,14 @@ module Polaris
 
       attr_reader :primary_action
 
-      def initialize(title:, subtitle: '', title_hidden: false, narrow_width: false, primary_action: nil, **args)
+      def initialize(title:, subtitle: '', title_hidden: false, narrow_width: false, primary_action: nil, full_width: false, **args)
         super
 
         @title = title
         @subtitle = subtitle
         @title_hidden = title_hidden
         @narrow_width = narrow_width
+        @full_width = full_width
         @primary_action = primary_action
       end
 
@@ -33,6 +34,7 @@ module Polaris
           classes = ['Polaris-Page']
 
           classes << 'Polaris-Page--narrowWidth' if @narrow_width
+          classes << 'Polaris-Page--fullWidth' if @full_width
 
           classes
         end
