@@ -14,14 +14,16 @@
       </span>
     <% end %>
 
-    <span class="Polaris-Button__Text"><%= content %></span>
-
-    <% if @disclosure.present? %>
+    <% if @icon.present? %>
       <span class="Polaris-Button__Icon">
-        <% render Polaris::Icon::Component.new do %>
-          <%= raw(disclosure_icon) %>
+        <%= render Polaris::Icon::Component.new do %>
+          <%= raw(@icon) %>
         <% end %>
       </span>
+    <% end %>
+
+    <% if content.present? %>
+      <span class="Polaris-Button__Text"><%= content %></span>
     <% end %>
   </span>
 <% end %>
