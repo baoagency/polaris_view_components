@@ -9,10 +9,6 @@ export default class extends Controller {
     value: String,
   }
 
-  connect () {
-    console.log(this)
-  }
-
   valueValueChanged () {
     this.inputTarget.value = this.valueValue
   }
