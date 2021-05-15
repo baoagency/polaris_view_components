@@ -47,7 +47,16 @@ module Polaris
         def before_render
           super
 
-          wrap_children! 'Polaris-ButtonGroup__Item'
+          doc = Nokogiri::HTML(content)
+
+          doc.css("body > *").each do |item|
+            is_plain_button = item[:class].include? "Polaris-Button--plain"
+            puts is_plain_button
+
+            item.wrap("<div class='Polaris-ButtonGroup__Item#{' Polaris-ButtonGroup__Item--plain'}'></div>")
+          end
+
+          @_content = doc.css("body").first.inner_html
         end
     end
   end
