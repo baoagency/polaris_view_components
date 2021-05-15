@@ -3,16 +3,19 @@
 module Polaris
   module Button
     class Component < Polaris::Component
-      attr_reader :text_align, :size, :aria_expanded, :pressed
+      attr_reader :text_align, :size, :aria_expanded, :pressed, :disclosure
 
-      DEFAULT_SIZE = 'medium'
+      DEFAULT_DISCLOSURE = 'down'
       DEFAULT_TEXT_ALIGN = 'center'
+      DEFAULT_SIZE = 'medium'
 
       ALLOWED_ALIGNMENT = %w[left center right]
+      ALLOWED_DISCLOSURES = %w[down up select]
       ALLOWED_SIZES = %w[slim medium large]
 
-      validates :text_align, inclusion: { in: ALLOWED_ALIGNMENT, message: "%{value} is not a valid text_align" }, allow_blank: true, allow_nil: true
+      validates :disclosure, inclusion: { in: ALLOWED_DISCLOSURES, message: "%{value} is not a valid disclosure" }, allow_blank: true, allow_nil: true
       validates :size, inclusion: { in: ALLOWED_SIZES, message: "%{value} is not a valid size" }, allow_blank: true, allow_nil: true
+      validates :text_align, inclusion: { in: ALLOWED_ALIGNMENT, message: "%{value} is not a valid text_align" }, allow_blank: true, allow_nil: true
       validates_inclusion_of :aria_expanded, in: [true, false], allow_blank: true, allow_nil: true
       validates_inclusion_of :pressed, in: [true, false], allow_blank: true, allow_nil: true
 
@@ -27,6 +30,7 @@ module Polaris
         aria_expanded: '',
         destructive: false,
         disabled: false,
+        disclosure: nil,
         download: false,
         external: false,
         full_width: false,
@@ -52,6 +56,7 @@ module Polaris
         @aria_expanded = aria_expanded
         @destructive = destructive
         @disabled = disabled
+        @disclosure = disclosure
         @download = download
         @external = external
         @full_width = full_width
@@ -69,6 +74,17 @@ module Polaris
         @url = url
 
         @tag = url.present? ? 'a' : 'button'
+      end
+
+      def disclosure_icon
+        case @disclosure
+          when 'down'
+            '<path d="M5 8l5 5 5-5H5z"></path>'
+          when 'up'
+            '<path d="M15 12l-5-5-5 5h10z"></path>'
+          when 'select'
+            '<path d="M10 16l-4-4h8l-4 4zm0-12l4 4H6l4-4z"></path>'
+        end
       end
 
       private

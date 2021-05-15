@@ -1,0 +1,23 @@
+<div class="shp-Navigation">
+  <%= render Polaris::Stack::Component.new(alignment: 'center', spacing: 'none') do %>
+    <div>
+      <ul role="tablist" class="shp-Navigation_Items">
+        <% links.each_with_index do |link, index| %>
+          <li role="presentation" class="shp-Navigation_Item">
+            <a
+              data-polaris-unstyled="true"
+              id="navigation_tab_<%= index %>"
+              role="tab"
+              class="shp-Navigation_Link"
+              aria-selected="<%= link[:active].to_s %>"
+              aria-controls="navigation_tab_0-panel"
+              href="<%= link[:href] %>"
+            >
+              <span class="shp-Navigation_LinkText"><%= link[:label] %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
