@@ -1,0 +1,51 @@
+<%= render Polaris::Card::Component.new(data: parent_data) do %>
+  <div class="Polaris-CalloutCard__Container">
+    <% if can_close? %>
+      <div class="Polaris-CalloutCard__Dismiss">
+        <%= render Polaris::Button::Component.new(
+          plain: true,
+          accessibility_label: "Dismiss card",
+          icon: '<path d="M11.414 10l4.293-4.293a.999.999 0 1 0-1.414-1.414L10 8.586 5.707 4.293a.999.999 0 1 0-1.414 1.414L8.586 10l-4.293 4.293a.999.999 0 1 0 1.414 1.414L10 11.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L11.414 10z"></path>',
+          data: {
+            "action": "click->polaris--callout-card#handleCloseClick"
+          }
+        ) %>
+      </div>
+    <% end %>
+
+    <%= render Polaris::CardSection::Component.new do %>
+      <%= content_tag('div', content_tag_options) do %>
+        <div class="Polaris-CalloutCard__Content">
+          <div class="Polaris-CalloutCard__Title">
+            <%= render Polaris::Heading::Component.new do %>
+              <%= @title %>
+            <% end %>
+          </div>
+
+          <%= render Polaris::TextContainer::Component.new do %>
+            <%= content %>
+          <% end %>
+
+          <div class="Polaris-CalloutCard__Buttons">
+            <% if @secondary_action.present? %>
+              <%= render Polaris::ButtonGroup::Component.new do %>
+                <%= render_primary_complex_action_button(@primary_action) %>
+                <%= render_plain_complex_action_button(@secondary_action) %>
+              <% end %>
+            <% else %>
+              <%= render_primary_complex_action_button(@primary_action) %>
+            <% end %>
+          </div>
+        </div>
+
+        <%= render Polaris::Image::Component.new(
+          source: @illustration,
+          alt: "",
+          html_options: {
+            class: image_class
+          }
+        ) %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
