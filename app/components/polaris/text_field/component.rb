@@ -23,6 +23,7 @@ module Polaris
         label_hidden: false,
         multiline: false,
         help_text: "",
+        disabled: false,
         index: nil,
         step: 1,
         prefix: nil,
@@ -44,6 +45,7 @@ module Polaris
         @label_hidden = label_hidden
         @multiline = multiline
         @help_text = help_text
+        @disabled = disabled
         @index = index
         @step = step
         @prefix = prefix
@@ -80,6 +82,7 @@ module Polaris
         attrs = {
           placeholder: @placeholder,
           rows: @multiline || nil,
+          disabled: @disabled,
         }
 
         input_class = "Polaris-TextField__Input"
@@ -127,6 +130,7 @@ module Polaris
           classes = ['Polaris-TextField']
 
           classes << 'Polaris-TextField--error' if @error.present?
+          classes << 'Polaris-TextField--disabled' if @disabled
 
           classes
         end

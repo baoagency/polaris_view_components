@@ -26,7 +26,7 @@
           </div>
         <% end %>
 
-        <% if number? %>
+        <% if number? and not @disabled %>
           <div class="Polaris-TextField__Spinner" aria-hidden="true">
             <div
               role="button"
