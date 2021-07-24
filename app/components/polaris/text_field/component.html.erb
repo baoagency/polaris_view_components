@@ -8,11 +8,23 @@
 
     <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
       <%= content_tag('div', content_tag_options) do %>
+        <% if @prefix.present? %>
+          <div class="Polaris-TextField__Prefix">
+            <%= @prefix %>
+          </div>
+        <% end %>
+
         <%= @form.send(
               input,
               @attribute,
               input_attrs
             ) %>
+
+        <% if @suffix.present? %>
+          <div class="Polaris-TextField__Suffix">
+            <%= @suffix %>
+          </div>
+        <% end %>
 
         <% if number? %>
           <div class="Polaris-TextField__Spinner" aria-hidden="true">

@@ -25,6 +25,8 @@ module Polaris
         help_text: "",
         index: nil,
         step: 1,
+        prefix: nil,
+        suffix: nil,
         max: 1_000_000,
         min: 0,
         value: nil,
@@ -44,6 +46,8 @@ module Polaris
         @help_text = help_text
         @index = index
         @step = step
+        @prefix = prefix
+        @suffix = suffix
         @max = max
         @min = min
         @value = value
@@ -79,10 +83,8 @@ module Polaris
         }
 
         input_class = "Polaris-TextField__Input"
-
-        if @align.present?
-          input_class += " Polaris-TextField__Input--align#{@align.capitalize}"
-        end
+        input_class += " Polaris-TextField__Input--align#{@align.capitalize}" if @align.present?
+        input_class += " Polaris-TextField__Input--suffixed" if @suffix.present?
 
         attrs[:class] = input_class
 
