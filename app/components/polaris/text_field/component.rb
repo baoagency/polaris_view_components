@@ -39,6 +39,7 @@ module Polaris
         @label_action = label_action
         @label_hidden = label_hidden
         @multiline = multiline
+        @help_text = help_text
         @index = index
         @step = step
         @max = max
