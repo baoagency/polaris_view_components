@@ -16,6 +16,7 @@ module Polaris
         attribute:,
         placeholder: "",
         type: "text",
+        align: "",
         error: "",
         label: nil,
         label_action: nil,
@@ -33,6 +34,7 @@ module Polaris
         @placeholder = placeholder
         @type = type
         @form = form
+        @align = align
         @attribute = attribute
         @error = error
         @label = label
@@ -72,10 +74,17 @@ module Polaris
 
       def input_attrs
         attrs = {
-          class: 'Polaris-TextField__Input',
           placeholder: @placeholder,
           rows: @multiline || nil,
         }
+
+        input_class = "Polaris-TextField__Input"
+
+        if @align.present?
+          input_class += " Polaris-TextField__Input--align#{@align.capitalize}"
+        end
+
+        attrs[:class] = input_class
 
         if @index.present?
           attrs[:index] = @index
