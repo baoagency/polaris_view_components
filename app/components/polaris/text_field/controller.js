@@ -2,19 +2,20 @@ import { Controller } from 'stimulus'
 
 // eslint-disable-next-line import/no-default-export
 export default class extends Controller {
-  static targets = ['input']
+  static targets = ['input', 'clearButton']
   static values = {
     min: Number,
     max: Number,
     value: String,
   }
+  static classes = ['clearButtonVisibility']
 
   valueValueChanged () {
     this.inputTarget.value = this.valueValue
   }
 
   handleInput (e) {
-    this.valueValue = e.currentTarget.value
+    this.value = e.currentTarget.value
   }
 
   handleNumberChange (steps) {
@@ -38,12 +39,33 @@ export default class extends Controller {
     this.valueValue = String(newValue.toFixed(decimalPlaces))
   }
 
+  onClearClick () {
+    this.value = ''
+  }
+
   onMinusClick () {
     this.handleNumberChange(-1)
   }
 
   onPlusClick () {
     this.handleNumberChange(1)
+  }
+
+  get value () {
+    return this.valueValue
+  }
+
+  set value (val) {
+    this.valueValue = val
+
+    if (this.hasClearButtonTarget) {
+      this.clearButtonTarget.classList.toggle(
+        this.clearButtonVisibilityClass,
+        val === ''
+      )
+
+      this.clearButtonTarget.setAttribute('tab-index', val === '' ? '-1' : '-')
+    }
   }
 
   get step () {

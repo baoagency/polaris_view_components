@@ -31,6 +31,7 @@ module Polaris
         max: 1_000_000,
         min: 0,
         value: nil,
+        clear_button: false,
         monospaced: false,
         **args
       )
@@ -54,6 +55,7 @@ module Polaris
         @max = max
         @min = min
         @value = value
+        @clear_button = clear_button
         @monospaced = monospaced
       end
 
@@ -102,7 +104,9 @@ module Polaris
           attrs[:step] = @step
           attrs[:min] = @min
           attrs[:max] = @max
+        end
 
+        if attach_stimulus_controller?
           attrs[:data] = {
             "polaris--text-field-target": "input",
             "action": "input->polaris--text-field#handleInput"
@@ -117,16 +121,28 @@ module Polaris
       end
 
       private
+        def attach_stimulus_controller?
+          number? or @clear_button
+        end
 
         def additional_data
-          return {} unless number?
+          data = {}
 
-          {
-            "controller": "polaris--text-field",
-            "polaris--text-field-min-value": @min,
-            "polaris--text-field-max-value": @max,
-            "polaris--text-field-value-value": @value,
-          }
+          data["controller"] = "polaris--text-field" if attach_stimulus_controller?
+          data["polaris--text-field-value-value"] = @value
+
+          if number?
+            data = {
+              "polaris--text-field-min-value": @min,
+              "polaris--text-field-max-value": @max,
+            }
+          end
+
+          if @clear_button
+            data["polaris--text-field-clear-button-visibility-class"] = "Polaris-TextField__ClearButton--hidden"
+          end
+
+          data
         end
 
         def classes
