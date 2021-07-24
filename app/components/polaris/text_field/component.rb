@@ -9,7 +9,7 @@ module Polaris
       validates :label_action, type: Action, allow_nil: true
       validates :index, numericality: { only_integer: true }, allow_nil: true
 
-      attr_reader :label_action, :index
+      attr_reader :label_action, :index, :value
 
       def initialize(
         form:,
@@ -31,6 +31,9 @@ module Polaris
         max: 1_000_000,
         min: 0,
         value: nil,
+        show_character_count: false,
+        max_length: nil,
+        min_length: nil,
         clear_button: false,
         monospaced: false,
         **args
@@ -55,6 +58,9 @@ module Polaris
         @max = max
         @min = min
         @value = value
+        @show_character_count = show_character_count
+        @max_length = max_length
+        @min_length = min_length
         @clear_button = clear_button
         @monospaced = monospaced
       end
@@ -95,6 +101,8 @@ module Polaris
         input_class += " Polaris-TextField--monospaced" if @monospaced
 
         attrs[:class] = input_class
+        attrs[:maxlength] = @max_length if @max_length.present?
+        attrs[:minlength] = @min_length if @min_length.present?
 
         if @index.present?
           attrs[:index] = @index
@@ -120,9 +128,13 @@ module Polaris
         attrs
       end
 
+      def character_count
+        @character_count ||= CharacterCount.new(text_field: self, max_length: @max_length)
+      end
+
       private
         def attach_stimulus_controller?
-          number? or @clear_button
+          number? or @clear_button or @show_character_count
         end
 
         def additional_data
@@ -142,6 +154,12 @@ module Polaris
             data["polaris--text-field-clear-button-visibility-class"] = "Polaris-TextField__ClearButton--hidden"
           end
 
+          if @show_character_count
+            data["polaris--text-field-max-length-value"] = @max_length if @max_length.present?
+            data["polaris--text-field-label-template-value"] = character_count.label_template
+            data["polaris--text-field-text-template-value"] = character_count.text_template
+          end
+
           data
         end
 
@@ -151,6 +169,7 @@ module Polaris
           classes << 'Polaris-TextField--hasValue' if @value.present?
           classes << 'Polaris-TextField--error' if @error.present?
           classes << 'Polaris-TextField--disabled' if @disabled
+          classes << 'Polaris-TextField--multiline' if @multiline.present?
 
           classes
         end

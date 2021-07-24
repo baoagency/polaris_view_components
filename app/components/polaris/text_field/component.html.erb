@@ -26,6 +26,20 @@
           </div>
         <% end %>
 
+        <% if @show_character_count %>
+          <div
+            class="Polaris-TextField__CharacterCount
+              <% if @multiline %>
+                Polaris-TextField__AlignFieldBottom
+              <% end %>"
+            data-polaris--text-field-target="characterCount"
+            aria-label="<%= character_count.label %>"
+            aria-atomic="true"
+          >
+            <%= character_count.text %>
+          </div>
+        <% end %>
+
         <% if @clear_button %>
           <button
             type="button"

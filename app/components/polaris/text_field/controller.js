@@ -2,11 +2,14 @@ import { Controller } from 'stimulus'
 
 // eslint-disable-next-line import/no-default-export
 export default class extends Controller {
-  static targets = ['input', 'clearButton']
+  static targets = ['input', 'clearButton', 'characterCount']
   static values = {
     min: Number,
     max: Number,
     value: String,
+    labelTemplate: String,
+    textTemplate: String,
+    maxLength: Number,
   }
   static classes = ['clearButtonVisibility']
 
@@ -65,6 +68,19 @@ export default class extends Controller {
       )
 
       this.clearButtonTarget.setAttribute('tab-index', val === '' ? '-1' : '-')
+    }
+
+    if (this.hasCharacterCountTarget) {
+      this.characterCountTarget.textContent = this.textTemplateValue
+        .replace(`{count}`, val.length)
+        .replace(`{max_count}`, this.maxLengthValue)
+
+      this.characterCountTarget.setAttribute(
+        'aria-label',
+        this.labelTemplateValue
+          .replace(`{count}`, val.length)
+          .replace(`{max_count}`, this.maxLengthValue)
+      )
     }
   }
 
