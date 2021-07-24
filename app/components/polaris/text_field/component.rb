@@ -31,6 +31,7 @@ module Polaris
         max: 1_000_000,
         min: 0,
         value: nil,
+        monospaced: false,
         **args
       )
         super
@@ -53,6 +54,7 @@ module Polaris
         @max = max
         @min = min
         @value = value
+        @monospaced = monospaced
       end
 
       def labelled_attrs
@@ -88,6 +90,7 @@ module Polaris
         input_class = "Polaris-TextField__Input"
         input_class += " Polaris-TextField__Input--align#{@align.capitalize}" if @align.present?
         input_class += " Polaris-TextField__Input--suffixed" if @suffix.present?
+        input_class += " Polaris-TextField--monospaced" if @monospaced
 
         attrs[:class] = input_class
 
@@ -129,6 +132,7 @@ module Polaris
         def classes
           classes = ['Polaris-TextField']
 
+          classes << 'Polaris-TextField--hasValue' if @value.present?
           classes << 'Polaris-TextField--error' if @error.present?
           classes << 'Polaris-TextField--disabled' if @disabled
 
