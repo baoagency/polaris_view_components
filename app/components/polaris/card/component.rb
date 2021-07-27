@@ -21,7 +21,7 @@ module Polaris
         primary_footer_action: nil,
         secondary_footer_actions: [],
         footer_action_alignment: 'right',
-        sectioned: false,
+        sectioned: true,
         **args
       )
         super
