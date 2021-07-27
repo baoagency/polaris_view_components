@@ -22,7 +22,7 @@ module Polaris
 
       attr_reader :alignment, :distribution, :spacing
 
-      def initialize(alignment: '', distribution: '', spacing: '', vertical: false, wrap: true, **args)
+      def initialize(alignment: '', distribution: '', spacing: '', vertical: false, wrap: true, sectioned: true, **args)
         super
 
         @alignment = alignment
@@ -30,6 +30,7 @@ module Polaris
         @spacing = spacing
         @vertical = vertical
         @wrap = wrap
+        @sectioned = sectioned
       end
 
       private
@@ -48,6 +49,8 @@ module Polaris
 
         def before_render
           super
+
+          return unless @sectioned
 
           wrap_children! 'Polaris-Stack__Item'
         end

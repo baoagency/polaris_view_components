@@ -1,0 +1,55 @@
+<% @label_markup = capture do %>
+  <span class="Polaris-Choice__Control">
+    <%= content %>
+  </span>
+
+  <span class="Polaris-Choice__Label">
+    <%= @label %>
+  </span>
+<% end %>
+
+<% @help_text_markup = capture do %>
+  <% if @help_text.present? %>
+    <div class="Polaris-Choice__HelpText">
+      <%= @help_text %>
+    </div>
+  <% end %>
+<% end %>
+
+<% @error_markup = capture do %>
+  <% if @error.present? %>
+    <div class="Polaris-Choice__Error">
+      <%= render Polaris::InlineError::Component.new(error: @error) %>
+    </div>
+  <% end %>
+<% end %>
+
+<% @description_markup = capture do %>
+  <% if description? %>
+    <div class="Polaris-Choice__Descriptions">
+      <%= @error_markup %>
+      <%= @help_text_markup %>
+    </div>
+  <% end %>
+<% end %>
+
+<% @content_markup = capture do %>
+  <% if description? %>
+    <div>
+      <%= @label_markup %>
+      <%= @description_markup %>
+    </div>
+  <% else %>
+    <%= @label_markup %>
+  <% end %>
+<% end %>
+
+<% if @form.present? and @attribute.present? %>
+  <%= @form.label(@attribute, @value, @label, content_tag_options) do %>
+    <%= @content_markup %>
+  <% end %>
+<% else %>
+  <%= label_tag(@name, content_tag_options) do %>
+    <%= @content_markup %>
+  <% end %>
+<% end %>

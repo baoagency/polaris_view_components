@@ -10,12 +10,13 @@ module Polaris
 
       attr_reader :backdrop, :color
 
-      def initialize(accessibility_label: '', backdrop: false, color: '', **args)
+      def initialize(accessibility_label: '', backdrop: false, color: '', small: false, **args)
         super
 
         @accessibility_label = accessibility_label
         @backdrop = backdrop
         @color = color
+        @small = small
       end
 
       private
@@ -25,6 +26,8 @@ module Polaris
 
           classes << 'Polaris-Icon--hasBackdrop' if @backdrop
           classes << "Polaris-Icon--color#{@color.camelize}" if @color.present?
+          classes << "Polaris-Icon--applyColor" if @color.present?
+          classes << 'Polaris-Icon--small' if @small
 
           classes
         end

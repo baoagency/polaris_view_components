@@ -8,13 +8,60 @@
 
     <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
       <%= content_tag('div', content_tag_options) do %>
+        <% if @prefix.present? %>
+          <div class="Polaris-TextField__Prefix">
+            <%= @prefix %>
+          </div>
+        <% end %>
+
         <%= @form.send(
               input,
               @attribute,
               input_attrs
             ) %>
 
-        <% if number? %>
+        <% if @suffix.present? %>
+          <div class="Polaris-TextField__Suffix">
+            <%= @suffix %>
+          </div>
+        <% end %>
+
+        <% if @show_character_count %>
+          <div
+            class="Polaris-TextField__CharacterCount
+              <% if @multiline %>
+                Polaris-TextField__AlignFieldBottom
+              <% end %>"
+            data-polaris--text-field-target="characterCount"
+            aria-label="<%= character_count.label %>"
+            aria-atomic="true"
+          >
+            <%= character_count.text %>
+          </div>
+        <% end %>
+
+        <% if @clear_button %>
+          <button
+            type="button"
+            class="Polaris-TextField__ClearButton
+              <% if @value.blank? %>
+                Polaris-TextField__ClearButton--hidden
+              <% end %>"
+            tabindex="0"
+            data-polaris--text-field-target="clearButton"
+            data-action="click->polaris--text-field#onClearClick"
+          >
+            <%= render Polaris::VisuallyHidden::Component.new do %>
+              Clear
+            <% end %>
+
+            <%= render Polaris::Icon::Component.new(color: "base") do %>
+              <path fill-rule="evenodd" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM7.707 6.293a1 1 0 0 0-1.414 1.414L8.586 10l-2.293 2.293a1 1 0 1 0 1.414 1.414L10 11.414l2.293 2.293a1 1 0 1 0 1.414-1.414L11.414 10l2.293-2.293a1 1 0 0 0-1.414-1.414L10 8.586 7.707 6.293z"></path>
+            <% end %>
+          </button>
+        <% end %>
+
+        <% if number? and not @disabled %>
           <div class="Polaris-TextField__Spinner" aria-hidden="true">
             <div
               role="button"

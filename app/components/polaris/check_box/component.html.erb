@@ -1,0 +1,25 @@
+<%= render Polaris::Choice::Component.new(
+  label: @label,
+  label_hidden: @label_hidden,
+  disabled: @disabled,
+  id: @id,
+  help_text: @help_text,
+  form: @form,
+  attribute: @attribute,
+) do %>
+  <%= content_tag('span', content_tag_options) do %>
+    <% if @form.present? && @attribute.present? %>
+      <%= @form.check_box(@attribute, @value, input_attrs) %>
+    <% else %>
+      <%= check_box_tag(@name, @value, @checked, input_attrs) %>
+    <% end %>
+
+    <span class="Polaris-Checkbox__Backdrop"></span>
+
+    <span class="Polaris-Checkbox__Icon">
+      <%= render Polaris::Icon::Component.new do %>
+        <%= raw(icon) %>
+      <% end %>
+    </span>
+  <% end %>
+<% end %>

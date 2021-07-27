@@ -1,0 +1,32 @@
+<%= field_set_tag(nil, content_tag_options) do %>
+  <% if @title.present? %>
+    <%= content_tag("legend", class: "Polaris-ChoiceList__Title") do %>
+      <%= @title %>
+    <% end %>
+  <% end %>
+
+  <ul class="Polaris-ChoiceList__Choices">
+    <% choice_component = @allow_multiple ? Polaris::CheckBox::Component : Polaris::RadioButton::Component %>
+
+    <% @choices.each do |choice| %>
+      <li>
+        <%= render choice_component.new(
+          form: @form,
+          attribute: @attribute,
+          name: final_name,
+          value: choice[:value],
+          label: choice[:label],
+          disabled: choice[:disabled] || @disabled,
+          checked: choice_is_selected?(choice),
+          help_text: choice[:help_text]
+        ) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if @error.present? %>
+    <div class="Polaris-ChoiceList__ChoiceError">
+      <%= render Polaris::InlineError::Component.new(error: @error) %>
+    </div>
+  <% end %>
+<% end %>
