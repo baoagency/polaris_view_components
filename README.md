@@ -9,7 +9,7 @@ Polaris ViewComponents is an implementation of the Polaris Design System using [
 Render Primer ViewComponents from templates:
 
 ```erb
-<%= render Polaris::Card::Component.new(title: "Title", sectioned: true) do %>
+<%= render Polaris::Card::Component.new(title: "Title") do %>
   <p>Card example</p>
 <% end %>
 ```
@@ -18,7 +18,7 @@ Render Primer ViewComponents from templates:
 
 In `Gemfile`, add:
 ```ruby
-gem 'polaris_view_components', require: 'polaris/view_components/engine'
+gem 'polaris_view_components', github: 'baoagency/polaris_view_components', require: 'polaris/view_components'
 ```
 
 To add styles for `Polaris::ShopifyNavigation::Component` in your layout's `<head>` tag add:
