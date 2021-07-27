@@ -1,0 +1,7 @@
+<%= render Polaris::Card::Component.new(
+  title: "Shipment 1234",
+  secondary_footer_actions: [Polaris.complex_action(content: 'Edit shipment', url: '#')],
+  primary_footer_action: Polaris.complex_action(content: 'Add tracking number', url: '#'),
+) do %>
+  <p>Example text</p>
+<% end %>

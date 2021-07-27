@@ -1,0 +1,15 @@
+<%= form_with model: model, url: "/" do |form| %>
+  <%= render Polaris::Stack::Component.new do %>
+    <%= render Polaris::StackItem::Component.new(fill: true) do %>
+      Price
+    <% end %>
+    <%= render Polaris::TextField::Component.new(
+      form: form,
+      attribute: :attribute,
+      label: "Price",
+      label_hidden: true,
+      value: "TBD",
+      align: "right",
+    ) %>
+  <% end %>
+<% end %>

@@ -1,0 +1,9 @@
+<%= form_with model: model, url: "/" do |form| %>
+  <%= render Polaris::TextField::Component.new(
+    form: form,
+    attribute: :attribute,
+    label: "Account email",
+    help_text: "We’ll use this address if we need to contact you about your account.",
+    value: "bernadette.lapresse@jadedpixel.com"
+  ) %>
+<% end %>

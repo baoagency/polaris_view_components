@@ -1,0 +1,8 @@
+<%= form_with model: model, url: "/" do |form| %>
+  <%= render Polaris::TextField::Component.new(
+    form: form,
+    attribute: :attribute,
+    label: "Shipping zone name",
+    placeholder: "Example: North America, Europe"
+  ) %>
+<% end %>

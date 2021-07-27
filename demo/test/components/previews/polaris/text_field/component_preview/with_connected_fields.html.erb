@@ -1,0 +1,25 @@
+<%= form_with model: model, url: "/" do |form| %>
+  <%= render Polaris::TextField::Component.new(
+    form: form,
+    attribute: :attribute,
+    label: "Weight",
+    type: "number",
+    value: "10.6"
+  ) do |component| %>
+    <% component.with(:connected_left) do %>
+      <%= render Polaris::Select::Component.new(
+        form: form,
+        attribute: :attribute,
+        label: "Weight unit",
+        label_hidden: true,
+        value: "kg",
+        options: [{ label: "kg", value: "kg" }, { label: "lb", value: "lb" }]
+      ) %>
+    <% end %>
+    <% component.with(:connected_right) do %>
+      <%= render Polaris::Button::Component.new do %>
+        Submit
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

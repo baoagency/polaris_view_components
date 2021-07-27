@@ -1,0 +1,8 @@
+<%= render Polaris::CalloutCard::Component.new(
+  title: "Customize the style of your checkout",
+  illustration: "https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg",
+  primary_action: Polaris.complex_action(content: "Customize checkout", url: "https://www.shopify.com"),
+  secondary_action: Polaris.complex_action(content: "Learn more about customizing checkout", url: "https://www.shopify.com"),
+) do %>
+  <p>Upload your store’s logo, change colors and fonts, and more.</p>
+<% end %>
