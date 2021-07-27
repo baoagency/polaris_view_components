@@ -30,6 +30,15 @@ To add styles for `Polaris::ShopifyNavigation::Component` in your layout's `<hea
 
 In addition to the dependencies declared in the `gemspec`, Polaris ViewComponents assumes the presence of Polaris CSS.
 
+## Development
+
+To get started:
+
+1. Run: `bundle install`
+2. Run: `foreman start`
+
+It will open demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews located in `demo/test/components/previews`.
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
