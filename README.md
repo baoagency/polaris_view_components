@@ -21,7 +21,7 @@ In `Gemfile`, add:
 gem 'polaris_view_components', require: 'polaris/view_components/engine'
 ```
 
-To add styles for `Shopify::Navigation::Components` in your layout's `<head>` tag add:
+To add styles for `Polaris::ShopifyNavigation::Component` in your layout's `<head>` tag add:
 ```erb
 <%= stylesheet_link_tag 'polaris_view_components' %>
 ```
