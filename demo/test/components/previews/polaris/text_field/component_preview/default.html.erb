@@ -1,6 +1,5 @@
-<%= form_with model: model, url: "/" do |form| %>
-  <%= render Polaris::TextField::Component.new(
-    form: form,
-    attribute: :attribute,
-  ) %>
-<% end %>
+<%= render Polaris::TextField::Component.new(
+  attribute: :attribute,
+  label: 'Store name',
+  value: 'Jaded Pixel',
+) %>

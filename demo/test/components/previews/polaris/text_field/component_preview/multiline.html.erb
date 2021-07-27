@@ -1,9 +1,6 @@
-<%= form_with model: model, url: "/" do |form| %>
-  <%= render Polaris::TextField::Component.new(
-    form: form,
-    attribute: :attribute,
-    label: "Shipping address",
-    multiline: 4,
-    value: "1776 Barnes Street\nOrlando, FL 32801"
-  ) %>
-<% end %>
+<%= render Polaris::TextField::Component.new(
+  attribute: :attribute,
+  label: "Shipping address",
+  multiline: 4,
+  value: "1776 Barnes Street\nOrlando, FL 32801"
+) %>

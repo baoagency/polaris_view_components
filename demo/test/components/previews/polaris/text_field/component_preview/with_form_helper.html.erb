@@ -1,0 +1,8 @@
+<% product = Product.new(title: 'Orange T-Shirt') %>
+
+<%= form_with model: product, url: "/" do |form| %>
+  <%= render Polaris::TextField::Component.new(
+    form: form,
+    attribute: :title,
+  ) %>
+<% end %>

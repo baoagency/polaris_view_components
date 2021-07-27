@@ -1,10 +1,7 @@
-<%= form_with model: model, url: "/" do |form| %>
-  <%= render Polaris::TextField::Component.new(
-    form: form,
-    attribute: :attribute,
-    label: "Store name",
-    value: "Jaded Pixel",
-    show_character_count: true,
-    max_length: 20,
-  ) %>
-<% end %>
+<%= render Polaris::TextField::Component.new(
+  attribute: :attribute,
+  label: "Store name",
+  value: "Jaded Pixel",
+  show_character_count: true,
+  max_length: 20,
+) %>

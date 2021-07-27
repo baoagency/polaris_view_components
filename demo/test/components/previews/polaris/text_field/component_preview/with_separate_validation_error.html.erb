@@ -1,45 +1,40 @@
-<%= form_with model: model, url: "/" do |form| %>
-  <%= render Polaris::Stack::Component.new(wrap: false) do %>
-    <%= render Polaris::StackItem::Component.new(fill: true) do %>
-      <%= render Polaris::FormLayout::Component.new do %>
-        <%= render Polaris::FormLayoutGroup::Component.new(condensed: true, sectioned: true) do %>
-          <%= render Polaris::Select::Component.new(
-            form: form,
-            attribute: :attribute,
-            label: "Collection rule type",
-            label_hidden: true,
-            value: "product_type",
-            options: [{ label: "Product type", value: "product_type" }]
-          ) %>
-          <%= render Polaris::Select::Component.new(
-            form: form,
-            attribute: :attribute,
-            label: "Collection rule condition",
-            label_hidden: true,
-            value: "is_equal_to",
-            options: [{ label: "Is equal to", value: "is_equal_to" }]
-          ) %>
-          <%= render Polaris::TextField::Component.new(
-            form: form,
-            attribute: :attribute,
-            label: "Collection rule content",
-            label_hidden: true,
-            id: "thisIsTheId",
-            error: true,
-          ) %>
-        <% end %>
-      <% end %>
-
-      <div style="margin-top: 4px;">
-        <%= render Polaris::InlineError::Component.new(
-          error: "Enter 3 or more characters for product type is equal to",
-          id: "thisIsTheId"
+<%= render Polaris::Stack::Component.new(wrap: false) do %>
+  <%= render Polaris::StackItem::Component.new(fill: true) do %>
+    <%= render Polaris::FormLayout::Component.new do %>
+      <%= render Polaris::FormLayoutGroup::Component.new(condensed: true, sectioned: true) do %>
+        <%= render Polaris::Select::Component.new(
+          attribute: :attribute,
+          label: "Collection rule type",
+          label_hidden: true,
+          value: "product_type",
+          options: [{ label: "Product type", value: "product_type" }]
         ) %>
-      </div>
+        <%= render Polaris::Select::Component.new(
+          attribute: :attribute,
+          label: "Collection rule condition",
+          label_hidden: true,
+          value: "is_equal_to",
+          options: [{ label: "Is equal to", value: "is_equal_to" }]
+        ) %>
+        <%= render Polaris::TextField::Component.new(
+          attribute: :attribute,
+          label: "Collection rule content",
+          label_hidden: true,
+          id: "thisIsTheId",
+          error: true,
+        ) %>
+      <% end %>
     <% end %>
-    <%= render Polaris::Button::Component.new(
-      icon: '<path d="M8 3.994C8 2.893 8.895 2 10 2s2 .893 2 1.994h4c.552 0 1 .446 1 .997a1 1 0 0 1-1 .997H4c-.552 0-1-.447-1-.997s.448-.997 1-.997h4zM5 14.508V8h2v6.508a.5.5 0 0 0 .5.498H9V8h2v7.006h1.5a.5.5 0 0 0 .5-.498V8h2v6.508A2.496 2.496 0 0 1 12.5 17h-5C6.12 17 5 15.884 5 14.508z"></path>',
-      accessibility_label: "Remove item"
-    ) %>
+
+    <div style="margin-top: 4px;">
+      <%= render Polaris::InlineError::Component.new(
+        error: "Enter 3 or more characters for product type is equal to",
+        id: "thisIsTheId"
+      ) %>
+    </div>
   <% end %>
+  <%= render Polaris::Button::Component.new(
+    icon: '<path d="M8 3.994C8 2.893 8.895 2 10 2s2 .893 2 1.994h4c.552 0 1 .446 1 .997a1 1 0 0 1-1 .997H4c-.552 0-1-.447-1-.997s.448-.997 1-.997h4zM5 14.508V8h2v6.508a.5.5 0 0 0 .5.498H9V8h2v7.006h1.5a.5.5 0 0 0 .5-.498V8h2v6.508A2.496 2.496 0 0 1 12.5 17h-5C6.12 17 5 15.884 5 14.508z"></path>',
+    accessibility_label: "Remove item"
+  ) %>
 <% end %>

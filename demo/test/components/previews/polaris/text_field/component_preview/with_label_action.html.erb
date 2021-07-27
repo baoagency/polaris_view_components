@@ -1,9 +1,6 @@
-<%= form_with model: model, url: "/" do |form| %>
-  <%= render Polaris::TextField::Component.new(
-    form: form,
-    attribute: :attribute,
-    label: "Tariff code",
-    label_action: Polaris.action(content: 'Look up codes', url: '#'),
-    value: "6201.11.0000"
-  ) %>
-<% end %>
+<%= render Polaris::TextField::Component.new(
+  attribute: :attribute,
+  label: "Tariff code",
+  label_action: Polaris.action(content: 'Look up codes', url: '#'),
+  value: "6201.11.0000"
+) %>
