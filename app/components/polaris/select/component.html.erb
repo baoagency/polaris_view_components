@@ -6,7 +6,7 @@
           <% if @form %>
             <%= @form.label(@attribute, @label, {class: 'Polaris-Label__Text'}) %>
           <% else %>
-            <%= label_tag(@attribute, @label, {class: 'Polaris-Label__Text'}) %>
+            <%= label_tag(@name, @label, {class: 'Polaris-Label__Text'}) %>
           <% end %>
         </label>
       </div>
@@ -26,7 +26,7 @@
             ) %>
       <% else %>
         <%= select_tag(
-              @attribute,
+              @name,
               options_for_select(options, @value),
               select_content,
             ) %>

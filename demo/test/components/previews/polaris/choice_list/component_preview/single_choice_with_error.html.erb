@@ -15,6 +15,7 @@
 
 <%= render Polaris::ChoiceList::Component.new(
   title: 'Company name',
+  name: :company_name,
   choices: choices,
   error: 'Company name cannot be hidden at this time',
 ) %>

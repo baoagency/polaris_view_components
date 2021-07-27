@@ -6,7 +6,7 @@
 ) do |component| %>
   <% component.with(:connected_left) do %>
     <%= render Polaris::Select::Component.new(
-      attribute: :attribute,
+      name: :attribute,
       label: "Weight unit",
       label_hidden: true,
       value: "kg",
