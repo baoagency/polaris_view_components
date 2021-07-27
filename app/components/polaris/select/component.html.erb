@@ -3,7 +3,11 @@
     <div class="Polaris-Labelled__LabelWrapper">
       <div class="Polaris-Label">
         <label id="PolarisSelect6Label" for="PolarisSelect6" class="Polaris-Label__Text">
-          <%= @form.label(@attribute, @label, {class: 'Polaris-Label__Text'}) %>
+          <% if @form %>
+            <%= @form.label(@attribute, @label, {class: 'Polaris-Label__Text'}) %>
+          <% else %>
+            <%= label_tag(@attribute, @label, {class: 'Polaris-Label__Text'}) %>
+          <% end %>
         </label>
       </div>
     </div>
@@ -22,9 +26,9 @@
             ) %>
       <% else %>
         <%= select_tag(
-              @name,
-              select_content,
+              @attribute,
               options_for_select(options, @value),
+              select_content,
             ) %>
       <% end %>
       <div
