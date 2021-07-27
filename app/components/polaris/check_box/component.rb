@@ -15,6 +15,7 @@ module Polaris
         value: '',
         form: nil,
         attribute: nil,
+        children_content: nil,
         **args
       )
         super
@@ -30,6 +31,7 @@ module Polaris
         @value = value
         @form = form
         @attribute = attribute
+        @children_content = children_content
       end
 
       def input_attrs

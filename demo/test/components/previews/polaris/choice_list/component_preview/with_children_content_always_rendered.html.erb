@@ -1,0 +1,27 @@
+<% children_content = capture do %>
+  <%= render Polaris::TextField::Component.new(
+    attribute: :attribute,
+    label: 'Minimum Quantity',
+    label_hidden: true,
+  ) %>
+<% end %>
+<% choices = [
+  {
+    label: 'None',
+    value: 'none'
+  },
+  {
+    label: 'Minimum purchase',
+    value: 'minimum_purchase'
+  },
+  {
+    label: 'Minimum quantity',
+    value: 'minimum_quantity',
+    children_content: children_content,
+  },
+] %>
+
+<%= render Polaris::ChoiceList::Component.new(
+  title: 'Discount minimum requirements',
+  choices: choices,
+) %>

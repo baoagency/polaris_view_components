@@ -1,0 +1,18 @@
+<% choices = [
+  {
+    label: 'Use the shipping address as the billing address by default',
+    value: 'shipping',
+    help_text: 'Reduces the number of fields required to check out. The billing address can still be edited.',
+  },
+  {
+    label: 'Require a confirmation step',
+    value: 'confirmation',
+    help_text: 'Customers must review their order details before purchasing.',
+  },
+] %>
+
+<%= render Polaris::ChoiceList::Component.new(
+  title: 'While the customer is checking out',
+  choices: choices,
+  allow_multiple: true,
+) %>

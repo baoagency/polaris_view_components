@@ -43,6 +43,11 @@
     <%= label_tag(@name, content_tag_options) do %>
       <%= @content_markup %>
     <% end %>
+    <% if @children_content.present? %>
+      <div class="Polaris-ChoiceList__ChoiceChildren">
+        <%= raw(@children_content) %>
+      </div>
+    <% end %>
     <%= @description_markup if description? %>
   <% end %>
 </div>

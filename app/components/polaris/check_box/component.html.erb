@@ -6,6 +6,7 @@
   help_text: @help_text,
   form: @form,
   attribute: @attribute,
+  children_content: @children_content,
 ) do %>
   <%= content_tag('span', content_tag_options) do %>
     <% if @form.present? && @attribute.present? %>
