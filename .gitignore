@@ -1,11 +1,16 @@
-/.bundle/
+/**/.bundle/
 /doc/
-/log/*.log
+*.log
 /pkg/
 /tmp/
+.byebug_history
 /test/dummy/db/*.sqlite3
 /test/dummy/db/*.sqlite3-*
 /test/dummy/log/*.log
 /test/dummy/storage/
 /test/dummy/tmp/
-.byebug_history
+
+# demo app
+/demo/tmp/
+/demo/node_modules/
+/demo/config/master.key
