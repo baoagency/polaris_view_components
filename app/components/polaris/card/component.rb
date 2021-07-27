@@ -2,11 +2,11 @@
 module Polaris
   module Card
     class Component < Polaris::Component
-      include ActionHelper
+      include Polaris::ActionHelper
 
       ALLOWED_FOOTER_ACTION_ALIGNMENT = %w[right left]
 
-      validates :primary_footer_action, type: ComplexAction, allow_nil: true
+      validates :primary_footer_action, type: Polaris::ComplexAction, allow_nil: true
       validates :footer_action_alignment, inclusion: {
         in: ALLOWED_FOOTER_ACTION_ALIGNMENT,
         message: "%{value} is not a valid footer_action_alignment"

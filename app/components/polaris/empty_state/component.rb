@@ -3,10 +3,10 @@
 module Polaris
   module EmptyState
     class Component < Polaris::Component
-      include ActionHelper
+      include Polaris::ActionHelper
 
-      validates :action, type: ComplexAction
-      validates :secondary_action, type: ComplexAction, allow_nil: true
+      validates :action, type: Polaris::ComplexAction
+      validates :secondary_action, type: Polaris::ComplexAction, allow_nil: true
 
       attr_reader :action, :secondary_action
 

@@ -3,7 +3,7 @@
 module Polaris
   module Labelled
     class Component < Polaris::Component
-      include ActionHelper
+      include Polaris::ActionHelper
 
       validates :action, type: Action, allow_nil: true
       validates :index, numericality: { only_integer: true }, allow_nil: true
