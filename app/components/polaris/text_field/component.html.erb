@@ -14,11 +14,11 @@
           </div>
         <% end %>
 
-        <%= @form.send(
-              input,
-              @attribute,
-              input_attrs
-            ) %>
+        <% if @form.present? %>
+          <%= @form.public_send(input, @attribute, input_attrs) %>
+        <% else %>
+          <%= public_send(input_tag, @attribute, @value, input_attrs) %>
+        <% end %>
 
         <% if @suffix.present? %>
           <div class="Polaris-TextField__Suffix">
