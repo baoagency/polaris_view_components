@@ -13,11 +13,13 @@
     <%= stylesheet_link_tag 'polaris_view_components' %>
   </head>
 
-  <body style="<%= ApplicationController.helpers.polaris_body_styles %>">
+  <body style="<%= Polaris.polaris_body_styles %>">
     <div class="app-wrapper">
       <div class="app-content">
         <main role="main">
-          <%= yield %>
+          <%= render Polaris::Page::Component.new(title: '', title_hidden: true) do %>
+            <%= yield %>
+          <% end %>
         </main>
       </div>
     </div>

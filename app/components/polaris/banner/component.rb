@@ -3,7 +3,7 @@
 module Polaris
   module Banner
     class Component < Polaris::Component
-      include Polaris::ActionHelper
+      include Polaris::Helpers::ActionHelper
 
       ALLOWED_STATUSES = %w[success info warning critical]
 

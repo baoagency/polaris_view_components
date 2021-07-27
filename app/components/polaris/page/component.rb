@@ -3,7 +3,7 @@
 module Polaris
   module Page
     class Component < ApplicationComponent
-      include Polaris::ActionHelper
+      include Polaris::Helpers::ActionHelper
 
       validates :primary_action, type: Polaris::ComplexAction, allow_blank: true
 
