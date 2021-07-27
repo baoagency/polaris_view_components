@@ -3,13 +3,13 @@
 module Polaris
   module Banner
     class Component < Polaris::Component
-      include ActionHelper
+      include Polaris::ActionHelper
 
       ALLOWED_STATUSES = %w[success info warning critical]
 
       validates :status, inclusion: { in: ALLOWED_STATUSES, message: "%{value} is not a valid status" }
-      validates :action, type: ComplexAction, allow_nil: true
-      validates :secondary_action, type: ComplexAction, allow_nil: true
+      validates :action, type: Polaris::ComplexAction, allow_nil: true
+      validates :secondary_action, type: Polaris::ComplexAction, allow_nil: true
 
       attr_reader :status, :action, :secondary_action
 

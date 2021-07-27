@@ -3,10 +3,10 @@
 module Polaris
   module CalloutCard
     class Component < Polaris::Component
-      include ActionHelper
+      include Polaris::ActionHelper
 
-      validates :primary_action, type: ComplexAction, allow_nil: false
-      validates :secondary_action, type: ComplexAction, allow_nil: true
+      validates :primary_action, type: Polaris::ComplexAction, allow_nil: false
+      validates :secondary_action, type: Polaris::ComplexAction, allow_nil: true
 
       attr_reader :primary_action, :secondary_action
 
