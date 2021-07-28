@@ -45,7 +45,7 @@ module Polaris
         @form = form
         @align = align
         @attribute = attribute
-        @error = error
+        @error = error.presence || form_error
         @label = label
         @label_action = label_action
         @label_hidden = label_hidden
@@ -136,6 +136,14 @@ module Polaris
 
       def character_count
         @character_count ||= CharacterCount.new(text_field: self, max_length: @max_length)
+      end
+
+      def form_error
+        return if @form.blank? || @attribute.blank?
+        return if @form.object.blank?
+        return unless @form.object.errors.key?(@attribute)
+
+        @form.object.errors[@attribute].join(', ').html_safe
       end
 
       private
