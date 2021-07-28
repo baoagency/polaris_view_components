@@ -10,7 +10,7 @@
 ) do %>
   <%= content_tag('span', content_tag_options) do %>
     <% if @form.present? && @attribute.present? %>
-      <%= @form.check_box(@attribute, @value, input_attrs) %>
+      <%= @form.check_box(@attribute, input_attrs) %>
     <% else %>
       <%= check_box_tag(@name, @value, @checked, input_attrs) %>
     <% end %>
