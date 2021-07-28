@@ -1,0 +1,4 @@
+<%= render Polaris::PageActions::Component.new(
+  primary_action: Polaris.complex_action(content: 'Save'),
+  secondary_actions: [Polaris.complex_action(content: 'Delete', destructive: true)],
+) %>

@@ -1,0 +1,17 @@
+<%= content_tag('div', content_tag_options) do %>
+  <%= render Polaris::Stack::Component.new(spacing: 'tight', distribution: stack_distribution) do %>
+    <% if @secondary_actions.present? %>
+      <%= render Polaris::StackItem::Component.new do %>
+        <%= render Polaris::ButtonGroup::Component.new do %>
+          <% @secondary_actions.each do |action| %>
+            <%= render_complex_action_button(action) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= render Polaris::StackItem::Component.new do %>
+      <%= render_primary_complex_action_button(@primary_action) %>
+    <% end %>
+  <% end %>
+<% end %>
