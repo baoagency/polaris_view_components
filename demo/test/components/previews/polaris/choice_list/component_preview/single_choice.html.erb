@@ -1,0 +1,20 @@
+<% choices = [
+  {
+    label: 'Hidden',
+    value: 'hidden'
+  },
+  {
+    label: 'Optional',
+    value: 'optional'
+  },
+  {
+    label: 'Required',
+    value: 'required'
+  },
+] %>
+
+<%= render Polaris::ChoiceList::Component.new(
+  title: 'Company name',
+  name: :company_name,
+  choices: choices,
+) %>

@@ -2,7 +2,7 @@
 module Polaris
   module Card
     class Component < Polaris::Component
-      include Polaris::ActionHelper
+      include Polaris::Helpers::ActionHelper
 
       ALLOWED_FOOTER_ACTION_ALIGNMENT = %w[right left]
 

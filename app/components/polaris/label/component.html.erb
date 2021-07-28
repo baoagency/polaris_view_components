@@ -1,11 +1,23 @@
 <%= content_tag('div', content_tag_options) do %>
-  <% if @label.present? %>
-    <%= @form.label(@attribute, @label, label_attrs) %>
-  <% elsif content.present? %>
-    <%= @form.label(@attribute, label_attrs) do %>
-      <%= content %>
+  <% if @form %>
+    <% if @label.present? %>
+      <%= @form.label(@attribute, @label, label_attrs) %>
+    <% elsif content.present? %>
+      <%= @form.label(@attribute, label_attrs) do %>
+        <%= content %>
+      <% end %>
+    <% else %>
+      <%= @form.label(@attribute, label_attrs) %>
     <% end %>
   <% else %>
-    <%= @form.label(@attribute, label_attrs) %>
+    <% if @label.present? %>
+      <%= label_tag(@attribute, @label, label_attrs) %>
+    <% elsif content.present? %>
+      <%= label_tag(@attribute, label_attrs) do %>
+        <%= content %>
+      <% end %>
+    <% else %>
+      <%= label_tag(@attribute, label_attrs) %>
+    <% end %>
   <% end %>
 <% end %>

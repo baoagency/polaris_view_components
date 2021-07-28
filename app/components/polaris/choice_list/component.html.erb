@@ -18,7 +18,8 @@
           label: choice[:label],
           disabled: choice[:disabled] || @disabled,
           checked: choice_is_selected?(choice),
-          help_text: choice[:help_text]
+          help_text: choice[:help_text],
+          children_content: choice[:children_content],
         ) %>
       </li>
     <% end %>

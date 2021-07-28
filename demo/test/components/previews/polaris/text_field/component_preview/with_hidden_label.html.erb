@@ -1,0 +1,27 @@
+<%= render Polaris::FormLayout::Component.new(sectioned: true) do %>
+  <%= render Polaris::ChoiceList::Component.new(
+    name: :attribute,
+    title: "Gift card auto-expiration",
+    choices: [
+      { label: "Gift cards never expire", value: "no" },
+      { label: "Gift cards expire", value: "yes" },
+    ],
+    selected: ["yes"]
+  ) %>
+  <%= render Polaris::TextField::Component.new(
+    attribute: :attribute,
+    label: "Gift cards expire after",
+    label_hidden: true,
+    type: "number",
+    value: "12"
+  ) do |component| %>
+    <% component.with(:connected_right) do %>
+      <%= render Polaris::Select::Component.new(
+        attribute: :attribute,
+        label: "Unit of time",
+        label_hidden: true,
+        options: [{ label: "months after purchase", value: '' }]
+      ) %>
+    <% end %>
+  <% end %>
+<% end %>

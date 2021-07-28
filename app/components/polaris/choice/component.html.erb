@@ -1,4 +1,4 @@
-<% @label_markup = capture do %>
+<% @content_markup = capture do %>
   <span class="Polaris-Choice__Control">
     <%= content %>
   </span>
@@ -33,23 +33,21 @@
   <% end %>
 <% end %>
 
-<% @content_markup = capture do %>
-  <% if description? %>
-    <div>
-      <%= @label_markup %>
-      <%= @description_markup %>
-    </div>
+<div>
+  <% if @form.present? and @attribute.present? %>
+    <%= @form.label(@attribute, @value, @label, content_tag_options) do %>
+      <%= @content_markup %>
+    <% end %>
+    <%= @description_markup if description? %>
   <% else %>
-    <%= @label_markup %>
+    <%= label_tag(@name, content_tag_options) do %>
+      <%= @content_markup %>
+    <% end %>
+    <% if @children_content.present? %>
+      <div class="Polaris-ChoiceList__ChoiceChildren">
+        <%= raw(@children_content) %>
+      </div>
+    <% end %>
+    <%= @description_markup if description? %>
   <% end %>
-<% end %>
-
-<% if @form.present? and @attribute.present? %>
-  <%= @form.label(@attribute, @value, @label, content_tag_options) do %>
-    <%= @content_markup %>
-  <% end %>
-<% else %>
-  <%= label_tag(@name, content_tag_options) do %>
-    <%= @content_markup %>
-  <% end %>
-<% end %>
+</div>

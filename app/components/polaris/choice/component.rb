@@ -13,6 +13,7 @@ module Polaris
         name: '',
         form: nil,
         attribute: nil,
+        children_content: nil,
         **args
       )
         super
@@ -26,6 +27,7 @@ module Polaris
         @name = name
         @form = form
         @attribute = attribute
+        @children_content = children_content
       end
 
       def description?

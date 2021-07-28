@@ -2,7 +2,7 @@
 module Polaris
   module TextField
     class Component < Polaris::Component
-      include Polaris::ActionHelper
+      include Polaris::Helpers::ActionHelper
 
       with_content_areas :connected_left, :connected_right
 
@@ -12,8 +12,8 @@ module Polaris
       attr_reader :label_action, :index, :value
 
       def initialize(
-        form:,
         attribute:,
+        form: nil,
         placeholder: "",
         type: "text",
         align: "",
@@ -82,6 +82,10 @@ module Polaris
         return 'number_field' if number?
 
         @multiline ? "text_area" : "text_field"
+      end
+
+      def input_tag
+        input + '_tag'
       end
 
       def number?
