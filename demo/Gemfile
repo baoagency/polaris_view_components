@@ -31,4 +31,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'polaris_view_components', path: '../'
-gem 'lookbook', github: 'kirillplatonov/lookbook'
+gem 'lookbook', github: 'allmarkedup/lookbook'
