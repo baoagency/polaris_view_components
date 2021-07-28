@@ -34,5 +34,8 @@ module Demo
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Lookbook
+    config.lookbook.listen_paths << Rails.root.join('../app/components')
   end
 end
