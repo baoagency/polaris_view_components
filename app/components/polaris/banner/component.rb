@@ -5,7 +5,7 @@ module Polaris
     class Component < Polaris::Component
       include Polaris::Helpers::ActionHelper
 
-      ALLOWED_STATUSES = %w[success info warning critical]
+      ALLOWED_STATUSES = %w[default success info warning critical]
 
       validates :status, inclusion: { in: ALLOWED_STATUSES, message: "%{value} is not a valid status" }
       validates :action, type: Polaris::ComplexAction, allow_nil: true
@@ -15,7 +15,16 @@ module Polaris
 
       # UNFINISHED, DO NOT USE YET
 
-      def initialize(title: '', icon: nil, status: '', action: nil, secondary_action: nil, can_dismiss: false, within_content: false, **args)
+      def initialize(
+        title: '',
+        icon: nil,
+        status: 'default',
+        action: nil,
+        secondary_action: nil,
+        can_dismiss: false,
+        within_content: false,
+        **args
+      )
         super
 
         @title = title

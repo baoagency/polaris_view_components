@@ -25,12 +25,14 @@
   </div>
 
   <div class="Polaris-Banner__ContentWrapper">
-    <div class="Polaris-Banner__Heading" id="PolarisBanner2Heading">
-      <p class="Polaris-Heading">Order archived</p>
-    </div>
+    <% if @title.present? %>
+      <div class="Polaris-Banner__Heading">
+        <p class="Polaris-Heading"><%= @title %></p>
+      </div>
+    <% end %>
 
-    <div class="Polaris-Banner__Content" id="PolarisBanner2Content">
-      <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+    <div class="Polaris-Banner__Content">
+      <%= content %>
     </div>
   </div>
 <% end %>
