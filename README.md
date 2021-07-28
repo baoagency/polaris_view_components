@@ -18,7 +18,7 @@ Render Primer ViewComponents from templates:
 
 In `Gemfile`, add:
 ```ruby
-gem 'polaris_view_components', github: 'baoagency/polaris_view_components', require: 'polaris/view_components'
+gem 'polaris_view_components', github: 'baoagency/polaris_view_components'
 ```
 
 To add styles for `Polaris::ShopifyNavigation::Component` in your layout's `<head>` tag add:
