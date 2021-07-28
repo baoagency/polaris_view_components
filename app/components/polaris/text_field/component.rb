@@ -36,6 +36,7 @@ module Polaris
         min_length: nil,
         clear_button: false,
         monospaced: false,
+        input_attrs: {},
         **args
       )
         super
@@ -63,6 +64,7 @@ module Polaris
         @min_length = min_length
         @clear_button = clear_button
         @monospaced = monospaced
+        @input_attrs = input_attrs
       end
 
       def labelled_attrs
@@ -93,11 +95,11 @@ module Polaris
       end
 
       def input_attrs
-        attrs = {
+        attrs = @input_attrs.merge({
           placeholder: @placeholder,
           rows: @multiline || nil,
           disabled: @disabled,
-        }
+        })
 
         input_class = "Polaris-TextField__Input"
         input_class += " Polaris-TextField__Input--align#{@align.capitalize}" if @align.present?

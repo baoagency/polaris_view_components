@@ -20,6 +20,7 @@
           checked: choice_is_selected?(choice),
           help_text: choice[:help_text],
           children_content: choice[:children_content],
+          input_attrs: @input_attrs,
         ) %>
       </li>
     <% end %>

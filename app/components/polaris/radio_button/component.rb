@@ -16,6 +16,7 @@ module Polaris
         form: nil,
         attribute: nil,
         children_content: nil,
+        input_attrs: {},
         **args
       )
         super
@@ -32,13 +33,14 @@ module Polaris
         @form = form
         @attribute = attribute
         @children_content = children_content
+        @input_attrs = input_attrs
       end
 
       def input_attrs
-        {
+        @input_attrs.merge({
           class: 'Polaris-RadioButton__Input',
           disabled: @disabled
-        }
+        })
       end
 
       private

@@ -16,6 +16,7 @@ module Polaris
         form: nil,
         attribute: nil,
         children_content: nil,
+        input_attrs: {},
         **args
       )
         super
@@ -32,15 +33,16 @@ module Polaris
         @form = form
         @attribute = attribute
         @children_content = children_content
+        @input_attrs = input_attrs
       end
 
       def input_attrs
-        attrs = {
+        attrs = @input_attrs.merge({
           disabled: @disabled,
           aria: {
             checked: checked?
           }
-        }
+        })
 
         classes = ["Polaris-Checkbox__Input"]
         classes << "Polaris-Checkbox__Input--indeterminate" if indeterminate?

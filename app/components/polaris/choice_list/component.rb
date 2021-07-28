@@ -14,6 +14,7 @@ module Polaris
         allow_multiple: false,
         error: '',
         disabled: false,
+        input_attrs: {},
         **args
       )
         super
@@ -29,6 +30,7 @@ module Polaris
         @allow_multiple = allow_multiple
         @error = error
         @disabled = disabled
+        @input_attrs = input_attrs
       end
 
       def final_name
