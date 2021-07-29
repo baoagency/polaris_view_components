@@ -11,7 +11,7 @@ module Polaris
       card:                     "Polaris::Card::Component",
       card_header:              "Polaris::CardHeader::Component",
       card_section:             "Polaris::CardSection::Component",
-      checkbox:                 "Polaris::CheckBox::Component",
+      check_box:                 "Polaris::CheckBox::Component",
       choice:                   "Polaris::Choice::Component",
       choice_list:              "Polaris::ChoiceList::Component",
       description_list:         "Polaris::DescriptionList::Component",
@@ -52,6 +52,14 @@ module Polaris
       define_method "polaris_#{name}" do |*args, **kwargs, &block|
         render component.constantize.new(*args, **kwargs), &block
       end
+    end
+
+    def polaris_action(*args, **kwargs)
+      Polaris.action(*args, **kwargs)
+    end
+
+    def polaris_complex_action(*args, **kwargs)
+      Polaris.complex_action(*args, **kwargs)
     end
   end
 end
