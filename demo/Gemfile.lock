@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/allmarkedup/lookbook.git
-  revision: 6100e8a81365faf7b6da01f7a9df85609774d17e
+  revision: eb400006e786f0855b234b1610be690eb41ad80b
   specs:
     lookbook (0.1.0)
       actioncable

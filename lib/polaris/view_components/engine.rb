@@ -11,6 +11,11 @@ module Polaris
         #{root}/app/lib
       ]
 
+      # Loads helpers into main app automatically
+      config.to_prepare do
+        ApplicationController.helper Polaris::ViewHelper
+      end
+
       initializer "polaris_view_components.assets.precompile" do |app|
         if app.config.respond_to?(:assets)
           app.config.assets.precompile += %w[polaris_view_components.css]

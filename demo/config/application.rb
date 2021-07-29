@@ -35,7 +35,20 @@ module Demo
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    # ViewComponent
+    config.view_component.show_previews = true
+    config.view_component.preview_controller = "PreviewController"
+
     # Lookbook
     config.lookbook.listen_paths << Rails.root.join('../app/components')
+
+    # Engine overrides
+    overrides = "#{Rails.root}/app/overrides"
+    Rails.autoloaders.main.ignore(overrides)
+    config.to_prepare do
+      Dir.glob("#{overrides}/**/*_override.rb").each do |override|
+        load override
+      end
+    end
   end
 end
