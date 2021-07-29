@@ -1,0 +1,8 @@
+<%= render Polaris::Page::Component.new(
+  arrow_width: true,
+  title: 'Add payment method',
+  primary_action: Polaris.complex_action(content: 'Save'),
+  back_url: '#',
+) do %>
+  <p>Content</p>
+<% end %>

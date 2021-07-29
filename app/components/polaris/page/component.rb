@@ -9,7 +9,16 @@ module Polaris
 
       attr_reader :primary_action
 
-      def initialize(title:, subtitle: '', title_hidden: false, narrow_width: false, primary_action: nil, full_width: false, **args)
+      def initialize(
+        title:,
+        subtitle: '',
+        title_hidden: false,
+        narrow_width: false,
+        primary_action: nil,
+        back_url: nil,
+        full_width: false,
+        **args
+      )
         super
 
         @title = title
@@ -18,6 +27,7 @@ module Polaris
         @narrow_width = narrow_width
         @full_width = full_width
         @primary_action = primary_action
+        @back_url = back_url
       end
 
       def classes_header
