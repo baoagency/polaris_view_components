@@ -6,7 +6,15 @@ Polaris ViewComponents is an implementation of the Polaris Design System using [
 
 ## Usage
 
-Render Primer ViewComponents from templates:
+Render Polaris ViewComponents via helpers:
+
+```erb
+<%= polaris_card(title: "Title") do %>
+  <p>Card example</p>
+<% end %>
+```
+
+or the full version:
 
 ```erb
 <%= render Polaris::Card::Component.new(title: "Title") do %>
