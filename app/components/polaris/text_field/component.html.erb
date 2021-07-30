@@ -53,8 +53,10 @@
           >
             <%= polaris_visually_hidden { "Clear" } %>
 
-            <%= render Polaris::Icon::Component.new(color: "base") do %>
-              <path fill-rule="evenodd" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM7.707 6.293a1 1 0 0 0-1.414 1.414L8.586 10l-2.293 2.293a1 1 0 1 0 1.414 1.414L10 11.414l2.293 2.293a1 1 0 1 0 1.414-1.414L11.414 10l2.293-2.293a1 1 0 0 0-1.414-1.414L10 8.586 7.707 6.293z"></path>
+            <%= polaris_icon(color: :base) do %>
+              <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM7.707 6.293a1 1 0 0 0-1.414 1.414L8.586 10l-2.293 2.293a1 1 0 1 0 1.414 1.414L10 11.414l2.293 2.293a1 1 0 1 0 1.414-1.414L11.414 10l2.293-2.293a1 1 0 0 0-1.414-1.414L10 8.586 7.707 6.293z"></path>
+              </svg>
             <% end %>
           </button>
         <% end %>
@@ -68,8 +70,10 @@
               data-action="click->polaris--text-field#onPlusClick"
             >
               <div class="Polaris-TextField__SpinnerIcon">
-                <%= render Polaris::Icon::Component.new do %>
-                  <path d="M15 12l-5-5-5 5h10z"></path>
+                <%= polaris_icon do %>
+                  <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                    <path d="M15 12l-5-5-5 5h10z"></path>
+                  </svg>
                 <% end %>
               </div>
             </div>
@@ -81,8 +85,10 @@
               data-action="click->polaris--text-field#onMinusClick"
             >
               <div class="Polaris-TextField__SpinnerIcon">
-                <%= render Polaris::Icon::Component.new do %>
-                  <path d="M5 8l5 5 5-5H5z"></path>
+                <%= polaris_icon do %>
+                  <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                    <path d="M5 8l5 5 5-5H5z"></path>
+                  </svg>
                 <% end %>
               </div>
             </div>

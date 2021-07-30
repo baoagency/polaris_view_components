@@ -1,0 +1,11 @@
+<%= render(Polaris::BaseComponent.new(tag: 'span', **@system_arguments)) do %>
+  <% if @source %>
+    <%= @source %>
+  <% else %>
+    <img
+      class="Polaris-Icon__Img"
+      src="<%= %Q(data:image/svg+xml;utf8,#{content}) %>"
+      alt=""
+      aria-hidden="true">
+  <% end %>
+<% end %>

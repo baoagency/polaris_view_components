@@ -24,7 +24,7 @@ module Polaris
       form_layout_group:        "Polaris::FormLayoutGroup::Component",
       form_layout_item:         "Polaris::FormLayoutItem::Component",
       heading:                  "Polaris::Heading::Component",
-      icon:                     "Polaris::Icon::Component",
+      icon:                     "Polaris::IconComponent",
       image:                    "Polaris::Image::Component",
       inline_error:             "Polaris::InlineError::Component",
       label:                    "Polaris::Label::Component",
@@ -53,6 +53,17 @@ module Polaris
       define_method "polaris_#{name}" do |*args, **kwargs, &block|
         render component.constantize.new(*args, **kwargs), &block
       end
+    end
+
+    def polaris_icon_source(name)
+      path = ViewComponents::Engine.root.join("app", "assets", "icons", "polaris", "#{name}.svg")
+      file = File.read(path)
+      doc = Nokogiri::HTML::DocumentFragment.parse(file)
+      svg = doc.at_css 'svg'
+      svg[:class] = "Polaris-Icon__Svg"
+      svg[:focusable] = false
+      svg[:"aria-hidden"] = true
+      doc.to_html.html_safe
     end
 
     def polaris_action(*args, **kwargs)

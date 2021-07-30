@@ -16,7 +16,7 @@
 
     <% if @icon.present? %>
       <span class="Polaris-Button__Icon">
-        <%= render Polaris::Icon::Component.new do %>
+        <%= polaris_icon do %>
           <%= raw(@icon) %>
         <% end %>
       </span>
