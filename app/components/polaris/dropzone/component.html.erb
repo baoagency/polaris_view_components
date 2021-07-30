@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <%= render Polaris::VisuallyHidden::Component.new do %>
+    <%= polaris_visually_hidden do %>
       <%= @form.file_field(@attribute, input_attrs) %>
     <% end %>
 

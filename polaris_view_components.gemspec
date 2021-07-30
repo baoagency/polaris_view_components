@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "foreman"
+  spec.add_development_dependency "capybara", "~> 3"
 end

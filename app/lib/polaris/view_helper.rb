@@ -45,7 +45,7 @@ module Polaris
       text_field:               "Polaris::TextField::Component",
       text_style:               "Polaris::TextStyle::Component",
       thumbnail:                "Polaris::Thumbnail::Component",
-      visually_hidden:          "Polaris::VisuallyHidden::Component",
+      visually_hidden:          "Polaris::VisuallyHiddenComponent",
     }.freeze
 
     HELPERS.each do |name, component|
