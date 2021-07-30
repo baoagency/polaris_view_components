@@ -1,4 +1,4 @@
-class Polaris::Badge::ComponentPreview < ViewComponent::Preview
+class ImagesAndIcons::BadgeComponentPreview < ViewComponent::Preview
   def default
   end
 

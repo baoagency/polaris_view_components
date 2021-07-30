@@ -2,7 +2,7 @@ module Polaris
   # Module to allow shorthand calls for Polaris components
   module ViewHelper
     HELPERS = {
-      badge:                    "Polaris::Badge::Component",
+      badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::Banner::Component",
       button:                   "Polaris::Button::Component",
       button_group:             "Polaris::ButtonGroup::Component",

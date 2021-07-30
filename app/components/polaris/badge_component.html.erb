@@ -1,0 +1,9 @@
+<%= render Polaris::BaseComponent.new(tag: 'span', **@system_arguments) do %>
+  <% if @progress != :default %>
+    <span class="Polaris-Badge__Pip">
+      <%= polaris_visually_hidden { @progress.to_s.humanize } %>
+    </span>
+  <% end %>
+
+  <%= content %>
+<% end %>
