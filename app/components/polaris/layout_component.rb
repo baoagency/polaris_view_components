@@ -102,7 +102,7 @@ module Polaris
             ActionController::Base.helpers.safe_join([
               render(Polaris::BaseComponent.new(tag: :div, classes: "Polaris-Layout__Annotation")) do
                 render(Polaris::TextContainer::Component.new) do
-                  inner = [render(Polaris::Heading::Component.new) { @title },]
+                  inner = [render(Polaris::HeadingComponent.new) { @title },]
 
                   if @description.present?
                     inner << render(Polaris::BaseComponent.new(tag: :div, classes: "Polaris-Layout__AnnotationDescription")) do
