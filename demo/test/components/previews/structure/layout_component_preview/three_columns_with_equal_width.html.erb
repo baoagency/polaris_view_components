@@ -1,17 +1,17 @@
-<%= polaris_layout do |c| %>
-  <% c.section(one_third: true) do %>
+<%= polaris_layout do |layout| %>
+  <% layout.section(one_third: true) do %>
     <%= polaris_card(title: "First third", sectioned: true) do %>
       <p>View a summary of your order.</p>
     <% end %>
   <% end %>
 
-  <% c.section(one_third: true) do %>
+  <% layout.section(one_third: true) do %>
     <%= polaris_card(title: "Second third", sectioned: true) do %>
       <p>Add tags to your order.</p>
     <% end %>
   <% end %>
 
-  <% c.section(one_third: true) do %>
+  <% layout.section(one_third: true) do %>
     <%= polaris_card(title: "Third third", sectioned: true) do %>
       <p>Add tags to your order.</p>
     <% end %>

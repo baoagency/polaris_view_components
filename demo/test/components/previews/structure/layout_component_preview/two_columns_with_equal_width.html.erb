@@ -1,11 +1,11 @@
-<%= polaris_layout do |c| %>
-  <% c.section(one_half: true) do %>
+<%= polaris_layout do |layout| %>
+  <% layout.section(one_half: true) do %>
     <%= polaris_card(title: "First half", sectioned: true) do %>
       <p>View a summary of your order.</p>
     <% end %>
   <% end %>
 
-  <% c.section(one_half: true) do %>
+  <% layout.section(one_half: true) do %>
     <%= polaris_card(title: "Second half", sectioned: true) do %>
       <p>Add tags to your order.</p>
     <% end %>
