@@ -1,0 +1,3 @@
+<%= render Polaris::BaseComponent.new(tag: 'a', **@system_arguments) do %>
+  <%= content.strip %><%= external_icon if @external %>
+<% end %>

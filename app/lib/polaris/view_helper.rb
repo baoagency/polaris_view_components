@@ -32,7 +32,7 @@ module Polaris
       layout:                   "Polaris::Layout::Component",
       layout_annotated_section: "Polaris::LayoutAnnotatedSection::Component",
       layout_section:           "Polaris::LayoutSection::Component",
-      link:                     "Polaris::Link::Component",
+      link:                     "Polaris::LinkComponent",
       page:                     "Polaris::Page::Component",
       page_actions:             "Polaris::PageActions::Component",
       progress_bar:             "Polaris::ProgressBar::Component",

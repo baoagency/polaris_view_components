@@ -1,4 +1,4 @@
-class Polaris::Link::ComponentPreview < ViewComponent::Preview
+class Navigation::LinkComponentPreview < ViewComponent::Preview
   def default
   end
 
