@@ -19,7 +19,7 @@ module Polaris
       display_text:             "Polaris::DisplayText::Component",
       dropzone:                 "Polaris::Dropzone::Component",
       empty_state:              "Polaris::EmptyState::Component",
-      footer_help:              "Polaris::FooterHelp::Component",
+      footer_help:              "Polaris::FooterHelpComponent",
       form_layout:              "Polaris::FormLayout::Component",
       form_layout_group:        "Polaris::FormLayoutGroup::Component",
       form_layout_item:         "Polaris::FormLayoutItem::Component",

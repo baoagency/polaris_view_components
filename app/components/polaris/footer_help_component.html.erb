@@ -1,0 +1,11 @@
+<%= render Polaris::BaseComponent.new(tag: 'div', **@system_arguments) do %>
+  <div class="Polaris-FooterHelp__Content">
+    <div class="Polaris-FooterHelp__Icon">
+      <%= polaris_icon(name: "InfoMinor", color: :highlight) %>
+    </div>
+
+    <div class="Polaris-FooterHelp__Text">
+      <%= content %>
+    </div>
+  </div>
+<% end %>

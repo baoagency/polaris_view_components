@@ -21,7 +21,7 @@ class LinkComponentTest < Minitest::Test
     end
 
     assert_selector "a.Polaris-Link[rel='noopener noreferrer'][target='_blank']", text: "External" do
-      assert_selector "svg.Polaris-Icon__Svg"
+      assert_selector ".Polaris-Icon"
     end
   end
 end
