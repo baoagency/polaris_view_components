@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom",
+      "dom.iterable"
+    ],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "app/components/polaris/",
+    "strict": true,
+    "baseUrl": ".",
+    "types": [],
+    "strictPropertyInitialization": false
+  },
+  "include": [
+    "app/components/polaris/*.ts"
+  ],
+  "exclude": [
+    "demo/**/*",
+    "vendor/**/*"
+  ]
+}

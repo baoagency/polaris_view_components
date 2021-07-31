@@ -1,0 +1,49 @@
+{
+  "name": "@by-association-only/polaris-view-components",
+  "version": "0.1.0",
+  "description": "Polaris ViewComponents is an implementation of the Polaris Design System using [ViewComponent](https://github.com/github/view_component).",
+  "module": "app/components/polaris/polaris.js",
+  "types": "app/components/polaris/polaris.d.ts",
+  "main": "app/assets/javascripts/polaris_view_components.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "app/components/polaris/**/*.js",
+    "app/components/polaris/**/*.d.ts"
+  ],
+  "scripts": {
+    "prepare": "tsc && rollup -c",
+    "lint": "eslint app/components",
+    "lint:fix": "eslint app/components --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baoagency/polaris-view-components.git"
+  },
+  "keywords": [],
+  "author": "By Association Only",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baoagency/polaris-view-components/issues"
+  },
+  "homepage": "https://github.com/baoagency/polaris-view-components#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.14.6",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@types/webpack-env": "^1.16.2",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2",
+    "rollup": "^2.55.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "stimulus": "^2.0.0"
+  }
+}
