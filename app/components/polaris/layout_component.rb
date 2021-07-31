@@ -2,6 +2,10 @@ module Polaris
   class LayoutComponent < Polaris::NewComponent
     # Required list of sections
     #
+    # @param secondary [Boolean] The section will act like a sidebar
+    # @param full_width [Boolean] The section will take up 100% of the width
+    # @param one_half [Boolean] The section will only take up 50% of the width
+    # @param one_third [Boolean] The section will only take up 33.33% of the width
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_many :sections, "LayoutSectionComponent"
 
@@ -11,10 +15,6 @@ module Polaris
         @system_arguments[:classes],
         'Polaris-Layout'
       )
-    end
-
-    def before_render
-      puts 'b4', content
     end
 
     def render?
@@ -39,8 +39,6 @@ module Polaris
           "Polaris-Layout__Section--oneHalf" => one_half,
           "Polaris-Layout__Section--oneThird" => one_third,
         )
-
-        puts 'kontent', content, full_width
       end
 
       def call

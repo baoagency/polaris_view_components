@@ -1,0 +1,13 @@
+<%= polaris_layout do |c| %>
+  <% c.section do %>
+    <%= polaris_card(title: "Order details", sectioned: true) do %>
+      <p>View a summary of your order.</p>
+    <% end %>
+  <% end %>
+
+  <% c.section(secondary: true) do %>
+    <%= polaris_card(title: "Tags", sectioned: true) do %>
+      <p>Add tags to your order.</p>
+    <% end %>
+  <% end %>
+<% end %>
