@@ -10,31 +10,31 @@ module Polaris
       end
 
       def render_action(action)
-        render Polaris::Button::Component.new(**action.to_h.except(:content)) do
+        render Polaris::ButtonComponent.new(**action.to_h.except(:content)) do
           action.content
         end
       end
 
       def render_plain_action(action)
-        render Polaris::Button::Component.new(**action.to_h.except(:content), plain: true) do
+        render Polaris::ButtonComponent.new(**action.to_h.except(:content), plain: true) do
           action.content
         end
       end
 
       def render_complex_action_button(complex_action)
-        render Polaris::Button::Component.new(**complex_action.to_h.except(:content)) do
+        render Polaris::ButtonComponent.new(**complex_action.to_h.except(:content)) do
           complex_action.content
         end
       end
 
       def render_primary_complex_action_button(complex_action)
-        render Polaris::Button::Component.new(**complex_action.to_h.except(:content), primary: true) do
+        render Polaris::ButtonComponent.new(**complex_action.to_h.except(:content), primary: true) do
           complex_action.content
         end
       end
 
       def render_plain_complex_action_button(complex_action)
-        render Polaris::Button::Component.new(**complex_action.to_h.except(:content), plain: true) do
+        render Polaris::ButtonComponent.new(**complex_action.to_h.except(:content), plain: true) do
           complex_action.content
         end
       end

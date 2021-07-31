@@ -5,7 +5,7 @@ module Polaris
       avatar:                   "Polaris::AvatarComponent",
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::Banner::Component",
-      button:                   "Polaris::Button::Component",
+      button:                   "Polaris::ButtonComponent",
       button_group:             "Polaris::ButtonGroup::Component",
       callout_group:            "Polaris::CalloutGroup::Component",
       caption:                  "Polaris::Caption::Component",
