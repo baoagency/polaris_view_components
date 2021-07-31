@@ -42,6 +42,7 @@ module Polaris
       stack:                    "Polaris::Stack::Component",
       stack_item:               "Polaris::StackItem::Component",
       sub_heading:              "Polaris::SubHeading::Component",
+      spinner:                  "Polaris::SpinnerComponent",
       text_container:           "Polaris::TextContainer::Component",
       text_field:               "Polaris::TextField::Component",
       text_style:               "Polaris::TextStyle::Component",
