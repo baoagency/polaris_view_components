@@ -1,0 +1,7 @@
+<%= render Polaris::BaseComponent.new(tag: 'div', **@system_arguments) do %>
+  <% buttons.each do |button| %>
+    <div class="Polaris-ButtonGroup__Item">
+      <%= button %>
+    </div>
+  <% end %>
+<% end %>

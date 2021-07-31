@@ -6,7 +6,7 @@ module Polaris
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::Banner::Component",
       button:                   "Polaris::ButtonComponent",
-      button_group:             "Polaris::ButtonGroup::Component",
+      button_group:             "Polaris::ButtonGroupComponent",
       callout_group:            "Polaris::CalloutGroup::Component",
       caption:                  "Polaris::Caption::Component",
       card:                     "Polaris::Card::Component",
