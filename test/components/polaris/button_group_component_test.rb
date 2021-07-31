@@ -5,26 +5,22 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_default_group
     render_inline(Polaris::ButtonGroupComponent.new) do |group|
-      group.button { "Cancel" }
-      group.button(primary: true) { "Save" }
+      group.item { "Cancel" }
+      group.item { "Save" }
     end
 
     assert_selector ".Polaris-ButtonGroup" do
       assert_selector ".Polaris-ButtonGroup__Item", count: 2
-      assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)" do
-        assert_selector ".Polaris-Button", text: "Cancel"
-      end
-      assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)" do
-        assert_selector ".Polaris-Button.Polaris-Button--primary", text: "Save"
-      end
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)", text: "Cancel"
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)", text: "Save"
     end
   end
 
   def test_segmented_group
     render_inline(Polaris::ButtonGroupComponent.new(segmented: true)) do |group|
-      group.button { "Bold" }
-      group.button { "Italic" }
-      group.button { "Underline" }
+      group.item { "Bold" }
+      group.item { "Italic" }
+      group.item { "Underline" }
     end
 
     assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--segmented[data-buttongroup-segmented='true']" do
@@ -34,8 +30,8 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_connected_tops_group
     render_inline(Polaris::ButtonGroupComponent.new(connected_top: true)) do |group|
-      group.button { "Bold" }
-      group.button { "Italic" }
+      group.item { "Bold" }
+      group.item { "Italic" }
     end
 
     assert_selector ".Polaris-ButtonGroup[data-buttongroup-connected-top='true']"
@@ -43,8 +39,8 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_full_width_group
     render_inline(Polaris::ButtonGroupComponent.new(full_width: true)) do |group|
-      group.button { "Bold" }
-      group.button { "Italic" }
+      group.item { "Bold" }
+      group.item { "Italic" }
     end
 
     assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--fullWidth[data-buttongroup-full-width='true']"

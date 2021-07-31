@@ -1,5 +1,11 @@
 <%= polaris_button_group(segmented: true) do |group| %>
-  <% group.button { "Bold" } %>
-  <% group.button { "Italic" } %>
-  <% group.button { "Underline" } %>
+  <% group.item do %>
+    <%= polaris_button { "Bold" } %>
+  <% end %>
+  <% group.item do %>
+    <%= polaris_button { "Italic" } %>
+  <% end %>
+  <% group.item do %>
+    <%= polaris_button { "Underline" } %>
+  <% end %>
 <% end %>
