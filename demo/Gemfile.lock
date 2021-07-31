@@ -17,7 +17,7 @@ PATH
   specs:
     polaris_view_components (0.1.0)
       rails (>= 5.0.0)
-      view_component (>= 2.0.0, < 2.35.0)
+      view_component (>= 2.0.0)
 
 GEM
   remote: https://rubygems.org/
