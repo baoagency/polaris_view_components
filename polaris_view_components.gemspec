@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.files       = Dir["lib/**/*", "app/**/*", "LICENSE.txt", "README.md"]
 
   spec.add_runtime_dependency     "rails", ">= 5.0.0"
-  spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 2.35.0"]
+  spec.add_runtime_dependency     "view_component", [">= 2.0.0"]
 
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "pry"

@@ -29,7 +29,7 @@ module Polaris
       inline_error:             "Polaris::InlineError::Component",
       label:                    "Polaris::Label::Component",
       labelled:                 "Polaris::Labelled::Component",
-      layout:                   "Polaris::Layout::Component",
+      layout:                   "Polaris::LayoutComponent",
       layout_annotated_section: "Polaris::LayoutAnnotatedSection::Component",
       layout_section:           "Polaris::LayoutSection::Component",
       link:                     "Polaris::LinkComponent",
