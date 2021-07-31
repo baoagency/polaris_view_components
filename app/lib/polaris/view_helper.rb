@@ -3,6 +3,7 @@ module Polaris
   module ViewHelper
     HELPERS = {
       avatar:                   "Polaris::AvatarComponent",
+      base:                     "Polaris::BaseComponent",
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::Banner::Component",
       button:                   "Polaris::ButtonComponent",
@@ -33,6 +34,7 @@ module Polaris
       link:                     "Polaris::LinkComponent",
       page:                     "Polaris::Page::Component",
       page_actions:             "Polaris::PageActions::Component",
+      pagination:               "Polaris::PaginationComponent",
       progress_bar:             "Polaris::ProgressBar::Component",
       radio_button:             "Polaris::RadioButton::Component",
       select:                   "Polaris::Select::Component",
