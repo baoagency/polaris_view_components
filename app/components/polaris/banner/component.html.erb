@@ -1,7 +1,7 @@
 <%= content_tag('div', content_tag_options) do %>
   <% if @can_dismiss %>
     <div class="Polaris-Banner__Dismiss">
-      <%= render Polaris::Button::Component.new(accessibility_label: 'Dismiss notification', plain: true) %>
+      <%= polaris_button(plain: true) %>
       <button class="Polaris-Button Polaris-Button--plain Polaris-Button--iconOnly" aria-label="Dismiss notification" type="button">
         <span class="Polaris-Button__Content">
           <span class="Polaris-Button__Icon">

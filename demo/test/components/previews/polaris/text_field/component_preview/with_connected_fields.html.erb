@@ -14,8 +14,6 @@
     ) %>
   <% end %>
   <% component.with(:connected_right) do %>
-    <%= render Polaris::Button::Component.new do %>
-      Submit
-    <% end %>
+    <%= polaris_button { "Submit" } %>
   <% end %>
 <% end %>

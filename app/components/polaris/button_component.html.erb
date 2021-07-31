@@ -1,0 +1,24 @@
+<%= render Polaris::BaseComponent.new(tag: @tag, **dynamic_arguments) do %>
+  <span class="Polaris-Button__Content">
+    <% if @loading %>
+      <span class="Polaris-Button__Spinner">
+        <%= polaris_spinner(size: :small) %>
+      </span>
+    <% end %>
+
+    <% if icon.present? %>
+      <div class="Polaris-Button__Icon">
+        <%= icon %>
+      </div>
+      <% if content.present? %>
+        &nbsp;
+      <% end %>
+    <% end %>
+
+    <% if content.present? %>
+      <div class="<%= @text_classes %>">
+        <%= content %>
+      </div>
+    <% end %>
+  </span>
+<% end %>
