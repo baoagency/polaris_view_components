@@ -30,8 +30,6 @@ module Polaris
       label:                    "Polaris::Label::Component",
       labelled:                 "Polaris::Labelled::Component",
       layout:                   "Polaris::LayoutComponent",
-      layout_annotated_section: "Polaris::LayoutAnnotatedSection::Component",
-      layout_section:           "Polaris::LayoutSection::Component",
       link:                     "Polaris::LinkComponent",
       page:                     "Polaris::Page::Component",
       page_actions:             "Polaris::PageActions::Component",
