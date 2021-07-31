@@ -1,7 +1,7 @@
 module Polaris
-  ORDER = []
-
   class LayoutComponent < Polaris::NewComponent
+    @@order = []
+
     # A list of sections
     #
     # @param secondary [Boolean] The section will act like a sidebar
@@ -26,17 +26,28 @@ module Polaris
       )
     end
 
+    def self.order
+      @@order || []
+    end
+    def self.order=(val)
+      @@order = val
+    end
+
     def renderable_sections
       sections_index = -1
       annotated_index = -1
 
-      ORDER.map do |o|
+      renderables = LayoutComponent.order.map do |o|
         if o.class == LayoutSectionComponent
           sections[sections_index += 1]
         elsif o.class == LayoutAnnotatedSectionComponent
           annotated_sections[annotated_index += 1]
         end
       end
+
+      LayoutComponent.order = []
+
+      renderables
     end
 
     def render?
@@ -51,7 +62,7 @@ module Polaris
         one_third: false,
         **system_arguments
       )
-        ORDER << self
+        LayoutComponent.order << self
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
@@ -72,7 +83,7 @@ module Polaris
 
     class LayoutAnnotatedSectionComponent < Polaris::NewComponent
       def initialize(title:, description: '', **system_arguments)
-        ORDER << self
+        LayoutComponent.order << self
 
         @title = title
         @description = description
