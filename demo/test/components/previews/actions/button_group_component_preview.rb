@@ -13,4 +13,7 @@ class Actions::ButtonGroupComponentPreview < ViewComponent::Preview
 
   def full_width
   end
+
+  def with_text_item
+  end
 end
