@@ -1,5 +1,7 @@
-PATH
-  remote: ../../lookbook
+GIT
+  remote: https://github.com/kirillplatonov/lookbook.git
+  revision: 392baf991e67aa6c8e58110bd58155e555e34e76
+  branch: fix-browser-controller
   specs:
     lookbook (0.1.2)
       actioncable
