@@ -1,5 +1,5 @@
 <%= render Polaris::BaseComponent.new(tag: 'div', **@system_arguments) do %>
-  <% sections.each do |section| %>
+  <% renderable_sections.each do |section| %>
     <%= section %>
   <% end %>
 <% end %>
