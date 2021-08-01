@@ -52,14 +52,26 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_group_with_text_item
     render_inline(Polaris::ButtonGroupComponent.new) do |group|
+      group.button { "Button1" }
       group.item { "Item1" }
-      group.item { "Item2" }
+      group.button { "Button2" }
     end
 
     assert_selector ".Polaris-ButtonGroup" do
-      assert_selector ".Polaris-ButtonGroup__Item", count: 2
-      assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)", text: "Item1"
-      assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)", text: "Item2"
+      assert_selector ".Polaris-ButtonGroup__Item", count: 3
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)", text: "Button1"
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)", text: "Item1"
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(3)", text: "Button2"
     end
+  end
+
+  def test_plain_items
+    render_inline(Polaris::ButtonGroupComponent.new) do |group|
+      group.button { "Enable two-step authentication" }
+      group.button(plain: true) { "Learn more" }
+    end
+
+    assert_selector ".Polaris-ButtonGroup .Polaris-ButtonGroup__Item:nth-child(1)"
+    assert_selector ".Polaris-ButtonGroup .Polaris-ButtonGroup__Item--plain:nth-child(2)"
   end
 end
