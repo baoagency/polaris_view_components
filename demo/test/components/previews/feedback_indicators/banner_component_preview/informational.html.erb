@@ -1,0 +1,10 @@
+<%= polaris_banner(
+  title: "USPS has updated their rates",
+  status: :info,
+  dismissible: true,
+) do |banner| %>
+  <p>Make sure you know how these changes affect your store.</p>
+
+  <% banner.action(url: '#') { "Update rates" } %>
+  <% banner.secondary_action(url: "#") { "Learn more" } %>
+<% end %>
