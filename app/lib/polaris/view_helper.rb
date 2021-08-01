@@ -3,7 +3,6 @@ module Polaris
   module ViewHelper
     HELPERS = {
       avatar:                   "Polaris::AvatarComponent",
-      base:                     "Polaris::BaseComponent",
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::Banner::Component",
       button:                   "Polaris::ButtonComponent",
