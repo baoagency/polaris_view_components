@@ -34,6 +34,15 @@ To add styles for `Polaris::ShopifyNavigation::Component` in your layout's `<hea
 <%= stylesheet_link_tag 'polaris_view_components' %>
 ```
 
+To add the javascript Stimulus controllers in your applications webpack entry file add:
+
+```javascript
+import { registerPolarisStimulusControllers } from '@by-association-only/polaris-view-components'
+
+const application = Application.start()
+registerPolarisStimulusControllers(application)
+```
+
 ## Dependencies
 
 In addition to the dependencies declared in the `gemspec`, Polaris ViewComponents assumes the presence of Polaris CSS.
