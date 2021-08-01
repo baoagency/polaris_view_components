@@ -19,8 +19,6 @@ class Structure::CardComponentPreview < ViewComponent::Preview
   end
 
   # Use to present actionable content that is optional or not the primary purpose of the page.
-  # TODO: Based on https://github.com/baoagency/polaris_view_components/pull/39 being merged
-  # @hidden
   def card_with_custom_footer_actions
   end
 

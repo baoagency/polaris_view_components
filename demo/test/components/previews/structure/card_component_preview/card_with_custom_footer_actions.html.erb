@@ -12,12 +12,8 @@
       <%= polaris_stack_item do %>
         <%= polaris_stack(distribution: "trailing") do %>
           <%= polaris_button_group do |group| %>
-            <% group.item do %>
-              <%= polaris_button { "Enable two-step authentication" } %>
-            <% end %>
-            <% group.item(plain: true) do %>
-              <%= polaris_button(plain: true) { "Learn more" } %>
-            <% end %>
+            <% group.button { "Enable two-step authentication" } %>
+            <% group.button(plain: true) { "Learn more" } %>
           <% end %>
         <% end %>
       <% end %>
