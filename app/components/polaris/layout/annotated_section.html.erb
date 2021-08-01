@@ -1,0 +1,19 @@
+<%= render Polaris::BaseComponent.new(tag: 'div', **@system_arguments) do %>
+  <div class="Polaris-Layout__AnnotationWrapper">
+    <div class="Polaris-Layout__Annotation">
+      <%= polaris_text_container do %>
+        <%= polaris_heading { @title } %>
+
+        <% if @description.present? %>
+          <div class="Polaris-Layout__AnnotationDescription">
+            <%= tag.p @description %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="Polaris-Layout__AnnotationContent">
+      <%= content %>
+    </div>
+  </div>
+<% end %>
