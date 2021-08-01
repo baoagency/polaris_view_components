@@ -6,13 +6,17 @@ class ButtonGroupComponentTest < Minitest::Test
   def test_default_group
     render_inline(Polaris::ButtonGroupComponent.new) do |group|
       group.button { "Cancel" }
-      group.button { "Save" }
+      group.button(primary: true) { "Save" }
     end
 
     assert_selector ".Polaris-ButtonGroup" do
       assert_selector ".Polaris-ButtonGroup__Item", count: 2
-      assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)", text: "Cancel"
-      assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)", text: "Save"
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)" do
+        assert_selector ".Polaris-Button", text: "Cancel"
+      end
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)" do
+        assert_selector ".Polaris-Button.Polaris-Button--primary", text: "Save"
+      end
     end
   end
 
@@ -46,14 +50,19 @@ class ButtonGroupComponentTest < Minitest::Test
     assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--fullWidth[data-buttongroup-full-width='true']"
   end
 
-  def test_items
-    render_inline(Polaris::ButtonGroupComponent.new(full_width: true)) do |group|
-      group.button { "Bold" }
-      group.item { "Text" }
-      group.button { "Italic" }
+  def test_group_with_text_item
+    render_inline(Polaris::ButtonGroupComponent.new) do |group|
+      group.button { "Button1" }
+      group.item { "Item1" }
+      group.button { "Button2" }
     end
 
-    assert_selector ".Polaris-ButtonGroup .Polaris-ButtonGroup__Item:nth-child(2)", text: "Text"
+    assert_selector ".Polaris-ButtonGroup" do
+      assert_selector ".Polaris-ButtonGroup__Item", count: 3
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)", text: "Button1"
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)", text: "Item1"
+      assert_selector ".Polaris-ButtonGroup__Item:nth-child(3)", text: "Button2"
+    end
   end
 
   def test_plain_items
