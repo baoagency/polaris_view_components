@@ -1,8 +1,4 @@
 <%= polaris_button_group do |group| %>
-  <% group.item do %>
-    <%= polaris_button { "Cancel" } %>
-  <% end %>
-  <% group.item do %>
-    <%= polaris_button(primary: true) { "Save" } %>
-  <% end %>
+  <%= group.button { "Cancel" } %>
+  <%= group.button(primary: true) { "Save" } %>
 <% end %>

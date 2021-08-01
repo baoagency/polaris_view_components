@@ -11,6 +11,7 @@ module Polaris
     }
     SPACING_OPTIONS = SPACING_MAPPINGS.keys
 
+    renders_many :buttons, ButtonComponent
     renders_many :items
 
     def initialize(
@@ -40,7 +41,7 @@ module Polaris
     end
 
     def render?
-      items.any?
+      buttons.any? || items.any?
     end
   end
 end
