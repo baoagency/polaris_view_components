@@ -1,0 +1,44 @@
+<%= render Polaris::BaseComponent.new(tag: 'div', **@system_arguments) do %>
+  <% if @dismissible %>
+    <div class="Polaris-Banner__Dismiss">
+      <%= polaris_button(plain: true) do |button| %>
+        <% button.icon(name: "CancelSmallMinor") %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="Polaris-Banner__Ribbon">
+    <%= render_icon %>
+  </div>
+  <div class="Polaris-Banner__ContentWrapper">
+    <% if @title.present? %>
+      <div class="Polaris-Banner__Heading">
+        <p class="Polaris-Heading">
+          <%= @title %>
+        </p>
+      </div>
+    <% end %>
+    <div class="Polaris-Banner__Content">
+      <%= content %>
+
+      <% if action || secondary_action %>
+        <div class="Polaris-Banner__Actions">
+          <%= polaris_button_group do |group| %>
+            <% if action %>
+              <% group.item do %>
+                <div class="Polaris-Banner__PrimaryAction">
+                  <%= action %>
+                </div>
+              <% end %>
+            <% end %>
+
+            <% if secondary_action %>
+              <% group.item do %>
+                <%= secondary_action %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

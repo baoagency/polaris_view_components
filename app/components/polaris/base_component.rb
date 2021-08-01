@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class BaseComponent < Polaris::Component
+  class BaseComponent < Polaris::NewComponent
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
       @system_arguments = system_arguments

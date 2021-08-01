@@ -4,7 +4,7 @@ module Polaris
     HELPERS = {
       avatar:                   "Polaris::AvatarComponent",
       badge:                    "Polaris::BadgeComponent",
-      banner:                   "Polaris::Banner::Component",
+      banner:                   "Polaris::BannerComponent",
       button:                   "Polaris::ButtonComponent",
       button_group:             "Polaris::ButtonGroupComponent",
       callout_group:            "Polaris::CalloutGroup::Component",

@@ -1,0 +1,10 @@
+<%= polaris_banner(
+  title: "Some of your product variants are missing weights",
+  status: :warning,
+  dismissible: true,
+) do |banner| %>
+  <p>Add weights to show accurate rates at checkout and when buying shipping labels in Shopify.</p>
+
+  <% banner.action(url: '#') { "Edit variant weights" } %>
+  <% banner.secondary_action(url: "#") { "Learn more" } %>
+<% end %>

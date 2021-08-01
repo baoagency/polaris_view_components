@@ -1,0 +1,7 @@
+<%= polaris_banner(
+  title: "Your shipping label is ready to print.",
+  status: :success,
+  dismissible: true,
+) do |banner| %>
+  <% banner.action(url: '#') { "Print label" } %>
+<% end %>

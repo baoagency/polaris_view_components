@@ -1,0 +1,12 @@
+<%= polaris_banner(
+  title: "High risk of fraud detected",
+  status: :critical,
+) do |banner| %>
+  <p>
+    Before fulfilling this order or capturing payment, please
+    <%= polaris_link(url: "#", monochrome: true) { "review the Risk Analysis" } %>
+    and determine if this order is fraudulent.
+  </p>
+
+  <% banner.action(url: '#') { "Review risk analysis" } %>
+<% end %>
