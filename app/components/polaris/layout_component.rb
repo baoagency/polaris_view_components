@@ -1,7 +1,5 @@
 module Polaris
   class LayoutComponent < Polaris::NewComponent
-    @@order = []
-
     # A list of sections
     #
     # @param secondary [Boolean] The section will act like a sidebar
@@ -9,16 +7,23 @@ module Polaris
     # @param one_half [Boolean] The section will only take up 50% of the width
     # @param one_third [Boolean] The section will only take up 33.33% of the width
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :sections, "LayoutSectionComponent"
+    renders_many :sections, -> (**system_arguments) do
+      @counter += 1
+      LayoutSectionComponent.new(position: @counter, **system_arguments)
+    end
 
     # A list of annotated sections
     #
     # @param title [String] Title
     # @param description [String] Description
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :annotated_sections, "LayoutAnnotatedSectionComponent"
+    renders_many :annotated_sections, -> (**system_arguments) do
+      @counter += 1
+      LayoutAnnotatedSectionComponent.new(position: @counter, **system_arguments)
+    end
 
     def initialize(sectioned: false, **system_arguments)
+      @counter = 0
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
@@ -26,43 +31,30 @@ module Polaris
       )
     end
 
-    def self.order
-      @@order || []
-    end
-    def self.order=(val)
-      @@order = val
+    def all_sections
+      @all_sections ||= sections + annotated_sections
     end
 
-    def renderable_sections
-      sections_index = -1
-      annotated_index = -1
-
-      renderables = LayoutComponent.order.map do |o|
-        if o.class == LayoutSectionComponent
-          sections[sections_index += 1]
-        elsif o.class == LayoutAnnotatedSectionComponent
-          annotated_sections[annotated_index += 1]
-        end
-      end
-
-      LayoutComponent.order = []
-
-      renderables
+    def ordered_sections
+      all_sections.sort_by(&:position)
     end
 
     def render?
-      sections.any? || annotated_sections.any?
+      all_sections.any?
     end
 
     class LayoutSectionComponent < Polaris::NewComponent
+      attr_reader :position
+
       def initialize(
+        position:,
         secondary: false,
         full_width: false,
         one_half: false,
         one_third: false,
         **system_arguments
       )
-        LayoutComponent.order << self
+        @position = position
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
@@ -82,9 +74,10 @@ module Polaris
     end
 
     class LayoutAnnotatedSectionComponent < Polaris::NewComponent
-      def initialize(title:, description: '', **system_arguments)
-        LayoutComponent.order << self
+      attr_reader :position
 
+      def initialize(position:, title:, description: '', **system_arguments)
+        @position = position
         @title = title
         @description = description
 
