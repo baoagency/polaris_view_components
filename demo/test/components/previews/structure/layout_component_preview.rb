@@ -22,4 +22,7 @@ class Structure::LayoutComponentPreview < ViewComponent::Preview
   # Use for settings pages that need a banner or other content at the top.
   def annotated_layout_with_banner_at_the_top
   end
+
+  def mixed_layout
+  end
 end

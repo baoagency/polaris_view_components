@@ -1,0 +1,25 @@
+<%= polaris_layout do |layout| %>
+  <% layout.section do %>
+    <%= polaris_banner(title: "Order archived", can_dismiss: true) do %>
+      <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+    <% end %>
+  <% end %>
+
+  <% layout.annotated_section(title: "Store details", description: "Shopify and your customers will use this information to contact you.") do %>
+    <%= polaris_card(title: "Online store dashboard", sectioned: true) do %>
+      <p>View a summary of your online store’s performance.</p>
+    <% end %>
+  <% end %>
+
+  <% layout.section do %>
+    <%= polaris_banner(title: "Order archived", can_dismiss: true) do %>
+      <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+    <% end %>
+  <% end %>
+
+  <% layout.annotated_section(title: "Store details", description: "Shopify and your customers will use this information to contact you.") do %>
+    <%= polaris_card(title: "Online store dashboard", sectioned: true) do %>
+      <p>View a summary of your online store’s performance.</p>
+    <% end %>
+  <% end %>
+<% end %>
