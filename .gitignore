@@ -14,3 +14,4 @@
 /demo/tmp/
 /demo/node_modules/
 /demo/config/master.key
+/demo/public/packs/
