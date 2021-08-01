@@ -81,8 +81,8 @@ module Polaris
       def call
         button_arguments = @system_arguments.except(:classes, :tag)
 
-        render(Polaris::BaseComponent.new(**@system_arguments.except(:plain))) do
-          render(Polaris::ButtonComponent.new(**button_arguments)) { content }
+        render(Polaris::BaseComponent.new(tag: @system_arguments[:tag], classes: @system_arguments[:classes])) do
+          render(Polaris::ButtonComponent.new(**button_arguments)) { button_arguments[:content] || content }
         end
       end
     end
