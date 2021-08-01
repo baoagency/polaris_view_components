@@ -16,4 +16,7 @@ class Actions::ButtonGroupComponentPreview < ViewComponent::Preview
 
   def with_text_item
   end
+
+  def with_plain_item
+  end
 end
