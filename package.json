@@ -1,0 +1,32 @@
+{
+  "name": "polaris-view-components",
+  "version": "0.1.0",
+  "description": "ViewComponents for Polaris Design System",
+  "source": "app/javascript/polaris/index.js",
+  "main": "package/polaris.js",
+  "umd:main": "package/polaris.umd.js",
+  "module": "package/polaris.m.js",
+  "esmodule": "package/polaris.modern.js",
+  "repository": "git@github.com:baoagency/polaris_view_components.git",
+  "author": "By Association Only",
+  "contributors": [
+    "Dan Gamble <dan@dangamble.co.uk>",
+    "Kirill Platonov <mail@kirillplatonov.com>"
+  ],
+  "files": [
+    "app/javascript/**/*.js"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "stimulus": "^2.0.0"
+  },
+  "scripts": {
+    "build": "microbundle"
+  },
+  "devDependencies": {
+    "microbundle": "^0.13.3"
+  },
+  "dependencies": {
+    "stimulus": "^2.0.0"
+  }
+}
