@@ -1,0 +1,29 @@
+<%= polaris_card(title: "Customer") do |card| %>
+  <% card.section do %>
+    <p>John Smith</p>
+  <% end %>
+
+  <% card.section(title: "Addresses") do |section| %>
+    <% section.subsection do %>
+      123 First St
+      <br />
+      Somewhere
+      <br />
+      The Universe
+    <% end %>
+
+    <% section.subsection do %>
+      123 Second St
+      <br />
+      Somewhere
+      <br />
+      The Universe
+    <% end %>
+  <% end %>
+
+  <% card.section do |section| %>
+    <% section.subsection do %>
+      A single subsection without a sibling has no visual appearance
+    <% end %>
+  <% end %>
+<% end %>

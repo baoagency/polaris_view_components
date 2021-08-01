@@ -1,0 +1,25 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <% if simple? %>
+    <%= polaris_heading { @title } %>
+  <% else %>
+    <%= polaris_stack(alignment: "trailing") do %>
+      <%= polaris_stack_item(fill: true) do %>
+        <%= polaris_heading { @title } %>
+      <% end %>
+
+      <% if @actions.present? %>
+        <%= polaris_stack_item do %>
+          <%= polaris_button_group do |group| %>
+            <% @actions.each do |action| %>
+              <% group.button(**action) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= polaris_stack_item do %>
+        <%= content %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

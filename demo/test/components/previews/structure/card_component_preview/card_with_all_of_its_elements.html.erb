@@ -1,0 +1,34 @@
+<%= polaris_card(
+      primary_footer_action: { content: "Export report", url: "https://bao.agency" },
+      secondary_footer_actions: [{ content: "Dismiss", url: "https://bao.agency" }]
+    ) do |card| %>
+  <% card.header(title: "Sales", actions: [{ content: "Total sales", url: "https://bao.agency" }]) %>
+
+  <%= card.section do %>
+    <%= polaris_text_container do %>
+      You can use sales reports to see information about your customers’ orders
+      based on criteria such as sales over time, by channel, or by staff.
+    <% end %>
+  <% end %>
+
+  <% card.section(title: "Total sales breakdown") do %>
+    <ul>
+      <li>Felix Crafford</li>
+      <li>Ezequiel Manno</li>
+    </ul>
+  <% end %>
+
+  <% card.section(title: "Deactivated reports", subdued: true) do %>
+    <ul>
+      <li>Felix Crafford</li>
+      <li>Ezequiel Manno</li>
+    </ul>
+  <% end %>
+
+  <% card.section(title: "Note") do %>
+    <%= polaris_text_container do %>
+      The sales reports are available only if your store is on the Shopify plan
+      or higher.
+    <% end %>
+  <% end %>
+<% end %>
