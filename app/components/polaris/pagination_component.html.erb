@@ -1,0 +1,19 @@
+<%= render Polaris::BaseComponent.new(tag: 'nav', **@system_arguments) do %>
+  <%= polaris_button_group(**@button_group_arguments) do |group| %>
+    <% group.item do %>
+      <%= polaris_button(url: @previous_url, outline: true, disabled: @previous_url.blank?) do |button| %>
+        <% button.icon(name: "ChevronLeftMinor") %>
+      <% end %>
+    <% end %>
+    <% if @label.present? %>
+      <% group.item do %>
+        <div aria-live="polite"><%= @label %></div>
+      <% end %>
+    <% end %>
+    <% group.item do %>
+      <%= polaris_button(url: @next_url, outline: true, disabled: @next_url.blank?) do |button| %>
+        <% button.icon(name: "ChevronRightMinor") %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
