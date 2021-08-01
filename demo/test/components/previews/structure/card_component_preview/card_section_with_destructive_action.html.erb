@@ -1,0 +1,15 @@
+<%= polaris_card(title: "Customer") do |card| %>
+  <% card.section do %>
+    <p>John Smith</p>
+  <% end %>
+
+  <% card.section(
+    title: "Contact information",
+    actions: [
+      { content: "Delete", url: "https://bao.agency", destructive: true },
+      { content: "Edit", url: "https://bao.agency" }
+    ]
+  ) do %>
+    <p>john.smith@example.com</p>
+  <% end %>
+<% end %>

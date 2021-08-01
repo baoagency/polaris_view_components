@@ -1,4 +1,4 @@
-<%= render Polaris::Card::Component.new(data: parent_data) do %>
+<%= polaris_card(data: parent_data) do |card| %>
   <div class="Polaris-CalloutCard__Container">
     <% if can_close? %>
       <div class="Polaris-CalloutCard__Dismiss">
@@ -17,7 +17,7 @@
       </div>
     <% end %>
 
-    <%= render Polaris::CardSection::Component.new do %>
+    <% card.section do %>
       <%= content_tag('div', content_tag_options) do %>
         <div class="Polaris-CalloutCard__Content">
           <div class="Polaris-CalloutCard__Title">

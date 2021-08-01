@@ -17,7 +17,7 @@ Render Polaris ViewComponents via helpers:
 or the full version:
 
 ```erb
-<%= render Polaris::Card::Component.new(title: "Title") do %>
+<%= render Polaris::CardComponent.new(title: "Title") do %>
   <p>Card example</p>
 <% end %>
 ```
