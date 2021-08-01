@@ -29,6 +29,7 @@ module Polaris
       labelled:                 "Polaris::Labelled::Component",
       layout:                   "Polaris::LayoutComponent",
       link:                     "Polaris::LinkComponent",
+      list:                     "Polaris::ListComponent",
       page:                     "Polaris::Page::Component",
       page_actions:             "Polaris::PageActions::Component",
       pagination:               "Polaris::PaginationComponent",
