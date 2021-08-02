@@ -3,7 +3,7 @@
 module Polaris
   module Dropzone
     class Component < Polaris::Component
-      include Polaris::Helpers::ActionHelper
+      include Polaris::ActionHelper
 
       ALLOWED_TYPES = %w[file image]
 

@@ -3,7 +3,7 @@
 module Polaris
   module Select
     class Component < Polaris::Component
-      include Polaris::Helpers::ConditionalHelper
+      include Polaris::ConditionalHelper
 
       def initialize(
         label: nil,

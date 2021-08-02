@@ -14,6 +14,8 @@ module Polaris
       # Loads helpers into main app automatically
       config.to_prepare do
         ApplicationController.helper Polaris::ViewHelper
+        ApplicationController.helper Polaris::ActionHelper
+        ApplicationController.helper Polaris::ConditionalHelper
       end
 
       initializer "polaris_view_components.assets.precompile" do |app|
