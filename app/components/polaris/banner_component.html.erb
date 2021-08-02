@@ -1,7 +1,7 @@
 <%= render Polaris::BaseComponent.new(tag: 'div', **@system_arguments) do %>
   <% if @dismissible %>
     <div class="Polaris-Banner__Dismiss">
-      <%= polaris_button(plain: true) do |button| %>
+      <%= polaris_button(plain: true, data: { action: "dismissible#dismiss" }) do |button| %>
         <% button.icon(name: "CancelSmallMinor") %>
       <% end %>
     </div>
