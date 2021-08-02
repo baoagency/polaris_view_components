@@ -9,13 +9,16 @@ module Polaris
       element: ELEMENT_DEFAULT,
       **system_arguments
     )
-      @element = element
-
       @system_arguments = system_arguments
+      @system_arguments[:tag] = element
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         'Polaris-Heading'
       )
+    end
+
+    def call
+      render(Polaris::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end
