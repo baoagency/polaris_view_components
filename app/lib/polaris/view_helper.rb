@@ -8,7 +8,7 @@ module Polaris
       button:                   "Polaris::ButtonComponent",
       button_group:             "Polaris::ButtonGroupComponent",
       callout_group:            "Polaris::CalloutGroup::Component",
-      caption:                  "Polaris::Caption::Component",
+      caption:                  "Polaris::CaptionComponent",
       card:                     "Polaris::CardComponent",
       check_box:                "Polaris::CheckBox::Component",
       choice:                   "Polaris::Choice::Component",
