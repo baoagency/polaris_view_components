@@ -3,7 +3,7 @@
 module Polaris
   class DisplayTextComponent < Polaris::NewComponent
     ELEMENT_DEFAULT = :p
-    ELEMENT_OPTIONS = %w[h1 h2 h3 h4 h5 h6 p]
+    ELEMENT_OPTIONS = %i[p h1 h2 h3 h4 h5 h6]
 
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
