@@ -46,6 +46,10 @@ module Polaris
       @system_arguments = system_arguments
       @system_arguments[:tabindex] = 0
       @system_arguments[:role] = "status"
+      if dismissible
+        @system_arguments[:data] ||= {}
+        @system_arguments[:data][:controller] ||= "dismissible"
+      end
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Banner",

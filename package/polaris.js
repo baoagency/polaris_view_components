@@ -1,0 +1,2 @@
+function t(e,r){return(t=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(e,r)}var e=function(e){var r,o;function n(){return e.apply(this,arguments)||this}o=e,(r=n).prototype=Object.create(o.prototype),r.prototype.constructor=r,t(r,o);var i=n.prototype;return i.connect=function(){console.log("dismissible loaded")},i.dismiss=function(t){t.preventDefault(),this.element.remove()},n}(require("stimulus").Controller);exports.registerPolarisControllers=function(t){t.register("dismissible",e)};
+//# sourceMappingURL=polaris.js.map
