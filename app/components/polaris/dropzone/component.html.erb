@@ -26,7 +26,7 @@
 
           <div class="Polaris-DropZone-FileUpload__Button">Add file</div>
 
-          <%= render Polaris::TextStyle::Component.new(variation: "subdued") do %>
+          <%= polaris_text_style(variation: :subdued) do %>
             or drop files to upload
           <% end %>
         <% end %>
