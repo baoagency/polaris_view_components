@@ -25,12 +25,15 @@ or the full version:
 ## Installation
 
 In `Gemfile`, add:
+
 ```ruby
 gem 'polaris_view_components', github: 'baoagency/polaris_view_components'
 ```
 
-To add styles for `Polaris::ShopifyNavigation::Component` in your layout's `<head>` tag add:
+To add Polaris styles and additional styles for `Polaris::ShopifyNavigation::Component` in your layout's `<head>` tag add:
+
 ```erb
+<link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css"/>
 <%= stylesheet_link_tag 'polaris_view_components' %>
 ```
 
