@@ -1,19 +1,21 @@
-<%= content_tag('div', content_tag_options) do %>
+<%= render(Polaris::BaseComponent.new(**@system_arguments)) do %>
   <%= polaris_stack(spacing: :tight, distribution: stack_distribution) do |stack| %>
-    <% if @secondary_actions.present? %>
+    <% if secondary_actions %>
       <% stack.item do %>
         <%= polaris_button_group do |group| %>
-          <% @secondary_actions.each do |action| %>
+          <% secondary_actions.each do |action| %>
             <% group.item do %>
-              <%= render_complex_action_button(action) %>
+              <%= action %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
 
-    <% stack.item do %>
-      <%= render_primary_complex_action_button(@primary_action) %>
+    <% if primary_action %>
+      <% stack.item do %>
+        <%= primary_action %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
