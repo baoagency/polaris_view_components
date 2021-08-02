@@ -4,8 +4,8 @@ module Polaris
   class CardComponent < Polaris::NewComponent
     include Polaris::ActionHelper
 
-    renders_one :header, "Polaris::CardComponent::HeaderComponent"
-    renders_many :sections, "Polaris::CardComponent::SectionComponent"
+    renders_one :header, Polaris::Card::HeaderComponent
+    renders_many :sections, Polaris::Card::SectionComponent
 
     def initialize(
       title: "",

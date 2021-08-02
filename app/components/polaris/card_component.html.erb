@@ -4,7 +4,7 @@
   <% end %>
 
   <% if @title.present? && !header.present? %>
-    <%= render Polaris::CardComponent::HeaderComponent.new(title: @title, actions: @actions) %>
+    <%= render Polaris::Card::HeaderComponent.new(title: @title, actions: @actions) %>
   <% end %>
 
   <% if sections.present? %>
@@ -12,7 +12,7 @@
       <%= section %>
     <% end %>
   <% else %>
-    <%= render Polaris::CardComponent::SectionComponent.new do %>
+    <%= render Polaris::Card::SectionComponent.new do %>
       <%= content %>
     <% end %>
   <% end %>
