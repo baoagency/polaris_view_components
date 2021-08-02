@@ -32,9 +32,13 @@
 
           <div class="Polaris-CalloutCard__Buttons">
             <% if @secondary_action.present? %>
-              <%= render Polaris::ButtonGroup::Component.new do %>
-                <%= render_primary_complex_action_button(@primary_action) %>
-                <%= render_plain_complex_action_button(@secondary_action) %>
+              <%= polaris_button_group do |group| %>
+                <% group.item do %>
+                  <%= render_primary_complex_action_button(@primary_action) %>
+                <% end %>
+                <% group.item do %>
+                  <%= render_plain_complex_action_button(@secondary_action) %>
+                <% end %>
               <% end %>
             <% else %>
               <%= render_primary_complex_action_button(@primary_action) %>

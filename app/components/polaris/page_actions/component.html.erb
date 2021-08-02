@@ -2,9 +2,11 @@
   <%= render Polaris::Stack::Component.new(spacing: 'tight', distribution: stack_distribution) do %>
     <% if @secondary_actions.present? %>
       <%= render Polaris::StackItem::Component.new do %>
-        <%= render Polaris::ButtonGroup::Component.new do %>
+        <%= polaris_button_group do |group| %>
           <% @secondary_actions.each do |action| %>
-            <%= render_complex_action_button(action) %>
+            <% group.item do %>
+              <%= render_complex_action_button(action) %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
