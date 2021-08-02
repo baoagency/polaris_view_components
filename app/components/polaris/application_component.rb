@@ -1,6 +1,6 @@
 require 'nokogiri'
 
-class ApplicationComponent < ViewComponent::Base
+class Polaris::ApplicationComponent < ViewComponent::Base
   include ActiveModel::Validations
 
   def initialize(data: {}, aria: {}, html_options: {}, **args)

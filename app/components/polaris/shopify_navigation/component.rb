@@ -1,6 +1,6 @@
 module Polaris
   module ShopifyNavigation
-    class Component < ApplicationComponent
+    class Component < Polaris::ApplicationComponent
       def initialize(links:, **args)
         super
 
