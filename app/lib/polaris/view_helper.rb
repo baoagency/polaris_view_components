@@ -14,7 +14,7 @@ module Polaris
       choice:                   "Polaris::Choice::Component",
       choice_list:              "Polaris::ChoiceList::Component",
       description_list:         "Polaris::DescriptionList::Component",
-      display_text:             "Polaris::DisplayText::Component",
+      display_text:             "Polaris::DisplayTextComponent",
       dropzone:                 "Polaris::Dropzone::Component",
       empty_state:              "Polaris::EmptyState::Component",
       footer_help:              "Polaris::FooterHelpComponent",
