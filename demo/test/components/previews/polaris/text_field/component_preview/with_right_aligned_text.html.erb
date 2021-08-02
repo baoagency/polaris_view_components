@@ -1,12 +1,14 @@
-<%= render Polaris::Stack::Component.new do %>
-  <%= render Polaris::StackItem::Component.new(fill: true) do %>
+<%= polaris_stack do |stack| %>
+  <% stack.item(fill: true) do %>
     Price
   <% end %>
-  <%= render Polaris::TextField::Component.new(
-    attribute: :attribute,
-    label: "Price",
-    label_hidden: true,
-    value: "TBD",
-    align: "right",
-  ) %>
+  <% stack.item do %>
+    <%= render Polaris::TextField::Component.new(
+      attribute: :attribute,
+      label: "Price",
+      label_hidden: true,
+      value: "TBD",
+      align: "right",
+    ) %>
+  <% end %>
 <% end %>

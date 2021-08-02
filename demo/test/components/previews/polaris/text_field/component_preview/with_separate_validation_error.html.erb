@@ -1,5 +1,5 @@
-<%= render Polaris::Stack::Component.new(wrap: false) do %>
-  <%= render Polaris::StackItem::Component.new(fill: true) do %>
+<%= polaris_stack(wrap: false) do |stack| %>
+  <% stack.item(fill: true) do %>
     <%= render Polaris::FormLayout::Component.new do %>
       <%= render Polaris::FormLayoutGroup::Component.new(condensed: true, sectioned: true) do %>
         <%= render Polaris::Select::Component.new(
@@ -33,7 +33,9 @@
       ) %>
     </div>
   <% end %>
-  <%= polaris_button do |button| %>
-    <% button.icon(name: "DeleteMinor") %>
+  <% stack.item do %>
+    <%= polaris_button do |button| %>
+      <% button.icon(name: "DeleteMinor") %>
+    <% end %>
   <% end %>
 <% end %>

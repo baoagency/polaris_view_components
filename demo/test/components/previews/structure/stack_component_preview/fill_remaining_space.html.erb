@@ -1,0 +1,11 @@
+<%= polaris_stack do |stack| %>
+  <% stack.item(fill: true) do %>
+    <%= polaris_heading { "Order #1136" } %>
+  <% end %>
+  <% stack.item do %>
+    <%= polaris_badge { "Paid" } %>
+  <% end %>
+  <% stack.item do %>
+    <%= polaris_badge { "Fulfilled" } %>
+  <% end %>
+<% end %>

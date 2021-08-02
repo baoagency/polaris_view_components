@@ -13,17 +13,17 @@
         <% end %>
 
         <div class="Polaris-EmptyState__Actions">
-          <%= render Polaris::Stack::Component.new(
-            alignment: 'center',
-            distribution: 'center',
-            spacing: 'tight'
-          ) do %>
+          <%= polaris_stack(alignment: :center, distribution: :center, spacing: :tight) do |stack| %>
             <% if @action.present? %>
-              <%= render_primary_complex_action_button(@action) %>
+              <% stack.item do %>
+                <%= render_primary_complex_action_button(@action) %>
+              <% end %>
             <% end %>
 
             <% if @secondary_action.present? %>
-              <%= render_complex_action_button(@secondary_action) %>
+              <% stack.item do %>
+                <%= render_complex_action_button(@secondary_action) %>
+              <% end %>
             <% end %>
           <% end %>
         </div>

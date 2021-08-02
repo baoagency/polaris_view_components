@@ -1,0 +1,14 @@
+<%= polaris_stack(wrap: false) do |stack| %>
+  <% stack.item do %>
+    <%= polaris_badge { "Paid" } %>
+  <% end %>
+  <% stack.item do %>
+    <%= polaris_badge { "Processing" } %>
+  <% end %>
+  <% stack.item do %>
+    <%= polaris_badge { "Fulfilled" } %>
+  <% end %>
+  <% stack.item do %>
+    <%= polaris_badge { "Completed" } %>
+  <% end %>
+<% end %>
