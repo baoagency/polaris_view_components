@@ -6,18 +6,10 @@ Polaris ViewComponents is an implementation of the Polaris Design System using [
 
 ## Usage
 
-Render Polaris ViewComponents via helpers:
+Render Polaris ViewComponents:
 
 ```erb
 <%= polaris_card(title: "Title") do %>
-  <p>Card example</p>
-<% end %>
-```
-
-or the full version:
-
-```erb
-<%= render Polaris::CardComponent.new(title: "Title") do %>
   <p>Card example</p>
 <% end %>
 ```
@@ -30,10 +22,10 @@ In `Gemfile`, add:
 gem 'polaris_view_components', github: 'baoagency/polaris_view_components'
 ```
 
-To add Polaris styles and additional styles for `Polaris::ShopifyNavigation::Component` in your layout's `<head>` tag add:
+Setup Polaris styles in your layouts `<head>` tag:
 
 ```erb
-<link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css"/>
+<link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css" />
 <%= stylesheet_link_tag 'polaris_view_components' %>
 ```
 
