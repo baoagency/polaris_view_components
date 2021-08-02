@@ -52,7 +52,7 @@ module Polaris
     end
 
     def render?
-      buttons.any? || items.any?
+      all_items.any?
     end
 
     def all_items

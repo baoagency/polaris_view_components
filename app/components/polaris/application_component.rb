@@ -1,5 +1,3 @@
-require 'nokogiri'
-
 class Polaris::ApplicationComponent < ViewComponent::Base
   include ActiveModel::Validations
 
@@ -33,20 +31,5 @@ class Polaris::ApplicationComponent < ViewComponent::Base
 
     def before_render
       validate!
-    end
-
-    def wrap_children!(css_class, additional_classes: [], exclusions: nil)
-      return unless content.present?
-
-      doc = Nokogiri::HTML(content)
-
-      not_wrap = ":not(.#{css_class})"
-      not_wrap << ":not(#{exclusions})" if exclusions.present?
-
-      doc.css("body > *#{not_wrap}").each do |item|
-        item.wrap("<div class='#{css_class} #{additional_classes.join(' ')}'></div>")
-      end
-
-      @_content = doc.css("body").first.inner_html
     end
 end
