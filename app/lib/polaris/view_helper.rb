@@ -39,7 +39,7 @@ module Polaris
       shopify_navigation:       "Polaris::ShopifyNavigation::Component",
       stack:                    "Polaris::Stack::Component",
       stack_item:               "Polaris::StackItem::Component",
-      sub_heading:              "Polaris::SubHeading::Component",
+      subheading:               "Polaris::SubheadingComponent",
       spinner:                  "Polaris::SpinnerComponent",
       text_container:           "Polaris::TextContainer::Component",
       text_field:               "Polaris::TextField::Component",
