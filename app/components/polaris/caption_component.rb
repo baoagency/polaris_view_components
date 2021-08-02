@@ -12,7 +12,7 @@ module Polaris
     end
 
     def call
-      render(BaseComponent.new(**@system_arguments)) { content }
+      render(Polaris::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

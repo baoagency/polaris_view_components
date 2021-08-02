@@ -12,7 +12,7 @@ module Polaris
       attr_reader :label_action, :index, :value
 
       def initialize(
-        attribute:,
+        attribute: nil,
         form: nil,
         placeholder: "",
         type: "text",

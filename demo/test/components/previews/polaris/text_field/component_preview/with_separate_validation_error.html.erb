@@ -1,28 +1,34 @@
 <%= polaris_stack(wrap: false) do |stack| %>
   <% stack.item(fill: true) do %>
-    <%= render Polaris::FormLayout::Component.new do %>
-      <%= render Polaris::FormLayoutGroup::Component.new(condensed: true, sectioned: true) do %>
-        <%= render Polaris::Select::Component.new(
-          attribute: :attribute,
-          label: "Collection rule type",
-          label_hidden: true,
-          value: "product_type",
-          options: [{ label: "Product type", value: "product_type" }]
-        ) %>
-        <%= render Polaris::Select::Component.new(
-          attribute: :attribute,
-          label: "Collection rule condition",
-          label_hidden: true,
-          value: "is_equal_to",
-          options: [{ label: "Is equal to", value: "is_equal_to" }]
-        ) %>
-        <%= render Polaris::TextField::Component.new(
-          attribute: :attribute,
-          label: "Collection rule content",
-          label_hidden: true,
-          id: "thisIsTheId",
-          error: true,
-        ) %>
+    <%= polaris_form_layout do |form_layout| %>
+      <% form_layout.group(condensed: true) do |group| %>
+        <% group.item do %>
+          <%= render Polaris::Select::Component.new(
+            attribute: :attribute,
+            label: "Collection rule type",
+            label_hidden: true,
+            value: "product_type",
+            options: [{ label: "Product type", value: "product_type" }]
+          ) %>
+        <% end %>
+        <% group.item do %>
+          <%= render Polaris::Select::Component.new(
+            attribute: :attribute,
+            label: "Collection rule condition",
+            label_hidden: true,
+            value: "is_equal_to",
+            options: [{ label: "Is equal to", value: "is_equal_to" }]
+          ) %>
+        <% end %>
+        <% group.item do %>
+          <%= render Polaris::TextField::Component.new(
+            attribute: :attribute,
+            label: "Collection rule content",
+            label_hidden: true,
+            id: "thisIsTheId",
+            error: true,
+          ) %>
+        <% end %>
       <% end %>
     <% end %>
 
