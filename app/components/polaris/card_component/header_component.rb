@@ -1,7 +1,7 @@
 module Polaris
   class CardComponent
     class HeaderComponent < Polaris::NewComponent
-      include Polaris::Helpers::ActionHelper
+      include Polaris::ActionHelper
 
       def initialize(
         title: "",

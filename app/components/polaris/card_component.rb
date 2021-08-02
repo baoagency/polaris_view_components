@@ -2,7 +2,7 @@
 
 module Polaris
   class CardComponent < Polaris::NewComponent
-    include Polaris::Helpers::ActionHelper
+    include Polaris::ActionHelper
 
     renders_one :header, "Polaris::CardComponent::HeaderComponent"
     renders_many :sections, "Polaris::CardComponent::SectionComponent"

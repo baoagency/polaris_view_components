@@ -2,7 +2,7 @@
 module Polaris
   module TextField
     class Component < Polaris::Component
-      include Polaris::Helpers::ActionHelper
+      include Polaris::ActionHelper
 
       with_content_areas :connected_left, :connected_right
 
