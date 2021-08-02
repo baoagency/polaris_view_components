@@ -3,7 +3,7 @@
     <div class="Polaris-EmptyState__DetailsContainer">
       <div class="Polaris-EmptyState__Details">
           <%= render Polaris::TextContainer::Component.new do %>
-          <%= render Polaris::DisplayText::Component.new(element: 'h1', size: 'medium') do %>
+          <%= polaris_display_text(element: :h1) do %>
             <%= @heading %>
           <% end %>
 

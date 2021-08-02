@@ -13,7 +13,7 @@
           </svg>
         <% end %>
 
-        <%= render Polaris::DisplayText::Component.new(size: "small") do %>
+        <%= polaris_display_text(size: :small) do %>
           <%= @overlay_text %>
         <% end %>
       <% end %>
