@@ -15,9 +15,7 @@
     <div class="app-wrapper">
       <div class="app-content">
         <main role="main">
-          <%= render Polaris::Page::Component.new(title: '', title_hidden: true) do %>
-            <%= yield %>
-          <% end %>
+          <%= yield %>
         </main>
       </div>
     </div>

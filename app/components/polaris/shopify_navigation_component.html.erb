@@ -1,0 +1,9 @@
+<%= render(Polaris::BaseComponent.new(**@system_arguments)) do %>
+  <%= polaris_stack(alignment: :center, spacing: :none) do |stack| %>
+    <ul role="tablist" class="shp-Navigation_Items">
+      <% links.each do |link| %>
+        <%= link %>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

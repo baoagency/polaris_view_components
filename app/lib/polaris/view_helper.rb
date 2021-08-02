@@ -34,7 +34,7 @@ module Polaris
       progress_bar:             "Polaris::ProgressBar::Component",
       radio_button:             "Polaris::RadioButton::Component",
       select:                   "Polaris::Select::Component",
-      shopify_navigation:       "Polaris::ShopifyNavigation::Component",
+      shopify_navigation:       "Polaris::ShopifyNavigationComponent",
       stack:                    "Polaris::StackComponent",
       subheading:               "Polaris::SubheadingComponent",
       spinner:                  "Polaris::SpinnerComponent",
