@@ -29,7 +29,7 @@ module Polaris
       link:                     "Polaris::LinkComponent",
       list:                     "Polaris::ListComponent",
       page:                     "Polaris::Page::Component",
-      page_actions:             "Polaris::PageActions::Component",
+      page_actions:             "Polaris::PageActionsComponent",
       pagination:               "Polaris::PaginationComponent",
       progress_bar:             "Polaris::ProgressBar::Component",
       radio_button:             "Polaris::RadioButton::Component",

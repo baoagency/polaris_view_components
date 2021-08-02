@@ -1,0 +1,5 @@
+<%= polaris_page_actions do |actions| %>
+  <% actions.primary_action { "Save" } %>
+  <% actions.secondary_action(destructive: true) { "Delete" } %>
+  <% actions.secondary_action { "Button" } %>
+<% end %>
