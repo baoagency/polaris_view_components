@@ -22,7 +22,7 @@ module Polaris
       end
 
       def stack_distribution
-        @secondary_actions.present? ? 'equal_spacing' : 'trailing'
+        @secondary_actions.present? ? :equal_spacing : :trailing
       end
 
       private

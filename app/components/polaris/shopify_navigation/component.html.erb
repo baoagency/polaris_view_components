@@ -1,5 +1,5 @@
 <div class="shp-Navigation">
-  <%= render Polaris::Stack::Component.new(alignment: 'center', spacing: 'none') do %>
+  <%= polaris_stack(alignment: :center, spacing: :none) do %>
     <div>
       <ul role="tablist" class="shp-Navigation_Items">
         <% links.each_with_index do |link, index| %>
