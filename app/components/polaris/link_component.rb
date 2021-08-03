@@ -13,6 +13,7 @@ module Polaris
 
       @system_arguments = system_arguments
       @system_arguments[:href] = @url
+      @system_arguments[:tag] = "a"
       @system_arguments[:"data-polaris-unstyled"] = true
       if external
         @system_arguments[:rel] = "noopener noreferrer"
@@ -23,6 +24,15 @@ module Polaris
         "Polaris-Link",
         "Polaris-Link--monochrome" => monochrome,
       )
+    end
+
+    def call
+      render(Polaris::BaseComponent.new(**@system_arguments)) do
+        safe_join [
+          content.strip,
+          (external_icon if @external),
+        ].compact
+      end
     end
 
     private
