@@ -18,7 +18,8 @@ class BannerComponentTest < Minitest::Test
   end
 
   def test_dismissible_banner
-    render_inline(Polaris::BannerComponent.new(dismissible: true)) do
+    render_inline(Polaris::BannerComponent.new) do |banner|
+      banner.dismiss_button(url: "#")
       "Banner Content"
     end
 
