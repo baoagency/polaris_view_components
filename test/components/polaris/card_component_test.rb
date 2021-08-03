@@ -105,26 +105,20 @@ class CardComponentTest < Minitest::Test
   end
 
   def test_renders_card_with_footer_actions
-    render_inline(Polaris::CardComponent.new(
-      title: "Card",
-      primary_footer_action: { content: "Primary footer action", url: "https://bao.agency" },
-      secondary_footer_actions: [{ content: "Secondary footer action", url: "https://bao.agency" }]
-    )) { "Body" }
+    render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
+      card.primary_footer_action(url: "https://bao.agency") { "Primary Action" }
+      card.secondary_footer_action(url: "https://bao.agency") { "Secondary Action" }
+    end
 
-    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button__Text", text: "Secondary footer action"
-    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary"
+    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button__Text", text: "Secondary Action"
+    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary", text: "Primary Action"
   end
 
   def test_renders_card_with_destructive_footer_action
-    render_inline(Polaris::CardComponent.new(
-      title: "Card",
-      primary_footer_action: { content: "Primary footer action", url: "https://bao.agency" },
-      secondary_footer_actions: [{
-        content: "Secondary footer action",
-        url: "https://bao.agency",
-        destructive: true,
-      }]
-    )) { "Body" }
+    render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
+      card.primary_footer_action(url: "https://bao.agency") { "Primary Action" }
+      card.secondary_footer_action(url: "https://bao.agency", destructive: true) { "Primary Action" }
+    end
 
     assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button--destructive"
     assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary"
