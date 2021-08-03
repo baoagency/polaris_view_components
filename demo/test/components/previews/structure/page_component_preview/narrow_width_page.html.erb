@@ -1,0 +1,16 @@
+<%= polaris_page(
+  narrow_width: true,
+  title: "Add payment method",
+  back_url: "/orders",
+) do |page| %>
+  <% page.primary_action(disabled: true) { "Save" } %>
+
+  <%= polaris_card(title: "Credit card") do %>
+    <p>Credit card information</p>
+  <% end %>
+
+  <%= polaris_page_actions do |actions| %>
+    <% actions.primary_action(disabled: true) { "Save" } %>
+    <% actions.secondary_action { "Delete" } %>
+  <% end %>
+<% end %>
