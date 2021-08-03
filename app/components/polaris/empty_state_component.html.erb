@@ -1,0 +1,47 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <div class="Polaris-EmptyState__Section">
+    <div class="Polaris-EmptyState__DetailsContainer">
+      <div class="Polaris-EmptyState__Details">
+        <% if @heading.present? || content.present? %>
+          <div class="Polaris-TextContainer">
+            <% if @heading.present? %>
+              <p class="Polaris-DisplayText Polaris-DisplayText--sizeSmall">
+                <%= @heading %>
+              </p>
+            <% end %>
+            <% if content.present? %>
+              <div class="Polaris-EmptyState__Content">
+                <%= content %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="Polaris-EmptyState__Actions">
+          <%= polaris_stack(spacing: :tight, distribution: :center, alignment: :center) do |stack| %>
+            <% if primary_action.present? %>
+              <% stack.item do %>
+                <%= primary_action %>
+              <% end %>
+            <% end %>
+            <% if secondary_action.present? %>
+              <% stack.item do %>
+                <%= secondary_action %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <% if footer.present? %>
+          <div class="Polaris-EmptyState__FooterContent">
+            <div class="Polaris-TextContainer">
+              <%= footer %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="Polaris-EmptyState__ImageContainer">
+      <img src="<%= @image %>" role="presentation" alt="" class="Polaris-EmptyState__Image">
+    </div>
+  </div>
+<% end %>
