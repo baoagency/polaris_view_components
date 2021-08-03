@@ -1,0 +1,11 @@
+<%= polaris_page(
+  title: "Jar With Lock-Lid",
+  back_url: "/products",
+) do |page| %>
+  <% page.primary_action(disabled: true) { "Save" } %>
+  <% page.title_metadata do %>
+    <%= polaris_badge(status: :attention) { "Verified" } %>
+  <% end %>
+
+  <p>Page content</p>
+<% end %>

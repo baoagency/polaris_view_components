@@ -1,0 +1,63 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <% if render_header? %>
+    <%= render Polaris::BaseComponent.new(**@header_arguments) do %>
+      <div class="Polaris-Page-Header__Row">
+        <% if @back_url.present? %>
+          <div class="Polaris-Page-Header__BreadcrumbWrapper">
+            <nav role="navigation">
+              <a class="Polaris-Breadcrumbs__Breadcrumb" href="<%= @back_url %>" data-polaris-unstyled="true">
+                <span class="Polaris-Breadcrumbs__ContentWrapper">
+                  <span class="Polaris-Breadcrumbs__Icon">
+                    <%= polaris_icon(name: "ArrowLeftMinor") %>
+                  </span>
+                </span>
+              </a>
+            </nav>
+          </div>
+        <% end %>
+
+        <div class="Polaris-Page-Header__TitleWrapper">
+          <div <% if thumbnail.present? %>class="Polaris-Header-Title--hasThumbnail"<% end %>>
+            <% if thumbnail.present? %>
+              <div>
+                <%= thumbnail %>
+              </div>
+            <% end %>
+            <div class="Polaris-Header-Title__TitleAndSubtitleWrapper">
+              <% if @title.present? %>
+                <% if title_metadata.present? %>
+                  <div class="Polaris-Header-Title__TitleWithMetadataWrapper">
+                    <h1 class="Polaris-Header-Title"><%= @title %></h1>
+                    <div class="Polaris-Header-Title__TitleMetadata">
+                      <%= title_metadata %>
+                    </div>
+                  </div>
+                <% else %>
+                  <h1 class="Polaris-Header-Title"><%= @title %></h1>
+                <% end %>
+              <% end %>
+
+              <% if @subtitle.present? %>
+                <div class="Polaris-Header-Title__SubTitle">
+                  <p><%= @subtitle %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <% if primary_action.present? %>
+          <div class="Polaris-Page-Header__RightAlign">
+            <div class="Polaris-Page-Header__PrimaryActionWrapper">
+              <%= primary_action %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= render Polaris::BaseComponent.new(**@content_arguments) do %>
+    <%= content %>
+  <% end %>
+<% end %>
