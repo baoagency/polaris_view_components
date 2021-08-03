@@ -13,7 +13,7 @@ module Polaris
       check_box:                "Polaris::CheckBox::Component",
       choice:                   "Polaris::Choice::Component",
       choice_list:              "Polaris::ChoiceList::Component",
-      description_list:         "Polaris::DescriptionList::Component",
+      description_list:         "Polaris::DescriptionListComponent",
       display_text:             "Polaris::DisplayTextComponent",
       dropzone:                 "Polaris::Dropzone::Component",
       empty_state:              "Polaris::EmptyState::Component",
