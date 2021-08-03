@@ -3,4 +3,6 @@
 
 require_relative "config/application"
 
-Rails.application.load_tasks
+# TODO: Check later, fails with error:
+# LoadError: cannot load such file -- /Users/kirillplatonov/Code/polaris_view_components/demo/lib/lookbook.rb
+# Rails.application.load_tasks
