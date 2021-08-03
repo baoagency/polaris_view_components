@@ -42,7 +42,7 @@ module Polaris
       text_container:           "Polaris::TextContainerComponent",
       text_field:               "Polaris::TextField::Component",
       text_style:               "Polaris::TextStyleComponent",
-      thumbnail:                "Polaris::Thumbnail::Component",
+      thumbnail:                "Polaris::ThumbnailComponent",
       visually_hidden:          "Polaris::VisuallyHiddenComponent",
     }.freeze
 
