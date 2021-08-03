@@ -1,0 +1,60 @@
+require "test_helper"
+
+class EmptyStateComponentTest < Minitest::Test
+  include Polaris::ComponentTestHelpers
+
+  def test_default_empty_state
+    render_inline(Polaris::EmptyStateComponent.new(
+      heading: "Title",
+      image: "/image.png",
+    )) do |state|
+      state.primary_action { "Primary Action" }
+      state.secondary_action { "Secondary Action" }
+      "Content"
+    end
+
+    assert_selector ".Polaris-EmptyState > .Polaris-EmptyState__Section" do
+      assert_selector ".Polaris-EmptyState__DetailsContainer > .Polaris-EmptyState__Details" do
+        assert_selector ".Polaris-TextContainer" do
+          assert_selector ".Polaris-DisplayText", text: "Title"
+          assert_selector ".Polaris-EmptyState__Content", text: "Content"
+        end
+        assert_selector ".Polaris-EmptyState__Actions > .Polaris-Stack" do
+          assert_selector ".Polaris-Stack__Item", count: 2
+          assert_selector ".Polaris-Stack__Item:nth-child(1)" do
+            assert_selector ".Polaris-Button--primary", text: "Primary Action"
+          end
+          assert_selector ".Polaris-Stack__Item:nth-child(2)" do
+            assert_selector ".Polaris-Button", text: "Secondary Action"
+          end
+        end
+      end
+      assert_selector ".Polaris-EmptyState__ImageContainer" do
+        assert_selector "img.Polaris-EmptyState__Image[src='/image.png']"
+      end
+    end
+  end
+
+  def test_empty_state_footer
+    render_inline(Polaris::EmptyStateComponent.new(
+      heading: "Title",
+      image: "/image.png",
+    )) do |state|
+      state.footer { "Footer Content" }
+    end
+
+    assert_selector ".Polaris-EmptyState__Details > .Polaris-EmptyState__FooterContent" do
+      assert_selector ".Polaris-TextContainer", text: "Footer Content"
+    end
+  end
+
+  def test_full_width_empty_state
+    render_inline(Polaris::EmptyStateComponent.new(
+      heading: "Title",
+      image: "/image.png",
+      full_width: true,
+    ))
+
+    assert_selector ".Polaris-EmptyState--fullWidth"
+  end
+end
