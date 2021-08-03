@@ -1,0 +1,46 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <div class="<%= container_classes %>">
+    <% if dismiss_button %>
+      <div class="Polaris-CalloutCard__Dismiss">
+        <%= dismiss_button %>
+      </div>
+    <% end %>
+
+    <div class="Polaris-Card__Section">
+      <div class="Polaris-CalloutCard">
+        <div class="Polaris-CalloutCard__Content">
+          <% if @title.present? %>
+            <div class="Polaris-CalloutCard__Title">
+              <%= polaris_heading { @title } %>
+            </div>
+          <% end %>
+          <% if content.present? %>
+            <div class="Polaris-TextContainer">
+              <%= content %>
+            </div>
+          <% end %>
+          <% if primary_action.present? || secondary_action.present? %>
+            <div class="Polaris-CalloutCard__Buttons">
+              <% if primary_action.present? && secondary_action.present? %>
+                <%= polaris_button_group do |group| %>
+                  <% group.item do %>
+                    <%= primary_action %>
+                  <% end %>
+                  <% group.item do %>
+                    <%= secondary_action %>
+                  <% end %>
+                <% end %>
+              <% elsif primary_action.present? %>
+                <%= primary_action %>
+              <% else %>
+                <%= secondary_action %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <img class="<%= image_classes %>" src="<%= @illustration %>" alt="">
+      </div>
+    </div>
+  </div>
+<% end %>
