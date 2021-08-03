@@ -40,10 +40,10 @@ module Demo
     config.view_component.preview_controller = "PreviewController"
 
     # Lookbook
-    if Rails.env.production?
-      config.lookbook.listen_paths << Rails.root.join('./polaris_view_components/app/components')
-    else
+    if Rails.env.development?
       config.lookbook.listen_paths << Rails.root.join('../app/components')
+    else
+      config.lookbook.auto_refresh = false
     end
 
     # Engine overrides
