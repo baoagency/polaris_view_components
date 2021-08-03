@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kirillplatonov/lookbook.git
-  revision: 5c8b28848268479fc06b5f3d9da972ebff61c09f
+  revision: 61c0bf87145916ddac60f1620d79e1986e46b97f
   branch: main
   specs:
     lookbook (0.1.2)
