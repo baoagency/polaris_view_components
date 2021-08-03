@@ -28,7 +28,7 @@
 
   <% if @error.present? %>
     <div class="Polaris-ChoiceList__ChoiceError">
-      <%= render Polaris::InlineError::Component.new(error: @error) %>
+      <%= polaris_inline_error { @error } %>
     </div>
   <% end %>
 <% end %>

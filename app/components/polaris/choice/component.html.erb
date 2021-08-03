@@ -19,7 +19,7 @@
 <% @error_markup = capture do %>
   <% if @error.present? %>
     <div class="Polaris-Choice__Error">
-      <%= render Polaris::InlineError::Component.new(error: @error) %>
+      <%= polaris_inline_error { @error } %>
     </div>
   <% end %>
 <% end %>

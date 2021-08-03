@@ -13,7 +13,7 @@
 
   <% if error? %>
     <div class="Polaris-Labelled__Error">
-      <%= render Polaris::InlineError::Component.new(error: @error) %>
+      <%= polaris_inline_error { @error } %>
     </div>
   <% end %>
 

@@ -33,10 +33,7 @@
     <% end %>
 
     <div style="margin-top: 4px;">
-      <%= render Polaris::InlineError::Component.new(
-        error: "Enter 3 or more characters for product type is equal to",
-        id: "thisIsTheId"
-      ) %>
+      <%= polaris_inline_error { "Enter 3 or more characters for product type is equal to" } %>
     </div>
   <% end %>
   <% stack.item do %>
