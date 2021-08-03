@@ -1,0 +1,19 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <% if @icon.present? %>
+    <span class="Polaris-ExceptionList__Icon">
+      <%= polaris_icon(name: @icon) %>
+    </span>
+  <% end %>
+
+  <% if @title.present? %>
+    <span class="Polaris-ExceptionList__Title">
+      <%= @title %>
+    </span>
+  <% end %>
+
+  <% if content.present? %>
+    <span class="Polaris-ExceptionList__Description">
+      <%= content %>
+    </span>
+  <% end %>
+<% end %>

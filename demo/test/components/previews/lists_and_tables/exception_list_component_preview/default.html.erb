@@ -1,0 +1,13 @@
+<%= polaris_exception_list do |list| %>
+  <% list.item(icon: "NoteMinor", title: "Note") do %>
+    This customer is awesome. Make sure to treat them right!
+  <% end %>
+
+  <% list.item(icon: "CircleAlertMajor", title: "Warning", status: :warning) do %>
+    This customer is awesome. Make sure to treat them right!
+  <% end %>
+
+  <% list.item(icon: "DiamondAlertMajor", title: "Critical", status: :critical) do %>
+    This customer is awesome. Make sure to treat them right!
+  <% end %>
+<% end %>

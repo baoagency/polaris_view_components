@@ -17,6 +17,7 @@ module Polaris
       display_text:             "Polaris::DisplayTextComponent",
       dropzone:                 "Polaris::Dropzone::Component",
       empty_state:              "Polaris::EmptyState::Component",
+      exception_list:           "Polaris::ExceptionListComponent",
       footer_help:              "Polaris::FooterHelpComponent",
       form_layout:              "Polaris::FormLayoutComponent",
       heading:                  "Polaris::HeadingComponent",
