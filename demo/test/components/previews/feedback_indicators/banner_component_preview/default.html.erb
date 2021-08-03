@@ -1,3 +1,4 @@
-<%= polaris_banner(title: "Order archived", dismissible: true) do %>
+<%= polaris_banner(title: "Order archived") do |banner| %>
+  <% banner.dismiss_button(url: "#") %>
   <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
 <% end %>

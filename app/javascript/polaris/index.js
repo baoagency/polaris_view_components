@@ -1,5 +1,5 @@
-import Dismissible from './dismissible'
+// import Dismissible from './dismissible'
 
 export function registerPolarisControllers(application) {
-  application.register('dismissible', Dismissible)
+  // application.register('dismissible', Dismissible)
 }

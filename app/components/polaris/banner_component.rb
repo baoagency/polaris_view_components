@@ -29,27 +29,26 @@ module Polaris
 
     renders_one :action, "PrimaryAction"
     renders_one :secondary_action, "SecondaryAction"
+    renders_one :dismiss_button, -> (**system_arguments) do
+      render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
+        button.icon(name: "CancelSmallMinor")
+      end
+    end
 
     def initialize(
       status: STATUS_DEFAULT,
       within: WITHIN_DEFAULT,
       icon: nil,
       title: nil,
-      dismissible: false,
       **system_arguments
     )
       @status = status
       @icon = icon || default_icon(status)
       @title = title
-      @dismissible = dismissible
 
       @system_arguments = system_arguments
       @system_arguments[:tabindex] = 0
       @system_arguments[:role] = "status"
-      if dismissible
-        @system_arguments[:data] ||= {}
-        @system_arguments[:data][:controller] ||= "dismissible"
-      end
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Banner",

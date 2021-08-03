@@ -1,8 +1,9 @@
 <%= polaris_banner(
   title: "USPS has updated their rates",
   status: :info,
-  dismissible: true,
 ) do |banner| %>
+  <% banner.dismiss_button(url: "#") %>
+
   <p>Make sure you know how these changes affect your store.</p>
 
   <% banner.action(url: '#') { "Update rates" } %>
