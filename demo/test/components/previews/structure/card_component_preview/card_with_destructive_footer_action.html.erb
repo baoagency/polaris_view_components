@@ -1,7 +1,6 @@
-<%= polaris_card(
-      title: "Shipment 1234",
-      primary_footer_action: { content: "Add tracking number", url: "https://bao.agency" },
-      secondary_footer_actions: [{ content: "Cancel shipment", destructive: true, url: "https://bao.agency" }]
-    ) do %>
+<%= polaris_card(title: "Shipment 1234") do |card| %>
   <p>View a summary of your online store’s performance.</p>
+
+  <% card.primary_footer_action(url: "#") { "Add tracking number" } %>
+  <% card.secondary_footer_action(url: "#", destructive: true) { "Cancel shipment" } %>
 <% end %>

@@ -1,5 +1,5 @@
 class Polaris::Card::SectionComponent < Polaris::NewComponent
-  renders_many :subsections, Polaris::Card::SubsectionComponent
+  renders_many :subsections, "Polaris::Card::SubsectionComponent"
 
   def initialize(
     title: "",
@@ -21,5 +21,20 @@ class Polaris::Card::SectionComponent < Polaris::NewComponent
 
     @title = title
     @actions = actions.map { |a| a.merge(plain: true) }
+  end
+
+  class Polaris::Card::SubsectionComponent < Polaris::NewComponent
+    def initialize(**system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :div
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
+        "Polaris-Card__Subsection",
+      )
+    end
+
+    def call
+      render(Polaris::BaseComponent.new(**@system_arguments)) { content }
+    end
   end
 end

@@ -1,7 +1,4 @@
-<%= polaris_card(
-      primary_footer_action: { content: "Export report", url: "https://bao.agency" },
-      secondary_footer_actions: [{ content: "Dismiss", url: "https://bao.agency" }]
-    ) do |card| %>
+<%= polaris_card do |card| %>
   <% card.header(title: "Sales", actions: [{ content: "Total sales", url: "https://bao.agency" }]) %>
 
   <%= card.section do %>
@@ -31,4 +28,7 @@
       or higher.
     <% end %>
   <% end %>
+
+  <% card.primary_footer_action(url: "#") { "Export report" } %>
+  <% card.secondary_footer_action(url: "#") { "Dismiss" } %>
 <% end %>

@@ -17,27 +17,31 @@
     <% end %>
   <% end %>
 
-  <% if footer? %>
-    <div class="Polaris-Card__Footer<% if @footer_action_alignment == 'left' %> Polaris-Card__LeftJustified<% end %>">
+  <% if render_footer? %>
+    <div class="<%= footer_classes %>">
       <%= polaris_button_group do |group| %>
-        <% if @footer_action_alignment == 'right' %>
-          <% if @secondary_footer_actions.size == 1 %>
+        <% if @footer_action_alignment == :right %>
+          <% secondary_footer_actions.each do |secondary_footer_action| %>
             <% group.item do %>
-              <%= render_complex_action_button(@secondary_footer_actions.first) %>
+              <%= secondary_footer_action %>
             <% end %>
           <% end %>
 
-          <% group.item do %>
-            <%= render_primary_complex_action_button(@primary_footer_action) %>
+          <% if primary_footer_action %>
+            <% group.item do %>
+              <%= primary_footer_action %>
+            <% end %>
           <% end %>
         <% else %>
-          <% group.item do %>
-            <%= render_primary_complex_action_button(@primary_footer_action) %>
+          <% if primary_footer_action %>
+            <% group.item do %>
+              <%= primary_footer_action %>
+            <% end %>
           <% end %>
 
-          <% if @secondary_footer_actions.size == 1 %>
+          <% secondary_footer_actions.each do |secondary_footer_action| %>
             <% group.item do %>
-              <%= render_complex_action_button(@secondary_footer_actions.first) %>
+              <%= secondary_footer_action %>
             <% end %>
           <% end %>
         <% end %>
