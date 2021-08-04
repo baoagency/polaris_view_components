@@ -1,0 +1,12 @@
+<%= polaris_choice_list(title: "While the customer is checking out", name: :question) do |choice| %>
+  <% choice.checkbox(
+    label: "Use the shipping address as the billing address by default",
+    value: "shipping",
+    help_text: "Reduces the number of fields required to check out. The billing address can still be edited.",
+  ) %>
+  <% choice.checkbox(
+    label: "Require a confirmation step",
+    value: "confirmation",
+    help_text: "Customers must review their order details before purchasing.",
+  ) %>
+<% end %>

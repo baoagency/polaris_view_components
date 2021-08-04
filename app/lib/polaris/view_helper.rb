@@ -11,7 +11,7 @@ module Polaris
       caption:                  "Polaris::CaptionComponent",
       card:                     "Polaris::CardComponent",
       checkbox:                 "Polaris::CheckboxComponent",
-      choice_list:              "Polaris::ChoiceList::Component",
+      choice_list:              "Polaris::ChoiceListComponent",
       description_list:         "Polaris::DescriptionListComponent",
       display_text:             "Polaris::DisplayTextComponent",
       dropzone:                 "Polaris::Dropzone::Component",

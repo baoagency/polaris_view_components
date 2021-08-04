@@ -18,7 +18,7 @@ module Polaris
       disabled: false,
       help_text: nil,
       error: nil,
-      checked_value: "1",
+      value: "1",
       unchecked_value: "0",
       wrapper_arguments: {},
       input_options: {},
@@ -28,7 +28,7 @@ module Polaris
       @attribute = attribute
       @name = name
       @checked = checked
-      @checked_value = checked_value
+      @value = value
       @unchecked_value = unchecked_value
 
       @system_arguments = system_arguments

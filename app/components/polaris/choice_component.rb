@@ -8,11 +8,13 @@ module Polaris
       help_text:,
       disabled:,
       error: nil,
+      children_content: nil,
       **system_arguments
     )
       @label = label
       @help_text = help_text
       @error = error
+      @children_content = children_content
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = "label"

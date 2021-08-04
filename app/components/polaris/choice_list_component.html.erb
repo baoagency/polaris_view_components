@@ -1,0 +1,19 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <legend class="Polaris-ChoiceList__Title">
+    <%= @title %>
+  </legend>
+
+  <ul class="Polaris-ChoiceList__Choices">
+    <% items.each do |item| %>
+      <li>
+        <%= item %>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if @error.present? %>
+    <div class="Polaris-ChoiceList__ChoiceError">
+      <%= polaris_inline_error { @error } %>
+    </div>
+  <% end %>
+<% end %>

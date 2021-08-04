@@ -46,5 +46,10 @@ module Polaris
         "Polaris-RadioButton__Input",
       )
     end
+
+    def wrapper_arguments
+      @wrapper_arguments[:children_content] = content
+      @wrapper_arguments
+    end
   end
 end
