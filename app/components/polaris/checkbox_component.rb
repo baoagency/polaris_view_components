@@ -41,11 +41,9 @@ module Polaris
       )
 
       @wrapper_arguments = {
-        form: form,
-        attribute: attribute,
-        name: name,
         label: label,
         label_hidden: label_hidden,
+        disabled: disabled,
         help_text: help_text,
         error: error,
       }.merge(wrapper_arguments)

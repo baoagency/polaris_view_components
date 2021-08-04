@@ -31,12 +31,10 @@ module Polaris
       )
 
       @wrapper_arguments = {
-        form: form,
-        attribute: attribute,
-        name: name,
         label: label,
         label_hidden: label_hidden,
         help_text: help_text,
+        disabled: disabled,
       }.merge(wrapper_arguments)
 
       @input_options = input_options
