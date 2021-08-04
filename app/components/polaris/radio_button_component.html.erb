@@ -1,0 +1,11 @@
+<%= render Polaris::Choice::Component.new(**@wrapper_arguments) do %>
+  <%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+    <% if @form.present? && @attribute.present? %>
+      <%= @form.radio_button(@attribute, @value, @input_options) %>
+    <% else %>
+      <%= radio_button_tag(@name, @value, @checked, @input_options) %>
+    <% end %>
+
+    <span class="Polaris-RadioButton__Backdrop"></span>
+  <% end %>
+<% end %>
