@@ -6,7 +6,7 @@
   <% end %>
 
   <ul class="Polaris-ChoiceList__Choices">
-    <% choice_component = @allow_multiple ? Polaris::CheckBox::Component : Polaris::RadioButton::Component %>
+    <% choice_component = @allow_multiple ? Polaris::CheckboxComponent : Polaris::RadioButton::Component %>
 
     <% @choices.each do |choice| %>
       <li>
