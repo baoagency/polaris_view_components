@@ -11,7 +11,6 @@ module Polaris
       checked: false,
       disabled: false,
       help_text: nil,
-      error: nil,
       value: nil,
       wrapper_arguments: {},
       input_options: {},
@@ -29,7 +28,6 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-RadioButton",
         "Polaris-RadioButton--labelHidden": label_hidden,
-        "Polaris-RadioButton--error": error.present?,
       )
 
       @wrapper_arguments = {
@@ -39,7 +37,6 @@ module Polaris
         label: label,
         label_hidden: label_hidden,
         help_text: help_text,
-        error: error,
       }.merge(wrapper_arguments)
 
       @input_options = input_options

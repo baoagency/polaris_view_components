@@ -22,15 +22,4 @@ class RadioButtonComponentTest < Minitest::Test
       assert_selector ".Polaris-Choice__HelpText", text: "Help Text"
     end
   end
-
-  def test_checkbox_with_error
-    render_inline(Polaris::RadioButtonComponent.new(label: "Label", error: "Error Text"))
-
-    assert_selector "div > label.Polaris-Choice" do
-      assert_selector ".Polaris-Choice__Control > .Polaris-RadioButton--error"
-    end
-    assert_selector "div > .Polaris-Choice__Descriptions" do
-      assert_selector ".Polaris-Choice__Error > .Polaris-InlineError", text: "Error Text"
-    end
-  end
 end

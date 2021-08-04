@@ -4,7 +4,4 @@ class Forms::RadioButtonComponentPreview < ViewComponent::Preview
 
   def with_help_text
   end
-
-  def with_error
-  end
 end
