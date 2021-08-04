@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/kirillplatonov/lookbook.git
-  revision: 61c0bf87145916ddac60f1620d79e1986e46b97f
-  branch: main
+  revision: b42931f20bc58709397821f1822e312afbb58637
   specs:
     lookbook (0.1.2)
       actioncable
