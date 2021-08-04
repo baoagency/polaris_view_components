@@ -1,4 +1,4 @@
-class Polaris::ChoiceList::ComponentPreview < ViewComponent::Preview
+class Forms::ChoiceListComponentPreview < ViewComponent::Preview
   def single_choice
   end
 

@@ -1,7 +1,7 @@
 <%= render Polaris::ChoiceComponent.new(**@wrapper_arguments) do %>
   <%= render Polaris::BaseComponent.new(**@system_arguments) do %>
     <% if @form.present? && @attribute.present? %>
-      <%= @form.check_box(@attribute, @input_options, @checked_value, @unchecked_value) %>
+      <%= @form.check_box(@attribute, @input_options, @value, @unchecked_value) %>
     <% else %>
       <%= check_box_tag(@name, @value, @checked, @input_options) %>
     <% end %>

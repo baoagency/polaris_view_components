@@ -1,0 +1,7 @@
+<%= polaris_choice_list(title: "Discount minimum requirements", name: :condition) do |choice| %>
+  <% choice.radio_button(label: "None", value: "none") %>
+  <% choice.radio_button(label: "Minimum purchase", value: "minimum_purchase") %>
+  <% choice.radio_button(label: "Minimum quantity", value: "minimum_quantity") do %>
+    <%= polaris_text_field(name: :minimum_quantity, label_hidden: true) %>
+  <% end %>
+<% end %>
