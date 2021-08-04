@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/kirillplatonov/lookbook.git
-  revision: 392baf991e67aa6c8e58110bd58155e555e34e76
-  branch: fix-browser-controller
+  revision: 61c0bf87145916ddac60f1620d79e1986e46b97f
+  branch: main
   specs:
     lookbook (0.1.2)
       actioncable
@@ -82,7 +82,7 @@ GEM
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     bindex (0.8.1)
-    bootsnap (1.7.6)
+    bootsnap (1.7.7)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -92,7 +92,7 @@ GEM
     erubi (1.10.0)
     ffi (1.15.3)
     foreman (0.87.2)
-    globalid (0.5.1)
+    globalid (0.5.2)
       activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -109,12 +109,10 @@ GEM
     mini_mime (1.1.0)
     minitest (5.14.4)
     msgpack (1.4.2)
-    nio4r (2.5.7)
-    nokogiri (1.11.7-arm64-darwin)
+    nio4r (2.5.8)
+    nokogiri (1.12.1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-linux)
+    nokogiri (1.12.1-x86_64-linux)
       racc (~> 1.4)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -204,7 +202,6 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
-  x86_64-darwin-19
   x86_64-linux
 
 DEPENDENCIES
@@ -226,4 +223,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.22
+   2.2.25

@@ -40,7 +40,11 @@ module Demo
     config.view_component.preview_controller = "PreviewController"
 
     # Lookbook
-    config.lookbook.listen_paths << Rails.root.join('../app/components')
+    if Rails.env.development?
+      config.lookbook.listen_paths << Rails.root.join('../app/components')
+    else
+      config.lookbook.auto_refresh = false
+    end
 
     # Engine overrides
     overrides = "#{Rails.root}/app/overrides"
