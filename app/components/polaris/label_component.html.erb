@@ -1,0 +1,23 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <% if @form.present? && @attribute.present? %>
+    <% if @label.present? %>
+      <%= @form.label(@attribute, @label, @label_options) %>
+    <% elsif content.present? %>
+      <%= @form.label(@attribute, @label_options) do %>
+        <%= content %>
+      <% end %>
+    <% else %>
+      <%= @form.label(@attribute, @label_options) %>
+    <% end %>
+  <% else %>
+    <% if @label.present? %>
+      <%= label_tag(@name, @label, @label_options) %>
+    <% elsif content.present? %>
+      <%= label_tag(@name, @label_options) do %>
+        <%= content %>
+      <% end %>
+    <% else %>
+      <%= label_tag(@name, @label_options) %>
+    <% end %>
+  <% end %>
+<% end %>

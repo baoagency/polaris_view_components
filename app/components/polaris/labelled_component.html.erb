@@ -1,17 +1,17 @@
-<%= content_tag('div', content_tag_options) do %>
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
   <div class="Polaris-Labelled__LabelWrapper">
-    <%= render Polaris::Label::Component.new(**label_attrs) %>
+    <%= render Polaris::LabelComponent.new(**@label_arguments) %>
 
-    <% if @action.present? %>
+    <% if label_action.present? %>
       <div class="Polaris-Labelled__Action">
-        <%= render_plain_action(@action) %>
+        <%= label_action %>
       </div>
     <% end %>
   </div>
 
   <%= content %>
 
-  <% if error? %>
+  <% if renders_error? %>
     <div class="Polaris-Labelled__Error">
       <%= polaris_inline_error { @error } %>
     </div>

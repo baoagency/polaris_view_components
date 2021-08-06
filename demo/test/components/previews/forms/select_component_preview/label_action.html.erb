@@ -1,0 +1,10 @@
+<%= polaris_select(
+  name: :date_range,
+  label: "Date range",
+  label_action: { url: "#", content: "Documentation" },
+  options: {
+    "Today" => "today",
+    "Yesterday" => "yesterday",
+    "Last 7 days" => "lastWeek",
+  },
+) %>

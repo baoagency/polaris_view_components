@@ -9,9 +9,9 @@ const context = require.context("controllers", true, /_controller\.js$/)
 application.load(definitionsFromContext(context))
 
 // For local development
-// import { registerPolarisControllers } from "../../../../app/javascript/polaris"
-// registerPolarisControllers(application)
+import { registerPolarisControllers } from "../../../../app/assets/javascripts/polaris"
+registerPolarisControllers(application)
 
-// To test before release
-// import { registerPolarisControllers } from "polaris-view-components"
+// Test before release
+// import "polaris-view-components"
 // registerPolarisControllers(application)

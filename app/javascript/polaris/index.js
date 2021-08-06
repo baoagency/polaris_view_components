@@ -1,5 +1,7 @@
-// import Dismissible from './dismissible'
+import Select from './select_controller'
+
+export { Select }
 
 export function registerPolarisControllers(application) {
-  // application.register('dismissible', Dismissible)
+  application.register('polaris-select', Select)
 }
