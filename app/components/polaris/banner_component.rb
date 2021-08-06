@@ -27,7 +27,9 @@ module Polaris
       critical: :critical,
     }
 
-    renders_one :action, "PrimaryAction"
+    renders_one :action, -> (**system_arguments) do
+      Polaris::ButtonComponent.new(classes: "Polaris-Banner__Button", **system_arguments)
+    end
     renders_one :secondary_action, "SecondaryAction"
     renders_one :dismiss_button, -> (**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
@@ -67,18 +69,6 @@ module Polaris
       when :critical then "DiamondAlertMajor"
       else
         "CircleInformationMajor"
-      end
-    end
-
-    class PrimaryAction < Polaris::NewComponent
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-      end
-
-      def call
-        render(BaseButton.new(classes: "Polaris-Banner__Button", **@system_arguments)) do
-          content
-        end
       end
     end
 
