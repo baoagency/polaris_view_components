@@ -11,7 +11,9 @@ module Polaris
       label: nil,
       label_hidden: false,
       label_inline: false,
+      label_action: nil,
       disabled: false,
+      required: false,
       help_text: nil,
       error: false,
       wrapper_arguments: {},
@@ -37,6 +39,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Select",
         "Polaris-Select--disabled": disabled,
+        "Polaris-Select--error": error,
       )
 
       @wrapper_arguments = {
@@ -45,6 +48,8 @@ module Polaris
         name: name,
         label: label,
         label_hidden: hides_label?,
+        label_action: label_action,
+        required: required,
         help_text: help_text,
         error: error,
       }.merge(wrapper_arguments)
@@ -53,6 +58,7 @@ module Polaris
 
       @input_options = input_options
       @input_options[:class] = class_names(@input_options[:classes], "Polaris-Select__Input")
+      @input_options[:disabled] = disabled
       @input_options[:data] ||= {}
       prepend_option(@input_options[:data], :action, "polaris-select#update")
     end

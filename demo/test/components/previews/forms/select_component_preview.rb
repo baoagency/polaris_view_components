@@ -14,9 +14,6 @@ class Forms::SelectComponentPreview < ViewComponent::Preview
   def disabled
   end
 
-  def with_prefix
-  end
-
   def with_help_text
   end
 

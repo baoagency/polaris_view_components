@@ -7,6 +7,7 @@ module Polaris
       attribute: nil,
       name: nil,
       label: nil,
+      required: false,
       **system_arguments
     )
       @form = form
@@ -21,7 +22,11 @@ module Polaris
         "Polaris-Label",
       )
 
-      @label_options = { class: "Polaris-Label__Text" }
+      @label_options = {}
+      @label_options[:class] = class_names(
+        "Polaris-Label__Text",
+        "Polaris-Label__RequiredIndicator": required,
+      )
     end
 
     def renders?

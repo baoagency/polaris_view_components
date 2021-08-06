@@ -2,9 +2,9 @@
   <div class="Polaris-Labelled__LabelWrapper">
     <%= render Polaris::LabelComponent.new(**@label_arguments) %>
 
-    <% if false %>
+    <% if label_action.present? %>
       <div class="Polaris-Labelled__Action">
-        <%# TODO: Label action %>
+        <%= label_action %>
       </div>
     <% end %>
   </div>
