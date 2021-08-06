@@ -1,0 +1,13 @@
+<%= polaris_select(
+  name: :sort,
+  label: "Sort by",
+  label_inline: true,
+  options: {
+    "Newest update" => "newestUpdate",
+    "Oldest update" => "oldestUpdate",
+    "Most spent" => "mostSpent",
+    "Most orders" => "mostOrders",
+    "Last name A–Z" => "lastNameAlpha",
+    "Last name Z–A" => "lastNameReverseAlpha",
+  },
+) %>

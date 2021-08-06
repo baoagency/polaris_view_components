@@ -11,6 +11,11 @@
       aria-hidden="true"
       <% if @disabled %>aria-disabled="true"<% end %>
     >
+      <% if @label_inline %>
+        <span class="Polaris-Select__InlineLabel">
+          <%= @label %>
+        </span>
+      <% end %>
       <span
         class="Polaris-Select__SelectedOption"
         data-polaris-select-target="selectedOption"

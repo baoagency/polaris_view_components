@@ -24,6 +24,7 @@ module Polaris
       @name = name
       @options = options
       @selected = selected
+      @label = label
       @label_hidden = label_hidden
       @label_inline = label_inline
       @disabled = disabled
@@ -31,7 +32,7 @@ module Polaris
       @system_arguments = system_arguments
       @system_arguments[:tag] = "div"
       @system_arguments[:data] ||= {}
-      @system_arguments[:data][:controller] = "polaris-select"
+      prepend_option(@system_arguments[:data], :controller, "polaris-select")
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Select",
@@ -52,6 +53,8 @@ module Polaris
 
       @input_options = input_options
       @input_options[:class] = class_names(@input_options[:classes], "Polaris-Select__Input")
+      @input_options[:data] ||= {}
+      prepend_option(@input_options[:data], :action, "polaris-select#update")
     end
 
     def hides_label?
