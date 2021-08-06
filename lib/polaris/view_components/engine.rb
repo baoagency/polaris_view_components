@@ -8,7 +8,7 @@ module Polaris
 
       config.autoload_paths = %W[
         #{root}/app/components
-        #{root}/app/lib
+        #{root}/app/helpers
       ]
 
       initializer "polaris_view_components.assets" do |app|
