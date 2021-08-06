@@ -5,12 +5,12 @@
   value: "10.6"
 ) do |component| %>
   <% component.with(:connected_left) do %>
-    <%= render Polaris::Select::Component.new(
-      name: :attribute,
+    <%= polaris_select(
+      name: :weight_unit,
       label: "Weight unit",
       label_hidden: true,
-      value: "kg",
-      options: [{ label: "kg", value: "kg" }, { label: "lb", value: "lb" }]
+      options: { "kd" => "kg", "lb" => "lb" },
+      selected: "kg",
     ) %>
   <% end %>
   <% component.with(:connected_right) do %>

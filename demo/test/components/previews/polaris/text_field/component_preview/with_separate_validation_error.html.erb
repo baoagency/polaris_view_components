@@ -3,21 +3,19 @@
     <%= polaris_form_layout do |form_layout| %>
       <% form_layout.group(condensed: true) do |group| %>
         <% group.item do %>
-          <%= render Polaris::Select::Component.new(
+          <%= polaris_select(
             attribute: :attribute,
             label: "Collection rule type",
             label_hidden: true,
-            value: "product_type",
-            options: [{ label: "Product type", value: "product_type" }]
+            options: { "Product type" => "product_type" },
           ) %>
         <% end %>
         <% group.item do %>
-          <%= render Polaris::Select::Component.new(
+          <%= polaris_select(
             attribute: :attribute,
             label: "Collection rule condition",
             label_hidden: true,
-            value: "is_equal_to",
-            options: [{ label: "Is equal to", value: "is_equal_to" }]
+            options: { "Is equal to" => "is_equal_to" },
           ) %>
         <% end %>
         <% group.item do %>
