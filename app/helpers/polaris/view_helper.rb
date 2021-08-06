@@ -23,8 +23,6 @@ module Polaris
       icon:                     "Polaris::IconComponent",
       image:                    "Polaris::Image::Component",
       inline_error:             "Polaris::InlineErrorComponent",
-      label:                    "Polaris::Label::Component",
-      labelled:                 "Polaris::Labelled::Component",
       layout:                   "Polaris::LayoutComponent",
       link:                     "Polaris::LinkComponent",
       list:                     "Polaris::ListComponent",
