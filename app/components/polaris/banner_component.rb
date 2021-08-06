@@ -76,10 +76,8 @@ module Polaris
       end
 
       def call
-        tag.div(class: "Polaris-Banner__PrimaryAction") do
-          render(BaseButton.new(classes: "Polaris-Banner__Button", **@system_arguments)) do
-            content
-          end
+        render(BaseButton.new(classes: "Polaris-Banner__Button", **@system_arguments)) do
+          content
         end
       end
     end
