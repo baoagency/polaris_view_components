@@ -23,7 +23,7 @@ Render Polaris ViewComponents:
 In `Gemfile`, add:
 
 ```ruby
-gem 'polaris_view_components', github: 'baoagency/polaris_view_components'
+gem 'polaris_view_components', github: 'baoagency/polaris_view_components', branch: 'main'
 ```
 
 Setup Polaris styles in your layouts `<head>` tag:
