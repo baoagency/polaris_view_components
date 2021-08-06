@@ -1,2 +1,0 @@
-import{Controller as t}from"stimulus";function e(t,o){return(e=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,o)}var o=function(t){var o,r;function n(){return t.apply(this,arguments)||this}r=t,(o=n).prototype=Object.create(r.prototype),o.prototype.constructor=o,e(o,r);var i=n.prototype;return i.connect=function(){console.log("dismissible loaded")},i.dismiss=function(t){t.preventDefault(),this.element.remove()},n}(t);function r(t){t.register("dismissible",o)}export{r as registerPolarisControllers};
-//# sourceMappingURL=polaris.m.js.map
