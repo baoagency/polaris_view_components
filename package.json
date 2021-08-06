@@ -2,11 +2,8 @@
   "name": "polaris-view-components",
   "version": "0.1.0",
   "description": "ViewComponents for Polaris Design System",
-  "source": "app/javascript/polaris/index.js",
-  "main": "package/polaris.js",
-  "umd:main": "package/polaris.umd.js",
-  "module": "package/polaris.m.js",
-  "esmodule": "package/polaris.modern.js",
+  "main": "app/assets/javascripts/polaris.js",
+  "module": "app/javascript/polaris/index.js",
   "repository": "git@github.com:baoagency/polaris_view_components.git",
   "author": "By Association Only",
   "contributors": [
@@ -14,17 +11,24 @@
     "Kirill Platonov <mail@kirillplatonov.com>"
   ],
   "files": [
-    "app/javascript/**/*.js"
+    "app/javascript/polaris/*.js",
+    "src/*.js"
   ],
   "license": "MIT",
   "peerDependencies": {
     "stimulus": "^2.0.0"
   },
   "scripts": {
-    "build": "microbundle"
+    "build": "rollup --config rollup.config.js",
+    "dev": "yarn build --watch"
   },
   "devDependencies": {
-    "microbundle": "^0.13.3"
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "rollup": "^2.56.0",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
     "stimulus": "^2.0.0"
