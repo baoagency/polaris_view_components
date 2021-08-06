@@ -1,0 +1,14 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <progress
+    class="Polaris-ProgressBar__Progress"
+    value="<%= @progress %>"
+    max="100"
+  ></progress>
+
+  <div
+    class="Polaris-ProgressBar__Indicator<% if @animated %> Polaris-ProgressBar__Animated<% end %>"
+    style="width: <%= @progress %>%;"
+  >
+    <span class="Polaris-ProgressBar__Label"><%= @progress %>%</span>
+  </div>
+<% end %>

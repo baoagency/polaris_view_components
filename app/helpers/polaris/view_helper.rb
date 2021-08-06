@@ -28,7 +28,7 @@ module Polaris
       page:                     "Polaris::PageComponent",
       page_actions:             "Polaris::PageActionsComponent",
       pagination:               "Polaris::PaginationComponent",
-      progress_bar:             "Polaris::ProgressBar::Component",
+      progress_bar:             "Polaris::ProgressBarComponent",
       radio_button:             "Polaris::RadioButtonComponent",
       select:                   "Polaris::SelectComponent",
       shopify_navigation:       "Polaris::ShopifyNavigationComponent",
