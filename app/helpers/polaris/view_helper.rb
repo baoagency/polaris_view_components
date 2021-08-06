@@ -30,7 +30,7 @@ module Polaris
       pagination:               "Polaris::PaginationComponent",
       progress_bar:             "Polaris::ProgressBar::Component",
       radio_button:             "Polaris::RadioButtonComponent",
-      select:                   "Polaris::Select::Component",
+      select:                   "Polaris::SelectComponent",
       shopify_navigation:       "Polaris::ShopifyNavigationComponent",
       stack:                    "Polaris::StackComponent",
       subheading:               "Polaris::SubheadingComponent",

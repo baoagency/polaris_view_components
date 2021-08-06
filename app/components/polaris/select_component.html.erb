@@ -1,0 +1,31 @@
+<%= render Polaris::LabelledComponent.new(**@wrapper_arguments) do %>
+  <%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+    <% if @form.present? && @attribute.present? %>
+      <%= @form.select(@attribute, options_for_select(@options, @selected), @select_options, @input_options) %>
+    <% else %>
+      <%= select_tag(@name, options_for_select(@options, @selected), @input_options) %>
+    <% end %>
+
+    <div
+      class="Polaris-Select__Content"
+      aria-hidden="true"
+      <% if @disabled %>aria-disabled="true"<% end %>
+    >
+      <span
+        class="Polaris-Select__SelectedOption"
+        data-polaris-select-target="selectedOption"
+      >
+        <%= selected_option %>
+      </span>
+      <span class="Polaris-Select__Icon">
+        <%= polaris_icon do %>
+          <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+            <path d="M10 16l-4-4h8l-4 4zm0-12l4 4H6l4-4z"></path>
+          </svg>
+        <% end %>
+      </span>
+    </div>
+
+    <div class="Polaris-Select__Backdrop"></div>
+  <% end %>
+<% end %>
