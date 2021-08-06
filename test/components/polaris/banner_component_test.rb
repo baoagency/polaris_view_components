@@ -38,7 +38,7 @@ class BannerComponentTest < Minitest::Test
       assert_selector ".Polaris-Banner__Actions > .Polaris-ButtonGroup" do
         assert_selector ".Polaris-ButtonGroup__Item", count: 2
         assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)" do
-          assert_selector ".Polaris-Banner__PrimaryAction > .Polaris-Banner__PrimaryAction" do
+          assert_selector ".Polaris-Banner__PrimaryAction" do
             assert_selector "a.Polaris-Banner__Button[href='/primary']", text: "Primary Action"
           end
         end
