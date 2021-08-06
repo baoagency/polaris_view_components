@@ -21,7 +21,6 @@ module Polaris
       form_layout:              "Polaris::FormLayoutComponent",
       heading:                  "Polaris::HeadingComponent",
       icon:                     "Polaris::IconComponent",
-      image:                    "Polaris::Image::Component",
       inline_error:             "Polaris::InlineErrorComponent",
       layout:                   "Polaris::LayoutComponent",
       link:                     "Polaris::LinkComponent",
