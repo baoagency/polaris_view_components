@@ -16,4 +16,4 @@ git push --tags
 gem build polaris_view_components.gemspec
 gem push "polaris_view_components-$VERSION.gem"
 
-puts "Need to publish NPM package too?"
+echo "Need to publish NPM package too?"
