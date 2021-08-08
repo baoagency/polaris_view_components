@@ -1,6 +1,7 @@
 /**/.bundle/
 /doc/
 *.log
+*.gem
 /pkg/
 /tmp/
 .byebug_history

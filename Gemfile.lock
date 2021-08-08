@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     polaris_view_components (0.1.0)
-      rails (>= 5.0.0)
-      view_component (>= 2.0.0)
+      rails (>= 5.0.0, < 7.0.0)
+      view_component (~> 2.0, >= 2.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -163,9 +163,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  capybara (~> 3)
+  capybara
   foreman
-  minitest (~> 5.0)
+  minitest
   polaris_view_components!
   pry
   sqlite3
