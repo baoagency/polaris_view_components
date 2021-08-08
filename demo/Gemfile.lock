@@ -1,8 +1,8 @@
 GIT
-  remote: https://github.com/kirillplatonov/lookbook.git
-  revision: b42931f20bc58709397821f1822e312afbb58637
+  remote: https://github.com/allmarkedup/lookbook.git
+  revision: c8c66f92bd61d65e3f064ebaa0b80d8d071c42b9
   specs:
-    lookbook (0.1.2)
+    lookbook (0.1.4)
       actioncable
       listen
       rails
