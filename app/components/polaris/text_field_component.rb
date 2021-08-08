@@ -2,20 +2,11 @@
 
 module Polaris
   class TextFieldComponent < Polaris::NewComponent
-    OPTIONS = %i[
-      form attribute name value type placeholder prefix suffix show_character_count
-      maxlength minlength clear_button monospaced align label label_hidden label_action
-      disabled required help_text error wrapper_arguments input_options
-    ]
-
     TYPE_DEFAULT = :text
     TYPE_OPTIONS = %i[
-      text email password search tel url date
+      text number email password search tel url date
       datetime_local month time week currency
     ]
-
-    INPUT_DEFAULT = nil
-    INPUT_OPTIONS = [nil, :text_area]
 
     ALIGN_DEFAULT = :default
     ALIGN_MAPPINGS = {
@@ -37,12 +28,16 @@ module Polaris
       name: nil,
       value: nil,
       type: TYPE_DEFAULT,
-      input: INPUT_DEFAULT,
       placeholder: nil,
       maxlength: nil,
       minlength: nil,
+      step: 1,
+      min: 0,
+      max: 1_000_000,
+      rows: 2,
       prefix: nil,
       suffix: nil,
+      multiline: false,
       show_character_count: false,
       clear_button: false,
       monospaced: false,
@@ -63,12 +58,16 @@ module Polaris
       @name = name
       @value = value
       @type = fetch_or_fallback(TYPE_OPTIONS, type, TYPE_DEFAULT)
-      @input = fetch_or_fallback(INPUT_OPTIONS, input, INPUT_DEFAULT)
       @placeholder = placeholder
       @maxlength = maxlength
       @minlength = minlength
+      @step = step
+      @min = min
+      @max = max
+      @rows = rows
       @prefix = prefix
       @suffix = suffix
+      @multiline = multiline
       @show_character_count = show_character_count
       @clear_button = clear_button
       @monospaced = monospaced
@@ -113,6 +112,7 @@ module Polaris
           "Polaris-TextField--disabled": @disabled,
           "Polaris-TextField--error": @error,
           "Polaris-TextField--hasValue": @value.present?,
+          "Polaris-TextField--multiline": @multiline,
         )
         prepend_option(opts[:data], :controller, "polaris-text-field")
         if @show_character_count
@@ -123,7 +123,7 @@ module Polaris
     end
 
     def input_options
-      {
+      default_options = {
         value: @value,
         disabled: @disabled,
         required: @required,
@@ -131,7 +131,19 @@ module Polaris
         maxlength: @maxlength,
         minlength: @minlength,
         data: { polaris_text_field_target: "input" },
-      }.deep_merge(@input_options).tap do |opts|
+      }
+      if @type == :number
+        default_options.merge!({
+          step: @step,
+          min: @min,
+          max: @max,
+        })
+      end
+      if @multiline
+        default_options[:rows] = @rows
+      end
+
+      default_options.deep_merge(@input_options).tap do |opts|
         opts[:class] = class_names(
           opts[:class],
           "Polaris-TextField__Input",
@@ -144,13 +156,14 @@ module Polaris
     end
 
     def input
-      @input ||
-        case @type
-        when :tel then "telephone_field"
-        when :currency then "text_field"
-        else
-          "#{@type}_field"
-        end
+      case @type
+      when :text
+        @multiline ? "text_area" : "text_field"
+      when :tel then "telephone_field"
+      when :currency then "text_field"
+      else
+        "#{@type}_field"
+      end
     end
 
     def input_tag
@@ -159,6 +172,10 @@ module Polaris
 
     def character_count
       @character_count ||= CharacterCount.new(text_field: self, max_length: @maxlength)
+    end
+
+    def render_number_buttons?
+      @type == :number && !@disabled
     end
   end
 end

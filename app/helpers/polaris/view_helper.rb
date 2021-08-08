@@ -35,7 +35,6 @@ module Polaris
       stack:                    "Polaris::StackComponent",
       subheading:               "Polaris::SubheadingComponent",
       spinner:                  "Polaris::SpinnerComponent",
-      text_area:                "Polaris::TextAreaComponent",
       text_container:           "Polaris::TextContainerComponent",
       text_field:               "Polaris::TextFieldComponent",
       text_style:               "Polaris::TextStyleComponent",
