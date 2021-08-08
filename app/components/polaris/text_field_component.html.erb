@@ -30,7 +30,7 @@
           <div
             class="
               Polaris-TextField__CharacterCount
-              <%= "Polaris-TextField__AlignFieldBottom" if @input == :text_area %>
+              <%= "Polaris-TextField__AlignFieldBottom" if @multiline %>
             "
             data-polaris-text-field-target="characterCount"
             aria-label="<%= character_count.label %>"

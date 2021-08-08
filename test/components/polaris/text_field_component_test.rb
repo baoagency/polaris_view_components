@@ -213,4 +213,32 @@ class TextFieldComponentTest < Minitest::Test
 
     assert_selector "input.Polaris-TextField--monospaced"
   end
+
+  def test_default_text_area
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      value: "Multiline\nValue",
+      multiline: true,
+      rows: 4,
+    ))
+
+    assert_selector ".Polaris-TextField.Polaris-TextField--multiline" do
+      assert_selector "textarea.Polaris-TextField__Input[name=input_name][rows=4]"
+    end
+  end
+
+  def test_character_count
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      value: "Multiline\nValue",
+      multiline: true,
+      rows: 4,
+      show_character_count: true,
+      maxlength: 40,
+    ))
+
+    assert_selector ".Polaris-TextField" do
+      assert_selector ".Polaris-TextField__CharacterCount.Polaris-TextField__AlignFieldBottom", text: "15/40"
+    end
+  end
 end

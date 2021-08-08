@@ -8,6 +8,9 @@ class Forms::TextFieldComponentPreview < ViewComponent::Preview
   def email
   end
 
+  def multiline
+  end
+
   def with_hidden_label
   end
 
