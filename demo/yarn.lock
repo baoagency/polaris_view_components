@@ -4724,6 +4724,13 @@ pnp-webpack-plugin@^1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
+polaris-view-components@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/polaris-view-components/-/polaris-view-components-0.1.0.tgz#be9f1954f02e98b5988a392f0d69058f9e9a8ca4"
+  integrity sha512-XDvi9aOLx2MM7jR+JiYFhSVB+KOWtNXMWdou30agbYjLN+9WtFU+8bK39GbWLJt4OXSHv2a7Egnw/+s7ORhTNA==
+  dependencies:
+    stimulus "^2.0.0"
+
 portfinder@^1.0.26:
   version "1.0.28"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.28.tgz#67c4622852bd5374dd1dd900f779f53462fac778"

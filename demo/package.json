@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "5.4.0",
+    "polaris-view-components": "^0.1.0",
     "stimulus": "^2.0.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
