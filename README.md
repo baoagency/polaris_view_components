@@ -57,6 +57,16 @@ To get started:
 
 It will open demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews located in `demo/test/components/previews`.
 
+To release gem run:
+```bash
+script/release
+```
+
+To release npm package run:
+```bash
+yarn release
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
