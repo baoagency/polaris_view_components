@@ -1,14 +1,8 @@
-class Polaris::TextField::ComponentPreview < ViewComponent::Preview
+class Forms::TextFieldComponentPreview < ViewComponent::Preview
   def default
   end
 
-  def number
-  end
-
   def email
-  end
-
-  def multiline
   end
 
   def with_hidden_label
@@ -32,10 +26,11 @@ class Polaris::TextField::ComponentPreview < ViewComponent::Preview
   def with_connected_fields
   end
 
-  def with_validation_error
+  def with_error
+
   end
 
-  def with_separate_validation_error
+  def with_inline_error
   end
 
   def disabled
@@ -48,8 +43,5 @@ class Polaris::TextField::ComponentPreview < ViewComponent::Preview
   end
 
   def with_monospaced_font
-  end
-
-  def with_form_helper
   end
 end

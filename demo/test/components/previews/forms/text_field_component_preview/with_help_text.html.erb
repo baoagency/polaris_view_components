@@ -1,6 +1,6 @@
-<%= render Polaris::TextField::Component.new(
-  attribute: :attribute,
+<%= polaris_text_field(
+  name: :email,
+  value: "bernadette.lapresse@jadedpixel.com",
   label: "Account email",
   help_text: "We’ll use this address if we need to contact you about your account.",
-  value: "bernadette.lapresse@jadedpixel.com"
 ) %>

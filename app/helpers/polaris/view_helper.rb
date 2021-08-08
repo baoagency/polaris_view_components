@@ -36,7 +36,7 @@ module Polaris
       subheading:               "Polaris::SubheadingComponent",
       spinner:                  "Polaris::SpinnerComponent",
       text_container:           "Polaris::TextContainerComponent",
-      text_field:               "Polaris::TextField::Component",
+      text_field:               "Polaris::TextFieldComponent",
       text_style:               "Polaris::TextStyleComponent",
       thumbnail:                "Polaris::ThumbnailComponent",
       visually_hidden:          "Polaris::VisuallyHiddenComponent",

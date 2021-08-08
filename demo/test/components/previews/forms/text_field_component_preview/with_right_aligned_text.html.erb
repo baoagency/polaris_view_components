@@ -1,0 +1,12 @@
+<%= polaris_stack do |stack| %>
+  <% stack.item(fill: true) { "Price" } %>
+  <% stack.item do %>
+    <%= polaris_text_field(
+      name: :price,
+      value: "1",
+      label: "Price",
+      label_hidden: true,
+      align: :right,
+    ) %>
+  <% end %>
+<% end %>
