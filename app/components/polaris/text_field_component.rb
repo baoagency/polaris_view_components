@@ -14,6 +14,9 @@ module Polaris
       datetime_local month time week currency
     ]
 
+    INPUT_DEFAULT = nil
+    INPUT_OPTIONS = [nil, :text_area]
+
     ALIGN_DEFAULT = :default
     ALIGN_MAPPINGS = {
       ALIGN_DEFAULT => "",
@@ -34,6 +37,7 @@ module Polaris
       name: nil,
       value: nil,
       type: TYPE_DEFAULT,
+      input: INPUT_DEFAULT,
       placeholder: nil,
       maxlength: nil,
       minlength: nil,
@@ -59,6 +63,7 @@ module Polaris
       @name = name
       @value = value
       @type = fetch_or_fallback(TYPE_OPTIONS, type, TYPE_DEFAULT)
+      @input = fetch_or_fallback(INPUT_OPTIONS, input, INPUT_DEFAULT)
       @placeholder = placeholder
       @maxlength = maxlength
       @minlength = minlength
@@ -103,7 +108,7 @@ module Polaris
         },
       }.deep_merge(@options).tap do |opts|
         opts[:classes] = class_names(
-          @options[:classes],
+          opts[:classes],
           "Polaris-TextField",
           "Polaris-TextField--disabled": @disabled,
           "Polaris-TextField--error": @error,
@@ -128,7 +133,7 @@ module Polaris
         data: { polaris_text_field_target: "input" },
       }.deep_merge(@input_options).tap do |opts|
         opts[:class] = class_names(
-          @input_options[:class],
+          opts[:class],
           "Polaris-TextField__Input",
           @align_class,
           "Polaris-TextField--monospaced": @monospaced,
@@ -139,12 +144,13 @@ module Polaris
     end
 
     def input
-      case @type
-      when :tel then "telephone_field"
-      when :currency then "text_field"
-      else
-        "#{@type}_field"
-      end
+      @input ||
+        case @type
+        when :tel then "telephone_field"
+        when :currency then "text_field"
+        else
+          "#{@type}_field"
+        end
     end
 
     def input_tag

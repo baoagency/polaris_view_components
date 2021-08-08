@@ -28,7 +28,10 @@
 
         <% if @show_character_count %>
           <div
-            class="Polaris-TextField__CharacterCount"
+            class="
+              Polaris-TextField__CharacterCount
+              <%= "Polaris-TextField__AlignFieldBottom" if @input == :text_area %>
+            "
             data-polaris-text-field-target="characterCount"
             aria-label="<%= character_count.label %>"
             aria-atomic="true"
@@ -52,6 +55,8 @@
             <%= polaris_icon(name: "CircleCancelMinor", color: :base) %>
           </button>
         <% end %>
+
+        <%= content %>
 
         <div class="Polaris-TextField__Backdrop"></div>
       <% end %>
