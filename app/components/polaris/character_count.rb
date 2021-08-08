@@ -40,7 +40,7 @@ module Polaris
       end
 
       def normalized_value
-        @text_field.value || ''
+        @text_field.value.to_s || ''
       end
 
       def count
