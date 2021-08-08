@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+VERSION=$1
+
+if [ -z $1 ] ; then
+  echo "Please provide version number: script/release 1.0.0" && exit 1;
+fi
+
+printf "module Polaris\n  module ViewComponents\n    VERSION = \"$VERSION\"\n  end\nend\n" > ./lib/polaris/view_components/version.rb
+bundle
+git add Gemfile.lock lib/turbo/version.rb
+git commit -m "Bump version for $VERSION"
+git push
+git tag v$VERSION
+git push --tags
+gem build polaris_view_components.gemspec
+gem push "polaris_view_components-$VERSION.gem"
+
+puts "Need to publish NPM package too?"
