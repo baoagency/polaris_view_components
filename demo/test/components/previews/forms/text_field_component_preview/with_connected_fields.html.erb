@@ -1,8 +1,17 @@
 <%= polaris_text_field(
-  name: :store_name,
-  value: 'Jaded Pixel',
-  label: 'Store name',
+  name: :wieght,
+  value: "10.6",
+  type: :number,
 ) do |c| %>
+  <% c.connected_left do %>
+    <%= polaris_select(
+      name: :weight_unit,
+      label: "Weight unit",
+      label_hidden: true,
+      options: { "kd" => "kg", "lb" => "lb" },
+      selected: "kg",
+    ) %>
+  <% end %>
   <% c.connected_right do %>
     <%= polaris_button { "Submit" } %>
   <% end %>

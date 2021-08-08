@@ -2,6 +2,9 @@ class Forms::TextFieldComponentPreview < ViewComponent::Preview
   def default
   end
 
+  def number
+  end
+
   def email
   end
 

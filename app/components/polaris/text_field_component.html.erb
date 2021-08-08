@@ -56,7 +56,39 @@
           </button>
         <% end %>
 
-        <%= content %>
+        <% if render_number_buttons? %>
+          <div class="Polaris-TextField__Spinner" aria-hidden="true">
+            <div
+              role="button"
+              class="Polaris-TextField__Segment"
+              tabindex="-1"
+              data-action="click->polaris-text-field#increase"
+            >
+              <div class="Polaris-TextField__SpinnerIcon">
+                <%= polaris_icon do %>
+                  <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                    <path d="M15 12l-5-5-5 5h10z"></path>
+                  </svg>
+                <% end %>
+              </div>
+            </div>
+
+            <div
+              role="button"
+              class="Polaris-TextField__Segment"
+              tabindex="-1"
+              data-action="click->polaris-text-field#decrease"
+            >
+              <div class="Polaris-TextField__SpinnerIcon">
+                <%= polaris_icon do %>
+                  <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                    <path d="M5 8l5 5 5-5H5z"></path>
+                  </svg>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
 
         <div class="Polaris-TextField__Backdrop"></div>
       <% end %>

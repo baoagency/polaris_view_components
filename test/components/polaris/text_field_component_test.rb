@@ -24,6 +24,21 @@ class TextFieldComponentTest < Minitest::Test
     end
   end
 
+  def test_number_field
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      value: '1.34',
+      type: :number,
+    ))
+
+    assert_selector ".Polaris-Connected__Item" do
+      assert_selector "input[type=number][value='1.34'][step=1][min=0][max=1000000]"
+      assert_selector ".Polaris-TextField__Spinner" do
+        assert_selector ".Polaris-TextField__Segment", count: 2
+      end
+    end
+  end
+
   def test_email_field
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,

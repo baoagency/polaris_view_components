@@ -7,10 +7,16 @@ export default class extends Controller {
     value: String,
     labelTemplate: String,
     textTemplate: String,
+    step: Number,
+    min: Number,
+    max: Number,
   }
 
   connect() {
     this.syncValue()
+    this.stepValue = this.inputTarget.getAttribute('step')
+    this.minValue = this.inputTarget.getAttribute('min')
+    this.maxValue = this.inputTarget.getAttribute('max')
   }
 
   // Actions
@@ -21,6 +27,14 @@ export default class extends Controller {
 
   clear() {
     this.value = null
+  }
+
+  increase() {
+    this.changeNumber(1)
+  }
+
+  decrease() {
+    this.changeNumber(-1)
   }
 
   // Callbacks
@@ -57,8 +71,10 @@ export default class extends Controller {
   toggleClearButton() {
     if (this.value.length > 0) {
       this.clearButtonTarget.classList.remove(this.clearButtonHiddenClass)
+      this.clearButtonTarget.setAttribute('tab-index', '-')
     } else {
       this.clearButtonTarget.classList.add(this.clearButtonHiddenClass)
+      this.clearButtonTarget.setAttribute('tab-index', '-1')
     }
   }
 
@@ -70,5 +86,27 @@ export default class extends Controller {
       'aria-label',
       this.labelTemplateValue.replace(`{count}`, this.value.length)
     )
+  }
+
+  changeNumber(steps) {
+    // Returns the length of decimal places in a number
+    const dpl = num => (num.toString().split('.')[1] || []).length
+    const numericValue = this.value ? parseFloat(this.value) : 0
+
+    if (isNaN(numericValue)) {
+      return
+    }
+
+    // Making sure the new value has the same length of decimal places as the
+    // step / value has.
+    console.log(numericValue, this.stepValue)
+    const decimalPlaces = Math.max(dpl(numericValue), dpl(this.stepValue))
+
+    const newValue = Math.min(
+      Number(this.maxValue),
+      Math.max(numericValue + steps * this.stepValue, Number(this.minValue)),
+    )
+
+    this.value = String(newValue.toFixed(decimalPlaces))
   }
 }

@@ -27,12 +27,21 @@ _defineProperty(_class$1, "targets", [ "selectedOption" ]);
 class _class extends Controller {
   connect() {
     this.syncValue();
+    this.stepValue = this.inputTarget.getAttribute("step");
+    this.minValue = this.inputTarget.getAttribute("min");
+    this.maxValue = this.inputTarget.getAttribute("max");
   }
   syncValue() {
     this.valueValue = this.inputTarget.value;
   }
   clear() {
     this.value = null;
+  }
+  increase() {
+    this.changeNumber(1);
+  }
+  decrease() {
+    this.changeNumber(-1);
   }
   valueValueChanged() {
     this.toggleHasValueClass();
@@ -60,13 +69,26 @@ class _class extends Controller {
   toggleClearButton() {
     if (this.value.length > 0) {
       this.clearButtonTarget.classList.remove(this.clearButtonHiddenClass);
+      this.clearButtonTarget.setAttribute("tab-index", "-");
     } else {
       this.clearButtonTarget.classList.add(this.clearButtonHiddenClass);
+      this.clearButtonTarget.setAttribute("tab-index", "-1");
     }
   }
   updateCharacterCount() {
     this.characterCountTarget.textContent = this.textTemplateValue.replace(`{count}`, this.value.length);
     this.characterCountTarget.setAttribute("aria-label", this.labelTemplateValue.replace(`{count}`, this.value.length));
+  }
+  changeNumber(steps) {
+    const dpl = num => (num.toString().split(".")[1] || []).length;
+    const numericValue = this.value ? parseFloat(this.value) : 0;
+    if (isNaN(numericValue)) {
+      return;
+    }
+    console.log(numericValue, this.stepValue);
+    const decimalPlaces = Math.max(dpl(numericValue), dpl(this.stepValue));
+    const newValue = Math.min(Number(this.maxValue), Math.max(numericValue + steps * this.stepValue, Number(this.minValue)));
+    this.value = String(newValue.toFixed(decimalPlaces));
   }
 }
 
@@ -77,7 +99,10 @@ _defineProperty(_class, "classes", [ "hasValue", "clearButtonHidden" ]);
 _defineProperty(_class, "values", {
   value: String,
   labelTemplate: String,
-  textTemplate: String
+  textTemplate: String,
+  step: Number,
+  min: Number,
+  max: Number
 });
 
 function registerPolarisControllers(application) {

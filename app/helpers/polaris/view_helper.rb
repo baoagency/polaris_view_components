@@ -25,6 +25,7 @@ module Polaris
       layout:                   "Polaris::LayoutComponent",
       link:                     "Polaris::LinkComponent",
       list:                     "Polaris::ListComponent",
+      number_field:             "Polaris::NumberFieldComponent",
       page:                     "Polaris::PageComponent",
       page_actions:             "Polaris::PageActionsComponent",
       pagination:               "Polaris::PaginationComponent",

@@ -10,12 +10,12 @@ module Polaris
 
     TYPE_DEFAULT = :text
     TYPE_OPTIONS = %i[
-      text email password search tel url date
+      text number email password search tel url date
       datetime_local month time week currency
     ]
 
     INPUT_DEFAULT = nil
-    INPUT_OPTIONS = [nil, :text_area]
+    INPUT_OPTIONS = [nil, :text_area, :number_field]
 
     ALIGN_DEFAULT = :default
     ALIGN_MAPPINGS = {
@@ -41,6 +41,9 @@ module Polaris
       placeholder: nil,
       maxlength: nil,
       minlength: nil,
+      step: 1,
+      min: 0,
+      max: 1_000_000,
       prefix: nil,
       suffix: nil,
       show_character_count: false,
@@ -67,6 +70,9 @@ module Polaris
       @placeholder = placeholder
       @maxlength = maxlength
       @minlength = minlength
+      @step = step
+      @min = min
+      @max = max
       @prefix = prefix
       @suffix = suffix
       @show_character_count = show_character_count
@@ -123,7 +129,7 @@ module Polaris
     end
 
     def input_options
-      {
+      default_options = {
         value: @value,
         disabled: @disabled,
         required: @required,
@@ -131,7 +137,16 @@ module Polaris
         maxlength: @maxlength,
         minlength: @minlength,
         data: { polaris_text_field_target: "input" },
-      }.deep_merge(@input_options).tap do |opts|
+      }
+      if @type == :number
+        default_options.merge!({
+          step: @step,
+          min: @min,
+          max: @max,
+        })
+      end
+
+      default_options.deep_merge(@input_options).tap do |opts|
         opts[:class] = class_names(
           opts[:class],
           "Polaris-TextField__Input",
@@ -159,6 +174,10 @@ module Polaris
 
     def character_count
       @character_count ||= CharacterCount.new(text_field: self, max_length: @maxlength)
+    end
+
+    def render_number_buttons?
+      @type == :number && !@disabled
     end
   end
 end
