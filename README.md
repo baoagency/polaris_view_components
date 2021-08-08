@@ -33,6 +33,17 @@ Setup Polaris styles in your layouts `<head>` tag:
 <%= stylesheet_link_tag 'polaris_view_components' %>
 ```
 
+Install NPM package:
+```bash
+yarn add polaris-view-components
+```
+
+Add to `app/javascript/controllers/index.js`:
+```javascript
+import { registerPolarisControllers } from "polaris-view-components"
+registerPolarisControllers(application)
+```
+
 ## Dependencies
 
 In addition to the dependencies declared in the `gemspec`, Polaris ViewComponents assumes the presence of Polaris CSS.
