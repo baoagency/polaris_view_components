@@ -10,14 +10,12 @@
       <%= @form.label(@attribute, @label_options) %>
     <% end %>
   <% else %>
-    <% if @label.present? %>
-      <%= label_tag(@name, @label, @label_options) %>
-    <% elsif content.present? %>
+    <% if content.present? %>
       <%= label_tag(@name, @label_options) do %>
         <%= content %>
       <% end %>
     <% else %>
-      <%= label_tag(@name, @label_options) %>
+      <%= label_tag(@name, @label, @label_options) %>
     <% end %>
   <% end %>
 <% end %>

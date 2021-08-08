@@ -1,0 +1,66 @@
+<%= render Polaris::LabelledComponent.new(**wrapper_options) do %>
+  <div class="Polaris-Connected">
+    <% if connected_left.present? %>
+      <div class="Polaris-Connected__Item">
+        <%= connected_left %>
+      </div>
+    <% end %>
+
+    <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
+      <%= render Polaris::BaseComponent.new(**options) do %>
+        <% if @prefix.present? %>
+          <div class="Polaris-TextField__Prefix">
+            <%= @prefix %>
+          </div>
+        <% end %>
+
+        <% if @form.present? && @attribute.present? %>
+          <%= @form.public_send(input, @attribute, input_options) %>
+        <% else %>
+          <%= public_send(input_tag, @name, @value, input_options) %>
+        <% end %>
+
+        <% if @suffix.present? %>
+          <div class="Polaris-TextField__Suffix">
+            <%= @suffix %>
+          </div>
+        <% end %>
+
+        <% if @show_character_count %>
+          <div
+            class="Polaris-TextField__CharacterCount"
+            data-polaris-text-field-target="characterCount"
+            aria-label="<%= character_count.label %>"
+            aria-atomic="true"
+          >
+            <%= character_count.text %>
+          </div>
+        <% end %>
+
+        <% if @clear_button %>
+          <button
+            type="button"
+            class="Polaris-TextField__ClearButton
+              <% if @value.blank? %>
+                Polaris-TextField__ClearButton--hidden
+              <% end %>"
+            tabindex="0"
+            data-polaris-text-field-target="clearButton"
+            data-action="polaris-text-field#clear"
+          >
+            <%= polaris_visually_hidden { "Clear" } %>
+            <%= polaris_icon(name: "CircleCancelMinor", color: :base) %>
+          </button>
+        <% end %>
+
+        <div class="Polaris-TextField__Backdrop"></div>
+      <% end %>
+    </div>
+
+    <% if connected_right.present? %>
+      <div class="Polaris-Connected__Item">
+        <%= connected_right %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
