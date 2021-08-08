@@ -5,7 +5,7 @@ module Polaris
     OPTIONS = %i[
       form attribute name value type placeholder prefix suffix show_character_count
       maxlength minlength clear_button monospaced align label label_hidden label_action
-      disabled required help_text error wrapper_options input_options
+      disabled required help_text error wrapper_arguments input_options
     ]
 
     TYPE_DEFAULT = :text
@@ -54,9 +54,9 @@ module Polaris
       required: false,
       help_text: nil,
       error: false,
-      wrapper_options: {},
+      wrapper_arguments: {},
       input_options: {},
-      **options
+      **system_arguments
     )
       @form = form
       @attribute = attribute
@@ -80,12 +80,12 @@ module Polaris
       @required = required
       @help_text = help_text
       @error = error
-      @wrapper_options = wrapper_options
+      @wrapper_arguments = wrapper_arguments
       @input_options = input_options
-      @options = options
+      @system_arguments = system_arguments
     end
 
-    def wrapper_options
+    def wrapper_arguments
       {
         form: @form,
         attribute: @attribute,
@@ -96,17 +96,17 @@ module Polaris
         required: @required,
         help_text: @help_text,
         error: @error,
-      }.deep_merge(@wrapper_options)
+      }.deep_merge(@wrapper_arguments)
     end
 
-    def options
+    def system_arguments
       {
         tag: "div",
         data: {
           polaris_text_field_has_value_class: "Polaris-TextField--hasValue",
           polaris_text_field_clear_button_hidden_class: "Polaris-TextField__ClearButton--hidden",
         },
-      }.deep_merge(@options).tap do |opts|
+      }.deep_merge(@system_arguments).tap do |opts|
         opts[:classes] = class_names(
           opts[:classes],
           "Polaris-TextField",

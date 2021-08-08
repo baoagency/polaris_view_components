@@ -1,4 +1,4 @@
-<%= render Polaris::LabelledComponent.new(**wrapper_options) do %>
+<%= render Polaris::LabelledComponent.new(**wrapper_arguments) do %>
   <div class="Polaris-Connected">
     <% if connected_left.present? %>
       <div class="Polaris-Connected__Item">
@@ -7,7 +7,7 @@
     <% end %>
 
     <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
-      <%= render Polaris::BaseComponent.new(**options) do %>
+      <%= render Polaris::BaseComponent.new(**system_arguments) do %>
         <% if @prefix.present? %>
           <div class="Polaris-TextField__Prefix">
             <%= @prefix %>

@@ -2,11 +2,11 @@
 
 module Polaris
   class TextAreaComponent < Polaris::NewComponent
-    def initialize(rows: 2, **options)
-      @options = options.deep_merge({
+    def initialize(rows: 2, **system_arguments)
+      @system_arguments = system_arguments.deep_merge({
         input: :text_area,
         classes: class_names(
-          options[:classes],
+          system_arguments[:classes],
           "Polaris-TextField--multiline",
         ),
         input_options: {
@@ -16,7 +16,7 @@ module Polaris
     end
 
     def call
-      render(Polaris::TextFieldComponent.new(**@options)) { content }
+      render(Polaris::TextFieldComponent.new(**@system_arguments)) { content }
     end
   end
 end
