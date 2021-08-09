@@ -3,4 +3,7 @@ class Navigation::ShopifyNavigationComponentPreview < ViewComponent::Preview
 
   def default
   end
+
+  def with_auto_detection
+  end
 end
