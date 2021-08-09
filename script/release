@@ -8,7 +8,10 @@ fi
 
 printf "module Polaris\n  module ViewComponents\n    VERSION = \"$VERSION\"\n  end\nend\n" > ./lib/polaris/view_components/version.rb
 bundle
-git add Gemfile.lock lib/polaris/view_components/version.rb
+cd demo
+bundle
+cd ..
+git add Gemfile.lock demo/Gemfile.lock lib/polaris/view_components/version.rb
 git commit -m "Bump version for $VERSION"
 git push
 git tag v$VERSION
