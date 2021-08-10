@@ -143,7 +143,7 @@ module Polaris
         default_options[:rows] = @rows
       end
 
-      default_options.deep_merge(@input_options).tap do |opts|
+      default_options.deep_merge(@input_options).compact.tap do |opts|
         opts[:class] = class_names(
           opts[:class],
           "Polaris-TextField__Input",
