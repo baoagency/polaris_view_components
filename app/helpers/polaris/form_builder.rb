@@ -4,26 +4,6 @@ module Polaris
 
     delegate :render, :pluralize, to: :template
 
-    def polaris_text_field(method, **options, &block)
-      options[:error] ||= error_for(method)
-      if options[:error_hidden] && options[:error]
-        options[:error] = !!options[:error]
-      end
-      render Polaris::TextFieldComponent.new(
-        form: self,
-        attribute: method,
-        **options,
-        &block
-      )
-    end
-
-    def error_for(method)
-      return if object.blank?
-      return unless object.errors.key?(method)
-
-      object.errors.full_messages_for(method)&.first
-    end
-
     def errors_summary
       return if object.blank?
       return unless object.errors.any?
@@ -40,6 +20,29 @@ module Polaris
           end
         end
       end
+    end
+
+    def error_for(method)
+      return if object.blank?
+      return unless object.errors.key?(method)
+
+      object.errors.full_messages_for(method)&.first
+    end
+
+    def polaris_text_field(method, **options, &block)
+      options[:error] ||= error_for(method)
+      if options[:error_hidden] && options[:error]
+        options[:error] = !!options[:error]
+      end
+      render Polaris::TextFieldComponent.new(form: self, attribute: method, **options, &block)
+    end
+
+    def polaris_select(method, **options, &block)
+      options[:error] ||= error_for(method)
+      if options[:error_hidden] && options[:error]
+        options[:error] = !!options[:error]
+      end
+      render Polaris::SelectComponent.new(form: self, attribute: method, **options, &block)
     end
   end
 end
