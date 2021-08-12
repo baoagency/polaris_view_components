@@ -1,0 +1,18 @@
+<%= polaris_card(sectioned: false) do %>
+  <%= polaris_resource_list do %>
+    <%= polaris_resource_item do |c| %>
+      <% c.media do %>
+        <%= polaris_avatar(
+          customer: true,
+          name: "Yi So-Yeon",
+          source: "https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746",
+        ) %>
+      <% end %>
+
+      <h3>
+        <%= polaris_text_style(variation: :strong) { "Yi So-Yeon" } %>
+      </h3>
+      <div>Gwangju, South Korea</div>
+    <% end %>
+  <% end %>
+<% end %>
