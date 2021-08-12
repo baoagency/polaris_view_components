@@ -11,8 +11,14 @@
     <% sections.each do |section| %>
       <%= section %>
     <% end %>
-  <% else %>
-    <%= render Polaris::Card::SectionComponent.new do %>
+  <% end %>
+
+  <% if content.present? %>
+    <% if @sectioned %>
+      <%= render Polaris::Card::SectionComponent.new do %>
+        <%= content %>
+      <% end %>
+    <% else %>
       <%= content %>
     <% end %>
   <% end %>

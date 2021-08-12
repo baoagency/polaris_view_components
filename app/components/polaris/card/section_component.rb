@@ -6,6 +6,7 @@ class Polaris::Card::SectionComponent < Polaris::NewComponent
     subdued: false,
     flush: false,
     full_width: false,
+    unstyled: false,
     actions: [],
     **system_arguments
   )
@@ -13,10 +14,10 @@ class Polaris::Card::SectionComponent < Polaris::NewComponent
     @system_arguments[:tag] = :div
     @system_arguments[:classes] = class_names(
       @system_arguments[:classes],
-      "Polaris-Card__Section",
       "Polaris-Card__Section--flush": flush,
       "Polaris-Card__Section--subdued": subdued,
       "Polaris-Card__Section--fullWidth": full_width,
+      "Polaris-Card__Section": !unstyled,
     )
 
     @title = title

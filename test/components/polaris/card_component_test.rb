@@ -123,4 +123,17 @@ class CardComponentTest < Minitest::Test
     assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button--destructive"
     assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary"
   end
+
+  def test_unsectioned_content
+    render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
+      card.section { "Sectioned content" }
+      "Unsectioned content"
+    end
+
+    assert_selector ".Polaris-Card" do
+      assert_selector ".Polaris-Card__Header:nth-child(1)"
+      assert_selector ".Polaris-Card__Section:nth-child(2)", text: "Sectioned content"
+      assert_selector ":nth-child(3)", text: "Unsectioned content"
+    end
+  end
 end

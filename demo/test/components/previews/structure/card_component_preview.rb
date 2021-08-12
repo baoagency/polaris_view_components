@@ -65,4 +65,10 @@ class Structure::CardComponentPreview < ViewComponent::Preview
   # Use when you need further control over the spacing of your card sections.
   def card_with_flushed_sections
   end
+
+  def unsectioned_content
+  end
+
+  def unstyled_section
+  end
 end

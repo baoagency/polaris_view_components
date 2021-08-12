@@ -1,0 +1,13 @@
+<%= polaris_card(title: "Online store dashboard", sectioned: false) do %>
+  <p>Unsectioned content</p>
+<% end %>
+
+<br>
+
+<%= polaris_card(title: "Online store dashboard", sectioned: false) do |card| %>
+  <% card.section do %>
+    <p>Sectioned content</p>
+  <% end %>
+
+  <p>Unsectioned content</p>
+<% end %>
