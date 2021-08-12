@@ -2,6 +2,8 @@
 
 Polaris ViewComponents is an implementation of the Polaris Design System using [ViewComponent](https://github.com/github/view_component).
 
+![Polaris ViewComponents](.github/assets/preview.png)
+
 > **This library is under active development. Breaking changes are likely until stable release.**
 
 ## Preview
