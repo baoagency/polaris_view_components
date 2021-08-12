@@ -19,6 +19,8 @@ module Polaris
 
     attr_reader :value
 
+    renders_one :prefix
+    renders_one :suffix
     renders_one :connected_left
     renders_one :connected_right
 

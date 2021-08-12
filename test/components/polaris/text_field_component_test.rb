@@ -128,6 +128,19 @@ class TextFieldComponentTest < Minitest::Test
     end
   end
 
+  def test_prefix_suffix_slots
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      label: "Label",
+    )) do |c|
+      c.prefix { "Prefix" }
+      c.suffix { "Suffix" }
+    end
+
+    assert_selector ".Polaris-TextField > .Polaris-TextField__Prefix", text: "Prefix"
+    assert_selector ".Polaris-TextField > .Polaris-TextField__Suffix", text: "Suffix"
+  end
+
   def test_connected_fields
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,

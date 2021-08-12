@@ -8,9 +8,9 @@
 
     <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
       <%= render Polaris::BaseComponent.new(**system_arguments) do %>
-        <% if @prefix.present? %>
+        <% if prefix.present? || @prefix.present? %>
           <div class="Polaris-TextField__Prefix">
-            <%= @prefix %>
+            <%= prefix || @prefix %>
           </div>
         <% end %>
 
@@ -20,9 +20,9 @@
           <%= public_send(input_tag, @name, @value, input_options) %>
         <% end %>
 
-        <% if @suffix.present? %>
+        <% if suffix.present? || @suffix.present? %>
           <div class="Polaris-TextField__Suffix">
-            <%= @suffix %>
+            <%= suffix || @suffix %>
           </div>
         <% end %>
 
