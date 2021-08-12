@@ -30,6 +30,8 @@ module Polaris
       pagination:               "Polaris::PaginationComponent",
       progress_bar:             "Polaris::ProgressBarComponent",
       radio_button:             "Polaris::RadioButtonComponent",
+      resource_list:            "Polaris::ResourceListComponent",
+      resource_item:            "Polaris::ResourceItemComponent",
       select:                   "Polaris::SelectComponent",
       shopify_navigation:       "Polaris::ShopifyNavigationComponent",
       stack:                    "Polaris::StackComponent",
