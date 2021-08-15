@@ -1,15 +1,16 @@
-<%= render(Polaris::BaseComponent.new(**@system_arguments)) do %>
+<%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
   <div class="Polaris-ResourceItem__ItemWrapper">
-    <div class="Polaris-ResourceItem" style="cursor: <%= @cursor %>;">
+    <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
       <% if @url %>
         <a
           class="Polaris-ResourceItem__Link"
           tabindex="0"
           href="<%= @url %>"
-          data-polaris-unstyled="true"></a>
+          data-polaris-unstyled="true"
+          data-polaris-resource-item-target="link"></a>
       <% end %>
 
-      <%= render(Polaris::BaseComponent.new(**@container_arguments)) do %>
+      <%= render(Polaris::BaseComponent.new(**container_arguments)) do %>
         <% if media.present? %>
           <div class="Polaris-ResourceItem__Owned">
             <div class="Polaris-ResourceItem__Media">
@@ -21,6 +22,6 @@
           <%= content %>
         </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 <% end %>
