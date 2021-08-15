@@ -14,6 +14,19 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+class _class$2 extends Controller {
+  open(event) {
+    if (this.hasLinkTarget && this.targetIsNotLink(event.target)) {
+      this.linkTarget.click();
+    }
+  }
+  targetIsNotLink(element) {
+    return !element.closest("a") && !element.closest("button");
+  }
+}
+
+_defineProperty(_class$2, "targets", [ "link" ]);
+
 class _class$1 extends Controller {
   update(event) {
     const select = event.currentTarget;
@@ -106,8 +119,9 @@ _defineProperty(_class, "values", {
 });
 
 function registerPolarisControllers(application) {
+  application.register("polaris-resource-item", _class$2);
   application.register("polaris-select", _class$1);
   application.register("polaris-text-field", _class);
 }
 
-export { _class$1 as Select, _class as TextField, registerPolarisControllers };
+export { _class$2 as ResourceItem, _class$1 as Select, _class as TextField, registerPolarisControllers };
