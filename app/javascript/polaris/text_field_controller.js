@@ -99,7 +99,6 @@ export default class extends Controller {
 
     // Making sure the new value has the same length of decimal places as the
     // step / value has.
-    console.log(numericValue, this.stepValue)
     const decimalPlaces = Math.max(dpl(numericValue), dpl(this.stepValue))
 
     const newValue = Math.min(
