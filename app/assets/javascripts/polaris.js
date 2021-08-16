@@ -98,7 +98,6 @@ class _class extends Controller {
     if (isNaN(numericValue)) {
       return;
     }
-    console.log(numericValue, this.stepValue);
     const decimalPlaces = Math.max(dpl(numericValue), dpl(this.stepValue));
     const newValue = Math.min(Number(this.maxValue), Math.max(numericValue + steps * this.stepValue, Number(this.minValue)));
     this.value = String(newValue.toFixed(decimalPlaces));
