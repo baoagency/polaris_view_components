@@ -4,12 +4,12 @@ export default class extends Controller {
   static targets = ['link']
 
   open(event) {
-    if (this.hasLinkTarget && this.targetIsNotLink(event.target)) {
+    if (this.hasLinkTarget && this.targetNotClickable(event.target)) {
       this.linkTarget.click()
     }
   }
 
-  targetIsNotLink(element) {
-    return !element.closest('a') && !element.closest('button')
+  targetNotClickable(element) {
+    return !element.closest('a') && !element.closest('button') && element.nodeName !== "INPUT"
   }
 }

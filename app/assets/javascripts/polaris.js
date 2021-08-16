@@ -16,12 +16,12 @@ function _defineProperty(obj, key, value) {
 
 class _class$2 extends Controller {
   open(event) {
-    if (this.hasLinkTarget && this.targetIsNotLink(event.target)) {
+    if (this.hasLinkTarget && this.targetNotClickable(event.target)) {
       this.linkTarget.click();
     }
   }
-  targetIsNotLink(element) {
-    return !element.closest("a") && !element.closest("button");
+  targetNotClickable(element) {
+    return !element.closest("a") && !element.closest("button") && element.nodeName !== "INPUT";
   }
 }
 
