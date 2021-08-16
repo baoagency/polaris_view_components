@@ -1,0 +1,18 @@
+<%= polaris_button_to("Delete", products_path,
+  method: :delete,
+  destructive: true,
+  data: {
+    confirm: "Are you sure?",
+  }
+) %>
+
+<br>
+
+<%= polaris_button_to(products_path,
+  method: :delete,
+  data: {
+    confirm: "Are you sure?",
+  }
+) do |button| %>
+  <% button.icon(name: "DeleteMinor") %>
+<% end %>
