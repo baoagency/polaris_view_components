@@ -42,6 +42,10 @@ module Polaris
       if options[:error_hidden] && options[:error]
         options[:error] = !!options[:error]
       end
+      value = object&.public_send(method)
+      if value.present?
+        options[:selected] = value
+      end
       render Polaris::SelectComponent.new(form: self, attribute: method, **options, &block)
     end
   end
