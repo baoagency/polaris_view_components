@@ -35,6 +35,12 @@ Setup Polaris styles in your layouts `<head>` tag:
 <%= stylesheet_link_tag 'polaris_view_components' %>
 ```
 
+Define Polaris style on your `<body>` tag:
+
+```erb
+<body style="<%= polaris_body_styles %>">
+```
+
 Install NPM package:
 ```bash
 yarn add polaris-view-components
