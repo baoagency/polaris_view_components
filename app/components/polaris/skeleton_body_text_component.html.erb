@@ -1,0 +1,5 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <% @lines.times do %>
+    <div class="Polaris-SkeletonBodyText"></div>
+  <% end %>
+<% end %>
