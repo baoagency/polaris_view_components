@@ -8,6 +8,7 @@ module Polaris
       name: nil,
       options:,
       selected: nil,
+      disabled_options: nil,
       label: nil,
       label_hidden: false,
       label_inline: false,
@@ -26,6 +27,7 @@ module Polaris
       @name = name
       @options = options
       @selected = selected
+      @disabled_options = disabled_options
       @label = label
       @label_hidden = label_hidden
       @label_inline = label_inline

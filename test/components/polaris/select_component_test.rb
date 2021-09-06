@@ -88,6 +88,19 @@ class SelectComponentTest < Minitest::Test
     end
   end
 
+  def test_disabled_options
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      options: [["Option 1", "option1"], ["Option 2", "option2"]],
+      disabled_options: "option2",
+    ))
+
+    assert_selector ".Polaris-Select > select" do
+      assert_selector "option[value=option2][disabled]"
+    end
+  end
+
   def test_required
     render_inline(Polaris::SelectComponent.new(
       name: :input_name,
