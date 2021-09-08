@@ -28,6 +28,11 @@ In `Gemfile`, add:
 gem 'polaris_view_components'
 ```
 
+Run install generator:
+```bash
+rails generate polaris_view_components:install
+```
+
 Setup Polaris styles in your layouts `<head>` tag:
 
 ```erb
