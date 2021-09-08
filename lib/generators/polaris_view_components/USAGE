@@ -1,0 +1,5 @@
+Description:
+    Creates or adds import of NPM package to your application + additional installation steps.
+
+Example:
+    rails generate polaris_view_components:install
