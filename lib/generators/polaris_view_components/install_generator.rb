@@ -24,7 +24,7 @@ module PolarisViewComponents
       end
 
       append_to_file file_path do
-        "import { registerPolarisControllers } from 'polaris-view-components'\nregisterPolarisControllers(application)"
+        "import { registerPolarisControllers } from \"polaris-view-components\"\nregisterPolarisControllers(Stimulus)"
       end
     end
 

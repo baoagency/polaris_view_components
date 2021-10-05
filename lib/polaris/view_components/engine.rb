@@ -13,7 +13,9 @@ module Polaris
 
       initializer "polaris_view_components.assets" do |app|
         if app.config.respond_to?(:assets)
-          app.config.assets.precompile += %w[polaris_view_components.css]
+          app.config.assets.precompile += %w[
+            polaris_view_components.js polaris_view_components.css
+          ]
         end
       end
 
