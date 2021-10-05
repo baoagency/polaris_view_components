@@ -1,17 +1,9 @@
-// Load all the controllers within this directory and all subdirectories.
-// Controller files must be named *_controller.js.
+import { Application } from "@hotwired/stimulus"
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
+window.Stimulus = Application.start()
+const context = require.context("./", true, /\.js$/)
+Stimulus.load(definitionsFromContext(context))
 
-const application = Application.start()
-const context = require.context("controllers", true, /_controller\.js$/)
-application.load(definitionsFromContext(context))
-
-// For local development
-// import { registerPolarisControllers } from "../../../../app/assets/javascripts/polaris"
-// registerPolarisControllers(application)
-
-// Test before release
 import { registerPolarisControllers } from "polaris-view-components"
-registerPolarisControllers(application)
+registerPolarisControllers(Stimulus)
