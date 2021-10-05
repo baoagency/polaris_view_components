@@ -54,6 +54,14 @@ Add to `config/importmap.rb`:
 pin "polaris-view-components", to: "polaris_view_components.js"
 ```
 
+Add to `app/javascript/controllers/index.js`:
+```javascript
+// ...
+
+import { registerPolarisControllers } from "polaris-view-components"
+registerPolarisControllers(Stimulus)
+```
+
 ### NPM
 
 Install NPM package:
@@ -63,7 +71,8 @@ yarn add polaris-view-components
 
 Add to `app/javascript/controllers/index.js`:
 ```javascript
-// Polaris ViewComponents
+// ...
+
 import { registerPolarisControllers } from "polaris-view-components"
 registerPolarisControllers(Stimulus)
 ```
