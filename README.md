@@ -65,7 +65,7 @@ Add to `app/javascript/controllers/index.js`:
 ```javascript
 // Polaris ViewComponents
 import { registerPolarisControllers } from "polaris-view-components"
-registerPolarisControllers(application)
+registerPolarisControllers(Stimulus)
 ```
 
 ## Dependencies
