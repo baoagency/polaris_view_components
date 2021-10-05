@@ -1,4 +1,4 @@
-import babel from "@rollup/plugin-babel"
+import resolve from "@rollup/plugin-node-resolve"
 import { terser } from "rollup-plugin-terser"
 import pkg from "./package.json"
 
@@ -9,7 +9,7 @@ export default {
     format: "es"
   },
   plugins: [
-    babel({ babelHelpers: 'bundled' }),
+    resolve(),
     terser({
       mangle: false,
       compress: false,
@@ -19,5 +19,5 @@ export default {
       }
     })
   ],
-  external: ['stimulus']
+  external: ["stimulus"]
 }

@@ -1,20 +1,7 @@
 import { Controller } from "stimulus";
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
-class _class$2 extends Controller {
+class ResourceItem extends Controller {
+  static targets=[ "link" ];
   open(event) {
     if (this.hasLinkTarget && this.targetNotClickable(event.target)) {
       this.linkTarget.click();
@@ -25,9 +12,8 @@ class _class$2 extends Controller {
   }
 }
 
-_defineProperty(_class$2, "targets", [ "link" ]);
-
-class _class$1 extends Controller {
+class Select extends Controller {
+  static targets=[ "selectedOption" ];
   update(event) {
     const select = event.currentTarget;
     const option = select.options[select.selectedIndex];
@@ -35,9 +21,17 @@ class _class$1 extends Controller {
   }
 }
 
-_defineProperty(_class$1, "targets", [ "selectedOption" ]);
-
-class _class extends Controller {
+class TextField extends Controller {
+  static targets=[ "input", "clearButton", "characterCount" ];
+  static classes=[ "hasValue", "clearButtonHidden" ];
+  static values={
+    value: String,
+    labelTemplate: String,
+    textTemplate: String,
+    step: Number,
+    min: Number,
+    max: Number
+  };
   connect() {
     this.syncValue();
     this.stepValue = this.inputTarget.getAttribute("step");
@@ -104,23 +98,10 @@ class _class extends Controller {
   }
 }
 
-_defineProperty(_class, "targets", [ "input", "clearButton", "characterCount" ]);
-
-_defineProperty(_class, "classes", [ "hasValue", "clearButtonHidden" ]);
-
-_defineProperty(_class, "values", {
-  value: String,
-  labelTemplate: String,
-  textTemplate: String,
-  step: Number,
-  min: Number,
-  max: Number
-});
-
 function registerPolarisControllers(application) {
-  application.register("polaris-resource-item", _class$2);
-  application.register("polaris-select", _class$1);
-  application.register("polaris-text-field", _class);
+  application.register("polaris-resource-item", ResourceItem);
+  application.register("polaris-select", Select);
+  application.register("polaris-text-field", TextField);
 }
 
-export { _class$2 as ResourceItem, _class$1 as Select, _class as TextField, registerPolarisControllers };
+export { ResourceItem, Select, TextField, registerPolarisControllers };
