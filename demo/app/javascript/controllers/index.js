@@ -1,9 +1,8 @@
-import { Application } from "@hotwired/stimulus"
-import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
+// Import and register all your controllers from the importmap under controllers/*
 
-window.Stimulus = Application.start()
-const context = require.context("./", true, /\.js$/)
-Stimulus.load(definitionsFromContext(context))
+import { application } from "controllers/application"
+import { registerControllersFrom } from "@hotwired/stimulus-importmap-autoloader"
+registerControllersFrom("controllers", application)
 
 import { registerPolarisControllers } from "polaris-view-components"
-registerPolarisControllers(Stimulus)
+registerPolarisControllers(application)

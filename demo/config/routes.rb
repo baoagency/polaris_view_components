@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :products
 
+  get 'test', to: "test#hello"
+
   root to: redirect('/lookbook')
 end
