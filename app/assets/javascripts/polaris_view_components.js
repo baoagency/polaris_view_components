@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 
 class ResourceItem extends Controller {
   static targets=[ "link" ];

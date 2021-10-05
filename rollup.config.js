@@ -19,5 +19,5 @@ export default {
       }
     })
   ],
-  external: ["stimulus"]
+  external: ["@hotwired/stimulus"]
 }

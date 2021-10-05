@@ -254,13 +254,6 @@ source-map@~0.7.2:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
-stimulus@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-3.0.0.tgz#90f7a7bc62e57f3852adaf33c01fea5f80401142"
-  integrity sha512-vINtZ6C43PWIqAv04oE/gKdfFPbVlWdClPUegFeAg1dTJABuzFTcnIOufgbMNAQQHFJeEhcgcLtEeiwtyYzNlg==
-  dependencies:
-    "@hotwired/stimulus" "^3.0.0"
-
 supports-color@^5.3.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
