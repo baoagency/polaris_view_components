@@ -46,6 +46,16 @@ Define Polaris style on your `<body>` tag:
 <body style="<%= polaris_body_styles %>">
 ```
 
+### Importmaps
+
+Add to `config/importmap.rb`:
+
+```rb
+pin "polaris-view-components", to: "polaris_view_components.js"
+```
+
+### NPM
+
 Install NPM package:
 ```bash
 yarn add polaris-view-components
