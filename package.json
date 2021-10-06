@@ -3,7 +3,7 @@
   "version": "0.3.2",
   "description": "ViewComponents for Polaris Design System",
   "main": "app/assets/javascripts/polaris_view_components.js",
-  "module": "app/javascript/polaris_view_components/index.js",
+  "module": "app/assets/javascripts/polaris_view_components/index.js",
   "repository": "git@github.com:baoagency/polaris_view_components.git",
   "author": "By Association Only",
   "contributors": [
