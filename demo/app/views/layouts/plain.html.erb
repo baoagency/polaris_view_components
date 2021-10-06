@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Demo</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css" />
-    <%= stylesheet_link_tag 'polaris_view_components' %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body style="<%= polaris_body_styles %>">
-    <div class="app-wrapper">
-      <div class="app-content">
-        <main role="main">
-          <%= yield %>
-        </main>
-      </div>
-    </div>
-  </body>
-</html>
+<% content_for :content do %>
+  <%= yield %>
+<% end %>
+<%= render template: "layouts/application" %>

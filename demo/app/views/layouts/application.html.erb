@@ -15,8 +15,12 @@
     <div class="app-wrapper">
       <div class="app-content">
         <main role="main">
-          <%= polaris_page do %>
-            <%= yield %>
+          <% if content_for?(:content) %>
+            <%= yield :content %>
+          <% else %>
+            <%= polaris_page do %>
+              <%= yield %>
+            <% end %>
           <% end %>
         </main>
       </div>
