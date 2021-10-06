@@ -36,7 +36,6 @@ rails generate polaris_view_components:install
 Setup Polaris styles in your layouts `<head>` tag:
 
 ```erb
-<link rel="stylesheet" href="https://unpkg.com/@shopify/polaris@6.6.0/dist/styles.css" />
 <%= stylesheet_link_tag 'polaris_view_components' %>
 ```
 
