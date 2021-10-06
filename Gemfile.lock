@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    polaris_view_components (0.3.1)
+    polaris_view_components (0.3.2)
       rails (>= 5.0.0, < 8.0.0)
       view_component (~> 2.0, >= 2.0.0)
 
