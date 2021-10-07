@@ -1,0 +1,6 @@
+@media (min-width: 30.625em) {
+  .Polaris-Layout__Section--oneFourth {
+    flex: 1 1 20rem;
+    min-width: 0;
+  }
+}

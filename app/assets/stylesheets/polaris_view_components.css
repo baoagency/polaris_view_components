@@ -2142,3 +2142,9 @@ html, body{ min-height:100%; height:100%; }
   color: var(--p-action-primary);
   border-bottom: .3rem solid var(--p-action-primary)
 }
+@media (min-width: 30.625em) {
+  .Polaris-Layout__Section--oneFourth {
+    flex: 1 1 20rem;
+    min-width: 0;
+  }
+}
