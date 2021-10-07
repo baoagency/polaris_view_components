@@ -14,7 +14,7 @@ class Structure::StackComponentPreview < ViewComponent::Preview
   def fill_space_proportionally
   end
 
-  def fill_space_evently
+  def fill_space_evenly
   end
 
   def fill_remaining_space

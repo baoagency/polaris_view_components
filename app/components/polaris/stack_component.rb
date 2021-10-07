@@ -21,7 +21,7 @@ module Polaris
       :trailing => "Polaris-Stack--distributionTrailing",
       :center => "Polaris-Stack--distributionCenter",
       :fill => "Polaris-Stack--distributionFill",
-      :fill_evently => "Polaris-Stack--distributionFillEvenly",
+      :fill_evenly => "Polaris-Stack--distributionFillEvenly",
     }
     DISTRIBUTION_OPTIONS = DISTRIBUTION_MAPPINGS.keys
 
