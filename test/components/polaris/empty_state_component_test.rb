@@ -57,4 +57,13 @@ class EmptyStateComponentTest < Minitest::Test
 
     assert_selector ".Polaris-EmptyState--fullWidth"
   end
+
+  def test_empty_state_without_actions
+    render_inline(Polaris::EmptyStateComponent.new(
+      heading: "Title",
+      image: "/image.png",
+    ))
+
+    assert_no_selector ".Polaris-EmptyState__Details > .Polaris-EmptyState__Actions"
+  end
 end
