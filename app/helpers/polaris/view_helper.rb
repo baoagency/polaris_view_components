@@ -38,6 +38,7 @@ module Polaris
       subheading:               "Polaris::SubheadingComponent",
       spinner:                  "Polaris::SpinnerComponent",
       skeleton_body_text:       "Polaris::SkeletonBodyTextComponent",
+      spacer:                   "Polaris::SpacerComponent",
       tag:                      "Polaris::TagComponent",
       text_container:           "Polaris::TextContainerComponent",
       text_field:               "Polaris::TextFieldComponent",

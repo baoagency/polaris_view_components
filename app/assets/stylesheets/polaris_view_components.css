@@ -2142,6 +2142,45 @@ html, body{ min-height:100%; height:100%; }
   color: var(--p-action-primary);
   border-bottom: .3rem solid var(--p-action-primary)
 }
+/* Vertical */
+.Polaris-Spacer--verticalSpacingExtraTight {
+  height: 4px;
+}
+.Polaris-Spacer--verticalSpacingTight {
+  height: 8px;
+}
+.Polaris-Spacer--verticalSpacingBaseTight {
+  height: 12px;
+}
+.Polaris-Spacer--verticalSpacingBase {
+  height: 16px;
+}
+.Polaris-Spacer--verticalSpacingLoose {
+  height: 20px;
+}
+.Polaris-Spacer--verticalSpacingExtraLoose {
+  height: 32px;
+}
+/* Horizontal */
+.Polaris-Spacer--horizontalSpacingExtraTight {
+  width: 4px;
+}
+.Polaris-Spacer--horizontalSpacingTight {
+  width: 8px;
+}
+.Polaris-Spacer--horizontalSpacingBaseTight {
+  width: 12px;
+}
+.Polaris-Spacer--horizontalSpacingBase {
+  width: 16px;
+}
+.Polaris-Spacer--horizontalSpacingLoose {
+  width: 20px;
+}
+.Polaris-Spacer--horizontalSpacingExtraLoose {
+  width: 32px;
+}
+/* Add missing 1/4 section for layout */
 @media (min-width: 30.625em) {
   .Polaris-Layout__Section--oneFourth {
     flex: 1 1 20rem;

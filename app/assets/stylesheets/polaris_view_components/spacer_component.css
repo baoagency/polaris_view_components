@@ -1,0 +1,39 @@
+/* Vertical */
+.Polaris-Spacer--verticalSpacingExtraTight {
+  height: 4px;
+}
+.Polaris-Spacer--verticalSpacingTight {
+  height: 8px;
+}
+.Polaris-Spacer--verticalSpacingBaseTight {
+  height: 12px;
+}
+.Polaris-Spacer--verticalSpacingBase {
+  height: 16px;
+}
+.Polaris-Spacer--verticalSpacingLoose {
+  height: 20px;
+}
+.Polaris-Spacer--verticalSpacingExtraLoose {
+  height: 32px;
+}
+
+/* Horizontal */
+.Polaris-Spacer--horizontalSpacingExtraTight {
+  width: 4px;
+}
+.Polaris-Spacer--horizontalSpacingTight {
+  width: 8px;
+}
+.Polaris-Spacer--horizontalSpacingBaseTight {
+  width: 12px;
+}
+.Polaris-Spacer--horizontalSpacingBase {
+  width: 16px;
+}
+.Polaris-Spacer--horizontalSpacingLoose {
+  width: 20px;
+}
+.Polaris-Spacer--horizontalSpacingExtraLoose {
+  width: 32px;
+}
