@@ -1,0 +1,12 @@
+<%= polaris_card do %>
+  <%= polaris_empty_state(
+    heading: "Manage your inventory transfers",
+    image: "https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png",
+  ) do |state| %>
+    <p>Track and receive your incoming inventory from suppliers.</p>
+
+    <% state.unsectioned_content do %>
+      <p>Content outside of EmptyState Section.</p>
+    <% end %>
+  <% end %>
+<% end %>

@@ -46,4 +46,7 @@
       <img src="<%= @image %>" role="presentation" alt="" class="Polaris-EmptyState__Image">
     </div>
   </div>
+  <% if unsectioned_content.present? %>
+    <%= unsectioned_content %>
+  <% end %>
 <% end %>

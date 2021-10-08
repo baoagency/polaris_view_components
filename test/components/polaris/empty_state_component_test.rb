@@ -66,4 +66,17 @@ class EmptyStateComponentTest < Minitest::Test
 
     assert_no_selector ".Polaris-EmptyState__Details > .Polaris-EmptyState__Actions"
   end
+
+  def test_unsectioned_content
+    render_inline(Polaris::EmptyStateComponent.new(
+      heading: "Title",
+      image: "/image.png",
+    )) do |state|
+      state.unsectioned_content do
+        tag.div id: "unsectioned"
+      end
+    end
+
+    assert_selector ".Polaris-EmptyState > #unsectioned"
+  end
 end

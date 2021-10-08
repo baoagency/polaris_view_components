@@ -2,6 +2,7 @@
 
 module Polaris
   module ComponentTestHelpers
+    include ActionView::Helpers::TagHelper
     include ViewComponent::TestHelpers
     include Polaris::ViewHelper
     include Polaris::ActionHelper

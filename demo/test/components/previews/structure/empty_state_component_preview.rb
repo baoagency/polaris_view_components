@@ -7,4 +7,7 @@ class Structure::EmptyStateComponentPreview < ViewComponent::Preview
 
   def full_width
   end
+
+  def unsectioned_content
+  end
 end

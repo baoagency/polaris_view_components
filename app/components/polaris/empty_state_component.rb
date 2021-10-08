@@ -14,6 +14,7 @@ module Polaris
     end
     renders_one :secondary_action, Polaris::ButtonComponent
     renders_one :footer
+    renders_one :unsectioned_content
 
     def initialize(
       image:,
