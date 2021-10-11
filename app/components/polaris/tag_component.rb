@@ -2,7 +2,7 @@
 
 module Polaris
   class TagComponent < Polaris::NewComponent
-    renders_one :remove_button, lambda { |**system_arguments|
+    renders_one :remove_button, -> (**system_arguments) do
       render Polaris::BaseButton.new(
         classes: "Polaris-Tag__Button",
         disabled: @disabled,
@@ -10,7 +10,7 @@ module Polaris
       ) do |button|
         polaris_icon(name: "CancelSmallMinor")
       end
-    }
+    end
 
     def initialize(clickable: false, disabled: false, **system_arguments)
       @clickable = clickable
