@@ -5,3 +5,8 @@
     min-width: 0;
   }
 }
+
+/* Fix Tag removal link */
+a.Polaris-Tag__Button {
+  height: auto;
+}
