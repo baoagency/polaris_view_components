@@ -30,4 +30,12 @@ class LinkComponentTest < Minitest::Test
 
     assert_selector "a.Polaris-Link.Polaris-Link--removeUnderline"
   end
+
+  def test_html_content
+    render_inline(Polaris::LinkComponent.new(url: "shopify.com")) do
+      tag.div id: "nested-html"
+    end
+
+    assert_selector "a.Polaris-Link > #nested-html"
+  end
 end
