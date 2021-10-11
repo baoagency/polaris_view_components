@@ -6,6 +6,7 @@ module Polaris
       url:,
       external: false,
       monochrome: false,
+      no_underline: false,
       **system_arguments
     )
       @url = url
@@ -23,6 +24,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Link",
         "Polaris-Link--monochrome" => monochrome,
+        "Polaris-Link--removeUnderline" => no_underline,
       )
     end
 

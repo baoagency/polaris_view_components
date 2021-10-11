@@ -10,4 +10,7 @@ class Navigation::LinkComponentPreview < ViewComponent::Preview
 
   def external
   end
+
+  def no_underline
+  end
 end

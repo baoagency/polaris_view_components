@@ -24,4 +24,10 @@ class LinkComponentTest < Minitest::Test
       assert_selector ".Polaris-Icon"
     end
   end
+
+  def test_no_underline
+    render_inline(Polaris::LinkComponent.new(url: "shopify.com", no_underline: true)) { "Default" }
+
+    assert_selector "a.Polaris-Link.Polaris-Link--removeUnderline"
+  end
 end
