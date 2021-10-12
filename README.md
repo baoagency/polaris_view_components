@@ -85,7 +85,7 @@ In addition to the dependencies declared in the `gemspec`, Polaris ViewComponent
 To get started:
 
 1. Run: `bundle install`
-2. Run: `foreman start`
+2. Run: `bin/dev`
 
 It will open demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews located in `demo/test/components/previews`.
 
