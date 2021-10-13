@@ -1,6 +1,4 @@
 class Structure::CardComponentPreview < ViewComponent::Preview
-  include Polaris::ActionHelper
-
   # Use when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
   def default
   end

@@ -1,6 +1,4 @@
 class Polaris::Card::HeaderComponent < Polaris::NewComponent
-  include Polaris::ActionHelper
-
   def initialize(
     title: "",
     actions: [],

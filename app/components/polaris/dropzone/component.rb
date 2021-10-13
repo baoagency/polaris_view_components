@@ -3,8 +3,6 @@
 module Polaris
   module Dropzone
     class Component < Polaris::Component
-      include Polaris::ActionHelper
-
       ALLOWED_TYPES = %w[file image]
 
       validates :type, inclusion: { in: ALLOWED_TYPES, message: "%{value} is not a valid type" }
