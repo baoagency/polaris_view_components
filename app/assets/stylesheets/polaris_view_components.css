@@ -2191,3 +2191,7 @@ html, body{ min-height:100%; height:100%; }
 a.Polaris-Tag__Button {
   height: auto;
 }
+/* Remove underline for sort link */
+.Polaris-DataTable__Cell--sortable a {
+  text-decoration: none;
+}

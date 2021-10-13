@@ -10,3 +10,9 @@
 a.Polaris-Tag__Button {
   height: auto;
 }
+
+/* Remove underline for sort link */
+
+.Polaris-DataTable__Cell--sortable a {
+  text-decoration: none;
+}

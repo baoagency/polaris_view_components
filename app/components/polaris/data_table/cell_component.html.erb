@@ -1,0 +1,18 @@
+<% if @sort_url %>
+  <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+    <%= link_to @sort_url, class: "Polaris-DataTable__Heading" do %>
+      <span class="Polaris-DataTable__Icon">
+        <% if @sorted == :asc %>
+          <%= polaris_icon(name: "CaretUpMinor") %>
+        <% else %>
+          <%= polaris_icon(name: "CaretDownMinor") %>
+        <% end %>
+      </span>
+      <%= content %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+    <%= content %>
+  <% end %>
+<% end %>
