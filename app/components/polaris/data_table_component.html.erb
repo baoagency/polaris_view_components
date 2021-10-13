@@ -1,0 +1,77 @@
+<%= render Polaris::BaseComponent.new(**system_arguments) do %>
+  <div class="Polaris-DataTable__ScrollContainer">
+    <table class="Polaris-DataTable__Table">
+      <thead>
+        <tr>
+          <% columns.each_with_index do |column, index| %>
+            <%= render_cell(
+              first: index.zero?,
+              numeric: column.numeric,
+              tag: "th",
+              scope: "col",
+              header: true,
+              sort_url: column.sort_url,
+              sorted: column.sorted,
+            ) do %>
+              <%= column.title %>
+            <% end %>
+          <% end %>
+        </tr>
+        <% if @totals_in_header %>
+          <tr>
+            <% columns.each_with_index do |column, index| %>
+              <%= render_cell(
+                first: index.zero?,
+                numeric: column.numeric,
+                tag: (index.zero? ? "th" : "td"),
+                scope: ("row" if index.zero?),
+                total: true,
+              ) do %>
+                <%= column.total %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </thead>
+      <tbody>
+        <% @data.each do |row| %>
+          <tr class="Polaris-DataTable__TableRow <%= "Polaris-DataTable--hoverable" if @hoverable %>">
+            <% columns.each_with_index do |column, index| %>
+              <%= render_cell(
+                first: index.zero?,
+                numeric: column.numeric,
+                tag: (index.zero? ? "th" : "td"),
+                scope: ("row" if index.zero?),
+              ) do %>
+                <%= column.call(row) %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+      <% if @totals_in_footer %>
+        <tfoot>
+          <tr>
+            <% columns.each_with_index do |column, index| %>
+              <%= render_cell(
+                first: index.zero?,
+                numeric: column.numeric,
+                tag: (index.zero? ? "th" : "td"),
+                scope: ("row" if index.zero?),
+                total: true,
+                total_footer: true,
+              ) do %>
+                <%= column.total %>
+              <% end %>
+            <% end %>
+          </tr>
+        </tfoot>
+      <% end %>
+    </table>
+  </div>
+  <% if footer.present? %>
+    <div class="Polaris-DataTable__Footer">
+      <%= footer %>
+    </div>
+  <% end %>
+<% end %>
