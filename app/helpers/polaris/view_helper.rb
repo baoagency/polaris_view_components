@@ -10,6 +10,7 @@ module Polaris
       callout_card:             "Polaris::CalloutCardComponent",
       caption:                  "Polaris::CaptionComponent",
       card:                     "Polaris::CardComponent",
+      card_section:             "Polaris::Card::SectionComponent",
       checkbox:                 "Polaris::CheckboxComponent",
       choice_list:              "Polaris::ChoiceListComponent",
       data_table:               "Polaris::DataTableComponent",
