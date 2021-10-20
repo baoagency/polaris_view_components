@@ -1,0 +1,36 @@
+<% items = [
+  {
+    url: 'customers/341',
+    name: 'Mae Jemison',
+    location: 'Decatur, USA',
+  },
+  {
+    url: 'customers/256',
+    name: 'Ellen Ochoa',
+    location: 'Los Angeles, USA',
+  },
+] %>
+
+<%= polaris_card(sectioned: false) do %>
+  <%= polaris_resource_list do |resource_list| %>
+    <% resource_list.filters do |filters| %>
+      <% filters.query(
+        name: :query,
+        placeholder: "Filter customers",
+      ) %>
+    <% end %>
+
+    <% items.each do |item| %>
+      <%= polaris_resource_item(url: item[:url]) do |c| %>
+        <% c.media do %>
+          <%= polaris_avatar(customer: true, name: item[:name]) %>
+        <% end %>
+
+        <h3>
+          <%= polaris_text_style(variation: :strong) { item[:name] } %>
+        </h3>
+        <div><%= item[:location] %></div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

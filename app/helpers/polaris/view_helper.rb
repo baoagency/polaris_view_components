@@ -21,6 +21,7 @@ module Polaris
       exception_list:           "Polaris::ExceptionListComponent",
       footer_help:              "Polaris::FooterHelpComponent",
       form_layout:              "Polaris::FormLayoutComponent",
+      filters:                  "Polaris::FiltersComponent",
       heading:                  "Polaris::HeadingComponent",
       icon:                     "Polaris::IconComponent",
       inline_error:             "Polaris::InlineErrorComponent",
