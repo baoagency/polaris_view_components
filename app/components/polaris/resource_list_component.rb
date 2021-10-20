@@ -2,6 +2,8 @@
 
 module Polaris
   class ResourceListComponent < Polaris::NewComponent
+    renders_one :filters, Polaris::FiltersComponent
+
     def initialize(
       wrapper_arguments: {},
       **system_arguments
@@ -19,14 +21,6 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-ResourceList",
       )
-    end
-
-    def call
-      render(Polaris::BaseComponent.new(**@wrapper_arguments)) do
-        render(Polaris::BaseComponent.new(**@system_arguments)) do
-          content
-        end
-      end
     end
   end
 end

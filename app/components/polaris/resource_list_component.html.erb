@@ -1,0 +1,10 @@
+<%= render(Polaris::BaseComponent.new(**@wrapper_arguments)) do %>
+  <% if filters.present? %>
+    <div class="Polaris-ResourceList__FiltersWrapper">
+      <%= filters %>
+    </div>
+  <% end %>
+  <%= render(Polaris::BaseComponent.new(**@system_arguments)) do %>
+    <%= content %>
+  <% end %>
+<% end %>

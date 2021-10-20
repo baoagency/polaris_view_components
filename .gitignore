@@ -11,6 +11,7 @@
 /test/dummy/log/*.log
 /test/dummy/storage/
 /test/dummy/tmp/
+/.idea
 
 # demo app
 /demo/tmp/

@@ -1,0 +1,13 @@
+<%= render Polaris::BaseComponent.new(**system_arguments) do %>
+  <div class="Polaris-Filters-ConnectedFilterControl__Wrapper">
+    <div class="Polaris-Filters-ConnectedFilterControl Polaris-Filters-ConnectedFilterControl--right">
+      <% if query.present? %>
+        <div class="Polaris-Filters-ConnectedFilterControl__CenterContainer">
+          <div class="Polaris-Filters-ConnectedFilterControl__Item">
+            <%= query %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
