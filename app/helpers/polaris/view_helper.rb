@@ -1,7 +1,7 @@
 module Polaris
   # Module to allow shorthand calls for Polaris components
   module ViewHelper
-    HELPERS = {
+    POLARIS_HELPERS = {
       avatar:                   "Polaris::AvatarComponent",
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::BannerComponent",
@@ -49,10 +49,16 @@ module Polaris
       thumbnail:                "Polaris::ThumbnailComponent",
       visually_hidden:          "Polaris::VisuallyHiddenComponent",
     }.freeze
-
-    HELPERS.each do |name, component|
+    POLARIS_HELPERS.each do |name, component|
       define_method "polaris_#{name}" do |*args, **kwargs, &block|
         render component.constantize.new(*args, **kwargs), &block
+      end
+    end
+
+    POLARIS_TEXT_STYLES = %i[subdued strong positive negative code].freeze
+    POLARIS_TEXT_STYLES.each do |name|
+      define_method "polaris_text_#{name}" do |&block|
+        polaris_text_style(variation: name, &block)
       end
     end
 
