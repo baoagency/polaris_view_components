@@ -24,3 +24,10 @@ a.Polaris-Tag__Button {
 .Polaris-Card__Section--borderBottom {
   border-bottom: 0.1rem solid var(--p-divider);
 }
+
+/* IndexTable */
+
+/* TODO: Remove after upgrade to Polaris 7.0.0 */
+.Polaris-IndexTable__TableRow.Polaris-IndexTable__TableRow--unclickable {
+  cursor: auto;
+}

@@ -24,6 +24,7 @@ module Polaris
       filters:                  "Polaris::FiltersComponent",
       heading:                  "Polaris::HeadingComponent",
       icon:                     "Polaris::IconComponent",
+      index_table:              "Polaris::IndexTableComponent",
       inline_error:             "Polaris::InlineErrorComponent",
       layout:                   "Polaris::LayoutComponent",
       link:                     "Polaris::LinkComponent",

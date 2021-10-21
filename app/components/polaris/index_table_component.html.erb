@@ -1,0 +1,28 @@
+<%= render Polaris::BaseComponent.new(**system_arguments) do %>
+  <div class="Polaris-IndexTable-ScrollContainer">
+    <table class="Polaris-IndexTable__Table">
+      <thead>
+        <tr>
+          <% columns.each_with_index do |column, index| %>
+            <th class="Polaris-IndexTable__TableHeading">
+              <%= column.title %>
+            </th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @data.each do |row| %>
+          <tr class="Polaris-IndexTable__TableRow Polaris-IndexTable__TableRow--unclickable">
+            <% columns.each_with_index do |column, index| %>
+              <%= render_cell(
+                flush: column.flush,
+              ) do %>
+                <%= column.call(row) %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<% data = [
+  { name: "Mae Jemison", location: "Decatur, USA", orders: 20, amount_spent: "$2,400" },
+  { name: "Ellen Ochoa", location: "Los Angeles, USA", orders: 30, amount_spent: "$140" },
+] %>
+
+<%= polaris_card(sectioned: false) do %>
+  <%= polaris_index_table(data) do |table| %>
+    <% table.column("Name") do |row| %>
+      <%= polaris_text_strong { row[:name] } %>
+    <% end %>
+    <% table.column("Location") do |row| %>
+      <%= row[:location] %>
+    <% end %>
+    <% table.column("Order count") do |row| %>
+      <%= row[:orders] %>
+    <% end %>
+    <% table.column("Amount spent") do |row| %>
+      <%= row[:amount_spent] %>
+    <% end %>
+  <% end %>
+<% end %>
