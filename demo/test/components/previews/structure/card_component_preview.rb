@@ -69,4 +69,7 @@ class Structure::CardComponentPreview < ViewComponent::Preview
 
   def unstyled_section
   end
+
+  def section_with_borders
+  end
 end
