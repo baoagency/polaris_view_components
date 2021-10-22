@@ -1,0 +1,11 @@
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= polaris_layout do |layout| %>
+    <%= layout.section do %>
+      <%= form.errors_summary %>
+    <% end %>
+
+    <%= layout.section do %>
+      <%= form.polaris_text_field(:title) %>
+    <% end %>
+  <% end %>
+<% end %>

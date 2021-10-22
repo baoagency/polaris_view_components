@@ -8,4 +8,10 @@ class Rails::FormBuilderComponentPreview < ViewComponent::Preview
     product = Product.new
     render_with_template(locals: { product: product })
   end
+
+  def errors
+    product = Product.new
+    product.errors.add(:title, "can't be blank")
+    render_with_template(locals: { product: product })
+  end
 end
