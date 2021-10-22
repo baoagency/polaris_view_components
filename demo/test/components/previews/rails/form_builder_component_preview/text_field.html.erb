@@ -1,0 +1,3 @@
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= form.polaris_text_field(:title, help_text: "Note about text field") %>
+<% end %>

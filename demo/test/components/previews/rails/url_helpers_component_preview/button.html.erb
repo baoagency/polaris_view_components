@@ -1,4 +1,4 @@
-<%= polaris_button_to("Delete", products_path,
+<%= polaris_button_to("Delete", "/products",
   method: :delete,
   destructive: true,
   data: {
@@ -8,7 +8,7 @@
 
 <br>
 
-<%= polaris_button_to(products_path,
+<%= polaris_button_to("/products",
   method: :delete,
   data: {
     confirm: "Are you sure?",

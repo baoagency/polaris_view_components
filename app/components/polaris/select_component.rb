@@ -37,6 +37,7 @@ module Polaris
       @system_arguments[:tag] = "div"
       @system_arguments[:data] ||= {}
       prepend_option(@system_arguments[:data], :controller, "polaris-select")
+      prepend_option(@system_arguments[:data], :selected_value, @selected)
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Select",
@@ -56,12 +57,14 @@ module Polaris
         error: error,
       }.merge(wrapper_arguments)
 
-      @select_options = {}
+      @select_options = select_options
 
       @input_options = input_options
+      @input_options.deep_merge!(select_options) unless @form
       @input_options[:class] = class_names(@input_options[:classes], "Polaris-Select__Input")
       @input_options[:disabled] = disabled
       @input_options[:data] ||= {}
+      prepend_option(@input_options[:data], :polaris_select_target, "select")
       prepend_option(@input_options[:data], :action, "polaris-select#update")
     end
 
@@ -71,7 +74,9 @@ module Polaris
 
     def selected_option
       option = @options.to_a.find { |i| i.last.to_s == @selected.to_s }
-      option ? option.first : @options.first.first
+      return unless option
+
+      option.first
     end
   end
 end

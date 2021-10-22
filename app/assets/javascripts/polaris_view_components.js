@@ -13,10 +13,12 @@ class ResourceItem extends Controller {
 }
 
 class Select extends Controller {
-  static targets=[ "selectedOption" ];
-  update(event) {
-    const select = event.currentTarget;
-    const option = select.options[select.selectedIndex];
+  static targets=[ "select", "selectedOption" ];
+  connect() {
+    this.update();
+  }
+  update() {
+    const option = this.selectTarget.options[this.selectTarget.selectedIndex];
     this.selectedOptionTarget.innerText = option.text;
   }
 }
