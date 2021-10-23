@@ -1,0 +1,6 @@
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= form.polaris_check_box(:accept,
+    label: "Basic checkbox",
+    help_text: "Customers must review their order details before purchasing.",
+  ) %>
+<% end %>

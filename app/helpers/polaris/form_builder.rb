@@ -48,5 +48,13 @@ module Polaris
       end
       render Polaris::SelectComponent.new(form: self, attribute: method, **options, &block)
     end
+
+    def polaris_check_box(method, **options, &block)
+      options[:error] ||= error_for(method)
+      if options[:error_hidden] && options[:error]
+        options[:error] = !!options[:error]
+      end
+      render Polaris::CheckboxComponent.new(form: self, attribute: method, **options, &block)
+    end
   end
 end
