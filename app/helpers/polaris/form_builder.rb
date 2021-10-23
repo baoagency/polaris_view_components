@@ -29,6 +29,15 @@ module Polaris
       object.errors.full_messages_for(method)&.first
     end
 
+    def polaris_inline_error_for(method)
+      error_message = error_for(method)
+      return unless error_message
+
+      render(Polaris::InlineErrorComponent.new) do
+        error_message
+      end
+    end
+
     def polaris_text_field(method, **options, &block)
       options[:error] ||= error_for(method)
       if options[:error_hidden] && options[:error]
