@@ -16,7 +16,7 @@ module Polaris
       ) do
         render(Polaris::ListComponent.new) do |list|
           object.errors.each do |error|
-            list.item { error.full_message }
+            list.item { error.full_message.html_safe }
           end
         end
       end
@@ -26,7 +26,7 @@ module Polaris
       return if object.blank?
       return unless object.errors.key?(method)
 
-      object.errors.full_messages_for(method)&.first
+      object.errors.full_messages_for(method)&.first.html_safe
     end
 
     def polaris_inline_error_for(method, **options, &block)
