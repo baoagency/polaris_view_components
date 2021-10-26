@@ -29,11 +29,11 @@ module Polaris
       object.errors.full_messages_for(method)&.first
     end
 
-    def polaris_inline_error_for(method)
+    def polaris_inline_error_for(method, **options, &block)
       error_message = error_for(method)
       return unless error_message
 
-      render(Polaris::InlineErrorComponent.new) do
+      render(Polaris::InlineErrorComponent.new(**options, &block)) do
         error_message
       end
     end

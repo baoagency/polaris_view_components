@@ -2,7 +2,13 @@
 
 module Polaris
   class InlineErrorComponent < Polaris::NewComponent
-    def initialize
+    def initialize(**system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = "div"
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
+        "Polaris-InlineError",
+      )
     end
 
     def renders?
