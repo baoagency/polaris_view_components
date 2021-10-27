@@ -13,8 +13,16 @@ module Polaris
     }
     VARIATION_OPTIONS = VARIATION_MAPPINGS.keys
 
+    SIZE_DEFAULT = :default
+    SIZE_MAPPINGS = {
+      SIZE_DEFAULT => "",
+      small: "Polaris-TextStyle--sizeSmall",
+    }
+    SIZE_OPTIONS = SIZE_MAPPINGS.keys
+
     def initialize(
       variation: VARIATION_DEFAULT,
+      size: SIZE_DEFAULT,
       **system_arguments
     )
       @system_arguments = system_arguments
@@ -22,6 +30,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         VARIATION_MAPPINGS[fetch_or_fallback(VARIATION_OPTIONS, variation, VARIATION_DEFAULT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
       )
     end
 

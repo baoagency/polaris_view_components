@@ -59,8 +59,8 @@ module Polaris
 
     POLARIS_TEXT_STYLES = %i[subdued strong positive negative code].freeze
     POLARIS_TEXT_STYLES.each do |name|
-      define_method "polaris_text_#{name}" do |&block|
-        polaris_text_style(variation: name, &block)
+      define_method "polaris_text_#{name}" do |**kwargs, &block|
+        polaris_text_style(variation: name, **kwargs, &block)
       end
     end
 

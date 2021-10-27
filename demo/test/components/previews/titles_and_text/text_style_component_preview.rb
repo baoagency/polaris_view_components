@@ -16,4 +16,7 @@ class TitlesAndText::TextStyleComponentPreview < ViewComponent::Preview
 
   def shortcuts
   end
+
+  def small
+  end
 end

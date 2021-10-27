@@ -2207,3 +2207,7 @@ a.Polaris-Tag__Button {
 .Polaris-IndexTable__TableRow.Polaris-IndexTable__TableRow--unclickable {
   cursor: auto;
 }
+/* TestStyle sizes */
+.Polaris-TextStyle--sizeSmall {
+  font-size: 1.25rem;
+}

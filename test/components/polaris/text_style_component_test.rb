@@ -38,4 +38,10 @@ class TextStyleComponentTest < Minitest::Test
 
     assert_selector "span.Polaris-TextStyle--variationCode", text: "Text"
   end
+
+  def test_small_size
+    render_inline(Polaris::TextStyleComponent.new(size: :small)) { "Text" }
+
+    assert_selector "span.Polaris-TextStyle--sizeSmall", text: "Text"
+  end
 end
