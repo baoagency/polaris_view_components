@@ -106,10 +106,6 @@
   border-bottom: .3rem solid var(--p-action-primary)
 }
 
-.shp-Navigation_Link:focus {
-  box-shadow: inset 0 0 2px 0 rgba(92, 106, 196, .8), 0 0 2px 0 rgba(92, 106, 196, .8)
-}
-
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
   font-weight: 400;
   color: var(--p-text)

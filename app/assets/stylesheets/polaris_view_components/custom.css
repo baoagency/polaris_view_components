@@ -36,3 +36,8 @@ a.Polaris-Tag__Button {
 .Polaris-TextStyle--sizeSmall {
   font-size: 1.25rem;
 }
+
+/* Remove box-shadow from buttons and links */
+.Polaris-Button::after, .Polaris-Button:focus::after, .Polaris-Breadcrumbs__Breadcrumb::after {
+  box-shadow: none !important;
+}
