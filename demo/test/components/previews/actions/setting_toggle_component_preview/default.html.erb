@@ -1,0 +1,9 @@
+<%= polaris_setting_toggle(enabled: false) do |toggle| %>
+  <% toggle.action { "Activate" } %>
+  This setting is <%= polaris_text_strong { "deactivated" } %>.
+<% end %>
+
+<%= polaris_setting_toggle(enabled: true) do |toggle| %>
+  <% toggle.action { "Deactivate" } %>
+  This setting is <%= polaris_text_strong { "activated" } %>.
+<% end %>
