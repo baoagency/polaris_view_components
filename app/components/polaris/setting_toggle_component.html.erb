@@ -1,0 +1,10 @@
+<%= polaris_card do %>
+  <%= render Polaris::BaseComponent.new(**system_arguments) do %>
+    <div class="Polaris-SettingAction__Setting">
+      <%= content %>
+    </div>
+    <div class="Polaris-SettingAction__Action">
+      <%= action %>
+    </div>
+  <% end %>
+<% end %>

@@ -38,6 +38,7 @@ module Polaris
       resource_list:            "Polaris::ResourceListComponent",
       resource_item:            "Polaris::ResourceItemComponent",
       select:                   "Polaris::SelectComponent",
+      setting_toggle:           "Polaris::SettingToggleComponent",
       shopify_navigation:       "Polaris::ShopifyNavigationComponent",
       stack:                    "Polaris::StackComponent",
       subheading:               "Polaris::SubheadingComponent",
