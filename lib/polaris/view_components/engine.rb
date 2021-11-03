@@ -19,6 +19,12 @@ module Polaris
         end
       end
 
+      initializer "polaris_view_components.importmap", before: "importmap" do |app|
+        if app.config.importmap.has_key?(:cache_sweepers)
+          app.config.importmap.cache_sweepers << Engine.root.join("app/assets/javascripts")
+        end
+      end
+
       initializer "polaris_view_components.helpers" do
         ActiveSupport.on_load(:action_controller_base) do
           helper Polaris::ViewHelper
