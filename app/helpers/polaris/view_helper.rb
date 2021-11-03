@@ -42,6 +42,7 @@ module Polaris
       shopify_navigation:       "Polaris::ShopifyNavigationComponent",
       stack:                    "Polaris::StackComponent",
       subheading:               "Polaris::SubheadingComponent",
+      scrollable:               "Polaris::ScrollableComponent",
       spinner:                  "Polaris::SpinnerComponent",
       skeleton_body_text:       "Polaris::SkeletonBodyTextComponent",
       spacer:                   "Polaris::SpacerComponent",
