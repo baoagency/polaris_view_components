@@ -7,8 +7,8 @@ module Polaris
       width: nil,
       vertical: true,
       horizontal: false,
-      shadow: true,
-      focusable: true,
+      shadow: false,
+      focusable: false,
       **system_arguments
     )
       @height = height
