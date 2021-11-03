@@ -12,6 +12,58 @@ class ResourceItem extends Controller {
   }
 }
 
+class Scrollable extends Controller {
+  static targets=[ "topEdge", "bottomEdge" ];
+  static classes=[ "topShadow", "bottomShadow" ];
+  static values={
+    shadow: Boolean
+  };
+  initialize() {
+    this.topEdgeReached = false;
+    this.bottomEdgeReached = true;
+  }
+  connect() {
+    if (this.shadowValue) {
+      this.observer = new IntersectionObserver(this.handleIntersection);
+      this.observer.observe(this.topEdgeTarget);
+      this.observer.observe(this.bottomEdgeTarget);
+    }
+  }
+  disconnect() {
+    if (this.shadowValue) {
+      this.observer.disconnect();
+    }
+  }
+  handleIntersection=entries => {
+    entries.forEach((entry => {
+      const target = entry.target.dataset.polarisScrollableTarget;
+      switch (target) {
+       case "topEdge":
+        this.topEdgeReached = entry.isIntersecting;
+        break;
+
+       case "bottomEdge":
+        this.bottomEdgeReached = entry.isIntersecting;
+        break;
+      }
+    }));
+    this.updateShadows();
+  };
+  updateShadows() {
+    if (!this.topEdgeReached && !this.bottomEdgeReached) {
+      this.element.classList.add(this.topShadowClass, this.bottomShadowClass);
+    } else if (!this.topEdgeReached && !this.bottomEdgeReached) {
+      this.element.classList.remove(this.topShadowClass, this.bottomShadowClass);
+    } else if (this.topEdgeReached) {
+      this.element.classList.remove(this.topShadowClass);
+      this.element.classList.add(this.bottomShadowClass);
+    } else if (this.bottomEdgeReached) {
+      this.element.classList.add(this.topShadowClass);
+      this.element.classList.remove(this.bottomShadowClass);
+    }
+  }
+}
+
 class Select extends Controller {
   static targets=[ "select", "selectedOption" ];
   connect() {
@@ -102,8 +154,9 @@ class TextField extends Controller {
 
 function registerPolarisControllers(application) {
   application.register("polaris-resource-item", ResourceItem);
+  application.register("polaris-scrollable", Scrollable);
   application.register("polaris-select", Select);
   application.register("polaris-text-field", TextField);
 }
 
-export { ResourceItem, Select, TextField, registerPolarisControllers };
+export { ResourceItem, Scrollable, Select, TextField, registerPolarisControllers };
