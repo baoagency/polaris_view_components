@@ -19,6 +19,14 @@ class ResourceItemComponentTest < Minitest::Test
     end
   end
 
+  def test_selectable
+    render_inline(Polaris::ResourceItemComponent.new(selectable: true)) do |resource_item|
+      "Content"
+    end
+
+    assert_selector ".Polaris-ResourceItem.Polaris-ResourceItem--selectable"
+  end
+
   def test_item_with_checkbox
     render_inline(Polaris::ResourceItemComponent.new) do |resource_item|
       resource_item.checkbox(name: "attr[]", value: "val")

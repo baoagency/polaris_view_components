@@ -1,6 +1,6 @@
 <%= polaris_card(sectioned: false) do %>
   <%= polaris_resource_list do %>
-    <%= polaris_resource_item do |resource_item| %>
+    <%= polaris_resource_item(selectable: true) do |resource_item| %>
       <% resource_item.checkbox(
         name: "question[]",
         value: "answer1",
@@ -8,7 +8,7 @@
       <p>Regular checkbox</p>
     <% end %>
 
-    <%= polaris_resource_item(offset: true) do |resource_item| %>
+    <%= polaris_resource_item(selectable: true, offset: true) do |resource_item| %>
       <% resource_item.checkbox(
         name: "question[]",
         value: "answer2",

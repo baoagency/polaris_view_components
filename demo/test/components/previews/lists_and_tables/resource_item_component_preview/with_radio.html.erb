@@ -1,6 +1,6 @@
 <%= polaris_card(sectioned: false) do %>
   <%= polaris_resource_list do %>
-    <%= polaris_resource_item do |resource_item| %>
+    <%= polaris_resource_item(selectable: true) do |resource_item| %>
       <% resource_item.radio_button(
         name: "question",
         value: "answer1",
