@@ -14,14 +14,12 @@ module Polaris
 
     renders_one :checkbox, -> (**system_arguments) do
       Polaris::CheckboxComponent.new(
-        label: "Checkbox",
         label_hidden: true,
         **system_arguments
       )
     end
     renders_one :radio_button, -> (**system_arguments) do
       Polaris::RadioButtonComponent.new(
-        label: "Radio Button",
         label_hidden: true,
         **system_arguments
       )
