@@ -12,17 +12,33 @@ module Polaris
     }
     ALIGNMENT_OPTIONS = ALIGNMENT_MAPPINGS.keys
 
+    renders_one :checkbox, -> (**system_arguments) do
+      Polaris::CheckboxComponent.new(
+        label: "Checkbox",
+        label_hidden: true,
+        **system_arguments
+      )
+    end
+    renders_one :radio_button, -> (**system_arguments) do
+      Polaris::RadioButtonComponent.new(
+        label: "Radio Button",
+        label_hidden: true,
+        **system_arguments
+      )
+    end
     renders_one :media
 
     def initialize(
       url: nil,
       vertical_alignment: ALIGNMENT_DEFAULT,
+      offset: false,
       wrapper_arguments: {},
       container_arguments: {},
       **system_arguments
     )
       @url = url
       @vertical_alignment = vertical_alignment
+      @offset = offset
       @wrapper_arguments = wrapper_arguments
       @container_arguments = container_arguments
       @system_arguments = system_arguments
@@ -65,6 +81,21 @@ module Polaris
         prepend_option(args, :style, "cursor: #{cursor};")
         prepend_option(args[:data], :action, "click->polaris-resource-item#open")
       end
+    end
+
+    def owned?
+      checkbox.present? || radio_button.present? || media.present?
+    end
+
+    def owned_arguments
+      {
+        tag: "div",
+        classes: class_names(
+          "Polaris-ResourceItem__Owned",
+          "Polaris-ResourceItem__OwnedNoMedia": media.blank?,
+          "Polaris-ResourceItem__Owned--offset": @offset,
+        )
+      }
     end
 
     private

@@ -2212,3 +2212,7 @@ a.Polaris-Tag__Button {
 .Polaris-Button::after, .Polaris-Button:focus::after, .Polaris-Breadcrumbs__Breadcrumb::after {
   box-shadow: none !important;
 }
+/* ResourceItem */
+.Polaris-ResourceItem__Owned--offset {
+  padding-left: 2rem;
+}

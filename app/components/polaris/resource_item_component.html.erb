@@ -11,12 +11,22 @@
       <% end %>
 
       <%= render(Polaris::BaseComponent.new(**container_arguments)) do %>
-        <% if media.present? %>
-          <div class="Polaris-ResourceItem__Owned">
-            <div class="Polaris-ResourceItem__Media">
-              <%= media %>
-            </div>
-          </div>
+        <% if owned? %>
+          <%= render(Polaris::BaseComponent.new(**owned_arguments)) do %>
+            <% if checkbox.present? || radio_button.present? %>
+              <div class="Polaris-ResourceItem__Handle">
+                <div class="Polaris-ResourceItem__CheckboxWrapper">
+                  <%= checkbox.presence || radio_button %>
+                </div>
+              </div>
+            <% end %>
+
+            <% if media.present? %>
+              <div class="Polaris-ResourceItem__Media">
+                <%= media %>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
         <div class="Polaris-ResourceItem__Content">
           <%= content %>
