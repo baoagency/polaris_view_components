@@ -36,6 +36,7 @@ module Polaris
       @system_arguments = system_arguments
       @close_button_arguments = {
         tag: "button",
+        type: "button",
         classes: "Polaris-Modal-CloseButton",
         aria: { label: "Close" },
       }
