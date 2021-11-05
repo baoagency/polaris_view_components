@@ -1,0 +1,79 @@
+<% modal_content = capture do %>
+  <% if sections.present? %>
+    <% sections.each do |section| %>
+      <%= section %>
+    <% end %>
+  <% end %>
+
+  <% if content.present? %>
+    <% if @sectioned %>
+      <%= render Polaris::Modal::SectionComponent.new do %>
+        <%= content %>
+      <% end %>
+    <% else %>
+      <%= content %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+  <div>
+    <%= render(Polaris::BaseComponent.new(**dialog_arguments)) do %>
+      <div class="<%= modal_classes %>">
+        <div class="<%= header_classes %>">
+          <div class="Polaris-Modal-Header__Title">
+            <%= polaris_display_text(element: :h2, size: :small) do %>
+              <%= @title %>
+            <% end %>
+          </div>
+          <% if close_button.present? %>
+            <%= close_button %>
+          <% else %>
+            <%= render(Polaris::BaseComponent.new(**close_button_arguments)) do %>
+              <%= polaris_icon(name: "MobileCancelMajor", color: :base) %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="Polaris-Modal__BodyWrapper">
+          <% if @scrollable %>
+            <%= polaris_scrollable(classes: "Polaris-Modal__Body") do %>
+              <%= modal_content %>
+            <% end %>
+          <% else %>
+            <%= modal_content %>
+          <% end %>
+        </div>
+
+        <% if render_footer? %>
+          <div class="Polaris-Modal-Footer">
+            <div class="Polaris-Modal-Footer__FooterContent">
+              <%= polaris_stack(alignment: :center) do |stack| %>
+                <% stack.item(fill: true) do %>
+                <% end %>
+
+                <% stack.item do %>
+                  <%= polaris_button_group do |group| %>
+                    <% if secondary_actions %>
+                      <% secondary_actions.each do |action| %>
+                        <% group.item do %>
+                          <%= action %>
+                        <% end %>
+                      <% end %>
+
+                      <% if primary_action %>
+                        <% group.item do %>
+                          <%= primary_action %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

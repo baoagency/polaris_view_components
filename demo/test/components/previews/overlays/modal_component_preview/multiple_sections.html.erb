@@ -1,0 +1,21 @@
+<%= polaris_button(data: {
+  controller: "polaris",
+  target: "#demo-modal",
+  action: "polaris#openModal",
+}) { "Open" } %>
+
+<%= polaris_modal(
+  id: "demo-modal",
+  title: "Reach more shoppers with Instagram product tags",
+  open: true,
+) do |modal| %>
+  <% modal.section do %>
+    <p>Section 1</p>
+  <% end %>
+  <% modal.section do %>
+    <p>Section 2</p>
+  <% end %>
+
+  <% modal.primary_action { "Add instagram" } %>
+  <% modal.secondary_action { "Learn more" } %>
+<% end %>
