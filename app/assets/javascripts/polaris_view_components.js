@@ -12,8 +12,8 @@ class Modal extends Controller {
   }
   open() {
     this.element.classList.remove(this.hiddenClass);
-    document.body.insertAdjacentHTML("beforeend", `<div class="${this.backdropClass}"></div>`);
-    this.backdrop = document.body.lastElementChild;
+    this.element.insertAdjacentHTML("afterend", `<div class="${this.backdropClass}"></div>`);
+    this.backdrop = this.element.nextElementSibling;
   }
   close() {
     this.element.classList.add(this.hiddenClass);
