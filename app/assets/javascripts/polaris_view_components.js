@@ -1,5 +1,35 @@
 import { Controller } from "@hotwired/stimulus";
 
+class Modal extends Controller {
+  static classes=[ "hidden", "backdrop" ];
+  static values={
+    open: Boolean
+  };
+  connect() {
+    if (this.openValue) {
+      this.open();
+    }
+  }
+  open() {
+    this.element.classList.remove(this.hiddenClass);
+    document.body.insertAdjacentHTML("beforeend", `<div class="${this.backdropClass}"></div>`);
+    this.backdrop = document.body.lastElementChild;
+  }
+  close() {
+    this.element.classList.add(this.hiddenClass);
+    this.backdrop.remove();
+  }
+}
+
+class Polaris extends Controller {
+  openModal() {
+    const targetId = this.element.dataset.target.replace("#", "");
+    const target = document.getElementById(targetId);
+    const modal = this.application.getControllerForElementAndIdentifier(target, "polaris-modal");
+    modal.open();
+  }
+}
+
 class ResourceItem extends Controller {
   static targets=[ "link" ];
   open(event) {
@@ -153,10 +183,12 @@ class TextField extends Controller {
 }
 
 function registerPolarisControllers(application) {
+  application.register("polaris-modal", Modal);
+  application.register("polaris", Polaris);
   application.register("polaris-resource-item", ResourceItem);
   application.register("polaris-scrollable", Scrollable);
   application.register("polaris-select", Select);
   application.register("polaris-text-field", TextField);
 }
 
-export { ResourceItem, Scrollable, Select, TextField, registerPolarisControllers };
+export { Modal, Polaris, ResourceItem, Scrollable, Select, TextField, registerPolarisControllers };
