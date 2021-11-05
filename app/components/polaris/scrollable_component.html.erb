@@ -1,5 +1,5 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
-  <div data-polaris-scrollable-target="topEdge"></div>
+  <span data-polaris-scrollable-target="topEdge"></span>
   <%= content %>
-  <div data-polaris-scrollable-target="bottomEdge"></div>
+  <span data-polaris-scrollable-target="bottomEdge"></span>
 <% end %>
