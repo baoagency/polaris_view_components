@@ -1,0 +1,11 @@
+<%= polaris_action_list do |action_list| %>
+  <% action_list.section(title: "File options") do |section| %>
+    <% section.item(icon: "ImportMinor") { "Import file" } %>
+    <% section.item(icon: "ExportMinor") { "Export file" } %>
+  <% end %>
+
+  <% action_list.section(title: "Section 2") do |section| %>
+    <% section.item(icon: "ImportMinor") { "Import file" } %>
+    <% section.item(icon: "ExportMinor") { "Export file" } %>
+  <% end %>
+<% end %>

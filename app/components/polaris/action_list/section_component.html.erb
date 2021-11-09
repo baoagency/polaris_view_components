@@ -1,0 +1,16 @@
+<%= render Polaris::BaseComponent.new(**system_arguments) do %>
+  <% if @title.present? %>
+    <p class="<%= title_classes %>">
+      <%= @title %>
+    </p>
+  <% end %>
+  <ul class="Polaris-ActionList__Actions">
+    <% if items.present? %>
+      <% items.each do |item| %>
+        <%= item %>
+      <% end %>
+    <% else %>
+      <%= content %>
+    <% end %>
+  </ul>
+<% end %>
