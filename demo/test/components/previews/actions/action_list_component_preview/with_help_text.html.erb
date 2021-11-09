@@ -1,0 +1,9 @@
+<%= polaris_action_list do |action_list| %>
+  <% action_list.item(
+    help_text: "Manage your blog articles"
+  ) { "Blog posts" } %>
+  <% action_list.item(
+    help_text: "Manage blogs published to your Online Store",
+    url: "#",
+  ) { "Blogs" } %>
+<% end %>
