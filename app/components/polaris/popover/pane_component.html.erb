@@ -1,0 +1,25 @@
+<% pane_content = capture do %>
+  <% if sections.present? %>
+    <% sections.each do |section| %>
+      <%= section %>
+    <% end %>
+  <% end %>
+
+  <% if @sectioned %>
+    <%= render Polaris::Popover::SectionComponent.new do %>
+      <%= content %>
+    <% end %>
+  <% else %>
+    <%= content %>
+  <% end %>
+<% end %>
+
+<% if @fixed %>
+  <%= render Polaris::BaseComponent.new(**system_arguments) do %>
+    <%= pane_content %>
+  <% end %>
+<% else %>
+  <%= render Polaris::ScrollableComponent.new(shadow: true, **system_arguments) do %>
+    <%= pane_content %>
+  <% end %>
+<% end %>

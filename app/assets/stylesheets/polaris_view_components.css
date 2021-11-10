@@ -2219,3 +2219,11 @@ a.Polaris-Tag__Button {
 .Polaris-ResourceItem__Owned--offset {
   padding-left: 2rem;
 }
+/* Popover */
+.Polaris-Popover {
+  margin: 0;
+}
+.Polaris-Popover__PopoverOverlay--closed {
+  visibility: hidden;
+  pointer-events: none;
+}

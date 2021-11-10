@@ -1,0 +1,20 @@
+<%= polaris_popover(active: true, sectioned: true) do |popover| %>
+  <% popover.button(disclosure: true) { "More actions" } %>
+
+  <%= polaris_form_layout do |form_layout| %>
+    <% form_layout.item do %>
+      <%= polaris_select(
+        label: "Show all customers where:",
+        options: {
+          "Tagged with" => "tagged_with",
+        },
+      ) %>
+    <% end %>
+    <% form_layout.item do %>
+      <%= polaris_text_field(label: "Tags") %>
+    <% end %>
+    <% form_layout.item do %>
+      <%= polaris_button(size: :slim) { "Add filter" } %>
+    <% end %>
+  <% end %>
+<% end %>

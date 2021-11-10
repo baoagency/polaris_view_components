@@ -1,4 +1,8 @@
-<%= polaris_action_list do |action_list| %>
-  <% action_list.item { "Import file" } %>
-  <% action_list.item(url: "#") { "Export file" } %>
+<%= polaris_popover(active: true) do |popover| %>
+  <% popover.button(disclosure: true) { "More actions" } %>
+
+  <%= polaris_action_list do |action_list| %>
+    <% action_list.item { "Import file" } %>
+    <% action_list.item(url: "#") { "Export file" } %>
+  <% end %>
 <% end %>

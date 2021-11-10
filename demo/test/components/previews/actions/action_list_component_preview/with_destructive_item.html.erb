@@ -1,7 +1,11 @@
-<%= polaris_action_list do |action_list| %>
-  <% action_list.section(title: "File options") do |section| %>
-    <% section.item(icon: "ImportMinor", active: true) { "Import file" } %>
-    <% section.item(icon: "ExportMinor") { "Export file" } %>
-    <% section.item(icon: "DeleteMinor", destructive: true) { "Delete file" } %>
+<%= polaris_popover(active: true) do |popover| %>
+  <% popover.button(disclosure: true) { "More actions" } %>
+
+  <%= polaris_action_list do |action_list| %>
+    <% action_list.section(title: "File options") do |section| %>
+      <% section.item(icon: "ImportMinor", active: true) { "Import file" } %>
+      <% section.item(icon: "ExportMinor") { "Export file" } %>
+      <% section.item(icon: "DeleteMinor", destructive: true) { "Delete file" } %>
+    <% end %>
   <% end %>
 <% end %>

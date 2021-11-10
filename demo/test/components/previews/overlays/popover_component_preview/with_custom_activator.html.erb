@@ -1,0 +1,14 @@
+<%= polaris_popover(active: true) do |popover| %>
+  <% popover.activator do %>
+    <%= polaris_button(
+      plain: true,
+      disclosure: true,
+      data: { action: "polaris-popover#toggle click@window->polaris-popover#hide" }
+    ) { "More actions" } %>
+  <% end %>
+
+  <%= polaris_action_list do |action_list| %>
+    <% action_list.item { "Import" } %>
+    <% action_list.item { "Export" } %>
+  <% end %>
+<% end %>

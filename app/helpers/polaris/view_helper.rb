@@ -36,6 +36,7 @@ module Polaris
       page_actions:             "Polaris::PageActionsComponent",
       pagination:               "Polaris::PaginationComponent",
       progress_bar:             "Polaris::ProgressBarComponent",
+      popover:                  "Polaris::PopoverComponent",
       radio_button:             "Polaris::RadioButtonComponent",
       resource_list:            "Polaris::ResourceListComponent",
       resource_item:            "Polaris::ResourceItemComponent",

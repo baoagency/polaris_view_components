@@ -1,9 +1,13 @@
-<%= polaris_action_list do |action_list| %>
-  <% action_list.item(
-    help_text: "Manage your blog articles"
-  ) { "Blog posts" } %>
-  <% action_list.item(
-    help_text: "Manage blogs published to your Online Store",
-    url: "#",
-  ) { "Blogs" } %>
+<%= polaris_popover(active: true) do |popover| %>
+  <% popover.button(disclosure: true) { "More actions" } %>
+
+  <%= polaris_action_list do |action_list| %>
+    <% action_list.item(
+      help_text: "Manage your blog articles"
+    ) { "Blog posts" } %>
+    <% action_list.item(
+      help_text: "Manage blogs published to your Online Store",
+      url: "#",
+    ) { "Blogs" } %>
+  <% end %>
 <% end %>
