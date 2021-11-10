@@ -1,11 +1,15 @@
-<%= polaris_action_list do |action_list| %>
-  <% action_list.section(title: "File options") do |section| %>
-    <% section.item(icon: "ImportMinor") { "Import file" } %>
-    <% section.item(icon: "ExportMinor") { "Export file" } %>
-  <% end %>
+<%= polaris_popover(active: true) do |popover| %>
+  <% popover.button(disclosure: true) { "More actions" } %>
 
-  <% action_list.section(title: "Section 2") do |section| %>
-    <% section.item(icon: "ImportMinor") { "Import file" } %>
-    <% section.item(icon: "ExportMinor") { "Export file" } %>
+  <%= polaris_action_list do |action_list| %>
+    <% action_list.section(title: "File options") do |section| %>
+      <% section.item(icon: "ImportMinor") { "Import file" } %>
+      <% section.item(icon: "ExportMinor") { "Export file" } %>
+    <% end %>
+
+    <% action_list.section(title: "Section 2") do |section| %>
+      <% section.item(icon: "ImportMinor") { "Import file" } %>
+      <% section.item(icon: "ExportMinor") { "Export file" } %>
+    <% end %>
   <% end %>
 <% end %>

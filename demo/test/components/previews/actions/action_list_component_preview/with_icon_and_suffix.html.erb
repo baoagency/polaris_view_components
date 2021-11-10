@@ -1,9 +1,13 @@
-<%= polaris_action_list do |action_list| %>
-  <% action_list.item(icon: "ImportMinor", active: true) do |item| %>
-    <% item.suffix do %>
-      <%= polaris_icon(name: "TickSmallMinor") %>
+<%= polaris_popover(active: true) do |popover| %>
+  <% popover.button(disclosure: true) { "More actions" } %>
+
+  <%= polaris_action_list do |action_list| %>
+    <% action_list.item(icon: "ImportMinor", active: true) do |item| %>
+      <% item.suffix do %>
+        <%= polaris_icon(name: "TickSmallMinor") %>
+      <% end %>
+      Import file
     <% end %>
-    Import file
+    <% action_list.item(icon: "ExportMinor") { "Export file" } %>
   <% end %>
-  <% action_list.item(icon: "ExportMinor") { "Export file" } %>
 <% end %>

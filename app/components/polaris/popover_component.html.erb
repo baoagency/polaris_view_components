@@ -1,0 +1,38 @@
+<div
+  data-controller="polaris-popover"
+  data-polaris-popover-active-value="<%= @active %>"
+  data-polaris-popover-placement-value="<%= popperjs_placement %>"
+  data-polaris-popover-open-class="Polaris-Popover__PopoverOverlay--open"
+  data-polaris-popover-closed-class="Polaris-Popover__PopoverOverlay--closed"
+  style="display: inline-block;"
+>
+  <div data-polaris-popover-target="activator">
+    <% if activator.present? %>
+      <%= activator %>
+    <% elsif button.present? %>
+      <%= button %>
+    <% end %>
+  </div>
+
+  <%= render Polaris::BaseComponent.new(**system_arguments) do %>
+    <%= render Polaris::BaseComponent.new(**popover_arguments) do %>
+      <div class="Polaris-Popover__FocusTracker" tabindex="0"></div>
+      <div style="">
+        <div class="Polaris-Popover__Wrapper">
+          <%= render Polaris::BaseComponent.new(**content_arguments) do %>
+            <% if panes.present? %>
+              <% panes.each do |pane| %>
+                <%= pane %>
+              <% end %>
+            <% else %>
+              <%= render Polaris::Popover::PaneComponent.new(sectioned: @sectioned) do %>
+                <%= content %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="Polaris-Popover__FocusTracker" tabindex="0"></div>
+    <% end %>
+  <% end %>
+</div>
