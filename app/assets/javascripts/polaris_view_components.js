@@ -82,7 +82,7 @@ class Scrollable extends Controller {
   updateShadows() {
     if (!this.topEdgeReached && !this.bottomEdgeReached) {
       this.element.classList.add(this.topShadowClass, this.bottomShadowClass);
-    } else if (!this.topEdgeReached && !this.bottomEdgeReached) {
+    } else if (this.topEdgeReached && this.bottomEdgeReached) {
       this.element.classList.remove(this.topShadowClass, this.bottomShadowClass);
     } else if (this.topEdgeReached) {
       this.element.classList.remove(this.topShadowClass);
