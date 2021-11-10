@@ -41,6 +41,9 @@ class Actions::ButtonComponentPreview < ViewComponent::Preview
   def pressed
   end
 
+  def disclosure
+  end
+
   def disabled
   end
 

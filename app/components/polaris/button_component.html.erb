@@ -20,5 +20,18 @@
         <%= content %>
       </div>
     <% end %>
+
+    <% if @disclosure.present? %>
+      <div class="Polaris-Button__Icon">
+        <% case @disclosure %>
+        <% when :down %>
+          <%= polaris_icon(name: "CaretDownMinor") %>
+        <% when :up %>
+          <%= polaris_icon(name: "CaretUpMinor") %>
+        <% when :select %>
+          <%= polaris_icon(name: "SelectMinor") %>
+        <% end %>
+      </div>
+    <% end %>
   </span>
 <% end %>

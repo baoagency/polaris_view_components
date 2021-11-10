@@ -19,6 +19,9 @@ module Polaris
     }
     TEXT_ALIGN_OPTIONS = TEXT_ALIGN_MAPPINGS.keys
 
+    DISCLOSURE_DEFAULT = false
+    DISCLOSURE_OPTIONS = [true, false, :down, :up, :select]
+
     renders_one :icon, IconComponent
 
     def initialize(
@@ -31,6 +34,7 @@ module Polaris
       loading: false,
       destructive: false,
       disabled: false,
+      disclosure: DISCLOSURE_DEFAULT,
       external: false,
       full_width: false,
       submit: false,
@@ -45,6 +49,8 @@ module Polaris
         "Polaris-Button--removeUnderline": plain && monochrome && remove_underline
       )
       @loading = loading
+      @disclosure = fetch_or_fallback(DISCLOSURE_OPTIONS, disclosure, DISCLOSURE_DEFAULT)
+      @disclosure = :down if @disclosure === true
 
       @system_arguments = system_arguments
       @system_arguments[:type] = submit ? 'submit' : 'button'

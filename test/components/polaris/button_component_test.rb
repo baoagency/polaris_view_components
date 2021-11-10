@@ -136,4 +136,10 @@ class ButtonComponentTest < Minitest::Test
       assert_selector ".Polaris-Button__Content > .Polaris-Button__Text", text: "Button"
     end
   end
+
+  def test_disclosure_button
+    render_inline(Polaris::ButtonComponent.new(disclosure: true)) { "Button" }
+
+    assert_selector ".Polaris-Button__Content > .Polaris-Button__Icon > .Polaris-Icon"
+  end
 end
