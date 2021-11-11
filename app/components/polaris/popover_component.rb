@@ -16,6 +16,7 @@ module Polaris
 
     def initialize(
       active: false,
+      inline: true,
       fixed: false,
       fluid_content: false,
       full_height: false,
@@ -26,6 +27,7 @@ module Polaris
       **system_arguments
     )
       @active = active
+      @inline = inline
       @fixed = fixed
       @fluid_content = fluid_content
       @full_height = full_height

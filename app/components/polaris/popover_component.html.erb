@@ -4,7 +4,7 @@
   data-polaris-popover-placement-value="<%= popperjs_placement %>"
   data-polaris-popover-open-class="Polaris-Popover__PopoverOverlay--open"
   data-polaris-popover-closed-class="Polaris-Popover__PopoverOverlay--closed"
-  style="display: inline-block;"
+  style="<%= "display: inline-block;" if @inline %>"
 >
   <div data-polaris-popover-target="activator">
     <% if activator.present? %>
