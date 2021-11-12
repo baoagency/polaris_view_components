@@ -170,7 +170,6 @@ PLATFORMS
 DEPENDENCIES
   capybara
   foreman
-  minitest
   polaris_view_components!
   pry
   sqlite3
