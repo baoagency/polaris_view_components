@@ -34,6 +34,7 @@ module Polaris
       loading: false,
       destructive: false,
       disabled: false,
+      disable_with_loader: false,
       disclosure: DISCLOSURE_DEFAULT,
       external: false,
       full_width: false,
@@ -64,6 +65,11 @@ module Polaris
       end
       if disabled
         @system_arguments[:disabled] = disabled
+      end
+      @system_arguments[:data] ||= {}
+      prepend_option(@system_arguments[:data], :controller, "polaris-button")
+      if disable_with_loader
+        prepend_option(@system_arguments[:data], :action, "polaris-button#disable")
       end
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],

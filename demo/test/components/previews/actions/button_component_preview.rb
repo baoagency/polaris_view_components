@@ -47,6 +47,12 @@ class Actions::ButtonComponentPreview < ViewComponent::Preview
   def disabled
   end
 
+  def disable_with_actions
+  end
+
+  def disable_with_loader
+  end
+
   def loading
   end
 

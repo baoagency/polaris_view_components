@@ -1,3 +1,4 @@
+import Button from './button_controller'
 import Modal from './modal_controller'
 import Polaris from './polaris_controller'
 import Popover from './popover_controller'
@@ -9,6 +10,7 @@ import TextField from './text_field_controller'
 export { Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField }
 
 export function registerPolarisControllers(application) {
+  application.register('polaris-button', Button)
   application.register('polaris-modal', Modal)
   application.register('polaris', Polaris)
   application.register('polaris-popover', Popover)
