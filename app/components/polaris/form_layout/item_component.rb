@@ -8,7 +8,7 @@ class Polaris::FormLayout::ItemComponent < Polaris::NewComponent
     @system_arguments[:tag] = "div"
     @system_arguments[:classes] = class_names(
       @system_arguments[:classes],
-      "Polaris-FormLayout__Item",
+      "Polaris-FormLayout__Item"
     )
   end
 

@@ -2,7 +2,7 @@
 
 module Polaris
   class TagComponent < Polaris::NewComponent
-    renders_one :remove_button, -> (**system_arguments) do
+    renders_one :remove_button, ->(**system_arguments) do
       render Polaris::BaseButton.new(
         classes: "Polaris-Tag__Button",
         disabled: @disabled,

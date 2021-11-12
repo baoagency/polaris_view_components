@@ -10,7 +10,7 @@ module Polaris
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] = url.present? ? 'a' : 'button'
+      @system_arguments[:tag] = url.present? ? "a" : "button"
       if loading
         @system_arguments[:disabled] = true
       end

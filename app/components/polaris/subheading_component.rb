@@ -13,7 +13,7 @@ module Polaris
       @system_arguments[:tag] = element
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        'Polaris-Subheading'
+        "Polaris-Subheading"
       )
     end
 

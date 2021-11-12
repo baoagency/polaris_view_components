@@ -13,7 +13,7 @@ module Polaris
         opts[:tag] = "div"
         opts[:classes] = class_names(
           @system_arguments[:classes],
-          "Polaris-Filters",
+          "Polaris-Filters"
         )
       end
     end
@@ -22,7 +22,7 @@ module Polaris
       def initialize(clear_button: true, **system_arguments)
         @system_arguments = system_arguments.merge(
           label_hidden: true,
-          clear_button: clear_button,
+          clear_button: clear_button
         )
       end
 

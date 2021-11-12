@@ -7,7 +7,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       value: "Value",
-      label: "Label",
+      label: "Label"
     ))
 
     assert_selector "div > .Polaris-Labelled__LabelWrapper" do
@@ -27,8 +27,8 @@ class TextFieldComponentTest < Minitest::Test
   def test_number_field
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
-      value: '1.34',
-      type: :number,
+      value: "1.34",
+      type: :number
     ))
 
     assert_selector ".Polaris-Connected__Item" do
@@ -43,7 +43,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       type: :email,
-      label: "Label",
+      label: "Label"
     ))
 
     assert_selector ".Polaris-TextField" do
@@ -55,7 +55,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      label_hidden: true,
+      label_hidden: true
     ))
 
     assert_selector ".Polaris-Labelled--hidden"
@@ -65,7 +65,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      label_action: { url: "/action", content: "Label Action" },
+      label_action: {url: "/action", content: "Label Action"}
     ))
 
     assert_selector ".Polaris-Labelled__LabelWrapper" do
@@ -79,7 +79,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      align: :right,
+      align: :right
     ))
 
     assert_selector "input.Polaris-TextField__Input.Polaris-TextField__Input--alignRight"
@@ -89,7 +89,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      placeholder: "Placeholder",
+      placeholder: "Placeholder"
     ))
 
     assert_selector "input.Polaris-TextField__Input[placeholder=Placeholder]"
@@ -99,7 +99,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      help_text: "Help Text",
+      help_text: "Help Text"
     ))
 
     assert_selector ".Polaris-Labelled__HelpText", text: "Help Text"
@@ -109,7 +109,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      prefix: "Prefix",
+      prefix: "Prefix"
     ))
 
     assert_selector ".Polaris-TextField > .Polaris-TextField__Prefix", text: "Prefix"
@@ -119,7 +119,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      suffix: "Suffix",
+      suffix: "Suffix"
     ))
 
     assert_selector ".Polaris-TextField" do
@@ -131,7 +131,7 @@ class TextFieldComponentTest < Minitest::Test
   def test_prefix_suffix_slots
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
-      label: "Label",
+      label: "Label"
     )) do |c|
       c.prefix { "Prefix" }
       c.suffix { "Suffix" }
@@ -144,7 +144,7 @@ class TextFieldComponentTest < Minitest::Test
   def test_connected_fields
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
-      label: "Label",
+      label: "Label"
     )) do |text_field|
       text_field.connected_left { "Left Content" }
       text_field.connected_right { "Right Content" }
@@ -162,7 +162,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      error: true,
+      error: true
     ))
 
     assert_selector ".Polaris-TextField.Polaris-TextField--error"
@@ -172,7 +172,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      error: "Inline Error",
+      error: "Inline Error"
     ))
 
     assert_selector ".Polaris-TextField.Polaris-TextField--error"
@@ -183,7 +183,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      disabled: true,
+      disabled: true
     ))
 
     assert_selector ".Polaris-TextField.Polaris-TextField--disabled" do
@@ -197,7 +197,7 @@ class TextFieldComponentTest < Minitest::Test
       value: "1234567890",
       label: "Label",
       show_character_count: true,
-      maxlength: 20,
+      maxlength: 20
     ))
 
     assert_selector ".Polaris-TextField" do
@@ -209,7 +209,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      clear_button: true,
+      clear_button: true
     ))
 
     assert_selector ".Polaris-TextField" do
@@ -221,7 +221,7 @@ class TextFieldComponentTest < Minitest::Test
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       label: "Label",
-      monospaced: true,
+      monospaced: true
     ))
 
     assert_selector "input.Polaris-TextField--monospaced"
@@ -232,7 +232,7 @@ class TextFieldComponentTest < Minitest::Test
       name: :input_name,
       value: "Multiline\nValue",
       multiline: true,
-      rows: 4,
+      rows: 4
     ))
 
     assert_selector ".Polaris-TextField.Polaris-TextField--multiline" do
@@ -240,14 +240,14 @@ class TextFieldComponentTest < Minitest::Test
     end
   end
 
-  def test_character_count
+  def test_multiline_character_count
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
       value: "Multiline\nValue",
       multiline: true,
       rows: 4,
       show_character_count: true,
-      maxlength: 40,
+      maxlength: 40
     ))
 
     assert_selector ".Polaris-TextField" do

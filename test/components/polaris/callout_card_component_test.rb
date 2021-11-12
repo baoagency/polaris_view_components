@@ -6,7 +6,7 @@ class CalloutCardComponentTest < Minitest::Test
   def test_default_callout_card
     render_inline(Polaris::CalloutCardComponent.new(
       title: "Callout Title",
-      illustration: "/image.png",
+      illustration: "/image.png"
     )) do |callout|
       callout.primary_action(url: "#") { "Primary Action" }
 
@@ -45,8 +45,8 @@ class CalloutCardComponentTest < Minitest::Test
   def test_dismissible_callout_card
     render_inline(Polaris::CalloutCardComponent.new(
       title: "Callout Title",
-      illustration: "/image.png",
-    )) do  |callout|
+      illustration: "/image.png"
+    )) do |callout|
       callout.dismiss_button(url: "#")
     end
 

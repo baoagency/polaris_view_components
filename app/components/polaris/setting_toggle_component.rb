@@ -2,7 +2,7 @@
 
 module Polaris
   class SettingToggleComponent < Polaris::NewComponent
-    renders_one :action, -> (**system_arguments) do
+    renders_one :action, ->(**system_arguments) do
       Polaris::ButtonComponent.new(primary: !@enabled, **system_arguments)
     end
 
@@ -16,7 +16,7 @@ module Polaris
         opts[:tag] = "div"
         opts[:classes] = class_names(
           @system_arguments[:classes],
-          "Polaris-SettingAction",
+          "Polaris-SettingAction"
         )
       end
     end

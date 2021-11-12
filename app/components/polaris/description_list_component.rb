@@ -5,7 +5,7 @@ module Polaris
     SPACING_DEFAULT = :loose
     SPACING_MAPPINGS = {
       SPACING_DEFAULT => "",
-      :tight => "Polaris-DescriptionList--spacingTight",
+      :tight => "Polaris-DescriptionList--spacingTight"
     }
     SPACING_OPTIONS = SPACING_MAPPINGS.keys
 
@@ -17,7 +17,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-DescriptionList",
-        SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)],
+        SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)]
       )
     end
 
@@ -33,7 +33,7 @@ module Polaris
       def call
         safe_join [
           tag.dt(class: "Polaris-DescriptionList__Term") { @term },
-          tag.dd(class: "Polaris-DescriptionList__Description") { content },
+          tag.dd(class: "Polaris-DescriptionList__Description") { content }
         ]
       end
     end

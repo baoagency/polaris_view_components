@@ -11,7 +11,7 @@ module Polaris
       :warning => "Polaris-Icon--colorWarning",
       :highlight => "Polaris-Icon--colorHighlight",
       :success => "Polaris-Icon--colorSuccess",
-      :primary => "Polaris-Icon--colorPrimary",
+      :primary => "Polaris-Icon--colorPrimary"
     }
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
 
@@ -29,7 +29,7 @@ module Polaris
         "Polaris-Icon",
         COLOR_MAPPINGS[fetch_or_fallback(COLOR_OPTIONS, color, COLOR_DEFAULT)],
         "Polaris-Icon--hasBackdrop" => backdrop,
-        "Polaris-Icon--applyColor" => color != :default,
+        "Polaris-Icon--applyColor" => color != :default
       )
     end
   end

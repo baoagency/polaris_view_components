@@ -8,7 +8,7 @@ class Polaris::Popover::SectionComponent < Polaris::NewComponent
       opts[:tag] = "div"
       opts[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Popover__Section",
+        "Polaris-Popover__Section"
       )
     end
   end

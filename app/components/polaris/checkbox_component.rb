@@ -6,7 +6,7 @@ module Polaris
 
     attr_reader :checked
 
-    validates :checked, inclusion: { in: [true, false, :indeterminate] }
+    validates :checked, inclusion: {in: [true, false, :indeterminate]}
 
     def initialize(
       form: nil,
@@ -37,7 +37,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Checkbox",
         "Polaris-Checkbox--labelHidden": label_hidden,
-        "Polaris-Checkbox--error": error.present?,
+        "Polaris-Checkbox--error": error.present?
       )
 
       @wrapper_arguments = {
@@ -45,7 +45,7 @@ module Polaris
         label_hidden: label_hidden,
         disabled: disabled,
         help_text: help_text,
-        error: error,
+        error: error
       }.merge(wrapper_arguments)
 
       @input_options = input_options
@@ -59,7 +59,7 @@ module Polaris
       @input_options[:class] = class_names(
         @input_options[:classes],
         "Polaris-Checkbox__Input",
-        "Polaris-Checkbox__Input--indeterminate": indeterminate?,
+        "Polaris-Checkbox__Input--indeterminate": indeterminate?
       )
     end
 

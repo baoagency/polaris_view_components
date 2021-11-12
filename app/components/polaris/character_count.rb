@@ -16,7 +16,7 @@ module Polaris
     def text
       return "#{count}/#{@max_length}" if max_length?
 
-      "#{count}"
+      count.to_s
     end
 
     def label_template
@@ -35,16 +35,16 @@ module Polaris
 
     private
 
-      def max_length?
-        @max_length.present?
-      end
+    def max_length?
+      @max_length.present?
+    end
 
-      def normalized_value
-        @text_field.value.to_s || ''
-      end
+    def normalized_value
+      @text_field.value.to_s || ""
+    end
 
-      def count
-        normalized_value.length
-      end
+    def count
+      normalized_value.length
+    end
   end
 end

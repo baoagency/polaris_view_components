@@ -5,11 +5,11 @@ module Polaris
     WITHIN_DEFAULT = :page
     WITHIN_MAPPINGS = {
       WITHIN_DEFAULT => "",
-      container: "Polaris-EmptyState--withinContentContainer",
+      :container => "Polaris-EmptyState--withinContentContainer"
     }
     WITHIN_OPTIONS = WITHIN_MAPPINGS.keys
 
-    renders_one :primary_action, -> (primary: true, **system_arguments) do
+    renders_one :primary_action, ->(primary: true, **system_arguments) do
       Polaris::ButtonComponent.new(primary: primary, **system_arguments)
     end
     renders_one :secondary_action, Polaris::ButtonComponent
@@ -32,7 +32,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-EmptyState",
         WITHIN_MAPPINGS[fetch_or_fallback(WITHIN_OPTIONS, within, WITHIN_DEFAULT)],
-        "Polaris-EmptyState--fullWidth": full_width,
+        "Polaris-EmptyState--fullWidth": full_width
       )
     end
   end

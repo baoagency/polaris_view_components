@@ -9,27 +9,27 @@ class Polaris::ApplicationComponent < ViewComponent::Base
 
   private
 
-    def classes
-      []
-    end
+  def classes
+    []
+  end
 
-    def additional_data
-      {}
-    end
+  def additional_data
+    {}
+  end
 
-    def additional_aria
-      {}
-    end
+  def additional_aria
+    {}
+  end
 
-    def content_tag_options
-      {
-        class: classes.compact,
-        data: @data.merge(additional_data),
-        aria: @aria.merge(additional_aria)
-      }.merge(@html_options)
-    end
+  def content_tag_options
+    {
+      class: classes.compact,
+      data: @data.merge(additional_data),
+      aria: @aria.merge(additional_aria)
+    }.merge(@html_options)
+  end
 
-    def before_render
-      validate!
-    end
+  def before_render
+    validate!
+  end
 end

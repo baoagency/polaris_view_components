@@ -12,7 +12,7 @@ class Polaris::ActionList::SectionComponent < Polaris::NewComponent
       opts[:tag] = "div"
       opts[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-ActionList__Section--withoutTitle": @title.blank?,
+        "Polaris-ActionList__Section--withoutTitle": @title.blank?
       )
     end
   end
@@ -20,7 +20,7 @@ class Polaris::ActionList::SectionComponent < Polaris::NewComponent
   def title_classes
     class_names(
       "Polaris-ActionList__Title",
-      "Polaris-ActionList--firstSectionWithTitle": @position == 1,
+      "Polaris-ActionList--firstSectionWithTitle": @position == 1
     )
   end
 end

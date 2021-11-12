@@ -44,7 +44,7 @@ module Polaris
         "Polaris-Badge",
         PROGRESS_MAPPINGS[fetch_or_fallback(PROGRESS_OPTIONS, progress, PROGRESS_DEFAULT)],
         SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
-        STATUS_MAPPINGS[fetch_or_fallback(STATUS_OPTIONS, status, STATUS_DEFAULT)],
+        STATUS_MAPPINGS[fetch_or_fallback(STATUS_OPTIONS, status, STATUS_DEFAULT)]
       )
     end
   end

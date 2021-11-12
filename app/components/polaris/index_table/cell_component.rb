@@ -5,11 +5,11 @@ class Polaris::IndexTable::CellComponent < Polaris::NewComponent
   end
 
   def system_arguments
-    { tag: "td" }.deep_merge(@system_arguments).tap do |args|
+    {tag: "td"}.deep_merge(@system_arguments).tap do |args|
       args[:classes] = class_names(
         args[:classes],
         "Polaris-IndexTable__TableCell",
-        "Polaris-IndexTable__TableCell--flush": @flush,
+        "Polaris-IndexTable__TableCell--flush": @flush
       )
     end
   end

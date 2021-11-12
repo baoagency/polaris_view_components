@@ -30,8 +30,8 @@ class BannerComponentTest < Minitest::Test
 
   def test_banner_with_actions
     render_inline(Polaris::BannerComponent.new) do |banner|
-      banner.action(url: '/primary') { "Primary Action" }
-      banner.secondary_action(url: '/secondary') { "Secondary Action" }
+      banner.action(url: "/primary") { "Primary Action" }
+      banner.secondary_action(url: "/secondary") { "Secondary Action" }
     end
 
     assert_selector ".Polaris-Banner > .Polaris-Banner__ContentWrapper > .Polaris-Banner__Content" do

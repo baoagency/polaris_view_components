@@ -11,8 +11,9 @@ class ButtonComponentTest < Minitest::Test
     end
   end
 
-  def test_disabled_tag
-    render_inline(Polaris::TagComponent.new(disabled: true)) { "Content" }
+  def test_clickable_tag
+    render_inline(Polaris::TagComponent.new(clickable: true)) { "Content" }
+
     assert_selector "button.Polaris-Tag.Polaris-Tag--clickable"
   end
 
@@ -35,5 +36,4 @@ class ButtonComponentTest < Minitest::Test
       assert_selector "span.Polaris-TagText", text: "Content"
     end
   end
-
 end

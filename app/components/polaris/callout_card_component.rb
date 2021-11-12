@@ -3,10 +3,10 @@
 module Polaris
   class CalloutCardComponent < Polaris::NewComponent
     renders_one :primary_action, Polaris::ButtonComponent
-    renders_one :secondary_action, -> (plain: true, **system_arguments) do
+    renders_one :secondary_action, ->(plain: true, **system_arguments) do
       Polaris::ButtonComponent.new(plain: plain, **system_arguments)
     end
-    renders_one :dismiss_button, -> (**system_arguments) do
+    renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
         button.icon(name: "CancelSmallMinor")
       end
@@ -24,21 +24,21 @@ module Polaris
       @system_arguments[:tag] = "div"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Card",
+        "Polaris-Card"
       )
     end
 
     def container_classes
       class_names(
         "Polaris-CalloutCard__Container",
-        "Polaris-CalloutCard--hasDismiss": dismiss_button.present?,
+        "Polaris-CalloutCard--hasDismiss": dismiss_button.present?
       )
     end
 
     def image_classes
       class_names(
         "Polaris-CalloutCard__Image",
-        "Polaris-CalloutCard__DismissImage": dismiss_button.present?,
+        "Polaris-CalloutCard__DismissImage": dismiss_button.present?
       )
     end
   end

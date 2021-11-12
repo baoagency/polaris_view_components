@@ -27,14 +27,14 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-RadioButton",
-        "Polaris-RadioButton--labelHidden": label_hidden,
+        "Polaris-RadioButton--labelHidden": label_hidden
       )
 
       @wrapper_arguments = {
         label: label,
         label_hidden: label_hidden,
         help_text: help_text,
-        disabled: disabled,
+        disabled: disabled
       }.merge(wrapper_arguments)
 
       @input_options = input_options
@@ -43,7 +43,7 @@ module Polaris
       @input_options[:aria][:checked] = checked
       @input_options[:class] = class_names(
         @input_options[:classes],
-        "Polaris-RadioButton__Input",
+        "Polaris-RadioButton__Input"
       )
     end
 

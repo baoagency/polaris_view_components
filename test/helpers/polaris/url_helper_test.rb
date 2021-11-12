@@ -4,7 +4,7 @@ class Polaris::UrlHelperTest < ActionView::TestCase
   test "polaris_button_to helper with name" do
     assert_dom_equal(
       %(<form class=\"button_to\" method=\"post\" action=\"/url\"><button data-controller=\"test\" type=\"submit\" class=\"Polaris-Button Polaris-Button--plain\"><span class=\"Polaris-Button__Content\">\n\n\n    <div class=\"Polaris-Button__Text\">\n      Name\n    </div>\n\n</span>\n</button></form>),
-      polaris_button_to("Name", "/url", plain: true, data: { controller: "test" })
+      polaris_button_to("Name", "/url", plain: true, data: {controller: "test"})
     )
   end
 

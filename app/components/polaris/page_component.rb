@@ -2,7 +2,7 @@
 
 module Polaris
   class PageComponent < Polaris::NewComponent
-    renders_one :primary_action, -> (primary: true, **system_arguments) do
+    renders_one :primary_action, ->(primary: true, **system_arguments) do
       Polaris::ButtonComponent.new(primary: primary, **system_arguments)
     end
     # renders_many :secondary_actions, Polaris::ButtonComponent
@@ -28,7 +28,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Page",
         "Polaris-Page--narrowWidth": narrow_width,
-        "Polaris-Page--fullWidth": full_width,
+        "Polaris-Page--fullWidth": full_width
       )
 
       @header_arguments = {}
@@ -38,14 +38,14 @@ module Polaris
         "Polaris-Page-Header--mobileView",
         "Polaris-Page-Header--mediumTitle",
         "Polaris-Page-Header--hasNavigation": back_url.present?,
-        "Polaris-Page-Header--noBreadcrumbs": back_url.blank?,
+        "Polaris-Page-Header--noBreadcrumbs": back_url.blank?
       )
 
       @content_arguments = {}
       @content_arguments[:tag] = "div"
       @content_arguments[:classes] = class_names(
         "Polaris-Page__Content",
-        "Polaris-Page--divider": divider,
+        "Polaris-Page--divider": divider
       )
     end
 

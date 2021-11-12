@@ -54,7 +54,7 @@ class ModalComponentTest < Minitest::Test
 
   def test_custom_close_button
     render_inline(Polaris::ModalComponent.new(title: "Title")) do |modal|
-      modal.close_button(data: { custom_close: true }) { "Primary" }
+      modal.close_button(data: {custom_close: true}) { "Primary" }
       "Content"
     end
 

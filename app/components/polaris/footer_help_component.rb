@@ -6,7 +6,7 @@ module Polaris
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-FooterHelp",
+        "Polaris-FooterHelp"
       )
     end
   end

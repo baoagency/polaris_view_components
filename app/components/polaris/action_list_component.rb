@@ -1,7 +1,7 @@
 module Polaris
   class ActionListComponent < Polaris::NewComponent
     renders_many :items, Polaris::ActionList::ItemComponent
-    renders_many :sections, -> (**system_arguments) do
+    renders_many :sections, ->(**system_arguments) do
       @counter += 1
 
       Polaris::ActionList::SectionComponent.new(position: @counter, **system_arguments)

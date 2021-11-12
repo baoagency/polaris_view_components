@@ -5,7 +5,7 @@ module Polaris
     SIZE_DEFAULT = :large
     SIZE_MAPPINGS = {
       small: "Polaris-Spinner--sizeSmall",
-      large: "Polaris-Spinner--sizeLarge",
+      large: "Polaris-Spinner--sizeLarge"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -18,7 +18,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Spinner",
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
       )
     end
   end

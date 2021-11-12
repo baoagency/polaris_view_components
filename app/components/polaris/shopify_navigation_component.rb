@@ -2,7 +2,7 @@
 
 module Polaris
   class ShopifyNavigationComponent < Polaris::NewComponent
-    renders_many :links, -> (**system_arguments) do
+    renders_many :links, ->(**system_arguments) do
       ShopifyNavigationLinkComponent.new(auto_detect_active: @auto_detect_active, **system_arguments)
     end
 
@@ -13,7 +13,7 @@ module Polaris
       @system_arguments[:tag] = "div"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "shp-Navigation",
+        "shp-Navigation"
       )
     end
 
@@ -42,13 +42,13 @@ module Polaris
           tag: "a",
           href: @url,
           role: "tab",
-          data: { polaris_unstyled: true },
-          aria: {},
+          data: {polaris_unstyled: true},
+          aria: {}
         }.deep_merge(@system_arguments).tap do |args|
           args[:aria][:selected] = @active || detect_active(@url)
           args[:classes] = class_names(
             args[:classes],
-            "shp-Navigation_Link",
+            "shp-Navigation_Link"
           )
         end
       end
@@ -56,7 +56,7 @@ module Polaris
       def detect_active(url)
         return unless @auto_detect_active
 
-        request.path.include?(url.split('?').first)
+        request.path.include?(url.split("?").first)
       end
     end
   end

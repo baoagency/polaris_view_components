@@ -10,12 +10,12 @@ class StackComponentTest < Minitest::Test
 
     assert_selector ".Polaris-Filters > .Polaris-Filters-ConnectedFilterControl__Wrapper" do
       # Query
-      assert_selector %{
+      assert_selector %(
         .Polaris-Filters-ConnectedFilterControl.Polaris-Filters-ConnectedFilterControl--right >
         .Polaris-Filters-ConnectedFilterControl__CenterContainer >
         .Polaris-Filters-ConnectedFilterControl__Item >
         .Polaris-Labelled--hidden
-      }.squish do
+      ).squish do
         assert_selector ".Polaris-Labelled__LabelWrapper label", text: "Query"
         assert_selector ".Polaris-Connected .Polaris-TextField input[name=query]"
       end

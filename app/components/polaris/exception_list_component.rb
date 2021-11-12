@@ -9,7 +9,7 @@ module Polaris
       @system_arguments[:tag] = "ul"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-ExceptionList",
+        "Polaris-ExceptionList"
       )
     end
 

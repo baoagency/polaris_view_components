@@ -16,11 +16,7 @@ module Polaris
       @system_arguments["aria-label"] = "Pagination"
 
       @button_group_arguments = {}
-      if label.present?
-        @button_group_arguments[:segmented] = false
-      else
-        @button_group_arguments[:segmented] = true
-      end
+      @button_group_arguments[:segmented] = !label.present?
     end
   end
 end

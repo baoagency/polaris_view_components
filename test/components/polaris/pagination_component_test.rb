@@ -4,7 +4,7 @@ class PaginationComponentTest < Minitest::Test
   include Polaris::ComponentTestHelpers
 
   def test_default_pagination
-    render_inline(Polaris::PaginationComponent.new(previous_url: '/previous.html', next_url: '/next.html'))
+    render_inline(Polaris::PaginationComponent.new(previous_url: "/previous.html", next_url: "/next.html"))
 
     assert_selector "nav[aria-label=Pagination] > .Polaris-ButtonGroup.Polaris-ButtonGroup--segmented" do
       assert_selector ".Polaris-ButtonGroup__Item", count: 2
@@ -20,7 +20,7 @@ class PaginationComponentTest < Minitest::Test
   end
 
   def test_pagination_with_label
-    render_inline(Polaris::PaginationComponent.new(previous_url: '/previous.html', label: 'Label'))
+    render_inline(Polaris::PaginationComponent.new(previous_url: "/previous.html", label: "Label"))
 
     assert_no_selector "nav[aria-label=Pagination] > .Polaris-ButtonGroup--segmented"
     assert_selector "nav[aria-label=Pagination] > .Polaris-ButtonGroup" do

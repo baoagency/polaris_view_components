@@ -2,14 +2,14 @@
 
 module Polaris
   class ModalComponent < Polaris::NewComponent
-    renders_one :close_button, -> (**system_arguments) do
+    renders_one :close_button, ->(**system_arguments) do
       button_arguments = @close_button_arguments.deep_merge(system_arguments)
       render(Polaris::BaseComponent.new(**button_arguments)) do
         polaris_icon(name: "MobileCancelMajor", color: :base)
       end
     end
     renders_many :sections, Polaris::Modal::SectionComponent
-    renders_one :primary_action, -> (primary: true, **system_arguments) do
+    renders_one :primary_action, ->(primary: true, **system_arguments) do
       Polaris::ButtonComponent.new(primary: primary, **system_arguments)
     end
     renders_many :secondary_actions, Polaris::ButtonComponent
@@ -38,7 +38,7 @@ module Polaris
         tag: "button",
         type: "button",
         classes: "Polaris-Modal-CloseButton",
-        aria: { label: "Close" },
+        aria: {label: "Close"}
       }
     end
 
@@ -53,7 +53,7 @@ module Polaris
         opts[:classes] = class_names(
           @system_arguments[:classes],
           "Polaris-Modal-Dialog__Container",
-          "Polaris--hidden",
+          "Polaris--hidden"
         )
       end
     end
@@ -67,14 +67,14 @@ module Polaris
         opts[:tabindex] = "-1"
         opts[:classes] = class_names(
           @dialog_arguments[:classes],
-          "Polaris-Modal-Dialog",
+          "Polaris-Modal-Dialog"
         )
       end
     end
 
     def close_button_arguments
       @close_button_arguments.deep_merge({
-        data: { action: "polaris-modal#close" },
+        data: {action: "polaris-modal#close"}
       })
     end
 
@@ -83,7 +83,7 @@ module Polaris
         "Polaris-Modal-Dialog__Modal",
         "Polaris-Modal-Dialog--sizeLarge": @large,
         "Polaris-Modal-Dialog--sizeSmall": @small,
-        "Polaris-Modal-Dialog--limitHeight": @limit_height,
+        "Polaris-Modal-Dialog--limitHeight": @limit_height
       )
     end
 

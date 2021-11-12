@@ -10,7 +10,7 @@ class Polaris::FormLayout::GroupComponent < Polaris::NewComponent
     @system_arguments[:tag] = "div"
     @system_arguments[:classes] = class_names(
       @system_arguments[:classes],
-      "Polaris-FormLayout__Items",
+      "Polaris-FormLayout__Items"
     )
 
     @wrapper_arguments = {}
@@ -18,7 +18,7 @@ class Polaris::FormLayout::GroupComponent < Polaris::NewComponent
     @wrapper_arguments[:role] = "group"
     @wrapper_arguments[:classes] = class_names(
       "Polaris-FormLayout--grouped": !condensed,
-      "Polaris-FormLayout--condensed": condensed,
+      "Polaris-FormLayout--condensed": condensed
     )
   end
 
@@ -28,7 +28,7 @@ class Polaris::FormLayout::GroupComponent < Polaris::NewComponent
       @system_arguments[:tag] = "div"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-FormLayout__Item",
+        "Polaris-FormLayout__Item"
       )
     end
 

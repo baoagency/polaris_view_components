@@ -6,7 +6,7 @@ class EmptyStateComponentTest < Minitest::Test
   def test_default_empty_state
     render_inline(Polaris::EmptyStateComponent.new(
       heading: "Title",
-      image: "/image.png",
+      image: "/image.png"
     )) do |state|
       state.primary_action { "Primary Action" }
       state.secondary_action { "Secondary Action" }
@@ -38,7 +38,7 @@ class EmptyStateComponentTest < Minitest::Test
   def test_empty_state_footer
     render_inline(Polaris::EmptyStateComponent.new(
       heading: "Title",
-      image: "/image.png",
+      image: "/image.png"
     )) do |state|
       state.footer { "Footer Content" }
     end
@@ -52,7 +52,7 @@ class EmptyStateComponentTest < Minitest::Test
     render_inline(Polaris::EmptyStateComponent.new(
       heading: "Title",
       image: "/image.png",
-      full_width: true,
+      full_width: true
     ))
 
     assert_selector ".Polaris-EmptyState--fullWidth"
@@ -61,7 +61,7 @@ class EmptyStateComponentTest < Minitest::Test
   def test_empty_state_without_actions
     render_inline(Polaris::EmptyStateComponent.new(
       heading: "Title",
-      image: "/image.png",
+      image: "/image.png"
     ))
 
     assert_no_selector ".Polaris-EmptyState__Details > .Polaris-EmptyState__Actions"
@@ -70,7 +70,7 @@ class EmptyStateComponentTest < Minitest::Test
   def test_unsectioned_content
     render_inline(Polaris::EmptyStateComponent.new(
       heading: "Title",
-      image: "/image.png",
+      image: "/image.png"
     )) do |state|
       state.unsectioned_content do
         tag.div id: "unsectioned"
