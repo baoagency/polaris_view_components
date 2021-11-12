@@ -18,7 +18,7 @@ class LayoutComponentTest < Minitest::Test
   def test_renders_nothing_if_no_slots_are_passed
     render_inline(Polaris::LayoutComponent.new)
 
-    assert_content ''
+    assert_content ""
   end
 
   def test_renders_default_layout_with_section
@@ -36,7 +36,7 @@ class LayoutComponentTest < Minitest::Test
       layout.section { "Default 3" }
     end
 
-    assert_selector ".Polaris-Layout__Section", { count: 3 }
+    assert_selector ".Polaris-Layout__Section", {count: 3}
   end
 
   def test_renders_mixed_sections
@@ -48,8 +48,8 @@ class LayoutComponentTest < Minitest::Test
       layout.section { "Default 3" }
     end
 
-    assert_selector ".Polaris-Layout__Section", { count: 3 }
-    assert_selector ".Polaris-Layout__AnnotatedSection", { count: 2 }
+    assert_selector ".Polaris-Layout__Section", {count: 3}
+    assert_selector ".Polaris-Layout__AnnotatedSection", {count: 2}
   end
 
   def test_renders_secondary_sections

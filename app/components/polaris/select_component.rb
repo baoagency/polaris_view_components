@@ -3,10 +3,10 @@
 module Polaris
   class SelectComponent < Polaris::NewComponent
     def initialize(
+      options:,
       form: nil,
       attribute: nil,
       name: nil,
-      options:,
       selected: nil,
       disabled_options: nil,
       label: nil,
@@ -42,7 +42,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Select",
         "Polaris-Select--disabled": disabled,
-        "Polaris-Select--error": error,
+        "Polaris-Select--error": error
       )
 
       @wrapper_arguments = {
@@ -54,7 +54,7 @@ module Polaris
         label_action: label_action,
         required: required,
         help_text: help_text,
-        error: error,
+        error: error
       }.merge(wrapper_arguments)
 
       @select_options = select_options

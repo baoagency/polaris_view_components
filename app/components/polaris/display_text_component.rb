@@ -10,7 +10,7 @@ module Polaris
       small: "Polaris-DisplayText--sizeSmall",
       medium: "Polaris-DisplayText--sizeMedium",
       large: "Polaris-DisplayText--sizeLarge",
-      extra_large: "Polaris-DisplayText--sizeExtraLarge",
+      extra_large: "Polaris-DisplayText--sizeExtraLarge"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -24,7 +24,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-DisplayText",
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
       )
     end
 

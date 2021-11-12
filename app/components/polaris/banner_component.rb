@@ -8,14 +8,14 @@ module Polaris
       :success => "Polaris-Banner--statusSuccess",
       :info => "Polaris-Banner--statusInfo",
       :warning => "Polaris-Banner--statusWarning",
-      :critical => "Polaris-Banner--statusCritical",
+      :critical => "Polaris-Banner--statusCritical"
     }
     STATUS_OPTIONS = STATUS_MAPPINGS.keys
 
     WITHIN_DEFAULT = :page
     WITHIN_MAPPINGS = {
       page: "Polaris-Banner--withinPage",
-      container: "Polaris-Banner--withinContentContainer",
+      container: "Polaris-Banner--withinContentContainer"
     }
     WITHIN_OPTIONS = WITHIN_MAPPINGS.keys
 
@@ -24,14 +24,14 @@ module Polaris
       success: :success,
       info: :highlight,
       warning: :warning,
-      critical: :critical,
+      critical: :critical
     }
 
-    renders_one :action, -> (**system_arguments) do
+    renders_one :action, ->(**system_arguments) do
       Polaris::ButtonComponent.new(classes: "Polaris-Banner__Button", **system_arguments)
     end
     renders_one :secondary_action, "SecondaryAction"
-    renders_one :dismiss_button, -> (**system_arguments) do
+    renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
         button.icon(name: "CancelSmallMinor")
       end
@@ -55,7 +55,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Banner",
         STATUS_MAPPINGS[fetch_or_fallback(STATUS_OPTIONS, status, STATUS_DEFAULT)],
-        WITHIN_MAPPINGS[fetch_or_fallback(WITHIN_OPTIONS, within, WITHIN_DEFAULT)],
+        WITHIN_MAPPINGS[fetch_or_fallback(WITHIN_OPTIONS, within, WITHIN_DEFAULT)]
       )
     end
 

@@ -12,7 +12,7 @@ module Polaris
 
       render Polaris::BannerComponent.new(
         title: "There's #{pluralize(object.errors.count, "error")} with this #{model_name}:",
-        status: :critical,
+        status: :critical
       ) do
         render(Polaris::ListComponent.new) do |list|
           object.errors.each do |error|
@@ -26,7 +26,7 @@ module Polaris
       return if object.blank?
       return unless object.errors.key?(method)
 
-      object.errors.full_messages_for(method)&.first.html_safe
+      raw object.errors.full_messages_for(method)&.first
     end
 
     def polaris_inline_error_for(method, **options, &block)

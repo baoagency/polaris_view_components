@@ -8,7 +8,7 @@ class Polaris::Card::HeaderComponent < Polaris::NewComponent
     @system_arguments[:tag] = :div
     @system_arguments[:classes] = class_names(
       @system_arguments[:classes],
-      "Polaris-Card__Header",
+      "Polaris-Card__Header"
     )
 
     @title = title

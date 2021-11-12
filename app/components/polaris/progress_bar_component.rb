@@ -5,16 +5,16 @@ module Polaris
     COLOR_DEFAULT = :highlight
     COLOR_MAPPINGS = {
       COLOR_DEFAULT => "Polaris-ProgressBar--colorHighlight",
-      primary: "Polaris-ProgressBar--colorPrimary",
-      success: "Polaris-ProgressBar--colorSuccess",
+      :primary => "Polaris-ProgressBar--colorPrimary",
+      :success => "Polaris-ProgressBar--colorSuccess"
     }
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
 
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => "Polaris-ProgressBar--sizeMedium",
-      small: "Polaris-ProgressBar--sizeSmall",
-      large: "Polaris-ProgressBar--sizeLarge",
+      :small => "Polaris-ProgressBar--sizeSmall",
+      :large => "Polaris-ProgressBar--sizeLarge"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -31,7 +31,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-ProgressBar",
         COLOR_MAPPINGS[fetch_or_fallback(COLOR_OPTIONS, color, COLOR_DEFAULT)],
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
       )
 
       @animated = animated

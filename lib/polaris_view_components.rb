@@ -1,1 +1,1 @@
-require 'polaris/view_components'
+require "polaris/view_components"

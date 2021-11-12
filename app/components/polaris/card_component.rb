@@ -5,13 +5,13 @@ module Polaris
     FOOTER_ACTION_ALIGNMENT_DEFAULT = :right
     FOOTER_ACTION_ALIGNMENT_MAPPINGS = {
       FOOTER_ACTION_ALIGNMENT_DEFAULT => "",
-      :left => "Polaris-Card__LeftJustified",
+      :left => "Polaris-Card__LeftJustified"
     }
     FOOTER_ACTION_ALIGNMENT_OPTIONS = FOOTER_ACTION_ALIGNMENT_MAPPINGS.keys
 
     renders_one :header, Polaris::Card::HeaderComponent
     renders_many :sections, Polaris::Card::SectionComponent
-    renders_one :primary_footer_action, -> (primary: true, **system_arguments) do
+    renders_one :primary_footer_action, ->(primary: true, **system_arguments) do
       Polaris::ButtonComponent.new(primary: primary, **system_arguments)
     end
     renders_many :secondary_footer_actions, Polaris::ButtonComponent
@@ -34,7 +34,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Card",
-        "Polaris-Card--subdued": subdued,
+        "Polaris-Card--subdued": subdued
       )
     end
 
@@ -45,7 +45,7 @@ module Polaris
     def footer_classes
       class_names(
         "Polaris-Card__Footer",
-        FOOTER_ACTION_ALIGNMENT_MAPPINGS[fetch_or_fallback(FOOTER_ACTION_ALIGNMENT_OPTIONS, @footer_action_alignment, FOOTER_ACTION_ALIGNMENT_DEFAULT)],
+        FOOTER_ACTION_ALIGNMENT_MAPPINGS[fetch_or_fallback(FOOTER_ACTION_ALIGNMENT_OPTIONS, @footer_action_alignment, FOOTER_ACTION_ALIGNMENT_DEFAULT)]
       )
     end
   end

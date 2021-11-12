@@ -21,7 +21,7 @@ class Polaris::Card::SectionComponent < Polaris::NewComponent
       "Polaris-Card__Section--subdued": subdued,
       "Polaris-Card__Section--fullWidth": full_width,
       "Polaris-Card__Section--borderTop": border_top,
-      "Polaris-Card__Section--borderBottom": border_bottom,
+      "Polaris-Card__Section--borderBottom": border_bottom
     )
 
     @title = title
@@ -34,7 +34,7 @@ class Polaris::Card::SectionComponent < Polaris::NewComponent
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Card__Subsection",
+        "Polaris-Card__Subsection"
       )
     end
 

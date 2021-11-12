@@ -6,7 +6,7 @@ module Polaris
     SIZE_MAPPINGS = {
       small: "Polaris-Avatar--sizeSmall",
       medium: "Polaris-Avatar--sizeMedium",
-      large: "Polaris-Avatar--sizeLarge",
+      large: "Polaris-Avatar--sizeLarge"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 

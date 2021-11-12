@@ -6,7 +6,7 @@ module Polaris
     POSITION_DEFAULT = :below
     POSITION_OPTIONS = [:above, :below]
 
-    renders_one :button, -> (**system_arguments) do
+    renders_one :button, ->(**system_arguments) do
       system_arguments[:data] ||= {}
       prepend_option(system_arguments[:data], :action, "polaris-popover#toggle click@window->polaris-popover#hide")
       Polaris::ButtonComponent.new(**system_arguments)
@@ -50,7 +50,7 @@ module Polaris
           "Polaris-PositionedOverlay",
           "Polaris-Popover__PopoverOverlay",
           "Polaris-Popover__PopoverOverlay--closed",
-          "Polaris-Popover__PopoverOverlay--fixed": @fixed,
+          "Polaris-Popover__PopoverOverlay--fixed": @fixed
         )
       end
     end
@@ -62,7 +62,7 @@ module Polaris
           @content_arguments[:classes],
           "Polaris-Popover",
           "Polaris-Popover--fullWidth": @full_width,
-          "Polaris-Popover--positionedAbove": @position == :above,
+          "Polaris-Popover--positionedAbove": @position == :above
         )
       end
     end
@@ -75,13 +75,13 @@ module Polaris
           @content_arguments[:classes],
           "Polaris-Popover__Content",
           "Polaris-Popover__Content--fluidContent": @fluid_content,
-          "Polaris-Popover__Content--fullHeight": @full_height,
+          "Polaris-Popover__Content--fullHeight": @full_height
         )
       end
     end
 
     def popperjs_placement
-      placement = (@position == :above) ? "top" : "bottom"
+      placement = @position == :above ? "top" : "bottom"
       placement += "-start" if @alignment == :left
       placement += "-end" if @alignment == :right
       placement

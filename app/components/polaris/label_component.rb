@@ -19,13 +19,13 @@ module Polaris
       @system_arguments[:tag] = "div"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Label",
+        "Polaris-Label"
       )
 
       @label_options = {}
       @label_options[:class] = class_names(
         "Polaris-Label__Text",
-        "Polaris-Label__RequiredIndicator": required,
+        "Polaris-Label__RequiredIndicator": required
       )
     end
 

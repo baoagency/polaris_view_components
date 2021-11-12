@@ -7,8 +7,8 @@ class SelectComponentTest < Minitest::Test
     render_inline(Polaris::SelectComponent.new(
       name: :input_name,
       label: "Input Label",
-      options: { "Option 1" => "option1", "Option 2" => "option2" },
-      selected: "option2",
+      options: {"Option 1" => "option1", "Option 2" => "option2"},
+      selected: "option2"
     ))
 
     assert_selector "div" do
@@ -34,7 +34,7 @@ class SelectComponentTest < Minitest::Test
     render_inline(Polaris::SelectComponent.new(
       name: :input_name,
       label: "Input Label",
-      options: [["Option 1", "option1"], ["Option 2", "option2"]],
+      options: [["Option 1", "option1"], ["Option 2", "option2"]]
     ))
 
     assert_selector "select.Polaris-Select__Input" do
@@ -49,7 +49,7 @@ class SelectComponentTest < Minitest::Test
       name: :input_name,
       label: "Input Label",
       label_inline: true,
-      options: [["Option 1", "option1"]],
+      options: [["Option 1", "option1"]]
     ))
 
     assert_selector ".Polaris-Labelled--hidden" do
@@ -63,8 +63,8 @@ class SelectComponentTest < Minitest::Test
     render_inline(Polaris::SelectComponent.new(
       name: :input_name,
       label: "Input Label",
-      label_action: { url: "/action", content: "Label Action" },
-      options: [["Option 1", "option1"]],
+      label_action: {url: "/action", content: "Label Action"},
+      options: [["Option 1", "option1"]]
     ))
 
     assert_selector ".Polaris-Labelled__LabelWrapper" do
@@ -79,7 +79,7 @@ class SelectComponentTest < Minitest::Test
       name: :input_name,
       label: "Input Label",
       disabled: true,
-      options: [["Option 1", "option1"]],
+      options: [["Option 1", "option1"]]
     ))
 
     assert_selector ".Polaris-Select.Polaris-Select--disabled" do
@@ -93,7 +93,7 @@ class SelectComponentTest < Minitest::Test
       name: :input_name,
       label: "Input Label",
       options: [["Option 1", "option1"], ["Option 2", "option2"]],
-      disabled_options: "option2",
+      disabled_options: "option2"
     ))
 
     assert_selector ".Polaris-Select > select" do
@@ -106,7 +106,7 @@ class SelectComponentTest < Minitest::Test
       name: :input_name,
       label: "Input Label",
       required: true,
-      options: [["Option 1", "option1"]],
+      options: [["Option 1", "option1"]]
     ))
 
     assert_selector ".Polaris-Labelled__LabelWrapper > .Polaris-Label" do
@@ -119,7 +119,7 @@ class SelectComponentTest < Minitest::Test
       name: :input_name,
       label: "Input Label",
       error: true,
-      options: [["Option 1", "option1"]],
+      options: [["Option 1", "option1"]]
     ))
 
     assert_selector ".Polaris-Select.Polaris-Select--error"
@@ -130,7 +130,7 @@ class SelectComponentTest < Minitest::Test
       name: :input_name,
       label: "Input Label",
       error: "Inline Error",
-      options: [["Option 1", "option1"]],
+      options: [["Option 1", "option1"]]
     ))
 
     assert_selector ".Polaris-Select.Polaris-Select--error"

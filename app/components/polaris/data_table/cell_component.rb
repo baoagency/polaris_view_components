@@ -4,7 +4,7 @@ class Polaris::DataTable::CellComponent < Polaris::NewComponent
     top: "Polaris-DataTable__Cell--verticalAlignTop",
     bottom: "Polaris-DataTable__Cell--verticalAlignBottom",
     middle: "Polaris-DataTable__Cell--verticalAlignMiddle",
-    baseline: "Polaris-DataTable__Cell--verticalAlignBaseline",
+    baseline: "Polaris-DataTable__Cell--verticalAlignBaseline"
   }
   ALIGNMENT_OPTIONS = ALIGNMENT_MAPPINGS.keys
 
@@ -31,7 +31,7 @@ class Polaris::DataTable::CellComponent < Polaris::NewComponent
   end
 
   def system_arguments
-    { tag: "td" }.deep_merge(@system_arguments).tap do |args|
+    {tag: "td"}.deep_merge(@system_arguments).tap do |args|
       args[:classes] = class_names(
         args[:classes],
         "Polaris-DataTable__Cell",
@@ -42,7 +42,7 @@ class Polaris::DataTable::CellComponent < Polaris::NewComponent
         "Polaris-DataTable__Cell--total": @total,
         "Polaris-DataTable__Cell--sortable": @sort_url.present?,
         "Polaris-DataTable__Cell--sorted": @sorted,
-        "Polaris-DataTable--cellTotalFooter": @total_footer,
+        "Polaris-DataTable--cellTotalFooter": @total_footer
       )
     end
   end

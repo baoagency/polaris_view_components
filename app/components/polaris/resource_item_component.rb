@@ -8,17 +8,17 @@ module Polaris
     ALIGNMENT_DEFAULT = :default
     ALIGNMENT_MAPPINGS = {
       ALIGNMENT_DEFAULT => "",
-      center: "Polaris-ResourceItem--alignmentCenter",
+      :center => "Polaris-ResourceItem--alignmentCenter"
     }
     ALIGNMENT_OPTIONS = ALIGNMENT_MAPPINGS.keys
 
-    renders_one :checkbox, -> (**system_arguments) do
+    renders_one :checkbox, ->(**system_arguments) do
       Polaris::CheckboxComponent.new(
         label_hidden: true,
         **system_arguments
       )
     end
-    renders_one :radio_button, -> (**system_arguments) do
+    renders_one :radio_button, ->(**system_arguments) do
       Polaris::RadioButtonComponent.new(
         label_hidden: true,
         **system_arguments
@@ -47,11 +47,11 @@ module Polaris
     def wrapper_arguments
       {
         tag: "li",
-        data: {},
+        data: {}
       }.deep_merge(@wrapper_arguments).tap do |args|
         args[:classes] = class_names(
           args[:classes],
-          "Polaris-ResourceItem__ListItem",
+          "Polaris-ResourceItem__ListItem"
         )
         prepend_option(args[:data], :controller, "polaris-resource-item")
       end
@@ -59,12 +59,12 @@ module Polaris
 
     def container_arguments
       {
-        tag: "div",
+        tag: "div"
       }.deep_merge(@container_arguments).tap do |args|
         args[:classes] = class_names(
           args[:classes],
           "Polaris-ResourceItem__Container",
-          ALIGNMENT_MAPPINGS[fetch_or_fallback(ALIGNMENT_OPTIONS, @vertical_alignment, ALIGNMENT_DEFAULT)],
+          ALIGNMENT_MAPPINGS[fetch_or_fallback(ALIGNMENT_OPTIONS, @vertical_alignment, ALIGNMENT_DEFAULT)]
         )
       end
     end
@@ -72,12 +72,12 @@ module Polaris
     def system_arguments
       {
         tag: "div",
-        data: {},
+        data: {}
       }.deep_merge(@system_arguments).tap do |args|
         args[:classes] = class_names(
           args[:classes],
           "Polaris-ResourceItem",
-          "Polaris-ResourceItem--selectable": @selectable,
+          "Polaris-ResourceItem--selectable": @selectable
         )
         prepend_option(args, :style, "cursor: #{cursor};")
         prepend_option(args[:data], :action, "click->polaris-resource-item#open")
@@ -94,14 +94,15 @@ module Polaris
         classes: class_names(
           "Polaris-ResourceItem__Owned",
           "Polaris-ResourceItem__OwnedNoMedia": media.blank?,
-          "Polaris-ResourceItem__Owned--offset": @offset,
+          "Polaris-ResourceItem__Owned--offset": @offset
         )
       }
     end
 
     private
-      def cursor
-        @url.present? ? "pointer" : "default"
-      end
+
+    def cursor
+      @url.present? ? "pointer" : "default"
+    end
   end
 end

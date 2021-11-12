@@ -2,11 +2,11 @@
 
 module Polaris
   class FormLayoutComponent < Polaris::NewComponent
-    renders_many :items, -> (**system_arguments) do
+    renders_many :items, ->(**system_arguments) do
       @counter += 1
       Polaris::FormLayout::ItemComponent.new(position: @counter, **system_arguments)
     end
-    renders_many :groups, -> (**system_arguments) do
+    renders_many :groups, ->(**system_arguments) do
       @counter += 1
       Polaris::FormLayout::GroupComponent.new(position: @counter, **system_arguments)
     end
@@ -18,7 +18,7 @@ module Polaris
       @system_arguments[:tag] = "div"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-FormLayout",
+        "Polaris-FormLayout"
       )
     end
 

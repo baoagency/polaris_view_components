@@ -6,7 +6,7 @@ module Polaris
     SPACING_MAPPINGS = {
       SPACING_DEFAULT => "",
       :tight => "Polaris-TextContainer--spacingTight",
-      :loose => "Polaris-TextContainer--spacingLoose",
+      :loose => "Polaris-TextContainer--spacingLoose"
     }
     SPACING_OPTIONS = SPACING_MAPPINGS.keys
 
@@ -19,7 +19,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-TextContainer",
-        SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)],
+        SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)]
       )
     end
 

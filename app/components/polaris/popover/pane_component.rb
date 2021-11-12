@@ -13,7 +13,7 @@ class Polaris::Popover::PaneComponent < Polaris::NewComponent
       opts[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Popover__Pane",
-        "Polaris-Popover__Pane--fixed": @fixed,
+        "Polaris-Popover__Pane--fixed": @fixed
       )
     end
   end

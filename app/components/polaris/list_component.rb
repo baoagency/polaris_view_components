@@ -7,11 +7,11 @@ module Polaris
     TYPE_DEFAULT = :bullet
     TYPE_TAG_MAPPINGS = {
       bullet: :ul,
-      number: :ol,
+      number: :ol
     }
     TYPE_CLASS_MAPPINGS = {
       bullet: "",
-      number: "Polaris-List--typeNumber",
+      number: "Polaris-List--typeNumber"
     }
     TYPE_OPTIONS = TYPE_TAG_MAPPINGS.keys
 
@@ -24,7 +24,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-List",
-        TYPE_CLASS_MAPPINGS[fetch_or_fallback(TYPE_OPTIONS, type, "")],
+        TYPE_CLASS_MAPPINGS[fetch_or_fallback(TYPE_OPTIONS, type, "")]
       )
     end
 

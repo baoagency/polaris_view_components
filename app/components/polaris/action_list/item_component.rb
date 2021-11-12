@@ -34,7 +34,7 @@ class Polaris::ActionList::ItemComponent < Polaris::NewComponent
         @system_arguments[:classes],
         "Polaris-ActionList__Item",
         "Polaris-ActionList--active": @active,
-        "Polaris-ActionList--destructive": @destructive,
+        "Polaris-ActionList--destructive": @destructive
       )
     end
   end

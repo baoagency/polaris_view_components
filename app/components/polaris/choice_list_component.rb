@@ -2,7 +2,7 @@
 
 module Polaris
   class ChoiceListComponent < Polaris::NewComponent
-    renders_many :checkboxes, -> (value:, disabled: false, **system_arguments) do
+    renders_many :checkboxes, ->(value:, disabled: false, **system_arguments) do
       Polaris::CheckboxComponent.new(
         form: @form,
         attribute: @attribute,
@@ -13,7 +13,7 @@ module Polaris
         **system_arguments
       )
     end
-    renders_many :radio_buttons, -> (value:, disabled: false, **system_arguments) do
+    renders_many :radio_buttons, ->(value:, disabled: false, **system_arguments) do
       Polaris::RadioButtonComponent.new(
         form: @form,
         attribute: @attribute,
@@ -21,7 +21,7 @@ module Polaris
         value: value,
         checked: @selected.include?(value),
         disabled: disabled || @disabled,
-        **system_arguments,
+        **system_arguments
       )
     end
 
@@ -49,7 +49,7 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-ChoiceList",
-        "Polaris-ChoiceList--titleHidden": title_hidden,
+        "Polaris-ChoiceList--titleHidden": title_hidden
       )
     end
 

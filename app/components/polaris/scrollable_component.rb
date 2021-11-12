@@ -26,7 +26,7 @@ module Polaris
         data: {
           polaris_scrollable_shadow_value: @shadow,
           polaris_scrollable_top_shadow_class: "Polaris-Scrollable--hasTopShadow",
-          polaris_scrollable_bottom_shadow_class: "Polaris-Scrollable--hasBottomShadow",
+          polaris_scrollable_bottom_shadow_class: "Polaris-Scrollable--hasBottomShadow"
         }
       }.deep_merge(@system_arguments).tap do |opts|
         prepend_option(opts[:data], :controller, "polaris-scrollable")
@@ -35,12 +35,12 @@ module Polaris
           @system_arguments[:classes],
           "Polaris-Scrollable",
           "Polaris-Scrollable--horizontal" => @horizontal,
-          "Polaris-Scrollable--vertical" => @vertical,
+          "Polaris-Scrollable--vertical" => @vertical
         )
         opts[:style] = class_names(
           @system_arguments[:style],
           "height: #{@height};" => @height.present?,
-          "width: #{@width};" => @width.present?,
+          "width: #{@width};" => @width.present?
         )
       end
     end

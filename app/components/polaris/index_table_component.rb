@@ -1,6 +1,6 @@
 module Polaris
   class IndexTableComponent < Polaris::NewComponent
-    renders_many :columns, -> (title, **system_arguments, &block) do
+    renders_many :columns, ->(title, **system_arguments, &block) do
       IndexTable::ColumnComponent.new(title, **system_arguments, &block)
     end
 
@@ -10,10 +10,10 @@ module Polaris
     end
 
     def system_arguments
-      { tag: "div" }.deep_merge(@system_arguments).tap do |args|
+      {tag: "div"}.deep_merge(@system_arguments).tap do |args|
         args[:classes] = class_names(
           args[:classes],
-          "Polaris-IndexTable",
+          "Polaris-IndexTable"
         )
       end
     end

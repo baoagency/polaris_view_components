@@ -13,7 +13,7 @@ module Polaris
       ALIGN_DEFAULT => "",
       :left => "Polaris-TextField__Input--alignLeft",
       :center => "Polaris-TextField__Input--alignCenter",
-      :right => "Polaris-TextField__Input--alignRight",
+      :right => "Polaris-TextField__Input--alignRight"
     }
     ALIGN_OPTIONS = ALIGN_MAPPINGS.keys
 
@@ -96,7 +96,7 @@ module Polaris
         label_action: @label_action,
         required: @required,
         help_text: @help_text,
-        error: @error,
+        error: @error
       }.deep_merge(@wrapper_arguments)
     end
 
@@ -105,8 +105,8 @@ module Polaris
         tag: "div",
         data: {
           polaris_text_field_has_value_class: "Polaris-TextField--hasValue",
-          polaris_text_field_clear_button_hidden_class: "Polaris-TextField__ClearButton--hidden",
-        },
+          polaris_text_field_clear_button_hidden_class: "Polaris-TextField__ClearButton--hidden"
+        }
       }.deep_merge(@system_arguments).tap do |opts|
         opts[:classes] = class_names(
           opts[:classes],
@@ -114,7 +114,7 @@ module Polaris
           "Polaris-TextField--disabled": @disabled,
           "Polaris-TextField--error": @error,
           "Polaris-TextField--hasValue": @value.present?,
-          "Polaris-TextField--multiline": @multiline,
+          "Polaris-TextField--multiline": @multiline
         )
         prepend_option(opts[:data], :controller, "polaris-text-field")
         if @show_character_count
@@ -132,13 +132,13 @@ module Polaris
         placeholder: @placeholder,
         maxlength: @maxlength,
         minlength: @minlength,
-        data: { polaris_text_field_target: "input" },
+        data: {polaris_text_field_target: "input"}
       }
       if @type == :number
         default_options.merge!({
           step: @step,
           min: @min,
-          max: @max,
+          max: @max
         })
       end
       if @multiline
@@ -151,7 +151,7 @@ module Polaris
           "Polaris-TextField__Input",
           @align_class,
           "Polaris-TextField--monospaced": @monospaced,
-          "Polaris-TextField__Input--suffixed": @suffix.present?,
+          "Polaris-TextField__Input--suffixed": @suffix.present?
         )
         prepend_option(opts[:data], :action, "polaris-text-field#syncValue")
       end

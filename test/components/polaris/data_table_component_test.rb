@@ -5,7 +5,7 @@ class DataTableComponentTest < Minitest::Test
 
   def setup
     @data = [
-      { product: "PRODUCT_NAME", price: "$50" },
+      {product: "PRODUCT_NAME", price: "$50"}
     ]
   end
 

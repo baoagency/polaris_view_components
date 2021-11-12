@@ -5,7 +5,7 @@ module Polaris
     class Component < Polaris::Component
       ALLOWED_TYPES = %w[file image]
 
-      validates :type, inclusion: { in: ALLOWED_TYPES, message: "%{value} is not a valid type" }
+      validates :type, inclusion: {in: ALLOWED_TYPES, message: "%{value} is not a valid type"}
       validates :label_action, type: Action, allow_nil: true
 
       # TODO
@@ -77,52 +77,52 @@ module Polaris
           multiple: @allow_multiple,
           data: {
             action: "focus->polaris--dropzone#onFocus blur->polaris--dropzone#onBlur change->polaris--dropzone#onChange",
-            'polaris--dropzone-target': 'input',
+            'polaris--dropzone-target': "input"
           }
         }
       end
 
       private
 
-        def additional_aria
-          {
-            disabled: @disabled.to_s,
-          }
-        end
+      def additional_aria
+        {
+          disabled: @disabled.to_s
+        }
+      end
 
-        def additional_data
-          {
-            controller: "polaris--dropzone",
-            action: "click->polaris--dropzone#onClick #{drop_actions}",
-            'polaris--dropzone-accept-value': @accept,
-            'polaris--dropzone-allowMultiple-value': @allow_multiple.to_s,
-            'polaris--dropzone-disabled-value': @disabled.to_s,
-            'polaris--dropzone-focused-value': 'false',
-            'polaris--dropzone-drop-on-page-value': 'false',
-          }
-        end
+      def additional_data
+        {
+          controller: "polaris--dropzone",
+          action: "click->polaris--dropzone#onClick #{drop_actions}",
+          'polaris--dropzone-accept-value': @accept,
+          'polaris--dropzone-allowMultiple-value': @allow_multiple.to_s,
+          'polaris--dropzone-disabled-value': @disabled.to_s,
+          'polaris--dropzone-focused-value': "false",
+          'polaris--dropzone-drop-on-page-value': "false"
+        }
+      end
 
-        def drop_actions
-          event_scope = @drop_on_page ? "@document" : ""
+      def drop_actions
+        event_scope = @drop_on_page ? "@document" : ""
 
-          [
-            "drop#{event_scope}->polaris--dropzone#onDrop",
-            "dragover#{event_scope}->polaris--dropzone#onDragOver",
-            "dragenter#{event_scope}->polaris--dropzone#onDragEnter",
-            "dragleave#{event_scope}->polaris--dropzone#onDragLeave"
-          ].join(" ")
-        end
+        [
+          "drop#{event_scope}->polaris--dropzone#onDrop",
+          "dragover#{event_scope}->polaris--dropzone#onDragOver",
+          "dragenter#{event_scope}->polaris--dropzone#onDragEnter",
+          "dragleave#{event_scope}->polaris--dropzone#onDragLeave"
+        ].join(" ")
+      end
 
-        def classes
-          classes = %w[Polaris-DropZone Polaris-DropZone--sizeExtraLarge]
+      def classes
+        classes = %w[Polaris-DropZone Polaris-DropZone--sizeExtraLarge]
 
-          classes << "Polaris-DropZone--isDisabled" if @disabled
-          classes << "Polaris-DropZone--isDisabled" if @disabled
-          classes << "Polaris-DropZone--hasError" if @error.present?
-          classes << "Polaris-DropZone--hasOutline" if @outline
+        classes << "Polaris-DropZone--isDisabled" if @disabled
+        classes << "Polaris-DropZone--isDisabled" if @disabled
+        classes << "Polaris-DropZone--hasError" if @error.present?
+        classes << "Polaris-DropZone--hasOutline" if @outline
 
-          classes
-        end
+        classes
+      end
     end
   end
 end

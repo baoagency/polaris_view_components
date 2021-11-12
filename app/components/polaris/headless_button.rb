@@ -6,7 +6,7 @@ module Polaris
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => "",
       :slim => "Polaris-Button--sizeSlim",
-      :large => "Polaris-Button--sizeLarge",
+      :large => "Polaris-Button--sizeLarge"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -15,7 +15,7 @@ module Polaris
       TEXT_ALIGN_DEFAULT => "",
       :left => "Polaris-Button--textAlignLeft",
       :center => "Polaris-Button--textAlignCenter",
-      :right => "Polaris-Button--textAlignRight",
+      :right => "Polaris-Button--textAlignRight"
     }
     TEXT_ALIGN_OPTIONS = TEXT_ALIGN_MAPPINGS.keys
 
@@ -43,7 +43,7 @@ module Polaris
       text_align: TEXT_ALIGN_DEFAULT,
       **system_arguments
     )
-      @tag = url.present? ? 'a' : 'button'
+      @tag = url.present? ? "a" : "button"
       @text_classes = class_names(
         "Polaris-Button__Text",
         "Polaris-Button--removeUnderline": plain && monochrome && remove_underline
@@ -53,7 +53,7 @@ module Polaris
       @disclosure = :down if @disclosure === true
 
       @system_arguments = system_arguments
-      @system_arguments[:type] = submit ? 'submit' : 'button'
+      @system_arguments[:type] = submit ? "submit" : "button"
       if loading
         @system_arguments[:disabled] = true
       end
@@ -86,7 +86,7 @@ module Polaris
     def system_arguments
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Button--iconOnly": icon.present? && content.blank?,
+        "Polaris-Button--iconOnly": icon.present? && content.blank?
       )
       @system_arguments
     end

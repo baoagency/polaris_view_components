@@ -12,14 +12,14 @@ module Polaris
       @wrapper_arguments[:tag] = "div"
       @wrapper_arguments[:classes] = class_names(
         @wrapper_arguments[:classes],
-        "Polaris-ResourceList__ResourceListWrapper",
+        "Polaris-ResourceList__ResourceListWrapper"
       )
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = "ul"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-ResourceList",
+        "Polaris-ResourceList"
       )
     end
   end

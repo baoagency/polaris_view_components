@@ -1,0 +1,4 @@
+ignore:
+  - test/dummy/**/*
+  - demo/bin/**/*
+  - demo/config/**/*

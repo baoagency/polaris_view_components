@@ -24,7 +24,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Link",
         "Polaris-Link--monochrome" => monochrome,
-        "Polaris-Link--removeUnderline" => no_underline,
+        "Polaris-Link--removeUnderline" => no_underline
       )
     end
 
@@ -32,7 +32,7 @@ module Polaris
       render(Polaris::BaseComponent.new(**@system_arguments)) do
         safe_join [
           content.strip.html_safe,
-          (external_icon if @external),
+          (external_icon if @external)
         ].compact
       end
     end
@@ -42,7 +42,7 @@ module Polaris
     def external_icon
       tag.span(class: "Polaris-Link__IconLockup") do
         tag.span(class: "Polaris-Link__IconLayout") do
-          polaris_icon(name: "ExternalSmallMinor", aria: { label: "(opens a new window)" })
+          polaris_icon(name: "ExternalSmallMinor", aria: {label: "(opens a new window)"})
         end
       end
     end

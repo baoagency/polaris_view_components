@@ -8,7 +8,7 @@ class Polaris::Modal::SectionComponent < Polaris::NewComponent
       opts[:tag] = "div"
       opts[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Modal-Section",
+        "Polaris-Modal-Section"
       )
     end
   end

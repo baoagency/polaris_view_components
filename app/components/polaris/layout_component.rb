@@ -9,7 +9,7 @@ module Polaris
     # @param one_half [Boolean] The section will only take up 50% of the width
     # @param one_third [Boolean] The section will only take up 33.33% of the width
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :sections, -> (**system_arguments) do
+    renders_many :sections, ->(**system_arguments) do
       @counter += 1
       Layout::Section.new(position: @counter, **system_arguments)
     end
@@ -19,7 +19,7 @@ module Polaris
     # @param title [String] Title
     # @param description [String] Description
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :annotated_sections, -> (**system_arguments) do
+    renders_many :annotated_sections, ->(**system_arguments) do
       @counter += 1
       Layout::AnnotatedSection.new(position: @counter, **system_arguments)
     end
@@ -29,7 +29,7 @@ module Polaris
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        'Polaris-Layout'
+        "Polaris-Layout"
       )
     end
 

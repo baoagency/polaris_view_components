@@ -10,7 +10,7 @@ module Polaris
       :base_tight => "Polaris-Spacer--verticalSpacingBaseTight",
       :base => "Polaris-Spacer--verticalSpacingBase",
       :loose => "Polaris-Spacer--verticalSpacingLoose",
-      :extra_loose => "Polaris-Spacer--verticalSpacingExtraLoose",
+      :extra_loose => "Polaris-Spacer--verticalSpacingExtraLoose"
     }
     VERTICAL_SPACING_OPTIONS = VERTICAL_SPACING_MAPPINGS.keys
 
@@ -22,7 +22,7 @@ module Polaris
       :base_tight => "Polaris-Spacer--horizontalSpacingBaseTight",
       :base => "Polaris-Spacer--horizontalSpacingBase",
       :loose => "Polaris-Spacer--horizontalSpacingLoose",
-      :extra_loose => "Polaris-Spacer--horizontalSpacingExtraLoose",
+      :extra_loose => "Polaris-Spacer--horizontalSpacingExtraLoose"
     }
     HORIZONTAL_SPACING_OPTIONS = HORIZONTAL_SPACING_MAPPINGS.keys
 
@@ -37,7 +37,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Spacer",
         VERTICAL_SPACING_MAPPINGS[fetch_or_fallback(VERTICAL_SPACING_OPTIONS, vertical, VERTICAL_SPACING_DEFAULT)],
-        HORIZONTAL_SPACING_MAPPINGS[fetch_or_fallback(HORIZONTAL_SPACING_OPTIONS, horizontal, HORIZONTAL_SPACING_DEFAULT)],
+        HORIZONTAL_SPACING_MAPPINGS[fetch_or_fallback(HORIZONTAL_SPACING_OPTIONS, horizontal, HORIZONTAL_SPACING_DEFAULT)]
       )
     end
 

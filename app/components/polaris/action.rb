@@ -5,9 +5,9 @@ module Polaris
     def initialize(
       content:,
       url:,
-      accessibility_label: '',
+      accessibility_label: "",
       external: false,
-      id: '',
+      id: "",
       data: {}
     )
       @content = content
@@ -25,7 +25,7 @@ module Polaris
         external: @external,
         id: @id,
         url: @url,
-        data: @data,
+        data: @data
       }
     end
   end

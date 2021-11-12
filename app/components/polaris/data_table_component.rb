@@ -5,7 +5,7 @@ module Polaris
     ALIGNMENT_DEFAULT = :top
     ALIGNMENT_OPTIONS = [:top, :bottom, :middle, :baseline]
 
-    renders_many :columns, -> (title, **system_arguments, &block) do
+    renders_many :columns, ->(title, **system_arguments, &block) do
       DataTable::ColumnComponent.new(title, **system_arguments, &block)
     end
     renders_one :footer
@@ -27,10 +27,10 @@ module Polaris
     end
 
     def system_arguments
-      { tag: "div" }.deep_merge(@system_arguments).tap do |args|
+      {tag: "div"}.deep_merge(@system_arguments).tap do |args|
         args[:classes] = class_names(
           args[:classes],
-          "Polaris-DataTable",
+          "Polaris-DataTable"
         )
       end
     end

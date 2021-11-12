@@ -33,7 +33,6 @@ class Forms::TextFieldComponentPreview < ViewComponent::Preview
   end
 
   def with_error
-
   end
 
   def with_inline_error

@@ -7,17 +7,17 @@ module Polaris
       SPACING_DEFAULT => "",
       :extra_tight => "Polaris-ButtonGroup--extraTight",
       :tight => "Polaris-ButtonGroup--tight",
-      :loose => "Polaris-ButtonGroup--loose",
+      :loose => "Polaris-ButtonGroup--loose"
     }
     SPACING_OPTIONS = SPACING_MAPPINGS.keys
 
-    renders_many :buttons, -> (**system_arguments) do
+    renders_many :buttons, ->(**system_arguments) do
       @counter += 1
 
       ButtonGroupItemButtonComponent.new(position: @counter, **system_arguments)
     end
 
-    renders_many :items, -> (**system_arguments) do
+    renders_many :items, ->(**system_arguments) do
       @counter += 1
 
       ButtonGroupItemComponent.new(position: @counter, **system_arguments)
@@ -47,7 +47,7 @@ module Polaris
         "Polaris-ButtonGroup",
         SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)],
         "Polaris-ButtonGroup--fullWidth": full_width,
-        "Polaris-ButtonGroup--segmented": segmented,
+        "Polaris-ButtonGroup--segmented": segmented
       )
     end
 
@@ -97,7 +97,7 @@ module Polaris
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "Polaris-ButtonGroup__Item",
+          "Polaris-ButtonGroup__Item"
         )
       end
 

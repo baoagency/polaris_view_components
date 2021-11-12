@@ -22,7 +22,7 @@ module Polaris
         @system_arguments[:classes],
         "Polaris-Choice",
         "Polaris-Choice--labelHidden": label_hidden,
-        "Polaris-Choice--disabled": disabled,
+        "Polaris-Choice--disabled": disabled
       )
     end
   end

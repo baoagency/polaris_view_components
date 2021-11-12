@@ -2,7 +2,7 @@
 
 module Polaris
   class LabelledComponent < Polaris::NewComponent
-    renders_one :label_action, -> (**system_arguments) do
+    renders_one :label_action, ->(**system_arguments) do
       Polaris::ButtonComponent.new(plain: true, **system_arguments)
     end
 
@@ -38,7 +38,7 @@ module Polaris
         attribute: attribute,
         name: name,
         label: label,
-        required: required,
+        required: required
       }
     end
 

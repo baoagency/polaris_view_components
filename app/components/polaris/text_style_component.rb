@@ -9,14 +9,14 @@ module Polaris
       :negative => "Polaris-TextStyle--variationNegative",
       :strong => "Polaris-TextStyle--variationStrong",
       :subdued => "Polaris-TextStyle--variationSubdued",
-      :code => "Polaris-TextStyle--variationCode",
+      :code => "Polaris-TextStyle--variationCode"
     }
     VARIATION_OPTIONS = VARIATION_MAPPINGS.keys
 
     SIZE_DEFAULT = :default
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => "",
-      small: "Polaris-TextStyle--sizeSmall",
+      :small => "Polaris-TextStyle--sizeSmall"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -26,11 +26,11 @@ module Polaris
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] = 'span'
+      @system_arguments[:tag] = "span"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         VARIATION_MAPPINGS[fetch_or_fallback(VARIATION_OPTIONS, variation, VARIATION_DEFAULT)],
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
       )
     end
 
