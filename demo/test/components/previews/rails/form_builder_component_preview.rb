@@ -14,6 +14,11 @@ class Rails::FormBuilderComponentPreview < ViewComponent::Preview
     render_with_template(locals: {product: product})
   end
 
+  def radio_button
+    product = Product.new
+    render_with_template(locals: {product: product})
+  end
+
   def errors
     product = Product.new
     product.errors.add(:title, "can't be blank")

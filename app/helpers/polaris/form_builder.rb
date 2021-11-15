@@ -1,5 +1,7 @@
 module Polaris
   class FormBuilder < ActionView::Helpers::FormBuilder
+    include ActionView::Helpers::OutputSafetyHelper
+
     attr_reader :template
 
     delegate :render, :pluralize, to: :template
