@@ -136,4 +136,16 @@ class CardComponentTest < Minitest::Test
       assert_selector ":nth-child(3)", text: "Unsectioned content"
     end
   end
+
+  def test_tabs
+    render_inline(Polaris::CardComponent.new) do |card|
+      card.tabs do |tabs|
+        tabs.tab(title: "Tab Title")
+      end
+    end
+
+    assert_selector ".Polaris-Card > .Polaris-Tabs__Wrapper > ul.Polaris-Tabs" do
+      assert_selector "li.Polaris-Tabs__TabContainer > button.Polaris-Tabs__Tab", text: "Tab Title"
+    end
+  end
 end

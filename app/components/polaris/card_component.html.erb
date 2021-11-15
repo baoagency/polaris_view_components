@@ -1,4 +1,8 @@
 <%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <% if tabs.present? %>
+    <%= tabs %>
+  <% end %>
+
   <% if header.present? %>
     <%= header %>
   <% end %>

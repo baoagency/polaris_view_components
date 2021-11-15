@@ -1,0 +1,12 @@
+<%= polaris_card do |card| %>
+  <% card.tabs do |tabs| %>
+    <% tabs.tab(title: "All", active: true) %>
+    <% tabs.tab(title: "Accepts marketing") %>
+    <% tabs.tab(title: "Repeat customer") %>
+    <% tabs.tab(title: "Prospects", url: "#") %>
+  <% end %>
+
+  <% card.section(title: "All") do %>
+    Tab "All" selected.
+  <% end %>
+<% end %>
