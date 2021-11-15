@@ -1,0 +1,10 @@
+<li class="Polaris-Tabs__TabContainer" role="presentation">
+  <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+    <span class="Polaris-Tabs__Title">
+      <%= @title %>
+      <% if badge.present? %>
+        <%= badge %>
+      <% end %>
+    </span>
+  <% end %>
+</li>

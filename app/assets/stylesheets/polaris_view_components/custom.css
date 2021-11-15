@@ -42,7 +42,13 @@ a.Polaris-Tag__Button {
 }
 
 /* Remove box-shadow from buttons and links */
-.Polaris-Button::after, .Polaris-Button:focus::after, .Polaris-Breadcrumbs__Breadcrumb::after {
+.Polaris-Button::after,
+.Polaris-Button:focus::after,
+.Polaris-Breadcrumbs__Breadcrumb::after {
+  box-shadow: none !important;
+}
+
+.Polaris-Tabs__Tab:focus > .Polaris-Tabs__Title::after {
   box-shadow: none !important;
 }
 

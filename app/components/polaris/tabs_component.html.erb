@@ -1,0 +1,7 @@
+<%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
+  <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+    <% tabs.each do |tab| %>
+      <%= tab %>
+    <% end %>
+  <% end %>
+<% end %>

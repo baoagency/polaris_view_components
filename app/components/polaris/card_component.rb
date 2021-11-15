@@ -9,6 +9,7 @@ module Polaris
     }
     FOOTER_ACTION_ALIGNMENT_OPTIONS = FOOTER_ACTION_ALIGNMENT_MAPPINGS.keys
 
+    renders_one :tabs, Polaris::TabsComponent
     renders_one :header, Polaris::Card::HeaderComponent
     renders_many :sections, Polaris::Card::SectionComponent
     renders_one :primary_footer_action, ->(primary: true, **system_arguments) do

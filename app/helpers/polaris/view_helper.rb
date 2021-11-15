@@ -50,6 +50,7 @@ module Polaris
       spinner:                  "Polaris::SpinnerComponent",
       skeleton_body_text:       "Polaris::SkeletonBodyTextComponent",
       spacer:                   "Polaris::SpacerComponent",
+      tabs:                     "Polaris::TabsComponent",
       tag:                      "Polaris::TagComponent",
       text_container:           "Polaris::TextContainerComponent",
       text_field:               "Polaris::TextFieldComponent",
