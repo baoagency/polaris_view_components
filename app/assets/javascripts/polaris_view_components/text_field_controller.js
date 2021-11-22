@@ -107,5 +107,6 @@ export default class extends Controller {
     )
 
     this.value = String(newValue.toFixed(decimalPlaces))
+    this.inputTarget.dispatchEvent(new Event('change'));
   }
 }
