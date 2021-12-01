@@ -33,6 +33,7 @@ module Polaris
       link:                     "Polaris::LinkComponent",
       list:                     "Polaris::ListComponent",
       modal:                    "Polaris::ModalComponent",
+      navigation:               "Polaris::NavigationComponent",
       page:                     "Polaris::PageComponent",
       page_actions:             "Polaris::PageActionsComponent",
       pagination:               "Polaris::PaginationComponent",

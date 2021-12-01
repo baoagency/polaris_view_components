@@ -1,0 +1,85 @@
+class Polaris::Navigation::ItemComponent < Polaris::NewComponent
+  renders_many :sub_items, Polaris::Navigation::ItemComponent
+  renders_one :secondary_action, "SecondaryActionComponent"
+
+  attr_reader :selected
+
+  def initialize(
+    url:,
+    label:,
+    icon: nil,
+    badge: nil,
+    selected: false,
+    disabled: false,
+    **system_arguments
+  )
+    @url = url
+    @label = label
+    @icon = icon
+    @badge = badge
+    @selected = selected
+    @disabled = disabled
+    @system_arguments = system_arguments
+  end
+
+  def system_arguments
+    @system_arguments.tap do |opts|
+      opts[:tag] = "li"
+      opts[:classes] = class_names(
+        @system_arguments[:classes],
+        "Polaris-Navigation__ListItem"
+      )
+    end
+  end
+
+  def link_classes
+    class_names(
+      "Polaris-Navigation__Item",
+      "Polaris-Navigation__Item--selected": @selected,
+      "Polaris-Navigation--subNavigationActive": @selected || selected_sub_items?,
+      "Polaris-Navigation__Item--disabled": @disabled
+    )
+  end
+
+  def selected_sub_items?
+    return unless sub_items.present?
+
+    sub_items.any?(&:selected)
+  end
+
+  class SecondaryActionComponent < Polaris::NewComponent
+    def initialize(url: nil, external: false, icon: nil, **system_arguments)
+      @url = url
+      @external = external
+      @icon = icon
+      @system_arguments = system_arguments
+    end
+
+    def system_arguments
+      @system_arguments.tap do |opts|
+        if @url.present?
+          opts[:tag] = "a"
+          opts[:href] = @url
+          opts[:target] = "_blank" if @external
+        else
+          opts[:tag] = "button"
+          opts[:type] = "button"
+        end
+        opts[:classes] = class_names(
+          @system_arguments[:classes],
+          "Polaris-Navigation__SecondaryAction"
+        )
+      end
+    end
+
+    def call
+      render(Polaris::BaseComponent.new(**system_arguments)) do
+        if @icon.present?
+          render(Polaris::IconComponent.new(name: @icon))
+        else
+          content
+        end
+      end
+    end
+  end
+end

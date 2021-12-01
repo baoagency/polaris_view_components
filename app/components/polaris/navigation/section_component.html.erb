@@ -1,0 +1,17 @@
+<%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+  <% if items.present? %>
+    <% if @title.present? %>
+      <li class="Polaris-Navigation__SectionHeading">
+        <span class="Polaris-Navigation__Text">
+          <%= @title %>
+        </span>
+        <%= action %>
+      </li>
+    <% end %>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  <% else %>
+    <%= content %>
+  <% end %>
+<% end %>
