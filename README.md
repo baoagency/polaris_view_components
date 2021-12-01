@@ -8,7 +8,7 @@ Polaris ViewComponents is an implementation of the Polaris Design System using [
 
 ## Preview
 
-https://polaris-view-components.herokuapp.com/lookbook
+https://polarisviewcomponents.org
 
 ## Usage
 
