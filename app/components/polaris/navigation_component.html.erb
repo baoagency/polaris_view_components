@@ -1,0 +1,15 @@
+<nav class="Polaris-Navigation">
+  <%= polaris_scrollable(classes: "Navigation__PrimaryNavigation") do %>
+    <% if sections.present? %>
+      <% sections.each do |section| %>
+        <%= section %>
+      <% end %>
+    <% else %>
+      <%= render(Polaris::Navigation::SectionComponent.new) do %>
+        <% items.each do |item| %>
+          <%= item %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</nav>
