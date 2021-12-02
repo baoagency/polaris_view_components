@@ -28,6 +28,7 @@ module Polaris
       @attribute = attribute
       @name = name
       @checked = checked
+      @disabled = disabled
       @value = value
       @unchecked_value = unchecked_value
 
@@ -49,14 +50,7 @@ module Polaris
       }.merge(wrapper_arguments)
 
       @input_options = input_options
-      @input_options[:aria] ||= {}
-      @input_options[:disabled] = true if disabled
-      @input_options[:aria][:checked] = checked
-      if indeterminate?
-        @input_options[:indeterminate] = true
-        @input_options[:aria][:checked] = "mixed"
-      end
-      @input_options[:class] = class_names(
+      @input_options[:classes] = class_names(
         @input_options[:classes],
         "Polaris-Checkbox__Input",
         "Polaris-Checkbox__Input--indeterminate": indeterminate?
@@ -73,6 +67,19 @@ module Polaris
 
     def before_render
       validate!
+    end
+
+    def checkbox
+      render Polaris::BaseCheckbox.new(
+        form: @form,
+        attribute: @attribute,
+        name: @name,
+        checked: @checked,
+        disabled: @disabled,
+        value: @value,
+        unchecked_value: @unchecked_value,
+        **@input_options
+      )
     end
   end
 end

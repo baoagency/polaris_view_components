@@ -1,0 +1,14 @@
+<%= polaris_card(sectioned: false, style: "max-width: 300px") do %>
+  <%= polaris_option_list(title: "Inventory Location") do |list| %>
+    <% list.option do %>
+      <%= polaris_stack(spacing: :extra_tight) do |stack| %>
+        <% stack.item do %>
+          <%= polaris_icon(name: "CirclePlusMinor", color: :primary) %>
+        <% end %>
+        <% stack.item do %>
+          <%= polaris_text_strong { "Add" } %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

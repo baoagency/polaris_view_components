@@ -1,0 +1,9 @@
+<%= polaris_card(sectioned: false, style: "max-width: 300px") do %>
+  <%= polaris_option_list(title: "Inventory Location", name: :location) do |list| %>
+    <% list.radio_button(label: "Byward Market", value: "byward_market") %>
+    <% list.radio_button(label: "Centretown", value: "centretown") %>
+    <% list.radio_button(label: "Hintonburg", value: "hintonburg") %>
+    <% list.radio_button(label: "Westboro", value: "westboro") %>
+    <% list.radio_button(label: "Downtown", value: "downtown") %>
+  <% end %>
+<% end %>

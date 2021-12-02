@@ -1,0 +1,13 @@
+<%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+  <% if sections.present? %>
+    <% sections.each do |section| %>
+      <%= section %>
+    <% end %>
+  <% else %>
+    <%= render(Polaris::OptionList::SectionComponent.new(title: @title)) do %>
+      <% items.each do |item| %>
+        <%= item %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

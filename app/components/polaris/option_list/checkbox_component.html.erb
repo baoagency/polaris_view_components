@@ -1,0 +1,14 @@
+<%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
+  <label class="Polaris-OptionList-Option__Label">
+    <div class="Polaris-OptionList-Option__Checkbox">
+      <div class="Polaris-OptionList-Checkbox">
+        <%= checkbox %>
+        <div class="Polaris-OptionList-Checkbox__Backdrop"></div>
+        <div class="Polaris-OptionList-Checkbox__Icon">
+          <%= polaris_icon(name: "TickMinor") %>
+        </div>
+      </div>
+    </div>
+    <%= @label %>
+  </label>
+<% end %>
