@@ -20,6 +20,7 @@ module Polaris
       @attribute = attribute
       @name = name
       @checked = checked
+      @disabled = disabled
       @value = value
 
       @system_arguments = system_arguments
@@ -38,10 +39,7 @@ module Polaris
       }.merge(wrapper_arguments)
 
       @input_options = input_options
-      @input_options[:aria] ||= {}
-      @input_options[:disabled] = true if disabled
-      @input_options[:aria][:checked] = checked
-      @input_options[:class] = class_names(
+      @input_options[:classes] = class_names(
         @input_options[:classes],
         "Polaris-RadioButton__Input"
       )
@@ -50,6 +48,18 @@ module Polaris
     def wrapper_arguments
       @wrapper_arguments[:children_content] = content
       @wrapper_arguments
+    end
+
+    def radio_button
+      render Polaris::BaseRadioButton.new(
+        form: @form,
+        attribute: @attribute,
+        name: @name,
+        checked: @checked,
+        disabled: @disabled,
+        value: @value,
+        **@input_options
+      )
     end
   end
 end

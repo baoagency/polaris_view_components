@@ -53,6 +53,27 @@ class Modal extends Controller {
   }
 }
 
+class OptionList extends Controller {
+  static targets=[ "radioButton" ];
+  static classes=[ "selected" ];
+  connect() {
+    this.updateSelected();
+  }
+  update() {
+    this.updateSelected();
+  }
+  updateSelected() {
+    this.radioButtonTargets.forEach((element => {
+      const input = element.querySelector("input[type=radio]");
+      if (input.checked) {
+        element.classList.add(this.selectedClass);
+      } else {
+        element.classList.remove(this.selectedClass);
+      }
+    }));
+  }
+}
+
 class Polaris extends Controller {
   openModal() {
     this.findElement("modal").open();
@@ -1631,6 +1652,7 @@ class TextField extends Controller {
 function registerPolarisControllers(application) {
   application.register("polaris-button", Button);
   application.register("polaris-modal", Modal);
+  application.register("polaris-option-list", OptionList);
   application.register("polaris", Polaris);
   application.register("polaris-popover", Popover);
   application.register("polaris-resource-item", ResourceItem);

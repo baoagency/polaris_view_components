@@ -1,0 +1,14 @@
+<li>
+  <% if @title.present? %>
+    <p class="Polaris-OptionList__Title"><%= @title %></p>
+  <% end %>
+  <ul class="Polaris-OptionList__Options">
+    <% if items.present? %>
+      <% items.each do |item| %>
+        <%= item %>
+      <% end %>
+    <% else %>
+      <%= content %>
+    <% end %>
+  </ul>
+</li>
