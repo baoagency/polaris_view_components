@@ -1643,9 +1643,12 @@ class TextField extends Controller {
       return;
     }
     const decimalPlaces = Math.max(dpl(numericValue), dpl(this.stepValue));
+    const oldValue = this.value;
     const newValue = Math.min(Number(this.maxValue), Math.max(numericValue + steps * this.stepValue, Number(this.minValue)));
     this.value = String(newValue.toFixed(decimalPlaces));
-    this.inputTarget.dispatchEvent(new Event("change"));
+    if (this.value != oldValue) {
+      this.inputTarget.dispatchEvent(new Event("change"));
+    }
   }
 }
 
