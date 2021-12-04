@@ -3,7 +3,7 @@ PATH
   specs:
     polaris_view_components (0.6.0)
       rails (>= 5.0.0, < 8.0.0)
-      view_component (~> 2.0, >= 2.0.0)
+      view_component (>= 2.0.0, < 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -81,7 +81,7 @@ GEM
     htmlbeautifier (1.4.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    importmap-rails (0.9.1)
+    importmap-rails (0.9.3)
       rails (>= 6.0.0)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -167,7 +167,7 @@ GEM
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    view_component (2.45.0)
+    view_component (2.46.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     web-console (4.2.0)
