@@ -9,7 +9,7 @@ class NavigationComponentTest < Minitest::Test
       navigation.item(url: "/path2", label: "Item 2", icon: "OrdersMajor")
     end
 
-    assert_selector "nav.Polaris-Navigation > .Navigation__PrimaryNavigation.Polaris-Scrollable" do
+    assert_selector "nav.Polaris-Navigation > .Polaris-Navigation__PrimaryNavigation.Polaris-Scrollable" do
       assert_selector "ul.Polaris-Navigation__Section" do
         assert_selector "li.Polaris-Navigation__ListItem", count: 2
         assert_selector "li:nth-child(1)" do
