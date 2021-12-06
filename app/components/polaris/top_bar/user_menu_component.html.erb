@@ -1,0 +1,19 @@
+<%= polaris_popover(alignment: :left) do |popover| %>
+  <% popover.activator do %>
+    <button
+      type="button"
+      class="Polaris-TopBar-Menu__Activator"
+      data-action="polaris-popover#toggle click@window->polaris-popover#hide"
+    >
+      <div class="Polaris-MessageIndicator__MessageIndicatorWrapper">
+        <%= avatar %>
+      </div>
+      <span class="Polaris-TopBar-UserMenu__Details">
+        <p class="Polaris-TopBar-UserMenu__Name"><%= @name %></p>
+        <p class="Polaris-TopBar-UserMenu__Detail"><%= @detail %></p>
+      </span>
+    </button>
+  <% end %>
+
+  <%= content %>
+<% end %>

@@ -1,4 +1,5 @@
 import Button from './button_controller'
+import Frame from './frame_controller'
 import Modal from './modal_controller'
 import OptionList from './option_list_controller'
 import Polaris from './polaris_controller'
@@ -8,10 +9,11 @@ import Scrollable from './scrollable_controller'
 import Select from './select_controller'
 import TextField from './text_field_controller'
 
-export { Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField }
+export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField }
 
 export function registerPolarisControllers(application) {
   application.register('polaris-button', Button)
+  application.register('polaris-frame', Frame)
   application.register('polaris-modal', Modal)
   application.register('polaris-option-list', OptionList)
   application.register('polaris', Polaris)

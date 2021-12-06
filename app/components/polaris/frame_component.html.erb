@@ -1,0 +1,31 @@
+<%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+  <% if top_bar.present? %>
+    <div class="Polaris-Frame__TopBar">
+      <%= top_bar %>
+    </div>
+  <% end %>
+
+  <% if navigation.present? %>
+    <div data-polaris-frame-target="navigation" class="Polaris-Frame__Navigation">
+      <%= navigation %>
+      <button
+        data-action="polaris-frame#closeMenu"
+        type="button"
+        class="Polaris-Frame__NavigationDismiss"
+        tabindex="-1"
+      >
+        <%= polaris_icon(name: "MobileCancelMajor") %>
+      </button>
+    </div>
+  <% end %>
+
+  <div class="Polaris-Frame__ContextualSaveBar Polaris-Frame-CSSAnimation--startFade"></div>
+
+  <div data-polaris-frame-target="navigationOverlay"></div>
+
+  <main class="Polaris-Frame__Main">
+    <div class="Polaris-Frame__Content">
+      <%= content %>
+    </div>
+  </main>
+<% end %>
