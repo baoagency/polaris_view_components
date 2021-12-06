@@ -32,6 +32,187 @@ class Button extends Controller {
   }
 }
 
+const alpineNames = {
+  enterFromClass: "enter",
+  enterActiveClass: "enterStart",
+  enterToClass: "enterEnd",
+  leaveFromClass: "leave",
+  leaveActiveClass: "leaveStart",
+  leaveToClass: "leaveEnd"
+};
+
+const defaultOptions = {
+  transitioned: false,
+  hiddenClass: "hidden",
+  preserveOriginalClass: true,
+  removeToClasses: true
+};
+
+const useTransition = (controller, options = {}) => {
+  var _a, _b, _c;
+  const targetName = controller.element.dataset.transitionTarget;
+  let targetFromAttribute;
+  if (targetName) {
+    targetFromAttribute = controller[`${targetName}Target`];
+  }
+  const targetElement = (options === null || options === void 0 ? void 0 : options.element) || targetFromAttribute || controller.element;
+  if (!(targetElement instanceof HTMLElement || targetElement instanceof SVGElement)) return;
+  const dataset = targetElement.dataset;
+  const leaveAfter = parseInt(dataset.leaveAfter || "") || options.leaveAfter || 0;
+  const {transitioned: transitioned, hiddenClass: hiddenClass, preserveOriginalClass: preserveOriginalClass, removeToClasses: removeToClasses} = Object.assign(defaultOptions, options);
+  const controllerEnter = (_a = controller.enter) === null || _a === void 0 ? void 0 : _a.bind(controller);
+  const controllerLeave = (_b = controller.leave) === null || _b === void 0 ? void 0 : _b.bind(controller);
+  const controllerToggleTransition = (_c = controller.toggleTransition) === null || _c === void 0 ? void 0 : _c.bind(controller);
+  async function enter(event) {
+    if (controller.transitioned) return;
+    controller.transitioned = true;
+    controllerEnter && controllerEnter(event);
+    const enterFromClasses = getAttribute("enterFrom", options, dataset);
+    const enterActiveClasses = getAttribute("enterActive", options, dataset);
+    const enterToClasses = getAttribute("enterTo", options, dataset);
+    const leaveToClasses = getAttribute("leaveTo", options, dataset);
+    if (!!hiddenClass) {
+      targetElement.classList.remove(hiddenClass);
+    }
+    if (!removeToClasses) {
+      removeClasses(targetElement, leaveToClasses);
+    }
+    await transition(targetElement, enterFromClasses, enterActiveClasses, enterToClasses, hiddenClass, preserveOriginalClass, removeToClasses);
+    if (leaveAfter > 0) {
+      setTimeout((() => {
+        leave(event);
+      }), leaveAfter);
+    }
+  }
+  async function leave(event) {
+    if (!controller.transitioned) return;
+    controller.transitioned = false;
+    controllerLeave && controllerLeave(event);
+    const leaveFromClasses = getAttribute("leaveFrom", options, dataset);
+    const leaveActiveClasses = getAttribute("leaveActive", options, dataset);
+    const leaveToClasses = getAttribute("leaveTo", options, dataset);
+    const enterToClasses = getAttribute("enterTo", options, dataset);
+    if (!removeToClasses) {
+      removeClasses(targetElement, enterToClasses);
+    }
+    await transition(targetElement, leaveFromClasses, leaveActiveClasses, leaveToClasses, hiddenClass, preserveOriginalClass, removeToClasses);
+    if (!!hiddenClass) {
+      targetElement.classList.add(hiddenClass);
+    }
+  }
+  function toggleTransition(event) {
+    controllerToggleTransition && controllerToggleTransition(event);
+    if (controller.transitioned) {
+      leave();
+    } else {
+      enter();
+    }
+  }
+  async function transition(element, initialClasses, activeClasses, endClasses, hiddenClass, preserveOriginalClass, removeEndClasses) {
+    const stashedClasses = [];
+    if (preserveOriginalClass) {
+      initialClasses.forEach((cls => element.classList.contains(cls) && cls !== hiddenClass && stashedClasses.push(cls)));
+      activeClasses.forEach((cls => element.classList.contains(cls) && cls !== hiddenClass && stashedClasses.push(cls)));
+      endClasses.forEach((cls => element.classList.contains(cls) && cls !== hiddenClass && stashedClasses.push(cls)));
+    }
+    addClasses(element, initialClasses);
+    removeClasses(element, stashedClasses);
+    addClasses(element, activeClasses);
+    await nextAnimationFrame();
+    removeClasses(element, initialClasses);
+    addClasses(element, endClasses);
+    await afterTransition(element);
+    removeClasses(element, activeClasses);
+    if (removeEndClasses) {
+      removeClasses(element, endClasses);
+    }
+    addClasses(element, stashedClasses);
+  }
+  function initialState() {
+    controller.transitioned = transitioned;
+    if (transitioned) {
+      if (!!hiddenClass) {
+        targetElement.classList.remove(hiddenClass);
+      }
+      enter();
+    } else {
+      if (!!hiddenClass) {
+        targetElement.classList.add(hiddenClass);
+      }
+      leave();
+    }
+  }
+  function addClasses(element, classes) {
+    if (classes.length > 0) {
+      element.classList.add(...classes);
+    }
+  }
+  function removeClasses(element, classes) {
+    if (classes.length > 0) {
+      element.classList.remove(...classes);
+    }
+  }
+  initialState();
+  Object.assign(controller, {
+    enter: enter,
+    leave: leave,
+    toggleTransition: toggleTransition
+  });
+  return [ enter, leave, toggleTransition ];
+};
+
+function getAttribute(name, options, dataset) {
+  const datasetName = `transition${name[0].toUpperCase()}${name.substr(1)}`;
+  const datasetAlpineName = alpineNames[name];
+  const classes = options[name] || dataset[datasetName] || dataset[datasetAlpineName] || " ";
+  return isEmpty(classes) ? [] : classes.split(" ");
+}
+
+async function afterTransition(element) {
+  return new Promise((resolve => {
+    const duration = Number(getComputedStyle(element).transitionDuration.split(",")[0].replace("s", "")) * 1e3;
+    setTimeout((() => {
+      resolve(duration);
+    }), duration);
+  }));
+}
+
+async function nextAnimationFrame() {
+  return new Promise((resolve => {
+    requestAnimationFrame((() => {
+      requestAnimationFrame(resolve);
+    }));
+  }));
+}
+
+function isEmpty(str) {
+  return str.length === 0 || !str.trim();
+}
+
+class Frame extends Controller {
+  static targets=[ "navigationOverlay", "navigation" ];
+  connect() {
+    useTransition(this, {
+      element: this.navigationTarget,
+      enterFrom: "Polaris-Frame__Navigation--enter",
+      enterTo: "Polaris-Frame__Navigation--visible Polaris-Frame__Navigation--enterActive",
+      leaveActive: "Polaris-Frame__Navigation--exitActive",
+      leaveFrom: "Polaris-Frame__Navigation--exit",
+      leaveTo: "",
+      removeToClasses: false,
+      hiddenClass: false
+    });
+  }
+  openMenu() {
+    this.enter();
+    this.navigationOverlayTarget.classList.add("Polaris-Backdrop", "Polaris-Backdrop--belowNavigation");
+  }
+  closeMenu() {
+    this.leave();
+    this.navigationOverlayTarget.classList.remove("Polaris-Backdrop", "Polaris-Backdrop--belowNavigation");
+  }
+}
+
 class Modal extends Controller {
   static classes=[ "hidden", "backdrop" ];
   static values={
@@ -300,7 +481,7 @@ function contains(parent, child) {
   return false;
 }
 
-function getComputedStyle(element) {
+function getComputedStyle$1(element) {
   return getWindow(element).getComputedStyle(element);
 }
 
@@ -320,7 +501,7 @@ function getParentNode(element) {
 }
 
 function getTrueOffsetParent(element) {
-  if (!isHTMLElement(element) || getComputedStyle(element).position === "fixed") {
+  if (!isHTMLElement(element) || getComputedStyle$1(element).position === "fixed") {
     return null;
   }
   return element.offsetParent;
@@ -330,14 +511,14 @@ function getContainingBlock(element) {
   var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") !== -1;
   var isIE = navigator.userAgent.indexOf("Trident") !== -1;
   if (isIE && isHTMLElement(element)) {
-    var elementCss = getComputedStyle(element);
+    var elementCss = getComputedStyle$1(element);
     if (elementCss.position === "fixed") {
       return null;
     }
   }
   var currentNode = getParentNode(element);
   while (isHTMLElement(currentNode) && [ "html", "body" ].indexOf(getNodeName(currentNode)) < 0) {
-    var css = getComputedStyle(currentNode);
+    var css = getComputedStyle$1(currentNode);
     if (css.transform !== "none" || css.perspective !== "none" || css.contain === "paint" || [ "transform", "perspective" ].indexOf(css.willChange) !== -1 || isFirefox && css.willChange === "filter" || isFirefox && css.filter && css.filter !== "none") {
       return currentNode;
     } else {
@@ -350,10 +531,10 @@ function getContainingBlock(element) {
 function getOffsetParent(element) {
   var window = getWindow(element);
   var offsetParent = getTrueOffsetParent(element);
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle(offsetParent).position === "static") {
+  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === "static") {
     offsetParent = getTrueOffsetParent(offsetParent);
   }
-  if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle(offsetParent).position === "static")) {
+  if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle$1(offsetParent).position === "static")) {
     return window;
   }
   return offsetParent || getContainingBlock(element) || window;
@@ -494,7 +675,7 @@ function mapToStyles(_ref2) {
     var widthProp = "clientWidth";
     if (offsetParent === getWindow(popper)) {
       offsetParent = getDocumentElement(popper);
-      if (getComputedStyle(offsetParent).position !== "static" && position === "absolute") {
+      if (getComputedStyle$1(offsetParent).position !== "static" && position === "absolute") {
         heightProp = "scrollHeight";
         widthProp = "scrollWidth";
       }
@@ -672,7 +853,7 @@ function getDocumentRect(element) {
   var height = max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
   var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
   var y = -winScroll.scrollTop;
-  if (getComputedStyle(body || html).direction === "rtl") {
+  if (getComputedStyle$1(body || html).direction === "rtl") {
     x += max(html.clientWidth, body ? body.clientWidth : 0) - width;
   }
   return {
@@ -684,7 +865,7 @@ function getDocumentRect(element) {
 }
 
 function isScrollParent(element) {
-  var _getComputedStyle = getComputedStyle(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
+  var _getComputedStyle = getComputedStyle$1(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
   return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
 }
 
@@ -739,7 +920,7 @@ function getClientRectFromMixedType(element, clippingParent) {
 
 function getClippingParents(element) {
   var clippingParents = listScrollParents(getParentNode(element));
-  var canEscapeClipping = [ "absolute", "fixed" ].indexOf(getComputedStyle(element).position) >= 0;
+  var canEscapeClipping = [ "absolute", "fixed" ].indexOf(getComputedStyle$1(element).position) >= 0;
   var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
   if (!isElement(clipperElement)) {
     return [];
@@ -1654,6 +1835,7 @@ class TextField extends Controller {
 
 function registerPolarisControllers(application) {
   application.register("polaris-button", Button);
+  application.register("polaris-frame", Frame);
   application.register("polaris-modal", Modal);
   application.register("polaris-option-list", OptionList);
   application.register("polaris", Polaris);
@@ -1664,4 +1846,4 @@ function registerPolarisControllers(application) {
   application.register("polaris-text-field", TextField);
 }
 
-export { Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField, registerPolarisControllers };
+export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField, registerPolarisControllers };
