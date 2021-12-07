@@ -1,0 +1,8 @@
+<%= polaris_frame do |frame| %>
+  <% frame.save_bar(message: "Unsaved changes", flush: true) do |save_bar| %>
+    <% save_bar.save_action { "Save" } %>
+    <% save_bar.discard_action { "Discard" } %>
+  <% end %>
+
+  <div data-action="load@window->polaris-frame#showSaveBar"></div>
+<% end %>

@@ -190,8 +190,11 @@ function isEmpty(str) {
 }
 
 class Frame extends Controller {
-  static targets=[ "navigationOverlay", "navigation" ];
+  static targets=[ "navigationOverlay", "navigation", "saveBar" ];
   connect() {
+    if (!this.hasNavigationTarget) {
+      return;
+    }
     useTransition(this, {
       element: this.navigationTarget,
       enterFrom: "Polaris-Frame__Navigation--enter",
@@ -210,6 +213,12 @@ class Frame extends Controller {
   closeMenu() {
     this.leave();
     this.navigationOverlayTarget.classList.remove("Polaris-Backdrop", "Polaris-Backdrop--belowNavigation");
+  }
+  showSaveBar() {
+    this.saveBarTarget.classList.add("Polaris-Frame-CSSAnimation--endFade");
+  }
+  hideSaveBar() {
+    this.saveBarTarget.classList.remove("Polaris-Frame-CSSAnimation--endFade");
   }
 }
 

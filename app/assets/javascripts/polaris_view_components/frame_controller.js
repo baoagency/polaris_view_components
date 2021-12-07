@@ -2,9 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 import { useTransition } from "stimulus-use"
 
 export default class extends Controller {
-  static targets = ["navigationOverlay", "navigation"]
+  static targets = ["navigationOverlay", "navigation", "saveBar"]
 
   connect() {
+    if (!this.hasNavigationTarget) { return }
+
     useTransition(this, {
       element: this.navigationTarget,
       enterFrom: "Polaris-Frame__Navigation--enter",
@@ -17,6 +19,8 @@ export default class extends Controller {
     })
   }
 
+  // Actions
+
   openMenu() {
     this.enter()
     this.navigationOverlayTarget.classList.add("Polaris-Backdrop", "Polaris-Backdrop--belowNavigation")
@@ -25,5 +29,13 @@ export default class extends Controller {
   closeMenu() {
     this.leave()
     this.navigationOverlayTarget.classList.remove("Polaris-Backdrop", "Polaris-Backdrop--belowNavigation")
+  }
+
+  showSaveBar() {
+    this.saveBarTarget.classList.add("Polaris-Frame-CSSAnimation--endFade")
+  }
+
+  hideSaveBar() {
+    this.saveBarTarget.classList.remove("Polaris-Frame-CSSAnimation--endFade")
   }
 }

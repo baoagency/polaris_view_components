@@ -19,7 +19,14 @@
     </div>
   <% end %>
 
-  <div class="Polaris-Frame__ContextualSaveBar Polaris-Frame-CSSAnimation--startFade"></div>
+  <% if save_bar.present? %>
+    <div
+      data-polaris-frame-target="saveBar"
+      class="Polaris-Frame__ContextualSaveBar Polaris-Frame-CSSAnimation--startFade"
+    >
+      <%= save_bar %>
+    </div>
+  <% end %>
 
   <div data-polaris-frame-target="navigationOverlay"></div>
 
