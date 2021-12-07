@@ -23,8 +23,8 @@ module Polaris
         opts[:classes] = class_names(
           opts[:classes],
           "Polaris-Frame",
-          "Polaris-Frame--hasNav",
-          "Polaris-Frame--hasTopBar"
+          "Polaris-Frame--hasNav": navigation.present?,
+          "Polaris-Frame--hasTopBar": top_bar.present?
         )
       end
     end
