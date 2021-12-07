@@ -1,0 +1,11 @@
+<%= polaris_frame(logo: {
+  src: "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg",
+  width: "124px"
+}) do |frame| %>
+  <% frame.save_bar(message: "Unsaved changes") do |save_bar| %>
+    <% save_bar.save_action { "Save" } %>
+    <% save_bar.discard_action { "Discard" } %>
+  <% end %>
+
+  <div data-action="load@window->polaris-frame#showSaveBar"></div>
+<% end %>
