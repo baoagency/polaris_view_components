@@ -2,21 +2,20 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   disable(event) {
-    if (this.button.dataset.disabled) {
+    if (this.button.disabled) {
       event.preventDefault()
     } else {
-      this.button.dataset.disabled = true
+      this.button.disabled = true
       this.button.classList.add("Polaris-Button--disabled", "Polaris-Button--loading")
       this.buttonContent.insertAdjacentHTML("afterbegin", this.spinnerHTML)
     }
   }
 
   enable() {
-    if (this.button.dataset.disabled) {
+    if (this.button.disabled) {
       this.button.disabled = false
-      delete this.button.dataset.disabled
       this.button.classList.remove("Polaris-Button--disabled", "Polaris-Button--loading")
-      this.spinner.remove()
+      if (this.spinner) this.spinner.remove()
     }
   }
 
