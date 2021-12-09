@@ -2,9 +2,17 @@
 
 module Polaris
   class FiltersComponent < Polaris::NewComponent
-    renders_one :query, "QueryComponent"
+    renders_one :query, ->(**system_arguments) do
+      QueryComponent.new(disabled: @disabled, **system_arguments)
+    end
+    renders_many :items, ->(**system_arguments) do
+      ItemComponent.new(disabled: @disabled, **system_arguments)
+    end
+    renders_one :tags
 
-    def initialize(**system_arguments)
+    def initialize(disabled: false, help_text: nil, **system_arguments)
+      @disabled = disabled
+      @help_text = help_text
       @system_arguments = system_arguments
     end
 
@@ -18,8 +26,17 @@ module Polaris
       end
     end
 
+    def items_wrapper_classes
+      class_names(
+        "Polaris-Filters-ConnectedFilterControl__RightContainer",
+        "Polaris-Filters-ConnectedFilterControl__RightContainerWithoutMoreFilters",
+        "Polaris-Filters-ConnectedFilterControl--queryFieldHidden": @query.blank?
+      )
+    end
+
     class QueryComponent < Polaris::NewComponent
-      def initialize(clear_button: true, **system_arguments)
+      def initialize(clear_button: true, disabled: false, **system_arguments)
+        @disabled = disabled
         @system_arguments = system_arguments.merge(
           label_hidden: true,
           clear_button: clear_button
@@ -27,9 +44,45 @@ module Polaris
       end
 
       def call
-        polaris_text_field(**@system_arguments) do |text_field|
+        polaris_text_field(disabled: @disabled, **@system_arguments) do |text_field|
           text_field.prefix do
             polaris_icon(name: "SearchMinor")
+          end
+        end
+      end
+    end
+
+    class ItemComponent < Polaris::NewComponent
+      def initialize(label:, sectioned: true, width: nil, disabled: false, **system_arguments)
+        @label = label
+        @sectioned = sectioned
+        @width = width
+        @disabled = disabled
+        @system_arguments = system_arguments
+      end
+
+      def system_arguments
+        @system_arguments.tap do |opts|
+          opts[:tag] = "div"
+          opts[:classes] = class_names(
+            @system_arguments[:classes],
+            "Polaris-Filters-ConnectedFilterControl__Item"
+          )
+        end
+      end
+
+      def popover_arguments
+        {
+          sectioned: @sectioned,
+          style: ("width: #{@width}" if @width.present?)
+        }
+      end
+
+      def call
+        render(Polaris::BaseComponent.new(**system_arguments)) do
+          render(Polaris::PopoverComponent.new(**popover_arguments)) do |popover|
+            popover.button(disclosure: true, disabled: @disabled) { @label }
+            content
           end
         end
       end

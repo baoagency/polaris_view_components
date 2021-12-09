@@ -11,6 +11,13 @@
         name: :query,
         placeholder: "Filter items",
       ) %>
+      <% filters.item(label: "Availability", width: "150px") do %>
+        <%= polaris_choice_list(title_hidden: true) do |choice| %>
+          <% choice.checkbox(label: "Online Store", value: "online_store") %>
+          <% choice.checkbox(label: "Point of Sale", value: "point_of_sale") %>
+          <% choice.checkbox(label: "Buy Button", value: "buy_button") %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 

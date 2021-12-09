@@ -15,14 +15,13 @@
   <%= polaris_resource_list do |resource_list| %>
     <% resource_list.filters do |filters| %>
       <% filters.query(name: :query, placeholder: "Filter customers") %>
-      <% filters.item(label: "Account status", sectioned: false) do %>
-        <%= polaris_option_list do |list| %>
-          <% list.checkbox(label: "Enabled", value: "enabled") %>
-          <% list.checkbox(label: "Not invited", value: "not_invited") %>
-          <% list.checkbox(label: "Invited", value: "invited") %>
-          <% list.checkbox(label: "Declined", value: "declined") %>
-        <% end %>
+      <% filters.item(label: "Tagged with", width: "175px") do %>
+        <%= polaris_text_field %>
       <% end %>
+
+      <div style="padding-left: 8px;">
+        <%= polaris_button { "Save" } %>
+      </div>
     <% end %>
 
     <% items.each do |item| %>

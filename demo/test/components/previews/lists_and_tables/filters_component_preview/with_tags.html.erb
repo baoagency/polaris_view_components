@@ -23,6 +23,12 @@
           <% list.checkbox(label: "Declined", value: "declined") %>
         <% end %>
       <% end %>
+      <% filters.tags do %>
+        <%= polaris_tag do |tag| %>
+          <% tag.remove_button(url: "#") %>
+          Customer not invited
+        <% end %>
+      <% end %>
     <% end %>
 
     <% items.each do |item| %>
