@@ -8,6 +8,28 @@
           </div>
         </div>
       <% end %>
+      <% if items.present? %>
+        <div class="<%= items_wrapper_classes %>">
+          <% items.each do |item| %>
+            <%= item %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
+    <% if content.present? %>
+      <div class="Polaris-Filters-ConnectedFilterControl__AuxiliaryContainer">
+        <%= content %>
+      </div>
+    <% end %>
   </div>
+  <% if tags.present? %>
+    <div class="Polaris-Filters__TagsContainer">
+      <%= tags %>
+    </div>
+  <% end %>
+  <% if @help_text.present? %>
+    <div class="Polaris-Filters__HelpText">
+      <%= polaris_text_subdued { @help_text } %>
+    </div>
+  <% end %>
 <% end %>

@@ -26,7 +26,7 @@ module Polaris
     end
 
     def initialize(
-      title:,
+      title: nil,
       title_hidden: false,
       form: nil,
       attribute: nil,
