@@ -1,0 +1,26 @@
+<%= polaris_frame do |frame| %>
+  <%= polaris_page(title: "Toast example") do %>
+    <%= polaris_button(data: {
+      controller: "polaris",
+      target: "#demo-toast",
+      action: "polaris#showToast",
+    }) { "Show toast" } %>
+
+    <%= polaris_spacer(vertical: :base) %>
+
+    <%= polaris_form_layout do |form_layout| %>
+      <% 2.times do %>
+        <% form_layout.item do %>
+          <%= polaris_text_field(label: "Store name") %>
+        <% end %>
+        <% form_layout.item do %>
+          <%= polaris_text_field(label: "Account email") %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% frame.toasts do %>
+    <%= polaris_toast(id: "demo-toast", hidden: true) { "Message sent" } %>
+  <% end %>
+<% end %>

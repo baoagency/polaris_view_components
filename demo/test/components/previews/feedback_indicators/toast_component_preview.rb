@@ -15,4 +15,7 @@ class FeedbackIndicators::ToastComponentPreview < ViewComponent::Preview
 
   def error
   end
+
+  def long_page
+  end
 end
