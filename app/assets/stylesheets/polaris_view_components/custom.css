@@ -96,3 +96,8 @@ a.Polaris-Tag__Button {
     border-bottom-right-radius: var(--p-border-radius-base);
   }
 }
+
+/* Toast */
+.Polaris-Frame-ToastManager {
+  bottom: 0;
+}

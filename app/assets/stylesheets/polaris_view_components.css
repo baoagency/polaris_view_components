@@ -2249,3 +2249,7 @@ a.Polaris-Tag__Button {
     border-top-right-radius: var(--p-border-radius-base);
     border-bottom-right-radius: var(--p-border-radius-base);
   }
+/* Toast */
+.Polaris-Frame-ToastManager {
+  bottom: 0;
+}
