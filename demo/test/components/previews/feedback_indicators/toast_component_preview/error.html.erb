@@ -1,0 +1,13 @@
+<%= polaris_frame do |frame| %>
+  <%= polaris_page(title: "Toast example") do %>
+    <%= polaris_button(data: {
+      controller: "polaris",
+      target: "#demo-toast",
+      action: "polaris#showToast",
+    }) { "Show toast" } %>
+  <% end %>
+
+  <% frame.toasts do %>
+    <%= polaris_toast(id: "demo-toast", hidden: true, error: true) { "Server error" } %>
+  <% end %>
+<% end %>

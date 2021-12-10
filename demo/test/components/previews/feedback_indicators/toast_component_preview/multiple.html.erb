@@ -1,0 +1,19 @@
+<%= polaris_frame do |frame| %>
+  <%= polaris_page(title: "Toast example") do %>
+    <%= polaris_button_group(segmented: true) do |group| %>
+      <% 3.times do |i| %>
+        <%= group.button(data: {
+          controller: "polaris",
+          target: "#demo-toast#{i + 1}",
+          action: "polaris#showToast",
+        }) { "Show toast #{i + 1}" } %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% frame.toasts do %>
+    <%= polaris_toast(id: "demo-toast1", hidden: true) { "Message sent" } %>
+    <%= polaris_toast(id: "demo-toast2", hidden: true) { "Image uploaded" } %>
+    <%= polaris_toast(id: "demo-toast3", hidden: true) { "Third toast" } %>
+  <% end %>
+<% end %>

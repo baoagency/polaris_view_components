@@ -8,6 +8,7 @@ import ResourceItem from './resource_item_controller'
 import Scrollable from './scrollable_controller'
 import Select from './select_controller'
 import TextField from './text_field_controller'
+import Toast from './toast_controller'
 
 export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField }
 
@@ -22,4 +23,5 @@ export function registerPolarisControllers(application) {
   application.register('polaris-scrollable', Scrollable)
   application.register('polaris-select', Select)
   application.register('polaris-text-field', TextField)
+  application.register('polaris-toast', Toast)
 }
