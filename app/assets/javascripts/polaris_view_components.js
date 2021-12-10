@@ -1891,7 +1891,7 @@ class Toast extends Controller {
     }
   }
   get toastManager() {
-    return this.element.parentNode;
+    return this.element.closest(".Polaris-Frame-ToastManager");
   }
   get visibleToasts() {
     return [ ...this.toastManager.querySelectorAll(`.${this.constructor.activeClass}`) ];
