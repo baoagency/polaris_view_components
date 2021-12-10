@@ -9,6 +9,7 @@ module Polaris
     renders_one :save_bar, ->(**system_arguments) do
       Polaris::Frame::SaveBarComponent.new(logo: @logo, **system_arguments)
     end
+    renders_one :toasts
 
     def initialize(logo: nil, **system_arguments)
       @logo = logo && Polaris::Logo.new(**logo)

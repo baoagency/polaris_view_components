@@ -13,6 +13,10 @@ export default class extends Controller {
     this.findElement("button").enable()
   }
 
+  showToast() {
+    this.findElement("toast").show()
+  }
+
   // Private
 
   findElement(type) {

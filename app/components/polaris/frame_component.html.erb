@@ -36,3 +36,9 @@
     </div>
   </main>
 <% end %>
+
+<% if toasts.present? %>
+  <div class="Polaris-Frame-ToastManager">
+    <%= toasts %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+  <div style="<%= polaris_inversed_colors %>">
+    <div class="<%= toast_classes %>">
+      <%= content %>
+
+      <% if action.present? %>
+        <div class="Polaris-Frame-Toast__Action">
+          <%= action %>
+        </div>
+      <% end %>
+
+      <button
+        data-action="polaris-toast#close"
+        type="button"
+        class="Polaris-Frame-Toast__CloseButton"
+      >
+        <%= polaris_icon(name: "MobileCancelMajor") %>
+      </button>
+    </div>
+  </div>
+<% end %>
