@@ -3,11 +3,13 @@
     <% sections.each do |section| %>
       <%= section %>
     <% end %>
-  <% else %>
+  <% elsif items.present? %>
     <%= render(Polaris::OptionList::SectionComponent.new(title: @title)) do %>
       <% items.each do |item| %>
         <%= item %>
       <% end %>
     <% end %>
+  <% else %>
+    <%= content %>
   <% end %>
 <% end %>

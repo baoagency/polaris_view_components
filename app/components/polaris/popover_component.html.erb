@@ -1,11 +1,4 @@
-<div
-  data-controller="polaris-popover"
-  data-polaris-popover-active-value="<%= @active %>"
-  data-polaris-popover-placement-value="<%= popperjs_placement %>"
-  data-polaris-popover-open-class="Polaris-Popover__PopoverOverlay--open"
-  data-polaris-popover-closed-class="Polaris-Popover__PopoverOverlay--closed"
-  style="<%= "display: inline-block;" if @inline %>"
->
+<%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
   <div data-polaris-popover-target="activator">
     <% if activator.present? %>
       <%= activator %>
@@ -35,4 +28,4 @@
       <div class="Polaris-Popover__FocusTracker" tabindex="0"></div>
     <% end %>
   <% end %>
-</div>
+<% end %>

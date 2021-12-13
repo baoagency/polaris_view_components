@@ -4,6 +4,9 @@ module Polaris
     # standard:disable Layout/HashAlignment
     POLARIS_HELPERS = {
       action_list:              "Polaris::ActionListComponent",
+      autocomplete:             "Polaris::AutocompleteComponent",
+      autocomplete_section:     "Polaris::Autocomplete::SectionComponent",
+      autocomplete_option:      "Polaris::Autocomplete::OptionComponent",
       avatar:                   "Polaris::AvatarComponent",
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::BannerComponent",

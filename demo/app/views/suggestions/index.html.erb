@@ -1,0 +1,11 @@
+<% if @query.blank? %>
+  <%= polaris_autocomplete_section(title: "Suggested tags") do |section| %>
+    <% @options.each do |option| %>
+      <%= section.option(label: option[:label], value: option[:value]) %>
+    <% end %>
+  <% end %>
+<% else %>
+  <% @options.each do |option| %>
+    <%= polaris_autocomplete_option(label: option[:label], value: option[:value]) %>
+  <% end %>
+<% end %>

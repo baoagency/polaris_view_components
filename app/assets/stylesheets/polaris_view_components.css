@@ -2253,3 +2253,7 @@ a.Polaris-Tag__Button {
 .Polaris-Frame-ToastManager {
   bottom: 0;
 }
+/* Autocomplete */
+.Polaris-Autocomplete__EmptyState {
+  padding: 0.8rem 1.6rem;
+}

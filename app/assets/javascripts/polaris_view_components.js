@@ -1,5 +1,110 @@
 import { Controller } from "@hotwired/stimulus";
 
+import { get } from "@rails/request.js";
+
+class Autocomplete extends Controller {
+  static targets=[ "popover", "input", "results", "option", "emptyState" ];
+  static values={
+    url: String
+  };
+  connect() {
+    this.inputTarget.addEventListener("input", this.onInputChange);
+  }
+  disconnect() {
+    this.inputTarget.removeEventListener("input", this.onInputChange);
+  }
+  toggle() {
+    if (this.visibleOptions.length > 0) {
+      this.hideEmptyState();
+      this.popoverController.show();
+    } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
+      this.showEmptyState();
+    } else {
+      this.popoverController.forceHide();
+    }
+  }
+  select(event) {
+    const input = event.currentTarget;
+    const label = input.closest("li").dataset.label;
+    const changeEvent = new CustomEvent("polaris-autocomplete:change", {
+      detail: {
+        value: input.value,
+        label: label,
+        selected: input.checked
+      }
+    });
+    this.element.dispatchEvent(changeEvent);
+  }
+  onInputChange=debounce$1((() => {
+    if (this.isRemote) {
+      this.fetchResults();
+    } else {
+      this.filterOptions();
+    }
+  }), 200);
+  get isRemote() {
+    return this.urlValue.length > 0;
+  }
+  get popoverController() {
+    return this.application.getControllerForElementAndIdentifier(this.popoverTarget, "polaris-popover");
+  }
+  get value() {
+    return this.inputTarget.value;
+  }
+  get visibleOptions() {
+    return this.optionTargets.filter((option => !option.classList.contains("Polaris--hidden")));
+  }
+  filterOptions() {
+    if (this.value === "") {
+      this.optionTargets.forEach((option => {
+        option.classList.remove("Polaris--hidden");
+      }));
+    } else {
+      const filterRegex = new RegExp(this.value, "i");
+      this.optionTargets.forEach((option => {
+        if (option.dataset.label.match(filterRegex)) {
+          option.classList.remove("Polaris--hidden");
+        } else {
+          option.classList.add("Polaris--hidden");
+        }
+      }));
+    }
+    this.toggle();
+  }
+  async fetchResults() {
+    const response = await get(this.urlValue, {
+      query: {
+        q: this.value
+      }
+    });
+    if (response.ok) {
+      const results = await response.html;
+      this.resultsTarget.innerHTML = results;
+      this.toggle();
+    }
+  }
+  showEmptyState() {
+    if (this.hasEmptyStateTarget) {
+      this.resultsTarget.classList.add("Polaris--hidden");
+      this.emptyStateTarget.classList.remove("Polaris--hidden");
+    }
+  }
+  hideEmptyState() {
+    if (this.hasEmptyStateTarget) {
+      this.emptyStateTarget.classList.add("Polaris--hidden");
+      this.resultsTarget.classList.remove("Polaris--hidden");
+    }
+  }
+}
+
+const debounce$1 = (fn, delay = 10) => {
+  let timeoutId = null;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(fn, delay);
+  };
+};
+
 class Button extends Controller {
   disable(event) {
     if (this.button.disabled) {
@@ -248,8 +353,10 @@ class OptionList extends Controller {
   connect() {
     this.updateSelected();
   }
-  update() {
-    this.updateSelected();
+  update(event) {
+    const target = event.currentTarget;
+    target.classList.add(this.selectedClass);
+    this.deselectAll(target);
   }
   updateSelected() {
     this.radioButtonTargets.forEach((element => {
@@ -257,6 +364,15 @@ class OptionList extends Controller {
       if (input.checked) {
         element.classList.add(this.selectedClass);
       } else {
+        element.classList.remove(this.selectedClass);
+      }
+    }));
+  }
+  deselectAll(target) {
+    this.radioButtonTargets.forEach((element => {
+      if (!element.isEqualNode(target)) {
+        const input = element.querySelector("input[type=radio]");
+        input.checked = false;
         element.classList.remove(this.selectedClass);
       }
     }));
@@ -1682,9 +1798,12 @@ class Popover extends Controller {
   }
   hide(event) {
     if (!this.element.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
-      this.popoverTarget.classList.remove(this.openClass);
-      this.popoverTarget.classList.add(this.closedClass);
+      this.forceHide();
     }
+  }
+  forceHide() {
+    this.popoverTarget.classList.remove(this.openClass);
+    this.popoverTarget.classList.add(this.closedClass);
   }
 }
 
@@ -1902,6 +2021,7 @@ class Toast extends Controller {
 }
 
 function registerPolarisControllers(application) {
+  application.register("polaris-autocomplete", Autocomplete);
   application.register("polaris-button", Button);
   application.register("polaris-frame", Frame);
   application.register("polaris-modal", Modal);

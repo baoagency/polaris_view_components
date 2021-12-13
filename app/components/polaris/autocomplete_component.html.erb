@@ -1,0 +1,30 @@
+<%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+  <%= render(Polaris::PopoverComponent.new(**popover_arguments)) do |popover| %>
+    <% popover.activator do %>
+      <%= text_field %>
+    <% end %>
+
+    <% if empty_state.present? %>
+      <div
+        data-polaris-autocomplete-target="emptyState"
+        class="Polaris-Autocomplete__EmptyState Polaris--hidden"
+      >
+        <%= empty_state %>
+      </div>
+    <% end %>
+
+    <%= polaris_option_list(**option_list_arguments) do |list| %>
+      <% if sections.present? %>
+        <% sections.each do |section| %>
+          <%= section %>
+        <% end %>
+      <% elsif options.present? %>
+        <% options.each do |option| %>
+          <%= option %>
+        <% end %>
+      <% else %>
+        <%= content %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

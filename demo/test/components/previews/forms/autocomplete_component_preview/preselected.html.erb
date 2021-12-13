@@ -1,0 +1,15 @@
+<%= polaris_autocomplete(multiple: true) do |autocomplete| %>
+  <% autocomplete.text_field(label: "Tags", placeholder: "Search") do |c| %>
+    <% c.prefix do %>
+      <%= polaris_icon(name: "SearchMinor") %>
+    <% end %>
+  <% end %>
+
+  <% autocomplete.section(title: "Suggested tags") do |section| %>
+    <% section.option(label: "Rustic", value: "rustic") %>
+    <% section.option(label: "Antique", value: "antique", checked: true) %>
+    <% section.option(label: "Vinyl", value: "vinyl") %>
+    <% section.option(label: "Vintage", value: "vintage", checked: true) %>
+    <% section.option(label: "Refurbished", value: "refurbished") %>
+  <% end %>
+<% end %>

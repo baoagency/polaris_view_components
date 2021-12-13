@@ -11,6 +11,7 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+gem "requestjs-rails", github: "rails/requestjs-rails"
 
 gem "polaris_view_components", path: "../"
 gem "lookbook"
