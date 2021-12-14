@@ -19,5 +19,5 @@ export default {
       }
     })
   ],
-  external: ["stimulus", "@hotwired/stimulus"]
+  external: ["stimulus", "@hotwired/stimulus", "@rails/request.js"]
 }

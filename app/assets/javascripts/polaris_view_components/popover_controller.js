@@ -38,8 +38,12 @@ export default class extends Controller {
 
   hide(event) {
     if (!this.element.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
-      this.popoverTarget.classList.remove(this.openClass)
-      this.popoverTarget.classList.add(this.closedClass)
+      this.forceHide()
     }
+  }
+
+  forceHide() {
+    this.popoverTarget.classList.remove(this.openClass)
+    this.popoverTarget.classList.add(this.closedClass)
   }
 }

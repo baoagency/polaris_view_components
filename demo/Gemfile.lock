@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/rails/requestjs-rails.git
+  revision: 74ce4f48256033904483ee0d5a3b5aeae21f7869
+  specs:
+    requestjs-rails (0.0.5)
+      rails (>= 6.0.0)
+
 PATH
   remote: ..
   specs:
@@ -197,6 +204,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.0.alpha2)
+  requestjs-rails!
   stimulus-rails
   turbo-rails
   tzinfo-data

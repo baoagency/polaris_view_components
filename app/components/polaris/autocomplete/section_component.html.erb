@@ -1,0 +1,9 @@
+<%= render(Polaris::OptionList::SectionComponent.new(**@system_arguments)) do %>
+  <% if options.present? %>
+    <% options.each do |option| %>
+      <%= option %>
+    <% end %>
+  <% else %>
+    <%= content %>
+  <% end %>
+<% end %>

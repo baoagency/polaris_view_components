@@ -24,6 +24,7 @@ module Polaris
       sectioned: false,
       alignment: ALIGNMENT_DEFAULT,
       position: POSITION_DEFAULT,
+      wrapper_arguments: {},
       **system_arguments
     )
       @active = active
@@ -35,9 +36,25 @@ module Polaris
       @sectioned = sectioned
       @alignment = fetch_or_fallback(ALIGNMENT_OPTIONS, alignment, ALIGNMENT_DEFAULT)
       @position = fetch_or_fallback(POSITION_OPTIONS, position, POSITION_DEFAULT)
+      @wrapper_arguments = wrapper_arguments
       @system_arguments = system_arguments
       @popover_arguments = {}
       @content_arguments = {}
+    end
+
+    def wrapper_arguments
+      @wrapper_arguments.tap do |opts|
+        opts[:tag] = "div"
+        opts[:data] ||= {}
+        prepend_option(opts[:data], :controller, "polaris-popover")
+        opts[:data][:polaris_popover_active_value] = @active
+        opts[:data][:polaris_popover_placement_value] = popperjs_placement
+        opts[:data][:polaris_popover_open_class] = "Polaris-Popover__PopoverOverlay--open"
+        opts[:data][:polaris_popover_closed_class] = "Polaris-Popover__PopoverOverlay--closed"
+        if @inline
+          prepend_option(opts, :style, "display: inline-block;")
+        end
+      end
     end
 
     def system_arguments

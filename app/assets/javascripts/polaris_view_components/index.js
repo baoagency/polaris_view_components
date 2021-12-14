@@ -1,3 +1,4 @@
+import Autocomplete from './autocomplete_controller'
 import Button from './button_controller'
 import Frame from './frame_controller'
 import Modal from './modal_controller'
@@ -13,6 +14,7 @@ import Toast from './toast_controller'
 export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField }
 
 export function registerPolarisControllers(application) {
+  application.register('polaris-autocomplete', Autocomplete)
   application.register('polaris-button', Button)
   application.register('polaris-frame', Frame)
   application.register('polaris-modal', Modal)
