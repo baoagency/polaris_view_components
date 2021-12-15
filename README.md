@@ -47,6 +47,16 @@ Define Polaris style on your `<body>` tag:
 
 ### Importmaps
 
+Install dependencies:
+```
+bin/importmap pin @rails/request.js --download
+```
+
+If you use sprockets make sure the vendor folder is loaded in `app/assets/config/manifest.js`:
+```js
+//= link_tree ../../../vendor/assets/javascripts .js
+```
+
 Add to `config/importmap.rb`:
 
 ```rb
@@ -65,7 +75,7 @@ registerPolarisControllers(Stimulus)
 
 Install NPM package:
 ```bash
-yarn add polaris-view-components
+yarn add polaris-view-components @rails/request.js
 ```
 
 Add to `app/javascript/controllers/index.js`:
