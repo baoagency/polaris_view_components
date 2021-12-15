@@ -9,3 +9,4 @@ pin "@hotwired/stimulus-importmap-autoloader", to: "stimulus-importmap-autoloade
 pin_all_from "app/javascript/controllers", under: "controllers"
 
 pin "polaris-view-components", to: "polaris_view_components.js"
+pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.6
