@@ -19,8 +19,8 @@ module Polaris
 
     attr_reader :value
 
-    renders_one :prefix
-    renders_one :suffix
+    renders_one :prefix, "Affix"
+    renders_one :suffix, "Affix"
     renders_one :connected_left
     renders_one :connected_right
 
@@ -178,6 +178,20 @@ module Polaris
 
     def render_number_buttons?
       @type == :number && !@disabled
+    end
+
+    class Affix < Polaris::NewComponent
+      def initialize(icon: nil)
+        @icon = icon
+      end
+
+      def call
+        if @icon.present?
+          render Polaris::IconComponent.new(name: @icon)
+        else
+          content
+        end
+      end
     end
   end
 end
