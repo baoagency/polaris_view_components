@@ -6,6 +6,8 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   class Product
     include ActiveModel::Model
     attr_accessor :title, :status, :accept, :access
+
+    validates :title, presence: true
   end
 
   setup do
@@ -14,14 +16,16 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   end
 
   test "#errors_summary" do
+    @product.validate
     @product.errors.add(:base, "Base Error")
 
     @rendered_component = @builder.errors_summary
 
     assert_selector ".Polaris-Banner--statusCritical" do
-      assert_text "1 error with this product"
+      assert_text "2 errors with this product"
       assert_selector ".Polaris-Banner__Content" do
         assert_selector "li", text: "Base Error"
+        assert_selector "li", text: "Title can't be blank"
       end
     end
   end

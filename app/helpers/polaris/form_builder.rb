@@ -17,8 +17,8 @@ module Polaris
         status: :critical
       ) do
         render(Polaris::ListComponent.new) do |list|
-          object.errors.each do |error|
-            list.item { error.full_message.html_safe }
+          object.errors.full_messages.each do |error|
+            list.item { error.html_safe }
           end
         end
       end
