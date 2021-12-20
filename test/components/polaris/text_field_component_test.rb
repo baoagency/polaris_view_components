@@ -128,6 +128,19 @@ class TextFieldComponentTest < Minitest::Test
     end
   end
 
+  def test_prefix_suffix_icon_shorthand
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      label: "Label"
+    )) do |c|
+      c.prefix(icon: "BillingStatementDollarMajor")
+      c.suffix(icon: "EmailMajor")
+    end
+
+    assert_selector ".Polaris-TextField > .Polaris-TextField__Prefix > .Polaris-Icon"
+    assert_selector ".Polaris-TextField > .Polaris-TextField__Suffix > .Polaris-Icon"
+  end
+
   def test_prefix_suffix_slots
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
