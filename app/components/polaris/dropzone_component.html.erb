@@ -20,7 +20,7 @@
       <%= render Polaris::StackComponent.new(vertical: true, spacing: :tight) do |stack| %>
         <% stack.item do %>
           <%= render Polaris::DisplayTextComponent.new(size: :small) do %>
-            <%= @overlay_text %>
+            <%= @error_overlay_text %>
           <% end %>
         <% end %>
       <% end %>

@@ -30,7 +30,7 @@ module Polaris
       outline: true,
       overlay: true,
       overlay_text: "Drop files to upload",
-      error_overlay_text: "",
+      error_overlay_text: "This file type isn't accepted",
       allow_multiple: true,
       disabled: false,
       drop_on_page: false,

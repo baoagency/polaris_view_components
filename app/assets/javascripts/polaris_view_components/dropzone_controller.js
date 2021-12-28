@@ -4,7 +4,7 @@ const dragEvents = ['dragover', 'dragenter', 'drop']
 
 // eslint-disable-next-line import/no-default-export
 export default class extends Controller {
-  static targets = ['container', 'fileUpload', 'input', 'itemTemplate', 'itemsTemplate', 'overlay']
+  static targets = ['container', 'fileUpload', 'input', 'itemTemplate', 'itemsTemplate', 'overlay', 'errorOverlay']
   static values = {
     accept: String,
     allowMultiple: Boolean,
@@ -13,9 +13,9 @@ export default class extends Controller {
     focused: Boolean,
   }
 
-  _files = []
-  _acceptedFiles = []
-  _rejectedFiles = []
+  files = []
+  acceptedFiles = []
+  rejectedFiles = []
   _dragging = false
   dragTargets = []
   filesRendered = false
@@ -66,6 +66,8 @@ export default class extends Controller {
     this.files = files
     this.acceptedFiles = acceptedFiles
     this.rejectedFiles = rejectedFiles
+
+    this.render()
   }
 
   onDragOver (e) {
@@ -153,13 +155,30 @@ export default class extends Controller {
     return { files, acceptedFiles, rejectedFiles }
   }
 
+  render () {
+    console.log(this, this.files, this.rejectedFiles)
+
+    if (this.files.length === 0) {
+      this.toggleFileUpload(true)
+      this.toggleErrorOverlay(false)
+    } else if (this.rejectedFiles.length > 0) {
+      this.toggleFileUpload(false)
+      this.toggleErrorOverlay(true)
+    } else if (this.acceptedFiles.length > 0) {
+      this.renderUploadedFiles()
+
+      this.toggleFileUpload(false)
+      this.toggleErrorOverlay(false)
+    }
+  }
+
   renderUploadedFiles () {
-    if (this.files.length === 0) return
+    if (this.acceptedFiles.length === 0) return
 
     const clone = this.itemsTemplateTarget.content.cloneNode(true)
     const filesTarget = clone.querySelector('.target')
 
-    this.files
+    this.acceptedFiles
       .map(file => this.renderFile(file))
       .forEach(fragment => filesTarget.parentNode.appendChild(fragment))
     filesTarget.remove()
@@ -167,6 +186,15 @@ export default class extends Controller {
     this.containerTarget.prepend(clone)
 
     this.filesRendered = true
+  }
+
+  toggleFileUpload (show = false) {
+    this.fileUploadTarget.classList.toggle('Polaris-VisuallyHidden', !show)
+  }
+
+  toggleErrorOverlay (show = false) {
+    this.errorOverlayTarget.classList.toggle('Polaris-VisuallyHidden', !show)
+    this.element.classList.toggle('Polaris-DropZone--hasError', show)
   }
 
   renderFile (file) {
@@ -207,11 +235,14 @@ export default class extends Controller {
     this.files = []
     this.rejectedFiles = []
 
-    const rendered = this.element.querySelector('[data-rendered]')
-    if (!rendered) return
+    if (!this.fileListRendered) return
 
-    rendered.remove()
+    this.fileListRendered.remove()
     this.filesRendered = false
+  }
+
+  get fileListRendered () {
+    return this.element.querySelector('[data-rendered]')
   }
 
   get dropNode () {
@@ -235,38 +266,6 @@ export default class extends Controller {
 
     this.element.classList.toggle('Polaris-DropZone--isDragging', val)
     this.overlayTarget.classList.toggle('Polaris-VisuallyHidden', !val)
-  }
-
-  get files () {
-    return this._files
-  }
-
-  set files (val) {
-    this._files = val
-
-    const hasFiles = val.length > 0
-
-    this.fileUploadTarget.classList.toggle('Polaris-VisuallyHidden', hasFiles)
-
-    if (hasFiles && !this.filesRendered) {
-      this.renderUploadedFiles()
-    }
-  }
-
-  get acceptedFiles () {
-    return this._acceptedFiles
-  }
-
-  set acceptedFiles (val) {
-    this._acceptedFiles = val
-  }
-
-  get rejectedFiles () {
-    return this._rejectedFiles
-  }
-
-  set rejectedFiles (val) {
-    this._rejectedFiles = val
   }
 }
 
