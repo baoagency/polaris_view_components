@@ -1,0 +1,7 @@
+<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+  <%= render Polaris::StackComponent.new(vertical: true, spacing: :tight) do |stack| %>
+    <% stack.item do %>
+      <div class="Polaris-DropZone-FileUpload__Button"><%= @action_title %></div>
+    <% end %>
+  <% end %>
+<% end %>

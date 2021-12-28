@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-import { fileAccepted, getDataTransferFiles } from './utils'
+const dragEvents = ['dragover', 'dragenter', 'drop']
 
 // eslint-disable-next-line import/no-default-export
 export default class extends Controller {
@@ -19,6 +19,12 @@ export default class extends Controller {
   _dragging = false
   dragTargets = []
   filesRendered = false
+
+  initialize () {
+    super.initialize()
+
+    console.log(this)
+  }
 
   onBlur () {
     this.focusedValue = false
@@ -141,14 +147,30 @@ export default class extends Controller {
   }
 
   renderFile (file) {
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png']
     const clone = this.itemTemplateTarget.content.cloneNode(true)
-    const [image, content, caption] = [
+    const [svg, image, content, caption] = [
+      clone.querySelector('svg'),
       clone.querySelector('img'),
       clone.querySelector('.content'),
       clone.querySelector('.Polaris-Caption'),
     ]
-    image.alt = file.name
-    image.src = window.URL.createObjectURL(file)
+
+    if (validImageTypes.includes(file.type)) {
+      image.alt = file.name
+      image.src = validImageTypes.includes(file.type)
+        ? window.URL.createObjectURL(file)
+        : 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAgMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNiAxMWg4VjlINnYyem0wIDRoOHYtMkg2djJ6bTAtOGg0VjVINnYyem02LTVINS41QTEuNSAxLjUgMCAwMDQgMy41djEzQTEuNSAxLjUgMCAwMDUuNSAxOGg5YTEuNSAxLjUgMCAwMDEuNS0xLjVWNmwtNC00eiIgZmlsbD0iIzVDNUY2MiIvPjwvc3ZnPgo='
+
+      const parent = svg.closest('.Polaris-Stack__Item')
+
+      if (parent) parent.remove()
+    } else {
+      const parent = image.closest('.Polaris-Stack__Item')
+
+      if (parent) parent.remove()
+    }
+
     content.insertAdjacentText('afterbegin', file.name)
     caption.textContent = `${file.size} bytes`
 
@@ -223,4 +245,60 @@ export default class extends Controller {
   set rejectedFiles (val) {
     this._rejectedFiles = val
   }
+}
+
+export function fileAccepted (file, accept) {
+  return file.type === 'application/x-moz-file' || accepts(file, accept)
+}
+
+export function getDataTransferFiles (event) {
+  if (isDragEvent(event) && event.dataTransfer) {
+    const dt = event.dataTransfer
+
+    if (dt.files && dt.files.length) {
+      return Array.from(dt.files)
+    } else if (dt.items && dt.items.length) {
+      // Chrome is the only browser that allows to read the file list on drag
+      // events and uses `items` instead of `files` in this case.
+      return Array.from(dt.items)
+    }
+  } else if (isChangeEvent(event) && event.target.files) {
+    // Return files from even when a file was selected from an upload dialog
+    return Array.from(event.target.files)
+  }
+
+  return []
+}
+
+function accepts (file, acceptedFiles = ['']) {
+  if (file && acceptedFiles) {
+    const fileName = file.name || ''
+    const mimeType = file.type || ''
+    const baseMimeType = mimeType.replace(/\/.*$/, '')
+    const acceptedFilesArray = Array.isArray(acceptedFiles)
+      ? acceptedFiles
+      : acceptedFiles.split(',')
+
+    return acceptedFilesArray.some((type) => {
+      const validType = type.trim()
+      if (validType.startsWith('.')) {
+        return fileName.toLowerCase().endsWith(validType.toLowerCase())
+      } else if (validType.endsWith('/*')) {
+        // This is something like a image/* mime type
+        return baseMimeType === validType.replace(/\/.*$/, '')
+      }
+
+      return mimeType === validType
+    })
+  }
+
+  return true
+}
+
+function isDragEvent (event) {
+  return dragEvents.indexOf(event.type) > 0
+}
+
+function isChangeEvent (event) {
+  return event.type === 'change'
 }
