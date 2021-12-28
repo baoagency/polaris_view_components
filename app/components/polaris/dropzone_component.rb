@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: Error overlay. See "Only accepts SVG"
 # TODO: Dynamic sizing
 # TODO: Variable height - Not sure if this is needed
 
