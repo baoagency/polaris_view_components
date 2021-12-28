@@ -157,6 +157,21 @@ class Dropzone extends Controller {
     super.initialize();
     console.log(this);
   }
+  connect() {
+    super.connect();
+    this.onExternalTriggerClick = this.onExternalTriggerClick.bind(this);
+    document.body.addEventListener("click", this.onExternalTriggerClick);
+  }
+  disconnect() {
+    super.disconnect();
+    document.body.removeEventListener("click", this.onExternalTriggerClick);
+  }
+  onExternalTriggerClick(e) {
+    const trigger = e.target.closest(`[data-${this.identifier}-external-target="trigger"]`);
+    if (!trigger) return;
+    e.preventDefault();
+    this.onClick();
+  }
   onBlur() {
     this.focusedValue = false;
   }

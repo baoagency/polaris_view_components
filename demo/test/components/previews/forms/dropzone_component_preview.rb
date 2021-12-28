@@ -24,4 +24,8 @@ class Forms::DropzoneComponentPreview < ViewComponent::Preview
   # Use to accept only SVG files.
   def accepts_only_svg_files
   end
+
+  # Use to accept only SVG files.
+  def with_custom_file_dialog_trigger
+  end
 end
