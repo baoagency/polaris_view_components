@@ -11,7 +11,7 @@ module Polaris
 
     attr_reader :type, :label_action
 
-    validates :type, inclusion: { in: %w[file image] }
+    validates :type, inclusion: {in: %w[file image]}
     validates :label_action, type: Action, allow_nil: true
 
     def initialize(
@@ -39,8 +39,8 @@ module Polaris
       wrapper_arguments: {},
       input_arguments: {},
       file_upload_arguments: {},
-      file_upload_button: 'Add file',
-      file_upload_help: 'or drop files to upload',
+      file_upload_button: "Add file",
+      file_upload_help: "or drop files to upload",
       **system_arguments
     )
       @form = form
@@ -78,12 +78,12 @@ module Polaris
         "Polaris-DropZone--hasError": error
       )
       @system_arguments[:data] = {
-        controller: 'polaris-dropzone',
+        controller: "polaris-dropzone",
         action: "click->polaris-dropzone#onClick #{drop_actions}",
         'polaris-dropzone-accept-value': accept,
         'polaris-dropzone-allowMultiple-value': allow_multiple.to_s,
         'polaris-dropzone-disabled-value': disabled.to_s,
-        'polaris-dropzone-focused-value': 'false',
+        'polaris-dropzone-focused-value': "false",
         'polaris-dropzone-drop-on-page-value': drop_on_page
       }
       @wrapper_arguments = wrapper_arguments
@@ -99,7 +99,7 @@ module Polaris
         label: @label,
         label_hidden: @label_hidden,
         label_action: @label_action,
-        error: @error,
+        error: @error
       }.deep_merge(@wrapper_arguments)
     end
 
@@ -107,7 +107,7 @@ module Polaris
       {
         accept: @accept,
         disabled: @disabled,
-        type: 'file',
+        type: "file",
         multiple: @allow_multiple,
         data: {
           action: "focus->polaris-dropzone#onFocus blur->polaris-dropzone#onBlur change->polaris-dropzone#onChange",
@@ -118,12 +118,12 @@ module Polaris
 
     def file_upload_arguments
       {
-        tag: 'div',
+        tag: "div",
         classes: class_names(
-          'Polaris-DropZone-FileUpload'
+          "Polaris-DropZone-FileUpload"
         ),
         data: {
-          'polaris-dropzone-target': 'fileUpload'
+          'polaris-dropzone-target': "fileUpload"
         }
       }.deep_merge(@file_upload_arguments.except(:language))
     end

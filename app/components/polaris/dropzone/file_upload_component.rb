@@ -7,7 +7,7 @@ module Polaris
       # @param [String] action_title
       # @param [String] action_hint
       # @param [Hash] system_arguments
-      def initialize(action_title = 'Add files', action_hint = '', **system_arguments)
+      def initialize(action_title = "Add files", action_hint = "", **system_arguments)
         super
 
         @action_title = action_title
@@ -17,7 +17,7 @@ module Polaris
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          'Polaris-DropZone-FileUpload'
+          "Polaris-DropZone-FileUpload"
         )
       end
     end
