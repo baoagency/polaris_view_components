@@ -2,7 +2,7 @@
 
 # TODO: Error overlay. See "Only accepts SVG"
 # TODO: Dynamic sizing
-# TODO: Variable height
+# TODO: Variable height - Not sure if this is needed
 
 module Polaris
   # Lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
@@ -29,7 +29,7 @@ module Polaris
       error: false,
       outline: true,
       overlay: true,
-      overlay_text: "",
+      overlay_text: "Drop files to upload",
       error_overlay_text: "",
       allow_multiple: true,
       disabled: false,

@@ -6,9 +6,18 @@
     >
       <%= render Polaris::StackComponent.new(vertical: true, spacing: :tight) do |stack| %>
         <% stack.item do %>
-          <%= render Polaris::IconComponent.new(color: :primary, icon: :UploadMajor) %>
+          <%= render Polaris::DisplayTextComponent.new(size: :small) do %>
+            <%= @overlay_text %>
+          <% end %>
         <% end %>
+      <% end %>
+    </div>
 
+    <div
+      class="Polaris-DropZone__Overlay Polaris-VisuallyHidden"
+      data-polaris-dropzone-target="errorOverlay"
+    >
+      <%= render Polaris::StackComponent.new(vertical: true, spacing: :tight) do |stack| %>
         <% stack.item do %>
           <%= render Polaris::DisplayTextComponent.new(size: :small) do %>
             <%= @overlay_text %>
