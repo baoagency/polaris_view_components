@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: Variable height - Not sure if this is needed
-
 module Polaris
   # Lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
   class DropzoneComponent < Polaris::NewComponent
