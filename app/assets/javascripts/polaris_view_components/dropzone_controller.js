@@ -1,6 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
+import { debounce } from './utils'
 
 const dragEvents = ['dragover', 'dragenter', 'drop']
+const SIZES = {
+  SMALL: 'small',
+  MEDIUM: 'medium',
+  LARGE: 'large',
+  EXTRA_LARGE: 'extraLarge',
+}
 
 // eslint-disable-next-line import/no-default-export
 export default class extends Controller {
@@ -19,25 +26,29 @@ export default class extends Controller {
   _dragging = false
   dragTargets = []
   filesRendered = false
+  _size = 'large'
 
   initialize () {
     super.initialize()
-
-    console.log(this)
   }
 
   connect () {
     super.connect()
 
     this.onExternalTriggerClick = this.onExternalTriggerClick.bind(this)
+    this.onWindowResize = debounce(this.onWindowResize.bind(this), 50)
 
     document.body.addEventListener('click', this.onExternalTriggerClick)
+    window.addEventListener('resize', this.onWindowResize)
+
+    this.onWindowResize()
   }
 
   disconnect () {
     super.disconnect()
 
     document.body.removeEventListener('click', this.onExternalTriggerClick)
+    window.removeEventListener('resize', this.onWindowResize)
   }
 
   onExternalTriggerClick (e) {
@@ -47,6 +58,12 @@ export default class extends Controller {
     e.preventDefault()
 
     this.onClick()
+  }
+
+  onWindowResize () {
+    const size = this.calculateSize()
+
+    console.log({ size })
   }
 
   onBlur () {
@@ -241,6 +258,28 @@ export default class extends Controller {
     this.filesRendered = false
   }
 
+  calculateSize () {
+    const width = this.element.getBoundingClientRect().width
+
+    let size = SIZES.LARGE
+
+    if (width < 100) {
+      size = SIZES.SMALL
+    } else if (width < 160) {
+      size = SIZES.MEDIUM
+    } else if (width > 300) {
+      size = SIZES.EXTRA_LARGE
+    }
+
+    this.size = size
+
+    return size
+  }
+
+  getSizeClass (size = 'large') {
+    return this.sizeClassesSchema[size] || this.sizeClassesSchema.large
+  }
+
   get fileListRendered () {
     return this.element.querySelector('[data-rendered]')
   }
@@ -266,6 +305,28 @@ export default class extends Controller {
 
     this.element.classList.toggle('Polaris-DropZone--isDragging', val)
     this.overlayTarget.classList.toggle('Polaris-VisuallyHidden', !val)
+  }
+
+  get sizeClassesSchema () {
+    return {
+      [SIZES.SMALL]: 'Polaris-DropZone--sizeSmall',
+      [SIZES.MEDIUM]: 'Polaris-DropZone--sizeMedium',
+      [SIZES.LARGE]: 'Polaris-DropZone--sizeLarge',
+      [SIZES.EXTRA_LARGE]: 'Polaris-DropZone--sizeExtraLarge',
+    }
+  }
+
+  get size () {
+    return this._size
+  }
+
+  set size (val) {
+    this._size = val
+
+    const sizeClassesToRemove = Object.values(this.sizeClassesSchema)
+    sizeClassesToRemove.forEach(className => this.element.classList.remove(className))
+
+    this.element.classList.add(this.getSizeClass(val))
   }
 }
 

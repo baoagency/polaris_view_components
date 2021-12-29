@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: Dynamic sizing
 # TODO: Variable height - Not sure if this is needed
 
 module Polaris

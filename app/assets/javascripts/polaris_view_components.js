@@ -35,7 +35,7 @@ class Autocomplete extends Controller {
     });
     this.element.dispatchEvent(changeEvent);
   }
-  onInputChange=debounce$1((() => {
+  onInputChange=debounce$2((() => {
     if (this.isRemote) {
       this.fetchResults();
     } else {
@@ -97,7 +97,7 @@ class Autocomplete extends Controller {
   }
 }
 
-const debounce$1 = (fn, delay = 10) => {
+const debounce$2 = (fn, delay = 10) => {
   let timeoutId = null;
   return (...args) => {
     clearTimeout(timeoutId);
@@ -136,7 +136,22 @@ class Button extends Controller {
   }
 }
 
+function debounce$1(fn, wait) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout((() => fn.apply(this, args)), wait);
+  };
+}
+
 const dragEvents = [ "dragover", "dragenter", "drop" ];
+
+const SIZES = {
+  SMALL: "small",
+  MEDIUM: "medium",
+  LARGE: "large",
+  EXTRA_LARGE: "extraLarge"
+};
 
 class Dropzone extends Controller {
   static targets=[ "container", "fileUpload", "input", "itemTemplate", "itemsTemplate", "overlay", "errorOverlay" ];
@@ -153,24 +168,34 @@ class Dropzone extends Controller {
   _dragging=false;
   dragTargets=[];
   filesRendered=false;
+  _size="large";
   initialize() {
     super.initialize();
-    console.log(this);
   }
   connect() {
     super.connect();
     this.onExternalTriggerClick = this.onExternalTriggerClick.bind(this);
+    this.onWindowResize = debounce$1(this.onWindowResize.bind(this), 50);
     document.body.addEventListener("click", this.onExternalTriggerClick);
+    window.addEventListener("resize", this.onWindowResize);
+    this.onWindowResize();
   }
   disconnect() {
     super.disconnect();
     document.body.removeEventListener("click", this.onExternalTriggerClick);
+    window.removeEventListener("resize", this.onWindowResize);
   }
   onExternalTriggerClick(e) {
     const trigger = e.target.closest(`[data-${this.identifier}-external-target="trigger"]`);
     if (!trigger) return;
     e.preventDefault();
     this.onClick();
+  }
+  onWindowResize() {
+    const size = this.calculateSize();
+    console.log({
+      size: size
+    });
   }
   onBlur() {
     this.focusedValue = false;
@@ -308,6 +333,22 @@ class Dropzone extends Controller {
     this.fileListRendered.remove();
     this.filesRendered = false;
   }
+  calculateSize() {
+    const width = this.element.getBoundingClientRect().width;
+    let size = SIZES.LARGE;
+    if (width < 100) {
+      size = SIZES.SMALL;
+    } else if (width < 160) {
+      size = SIZES.MEDIUM;
+    } else if (width > 300) {
+      size = SIZES.EXTRA_LARGE;
+    }
+    this.size = size;
+    return size;
+  }
+  getSizeClass(size = "large") {
+    return this.sizeClassesSchema[size] || this.sizeClassesSchema.large;
+  }
   get fileListRendered() {
     return this.element.querySelector("[data-rendered]");
   }
@@ -327,6 +368,23 @@ class Dropzone extends Controller {
     this._dragging = val;
     this.element.classList.toggle("Polaris-DropZone--isDragging", val);
     this.overlayTarget.classList.toggle("Polaris-VisuallyHidden", !val);
+  }
+  get sizeClassesSchema() {
+    return {
+      [SIZES.SMALL]: "Polaris-DropZone--sizeSmall",
+      [SIZES.MEDIUM]: "Polaris-DropZone--sizeMedium",
+      [SIZES.LARGE]: "Polaris-DropZone--sizeLarge",
+      [SIZES.EXTRA_LARGE]: "Polaris-DropZone--sizeExtraLarge"
+    };
+  }
+  get size() {
+    return this._size;
+  }
+  set size(val) {
+    this._size = val;
+    const sizeClassesToRemove = Object.values(this.sizeClassesSchema);
+    sizeClassesToRemove.forEach((className => this.element.classList.remove(className)));
+    this.element.classList.add(this.getSizeClass(val));
   }
 }
 
