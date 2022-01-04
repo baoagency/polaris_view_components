@@ -77,7 +77,11 @@
     <% end %>
 
     <template data-polaris-dropzone-target="itemsTemplate">
-      <%= render Polaris::StackComponent.new(vertical: true, data: { rendered: '' }) do %>
+      <%= render Polaris::StackComponent.new(
+        vertical: true,
+        data: { rendered: '' },
+        style: "padding: 14px;"
+      ) do %>
         <span class="target"></span>
       <% end %>
     </template>
