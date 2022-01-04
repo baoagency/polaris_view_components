@@ -50,10 +50,7 @@
 
     <%= render Polaris::VisuallyHiddenComponent.new do %>
       <% if @form.present? && @attribute.present? %>
-        <%= @form.file_field(
-              @attribute,
-              **input_arguments
-            ) %>
+        <%= @form.file_field(@attribute, **input_arguments) %>
       <% else %>
         <%= file_field_tag(
               @name,
