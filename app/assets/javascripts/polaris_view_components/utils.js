@@ -5,10 +5,10 @@
  * @return {Function}
  */
 export function debounce (fn, wait) {
-  let t
+  let timeoutId
 
   return (...args) => {
-    clearTimeout(t)
-    t = setTimeout(() => fn.apply(this, args), wait)
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => fn.apply(this, args), wait)
   }
 }

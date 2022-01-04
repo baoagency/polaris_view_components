@@ -2,6 +2,14 @@ import { Controller } from "@hotwired/stimulus";
 
 import { get } from "@rails/request.js";
 
+function debounce$1(fn, wait) {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout((() => fn.apply(this, args)), wait);
+  };
+}
+
 class Autocomplete extends Controller {
   static targets=[ "popover", "input", "results", "option", "emptyState" ];
   static values={
@@ -35,7 +43,7 @@ class Autocomplete extends Controller {
     });
     this.element.dispatchEvent(changeEvent);
   }
-  onInputChange=debounce$2((() => {
+  onInputChange=debounce$1((() => {
     if (this.isRemote) {
       this.fetchResults();
     } else {
@@ -97,14 +105,6 @@ class Autocomplete extends Controller {
   }
 }
 
-const debounce$2 = (fn, delay = 10) => {
-  let timeoutId = null;
-  return (...args) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(fn, delay);
-  };
-};
-
 class Button extends Controller {
   disable(event) {
     if (this.button.disabled) {
@@ -134,14 +134,6 @@ class Button extends Controller {
   get spinnerHTML() {
     return `\n      <span class="Polaris-Button__Spinner">\n        <span class="Polaris-Spinner Polaris-Spinner--sizeSmall">\n          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">\n            <path d="M7.229 1.173a9.25 9.25 0 1011.655 11.412 1.25 1.25 0 10-2.4-.698 6.75 6.75 0 11-8.506-8.329 1.25 1.25 0 10-.75-2.385z"></path>\n          </svg>\n        </span>\n      </span>\n    `;
   }
-}
-
-function debounce$1(fn, wait) {
-  let t;
-  return (...args) => {
-    clearTimeout(t);
-    t = setTimeout((() => fn.apply(this, args)), wait);
-  };
 }
 
 const dragEvents = [ "dragover", "dragenter", "drop" ];
