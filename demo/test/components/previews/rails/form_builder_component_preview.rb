@@ -24,4 +24,9 @@ class Rails::FormBuilderComponentPreview < ViewComponent::Preview
     product.errors.add(:title, "can't be blank")
     render_with_template(locals: {product: product})
   end
+
+  def dropzone
+    product = Product.new
+    render_with_template(locals: {product: product})
+  end
 end
