@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { debounce } from './utils'
+import { debounce, formatBytes } from './utils'
 
 const dragEvents = ['dragover', 'dragenter', 'drop']
 const SIZES = {
@@ -240,7 +240,7 @@ export default class extends Controller {
     }
 
     content.insertAdjacentText('afterbegin', file.name)
-    caption.textContent = `${file.size} bytes`
+    caption.textContent = formatBytes(file.size)
 
     return clone
   }

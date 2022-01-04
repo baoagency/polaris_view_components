@@ -10,6 +10,12 @@ function debounce$1(fn, wait) {
   };
 }
 
+function formatBytes(bytes, decimals) {
+  if (bytes == 0) return "0 Bytes";
+  const k = 1024, dm = decimals || 2, sizes = [ "Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" ], i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+}
+
 class Autocomplete extends Controller {
   static targets=[ "popover", "input", "results", "option", "emptyState" ];
   static values={
@@ -314,7 +320,7 @@ class Dropzone extends Controller {
       if (parent) parent.remove();
     }
     content.insertAdjacentText("afterbegin", file.name);
-    caption.textContent = `${file.size} bytes`;
+    caption.textContent = formatBytes(file.size);
     return clone;
   }
   clearFiles() {
