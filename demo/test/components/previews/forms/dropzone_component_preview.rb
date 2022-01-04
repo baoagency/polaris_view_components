@@ -10,11 +10,11 @@ class Forms::DropzoneComponentPreview < ViewComponent::Preview
   end
 
   # Use for cases that accept image file formats.
-  def with_image_file_upload
+  def with_image_upload
   end
 
-  # Use to accept multiple files.
-  def with_multiple_file_upload
+  # Use to accept single files.
+  def with_single_file_upload
   end
 
   # Use to accept files for upload when dropped anywhere on the page.
