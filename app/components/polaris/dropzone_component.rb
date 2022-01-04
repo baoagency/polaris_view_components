@@ -59,13 +59,11 @@ module Polaris
         opts[:data] = {
           controller: "polaris-dropzone",
           action: "click->polaris-dropzone#onClick #{drop_actions}",
-          polaris_dropzone: {
-            accept_value: @accept,
-            allowMultiple_value: @multiple.to_s,
-            disabled_value: @disabled.to_s,
-            focused_value: "false",
-            drop_on_page_value: @drop_on_page
-          }
+          polaris_dropzone_accept_value: @accept,
+          polaris_dropzone_allow_multiple_value: @multiple.to_s,
+          polaris_dropzone_disabled_value: @disabled.to_s,
+          polaris_dropzone_focused_value: "false",
+          polaris_dropzone_drop_on_page_value: @drop_on_page
         }
         opts[:classes] = class_names(
           opts[:classes],

@@ -254,10 +254,11 @@ class Dropzone extends Controller {
     const acceptedFiles = [];
     const rejectedFiles = [];
     Array.from(files).forEach((file => {
-      if (!fileAccepted(file, this.acceptValue)) {
-        return rejectedFiles.push(file);
+      if (fileAccepted(file, this.acceptValue)) {
+        acceptedFiles.push(file);
+      } else {
+        rejectedFiles.push(file);
       }
-      acceptedFiles.push(file);
     }));
     if (!this.allowMultipleValue) {
       acceptedFiles.splice(1, acceptedFiles.length);
