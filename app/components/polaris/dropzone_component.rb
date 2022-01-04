@@ -26,7 +26,7 @@ module Polaris
       multiple: true,
       size: SIZE_DEFAULT,
       drop_on_page: false,
-      preview: true,
+      preview: nil,
       outline: true,
       overlay_text: "Drop files to upload",
       error_overlay_text: "This file type isn't accepted",
@@ -49,7 +49,7 @@ module Polaris
       @multiple = multiple
       @size = size
       @drop_on_page = drop_on_page
-      @preview = preview
+      @preview ||= !@size.in?(%i[small medium])
       @outline = outline
       @overlay_text = overlay_text
       @error_overlay_text = error_overlay_text
