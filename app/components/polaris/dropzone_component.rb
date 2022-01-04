@@ -27,7 +27,7 @@ module Polaris
       overlay: true,
       overlay_text: "Drop files to upload",
       error_overlay_text: "This file type isn't accepted",
-      allow_multiple: true,
+      multiple: false,
       disabled: false,
       drop_on_page: false,
       open_file_dialog: true,
@@ -53,7 +53,7 @@ module Polaris
       @overlay = overlay
       @overlay_text = overlay_text
       @error_overlay_text = error_overlay_text
-      @allow_multiple = allow_multiple
+      @multiple = multiple
       @drop_on_page = drop_on_page
       @open_file_dialog = open_file_dialog
       @variable_height = variable_height
@@ -77,7 +77,7 @@ module Polaris
         controller: "polaris-dropzone",
         action: "click->polaris-dropzone#onClick #{drop_actions}",
         'polaris-dropzone-accept-value': accept,
-        'polaris-dropzone-allowMultiple-value': allow_multiple.to_s,
+        'polaris-dropzone-allowMultiple-value': multiple.to_s,
         'polaris-dropzone-disabled-value': disabled.to_s,
         'polaris-dropzone-focused-value': "false",
         'polaris-dropzone-drop-on-page-value': drop_on_page
@@ -104,7 +104,7 @@ module Polaris
         accept: @accept,
         disabled: @disabled,
         type: "file",
-        multiple: @allow_multiple,
+        multiple: @multiple,
         data: {
           action: "focus->polaris-dropzone#onFocus blur->polaris-dropzone#onBlur change->polaris-dropzone#onChange",
           'polaris-dropzone-target': "input"
