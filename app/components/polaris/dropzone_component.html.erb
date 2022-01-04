@@ -52,10 +52,7 @@
       <% if @form.present? && @attribute.present? %>
         <%= @form.file_field(@attribute, **input_arguments) %>
       <% else %>
-        <%= file_field_tag(
-              @name,
-              **input_arguments
-            ) %>
+        <%= file_field_tag(@name, **input_arguments) %>
       <% end %>
     <% end %>
 
