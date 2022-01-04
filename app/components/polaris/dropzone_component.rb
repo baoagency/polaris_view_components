@@ -13,75 +13,69 @@ module Polaris
       form: nil,
       attribute: nil,
       name: nil,
-
-      label: nil,
-      label_action: nil,
-      label_hidden: true,
-      id: "",
       accept: "",
-      active: false,
-      error: false,
+      multiple: true,
+      drop_on_page: false,
       outline: true,
-      overlay: true,
       overlay_text: "Drop files to upload",
       error_overlay_text: "This file type isn't accepted",
-      multiple: true,
+      label: nil,
+      label_hidden: true,
+      label_action: nil,
       disabled: false,
-      drop_on_page: false,
-      open_file_dialog: true,
-      variable_height: true,
-      wrapper_arguments: {},
-      input_arguments: {},
-      file_upload_arguments: {},
+      error: false,
       file_upload_button: "Add file",
       file_upload_help: "or drop files to upload",
+      file_upload_arguments: {},
+      wrapper_arguments: {},
+      input_arguments: {},
       **system_arguments
     )
       @form = form
       @attribute = attribute
       @name = name
-
-      @label = label
-      @label_action = label_action
-      @label_hidden = label_hidden
-      @id = id
       @accept = accept
-      @active = active
-      @overlay = overlay
-      @overlay_text = overlay_text
-      @error_overlay_text = error_overlay_text
       @multiple = multiple
       @drop_on_page = drop_on_page
-      @open_file_dialog = open_file_dialog
-      @variable_height = variable_height
+      @outline = outline
+      @overlay_text = overlay_text
+      @error_overlay_text = error_overlay_text
+      @label = label
+      @label_hidden = label_hidden
+      @label_action = label_action
+      @disabled = disabled
+      @error = error
       @file_upload_button = file_upload_button
       @file_upload_help = file_upload_help
-
-      @system_arguments = system_arguments
-      @system_arguments[:tag] = :div
-
-      @system_arguments[:data] ||= {}
-
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-DropZone",
-        "Polaris-DropZone--sizeExtraLarge", # TODO: Dynamic size class
-        "Polaris-DropZone--hasOutline": outline,
-        "Polaris-DropZone--isDisabled": disabled,
-        "Polaris-DropZone--hasError": error
-      )
-      @system_arguments[:data] = {
-        controller: "polaris-dropzone",
-        action: "click->polaris-dropzone#onClick #{drop_actions}",
-        'polaris-dropzone-accept-value': accept,
-        'polaris-dropzone-allowMultiple-value': multiple.to_s,
-        'polaris-dropzone-disabled-value': disabled.to_s,
-        'polaris-dropzone-focused-value': "false",
-        'polaris-dropzone-drop-on-page-value': drop_on_page
-      }
+      @file_upload_arguments = file_upload_arguments
       @wrapper_arguments = wrapper_arguments
       @input_arguments = input_arguments
-      @file_upload_arguments = file_upload_arguments
+      @system_arguments = system_arguments
+    end
+
+    def system_arguments
+      @system_arguments.tap do |opts|
+        opts[:tag] = "div"
+        opts[:data] = {
+          controller: "polaris-dropzone",
+          action: "click->polaris-dropzone#onClick #{drop_actions}",
+          polaris_dropzone: {
+            accept_value: @accept,
+            allowMultiple_value: @multiple.to_s,
+            disabled_value: @disabled.to_s,
+            focused_value: "false",
+            drop_on_page_value: @drop_on_page
+          }
+        }
+        opts[:classes] = class_names(
+          opts[:classes],
+          "Polaris-DropZone",
+          "Polaris-DropZone--sizeExtraLarge", # TODO: Dynamic size class
+          "Polaris-DropZone--hasOutline": @outline,
+          "Polaris-DropZone--isDisabled": @disabled,
+          "Polaris-DropZone--hasError": @error
+        )
+      end
     end
 
     def wrapper_arguments
