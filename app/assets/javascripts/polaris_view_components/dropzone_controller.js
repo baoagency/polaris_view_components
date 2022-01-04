@@ -18,6 +18,7 @@ export default class extends Controller {
     disabled: Boolean,
     dropOnPage: Boolean,
     focused: Boolean,
+    renderPreview: Boolean
   }
 
   files = []
@@ -182,9 +183,11 @@ export default class extends Controller {
       this.toggleFileUpload(false)
       this.toggleErrorOverlay(true)
     } else if (this.acceptedFiles.length > 0) {
-      this.renderUploadedFiles()
+      if (this.renderPreviewValue) {
+        this.renderUploadedFiles()
+        this.toggleFileUpload(false)
+      }
 
-      this.toggleFileUpload(false)
       this.toggleErrorOverlay(false)
     }
   }

@@ -16,6 +16,7 @@ module Polaris
       accept: "",
       multiple: true,
       drop_on_page: false,
+      preview: true,
       outline: true,
       overlay_text: "Drop files to upload",
       error_overlay_text: "This file type isn't accepted",
@@ -37,6 +38,7 @@ module Polaris
       @accept = accept
       @multiple = multiple
       @drop_on_page = drop_on_page
+      @preview = preview
       @outline = outline
       @overlay_text = overlay_text
       @error_overlay_text = error_overlay_text
@@ -63,7 +65,8 @@ module Polaris
           polaris_dropzone_allow_multiple_value: @multiple.to_s,
           polaris_dropzone_disabled_value: @disabled.to_s,
           polaris_dropzone_focused_value: "false",
-          polaris_dropzone_drop_on_page_value: @drop_on_page
+          polaris_dropzone_drop_on_page_value: @drop_on_page,
+          polaris_dropzone_render_preview_value: @preview
         }
         opts[:classes] = class_names(
           opts[:classes],

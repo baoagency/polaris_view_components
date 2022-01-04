@@ -158,7 +158,8 @@ class Dropzone extends Controller {
     allowMultiple: Boolean,
     disabled: Boolean,
     dropOnPage: Boolean,
-    focused: Boolean
+    focused: Boolean,
+    renderPreview: Boolean
   };
   files=[];
   acceptedFiles=[];
@@ -285,8 +286,10 @@ class Dropzone extends Controller {
       this.toggleFileUpload(false);
       this.toggleErrorOverlay(true);
     } else if (this.acceptedFiles.length > 0) {
-      this.renderUploadedFiles();
-      this.toggleFileUpload(false);
+      if (this.renderPreviewValue) {
+        this.renderUploadedFiles();
+        this.toggleFileUpload(false);
+      }
       this.toggleErrorOverlay(false);
     }
   }

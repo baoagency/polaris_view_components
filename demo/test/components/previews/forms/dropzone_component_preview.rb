@@ -28,4 +28,7 @@ class Forms::DropzoneComponentPreview < ViewComponent::Preview
   # Use to trigger the file dialog from an action somewhere else on the page.
   def with_custom_file_dialog_trigger
   end
+
+  def without_preview
+  end
 end
