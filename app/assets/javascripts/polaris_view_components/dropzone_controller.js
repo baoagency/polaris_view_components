@@ -182,6 +182,11 @@ export default class extends Controller {
     } else if (this.rejectedFiles.length > 0) {
       this.toggleFileUpload(false)
       this.toggleErrorOverlay(true)
+
+      const dropRejectedEvent = new CustomEvent('polaris-dropzone:drop-rejected', {
+        detail: { rejectedFiles: this.rejectedFiles }
+      })
+      this.element.dispatchEvent(dropRejectedEvent)
     } else if (this.acceptedFiles.length > 0) {
       if (this.renderPreviewValue) {
         this.renderUploadedFiles()
@@ -189,7 +194,21 @@ export default class extends Controller {
       }
 
       this.toggleErrorOverlay(false)
+
+      const dropAcceptedEvent = new CustomEvent('polaris-dropzone:drop-accepted', {
+        detail: {acceptedFiles: this.acceptedFiles }
+      })
+      this.element.dispatchEvent(dropAcceptedEvent)
     }
+
+    const dropEvent = new CustomEvent('polaris-dropzone:drop', {
+      detail: {
+        files: this.files,
+        acceptedFiles: this.acceptedFiles,
+        rejectedFiles: this.rejectedFiles
+      }
+    })
+    this.element.dispatchEvent(dropEvent)
   }
 
   renderUploadedFiles () {
