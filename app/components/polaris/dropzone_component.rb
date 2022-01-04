@@ -5,9 +5,8 @@ module Polaris
   class DropzoneComponent < Polaris::NewComponent
     include ActiveModel::Validations
 
-    attr_reader :type, :label_action
+    attr_reader :label_action
 
-    validates :type, inclusion: {in: %w[file image]}
     validates :label_action, type: Action, allow_nil: true
 
     def initialize(
@@ -20,7 +19,6 @@ module Polaris
       label_hidden: true,
       id: "",
       accept: "",
-      type: "file",
       active: false,
       error: false,
       outline: true,
@@ -48,7 +46,6 @@ module Polaris
       @label_hidden = label_hidden
       @id = id
       @accept = accept
-      @type = type
       @active = active
       @overlay = overlay
       @overlay_text = overlay_text
@@ -103,7 +100,6 @@ module Polaris
       {
         accept: @accept,
         disabled: @disabled,
-        type: "file",
         multiple: @multiple,
         data: {
           action: "focus->polaris-dropzone#onFocus blur->polaris-dropzone#onBlur change->polaris-dropzone#onChange",
