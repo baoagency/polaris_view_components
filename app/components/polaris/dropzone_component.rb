@@ -5,6 +5,15 @@ module Polaris
   class DropzoneComponent < Polaris::NewComponent
     include ActiveModel::Validations
 
+    SIZE_DEFAULT = :extra_large
+    SIZE_MAPPINGS = {
+      small: "Polaris-DropZone--sizeSmall",
+      medium: "Polaris-DropZone--sizeMedium",
+      large: "Polaris-DropZone--sizeLarge",
+      extra_large: "Polaris-DropZone--sizeExtraLarge"
+    }
+    SIZE_OPTIONS = SIZE_MAPPINGS.keys
+
     attr_reader :label_action
 
     validates :label_action, type: Action, allow_nil: true
@@ -15,6 +24,7 @@ module Polaris
       name: nil,
       accept: "",
       multiple: true,
+      size: SIZE_DEFAULT,
       drop_on_page: false,
       preview: true,
       outline: true,
@@ -25,7 +35,7 @@ module Polaris
       label_action: nil,
       disabled: false,
       error: false,
-      file_upload_button: "Add file",
+      file_upload_button: nil,
       file_upload_help: "or drop files to upload",
       file_upload_arguments: {},
       wrapper_arguments: {},
@@ -37,6 +47,7 @@ module Polaris
       @name = name
       @accept = accept
       @multiple = multiple
+      @size = size
       @drop_on_page = drop_on_page
       @preview = preview
       @outline = outline
@@ -48,6 +59,7 @@ module Polaris
       @disabled = disabled
       @error = error
       @file_upload_button = file_upload_button
+      @file_upload_button ||= "Add #{multiple ? "files" : "file"}"
       @file_upload_help = file_upload_help
       @file_upload_arguments = file_upload_arguments
       @wrapper_arguments = wrapper_arguments
@@ -71,7 +83,7 @@ module Polaris
         opts[:classes] = class_names(
           opts[:classes],
           "Polaris-DropZone",
-          "Polaris-DropZone--sizeExtraLarge", # TODO: Dynamic size class
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, SIZE_DEFAULT)],
           "Polaris-DropZone--hasOutline": @outline,
           "Polaris-DropZone--isDisabled": @disabled,
           "Polaris-DropZone--hasError": @error

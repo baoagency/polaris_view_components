@@ -31,4 +31,10 @@ class Forms::DropzoneComponentPreview < ViewComponent::Preview
 
   def without_preview
   end
+
+  def medium_sized
+  end
+
+  def small_sized
+  end
 end
