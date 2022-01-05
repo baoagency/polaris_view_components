@@ -39,7 +39,7 @@ module Polaris
       file_upload_help: "or drop files to upload",
       file_upload_arguments: {},
       wrapper_arguments: {},
-      input_arguments: {},
+      input_options: {},
       **system_arguments
     )
       @form = form
@@ -63,7 +63,7 @@ module Polaris
       @file_upload_help = file_upload_help
       @file_upload_arguments = file_upload_arguments
       @wrapper_arguments = wrapper_arguments
-      @input_arguments = input_arguments
+      @input_options = input_options
       @system_arguments = system_arguments
     end
 
@@ -103,7 +103,7 @@ module Polaris
       }.deep_merge(@wrapper_arguments)
     end
 
-    def input_arguments
+    def input_options
       {
         accept: @accept,
         disabled: @disabled,
@@ -112,7 +112,7 @@ module Polaris
           action: "focus->polaris-dropzone#onFocus blur->polaris-dropzone#onBlur change->polaris-dropzone#onChange",
           'polaris-dropzone-target': "input"
         }
-      }.deep_merge(@input_arguments)
+      }.deep_merge(@input_options)
     end
 
     def file_upload_arguments
