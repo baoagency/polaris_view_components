@@ -23,6 +23,7 @@ module Polaris
       attribute: nil,
       name: nil,
       accept: "",
+      direct_upload: false,
       multiple: true,
       size: SIZE_DEFAULT,
       drop_on_page: false,
@@ -46,6 +47,7 @@ module Polaris
       @attribute = attribute
       @name = name
       @accept = accept
+      @direct_upload = direct_upload
       @multiple = multiple
       @size = size
       @drop_on_page = drop_on_page
@@ -106,6 +108,7 @@ module Polaris
     def input_options
       {
         accept: @accept,
+        direct_upload: @direct_upload,
         disabled: @disabled,
         multiple: @multiple,
         data: {
