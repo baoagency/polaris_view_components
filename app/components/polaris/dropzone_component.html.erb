@@ -76,36 +76,38 @@
       <% end %>
     <% end %>
 
-    <template data-polaris-dropzone-target="itemsTemplate">
-      <%= render Polaris::StackComponent.new(
-        vertical: true,
-        data: { rendered: '' },
-        style: "padding: 14px;"
+    <template data-polaris-dropzone-target="previewTemplate">
+      <%= tag.div(
+        data: { polaris_dropzone_target: "preview" },
+        class: ["Polaris-DropZone__Preview", "Polaris-DropZone__Preview--singleFile": !@multiple]
       ) do %>
-        <span class="target"></span>
+        <%= polaris_stack(vertical: true) do %>
+          <span class="target"></span>
+        <% end %>
       <% end %>
     </template>
 
     <template data-polaris-dropzone-target="itemTemplate">
-      <div class="Polaris-Stack__Item">
-        <%= render Polaris::StackComponent.new(alignment: :center) do |stack| %>
+      <%= polaris_stack_item do %>
+        <%= polaris_stack(
+          alignment: :center,
+          vertical: !@multiple,
+          spacing: @multiple ? :default : :tight,
+        ) do |stack| %>
           <% stack.item do %>
-            <% render Polaris::ThumbnailComponent.new(size: :small) do |thumbnail| %>
-              <% thumbnail.icon(name: :NoteMinor) %>
-            <% end %>
+            <%= polaris_icon(name: "TimelineAttachmentMajor", size: :small, data: { target: "icon" }) %>
+            <%= polaris_thumbnail(source: "#", size: :small, data: { target: "thumbnail" }) %>
           <% end %>
 
           <% stack.item do %>
-            <% render Polaris::ThumbnailComponent.new(source: "#", size: :small) %>
-          <% end %>
-
-          <% stack.item do %>
-            <div class="content">
-              <%= render Polaris::CaptionComponent.new { "TODO" } %>
+            <div data-target="content">
+              <%= polaris_caption do %>
+                <%= polaris_text_subdued(data: { target: "file-size" }) { "SIZE" } %>
+              <% end %>
             </div>
           <% end %>
         <% end %>
-      </div>
+      <% end %>
     </template>
   <% end %>
 <% end %>

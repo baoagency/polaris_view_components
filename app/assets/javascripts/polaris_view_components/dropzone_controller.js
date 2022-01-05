@@ -11,7 +11,16 @@ const SIZES = {
 
 // eslint-disable-next-line import/no-default-export
 export default class extends Controller {
-  static targets = ['container', 'fileUpload', 'input', 'itemTemplate', 'itemsTemplate', 'overlay', 'errorOverlay']
+  static targets = [
+    'container',
+    'fileUpload',
+    'input',
+    'preview',
+    'previewTemplate',
+    'itemTemplate',
+    'overlay',
+    'errorOverlay'
+  ]
   static values = {
     accept: String,
     allowMultiple: Boolean,
@@ -26,16 +35,10 @@ export default class extends Controller {
   rejectedFiles = []
   _dragging = false
   dragTargets = []
-  filesRendered = false
+  previewRendered = false
   _size = 'large'
 
-  initialize () {
-    super.initialize()
-  }
-
   connect () {
-    super.connect()
-
     this.onExternalTriggerClick = this.onExternalTriggerClick.bind(this)
     this.onWindowResize = debounce(this.onWindowResize.bind(this), 50)
 
@@ -63,8 +66,6 @@ export default class extends Controller {
 
   onWindowResize () {
     const size = this.calculateSize()
-
-    console.log({ size })
   }
 
   onBlur () {
@@ -174,8 +175,6 @@ export default class extends Controller {
   }
 
   render () {
-    console.log(this, this.files, this.rejectedFiles)
-
     if (this.files.length === 0) {
       this.toggleFileUpload(true)
       this.toggleErrorOverlay(false)
@@ -214,7 +213,7 @@ export default class extends Controller {
   renderUploadedFiles () {
     if (this.acceptedFiles.length === 0) return
 
-    const clone = this.itemsTemplateTarget.content.cloneNode(true)
+    const clone = this.previewTemplateTarget.content.cloneNode(true)
     const filesTarget = clone.querySelector('.target')
 
     this.acceptedFiles
@@ -224,7 +223,7 @@ export default class extends Controller {
 
     this.containerTarget.prepend(clone)
 
-    this.filesRendered = true
+    this.previewRendered = true
   }
 
   toggleFileUpload (show = false) {
@@ -239,45 +238,39 @@ export default class extends Controller {
   renderFile (file) {
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png']
     const clone = this.itemTemplateTarget.content.cloneNode(true)
-    const [svg, image, content, caption] = [
-      clone.querySelector('svg'),
-      clone.querySelector('img'),
-      clone.querySelector('.content'),
-      clone.querySelector('.Polaris-Caption'),
+    const [icon, thumbnail, content, fileSize] = [
+      clone.querySelector('[data-target="icon"]'),
+      clone.querySelector('[data-target="thumbnail"]'),
+      clone.querySelector('[data-target="content"]'),
+      clone.querySelector('[data-target="file-size"]'),
     ]
 
     if (validImageTypes.includes(file.type)) {
-      image.alt = file.name
-      image.src = validImageTypes.includes(file.type)
-        ? window.URL.createObjectURL(file)
-        : 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAgMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNiAxMWg4VjlINnYyem0wIDRoOHYtMkg2djJ6bTAtOGg0VjVINnYyem02LTVINS41QTEuNSAxLjUgMCAwMDQgMy41djEzQTEuNSAxLjUgMCAwMDUuNSAxOGg5YTEuNSAxLjUgMCAwMDEuNS0xLjVWNmwtNC00eiIgZmlsbD0iIzVDNUY2MiIvPjwvc3ZnPgo='
-
-      const parent = svg.closest('.Polaris-Stack__Item')
-
-      if (parent) parent.remove()
+      const img = thumbnail.querySelector('img')
+      img.alt = file.name
+      img.src = window.URL.createObjectURL(file)
+      icon.remove()
     } else {
-      const parent = image.closest('.Polaris-Stack__Item')
-
-      if (parent) parent.remove()
+      thumbnail.remove()
     }
 
     content.insertAdjacentText('afterbegin', file.name)
-    caption.textContent = formatBytes(file.size)
+    fileSize.textContent = formatBytes(file.size)
 
     return clone
   }
 
   clearFiles () {
-    if (!this.filesRendered) return
+    if (!this.previewRendered) return
 
     this.acceptedFiles = []
     this.files = []
     this.rejectedFiles = []
 
-    if (!this.fileListRendered) return
+    if (!this.hasPreviewTarget) return
 
-    this.fileListRendered.remove()
-    this.filesRendered = false
+    this.previewTarget.remove()
+    this.previewRendered = false
   }
 
   calculateSize () {

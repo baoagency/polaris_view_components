@@ -107,3 +107,16 @@ a.Polaris-Tag__Button {
 .Polaris-Autocomplete__EmptyState {
   padding: 0.8rem 1.6rem;
 }
+
+/* DropZone */
+.Polaris-DropZone__Preview {
+  padding: 1.5rem;
+  display: flex;
+  height: 100%;
+
+  &--singleFile {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+}
