@@ -51,6 +51,7 @@ module Polaris
       setting_toggle:           "Polaris::SettingToggleComponent",
       shopify_navigation:       "Polaris::ShopifyNavigationComponent",
       stack:                    "Polaris::StackComponent",
+      stack_item:               "Polaris::Stack::ItemComponent",
       subheading:               "Polaris::SubheadingComponent",
       scrollable:               "Polaris::ScrollableComponent",
       spinner:                  "Polaris::SpinnerComponent",
