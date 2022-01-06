@@ -126,7 +126,9 @@ module Polaris
       {
         tag: "div",
         classes: class_names(
-          "Polaris-DropZone-FileUpload"
+          "Polaris-DropZone-FileUpload",
+          "Polaris-DropZone-FileUpload--large": @size.in?(%i[large extra_large]),
+          "Polaris-DropZone-FileUpload--small": @size == :small
         ),
         data: {
           'polaris-dropzone-target': "fileUpload"
