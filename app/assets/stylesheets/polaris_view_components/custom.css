@@ -31,11 +31,6 @@ a.Polaris-Tag__Button {
 
 /* IndexTable */
 
-/* TODO: Remove after upgrade to Polaris 7.0.0 */
-.Polaris-IndexTable__TableRow.Polaris-IndexTable__TableRow--unclickable {
-  cursor: auto;
-}
-
 /* TestStyle sizes */
 .Polaris-TextStyle--sizeSmall {
   font-size: 1.25rem;
