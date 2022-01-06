@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import { get } from '@rails/request.js'
+import { debounce } from './utils'
 
 export default class extends Controller {
   static targets = ['popover', 'input', 'results', 'option', 'emptyState']
@@ -106,14 +107,5 @@ export default class extends Controller {
       this.emptyStateTarget.classList.add('Polaris--hidden')
       this.resultsTarget.classList.remove('Polaris--hidden')
     }
-  }
-}
-
-const debounce = (fn, delay = 10) => {
-  let timeoutId = null
-
-  return (...args) => {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(fn, delay)
   }
 }

@@ -93,4 +93,15 @@ class Polaris::ViewHelperTest < ActionView::TestCase
       end
     end
   end
+
+  test "#polaris_dropzone" do
+    @rendered_component = @builder.polaris_dropzone(:image, label: "Dropzone Label")
+
+    assert_selector ".Polaris-Label" do
+      assert_selector "label", text: "Dropzone Label"
+    end
+    assert_selector ".Polaris-DropZone" do
+      assert_selector %(input[type=file][name="product[image][]"])
+    end
+  end
 end

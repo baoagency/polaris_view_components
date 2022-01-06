@@ -37,7 +37,7 @@ module Polaris
     }
     SPACING_OPTIONS = SPACING_MAPPINGS.keys
 
-    renders_many :items, "StackItemComponent"
+    renders_many :items, Polaris::Stack::ItemComponent
 
     def initialize(
       alignment: ALIGNMENT_DEFAULT,
@@ -58,22 +58,6 @@ module Polaris
         "Polaris-Stack--vertical": vertical,
         "Polaris-Stack--noWrap": !wrap
       )
-    end
-
-    class StackItemComponent < Polaris::NewComponent
-      def initialize(fill: false, **system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = "div"
-        @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          "Polaris-Stack__Item",
-          "Polaris-Stack__Item--fill": fill
-        )
-      end
-
-      def call
-        render(Polaris::BaseComponent.new(**@system_arguments)) { content }
-      end
     end
   end
 end

@@ -1,5 +1,5 @@
 .Polaris--hidden {
-  display: none;
+  display: none !important;
 }
 
 /* Add missing 1/4 section for layout */
@@ -106,4 +106,27 @@ a.Polaris-Tag__Button {
 
 .Polaris-Autocomplete__EmptyState {
   padding: 0.8rem 1.6rem;
+}
+
+/* DropZone */
+.Polaris-DropZone {
+  &__Preview {
+    padding: 1.5rem;
+    display: flex;
+    height: 100%;
+
+    &--singleFile {
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  &__Loader {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
 }

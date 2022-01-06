@@ -2178,7 +2178,7 @@ html, body{ min-height:100%; height:100%; }
   width: 32px;
 }
 .Polaris--hidden {
-  display: none;
+  display: none !important;
 }
 /* Add missing 1/4 section for layout */
 @media (min-width: 30.625em) {
@@ -2257,3 +2257,21 @@ a.Polaris-Tag__Button {
 .Polaris-Autocomplete__EmptyState {
   padding: 0.8rem 1.6rem;
 }
+/* DropZone */
+.Polaris-DropZone__Preview {
+    padding: 1.5rem;
+    display: flex;
+    height: 100%;
+  }
+.Polaris-DropZone__Preview--singleFile {
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+.Polaris-DropZone__Loader {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }

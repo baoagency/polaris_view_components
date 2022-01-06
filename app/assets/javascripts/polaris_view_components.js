@@ -2,6 +2,20 @@ import { Controller } from "@hotwired/stimulus";
 
 import { get } from "@rails/request.js";
 
+function debounce$1(fn, wait) {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout((() => fn.apply(this, args)), wait);
+  };
+}
+
+function formatBytes(bytes, decimals) {
+  if (bytes == 0) return "0 Bytes";
+  const k = 1024, dm = decimals || 2, sizes = [ "Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" ], i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+}
+
 class Autocomplete extends Controller {
   static targets=[ "popover", "input", "results", "option", "emptyState" ];
   static values={
@@ -97,14 +111,6 @@ class Autocomplete extends Controller {
   }
 }
 
-const debounce$1 = (fn, delay = 10) => {
-  let timeoutId = null;
-  return (...args) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(fn, delay);
-  };
-};
-
 class Button extends Controller {
   disable(event) {
     if (this.button.disabled) {
@@ -134,6 +140,383 @@ class Button extends Controller {
   get spinnerHTML() {
     return `\n      <span class="Polaris-Button__Spinner">\n        <span class="Polaris-Spinner Polaris-Spinner--sizeSmall">\n          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">\n            <path d="M7.229 1.173a9.25 9.25 0 1011.655 11.412 1.25 1.25 0 10-2.4-.698 6.75 6.75 0 11-8.506-8.329 1.25 1.25 0 10-.75-2.385z"></path>\n          </svg>\n        </span>\n      </span>\n    `;
   }
+}
+
+const dragEvents = [ "dragover", "dragenter", "drop" ];
+
+const SIZES = {
+  SMALL: "small",
+  MEDIUM: "medium",
+  LARGE: "large",
+  EXTRA_LARGE: "extraLarge"
+};
+
+class Dropzone extends Controller {
+  static targets=[ "container", "fileUpload", "loader", "input", "preview", "previewTemplate", "itemTemplate", "overlay", "errorOverlay" ];
+  static classes=[ "disabled" ];
+  static values={
+    accept: String,
+    allowMultiple: Boolean,
+    disabled: Boolean,
+    dropOnPage: Boolean,
+    focused: Boolean,
+    renderPreview: Boolean
+  };
+  files=[];
+  acceptedFiles=[];
+  rejectedFiles=[];
+  _dragging=false;
+  dragTargets=[];
+  previewRendered=false;
+  _size="large";
+  connect() {
+    document.body.addEventListener("click", this.onExternalTriggerClick);
+    addEventListener("resize", this.onWindowResize);
+    addEventListener("direct-uploads:start", this.onDirectUploadsStart);
+    addEventListener("direct-uploads:end", this.onDirectUploadsEnd);
+    addEventListener("direct-upload:initialize", this.onDirectUploadInitialize);
+    addEventListener("direct-upload:start", this.onDirectUploadStart);
+    addEventListener("direct-upload:progress", this.onDirectUploadProgress);
+    addEventListener("direct-upload:error", this.onDirectUploadError);
+    addEventListener("direct-upload:end", this.onDirectUploadEnd);
+    this.onWindowResize();
+  }
+  disconnect() {
+    document.body.removeEventListener("click", this.onExternalTriggerClick);
+    removeEventListener("resize", this.onWindowResize);
+    removeEventListener("direct-uploads:start", this.onDirectUploadsStart);
+    removeEventListener("direct-uploads:end", this.onDirectUploadsEnd);
+    removeEventListener("direct-upload:initialize", this.onDirectUploadInitialize);
+    removeEventListener("direct-upload:start", this.onDirectUploadStart);
+    removeEventListener("direct-upload:progress", this.onDirectUploadProgress);
+    removeEventListener("direct-upload:error", this.onDirectUploadError);
+    removeEventListener("direct-upload:end", this.onDirectUploadEnd);
+  }
+  onExternalTriggerClick=event => {
+    const trigger = event.target.closest(`[data-${this.identifier}-external-target="trigger"]`);
+    if (!trigger) return;
+    event.preventDefault();
+    this.onClick();
+  };
+  onWindowResize=debounce$1((() => {
+    const size = this.calculateSize();
+    if (size !== this.size) {
+      this.size = size;
+    }
+  }), 50);
+  onBlur() {
+    this.focusedValue = false;
+  }
+  onChange(e) {
+    this.stopEvent(e);
+    if (this.disabled) return;
+    this.clearFiles();
+    const fileList = getDataTransferFiles(e);
+    const {files: files, acceptedFiles: acceptedFiles, rejectedFiles: rejectedFiles} = this.getValidatedFiles(fileList);
+    this.dragTargets = [];
+    this.files = files;
+    this.acceptedFiles = acceptedFiles;
+    this.rejectedFiles = rejectedFiles;
+    this.render();
+  }
+  onDragOver(e) {
+    this.stopEvent(e);
+    if (this.disabled) return;
+  }
+  onDragEnter(e) {
+    this.stopEvent(e);
+    if (this.disabled) return;
+    if (e.target && !this.dragTargets.includes(e.target)) {
+      this.dragTargets.push(e.target);
+    }
+    if (this.dragging) return;
+    this.dragging = true;
+  }
+  onDragLeave(e) {
+    this.stopEvent(e);
+    if (this.disabled) return;
+    this.dragTargets = this.dragTargets.filter((el => {
+      const compareNode = this.element;
+      return el !== e.target && compareNode && compareNode.contains(el);
+    }));
+    if (this.dragTargets.length > 0) return;
+    this.dragging = false;
+  }
+  onDrop(e) {
+    this.stopEvent(e);
+    if (this.disabled) return;
+    this.dragging = false;
+    this.onChange(e);
+  }
+  onFocus() {
+    this.focusedValue = true;
+  }
+  onClick() {
+    if (this.disabledValue) return;
+    this.open();
+  }
+  onDirectUploadsStart=() => {
+    this.disable();
+  };
+  onDirectUploadsEnd=() => {
+    this.enable();
+    this.clearFiles();
+    this.loaderTarget.classList.remove("Polaris--hidden");
+  };
+  onDirectUploadInitialize=event => {
+    const {target: target, detail: detail} = event;
+    const {id: id, file: file} = detail;
+    const dropzone = target.closest(".Polaris-DropZone");
+    if (!dropzone) return;
+    const content = dropzone.querySelector(`[data-file-name="${file.name}"]`);
+    const progressBar = content.parentElement.querySelector('[data-target="progress-bar"]');
+    progressBar.id = `direct-upload-${id}`;
+  };
+  onDirectUploadStart=event => {
+    const {id: id} = event.detail;
+    const progressBar = document.getElementById(`direct-upload-${id}`);
+    if (!progressBar) return;
+    progressBar.classList.remove("Polaris--hidden");
+  };
+  onDirectUploadProgress=event => {
+    const {id: id, progress: progress} = event.detail;
+    const progressBar = document.getElementById(`direct-upload-${id}`);
+    if (!progressBar) return;
+    const progressElement = progressBar.querySelector(".Polaris-ProgressBar__Indicator");
+    progressElement.style.width = `${progress}%`;
+  };
+  onDirectUploadError=event => {
+    const {id: id, error: error} = event.detail;
+    const progressBar = document.getElementById(`direct-upload-${id}`);
+    if (!progressBar) return;
+    event.preventDefault();
+    progressBar.classList.add("Polaris--hidden");
+    const uploadError = progressBar.parentElement.querySelector('[data-target="upload-error"]');
+    const errorIcon = uploadError.querySelector(".Polaris-InlineError__Icon");
+    if (errorIcon) errorIcon.remove();
+    uploadError.classList.remove("Polaris--hidden");
+  };
+  onDirectUploadEnd=event => {
+    const {id: id} = event.detail;
+    const progressBar = document.getElementById(`direct-upload-${id}`);
+    if (!progressBar) return;
+    progressBar.classList.add("Polaris-ProgressBar--colorSuccess");
+  };
+  open() {
+    this.inputTarget.click();
+  }
+  focusedValueChanged() {
+    this.element.classList.toggle("Polaris-DropZone--focused", this.focusedValue);
+  }
+  stopEvent(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  getValidatedFiles(files) {
+    const acceptedFiles = [];
+    const rejectedFiles = [];
+    Array.from(files).forEach((file => {
+      if (fileAccepted(file, this.acceptValue)) {
+        acceptedFiles.push(file);
+      } else {
+        rejectedFiles.push(file);
+      }
+    }));
+    if (!this.allowMultipleValue) {
+      acceptedFiles.splice(1, acceptedFiles.length);
+      rejectedFiles.push(...acceptedFiles.slice(1));
+    }
+    return {
+      files: files,
+      acceptedFiles: acceptedFiles,
+      rejectedFiles: rejectedFiles
+    };
+  }
+  render() {
+    if (this.files.length === 0) {
+      this.toggleFileUpload(true);
+      this.toggleErrorOverlay(false);
+    } else if (this.rejectedFiles.length > 0) {
+      this.toggleFileUpload(false);
+      this.toggleErrorOverlay(true);
+      const dropRejectedEvent = new CustomEvent("polaris-dropzone:drop-rejected", {
+        detail: {
+          rejectedFiles: this.rejectedFiles
+        }
+      });
+      this.element.dispatchEvent(dropRejectedEvent);
+    } else if (this.acceptedFiles.length > 0) {
+      if (this.renderPreviewValue) {
+        this.renderUploadedFiles();
+        this.toggleFileUpload(false);
+      }
+      this.toggleErrorOverlay(false);
+      const dropAcceptedEvent = new CustomEvent("polaris-dropzone:drop-accepted", {
+        detail: {
+          acceptedFiles: this.acceptedFiles
+        }
+      });
+      this.element.dispatchEvent(dropAcceptedEvent);
+    }
+    const dropEvent = new CustomEvent("polaris-dropzone:drop", {
+      detail: {
+        files: this.files,
+        acceptedFiles: this.acceptedFiles,
+        rejectedFiles: this.rejectedFiles
+      }
+    });
+    this.element.dispatchEvent(dropEvent);
+  }
+  renderUploadedFiles() {
+    if (this.acceptedFiles.length === 0) return;
+    const clone = this.previewTemplateTarget.content.cloneNode(true);
+    const filesTarget = clone.querySelector(".target");
+    this.acceptedFiles.map((file => this.renderFile(file))).forEach((fragment => filesTarget.parentNode.appendChild(fragment)));
+    filesTarget.remove();
+    this.containerTarget.prepend(clone);
+    this.previewRendered = true;
+  }
+  toggleFileUpload(show = false) {
+    this.fileUploadTarget.classList.toggle("Polaris-VisuallyHidden", !show);
+  }
+  toggleErrorOverlay(show = false) {
+    this.errorOverlayTarget.classList.toggle("Polaris-VisuallyHidden", !show);
+    this.element.classList.toggle("Polaris-DropZone--hasError", show);
+  }
+  renderFile(file) {
+    const validImageTypes = [ "image/gif", "image/jpeg", "image/png" ];
+    const clone = this.itemTemplateTarget.content.cloneNode(true);
+    const [icon, thumbnail, content, fileSize] = [ clone.querySelector('[data-target="icon"]'), clone.querySelector('[data-target="thumbnail"]'), clone.querySelector('[data-target="content"]'), clone.querySelector('[data-target="file-size"]') ];
+    if (validImageTypes.includes(file.type)) {
+      const img = thumbnail.querySelector("img");
+      img.alt = file.name;
+      img.src = window.URL.createObjectURL(file);
+      icon.remove();
+    } else {
+      thumbnail.remove();
+    }
+    content.insertAdjacentText("afterbegin", file.name);
+    content.setAttribute("data-file-name", file.name);
+    fileSize.textContent = formatBytes(file.size);
+    return clone;
+  }
+  clearFiles() {
+    if (!this.previewRendered) return;
+    this.acceptedFiles = [];
+    this.files = [];
+    this.rejectedFiles = [];
+    if (!this.hasPreviewTarget) return;
+    this.previewTarget.remove();
+    this.previewRendered = false;
+  }
+  calculateSize() {
+    const width = this.element.getBoundingClientRect().width;
+    let size = SIZES.LARGE;
+    if (width < 100) {
+      size = SIZES.SMALL;
+    } else if (width < 160) {
+      size = SIZES.MEDIUM;
+    } else if (width > 300) {
+      size = SIZES.EXTRA_LARGE;
+    }
+    this.size = size;
+    return size;
+  }
+  getSizeClass(size = "large") {
+    return this.sizeClassesSchema[size] || this.sizeClassesSchema.large;
+  }
+  disable() {
+    this.disabled = true;
+    this.element.classList.add(this.disabledClass);
+    this.inputTarget.disabled = true;
+  }
+  enable() {
+    this.disabled = false;
+    this.element.classList.remove(this.disabledClass);
+    this.inputTarget.disabled = false;
+  }
+  get fileListRendered() {
+    return this.element.querySelector("[data-rendered]");
+  }
+  get dropNode() {
+    return this.dropOnPageValue ? document : this.element;
+  }
+  get disabled() {
+    return this.disabledValue;
+  }
+  set disabled(val) {
+    this.disabledValue = val;
+  }
+  get dragging() {
+    return this._dragging;
+  }
+  set dragging(val) {
+    this._dragging = val;
+    this.element.classList.toggle("Polaris-DropZone--isDragging", val);
+    this.overlayTarget.classList.toggle("Polaris-VisuallyHidden", !val);
+  }
+  get sizeClassesSchema() {
+    return {
+      [SIZES.SMALL]: "Polaris-DropZone--sizeSmall",
+      [SIZES.MEDIUM]: "Polaris-DropZone--sizeMedium",
+      [SIZES.LARGE]: "Polaris-DropZone--sizeLarge",
+      [SIZES.EXTRA_LARGE]: "Polaris-DropZone--sizeExtraLarge"
+    };
+  }
+  get size() {
+    return this._size;
+  }
+  set size(val) {
+    this._size = val;
+    const sizeClassesToRemove = Object.values(this.sizeClassesSchema);
+    sizeClassesToRemove.forEach((className => this.element.classList.remove(className)));
+    this.element.classList.add(this.getSizeClass(val));
+  }
+}
+
+function fileAccepted(file, accept) {
+  return file.type === "application/x-moz-file" || accepts(file, accept);
+}
+
+function getDataTransferFiles(event) {
+  if (isDragEvent(event) && event.dataTransfer) {
+    const dt = event.dataTransfer;
+    if (dt.files && dt.files.length) {
+      return Array.from(dt.files);
+    } else if (dt.items && dt.items.length) {
+      return Array.from(dt.items);
+    }
+  } else if (isChangeEvent(event) && event.target.files) {
+    return Array.from(event.target.files);
+  }
+  return [];
+}
+
+function accepts(file, acceptedFiles = [ "" ]) {
+  if (file && acceptedFiles) {
+    const fileName = file.name || "";
+    const mimeType = file.type || "";
+    const baseMimeType = mimeType.replace(/\/.*$/, "");
+    const acceptedFilesArray = Array.isArray(acceptedFiles) ? acceptedFiles : acceptedFiles.split(",");
+    return acceptedFilesArray.some((type => {
+      const validType = type.trim();
+      if (validType.startsWith(".")) {
+        return fileName.toLowerCase().endsWith(validType.toLowerCase());
+      } else if (validType.endsWith("/*")) {
+        return baseMimeType === validType.replace(/\/.*$/, "");
+      }
+      return mimeType === validType;
+    }));
+  }
+  return true;
+}
+
+function isDragEvent(event) {
+  return dragEvents.indexOf(event.type) > 0;
+}
+
+function isChangeEvent(event) {
+  return event.type === "change";
 }
 
 const alpineNames = {
@@ -2023,6 +2406,7 @@ class Toast extends Controller {
 function registerPolarisControllers(application) {
   application.register("polaris-autocomplete", Autocomplete);
   application.register("polaris-button", Button);
+  application.register("polaris-dropzone", Dropzone);
   application.register("polaris-frame", Frame);
   application.register("polaris-modal", Modal);
   application.register("polaris-option-list", OptionList);

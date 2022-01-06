@@ -1,0 +1,10 @@
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= form.polaris_dropzone :image %>
+<% end %>
+
+<%= polaris_spacer(vertical: :base) %>
+<%# With direct upload in ActiveStorage %>
+
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= form.polaris_dropzone :image, direct_upload: true %>
+<% end %>
