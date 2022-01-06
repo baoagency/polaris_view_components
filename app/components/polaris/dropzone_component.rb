@@ -31,6 +31,7 @@ module Polaris
       outline: true,
       overlay_text: "Drop files to upload",
       error_overlay_text: "This file type isn't accepted",
+      upload_error_text: "File upload failed",
       label: nil,
       label_hidden: true,
       label_action: nil,
@@ -55,6 +56,7 @@ module Polaris
       @outline = outline
       @overlay_text = overlay_text
       @error_overlay_text = error_overlay_text
+      @upload_error_text = upload_error_text
       @label = label
       @label_hidden = label_hidden
       @label_action = label_action
@@ -78,6 +80,7 @@ module Polaris
           polaris_dropzone_accept_value: @accept,
           polaris_dropzone_allow_multiple_value: @multiple.to_s,
           polaris_dropzone_disabled_value: @disabled.to_s,
+          polaris_dropzone_disabled_class: "Polaris-DropZone--isDisabled",
           polaris_dropzone_focused_value: "false",
           polaris_dropzone_drop_on_page_value: @drop_on_page,
           polaris_dropzone_render_preview_value: @preview

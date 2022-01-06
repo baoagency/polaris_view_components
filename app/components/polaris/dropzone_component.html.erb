@@ -66,6 +66,10 @@
           <% end %>
         <% end %>
       <% end %>
+
+      <div class="Polaris-DropZone__Loader Polaris--hidden" data-polaris-dropzone-target="loader">
+        <%= polaris_spinner %>
+      </div>
     </div>
 
     <%= render Polaris::VisuallyHiddenComponent.new do %>
@@ -95,16 +99,36 @@
           spacing: @multiple ? :default : :tight,
         ) do |stack| %>
           <% stack.item do %>
-            <%= polaris_icon(name: "TimelineAttachmentMajor", size: :small, data: { target: "icon" }) %>
+            <%= polaris_thumbnail(
+              size: :small,
+              data: { target: "icon" },
+              style: "border: none; background: none;"
+            ) do |thumbnail| %>
+              <%= thumbnail.icon(name: "TimelineAttachmentMajor") %>
+            <% end %>
             <%= polaris_thumbnail(source: "#", size: :small, data: { target: "thumbnail" }) %>
           <% end %>
 
-          <% stack.item do %>
+          <% stack.item(fill: true) do %>
             <div data-target="content">
               <%= polaris_caption do %>
                 <%= polaris_text_subdued(data: { target: "file-size" }) { "SIZE" } %>
               <% end %>
             </div>
+
+            <%= polaris_progress_bar(
+              progress: 0,
+              size: :small,
+              data: { target: "progress-bar" },
+              classes: "Polaris--hidden",
+              style: "margin-top: 4px;"
+            ) %>
+
+            <%= polaris_inline_error(
+              data: { target: "upload-error" },
+              classes: "Polaris--hidden",
+              style: "margin-top: 4px;"
+            ) { @upload_error_text } %>
           <% end %>
         <% end %>
       <% end %>

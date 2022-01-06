@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from '@hotwired/stimulus'
 import { debounce, formatBytes } from './utils'
 
 const dragEvents = ['dragover', 'dragenter', 'drop']
@@ -14,6 +14,7 @@ export default class extends Controller {
   static targets = [
     'container',
     'fileUpload',
+    'loader',
     'input',
     'preview',
     'previewTemplate',
@@ -21,6 +22,7 @@ export default class extends Controller {
     'overlay',
     'errorOverlay'
   ]
+  static classes = ['disabled']
   static values = {
     accept: String,
     allowMultiple: Boolean,
@@ -39,34 +41,47 @@ export default class extends Controller {
   _size = 'large'
 
   connect () {
-    this.onExternalTriggerClick = this.onExternalTriggerClick.bind(this)
-    this.onWindowResize = debounce(this.onWindowResize.bind(this), 50)
-
     document.body.addEventListener('click', this.onExternalTriggerClick)
-    window.addEventListener('resize', this.onWindowResize)
+    addEventListener('resize', this.onWindowResize)
+    addEventListener('direct-uploads:start', this.onDirectUploadsStart)
+    addEventListener('direct-uploads:end', this.onDirectUploadsEnd)
+    addEventListener('direct-upload:initialize', this.onDirectUploadInitialize)
+    addEventListener('direct-upload:start', this.onDirectUploadStart)
+    addEventListener('direct-upload:progress', this.onDirectUploadProgress)
+    addEventListener('direct-upload:error', this.onDirectUploadError)
+    addEventListener('direct-upload:end', this.onDirectUploadEnd)
 
     this.onWindowResize()
   }
 
   disconnect () {
-    super.disconnect()
-
     document.body.removeEventListener('click', this.onExternalTriggerClick)
-    window.removeEventListener('resize', this.onWindowResize)
+    removeEventListener('resize', this.onWindowResize)
+    removeEventListener('direct-uploads:start', this.onDirectUploadsStart)
+    removeEventListener('direct-uploads:end', this.onDirectUploadsEnd)
+    removeEventListener('direct-upload:initialize', this.onDirectUploadInitialize)
+    removeEventListener('direct-upload:start', this.onDirectUploadStart)
+    removeEventListener('direct-upload:progress', this.onDirectUploadProgress)
+    removeEventListener('direct-upload:error', this.onDirectUploadError)
+    removeEventListener('direct-upload:end', this.onDirectUploadEnd)
   }
 
-  onExternalTriggerClick (e) {
-    const trigger = e.target.closest(`[data-${this.identifier}-external-target="trigger"]`)
+  onExternalTriggerClick = (event) => {
+    const trigger = event.target.closest(`[data-${this.identifier}-external-target="trigger"]`)
     if (!trigger) return
 
-    e.preventDefault()
+    event.preventDefault()
 
     this.onClick()
   }
 
-  onWindowResize () {
+  onWindowResize = debounce(() => {
     const size = this.calculateSize()
-  }
+
+    if (size !== this.size) {
+      this.size = size
+    }
+  }, 50)
 
   onBlur () {
     this.focusedValue = false
@@ -139,6 +154,65 @@ export default class extends Controller {
     if (this.disabledValue) return
 
     this.open()
+  }
+
+  onDirectUploadsStart = () => {
+    this.disable()
+  }
+
+  onDirectUploadsEnd = () => {
+    this.enable()
+    this.clearFiles()
+    this.loaderTarget.classList.remove("Polaris--hidden")
+  }
+
+  onDirectUploadInitialize = (event) => {
+    const { target, detail } = event
+    const { id, file } = detail
+    const dropzone = target.closest('.Polaris-DropZone')
+    if (!dropzone) return
+
+    const content = dropzone.querySelector(`[data-file-name="${file.name}"]`)
+    const progressBar = content.parentElement.querySelector('[data-target="progress-bar"]')
+    progressBar.id = `direct-upload-${id}`
+  }
+
+  onDirectUploadStart = (event) => {
+    const { id } = event.detail
+    const progressBar = document.getElementById(`direct-upload-${id}`)
+    if (!progressBar) return
+
+    progressBar.classList.remove("Polaris--hidden")
+  }
+
+  onDirectUploadProgress = (event) => {
+    const { id, progress } = event.detail
+    const progressBar = document.getElementById(`direct-upload-${id}`)
+    if (!progressBar) return
+
+    const progressElement = progressBar.querySelector('.Polaris-ProgressBar__Indicator')
+    progressElement.style.width = `${progress}%`
+  }
+
+  onDirectUploadError = (event) => {
+    const { id, error } = event.detail
+    const progressBar = document.getElementById(`direct-upload-${id}`)
+    if (!progressBar) return
+
+    event.preventDefault()
+    progressBar.classList.add("Polaris--hidden")
+    const uploadError = progressBar.parentElement.querySelector('[data-target="upload-error"]')
+    const errorIcon = uploadError.querySelector('.Polaris-InlineError__Icon')
+    if (errorIcon) errorIcon.remove()
+    uploadError.classList.remove("Polaris--hidden")
+  }
+
+  onDirectUploadEnd = (event) => {
+    const { id } = event.detail
+    const progressBar = document.getElementById(`direct-upload-${id}`)
+    if (!progressBar) return
+
+    progressBar.classList.add("Polaris-ProgressBar--colorSuccess")
   }
 
   open () {
@@ -242,7 +316,7 @@ export default class extends Controller {
       clone.querySelector('[data-target="icon"]'),
       clone.querySelector('[data-target="thumbnail"]'),
       clone.querySelector('[data-target="content"]'),
-      clone.querySelector('[data-target="file-size"]'),
+      clone.querySelector('[data-target="file-size"]')
     ]
 
     if (validImageTypes.includes(file.type)) {
@@ -255,6 +329,7 @@ export default class extends Controller {
     }
 
     content.insertAdjacentText('afterbegin', file.name)
+    content.setAttribute("data-file-name", file.name)
     fileSize.textContent = formatBytes(file.size)
 
     return clone
@@ -293,6 +368,18 @@ export default class extends Controller {
 
   getSizeClass (size = 'large') {
     return this.sizeClassesSchema[size] || this.sizeClassesSchema.large
+  }
+
+  disable() {
+    this.disabled = true
+    this.element.classList.add(this.disabledClass)
+    this.inputTarget.disabled = true
+  }
+
+  enable() {
+    this.disabled = false
+    this.element.classList.remove(this.disabledClass)
+    this.inputTarget.disabled = false
   }
 
   get fileListRendered () {
