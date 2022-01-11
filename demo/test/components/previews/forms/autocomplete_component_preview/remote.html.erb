@@ -1,5 +1,5 @@
 <%= polaris_autocomplete(multiple: true, url: suggestions_path) do |autocomplete| %>
-  <% autocomplete.text_field(label: "Tags", placeholder: "Search") do |c| %>
+  <% autocomplete.text_field(label: "Tags with local suggestions", placeholder: "Search") do |c| %>
     <% c.prefix do %>
       <%= polaris_icon(name: "SearchMinor") %>
     <% end %>
@@ -11,5 +11,15 @@
     <% section.option(label: "Vinyl", value: "vinyl") %>
     <% section.option(label: "Vintage", value: "vintage") %>
     <% section.option(label: "Refurbished", value: "refurbished") %>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= polaris_autocomplete(multiple: true, url: suggestions_path) do |autocomplete| %>
+  <% autocomplete.text_field(label: "Tags with remote suggestions", placeholder: "Search") do |c| %>
+    <% c.prefix do %>
+      <%= polaris_icon(name: "SearchMinor") %>
+    <% end %>
   <% end %>
 <% end %>
