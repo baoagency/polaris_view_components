@@ -17,13 +17,10 @@ export default class extends Controller {
   // Actions
 
   toggle() {
-    if (this.visibleOptions.length > 0) {
-      this.hideEmptyState()
-      this.popoverController.show()
-    } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
-      this.showEmptyState()
+    if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
+      this.fetchResults()
     } else {
-      this.popoverController.forceHide()
+      this.handleResults()
     }
   }
 
@@ -66,6 +63,17 @@ export default class extends Controller {
     })
   }
 
+  handleResults() {
+    if (this.visibleOptions.length > 0) {
+      this.hideEmptyState()
+      this.popoverController.show()
+    } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
+      this.showEmptyState()
+    } else {
+      this.popoverController.forceHide()
+    }
+  }
+
   filterOptions() {
     if (this.value === '') {
       this.optionTargets.forEach(option => {
@@ -81,7 +89,7 @@ export default class extends Controller {
         }
       })
     }
-    this.toggle()
+    this.handleResults()
   }
 
   async fetchResults() {
@@ -91,7 +99,7 @@ export default class extends Controller {
     if (response.ok) {
       const results = await response.html
       this.resultsTarget.innerHTML = results
-      this.toggle()
+      this.handleResults()
     }
   }
 

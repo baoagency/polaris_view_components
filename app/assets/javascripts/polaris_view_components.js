@@ -28,13 +28,10 @@ class Autocomplete extends Controller {
     this.inputTarget.removeEventListener("input", this.onInputChange);
   }
   toggle() {
-    if (this.visibleOptions.length > 0) {
-      this.hideEmptyState();
-      this.popoverController.show();
-    } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
-      this.showEmptyState();
+    if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
+      this.fetchResults();
     } else {
-      this.popoverController.forceHide();
+      this.handleResults();
     }
   }
   select(event) {
@@ -68,6 +65,16 @@ class Autocomplete extends Controller {
   get visibleOptions() {
     return this.optionTargets.filter((option => !option.classList.contains("Polaris--hidden")));
   }
+  handleResults() {
+    if (this.visibleOptions.length > 0) {
+      this.hideEmptyState();
+      this.popoverController.show();
+    } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
+      this.showEmptyState();
+    } else {
+      this.popoverController.forceHide();
+    }
+  }
   filterOptions() {
     if (this.value === "") {
       this.optionTargets.forEach((option => {
@@ -83,7 +90,7 @@ class Autocomplete extends Controller {
         }
       }));
     }
-    this.toggle();
+    this.handleResults();
   }
   async fetchResults() {
     const response = await get(this.urlValue, {
@@ -94,7 +101,7 @@ class Autocomplete extends Controller {
     if (response.ok) {
       const results = await response.html;
       this.resultsTarget.innerHTML = results;
-      this.toggle();
+      this.handleResults();
     }
   }
   showEmptyState() {
