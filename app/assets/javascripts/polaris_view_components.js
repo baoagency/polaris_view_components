@@ -2226,7 +2226,7 @@ class Popover extends Controller {
     active: Boolean
   };
   connect() {
-    createPopper(this.activatorTarget, this.popoverTarget, {
+    this.popper = createPopper(this.activatorTarget, this.popoverTarget, {
       placement: this.placementValue,
       modifiers: [ {
         name: "offset",
@@ -2243,9 +2243,10 @@ class Popover extends Controller {
     this.popoverTarget.classList.toggle(this.closedClass);
     this.popoverTarget.classList.toggle(this.openClass);
   }
-  show() {
+  async show() {
     this.popoverTarget.classList.remove(this.closedClass);
     this.popoverTarget.classList.add(this.openClass);
+    await this.popper.update();
   }
   hide(event) {
     if (!this.element.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
