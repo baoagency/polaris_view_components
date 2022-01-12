@@ -1,4 +1,4 @@
-<%= polaris_autocomplete(multiple: true) do |autocomplete| %>
+<%= polaris_autocomplete(multiple: true, selected: ["vinyl"]) do |autocomplete| %>
   <% autocomplete.text_field(label: "Tags", placeholder: "Search") do |c| %>
     <% c.prefix do %>
       <%= polaris_icon(name: "SearchMinor") %>

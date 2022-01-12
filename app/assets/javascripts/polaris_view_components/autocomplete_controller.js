@@ -4,7 +4,7 @@ import { debounce } from './utils'
 
 export default class extends Controller {
   static targets = ['popover', 'input', 'results', 'option', 'emptyState']
-  static values = { url: String }
+  static values = { url: String, selected: Array }
 
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange)
@@ -67,6 +67,7 @@ export default class extends Controller {
     if (this.visibleOptions.length > 0) {
       this.hideEmptyState()
       this.popoverController.show()
+      this.checkSelected()
     } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
       this.showEmptyState()
     } else {
@@ -115,5 +116,14 @@ export default class extends Controller {
       this.emptyStateTarget.classList.add('Polaris--hidden')
       this.resultsTarget.classList.remove('Polaris--hidden')
     }
+  }
+
+  checkSelected() {
+    this.visibleOptions.forEach(option => {
+      const input = option.querySelector('input')
+      if (!input) return
+
+      input.checked = this.selectedValue.includes(input.value)
+    })
   }
 }
