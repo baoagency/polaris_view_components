@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   connect() {
-    createPopper(this.activatorTarget, this.popoverTarget, {
+    this.popper = createPopper(this.activatorTarget, this.popoverTarget, {
       placement: this.placementValue,
       modifiers: [
         {
@@ -31,9 +31,10 @@ export default class extends Controller {
     this.popoverTarget.classList.toggle(this.openClass)
   }
 
-  show() {
+  async show() {
     this.popoverTarget.classList.remove(this.closedClass)
     this.popoverTarget.classList.add(this.openClass)
+    await this.popper.update()
   }
 
   hide(event) {
