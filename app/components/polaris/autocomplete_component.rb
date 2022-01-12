@@ -21,9 +21,15 @@ module Polaris
     end
     renders_one :empty_state
 
-    def initialize(multiple: false, url: nil, **system_arguments)
+    def initialize(
+      multiple: false,
+      url: nil,
+      selected: [],
+      **system_arguments
+    )
       @multiple = multiple
       @url = url
+      @selected = selected
       @system_arguments = system_arguments
     end
 
@@ -35,6 +41,7 @@ module Polaris
         if @url.present?
           opts[:data][:polaris_autocomplete_url_value] = @url
         end
+        opts[:data][:polaris_autocomplete_selected_value] = @selected
       end
     end
 
