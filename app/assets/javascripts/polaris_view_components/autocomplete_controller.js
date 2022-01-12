@@ -42,6 +42,13 @@ export default class extends Controller {
     }
   }, 200)
 
+  reset() {
+    this.inputTarget.value = ''
+    this.optionTargets.forEach(option => {
+      option.classList.add('Polaris--hidden')
+    })
+    this.handleResults()
+  }
 
   // Private
 

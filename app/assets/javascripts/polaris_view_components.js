@@ -54,6 +54,13 @@ class Autocomplete extends Controller {
       this.filterOptions();
     }
   }), 200);
+  reset() {
+    this.inputTarget.value = "";
+    this.optionTargets.forEach((option => {
+      option.classList.add("Polaris--hidden");
+    }));
+    this.handleResults();
+  }
   get isRemote() {
     return this.urlValue.length > 0;
   }
