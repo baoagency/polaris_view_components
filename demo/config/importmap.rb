@@ -5,7 +5,7 @@
 
 pin "application"
 pin "@hotwired/stimulus", to: "stimulus.js"
-pin "@hotwired/stimulus-importmap-autoloader", to: "stimulus-importmap-autoloader.js"
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 
 pin "polaris-view-components", to: "polaris_view_components.js"
