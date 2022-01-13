@@ -3,8 +3,8 @@ module Polaris
     ALIGNMENT_DEFAULT = :center
     ALIGNMENT_OPTIONS = [:left, :right, :center]
 
-    POSITION_DEFAULT = :below
-    POSITION_OPTIONS = [:above, :below]
+    POSITION_DEFAULT = :auto
+    POSITION_OPTIONS = [:auto, :above, :below]
 
     renders_one :button, ->(**system_arguments) do
       system_arguments[:data] ||= {}
@@ -98,7 +98,13 @@ module Polaris
     end
 
     def popperjs_placement
-      placement = @position == :above ? "top" : "bottom"
+      placement =
+        case @position
+        when :above then "top"
+        when :below then "bottom"
+        else
+          "auto"
+        end
       placement += "-start" if @alignment == :left
       placement += "-end" if @alignment == :right
       placement

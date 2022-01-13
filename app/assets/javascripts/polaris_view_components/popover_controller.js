@@ -19,6 +19,12 @@ export default class extends Controller {
             offset: [0, 5],
           },
         },
+        {
+          name: 'flip',
+          options: {
+            allowedAutoPlacements: ['top-start', 'bottom-start', 'top-end', 'bottom-end']
+          },
+        }
       ]
     })
     if (this.activeValue) {

@@ -2240,6 +2240,11 @@ class Popover extends Controller {
         options: {
           offset: [ 0, 5 ]
         }
+      }, {
+        name: "flip",
+        options: {
+          allowedAutoPlacements: [ "top-start", "bottom-start", "top-end", "bottom-end" ]
+        }
       } ]
     });
     if (this.activeValue) {
