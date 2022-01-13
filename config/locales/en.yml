@@ -1,0 +1,6 @@
+en:
+  polaris:
+    form_builder:
+      errors_summary:
+        one: "There is 1 error with this %{model}:"
+        other: "There are %{count} errors with this %{model}:"

@@ -10,12 +10,13 @@ module Polaris
       return if object.blank?
       return unless object.errors.any?
 
-      model_name = object.class.model_name.human.downcase
+      title = I18n.t(
+        "polaris.form_builder.errors_summary",
+        count: object.errors.count,
+        model: object.class.model_name.human.downcase
+      )
 
-      render Polaris::BannerComponent.new(
-        title: "There's #{pluralize(object.errors.count, "error")} with this #{model_name}:",
-        status: :critical
-      ) do
+      render Polaris::BannerComponent.new(title: title, status: :critical) do
         render(Polaris::ListComponent.new) do |list|
           object.errors.full_messages.each do |error|
             list.item { error.html_safe }
