@@ -72,11 +72,9 @@ module Polaris
     end
 
     def system_arguments
-      @system_arguments.tap do |opts|
-        opts[:tag] = "div"
-        opts[:data] = {
-          controller: "polaris-dropzone",
-          action: "click->polaris-dropzone#onClick #{drop_actions}",
+      {
+        tag: "div",
+        data: {
           polaris_dropzone_accept_value: @accept,
           polaris_dropzone_allow_multiple_value: @multiple.to_s,
           polaris_dropzone_disabled_value: @disabled.to_s,
@@ -86,6 +84,9 @@ module Polaris
           polaris_dropzone_render_preview_value: @preview,
           polaris_dropzone_size_value: @size
         }
+      }.deep_merge(@system_arguments).tap do |opts|
+        prepend_option(opts[:data], :controller, "polaris-dropzone")
+        prepend_option(opts[:data], :action, "click->polaris-dropzone#onClick #{drop_actions}")
         opts[:classes] = class_names(
           opts[:classes],
           "Polaris-DropZone",
@@ -115,11 +116,10 @@ module Polaris
         direct_upload: @direct_upload,
         disabled: @disabled,
         multiple: @multiple,
-        data: {
-          action: "focus->polaris-dropzone#onFocus blur->polaris-dropzone#onBlur change->polaris-dropzone#onChange",
-          'polaris-dropzone-target': "input"
-        }
-      }.deep_merge(@input_options)
+        data: {polaris_dropzone_target: "input"}
+      }.deep_merge(@input_options).tap do |opts|
+        prepend_option(opts[:data], :action, "focus->polaris-dropzone#onFocus blur->polaris-dropzone#onBlur change->polaris-dropzone#onChange")
+      end
     end
 
     def file_upload_arguments
@@ -131,7 +131,7 @@ module Polaris
           "Polaris-DropZone-FileUpload--small": @size == :small
         ),
         data: {
-          'polaris-dropzone-target': "fileUpload"
+          polaris_dropzone_target: "fileUpload"
         }
       }.deep_merge(@file_upload_arguments.except(:language))
     end
