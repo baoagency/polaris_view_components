@@ -122,6 +122,11 @@ a.Polaris-Tag__Button {
 
       .Polaris-Thumbnail {
         border: none;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
       }
     }
   }

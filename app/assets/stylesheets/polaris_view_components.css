@@ -2327,6 +2327,10 @@ a.Polaris-Tag__Button {
 .Polaris-DropZone__Preview--sizeSmall .Polaris-Thumbnail {
         border: none;
       }
+.Polaris-DropZone__Preview--sizeSmall .Polaris-Thumbnail img {
+          width: 100%;
+          object-fit: cover;
+        }
 .Polaris-DropZone__Loader {
     display: flex;
     height: 100%;
