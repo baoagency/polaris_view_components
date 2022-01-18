@@ -2320,6 +2320,13 @@ a.Polaris-Tag__Button {
       text-align: center;
       justify-content: center;
     }
+.Polaris-DropZone__Preview--sizeSmall {
+      padding: 0;
+      justify-content: center;
+    }
+.Polaris-DropZone__Preview--sizeSmall .Polaris-Thumbnail {
+        border: none;
+      }
 .Polaris-DropZone__Loader {
     display: flex;
     height: 100%;

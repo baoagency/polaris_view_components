@@ -115,6 +115,15 @@ a.Polaris-Tag__Button {
       text-align: center;
       justify-content: center;
     }
+
+    &--sizeSmall {
+      padding: 0;
+      justify-content: center;
+
+      .Polaris-Thumbnail {
+        border: none;
+      }
+    }
   }
 
   &__Loader {

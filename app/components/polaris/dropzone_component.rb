@@ -53,7 +53,6 @@ module Polaris
       @size = size
       @drop_on_page = drop_on_page
       @preview = preview
-      @preview = false if @size.in?(%i[small medium])
       @outline = outline
       @overlay_text = overlay_text
       @error_overlay_text = error_overlay_text
@@ -84,7 +83,8 @@ module Polaris
           polaris_dropzone_disabled_class: "Polaris-DropZone--isDisabled",
           polaris_dropzone_focused_value: "false",
           polaris_dropzone_drop_on_page_value: @drop_on_page,
-          polaris_dropzone_render_preview_value: @preview
+          polaris_dropzone_render_preview_value: @preview,
+          polaris_dropzone_size_value: @size
         }
         opts[:classes] = class_names(
           opts[:classes],

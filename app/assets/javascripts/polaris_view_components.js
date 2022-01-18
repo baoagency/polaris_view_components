@@ -183,7 +183,8 @@ class Dropzone extends Controller {
     disabled: Boolean,
     dropOnPage: Boolean,
     focused: Boolean,
-    renderPreview: Boolean
+    renderPreview: Boolean,
+    size: String
   };
   files=[];
   acceptedFiles=[];
@@ -394,7 +395,9 @@ class Dropzone extends Controller {
     if (this.acceptedFiles.length === 0) return;
     const clone = this.previewTemplateTarget.content.cloneNode(true);
     const filesTarget = clone.querySelector(".target");
-    this.acceptedFiles.map((file => this.renderFile(file))).forEach((fragment => filesTarget.parentNode.appendChild(fragment)));
+    let files = this.acceptedFiles;
+    if (this.sizeValue == "small") files = [ files[0] ];
+    files.map((file => this.renderFile(file))).forEach((fragment => filesTarget.parentNode.appendChild(fragment)));
     filesTarget.remove();
     this.containerTarget.prepend(clone);
     this.previewRendered = true;
@@ -418,9 +421,11 @@ class Dropzone extends Controller {
     } else {
       thumbnail.remove();
     }
-    content.insertAdjacentText("afterbegin", file.name);
-    content.setAttribute("data-file-name", file.name);
-    fileSize.textContent = formatBytes(file.size);
+    if (this.sizeValue != "small") {
+      content.insertAdjacentText("afterbegin", file.name);
+      content.setAttribute("data-file-name", file.name);
+      fileSize.textContent = formatBytes(file.size);
+    }
     return clone;
   }
   clearFiles() {

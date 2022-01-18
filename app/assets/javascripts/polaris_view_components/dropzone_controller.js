@@ -29,7 +29,8 @@ export default class extends Controller {
     disabled: Boolean,
     dropOnPage: Boolean,
     focused: Boolean,
-    renderPreview: Boolean
+    renderPreview: Boolean,
+    size: String
   }
 
   files = []
@@ -289,8 +290,11 @@ export default class extends Controller {
 
     const clone = this.previewTemplateTarget.content.cloneNode(true)
     const filesTarget = clone.querySelector('.target')
+    let files = this.acceptedFiles
 
-    this.acceptedFiles
+    if (this.sizeValue == 'small') files = [files[0]]
+
+    files
       .map(file => this.renderFile(file))
       .forEach(fragment => filesTarget.parentNode.appendChild(fragment))
     filesTarget.remove()
@@ -328,9 +332,11 @@ export default class extends Controller {
       thumbnail.remove()
     }
 
-    content.insertAdjacentText('afterbegin', file.name)
-    content.setAttribute("data-file-name", file.name)
-    fileSize.textContent = formatBytes(file.size)
+    if (this.sizeValue != 'small') {
+      content.insertAdjacentText('afterbegin', file.name)
+      content.setAttribute('data-file-name', file.name)
+      fileSize.textContent = formatBytes(file.size)
+    }
 
     return clone
   }

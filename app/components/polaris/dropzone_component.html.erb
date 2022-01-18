@@ -83,52 +83,71 @@
     <template data-polaris-dropzone-target="previewTemplate">
       <%= tag.div(
         data: { polaris_dropzone_target: "preview" },
-        class: ["Polaris-DropZone__Preview", "Polaris-DropZone__Preview--singleFile": !@multiple]
+        class: [
+          "Polaris-DropZone__Preview",
+          "Polaris-DropZone__Preview--singleFile": !@multiple,
+          "Polaris-DropZone__Preview--sizeSmall": @size == :small
+        ]
       ) do %>
-        <%= polaris_stack(vertical: true) do %>
+        <% if @size.in?(%i[small]) %>
           <span class="target"></span>
+        <% else %>
+          <%= polaris_stack(vertical: true) do %>
+            <span class="target"></span>
+          <% end %>
         <% end %>
       <% end %>
     </template>
 
     <template data-polaris-dropzone-target="itemTemplate">
-      <%= polaris_stack_item do %>
-        <%= polaris_stack(
-          alignment: :center,
-          vertical: !@multiple,
-          spacing: @multiple ? :default : :tight,
-        ) do |stack| %>
-          <% stack.item do %>
-            <%= polaris_thumbnail(
-              size: :small,
-              data: { target: "icon" },
-              style: "border: none; background: none;"
-            ) do |thumbnail| %>
-              <%= thumbnail.icon(name: "TimelineAttachmentMajor") %>
-            <% end %>
-            <%= polaris_thumbnail(source: "#", size: :small, data: { target: "thumbnail" }) %>
-          <% end %>
-
-          <% stack.item(fill: true) do %>
-            <div data-target="content">
-              <%= polaris_caption do %>
-                <%= polaris_text_subdued(data: { target: "file-size" }) { "SIZE" } %>
+      <% if @size.in?(%i[small]) %>
+        <%= polaris_thumbnail(
+          size: :small,
+          data: { target: "icon" },
+          style: "border: none; background: none;"
+        ) do |thumbnail| %>
+          <%= thumbnail.icon(name: "TimelineAttachmentMajor") %>
+        <% end %>
+        <%= polaris_thumbnail(source: "#", size: :small, data: { target: "thumbnail" }) %>
+      <% else %>
+        <%= polaris_stack_item do %>
+          <%= polaris_stack(
+            alignment: :center,
+            vertical: !@multiple,
+            spacing: @multiple ? :default : :tight,
+          ) do |stack| %>
+            <% stack.item do %>
+              <%= polaris_thumbnail(
+                size: :small,
+                data: { target: "icon" },
+                style: "border: none; background: none;"
+              ) do |thumbnail| %>
+                <%= thumbnail.icon(name: "TimelineAttachmentMajor") %>
               <% end %>
-            </div>
+              <%= polaris_thumbnail(source: "#", size: :small, data: { target: "thumbnail" }) %>
+            <% end %>
 
-            <%= polaris_progress_bar(
-              progress: 0,
-              size: :small,
-              data: { target: "progress-bar" },
-              classes: "Polaris--hidden",
-              style: "margin-top: 4px;"
-            ) %>
+            <% stack.item(fill: true) do %>
+              <div data-target="content">
+                <%= polaris_caption do %>
+                  <%= polaris_text_subdued(data: { target: "file-size" }) { "SIZE" } %>
+                <% end %>
+              </div>
 
-            <%= polaris_inline_error(
-              data: { target: "upload-error" },
-              classes: "Polaris--hidden",
-              style: "margin-top: 4px;"
-            ) { @upload_error_text } %>
+              <%= polaris_progress_bar(
+                progress: 0,
+                size: :small,
+                data: { target: "progress-bar" },
+                classes: "Polaris--hidden",
+                style: "margin-top: 4px;"
+              ) %>
+
+              <%= polaris_inline_error(
+                data: { target: "upload-error" },
+                classes: "Polaris--hidden",
+                style: "margin-top: 4px;"
+              ) { @upload_error_text } %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
