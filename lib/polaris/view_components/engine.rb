@@ -14,6 +14,11 @@ module Polaris
         #{root}/app/components
         #{root}/app/helpers
       ]
+      
+      # Remove default wrapping .field_with_errors for proper Shopify form validations
+      config.to_prepare do
+        ActionView::Base.field_error_proc = ->(html_tag, _instance) { html_tag }
+      end
 
       initializer "polaris_view_components.assets" do |app|
         if app.config.respond_to?(:assets)
