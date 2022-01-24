@@ -1,5 +1,5 @@
 module Polaris
-  class AutocompleteComponent < NewComponent
+  class AutocompleteComponent < Component
     renders_one :text_field, ->(**system_arguments) do
       system_arguments[:data] ||= {}
       prepend_option(system_arguments[:data], :action, %w[

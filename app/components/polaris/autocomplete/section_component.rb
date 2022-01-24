@@ -1,5 +1,5 @@
 module Polaris
-  class Autocomplete::SectionComponent < NewComponent
+  class Autocomplete::SectionComponent < Component
     renders_many :options, ->(**system_arguments) do
       Autocomplete::OptionComponent.new(multiple: @multiple, **system_arguments)
     end

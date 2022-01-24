@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ChoiceListComponent < Polaris::NewComponent
+  class ChoiceListComponent < Polaris::Component
     renders_many :checkboxes, ->(value:, disabled: false, **system_arguments) do
       Polaris::CheckboxComponent.new(
         form: @form,

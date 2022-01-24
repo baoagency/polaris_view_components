@@ -1,4 +1,4 @@
-class Polaris::Stack::ItemComponent < Polaris::NewComponent
+class Polaris::Stack::ItemComponent < Polaris::Component
   def initialize(fill: false, **system_arguments)
     @system_arguments = system_arguments
     @system_arguments[:tag] = "div"

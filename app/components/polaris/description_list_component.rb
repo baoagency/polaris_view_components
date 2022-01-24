@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class DescriptionListComponent < Polaris::NewComponent
+  class DescriptionListComponent < Polaris::Component
     SPACING_DEFAULT = :loose
     SPACING_MAPPINGS = {
       SPACING_DEFAULT => "",
@@ -25,7 +25,7 @@ module Polaris
       items.any?
     end
 
-    class DescriptionListItemComponent < Polaris::NewComponent
+    class DescriptionListItemComponent < Polaris::Component
       def initialize(term:)
         @term = term
       end

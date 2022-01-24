@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class SkeletonBodyTextComponent < Polaris::NewComponent
+  class SkeletonBodyTextComponent < Polaris::Component
     def initialize(lines: 3, **system_arguments)
       @lines = lines
       @system_arguments = system_arguments

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class FormLayoutComponent < Polaris::NewComponent
+  class FormLayoutComponent < Polaris::Component
     renders_many :items, ->(**system_arguments) do
       @counter += 1
       Polaris::FormLayout::ItemComponent.new(position: @counter, **system_arguments)

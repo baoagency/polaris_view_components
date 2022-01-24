@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class PaginationComponent < Polaris::NewComponent
+  class PaginationComponent < Polaris::Component
     def initialize(
       previous_url: nil,
       next_url: nil,

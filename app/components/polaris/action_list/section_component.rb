@@ -1,4 +1,4 @@
-class Polaris::ActionList::SectionComponent < Polaris::NewComponent
+class Polaris::ActionList::SectionComponent < Polaris::Component
   renders_many :items, Polaris::ActionList::ItemComponent
 
   def initialize(position: 1, title: nil, **system_arguments)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class BadgeComponent < Polaris::NewComponent
+  class BadgeComponent < Polaris::Component
     PROGRESS_DEFAULT = :default
     PROGRESS_MAPPINGS = {
       PROGRESS_DEFAULT => "",

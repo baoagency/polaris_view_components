@@ -1,4 +1,4 @@
-class Polaris::DataTable::CellComponent < Polaris::NewComponent
+class Polaris::DataTable::CellComponent < Polaris::Component
   ALIGNMENT_DEFAULT = :top
   ALIGNMENT_MAPPINGS = {
     top: "Polaris-DataTable__Cell--verticalAlignTop",

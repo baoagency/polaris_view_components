@@ -1,4 +1,4 @@
-class Polaris::OptionList::CheckboxComponent < Polaris::NewComponent
+class Polaris::OptionList::CheckboxComponent < Polaris::Component
   def initialize(
     label:,
     value:,

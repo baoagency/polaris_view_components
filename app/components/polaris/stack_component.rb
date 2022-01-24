@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class StackComponent < Polaris::NewComponent
+  class StackComponent < Polaris::Component
     ALIGNMENT_DEFAULT = :default
     ALIGNMENT_MAPPINGS = {
       ALIGNMENT_DEFAULT => "",

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ShopifyNavigationComponent < Polaris::NewComponent
+  class ShopifyNavigationComponent < Polaris::Component
     renders_many :links, ->(**system_arguments) do
       ShopifyNavigationLinkComponent.new(auto_detect_active: @auto_detect_active, **system_arguments)
     end
@@ -21,7 +21,7 @@ module Polaris
       links.any?
     end
 
-    class ShopifyNavigationLinkComponent < Polaris::NewComponent
+    class ShopifyNavigationLinkComponent < Polaris::Component
       def initialize(url:, auto_detect_active:, active: false, **system_arguments)
         @url = url
         @auto_detect_active = auto_detect_active

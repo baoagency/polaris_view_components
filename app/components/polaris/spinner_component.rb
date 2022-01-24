@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class SpinnerComponent < Polaris::NewComponent
+  class SpinnerComponent < Polaris::Component
     SIZE_DEFAULT = :large
     SIZE_MAPPINGS = {
       small: "Polaris-Spinner--sizeSmall",

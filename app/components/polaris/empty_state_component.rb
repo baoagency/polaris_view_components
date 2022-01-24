@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class EmptyStateComponent < Polaris::NewComponent
+  class EmptyStateComponent < Polaris::Component
     WITHIN_DEFAULT = :page
     WITHIN_MAPPINGS = {
       WITHIN_DEFAULT => "",

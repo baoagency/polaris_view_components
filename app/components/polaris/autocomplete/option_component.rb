@@ -1,5 +1,5 @@
 module Polaris
-  class Autocomplete::OptionComponent < NewComponent
+  class Autocomplete::OptionComponent < Component
     def initialize(
       label:,
       multiple: false,

@@ -1,4 +1,4 @@
-class Polaris::Frame::TopBarComponent < Polaris::NewComponent
+class Polaris::Frame::TopBarComponent < Polaris::Component
   renders_one :user_menu, Polaris::TopBar::UserMenuComponent
 
   def initialize(logo:, **system_arguments)

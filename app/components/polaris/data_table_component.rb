@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class DataTableComponent < Polaris::NewComponent
+  class DataTableComponent < Polaris::Component
     ALIGNMENT_DEFAULT = :top
     ALIGNMENT_OPTIONS = [:top, :bottom, :middle, :baseline]
 

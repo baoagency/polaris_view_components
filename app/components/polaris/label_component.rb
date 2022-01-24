@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class LabelComponent < Polaris::NewComponent
+  class LabelComponent < Polaris::Component
     def initialize(
       form: nil,
       attribute: nil,

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class TagComponent < Polaris::NewComponent
+  class TagComponent < Polaris::Component
     renders_one :remove_button, ->(type: :button, **system_arguments) do
       render Polaris::BaseButton.new(
         classes: "Polaris-Tag__Button",

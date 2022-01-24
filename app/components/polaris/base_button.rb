@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class BaseButton < Polaris::NewComponent
+  class BaseButton < Polaris::Component
     def initialize(
       url: nil,
       external: false,

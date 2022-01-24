@@ -1,4 +1,4 @@
-class Polaris::OptionList::OptionComponent < Polaris::NewComponent
+class Polaris::OptionList::OptionComponent < Polaris::Component
   def initialize(**system_arguments)
     @system_arguments = system_arguments
   end

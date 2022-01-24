@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class LayoutComponent < Polaris::NewComponent
+  class LayoutComponent < Polaris::Component
     # A list of sections
     #
     # @param secondary [Boolean] The section will act like a sidebar

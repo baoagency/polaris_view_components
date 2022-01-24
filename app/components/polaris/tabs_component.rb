@@ -1,5 +1,5 @@
 module Polaris
-  class TabsComponent < Polaris::NewComponent
+  class TabsComponent < Polaris::Component
     renders_many :tabs, Polaris::Tabs::TabComponent
 
     def initialize(fitted: false, wrapper_arguments: {}, **system_arguments)

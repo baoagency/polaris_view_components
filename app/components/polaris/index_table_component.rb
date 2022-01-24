@@ -1,5 +1,5 @@
 module Polaris
-  class IndexTableComponent < Polaris::NewComponent
+  class IndexTableComponent < Polaris::Component
     renders_many :columns, ->(title, **system_arguments, &block) do
       IndexTable::ColumnComponent.new(title, **system_arguments, &block)
     end

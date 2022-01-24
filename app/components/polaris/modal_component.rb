@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ModalComponent < Polaris::NewComponent
+  class ModalComponent < Polaris::Component
     renders_one :close_button, ->(**system_arguments) do
       button_arguments = @close_button_arguments.deep_merge(system_arguments)
       render(Polaris::BaseComponent.new(**button_arguments)) do

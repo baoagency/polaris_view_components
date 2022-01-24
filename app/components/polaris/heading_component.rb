@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class HeadingComponent < Polaris::NewComponent
+  class HeadingComponent < Polaris::Component
     ELEMENT_DEFAULT = :h2
     ELEMENT_OPTIONS = %i[p h1 h2 h3 h4 h5 h6]
 

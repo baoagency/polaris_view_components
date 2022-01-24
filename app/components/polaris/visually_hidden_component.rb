@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class VisuallyHiddenComponent < Polaris::NewComponent
+  class VisuallyHiddenComponent < Polaris::Component
     def initialize
     end
 

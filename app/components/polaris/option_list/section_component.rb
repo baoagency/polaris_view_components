@@ -1,4 +1,4 @@
-class Polaris::OptionList::SectionComponent < Polaris::NewComponent
+class Polaris::OptionList::SectionComponent < Polaris::Component
   renders_many :options, Polaris::OptionList::OptionComponent
   renders_many :radio_buttons, ->(value:, **system_arguments) do
     Polaris::OptionList::RadioButtonComponent.new(

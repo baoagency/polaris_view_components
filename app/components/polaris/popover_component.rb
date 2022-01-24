@@ -1,5 +1,5 @@
 module Polaris
-  class PopoverComponent < Polaris::NewComponent
+  class PopoverComponent < Polaris::Component
     ALIGNMENT_DEFAULT = :center
     ALIGNMENT_OPTIONS = [:left, :right, :center]
 

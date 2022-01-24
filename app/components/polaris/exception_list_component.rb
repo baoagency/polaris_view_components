@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ExceptionListComponent < Polaris::NewComponent
+  class ExceptionListComponent < Polaris::Component
     renders_many :items, Polaris::ExceptionList::ItemComponent
 
     def initialize(**system_arguments)

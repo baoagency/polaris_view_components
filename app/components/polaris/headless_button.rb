@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class HeadlessButton < Polaris::NewComponent
+  class HeadlessButton < Polaris::Component
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => "",

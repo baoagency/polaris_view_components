@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class PageActionsComponent < Polaris::NewComponent
+  class PageActionsComponent < Polaris::Component
     DISTRIBUTION_DEFAULT = nil
     DISTRIBUTION_OPTIONS = [
       DISTRIBUTION_DEFAULT,

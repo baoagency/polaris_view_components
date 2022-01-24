@@ -1,4 +1,4 @@
-class Polaris::Card::HeaderComponent < Polaris::NewComponent
+class Polaris::Card::HeaderComponent < Polaris::Component
   def initialize(
     title: "",
     actions: [],

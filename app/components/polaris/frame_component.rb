@@ -1,5 +1,5 @@
 module Polaris
-  class FrameComponent < Polaris::NewComponent
+  class FrameComponent < Polaris::Component
     renders_one :top_bar, ->(**system_arguments) do
       Polaris::Frame::TopBarComponent.new(logo: @logo, **system_arguments)
     end

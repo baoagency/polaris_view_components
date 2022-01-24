@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class RadioButtonComponent < Polaris::NewComponent
+  class RadioButtonComponent < Polaris::Component
     def initialize(
       form: nil,
       attribute: nil,

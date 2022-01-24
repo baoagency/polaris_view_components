@@ -1,4 +1,4 @@
-class Polaris::IndexTable::ColumnComponent < Polaris::NewComponent
+class Polaris::IndexTable::ColumnComponent < Polaris::Component
   attr_reader :title, :flush
 
   def initialize(title, flush: false, **system_arguments, &block)

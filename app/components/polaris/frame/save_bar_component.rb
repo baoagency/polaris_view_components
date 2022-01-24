@@ -1,4 +1,4 @@
-class Polaris::Frame::SaveBarComponent < Polaris::NewComponent
+class Polaris::Frame::SaveBarComponent < Polaris::Component
   renders_one :save_action, ->(**system_arguments) do
     Polaris::ButtonComponent.new(primary: true, **system_arguments)
   end

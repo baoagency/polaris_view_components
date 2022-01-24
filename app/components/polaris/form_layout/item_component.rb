@@ -1,4 +1,4 @@
-class Polaris::FormLayout::ItemComponent < Polaris::NewComponent
+class Polaris::FormLayout::ItemComponent < Polaris::Component
   attr_reader :position
 
   def initialize(position:, **system_arguments)

@@ -2,7 +2,7 @@
 
 module Polaris
   module Layout
-    class AnnotatedSection < Polaris::NewComponent
+    class AnnotatedSection < Polaris::Component
       attr_reader :position
 
       def initialize(position:, title:, description: nil, **system_arguments)

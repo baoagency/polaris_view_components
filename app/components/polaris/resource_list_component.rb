@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ResourceListComponent < Polaris::NewComponent
+  class ResourceListComponent < Polaris::Component
     renders_one :filters, Polaris::FiltersComponent
 
     def initialize(

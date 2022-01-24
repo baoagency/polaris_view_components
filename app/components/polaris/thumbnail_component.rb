@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ThumbnailComponent < Polaris::NewComponent
+  class ThumbnailComponent < Polaris::Component
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
       small: "Polaris-Thumbnail--sizeSmall",

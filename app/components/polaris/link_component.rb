@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class LinkComponent < Polaris::NewComponent
+  class LinkComponent < Polaris::Component
     def initialize(
       url:,
       external: false,

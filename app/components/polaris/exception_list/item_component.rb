@@ -1,4 +1,4 @@
-class Polaris::ExceptionList::ItemComponent < Polaris::NewComponent
+class Polaris::ExceptionList::ItemComponent < Polaris::Component
   STATUS_DEFAULT = :default
   STATUS_MAPPINGS = {
     STATUS_DEFAULT => "",

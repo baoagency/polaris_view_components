@@ -1,5 +1,5 @@
 module Polaris
-  class BaseRadioButton < Polaris::NewComponent
+  class BaseRadioButton < Polaris::Component
     def initialize(
       form: nil,
       attribute: nil,

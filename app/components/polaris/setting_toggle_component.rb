@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class SettingToggleComponent < Polaris::NewComponent
+  class SettingToggleComponent < Polaris::Component
     renders_one :action, ->(**system_arguments) do
       Polaris::ButtonComponent.new(primary: !@enabled, **system_arguments)
     end

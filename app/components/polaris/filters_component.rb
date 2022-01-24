@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class FiltersComponent < Polaris::NewComponent
+  class FiltersComponent < Polaris::Component
     renders_one :query, ->(**system_arguments) do
       QueryComponent.new(disabled: @disabled, **system_arguments)
     end
@@ -34,7 +34,7 @@ module Polaris
       )
     end
 
-    class QueryComponent < Polaris::NewComponent
+    class QueryComponent < Polaris::Component
       def initialize(clear_button: true, disabled: false, **system_arguments)
         @disabled = disabled
         @system_arguments = system_arguments.merge(
@@ -52,7 +52,7 @@ module Polaris
       end
     end
 
-    class ItemComponent < Polaris::NewComponent
+    class ItemComponent < Polaris::Component
       def initialize(label:, sectioned: true, width: nil, disabled: false, **system_arguments)
         @label = label
         @sectioned = sectioned

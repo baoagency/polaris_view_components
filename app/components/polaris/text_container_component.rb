@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class TextContainerComponent < Polaris::NewComponent
+  class TextContainerComponent < Polaris::Component
     SPACING_DEFAULT = :default
     SPACING_MAPPINGS = {
       SPACING_DEFAULT => "",

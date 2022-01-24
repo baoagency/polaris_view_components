@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ProgressBarComponent < Polaris::NewComponent
+  class ProgressBarComponent < Polaris::Component
     COLOR_DEFAULT = :highlight
     COLOR_MAPPINGS = {
       COLOR_DEFAULT => "Polaris-ProgressBar--colorHighlight",

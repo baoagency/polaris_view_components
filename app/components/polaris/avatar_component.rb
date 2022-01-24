@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class AvatarComponent < Polaris::NewComponent
+  class AvatarComponent < Polaris::Component
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
       small: "Polaris-Avatar--sizeSmall",

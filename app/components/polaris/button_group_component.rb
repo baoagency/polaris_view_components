@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ButtonGroupComponent < Polaris::NewComponent
+  class ButtonGroupComponent < Polaris::Component
     SPACING_DEFAULT = :default
     SPACING_MAPPINGS = {
       SPACING_DEFAULT => "",
@@ -63,7 +63,7 @@ module Polaris
       all_items.sort_by(&:position)
     end
 
-    class ButtonGroupItemButtonComponent < Polaris::NewComponent
+    class ButtonGroupItemButtonComponent < Polaris::Component
       attr_reader :position
 
       def initialize(position:, **system_arguments)
@@ -87,7 +87,7 @@ module Polaris
       end
     end
 
-    class ButtonGroupItemComponent < Polaris::NewComponent
+    class ButtonGroupItemComponent < Polaris::Component
       attr_reader :position
 
       def initialize(position:, **system_arguments)

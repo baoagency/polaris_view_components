@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class FooterHelpComponent < Polaris::NewComponent
+  class FooterHelpComponent < Polaris::Component
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(

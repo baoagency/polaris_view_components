@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class SpacerComponent < Polaris::NewComponent
+  class SpacerComponent < Polaris::Component
     VERTICAL_SPACING_DEFAULT = :default
     VERTICAL_SPACING_MAPPINGS = {
       VERTICAL_SPACING_DEFAULT => "",

@@ -1,4 +1,4 @@
-class Polaris::OptionList::RadioButtonComponent < Polaris::NewComponent
+class Polaris::OptionList::RadioButtonComponent < Polaris::Component
   def initialize(
     label:,
     value:,

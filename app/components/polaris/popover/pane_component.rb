@@ -1,4 +1,4 @@
-class Polaris::Popover::PaneComponent < Polaris::NewComponent
+class Polaris::Popover::PaneComponent < Polaris::Component
   renders_many :sections, Polaris::Popover::SectionComponent
 
   def initialize(fixed: false, sectioned: false, **system_arguments)

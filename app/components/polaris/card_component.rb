@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class CardComponent < Polaris::NewComponent
+  class CardComponent < Polaris::Component
     FOOTER_ACTION_ALIGNMENT_DEFAULT = :right
     FOOTER_ACTION_ALIGNMENT_MAPPINGS = {
       FOOTER_ACTION_ALIGNMENT_DEFAULT => "",

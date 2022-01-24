@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class TextFieldComponent < Polaris::NewComponent
+  class TextFieldComponent < Polaris::Component
     TYPE_DEFAULT = :text
     TYPE_OPTIONS = %i[
       text number email password search tel url date
@@ -180,7 +180,7 @@ module Polaris
       @type == :number && !@disabled
     end
 
-    class Affix < Polaris::NewComponent
+    class Affix < Polaris::Component
       def initialize(icon: nil)
         @icon = icon
       end

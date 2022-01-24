@@ -1,4 +1,4 @@
-class Polaris::Navigation::ItemComponent < Polaris::NewComponent
+class Polaris::Navigation::ItemComponent < Polaris::Component
   renders_many :sub_items, Polaris::Navigation::ItemComponent
   renders_one :secondary_action, "SecondaryActionComponent"
 
@@ -47,7 +47,7 @@ class Polaris::Navigation::ItemComponent < Polaris::NewComponent
     sub_items.any?(&:selected)
   end
 
-  class SecondaryActionComponent < Polaris::NewComponent
+  class SecondaryActionComponent < Polaris::Component
     def initialize(url: nil, external: false, icon: nil, **system_arguments)
       @url = url
       @external = external

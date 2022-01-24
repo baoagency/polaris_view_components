@@ -1,4 +1,4 @@
-class Polaris::Tabs::TabComponent < Polaris::NewComponent
+class Polaris::Tabs::TabComponent < Polaris::Component
   renders_one :badge, Polaris::BadgeComponent
 
   def initialize(

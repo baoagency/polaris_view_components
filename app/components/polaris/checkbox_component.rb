@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class CheckboxComponent < Polaris::NewComponent
+  class CheckboxComponent < Polaris::Component
     include ActiveModel::Validations
 
     attr_reader :checked

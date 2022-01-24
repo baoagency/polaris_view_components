@@ -1,4 +1,4 @@
-class Polaris::IndexTable::CellComponent < Polaris::NewComponent
+class Polaris::IndexTable::CellComponent < Polaris::Component
   def initialize(flush: false, **system_arguments)
     @flush = flush
     @system_arguments = system_arguments

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ListComponent < Polaris::NewComponent
+  class ListComponent < Polaris::Component
     renders_many :items, "ListItemComponent"
 
     TYPE_DEFAULT = :bullet
@@ -28,7 +28,7 @@ module Polaris
       )
     end
 
-    class ListItemComponent < Polaris::NewComponent
+    class ListItemComponent < Polaris::Component
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :li

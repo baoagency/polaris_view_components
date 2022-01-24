@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class IconComponent < Polaris::NewComponent
+  class IconComponent < Polaris::Component
     COLOR_DEFAULT = :default
     COLOR_MAPPINGS = {
       COLOR_DEFAULT => "",

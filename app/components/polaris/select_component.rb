@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class SelectComponent < Polaris::NewComponent
+  class SelectComponent < Polaris::Component
     def initialize(
       options:,
       form: nil,

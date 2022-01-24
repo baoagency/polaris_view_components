@@ -1,5 +1,5 @@
 module Polaris
-  class OptionListComponent < Polaris::NewComponent
+  class OptionListComponent < Polaris::Component
     renders_many :sections, ->(**system_arguments) do
       Polaris::OptionList::SectionComponent.new(
         form: @form,

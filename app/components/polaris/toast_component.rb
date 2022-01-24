@@ -1,4 +1,4 @@
-class Polaris::ToastComponent < Polaris::NewComponent
+class Polaris::ToastComponent < Polaris::Component
   renders_one :action, ->(**system_arguments) do
     Polaris::ButtonComponent.new(plain: true, monochrome: true, **system_arguments)
   end

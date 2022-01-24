@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class BannerComponent < Polaris::NewComponent
+  class BannerComponent < Polaris::Component
     STATUS_DEFAULT = :default
     STATUS_MAPPINGS = {
       STATUS_DEFAULT => "",
@@ -72,7 +72,7 @@ module Polaris
       end
     end
 
-    class SecondaryAction < Polaris::NewComponent
+    class SecondaryAction < Polaris::Component
       def initialize(**system_arguments)
         @system_arguments = system_arguments
       end

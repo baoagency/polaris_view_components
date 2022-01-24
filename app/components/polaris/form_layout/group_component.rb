@@ -1,4 +1,4 @@
-class Polaris::FormLayout::GroupComponent < Polaris::NewComponent
+class Polaris::FormLayout::GroupComponent < Polaris::Component
   attr_reader :position
 
   renders_many :items, "GroupItemComponent"
@@ -22,7 +22,7 @@ class Polaris::FormLayout::GroupComponent < Polaris::NewComponent
     )
   end
 
-  class GroupItemComponent < Polaris::NewComponent
+  class GroupItemComponent < Polaris::Component
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "div"

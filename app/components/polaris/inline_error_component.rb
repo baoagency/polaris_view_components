@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class InlineErrorComponent < Polaris::NewComponent
+  class InlineErrorComponent < Polaris::Component
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "div"

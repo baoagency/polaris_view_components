@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class CalloutCardComponent < Polaris::NewComponent
+  class CalloutCardComponent < Polaris::Component
     renders_one :primary_action, Polaris::ButtonComponent
     renders_one :secondary_action, ->(plain: true, **system_arguments) do
       Polaris::ButtonComponent.new(plain: plain, **system_arguments)

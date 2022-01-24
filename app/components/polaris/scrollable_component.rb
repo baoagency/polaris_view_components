@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ScrollableComponent < Polaris::NewComponent
+  class ScrollableComponent < Polaris::Component
     def initialize(
       height: nil,
       width: nil,

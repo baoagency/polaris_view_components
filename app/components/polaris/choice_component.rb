@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ChoiceComponent < Polaris::NewComponent
+  class ChoiceComponent < Polaris::Component
     def initialize(
       label:,
       label_hidden:,

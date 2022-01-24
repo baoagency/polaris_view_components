@@ -1,4 +1,4 @@
-class Polaris::DataTable::ColumnComponent < Polaris::NewComponent
+class Polaris::DataTable::ColumnComponent < Polaris::Component
   SORT_DEFAULT = false
   SORT_OPTIONS = [false, :asc, :desc]
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class PageComponent < Polaris::NewComponent
+  class PageComponent < Polaris::Component
     renders_one :primary_action, ->(primary: true, **system_arguments) do
       Polaris::ButtonComponent.new(primary: primary, **system_arguments)
     end

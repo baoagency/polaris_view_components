@@ -1,4 +1,4 @@
-class Polaris::Modal::SectionComponent < Polaris::NewComponent
+class Polaris::Modal::SectionComponent < Polaris::Component
   def initialize(**system_arguments)
     @system_arguments = system_arguments
   end

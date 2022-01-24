@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class ResourceItemComponent < Polaris::NewComponent
+  class ResourceItemComponent < Polaris::Component
     CURSOR_DEFAULT = :default
     CURSOR_OPTIONS = %i[default pointer]
 

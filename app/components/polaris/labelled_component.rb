@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class LabelledComponent < Polaris::NewComponent
+  class LabelledComponent < Polaris::Component
     renders_one :label_action, ->(**system_arguments) do
       Polaris::ButtonComponent.new(plain: true, **system_arguments)
     end

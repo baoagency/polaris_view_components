@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class CaptionComponent < Polaris::NewComponent
+  class CaptionComponent < Polaris::Component
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "p"

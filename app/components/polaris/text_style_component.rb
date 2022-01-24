@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class TextStyleComponent < Polaris::NewComponent
+  class TextStyleComponent < Polaris::Component
     VARIATION_DEFAULT = :default
     VARIATION_MAPPINGS = {
       VARIATION_DEFAULT => "",

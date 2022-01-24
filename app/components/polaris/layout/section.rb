@@ -2,7 +2,7 @@
 
 module Polaris
   module Layout
-    class Section < Polaris::NewComponent
+    class Section < Polaris::Component
       attr_reader :position
 
       def initialize(

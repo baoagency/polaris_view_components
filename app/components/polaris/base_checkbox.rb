@@ -1,5 +1,5 @@
 module Polaris
-  class BaseCheckbox < Polaris::NewComponent
+  class BaseCheckbox < Polaris::Component
     def initialize(
       form: nil,
       attribute: nil,

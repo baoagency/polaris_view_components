@@ -2,7 +2,7 @@
 
 module Polaris
   # Lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
-  class DropzoneComponent < Polaris::NewComponent
+  class DropzoneComponent < Polaris::Component
     include ActiveModel::Validations
 
     SIZE_DEFAULT = :extra_large

@@ -1,4 +1,4 @@
-class Polaris::Navigation::SectionComponent < Polaris::NewComponent
+class Polaris::Navigation::SectionComponent < Polaris::Component
   renders_many :items, Polaris::Navigation::ItemComponent
   renders_one :action, "ActionComponent"
 
@@ -26,7 +26,7 @@ class Polaris::Navigation::SectionComponent < Polaris::NewComponent
     end
   end
 
-  class ActionComponent < Polaris::NewComponent
+  class ActionComponent < Polaris::Component
     def initialize(url: nil, external: false, icon: nil, **system_arguments)
       @url = url
       @external = external

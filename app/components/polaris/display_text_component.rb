@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Polaris
-  class DisplayTextComponent < Polaris::NewComponent
+  class DisplayTextComponent < Polaris::Component
     ELEMENT_DEFAULT = :p
     ELEMENT_OPTIONS = %i[p h1 h2 h3 h4 h5 h6]
 

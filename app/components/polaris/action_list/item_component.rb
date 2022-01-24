@@ -1,4 +1,4 @@
-class Polaris::ActionList::ItemComponent < Polaris::NewComponent
+class Polaris::ActionList::ItemComponent < Polaris::Component
   renders_one :prefix
   renders_one :suffix
 

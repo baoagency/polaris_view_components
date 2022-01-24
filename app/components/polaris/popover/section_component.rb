@@ -1,4 +1,4 @@
-class Polaris::Popover::SectionComponent < Polaris::NewComponent
+class Polaris::Popover::SectionComponent < Polaris::Component
   def initialize(**system_arguments)
     @system_arguments = system_arguments
   end
