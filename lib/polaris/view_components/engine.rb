@@ -38,7 +38,6 @@ module Polaris
         ActiveSupport.on_load(:action_controller_base) do
           helper Polaris::ViewHelper
           helper Polaris::UrlHelper
-          helper Polaris::ConditionalHelper
         end
       end
     end

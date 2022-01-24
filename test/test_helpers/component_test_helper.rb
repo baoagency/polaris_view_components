@@ -5,6 +5,5 @@ module Polaris
     include ActionView::Helpers::TagHelper
     include ViewComponent::TestHelpers
     include Polaris::ViewHelper
-    include Polaris::ConditionalHelper
   end
 end
