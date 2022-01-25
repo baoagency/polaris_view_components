@@ -58,6 +58,7 @@ module Polaris
       scrollable:               "Polaris::ScrollableComponent",
       spinner:                  "Polaris::SpinnerComponent",
       skeleton_body_text:       "Polaris::SkeletonBodyTextComponent",
+      skeleton_thumbnail:       "Polaris::SkeletonThumbnailComponent",
       spacer:                   "Polaris::SpacerComponent",
       tabs:                     "Polaris::TabsComponent",
       tag:                      "Polaris::TagComponent",
