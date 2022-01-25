@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     "public gem pushes."
   end
 
-  spec.files = Dir["lib/**/*", "app/**/*", "LICENSE.txt", "README.md"]
+  spec.files = Dir["lib/**/*", "app/**/*", "config/**/*", "LICENSE.txt", "README.md"]
 
   spec.required_ruby_version = ">= 2.7.0"
   spec.add_dependency "rails", [">= 5.0.0", "< 8.0.0"]
