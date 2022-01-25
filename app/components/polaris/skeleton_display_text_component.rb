@@ -1,10 +1,11 @@
 module Polaris
-  class SkeletonThumbnailComponent < Polaris::Component
+  class SkeletonDisplayTextComponent < Polaris::Component
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
-      small: "Polaris-SkeletonThumbnail--sizeSmall",
-      medium: "Polaris-SkeletonThumbnail--sizeMedium",
-      large: "Polaris-SkeletonThumbnail--sizeLarge"
+      small: "Polaris-SkeletonDisplayText--sizeSmall",
+      medium: "Polaris-SkeletonDisplayText--sizeMedium",
+      large: "Polaris-SkeletonDisplayText--sizeLarge",
+      extra_large: "Polaris-SkeletonDisplayText--sizeExtraLarge"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -18,7 +19,7 @@ module Polaris
         opts[:tag] = "div"
         opts[:classes] = class_names(
           @system_arguments[:classes],
-          "Polaris-SkeletonThumbnail",
+          "Polaris-SkeletonDisplayText__DisplayText",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, SIZE_DEFAULT)]
         )
       end
