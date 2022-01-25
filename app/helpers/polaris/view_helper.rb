@@ -34,6 +34,7 @@ module Polaris
       icon:                     "Polaris::IconComponent",
       index_table:              "Polaris::IndexTableComponent",
       inline_error:             "Polaris::InlineErrorComponent",
+      keyboard_key:             "Polaris::KeyboardKeyComponent",
       layout:                   "Polaris::LayoutComponent",
       link:                     "Polaris::LinkComponent",
       list:                     "Polaris::ListComponent",
