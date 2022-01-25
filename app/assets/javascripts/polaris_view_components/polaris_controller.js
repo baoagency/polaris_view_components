@@ -17,6 +17,10 @@ export default class extends Controller {
     this.findElement("toast").show()
   }
 
+  toggleCollapsible() {
+    this.findElement("collapsible").toggle()
+  }
+
   // Private
 
   findElement(type) {

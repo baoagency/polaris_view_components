@@ -1,5 +1,6 @@
 import Autocomplete from './autocomplete_controller'
 import Button from './button_controller'
+import Collapsible from './collapsible_controller'
 import Dropzone from './dropzone_controller'
 import Frame from './frame_controller'
 import Modal from './modal_controller'
@@ -17,6 +18,7 @@ export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextF
 export function registerPolarisControllers(application) {
   application.register('polaris-autocomplete', Autocomplete)
   application.register('polaris-button', Button)
+  application.register('polaris-collapsible', Collapsible)
   application.register('polaris-dropzone', Dropzone)
   application.register('polaris-frame', Frame)
   application.register('polaris-modal', Modal)
