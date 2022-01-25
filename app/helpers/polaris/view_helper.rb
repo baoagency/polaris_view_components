@@ -19,6 +19,7 @@ module Polaris
       checkbox:                 "Polaris::CheckboxComponent",
       check_box:                "Polaris::CheckboxComponent",
       choice_list:              "Polaris::ChoiceListComponent",
+      collapsible:              "Polaris::CollapsibleComponent",
       data_table:               "Polaris::DataTableComponent",
       description_list:         "Polaris::DescriptionListComponent",
       display_text:             "Polaris::DisplayTextComponent",

@@ -165,6 +165,23 @@ class Button extends Controller {
   }
 }
 
+class Collapsible extends Controller {
+  toggle() {
+    if (this.isClosed) {
+      this.element.style.maxHeight = "none";
+      this.element.style.overflow = "visible";
+      this.element.classList.remove("Polaris-Collapsible--isFullyClosed");
+    } else {
+      this.element.style.maxHeight = "0px";
+      this.element.style.overflow = "hidden";
+      this.element.classList.add("Polaris-Collapsible--isFullyClosed");
+    }
+  }
+  get isClosed() {
+    return this.element.classList.contains("Polaris-Collapsible--isFullyClosed");
+  }
+}
+
 const dragEvents = [ "dragover", "dragenter", "drop" ];
 
 const SIZES = {
@@ -802,6 +819,9 @@ class Polaris extends Controller {
   }
   showToast() {
     this.findElement("toast").show();
+  }
+  toggleCollapsible() {
+    this.findElement("collapsible").toggle();
   }
   findElement(type) {
     const targetId = this.element.dataset.target.replace("#", "");
@@ -2492,6 +2512,7 @@ class Toast extends Controller {
 function registerPolarisControllers(application) {
   application.register("polaris-autocomplete", Autocomplete);
   application.register("polaris-button", Button);
+  application.register("polaris-collapsible", Collapsible);
   application.register("polaris-dropzone", Dropzone);
   application.register("polaris-frame", Frame);
   application.register("polaris-modal", Modal);

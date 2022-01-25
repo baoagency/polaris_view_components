@@ -1,0 +1,27 @@
+<div style="height: 200px">
+  <%= polaris_card do %>
+    <%= polaris_stack(vertical: :true) do |stack| %>
+      <% stack.item do %>
+        <%= polaris_button(
+          data: {
+            controller: "polaris",
+            target: "#collapsible-block",
+            action: "polaris#toggleCollapsible"
+          }
+        ) { "Toggle" } %>
+      <% end %>
+      <% stack.item do %>
+        <%= polaris_collapsible(id: "collapsible-block") do %>
+          <%= polaris_text_container do %>
+            <p>
+              Your mailing list lets you contact customers or visitors who
+              have shown an interest in your store. Reach out to them with
+              exclusive offers or updates about your products.
+            </p>
+            <%= polaris_link(url: "#") { "Test link" } %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
