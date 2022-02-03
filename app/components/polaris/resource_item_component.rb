@@ -29,6 +29,7 @@ module Polaris
     def initialize(
       url: nil,
       vertical_alignment: ALIGNMENT_DEFAULT,
+      cursor: CURSOR_DEFAULT,
       selectable: false,
       offset: false,
       wrapper_arguments: {},
@@ -37,6 +38,7 @@ module Polaris
     )
       @url = url
       @vertical_alignment = vertical_alignment
+      @cursor = fetch_or_fallback(CURSOR_OPTIONS, cursor, CURSOR_DEFAULT)
       @selectable = selectable
       @offset = offset
       @wrapper_arguments = wrapper_arguments
@@ -79,7 +81,7 @@ module Polaris
           "Polaris-ResourceItem",
           "Polaris-ResourceItem--selectable": @selectable
         )
-        prepend_option(args, :style, "cursor: #{cursor};")
+        prepend_option(args, :style, "cursor: #{@cursor};")
         prepend_option(args[:data], :action, "click->polaris-resource-item#open")
       end
     end
