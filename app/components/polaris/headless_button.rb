@@ -20,7 +20,7 @@ module Polaris
     TEXT_ALIGN_OPTIONS = TEXT_ALIGN_MAPPINGS.keys
 
     DISCLOSURE_DEFAULT = false
-    DISCLOSURE_OPTIONS = [true, false, :down, :up, :select]
+    DISCLOSURE_OPTIONS = [true, false, :down, :up, :select, :horizontal_dots]
 
     renders_one :icon, IconComponent
 
