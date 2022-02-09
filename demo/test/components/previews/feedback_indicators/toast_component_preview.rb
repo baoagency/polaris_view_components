@@ -18,4 +18,7 @@ class FeedbackIndicators::ToastComponentPreview < ViewComponent::Preview
 
   def long_page
   end
+
+  def multiline
+  end
 end
