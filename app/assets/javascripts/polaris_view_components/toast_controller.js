@@ -37,8 +37,10 @@ export default class extends Controller {
   }
 
   getStyle(position) {
-    const translateIn = -80 * position
-    const translateOut = 150 - (80 * position)
+    const height = this.element.offsetHeight + this.heightOffset
+    const translateIn = height * -1
+    const translateOut = 150 - height
+
     return `--toast-translate-y-in: ${translateIn}px; --toast-translate-y-out: ${translateOut}px;`
   }
 
@@ -64,5 +66,14 @@ export default class extends Controller {
 
   get position() {
     return this.visibleToasts.filter(el => !this.element.isEqualNode(el)).length + 1
+  }
+
+  get heightOffset() {
+    return this.visibleToasts
+      .filter(el => {
+        return !this.element.isEqualNode(el) && this.element.dataset.position > el.dataset.position
+      })
+      .map(el => el.offsetHeight)
+      .reduce((a, b) => a + b, 0)
   }
 }
