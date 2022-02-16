@@ -22,6 +22,6 @@ Gem::Specification.new do |spec|
   spec.files = Dir["lib/**/*", "app/**/*", "config/**/*", "LICENSE.txt", "README.md"]
 
   spec.required_ruby_version = ">= 2.7.0"
-  spec.add_dependency "rails", [">= 5.0.0", "< 8.0.0"]
-  spec.add_dependency "view_component", [">= 2.0.0", "< 3.0"]
+  spec.add_dependency "rails", ">= 5.0.0"
+  spec.add_dependency "view_component", ">= 2.0.0"
 end
