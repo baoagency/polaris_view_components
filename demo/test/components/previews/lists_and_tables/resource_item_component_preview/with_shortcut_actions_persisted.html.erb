@@ -1,0 +1,12 @@
+<% shortcut_actions = [
+  { content: 'View customer', url: '#' },
+  { content: 'Print invoice', url: '#' },
+] %>
+
+<%= polaris_card(sectioned: false) do %>
+  <%= polaris_resource_list do %>
+    <%= polaris_resource_item(shortcut_actions: shortcut_actions, persist_actions: true) do %>
+      <p>Content</p>
+    <% end %>
+  <% end %>
+<% end %>

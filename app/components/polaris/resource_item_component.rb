@@ -32,6 +32,8 @@ module Polaris
       cursor: CURSOR_DEFAULT,
       selectable: false,
       offset: false,
+      shortcut_actions: [],
+      persist_actions: false,
       wrapper_arguments: {},
       container_arguments: {},
       **system_arguments
@@ -41,6 +43,14 @@ module Polaris
       @cursor = fetch_or_fallback(CURSOR_OPTIONS, cursor, CURSOR_DEFAULT)
       @selectable = selectable
       @offset = offset
+      @shortcut_actions = shortcut_actions.map do |action|
+        if persist_actions
+          action.merge(plain: true)
+        else
+          action.merge(size: :slim)
+        end
+      end
+      @persist_actions = persist_actions
       @wrapper_arguments = wrapper_arguments
       @container_arguments = container_arguments
       @system_arguments = system_arguments
@@ -79,7 +89,8 @@ module Polaris
         args[:classes] = class_names(
           args[:classes],
           "Polaris-ResourceItem",
-          "Polaris-ResourceItem--selectable": @selectable
+          "Polaris-ResourceItem--selectable": @selectable,
+          "Polaris-ResourceItem--persistActions": @persist_actions
         )
         prepend_option(args, :style, "cursor: #{@cursor};")
         prepend_option(args[:data], :action, "click->polaris-resource-item#open")

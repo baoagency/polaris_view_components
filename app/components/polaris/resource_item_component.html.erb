@@ -7,7 +7,8 @@
           tabindex="0"
           href="<%= @url %>"
           data-polaris-unstyled="true"
-          data-polaris-resource-item-target="link"></a>
+          data-polaris-resource-item-target="link"
+        ></a>
       <% end %>
 
       <%= render(Polaris::BaseComponent.new(**container_arguments)) do %>
@@ -28,9 +29,20 @@
             <% end %>
           <% end %>
         <% end %>
+
         <div class="Polaris-ResourceItem__Content">
           <%= content %>
         </div>
+
+        <% if @shortcut_actions.present? %>
+          <div class="Polaris-ResourceItem__Actions">
+            <%= polaris_button_group(segmented: true) do |group| %>
+              <% @shortcut_actions.each do |action| %>
+                <%= group.button(**action) { action[:content] } %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
