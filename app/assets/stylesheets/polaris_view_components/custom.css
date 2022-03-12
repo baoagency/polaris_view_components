@@ -137,5 +137,9 @@ a.Polaris-Tag__Button {
     align-items: center;
     text-align: center;
     justify-content: center;
+
+    .Polaris-Spinner--sizeSmall {
+      height: 20px;
+    }
   }
 }

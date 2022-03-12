@@ -2343,3 +2343,6 @@ a.Polaris-Tag__Button {
     text-align: center;
     justify-content: center;
   }
+.Polaris-DropZone__Loader .Polaris-Spinner--sizeSmall {
+      height: 20px;
+    }
