@@ -37,8 +37,7 @@
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
     "rollup": "^2.63.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "stimulus-use": "^0.41.0"
+    "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
