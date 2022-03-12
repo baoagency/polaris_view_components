@@ -173,9 +173,14 @@ export default class extends Controller {
     const dropzone = target.closest('.Polaris-DropZone')
     if (!dropzone) return
 
-    const content = dropzone.querySelector(`[data-file-name="${file.name}"]`)
-    const progressBar = content.parentElement.querySelector('[data-target="progress-bar"]')
-    progressBar.id = `direct-upload-${id}`
+    if (this.sizeValue == 'small') {
+      this.clearFiles()
+      this.loaderTarget.classList.remove("Polaris--hidden")
+    } else {
+      const content = dropzone.querySelector(`[data-file-name="${file.name}"]`)
+      const progressBar = content.parentElement.querySelector('[data-target="progress-bar"]')
+      progressBar.id = `direct-upload-${id}`
+    }
   }
 
   onDirectUploadStart = (event) => {
