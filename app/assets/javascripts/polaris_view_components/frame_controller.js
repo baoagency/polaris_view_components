@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { useTransition } from "stimulus-use"
+import { useTransition } from "./utils"
 
 export default class extends Controller {
   static targets = ["navigationOverlay", "navigation", "saveBar"]
