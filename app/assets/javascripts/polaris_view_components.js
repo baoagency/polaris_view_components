@@ -459,6 +459,7 @@ class Dropzone extends Controller {
   onDirectUploadsEnd=() => {
     this.enable();
     this.clearFiles();
+    if (this.acceptedFiles.length === 0) return;
     this.loaderTarget.classList.remove("Polaris--hidden");
   };
   onDirectUploadInitialize=event => {
@@ -466,6 +467,7 @@ class Dropzone extends Controller {
     const {id: id, file: file} = detail;
     const dropzone = target.closest(".Polaris-DropZone");
     if (!dropzone) return;
+    if (this.acceptedFiles.length === 0) return;
     if (this.sizeValue == "small") {
       this.clearFiles();
       this.loaderTarget.classList.remove("Polaris--hidden");
