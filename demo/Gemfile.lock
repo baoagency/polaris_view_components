@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    polaris_view_components (0.9.0)
+    polaris_view_components (0.9.1)
       rails (>= 5.0.0)
       view_component (>= 2.0.0)
 
@@ -132,6 +132,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.0-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.0-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.0-x86_64-linux)
       racc (~> 1.4)
     pry (0.14.1)
@@ -213,6 +215,7 @@ GEM
 PLATFORMS
   arm64-darwin-20
   arm64-darwin-21
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
