@@ -267,6 +267,7 @@ export default class extends Controller {
       this.toggleErrorOverlay(true)
 
       const dropRejectedEvent = new CustomEvent('polaris-dropzone:drop-rejected', {
+        bubbles: true,
         detail: { rejectedFiles: this.rejectedFiles }
       })
       this.element.dispatchEvent(dropRejectedEvent)
@@ -279,12 +280,14 @@ export default class extends Controller {
       this.toggleErrorOverlay(false)
 
       const dropAcceptedEvent = new CustomEvent('polaris-dropzone:drop-accepted', {
+        bubbles: true,
         detail: {acceptedFiles: this.acceptedFiles }
       })
       this.element.dispatchEvent(dropAcceptedEvent)
     }
 
     const dropEvent = new CustomEvent('polaris-dropzone:drop', {
+      bubbles: true,
       detail: {
         files: this.files,
         acceptedFiles: this.acceptedFiles,
