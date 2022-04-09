@@ -2,6 +2,9 @@ class Structure::PageComponentPreview < ViewComponent::Preview
   def default
   end
 
+  def page_with_all_header_elements
+  end
+
   def page_with_subtitle
   end
 

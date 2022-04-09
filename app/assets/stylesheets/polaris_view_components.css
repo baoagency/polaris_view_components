@@ -2353,3 +2353,17 @@ a.Polaris-Tag__Button {
 .Polaris-DropZone__Loader .Polaris-Spinner--sizeSmall {
       height: 20px;
     }
+/* ActionMenu */
+@media (min-width: 768px){
+.Polaris-ActionMenu--mobile {
+      display: none
+  }
+    }
+.Polaris-ActionMenu--desktop {
+    display: none;
+  }
+@media (min-width: 768px){
+.Polaris-ActionMenu--desktop {
+      display: block
+  }
+    }

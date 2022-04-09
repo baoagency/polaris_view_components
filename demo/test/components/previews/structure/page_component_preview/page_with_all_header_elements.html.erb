@@ -1,0 +1,26 @@
+<%= polaris_page(
+  title: "3/4 inch Leather pet collar",
+  subtitle: "Perfect for any pet",
+  compact_title: true,
+  back_url: "/products",
+  next_url: "/product/2",
+  secondary_actions: [
+    { content: "Duplicate", url: "/duplicate" },
+  ]
+) do |page| %>
+  <% page.title_metadata do %>
+    <%= polaris_badge(status: :success) { "Paid" } %>
+  <% end %>
+  <% page.primary_action(disabled: true) { "Save" } %>
+  <% page.action_group(
+    title: "Promote",
+    actions: [
+      { content: "Share on Facebook", url: "https://facebook.com" },
+      { content: "Share on Twitter", url: "https://twitter.com" },
+    ]
+  ) %>
+
+  <%= polaris_card(title: "Credit card") do %>
+    <p>Credit card information</p>
+  <% end %>
+<% end %>

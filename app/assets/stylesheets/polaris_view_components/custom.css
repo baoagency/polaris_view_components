@@ -152,3 +152,20 @@ a.Polaris-Tag__Button {
     }
   }
 }
+
+/* ActionMenu */
+.Polaris-ActionMenu {
+  &--mobile {
+    @media (min-width: 768px){
+      display: none;
+    }
+  }
+
+  &--desktop {
+    display: none;
+
+    @media (min-width: 768px){
+      display: block;
+    }
+  }
+}
