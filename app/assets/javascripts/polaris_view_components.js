@@ -545,6 +545,7 @@ class Dropzone extends Controller {
       this.toggleFileUpload(false);
       this.toggleErrorOverlay(true);
       const dropRejectedEvent = new CustomEvent("polaris-dropzone:drop-rejected", {
+        bubbles: true,
         detail: {
           rejectedFiles: this.rejectedFiles
         }
@@ -557,6 +558,7 @@ class Dropzone extends Controller {
       }
       this.toggleErrorOverlay(false);
       const dropAcceptedEvent = new CustomEvent("polaris-dropzone:drop-accepted", {
+        bubbles: true,
         detail: {
           acceptedFiles: this.acceptedFiles
         }
@@ -564,6 +566,7 @@ class Dropzone extends Controller {
       this.element.dispatchEvent(dropAcceptedEvent);
     }
     const dropEvent = new CustomEvent("polaris-dropzone:drop", {
+      bubbles: true,
       detail: {
         files: this.files,
         acceptedFiles: this.acceptedFiles,
