@@ -6,11 +6,6 @@
 /tmp/
 .byebug_history
 /node_modules/
-/test/dummy/db/*.sqlite3
-/test/dummy/db/*.sqlite3-*
-/test/dummy/log/*.log
-/test/dummy/storage/
-/test/dummy/tmp/
 /.idea
 
 # demo app
@@ -19,3 +14,6 @@
 /demo/config/master.key
 /demo/public/packs/
 /demo/public/assets/
+/demo/db/*.sqlite3
+/demo/db/*.sqlite3-*
+/demo/log/*.log
