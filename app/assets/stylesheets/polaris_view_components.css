@@ -2325,6 +2325,13 @@ a.Polaris-Tag__Button {
       text-align: center;
       justify-content: center;
     }
+.Polaris-DropZone__Preview--sizeMedium {
+      justify-content: center;
+      text-align: center;
+    }
+.Polaris-DropZone__Preview--sizeMedium .Polaris-Stack.Polaris-Stack--alignmentCenter {
+        justify-content: center;
+      }
 .Polaris-DropZone__Preview--sizeSmall {
       padding: 0;
       justify-content: center;

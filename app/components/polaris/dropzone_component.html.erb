@@ -4,10 +4,12 @@
       class="Polaris-DropZone__Overlay Polaris-VisuallyHidden"
       data-polaris-dropzone-target="overlay"
     >
-      <%= render Polaris::StackComponent.new(vertical: true, spacing: :tight) do |stack| %>
-        <% stack.item do %>
-          <%= render Polaris::DisplayTextComponent.new(size: :small) do %>
-            <%= @overlay_text %>
+      <% unless @size == :small %>
+        <%= render Polaris::StackComponent.new(vertical: true, spacing: :tight) do |stack| %>
+          <% stack.item do %>
+            <%= render Polaris::DisplayTextComponent.new(size: :small) do %>
+              <%= @overlay_text %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
@@ -86,7 +88,8 @@
         class: [
           "Polaris-DropZone__Preview",
           "Polaris-DropZone__Preview--singleFile": !@multiple,
-          "Polaris-DropZone__Preview--sizeSmall": @size == :small
+          "Polaris-DropZone__Preview--sizeMedium": @size == :medium,
+          "Polaris-DropZone__Preview--sizeSmall": @size == :small,
         ]
       ) do %>
         <% if @size.in?(%i[small]) %>
