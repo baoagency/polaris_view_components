@@ -105,7 +105,7 @@ module Polaris
         tag: "div",
         data: {
           polaris_text_field_has_value_class: "Polaris-TextField--hasValue",
-          polaris_text_field_clear_button_hidden_class: "Polaris-TextField__ClearButton--hidden"
+          polaris_text_field_clear_button_hidden_class: "Polaris-TextField__Hidden"
         }
       }.deep_merge(@system_arguments).tap do |opts|
         opts[:classes] = class_names(
