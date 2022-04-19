@@ -1,0 +1,37 @@
+require "application_system_test_case"
+
+class TextFieldComponentSystemTest < ApplicationSystemTestCase
+  def test_number_field
+    with_preview("forms/text_field_component/number")
+
+    assert_field "Quantity", with: "1.34"
+
+    # Increase value
+    find("[data-action='click->polaris-text-field#increase']").click
+    assert_field "Quantity", with: "2.34"
+
+    # Decrease value
+    find("[data-action='click->polaris-text-field#decrease']").click
+    assert_field "Quantity", with: "1.34"
+  end
+
+  def test_character_count
+    with_preview("forms/text_field_component/with_character_count")
+
+    assert_field "Store name", with: "Jaded Pixel"
+    assert_selector ".Polaris-TextField__CharacterCount", text: "11/20"
+
+    fill_in "Store name", with: "Brand New Store Name"
+    assert_selector ".Polaris-TextField__CharacterCount", text: "20/20"
+  end
+
+  def test_clear_button
+    with_preview("forms/text_field_component/with_clear_button")
+
+    assert_field "Store name", with: "Jaded Pixel"
+
+    find(".Polaris-TextField__ClearButton").click
+    assert_field "Store name", with: ""
+    assert_no_selector ".Polaris-TextField__ClearButton"
+  end
+end

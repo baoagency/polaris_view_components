@@ -116,6 +116,15 @@ a.Polaris-Tag__Button {
       justify-content: center;
     }
 
+    &--sizeMedium {
+      justify-content: center;
+      text-align: center;
+
+      .Polaris-Stack.Polaris-Stack--alignmentCenter {
+        justify-content: center;
+      }
+    }
+
     &--sizeSmall {
       padding: 0;
       justify-content: center;

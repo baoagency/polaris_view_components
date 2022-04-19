@@ -22,6 +22,14 @@ Gem::Specification.new do |spec|
   spec.files = Dir["lib/**/*", "app/**/*", "config/**/*", "LICENSE.txt", "README.md"]
 
   spec.required_ruby_version = ">= 2.7.0"
-  spec.add_dependency "rails", ">= 5.0.0"
-  spec.add_dependency "view_component", ">= 2.0.0"
+
+  spec.add_runtime_dependency "rails", ">= 5.0.0"
+  spec.add_runtime_dependency "view_component", ">= 2.0.0"
+
+  spec.add_development_dependency "capybara", "~> 3"
+  spec.add_development_dependency "webdrivers", "~> 5.0"
+  spec.add_development_dependency "selenium-webdriver", "~> 4.1"
+  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "sprockets-rails"
 end
