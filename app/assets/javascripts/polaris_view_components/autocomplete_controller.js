@@ -81,10 +81,7 @@ export default class extends Controller {
   }
 
   get visibleOptions() {
-    // this.optionTargets returns a NodeList so we have to convert it to an array
-    const optionsArray = [...this.optionTargets]
-
-    return optionsArray.filter(option => {
+    return [...this.optionTargets].filter(option => {
       return !option.classList.contains('Polaris--hidden')
     })
   }
