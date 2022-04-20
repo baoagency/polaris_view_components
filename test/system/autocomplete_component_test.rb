@@ -71,4 +71,18 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     find(".Polaris-TextField__Input").set "Unknown"
     assert_selector ".Polaris-Autocomplete__EmptyState", text: "Could not find any results"
   end
+
+  def test_event_handler
+    with_preview("forms/autocomplete_component/event_handler")
+
+    # Open autocomplete
+    find(".Polaris-TextField__Input").click
+    assert_selector ".Polaris-OptionList-Option", text: "Rustic"
+
+    # Select Vinyl
+    accept_alert "Selected vinyl" do
+      find(".Polaris-OptionList-Option", text: "Vinyl").click
+    end
+    assert_selector ".Polaris-OptionList-Option--select", text: "Vinyl"
+  end
 end
