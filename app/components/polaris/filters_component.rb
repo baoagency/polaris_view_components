@@ -74,7 +74,9 @@ module Polaris
       def popover_arguments
         {
           sectioned: @sectioned,
-          style: ("width: #{@width}" if @width.present?)
+          style: ("width: #{@width}" if @width.present?),
+          position: :below,
+          alignment: :left
         }
       end
 
