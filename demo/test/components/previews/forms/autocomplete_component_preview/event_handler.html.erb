@@ -1,0 +1,20 @@
+<%= polaris_autocomplete(id: "autocomplete") do |autocomplete| %>
+  <% autocomplete.text_field(name: :tags, label: "Tags", placeholder: "Search") do |c| %>
+    <% c.prefix do %>
+      <%= polaris_icon(name: "SearchMinor") %>
+    <% end %>
+  <% end %>
+
+  <% autocomplete.option(label: "Rustic", value: "rustic") %>
+  <% autocomplete.option(label: "Antique", value: "antique") %>
+  <% autocomplete.option(label: "Vinyl", value: "vinyl") %>
+  <% autocomplete.option(label: "Vintage", value: "vintage") %>
+  <% autocomplete.option(label: "Refurbished", value: "refurbished") %>
+<% end %>
+
+<script>
+  const element = document.getElementById('autocomplete');
+  element.addEventListener('polaris-autocomplete:change', ({detail}) => {
+    alert(`Selected ${detail.value}`);
+  });
+</script>

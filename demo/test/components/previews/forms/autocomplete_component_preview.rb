@@ -16,4 +16,7 @@ class Forms::AutocompleteComponentPreview < ViewComponent::Preview
 
   def empty_state
   end
+
+  def event_handler
+  end
 end
