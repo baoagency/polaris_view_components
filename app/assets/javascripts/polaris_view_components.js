@@ -2402,7 +2402,11 @@ class TextField extends Controller {
     this.valueValue = this.inputTarget.value;
   }
   clear() {
+    const oldValue = this.value;
     this.value = null;
+    if (this.value != oldValue) {
+      this.inputTarget.dispatchEvent(new Event("change"));
+    }
   }
   increase() {
     this.changeNumber(1);
