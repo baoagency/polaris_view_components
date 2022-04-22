@@ -26,7 +26,12 @@ export default class extends Controller {
   }
 
   clear() {
+    const oldValue = this.value
     this.value = null
+
+    if (this.value != oldValue) {
+      this.inputTarget.dispatchEvent(new Event('change'))
+    }
   }
 
   increase() {
