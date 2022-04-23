@@ -169,3 +169,10 @@ a.Polaris-Tag__Button {
     }
   }
 }
+
+/* Page Pagination */
+@media (max-width: 768px){
+  .Polaris-Page-Header__PaginationWrapper {
+    display: none;
+  }
+}

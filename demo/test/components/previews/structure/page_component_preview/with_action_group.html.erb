@@ -1,0 +1,13 @@
+<%= polaris_page(title: "Products") do |page| %>
+  <% page.action_group(
+    title: "Promote",
+    actions: [
+      { content: "Share on Facebook", url: "https://facebook.com" },
+      { content: "Share on Twitter", url: "https://twitter.com" },
+    ]
+  ) %>
+
+  <%= polaris_card(title: "Credit card") do %>
+    <p>Credit card information</p>
+  <% end %>
+<% end %>

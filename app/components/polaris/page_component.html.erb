@@ -81,9 +81,10 @@
                     <%= polaris_button_group(spacing: :extra_tight) do |group| %>
                       <% @secondary_actions.each do |action| %>
                         <% group.item do %>
-                          <span class="Polaris-ActionMenu-SecondaryAction">
+                          <% destructive = action.delete(:destructive) %>
+                          <% tag.span(class: ["Polaris-ActionMenu-SecondaryAction", "Polaris-ActionMenu-SecondaryAction--destructive": destructive]) do %>
                             <%= polaris_button(**action) { action[:content] } %>
-                          </span>
+                          <% end %>
                         <% end %>
                       <% end %>
                       <% if action_group.present? %>
