@@ -5,6 +5,7 @@ class Polaris::ActionList::ItemComponent < Polaris::Component
   def initialize(
     url: nil,
     icon: nil,
+    icon_name: nil,
     help_text: nil,
     active: false,
     destructive: false,
@@ -12,7 +13,7 @@ class Polaris::ActionList::ItemComponent < Polaris::Component
     **system_arguments
   )
     @url = url
-    @icon = icon
+    @icon = icon || icon_name
     @help_text = help_text
     @active = active
     @destructive = destructive

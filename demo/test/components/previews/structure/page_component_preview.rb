@@ -14,6 +14,9 @@ class Structure::PageComponentPreview < ViewComponent::Preview
   def with_subtitle
   end
 
+  def with_external_link
+  end
+
   def with_thumbnail
   end
 
