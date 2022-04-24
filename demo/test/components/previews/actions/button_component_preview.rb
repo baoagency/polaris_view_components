@@ -62,6 +62,9 @@ class Actions::ButtonComponentPreview < ViewComponent::Preview
   def icon_only
   end
 
+  def with_icon_name
+  end
+
   def external
   end
 end
