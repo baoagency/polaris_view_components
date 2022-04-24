@@ -95,7 +95,7 @@ GEM
     loofah (2.16.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lookbook (0.7.4)
+    lookbook (0.8.1)
       actioncable
       htmlbeautifier (~> 1.3)
       listen (~> 3.0)
@@ -186,7 +186,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    view_component (2.52.0)
+    view_component (2.53.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     web-console (4.2.0)
