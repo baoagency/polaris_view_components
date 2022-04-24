@@ -5,9 +5,9 @@
     </span>
   <% end %>
 
-  <% if icon.present? %>
+  <% if icon.present? || @icon_name.present? %>
     <div class="Polaris-Button__Icon">
-      <%= icon %>
+      <%= icon || polaris_icon(name: @icon_name) %>
     </div>
     <% if content.present? %>
       &nbsp;

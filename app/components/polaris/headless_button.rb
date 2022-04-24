@@ -42,6 +42,7 @@ module Polaris
       remove_underline: false,
       size: SIZE_DEFAULT,
       text_align: TEXT_ALIGN_DEFAULT,
+      icon_name: nil,
       **system_arguments
     )
       @tag = url.present? ? "a" : "button"
@@ -52,6 +53,7 @@ module Polaris
       @loading = loading
       @disclosure = fetch_or_fallback(DISCLOSURE_OPTIONS, disclosure, DISCLOSURE_DEFAULT)
       @disclosure = :down if @disclosure === true
+      @icon_name = icon_name
 
       @system_arguments = system_arguments
       @system_arguments[:type] = submit ? "submit" : "button"
@@ -92,7 +94,7 @@ module Polaris
     def system_arguments
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Button--iconOnly": icon.present? && content.blank?
+        "Polaris-Button--iconOnly": (icon.present? || @icon_name.present?) && content.blank?
       )
       @system_arguments
     end
