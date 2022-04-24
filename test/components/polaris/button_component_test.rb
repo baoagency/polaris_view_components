@@ -129,6 +129,22 @@ class ButtonComponentTest < Minitest::Test
     end
   end
 
+  def test_icon_shortcut
+    render_inline(Polaris::ButtonComponent.new(icon_name: "CirclePlusMajor"))
+    assert_selector "button.Polaris-Button--iconOnly" do
+      assert_selector ".Polaris-Button__Icon > .Polaris-Icon"
+    end
+
+    render_inline(Polaris::ButtonComponent.new(icon_name: "CirclePlusMajor")) do
+      "Button"
+    end
+
+    assert_selector "button.Polaris-Button > .Polaris-Button__Content" do
+      assert_selector ".Polaris-Button__Icon > .Polaris-Icon > svg.Polaris-Icon__Svg"
+      assert_selector ".Polaris-Button__Text", text: "Button"
+    end
+  end
+
   def test_external_button
     render_inline(Polaris::ButtonComponent.new(external: true, url: "https://shopify.com")) { "Button" }
 
