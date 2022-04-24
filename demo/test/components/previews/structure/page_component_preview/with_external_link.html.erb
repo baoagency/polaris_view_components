@@ -1,0 +1,17 @@
+<%= polaris_page(
+  title: "Jar With Lock-Lid",
+  secondary_actions: [
+    {
+      content: "Promote",
+      url: "https://www.facebook.com/business/learn/facebook-page-build-audience",
+      external: true,
+      icon_name: "ExternalMinor"
+    },
+  ]
+) do |page| %>
+  <% page.primary_action(disabled: true) { "Save" } %>
+
+  <%= polaris_card(title: "Credit card") do %>
+    <p>Credit card information</p>
+  <% end %>
+<% end %>

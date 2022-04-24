@@ -1,0 +1,14 @@
+<%= polaris_page(
+  full_width: true,
+  title: "Orders",
+  secondary_actions: [{ content: "Export" }],
+  next_url: "/order/2",
+) do |page| %>
+  <% page.primary_action do |button| %>
+    <% button.icon(name: "PlusMinor") %>
+  <% end %>
+
+  <%= polaris_card(title: "Credit card") do %>
+    <p>Credit card information</p>
+  <% end %>
+<% end %>

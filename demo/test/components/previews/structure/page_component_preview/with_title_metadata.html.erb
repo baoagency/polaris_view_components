@@ -1,11 +1,17 @@
 <%= polaris_page(
   title: "Jar With Lock-Lid",
   back_url: "/products",
+  next_url: "/product/2",
+  secondary_actions: [
+    { content: "Duplicate", url: "/duplicate" },
+  ]
 ) do |page| %>
   <% page.primary_action(disabled: true) { "Save" } %>
   <% page.title_metadata do %>
     <%= polaris_badge(status: :attention) { "Verified" } %>
   <% end %>
 
-  <p>Page content</p>
+  <%= polaris_card(title: "Credit card") do %>
+    <p>Credit card information</p>
+  <% end %>
 <% end %>

@@ -2,24 +2,39 @@ class Structure::PageComponentPreview < ViewComponent::Preview
   def default
   end
 
-  def page_with_subtitle
+  def with_all_header_elements
   end
 
-  def page_with_thumbnail
+  def without_primary_action
   end
 
-  def full_width_page
+  def with_destructive_secondary_action
   end
 
-  def narrow_width_page
+  def with_subtitle
   end
 
-  def page_without_header
+  def with_external_link
   end
 
-  def page_with_title_metadata
+  def with_thumbnail
   end
 
-  def page_with_divider
+  def full_width
+  end
+
+  def narrow_width
+  end
+
+  def with_action_group
+  end
+
+  def without_header
+  end
+
+  def with_title_metadata
+  end
+
+  def with_divider
   end
 end
