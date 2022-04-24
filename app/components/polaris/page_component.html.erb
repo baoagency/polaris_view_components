@@ -56,7 +56,7 @@
                       <% popover.button do |button| %>
                         <% button.icon(name: "HorizontalDotsMinor") %>
                       <% end %>
-                      <%= polaris_action_list do |action_list| %>
+                      <%= polaris_action_list(style: "text-align: left;") do |action_list| %>
                         <% if @secondary_actions.any? %>
                           <% action_list.section do |section| %>
                             <% @secondary_actions.each do |action| %>

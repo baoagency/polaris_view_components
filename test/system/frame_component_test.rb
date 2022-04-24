@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class FrameComponentSystemTest < ApplicationSystemTestCase
   setup do
-    resize_screen_to(375, 667)
+    resize_screen_to :mobile
   end
 
   def test_mobile_menu
