@@ -106,7 +106,7 @@ script/release
 
 To release npm package run:
 ```bash
-yarn release
+npm run release
 ```
 
 ## License
