@@ -31,6 +31,7 @@ module Polaris
       vertical_alignment: ALIGNMENT_DEFAULT,
       cursor: CURSOR_DEFAULT,
       selectable: false,
+      selected: false,
       offset: false,
       wrapper_arguments: {},
       container_arguments: {},
@@ -40,6 +41,7 @@ module Polaris
       @vertical_alignment = vertical_alignment
       @cursor = fetch_or_fallback(CURSOR_OPTIONS, cursor, CURSOR_DEFAULT)
       @selectable = selectable
+      @selected = selected
       @offset = offset
       @wrapper_arguments = wrapper_arguments
       @container_arguments = container_arguments
@@ -79,7 +81,8 @@ module Polaris
         args[:classes] = class_names(
           args[:classes],
           "Polaris-ResourceItem",
-          "Polaris-ResourceItem--selectable": @selectable
+          "Polaris-ResourceItem--selectable": @selectable,
+          "Polaris-ResourceItem--selected": @selected
         )
         prepend_option(args, :style, "cursor: #{@cursor};")
         prepend_option(args[:data], :action, "click->polaris-resource-item#open")

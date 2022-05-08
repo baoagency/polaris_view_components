@@ -16,4 +16,7 @@ class ListsAndTables::ResourceItemComponentPreview < ViewComponent::Preview
 
   def with_vertical_alignment
   end
+
+  def with_selected
+  end
 end

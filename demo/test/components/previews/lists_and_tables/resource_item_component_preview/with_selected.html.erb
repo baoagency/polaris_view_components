@@ -1,0 +1,10 @@
+<%= polaris_card(sectioned: false) do %>
+  <%= polaris_resource_list do %>
+    <%= polaris_resource_item do %>
+      <p>Content</p>
+    <% end %>
+    <%= polaris_resource_item(selected: true) do %>
+      <p>Selected content</p>
+    <% end %>
+  <% end %>
+<% end %>
