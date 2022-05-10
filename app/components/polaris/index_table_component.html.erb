@@ -14,9 +14,7 @@
         <% @data.each do |row| %>
           <tr class="Polaris-IndexTable__TableRow Polaris-IndexTable__TableRow--unclickable">
             <% columns.each_with_index do |column, index| %>
-              <%= render_cell(
-                flush: column.flush,
-              ) do %>
+              <%= render_cell(flush: column.flush, **column.system_arguments) do %>
                 <%= column.call(row) %>
               <% end %>
             <% end %>
