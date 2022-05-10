@@ -26,6 +26,7 @@
                 tag: (index.zero? ? "th" : "td"),
                 scope: ("row" if index.zero?),
                 total: true,
+                **column.system_arguments
               ) do %>
                 <%= column.total %>
               <% end %>
