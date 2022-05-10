@@ -1,0 +1,9 @@
+<%= polaris_page(title: "Page Title") do |page| %>
+  <% page.custom_primary_action do %>
+    <%= polaris_button(disclosure: true) { "Save" } %>
+  <% end %>
+
+  <%= polaris_card(title: "Credit card") do %>
+    <p>Credit card information</p>
+  <% end %>
+<% end %>

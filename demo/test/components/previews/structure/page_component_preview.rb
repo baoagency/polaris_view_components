@@ -37,4 +37,7 @@ class Structure::PageComponentPreview < ViewComponent::Preview
 
   def with_divider
   end
+
+  def with_custom_action
+  end
 end

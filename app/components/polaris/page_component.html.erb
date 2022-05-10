@@ -46,7 +46,7 @@
           <% end %>
         </div>
 
-        <% if @secondary_actions.any? || action_group.present? || primary_action.present? || has_pagination? %>
+        <% if @secondary_actions.any? || action_group.present? || render_primary_action? || has_pagination? %>
           <div class="Polaris-Page-Header__RightAlign">
             <div class="Polaris-Page-Header__Actions">
               <% if @secondary_actions.any? || action_group.present? %>
@@ -98,9 +98,9 @@
                   </div>
                 </div>
               <% end %>
-              <% if primary_action.present? %>
+              <% if render_primary_action? %>
                 <div class="Polaris-Page-Header__PrimaryActionWrapper">
-                  <%= primary_action %>
+                  <%= primary_action || custom_primary_action %>
                 </div>
               <% end %>
               <% if has_pagination? %>

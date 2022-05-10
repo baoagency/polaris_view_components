@@ -7,6 +7,7 @@ module Polaris
     renders_one :primary_action, ->(primary: true, **system_arguments) do
       Polaris::ButtonComponent.new(primary: primary, **system_arguments)
     end
+    renders_one :custom_primary_action
     renders_one :action_group, "ActionGroupComponent"
 
     def initialize(
@@ -81,7 +82,11 @@ module Polaris
     end
 
     def render_header?
-      @title.present? || @subtitle.present? || @back_url.present? || primary_action.present?
+      @title.present? || @subtitle.present? || @back_url.present? || render_primary_action?
+    end
+
+    def render_primary_action?
+      primary_action.present? || custom_primary_action.present?
     end
 
     def has_pagination?
