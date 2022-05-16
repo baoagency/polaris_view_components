@@ -225,13 +225,16 @@ class Autocomplete extends Controller {
     return this.application.getControllerForElementAndIdentifier(this.popoverTarget, "polaris-popover");
   }
   get resultsTarget() {
-    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="results"]');
+    return this.popoverController.popoverTarget.querySelector('[data-target="results"]');
   }
   get optionTargets() {
-    return this.popoverController.popoverTarget.querySelectorAll('[data-polaris-autocomplete-target="option"]');
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"]');
+  }
+  get optionInputTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"] input');
   }
   get emptyStateTarget() {
-    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="emptyState"]');
+    return this.popoverController.popoverTarget.querySelector('[data-target="emptyState"]');
   }
   get hasEmptyStateTarget() {
     return this.emptyStateTarget !== null;
@@ -240,8 +243,7 @@ class Autocomplete extends Controller {
     return this.inputTarget.value;
   }
   get visibleOptions() {
-    const optionsArray = [ ...this.optionTargets ];
-    return optionsArray.filter((option => !option.classList.contains("Polaris--hidden")));
+    return [ ...this.optionTargets ].filter((option => !option.classList.contains("Polaris--hidden")));
   }
   handleResults() {
     if (this.visibleOptions.length > 0) {

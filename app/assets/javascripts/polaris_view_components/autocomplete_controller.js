@@ -61,15 +61,19 @@ export default class extends Controller {
   }
 
   get resultsTarget() {
-    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="results"]')
+    return this.popoverController.popoverTarget.querySelector('[data-target="results"]')
   }
 
   get optionTargets() {
-    return this.popoverController.popoverTarget.querySelectorAll('[data-polaris-autocomplete-target="option"]')
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"]')
+  }
+
+  get optionInputTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"] input')
   }
 
   get emptyStateTarget() {
-    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="emptyState"]')
+    return this.popoverController.popoverTarget.querySelector('[data-target="emptyState"]')
   }
 
   get hasEmptyStateTarget() {

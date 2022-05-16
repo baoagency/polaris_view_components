@@ -51,14 +51,14 @@ module Polaris
         full_width: true,
         inline: false,
         wrapper_arguments: {
-          data: {polaris_autocomplete_target: "popover"}
+          data: { polaris_autocomplete_target: "popover" }
         }
       }
     end
 
     def option_list_arguments
       {
-        data: {polaris_autocomplete_target: "results"}
+        data: { target: "results" }
       }
     end
   end

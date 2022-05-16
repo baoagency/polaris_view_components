@@ -16,7 +16,7 @@ module Polaris
 
         args[:wrapper_arguments] ||= {}
         args[:wrapper_arguments][:data] ||= {}
-        args[:wrapper_arguments][:data][:polaris_autocomplete_target] = "option"
+        args[:wrapper_arguments][:data][:target] = "option"
         args[:wrapper_arguments][:data][:label] = @label
 
         args[:data] ||= {}
