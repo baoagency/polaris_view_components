@@ -177,28 +177,17 @@ class Autocomplete extends Controller {
   static targets=[ "popover", "input" ];
   static values={
     url: String,
-    selected: Array
+    selected: Array,
+    selectEventRef: String
   };
-  until(conditionFunction) {
-    const poll = resolve => {
-      if (conditionFunction()) resolve(); else setTimeout((_ => poll(resolve)), 400);
-    };
-    return new Promise(poll);
-  }
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange);
     this.boundSelect = this.select.bind(this);
-    this.until((() => this.popoverController !== null)).then((() => {
-      [ ...this.optionInputTargets ].forEach((optionInput => {
-        optionInput.addEventListener("click", this.boundSelect);
-      }));
-    }));
+    document.addEventListener(this.selectEventRefValue, this.boundSelect);
   }
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange);
-    return [ ...this.optionInputTargets ].forEach((optionInput => {
-      optionInput.removeEventListener("click", this.boundSelect);
-    }));
+    document.removeEventListener(this.selectEventRefValue, this.boundSelect);
   }
   toggle() {
     if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
@@ -208,14 +197,8 @@ class Autocomplete extends Controller {
     }
   }
   select(event) {
-    const input = event.currentTarget;
-    const label = input.closest("li").dataset.label;
     const changeEvent = new CustomEvent("polaris-autocomplete:change", {
-      detail: {
-        value: input.value,
-        label: label,
-        selected: input.checked
-      }
+      detail: event.detail
     });
     this.element.dispatchEvent(changeEvent);
   }
@@ -318,6 +301,25 @@ class Autocomplete extends Controller {
       if (!input) return;
       input.checked = this.selectedValue.includes(input.value);
     }));
+  }
+}
+
+class AutocompleteOptionList extends Controller {
+  static values={
+    selectEventRef: String
+  };
+  change(event) {
+    const input = event.target;
+    const selectedEvent = new CustomEvent(this.selectEventRefValue, {
+      bubbles: true,
+      detail: {
+        input: input,
+        label: input.closest("li").dataset.label,
+        value: input.value,
+        selected: input.checked
+      }
+    });
+    document.dispatchEvent(selectedEvent);
   }
 }
 
@@ -2576,6 +2578,7 @@ class Toast extends Controller {
 
 function registerPolarisControllers(application) {
   application.register("polaris-autocomplete", Autocomplete);
+  application.register("polaris-autocomplete-option-list", AutocompleteOptionList);
   application.register("polaris-button", Button);
   application.register("polaris-collapsible", Collapsible);
   application.register("polaris-dropzone", Dropzone);

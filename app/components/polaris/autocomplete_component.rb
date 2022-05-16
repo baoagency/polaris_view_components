@@ -31,6 +31,7 @@ module Polaris
       @url = url
       @selected = selected
       @system_arguments = system_arguments
+      @select_event_ref = "autocomplete-select-ref-#{SecureRandom.uuid}"
     end
 
     def system_arguments
@@ -42,6 +43,7 @@ module Polaris
           opts[:data][:polaris_autocomplete_url_value] = @url
         end
         opts[:data][:polaris_autocomplete_selected_value] = @selected
+        opts[:data][:polaris_autocomplete_select_event_ref_value] = @select_event_ref
       end
     end
 
@@ -58,7 +60,11 @@ module Polaris
 
     def option_list_arguments
       {
-        data: { target: "results" }
+        data: {
+          target: "results",
+          controller: "polaris-autocomplete-option-list",
+          polaris_autocomplete_option_list_select_event_ref_value: @select_event_ref
+        }
       }
     end
   end

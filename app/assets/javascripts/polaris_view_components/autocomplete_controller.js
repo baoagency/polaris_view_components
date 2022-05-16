@@ -4,35 +4,20 @@ import { debounce } from './utils'
 
 export default class extends Controller {
   static targets = ['popover', 'input']
-  static values = { url: String, selected: Array }
-
-  until(conditionFunction) {
-    const poll = resolve => {
-      if (conditionFunction()) resolve();
-      else setTimeout(_ => poll(resolve), 400);
-    }
-
-    return new Promise(poll);
-  }
+  static values = { url: String, selected: Array, selectEventRef: String }
 
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange)
 
     this.boundSelect = this.select.bind(this)
 
-    this.until(() => this.popoverController !== null).then(() => {
-      [...this.optionInputTargets].forEach((optionInput) => {
-        optionInput.addEventListener("click", this.boundSelect)
-      })
-    })
+    document.addEventListener(this.selectEventRefValue, this.boundSelect);
   }
 
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange)
 
-    return [...this.optionInputTargets].forEach((optionInput) => {
-      optionInput.removeEventListener("click", this.boundSelect)
-    })
+    document.removeEventListener(this.selectEventRefValue, this.boundSelect);
   }
 
   // Actions
@@ -46,10 +31,8 @@ export default class extends Controller {
   }
 
   select(event) {
-    const input = event.currentTarget
-    const label = input.closest('li').dataset.label
     const changeEvent = new CustomEvent('polaris-autocomplete:change', {
-      detail: { value: input.value, label, selected: input.checked }
+      detail: event.detail
     })
 
     this.element.dispatchEvent(changeEvent)
