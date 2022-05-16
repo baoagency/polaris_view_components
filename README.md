@@ -49,7 +49,7 @@ It will open demo app with component previews on `localhost:4000`. You can chang
 To run tests:
 
 ```bash
-bin/rails test
+rake
 ```
 
 ## Releases
