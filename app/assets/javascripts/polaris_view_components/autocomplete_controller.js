@@ -6,12 +6,33 @@ export default class extends Controller {
   static targets = ['popover', 'input']
   static values = { url: String, selected: Array }
 
+  until(conditionFunction) {
+    const poll = resolve => {
+      if (conditionFunction()) resolve();
+      else setTimeout(_ => poll(resolve), 400);
+    }
+
+    return new Promise(poll);
+  }
+
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange)
+
+    this.boundSelect = this.select.bind(this)
+
+    this.until(() => this.popoverController !== null).then(() => {
+      [...this.optionInputTargets].forEach((optionInput) => {
+        optionInput.addEventListener("click", this.boundSelect)
+      })
+    })
   }
 
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange)
+
+    return [...this.optionInputTargets].forEach((optionInput) => {
+      optionInput.removeEventListener("click", this.boundSelect)
+    })
   }
 
   // Actions
