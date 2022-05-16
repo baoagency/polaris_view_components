@@ -308,7 +308,7 @@ class AutocompleteOptionList extends Controller {
   static values={
     selectEventRef: String
   };
-  change(event) {
+  select(event) {
     const input = event.target;
     const selectedEvent = new CustomEvent(this.selectEventRefValue, {
       bubbles: true,

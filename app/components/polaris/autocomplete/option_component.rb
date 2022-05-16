@@ -20,7 +20,7 @@ module Polaris
         args[:wrapper_arguments][:data][:label] = @label
 
         args[:data] ||= {}
-        prepend_option(args[:data], :action, "input->polaris-autocomplete-option-list#change")
+        prepend_option(args[:data], :action, "polaris-autocomplete-option-list#select")
       end
     end
 
