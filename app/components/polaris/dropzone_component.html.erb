@@ -69,9 +69,11 @@
         <% end %>
       <% end %>
 
-      <div class="Polaris-DropZone__Loader Polaris--hidden" data-polaris-dropzone-target="loader">
-        <%= polaris_spinner(size: (@size == :small) ? :small : :large) %>
-      </div>
+      <% if @preview %>
+        <div class="Polaris-DropZone__Loader Polaris--hidden" data-polaris-dropzone-target="loader">
+          <%= polaris_spinner(size: (@size == :small) ? :small : :large) %>
+        </div>
+      <% end %>
     </div>
 
     <%= render Polaris::VisuallyHiddenComponent.new do %>
