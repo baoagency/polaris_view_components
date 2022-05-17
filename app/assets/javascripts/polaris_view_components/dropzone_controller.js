@@ -167,7 +167,8 @@ export default class extends Controller {
 
     if (this.acceptedFiles.length === 0) return
 
-    this.loaderTarget.classList.remove("Polaris--hidden")
+    if (this.hasLoaderTarget)
+      this.loaderTarget.classList.remove("Polaris--hidden")
   }
 
   onDirectUploadInitialize = (event) => {
@@ -179,7 +180,8 @@ export default class extends Controller {
 
     if (this.sizeValue == 'small') {
       this.clearFiles()
-      this.loaderTarget.classList.remove("Polaris--hidden")
+      if (this.hasLoaderTarget)
+        this.loaderTarget.classList.remove("Polaris--hidden")
     } else {
       const content = dropzone.querySelector(`[data-file-name="${file.name}"]`)
       const progressBar = content.parentElement.querySelector('[data-target="progress-bar"]')
