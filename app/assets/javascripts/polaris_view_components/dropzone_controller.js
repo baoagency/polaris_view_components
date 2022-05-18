@@ -184,8 +184,10 @@ export default class extends Controller {
         this.loaderTarget.classList.remove("Polaris--hidden")
     } else {
       const content = dropzone.querySelector(`[data-file-name="${file.name}"]`)
-      const progressBar = content.parentElement.querySelector('[data-target="progress-bar"]')
-      progressBar.id = `direct-upload-${id}`
+      if (content) {
+        const progressBar = content.parentElement.querySelector('[data-target="progress-bar"]')
+        progressBar.id = `direct-upload-${id}`
+      }
     }
   }
 
