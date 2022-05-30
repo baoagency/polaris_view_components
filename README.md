@@ -20,75 +20,22 @@ Render Polaris ViewComponents:
 <% end %>
 ```
 
-## Installation
-
-In `Gemfile`, add:
-
-```ruby
-gem 'polaris_view_components'
-```
-
-Run install generator:
-```bash
-rails generate polaris_view_components:install
-```
-
-Setup Polaris styles in your layouts `<head>` tag:
-
-```erb
-<%= stylesheet_link_tag 'polaris_view_components' %>
-```
-
-Define Polaris style on your `<body>` tag:
-
-```erb
-<body style="<%= polaris_body_styles %>">
-```
-
-### Importmaps
-
-Install dependencies:
-```
-bin/importmap pin @rails/request.js --download
-```
-
-If you use sprockets make sure the vendor folder is loaded in `app/assets/config/manifest.js`:
-```js
-//= link_tree ../../../vendor/assets/javascripts .js
-```
-
-Add to `config/importmap.rb`:
-
-```rb
-pin "polaris-view-components", to: "polaris_view_components.js"
-```
-
-Add to `app/javascript/controllers/index.js`:
-```javascript
-// ...
-
-import { registerPolarisControllers } from "polaris-view-components"
-registerPolarisControllers(Stimulus)
-```
-
-### NPM
-
-Install NPM package:
-```bash
-yarn add polaris-view-components @rails/request.js
-```
-
-Add to `app/javascript/controllers/index.js`:
-```javascript
-// ...
-
-import { registerPolarisControllers } from "polaris-view-components"
-registerPolarisControllers(Stimulus)
-```
-
 ## Dependencies
 
-In addition to the dependencies declared in the `gemspec`, Polaris ViewComponents assumes the presence of Polaris CSS.
+- [Stimulus](https://stimulus.hotwired.dev/)
+
+## Installation
+
+Add to `Gemfile`:
+
+```ruby
+gem "polaris_view_components"
+```
+
+Run installer:
+```bash
+bin/rails polaris_view_components:install
+```
 
 ## Development
 
