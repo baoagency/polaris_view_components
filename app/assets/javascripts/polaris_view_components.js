@@ -441,6 +441,7 @@ class Dropzone extends Controller {
     this.dragging = false;
   }
   onDrop(e) {
+    this.inputTarget.files = e.dataTransfer.files;
     this.stopEvent(e);
     if (this.disabled) return;
     this.dragging = false;

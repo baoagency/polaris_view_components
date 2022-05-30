@@ -139,6 +139,7 @@ export default class extends Controller {
   }
 
   onDrop (e) {
+    this.inputTarget.files = e.dataTransfer.files
     this.stopEvent(e)
     if (this.disabled) return
 
