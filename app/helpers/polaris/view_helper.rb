@@ -24,6 +24,7 @@ module Polaris
       description_list:         "Polaris::DescriptionListComponent",
       display_text:             "Polaris::DisplayTextComponent",
       dropzone:                 "Polaris::DropzoneComponent",
+      empty_search_results:     "Polaris::EmptySearchResultsComponent",
       empty_state:              "Polaris::EmptyStateComponent",
       exception_list:           "Polaris::ExceptionListComponent",
       footer_help:              "Polaris::FooterHelpComponent",
