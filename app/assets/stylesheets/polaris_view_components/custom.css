@@ -188,3 +188,9 @@ a.Polaris-Tag__Button {
     text-align: center;
   }
 }
+
+/* ActionList */
+
+.Polaris-ActionList__Item {
+  border: none !important;
+}

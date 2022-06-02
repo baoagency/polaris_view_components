@@ -2383,3 +2383,7 @@ a.Polaris-Tag__Button {
     align-items: center;
     text-align: center;
   }
+/* ActionList */
+.Polaris-ActionList__Item {
+  border: none !important;
+}
