@@ -179,7 +179,7 @@ a.Polaris-Tag__Button {
 
 /* EmptySearchResults */
 .Polaris-EmptySearchResults {
-  padding: 5.25rem 0;
+  padding: 84px 0;
 
   &__Content {
     display: flex;
