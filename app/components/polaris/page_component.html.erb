@@ -52,7 +52,7 @@
               <% if @secondary_actions.any? || action_group.present? %>
                 <div class="Polaris-ActionMenu Polaris-ActionMenu--mobile">
                   <div class="Polaris-ActionMenu-RollupActions__RollupActivator">
-                    <%= polaris_popover do |popover| %>
+                    <%= polaris_popover(position: :below, alignment: :right) do |popover| %>
                       <% popover.button do |button| %>
                         <% button.icon(name: "HorizontalDotsMinor") %>
                       <% end %>

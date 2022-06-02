@@ -103,7 +103,7 @@ module Polaris
       end
 
       def call
-        render(Polaris::PopoverComponent.new) do |popover|
+        render(Polaris::PopoverComponent.new(position: :below)) do |popover|
           popover.button(disclosure: true) { @title }
 
           polaris_action_list do |list|
