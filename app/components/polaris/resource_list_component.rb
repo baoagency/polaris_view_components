@@ -35,7 +35,7 @@ module Polaris
     end
 
     def resource_string
-      return @resource_name[:singular] if (@items.size === 1 && !@total_items_count)
+      return @resource_name[:singular] if @items.size === 1 && !@total_items_count
 
       @resource_name[:plural]
     end
