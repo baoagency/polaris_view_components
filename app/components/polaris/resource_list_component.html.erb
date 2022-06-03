@@ -4,6 +4,17 @@
       <%= filters %>
     </div>
   <% end %>
+
+  <% if header_title.present? %>
+    <div class="Polaris-ResourceList__HeaderOuterWrapper">
+      <div class="Polaris-ResourceList__HeaderWrapper">
+        <div class="Polaris-ResourceList__HeaderContentWrapper">
+          <div class="Polaris-ResourceList__HeaderTitleWrapper"><%= header_title %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <%= render(Polaris::BaseComponent.new(**@system_arguments)) do %>
     <%= content %>
   <% end %>
