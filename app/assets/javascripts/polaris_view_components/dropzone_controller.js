@@ -34,11 +34,12 @@ export default class extends Controller {
   }
 
   files = []
-  acceptedFiles = []
   rejectedFiles = []
   _dragging = false
   dragTargets = []
   previewRendered = false
+
+  _acceptedFiles = []
   _size = 'large'
 
   connect () {
@@ -451,6 +452,20 @@ export default class extends Controller {
     sizeClassesToRemove.forEach(className => this.element.classList.remove(className))
 
     this.element.classList.add(this.getSizeClass(val))
+  }
+
+  get acceptedFiles () {
+    return this._acceptedFiles
+  }
+
+  set acceptedFiles (val) {
+    this._acceptedFiles = val
+
+    const list = new DataTransfer()
+
+    val.forEach(file => list.items.add(file))
+
+    this.inputTarget.files = list.files
   }
 }
 
