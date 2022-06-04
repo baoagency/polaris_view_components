@@ -26,7 +26,7 @@ class Rails::FormBuilderComponentPreview < ViewComponent::Preview
   end
 
   def dropzone
-    product = Product.new
-    render_with_template(locals: {product: product})
+    upload = Upload.new
+    render_with_template(locals: {upload: upload})
   end
 end
