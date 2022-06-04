@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :products
   resources :suggestions, only: :index
+  resource :uploads, only: :create
 
   get 'test', to: "test#hello"
 
