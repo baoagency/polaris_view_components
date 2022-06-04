@@ -18,6 +18,19 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
     end
   end
 
+  def test_submiting_file
+    with_preview("rails/form_builder_component/dropzone")
+
+    within first("form") do
+      find(".Polaris-DropZone").drop(fixture_file("file.txt"))
+      assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
+
+      click_on "Submit"
+    end
+
+    assert_text "File: file.txt"
+  end
+
   def test_image_upload
     with_preview("forms/dropzone_component/with_image_upload")
 
