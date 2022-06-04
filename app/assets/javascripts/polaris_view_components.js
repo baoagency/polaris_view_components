@@ -361,11 +361,11 @@ class Dropzone extends Controller {
     size: String
   };
   files=[];
-  acceptedFiles=[];
   rejectedFiles=[];
   _dragging=false;
   dragTargets=[];
   previewRendered=false;
+  _acceptedFiles=[];
   _size="large";
   connect() {
     document.body.addEventListener("click", this.onExternalTriggerClick);
@@ -441,7 +441,6 @@ class Dropzone extends Controller {
     this.dragging = false;
   }
   onDrop(e) {
-    this.inputTarget.files = e.dataTransfer.files;
     this.stopEvent(e);
     if (this.disabled) return;
     this.dragging = false;
@@ -686,6 +685,15 @@ class Dropzone extends Controller {
     const sizeClassesToRemove = Object.values(this.sizeClassesSchema);
     sizeClassesToRemove.forEach((className => this.element.classList.remove(className)));
     this.element.classList.add(this.getSizeClass(val));
+  }
+  get acceptedFiles() {
+    return this._acceptedFiles;
+  }
+  set acceptedFiles(val) {
+    this._acceptedFiles = val;
+    const list = new DataTransfer;
+    val.forEach((file => list.items.add(file)));
+    this.inputTarget.files = list.files;
   }
 }
 
