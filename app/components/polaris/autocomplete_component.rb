@@ -2,14 +2,17 @@ module Polaris
   class AutocompleteComponent < Component
     renders_one :text_field, ->(**system_arguments) do
       system_arguments[:data] ||= {}
-      prepend_option(system_arguments[:data], :action, %w[
-        click->polaris-autocomplete#toggle
-        click@window->polaris-popover#hide
-      ])
+      prepend_option(system_arguments[:data], :action, "click@window->polaris-popover#hide")
 
       system_arguments[:input_options] ||= {}
-      system_arguments[:input_options][:data] ||= {}
-      system_arguments[:input_options][:data][:polaris_autocomplete_target] = "input"
+      system_arguments[:input_options][:data] = {
+        polaris_autocomplete_target: "input",
+        action: %w[
+          focus->polaris-autocomplete#onFocus
+          blur->polaris-autocomplete#onBlur
+          input->polaris-autocomplete#onInput
+        ]
+      }.deep_merge(system_arguments[:input_options][:data] || {})
 
       TextFieldComponent.new(**system_arguments)
     end
@@ -38,9 +41,8 @@ module Polaris
         opts[:tag] = "div"
         opts[:data] ||= {}
         opts[:data][:controller] = "polaris-autocomplete"
-        if @url.present?
-          opts[:data][:polaris_autocomplete_url_value] = @url
-        end
+        opts[:data][:polaris_autocomplete_url_value] = @url if @url.present?
+        opts[:data][:polaris_autocomplete_multiple_value] = @multiple if @multiple.present?
         opts[:data][:polaris_autocomplete_selected_value] = @selected
       end
     end

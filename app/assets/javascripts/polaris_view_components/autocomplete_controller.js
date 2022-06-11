@@ -4,43 +4,49 @@ import { debounce } from './utils'
 
 export default class extends Controller {
   static targets = ['popover', 'input', 'results', 'option', 'emptyState']
-  static values = { url: String, selected: Array }
-
-  connect() {
-    this.inputTarget.addEventListener("input", this.onInputChange)
-  }
-
-  disconnect() {
-    this.inputTarget.removeEventListener("input", this.onInputChange)
-  }
+  static values = { multiple: Boolean, url: String, selected: Array }
 
   // Actions
 
-  toggle() {
-    if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
-      this.fetchResults()
-    } else {
-      this.handleResults()
+  onFocus() {
+    this.showAutocomplete()
+  }
+
+  onInput = debounce(() => {
+    if (!this.popoverController.isActive) {
+      return
     }
-  }
-
-  select(event) {
-    const input = event.currentTarget
-    const label = input.closest('li').dataset.label
-    const changeEvent = new CustomEvent('polaris-autocomplete:change', {
-      detail: { value: input.value, label, selected: input.checked }
-    })
-
-    this.element.dispatchEvent(changeEvent)
-  }
-
-  onInputChange = debounce(() => {
     if (this.isRemote) {
       this.fetchResults()
     } else {
       this.filterOptions()
     }
   }, 200)
+
+  onSelect(event) {
+    const input = event.currentTarget
+    const label = input.closest('li').dataset.label
+    const value = input.value
+
+    if (!this.multipleValue) {
+      this.popoverController.forceHide()
+      // TODO: we should assign input.value and submit that when the form is submitted
+      this.inputTarget.value = label
+    }
+
+    const changeEvent = new CustomEvent('polaris-autocomplete:change', {
+      detail: { value, label, selected: input.checked }
+    })
+    this.element.dispatchEvent(changeEvent)
+  }
+
+  showAutocomplete() {
+    if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
+      this.fetchResults()
+    } else {
+      this.handleResults()
+    }
+  }
 
   reset() {
     this.inputTarget.value = ''
@@ -74,7 +80,7 @@ export default class extends Controller {
     if (this.visibleOptions.length > 0) {
       this.hideEmptyState()
       this.popoverController.show()
-      this.checkSelected()
+      this.markAsSelected()
     } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
       this.showEmptyState()
     } else {
@@ -125,7 +131,7 @@ export default class extends Controller {
     }
   }
 
-  checkSelected() {
+  markAsSelected() {
     this.visibleOptions.forEach(option => {
       const input = option.querySelector('input')
       if (!input) return

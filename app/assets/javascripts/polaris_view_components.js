@@ -176,41 +176,47 @@ function formatBytes(bytes, decimals) {
 class Autocomplete extends Controller {
   static targets=[ "popover", "input", "results", "option", "emptyState" ];
   static values={
+    multiple: Boolean,
     url: String,
     selected: Array
   };
-  connect() {
-    this.inputTarget.addEventListener("input", this.onInputChange);
+  onFocus() {
+    this.showAutocomplete();
   }
-  disconnect() {
-    this.inputTarget.removeEventListener("input", this.onInputChange);
-  }
-  toggle() {
-    if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
-      this.fetchResults();
-    } else {
-      this.handleResults();
+  onInput=debounce$1((() => {
+    if (!this.popoverController.isActive) {
+      return;
     }
-  }
-  select(event) {
-    const input = event.currentTarget;
-    const label = input.closest("li").dataset.label;
-    const changeEvent = new CustomEvent("polaris-autocomplete:change", {
-      detail: {
-        value: input.value,
-        label: label,
-        selected: input.checked
-      }
-    });
-    this.element.dispatchEvent(changeEvent);
-  }
-  onInputChange=debounce$1((() => {
     if (this.isRemote) {
       this.fetchResults();
     } else {
       this.filterOptions();
     }
   }), 200);
+  onSelect(event) {
+    const input = event.currentTarget;
+    const label = input.closest("li").dataset.label;
+    const value = input.value;
+    if (!this.multipleValue) {
+      this.popoverController.forceHide();
+      this.inputTarget.value = label;
+    }
+    const changeEvent = new CustomEvent("polaris-autocomplete:change", {
+      detail: {
+        value: value,
+        label: label,
+        selected: input.checked
+      }
+    });
+    this.element.dispatchEvent(changeEvent);
+  }
+  showAutocomplete() {
+    if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
+      this.fetchResults();
+    } else {
+      this.handleResults();
+    }
+  }
   reset() {
     this.inputTarget.value = "";
     this.optionTargets.forEach((option => {
@@ -234,7 +240,7 @@ class Autocomplete extends Controller {
     if (this.visibleOptions.length > 0) {
       this.hideEmptyState();
       this.popoverController.show();
-      this.checkSelected();
+      this.markAsSelected();
     } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
       this.showEmptyState();
     } else {
@@ -282,7 +288,7 @@ class Autocomplete extends Controller {
       this.resultsTarget.classList.remove("Polaris--hidden");
     }
   }
-  checkSelected() {
+  markAsSelected() {
     this.visibleOptions.forEach((option => {
       const input = option.querySelector("input");
       if (!input) return;
@@ -2296,6 +2302,9 @@ class Popover extends Controller {
     if (this.activeValue) {
       this.show();
     }
+  }
+  get isActive() {
+    return this.popoverTarget.classList.contains(this.openClass);
   }
   toggle() {
     this.popoverTarget.classList.toggle(this.closedClass);

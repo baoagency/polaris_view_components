@@ -1,9 +1,9 @@
-import { Controller } from "@hotwired/stimulus"
-import { createPopper } from "@popperjs/core/dist/esm"
+import { Controller } from '@hotwired/stimulus'
+import { createPopper } from '@popperjs/core/dist/esm'
 
 export default class extends Controller {
-  static targets = ["activator", "popover"]
-  static classes = ["open", "closed"]
+  static targets = ['activator', 'popover']
+  static classes = ['open', 'closed']
   static values = {
     placement: String,
     active: Boolean
@@ -16,20 +16,24 @@ export default class extends Controller {
         {
           name: 'offset',
           options: {
-            offset: [0, 5],
-          },
+            offset: [0, 5]
+          }
         },
         {
           name: 'flip',
           options: {
             allowedAutoPlacements: ['top-start', 'bottom-start', 'top-end', 'bottom-end']
-          },
+          }
         }
       ]
     })
     if (this.activeValue) {
       this.show()
     }
+  }
+
+  get isActive() {
+    return this.popoverTarget.classList.contains(this.openClass)
   }
 
   toggle() {
