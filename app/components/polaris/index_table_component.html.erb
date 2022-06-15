@@ -12,13 +12,13 @@
       </thead>
       <tbody>
         <% @data.each do |row| %>
-          <tr class="Polaris-IndexTable__TableRow Polaris-IndexTable__TableRow--unclickable">
+          <%= render Polaris::BaseComponent.new(**row_arguments(row)) do %>
             <% columns.each_with_index do |column, index| %>
               <%= render_cell(flush: column.flush, **column.system_arguments) do %>
                 <%= column.call(row) %>
               <% end %>
             <% end %>
-          </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
