@@ -18,6 +18,16 @@ module Polaris
       end
     end
 
+    def row_arguments(row)
+      {tag: "tr"}.tap do |args|
+        args[:classes] = class_names(
+          "Polaris-IndexTable__TableRow",
+          "Polaris-IndexTable__TableRow--unclickable"
+        )
+        args[:id] = dom_id(row) if row.respond_to?(:to_key)
+      end
+    end
+
     def render_cell(**arguments, &block)
       render(IndexTable::CellComponent.new(**arguments), &block)
     end
