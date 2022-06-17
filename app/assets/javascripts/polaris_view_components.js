@@ -182,12 +182,11 @@ class Autocomplete extends Controller {
   };
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange);
-    this.boundSelect = this.select.bind(this);
-    document.addEventListener(this.selectEventRefValue, this.boundSelect);
+    document.addEventListener(this.selectEventRefValue, this.select);
   }
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange);
-    document.removeEventListener(this.selectEventRefValue, this.boundSelect);
+    document.removeEventListener(this.selectEventRefValue, this.select);
   }
   toggle() {
     if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
@@ -196,12 +195,12 @@ class Autocomplete extends Controller {
       this.handleResults();
     }
   }
-  select(event) {
+  select=event => {
     const changeEvent = new CustomEvent("polaris-autocomplete:change", {
       detail: event.detail
     });
     this.element.dispatchEvent(changeEvent);
-  }
+  };
   onInputChange=debounce$1((() => {
     if (this.isRemote) {
       this.fetchResults();

@@ -9,15 +9,13 @@ export default class extends Controller {
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange)
 
-    this.boundSelect = this.select.bind(this)
-
-    document.addEventListener(this.selectEventRefValue, this.boundSelect);
+    document.addEventListener(this.selectEventRefValue, this.select);
   }
 
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange)
 
-    document.removeEventListener(this.selectEventRefValue, this.boundSelect);
+    document.removeEventListener(this.selectEventRefValue, this.select);
   }
 
   // Actions
@@ -30,7 +28,7 @@ export default class extends Controller {
     }
   }
 
-  select(event) {
+  select = (event) => {
     const changeEvent = new CustomEvent('polaris-autocomplete:change', {
       detail: event.detail
     })
