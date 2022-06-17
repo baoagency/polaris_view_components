@@ -176,6 +176,7 @@ function formatBytes(bytes, decimals) {
 class Autocomplete extends Controller {
   static targets=[ "popover", "input" ];
   static values={
+    multiple: Boolean,
     url: String,
     selected: Array,
     selectEventRef: String
@@ -200,6 +201,10 @@ class Autocomplete extends Controller {
       detail: event.detail
     });
     this.element.dispatchEvent(changeEvent);
+    if (!this.multipleValue) {
+      this.popoverController.forceHide();
+      this.inputTarget.value = event.detail.label;
+    }
   };
   onInputChange=debounce$1((() => {
     if (this.isRemote) {

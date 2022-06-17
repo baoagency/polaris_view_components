@@ -44,6 +44,7 @@ module Polaris
         end
         opts[:data][:polaris_autocomplete_selected_value] = @selected
         opts[:data][:polaris_autocomplete_select_event_ref_value] = @select_event_ref
+        opts[:data][:polaris_autocomplete_multiple_value] = @multiple if @multiple.present?
       end
     end
 

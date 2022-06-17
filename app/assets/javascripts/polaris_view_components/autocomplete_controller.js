@@ -4,7 +4,7 @@ import { debounce } from './utils'
 
 export default class extends Controller {
   static targets = ['popover', 'input']
-  static values = { url: String, selected: Array, selectEventRef: String }
+  static values = { multiple: Boolean, url: String, selected: Array, selectEventRef: String }
 
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange)
@@ -34,6 +34,11 @@ export default class extends Controller {
     })
 
     this.element.dispatchEvent(changeEvent)
+
+    if (!this.multipleValue) {
+      this.popoverController.forceHide()
+      this.inputTarget.value = event.detail.label
+    }
   }
 
   onInputChange = debounce(() => {
