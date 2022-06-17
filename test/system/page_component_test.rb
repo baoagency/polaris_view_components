@@ -6,6 +6,9 @@ class PageComponentSystemTest < ApplicationSystemTestCase
 
     within ".Polaris-ActionMenu--desktop" do
       click_on "Promote"
+    end
+
+    within ".Polaris-Popover" do
       assert_text "Share on Facebook"
       assert_text "Share on Twitter"
     end
@@ -15,8 +18,8 @@ class PageComponentSystemTest < ApplicationSystemTestCase
     with_preview("structure/page_component/with_all_header_elements")
 
     within ".Polaris-ActionMenu--desktop" do
-      assert_text "Duplicate"
-      assert_text "Promote"
+      assert_selector ".Polaris-ActionMenu-SecondaryAction", text: "Duplicate"
+      assert_selector ".Polaris-ActionMenu-SecondaryAction", text: "Promote"
     end
 
     resize_screen_to :mobile

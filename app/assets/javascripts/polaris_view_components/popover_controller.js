@@ -37,9 +37,10 @@ export default class extends Controller {
     }
   }
 
-  toggle() {
+  async toggle() {
     this.popoverTarget.classList.toggle(this.closedClass)
     this.popoverTarget.classList.toggle(this.openClass)
+    await this.popper.update()
   }
 
   async show() {

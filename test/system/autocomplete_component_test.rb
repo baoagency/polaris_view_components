@@ -13,6 +13,12 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     find(".Polaris-TextField__Input").set "Vint"
     assert_no_selector ".Polaris-OptionList-Option", text: "Rustic"
     assert_selector ".Polaris-OptionList-Option", text: "Vintage"
+
+    # Autocomplete closes after selection
+    find(".Polaris-OptionList-Option", text: "Vintage").click
+    assert_no_selector ".Polaris-Popover"
+
+    assert_field "tags", with: "Vintage"
   end
 
   def test_preselected_autocomplete
@@ -105,6 +111,5 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     accept_alert "Selected vinyl" do
       find(".Polaris-OptionList-Option", text: "Vinyl").click
     end
-    assert_selector ".Polaris-OptionList-Option--select", text: "Vinyl"
   end
 end

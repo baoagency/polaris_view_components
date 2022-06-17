@@ -2339,9 +2339,10 @@ class Popover extends Controller {
       this.show();
     }
   }
-  toggle() {
+  async toggle() {
     this.popoverTarget.classList.toggle(this.closedClass);
     this.popoverTarget.classList.toggle(this.openClass);
+    await this.popper.update();
   }
   async show() {
     this.popoverTarget.classList.remove(this.closedClass);

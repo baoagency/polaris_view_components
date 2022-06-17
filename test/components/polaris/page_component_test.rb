@@ -113,59 +113,6 @@ class PaginationComponentTest < Minitest::Test
     end
   end
 
-  def test_secondary_actions
-    render_inline(Polaris::PageComponent.new(
-      title: "Page Title",
-      secondary_actions: [
-        {content: "Duplicate", url: "/duplicate"},
-        {content: "Download", url: "/download", icon_name: "ArrowDownMinor"}
-      ]
-    )) do
-      "Page Content"
-    end
-
-    assert_selector ".Polaris-ActionMenu--mobile" do
-      assert_selector ".Polaris-ActionList__Item", text: "Duplicate"
-      assert_selector ".Polaris-ActionList__Item", text: "Download" do
-        assert_selector ".Polaris-ActionList__Prefix > .Polaris-Icon"
-      end
-    end
-    assert_selector ".Polaris-ActionMenu--desktop" do
-      assert_selector ".Polaris-ActionMenu-SecondaryAction", text: "Duplicate"
-      assert_selector ".Polaris-ActionMenu-SecondaryAction", text: "Download" do
-        assert_selector ".Polaris-Button .Polaris-Button__Icon"
-      end
-    end
-  end
-
-  def test_action_group
-    render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.action_group(
-        title: "Promote",
-        actions: [
-          {content: "Share on Facebook", url: "https://facebook.com"},
-          {content: "Share on Twitter", url: "https://twitter.com"}
-        ]
-      )
-      "Page Content"
-    end
-
-    assert_selector ".Polaris-ActionMenu--mobile" do
-      assert_selector ".Polaris-Popover .Polaris-ActionList" do
-        assert_selector ".Polaris-ActionList__Title", text: "Promote"
-        assert_selector ".Polaris-ActionList__Item", text: "Share on Facebook"
-        assert_selector ".Polaris-ActionList__Item", text: "Share on Twitter"
-      end
-    end
-    assert_selector ".Polaris-ActionMenu--desktop" do
-      assert_selector ".Polaris-ActionMenu-SecondaryAction", text: "Promote"
-      assert_selector ".Polaris-Popover .Polaris-ActionList" do
-        assert_selector ".Polaris-ActionList__Item", text: "Share on Facebook"
-        assert_selector ".Polaris-ActionList__Item", text: "Share on Twitter"
-      end
-    end
-  end
-
   def test_compact_title
     render_inline(Polaris::PageComponent.new(
       title: "Page Title",
