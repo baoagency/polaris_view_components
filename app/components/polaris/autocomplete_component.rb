@@ -54,7 +54,7 @@ module Polaris
         full_width: true,
         inline: false,
         wrapper_arguments: {
-          data: { polaris_autocomplete_target: "popover" }
+          data: {polaris_autocomplete_target: "popover"}
         }
       }
     end
