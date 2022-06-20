@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { createPopper } from "@popperjs/core/dist/esm"
 
 export default class extends Controller {
-  static targets = ["activator", "popover"]
+  static targets = ["activator", "template"]
   static classes = ["open", "closed"]
   static values = {
     placement: String,
@@ -10,6 +10,11 @@ export default class extends Controller {
   }
 
   connect() {
+    const clonedTemplate = this.templateTarget.content.cloneNode(true)
+    this.popoverTarget = clonedTemplate.firstElementChild
+
+    document.body.appendChild(clonedTemplate)
+
     this.popper = createPopper(this.activatorTarget, this.popoverTarget, {
       placement: this.placementValue,
       modifiers: [
@@ -32,9 +37,10 @@ export default class extends Controller {
     }
   }
 
-  toggle() {
+  async toggle() {
     this.popoverTarget.classList.toggle(this.closedClass)
     this.popoverTarget.classList.toggle(this.openClass)
+    await this.popper.update()
   }
 
   async show() {
@@ -44,7 +50,7 @@ export default class extends Controller {
   }
 
   hide(event) {
-    if (!this.element.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
+    if (!this.element.contains(event.target) && !this.popoverTarget.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
       this.forceHide()
     }
   }

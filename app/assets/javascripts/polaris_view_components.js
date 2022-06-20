@@ -174,16 +174,20 @@ function formatBytes(bytes, decimals) {
 }
 
 class Autocomplete extends Controller {
-  static targets=[ "popover", "input", "results", "option", "emptyState" ];
+  static targets=[ "popover", "input" ];
   static values={
+    multiple: Boolean,
     url: String,
-    selected: Array
+    selected: Array,
+    selectEventRef: String
   };
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange);
+    document.addEventListener(this.selectEventRefValue, this.select);
   }
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange);
+    document.removeEventListener(this.selectEventRefValue, this.select);
   }
   toggle() {
     if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
@@ -192,18 +196,16 @@ class Autocomplete extends Controller {
       this.handleResults();
     }
   }
-  select(event) {
-    const input = event.currentTarget;
-    const label = input.closest("li").dataset.label;
+  select=event => {
     const changeEvent = new CustomEvent("polaris-autocomplete:change", {
-      detail: {
-        value: input.value,
-        label: label,
-        selected: input.checked
-      }
+      detail: event.detail
     });
     this.element.dispatchEvent(changeEvent);
-  }
+    if (!this.multipleValue) {
+      this.popoverController.forceHide();
+      this.inputTarget.value = event.detail.label;
+    }
+  };
   onInputChange=debounce$1((() => {
     if (this.isRemote) {
       this.fetchResults();
@@ -224,11 +226,26 @@ class Autocomplete extends Controller {
   get popoverController() {
     return this.application.getControllerForElementAndIdentifier(this.popoverTarget, "polaris-popover");
   }
+  get resultsTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-target="results"]');
+  }
+  get optionTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"]');
+  }
+  get optionInputTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"] input');
+  }
+  get emptyStateTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-target="emptyState"]');
+  }
+  get hasEmptyStateTarget() {
+    return this.emptyStateTarget !== null;
+  }
   get value() {
     return this.inputTarget.value;
   }
   get visibleOptions() {
-    return this.optionTargets.filter((option => !option.classList.contains("Polaris--hidden")));
+    return [ ...this.optionTargets ].filter((option => !option.classList.contains("Polaris--hidden")));
   }
   handleResults() {
     if (this.visibleOptions.length > 0) {
@@ -288,6 +305,25 @@ class Autocomplete extends Controller {
       if (!input) return;
       input.checked = this.selectedValue.includes(input.value);
     }));
+  }
+}
+
+class AutocompleteOptionList extends Controller {
+  static values={
+    selectEventRef: String
+  };
+  select(event) {
+    const input = event.target;
+    const selectedEvent = new CustomEvent(this.selectEventRefValue, {
+      bubbles: true,
+      detail: {
+        input: input,
+        label: input.closest("li").dataset.label,
+        value: input.value,
+        selected: input.checked
+      }
+    });
+    document.dispatchEvent(selectedEvent);
   }
 }
 
@@ -2275,13 +2311,16 @@ var createPopper = popperGenerator({
 });
 
 class Popover extends Controller {
-  static targets=[ "activator", "popover" ];
+  static targets=[ "activator", "template" ];
   static classes=[ "open", "closed" ];
   static values={
     placement: String,
     active: Boolean
   };
   connect() {
+    const clonedTemplate = this.templateTarget.content.cloneNode(true);
+    this.popoverTarget = clonedTemplate.firstElementChild;
+    document.body.appendChild(clonedTemplate);
     this.popper = createPopper(this.activatorTarget, this.popoverTarget, {
       placement: this.placementValue,
       modifiers: [ {
@@ -2300,9 +2339,10 @@ class Popover extends Controller {
       this.show();
     }
   }
-  toggle() {
+  async toggle() {
     this.popoverTarget.classList.toggle(this.closedClass);
     this.popoverTarget.classList.toggle(this.openClass);
+    await this.popper.update();
   }
   async show() {
     this.popoverTarget.classList.remove(this.closedClass);
@@ -2310,7 +2350,7 @@ class Popover extends Controller {
     await this.popper.update();
   }
   hide(event) {
-    if (!this.element.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
+    if (!this.element.contains(event.target) && !this.popoverTarget.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
       this.forceHide();
     }
   }
@@ -2543,6 +2583,7 @@ class Toast extends Controller {
 
 function registerPolarisControllers(application) {
   application.register("polaris-autocomplete", Autocomplete);
+  application.register("polaris-autocomplete-option-list", AutocompleteOptionList);
   application.register("polaris-button", Button);
   application.register("polaris-collapsible", Collapsible);
   application.register("polaris-dropzone", Dropzone);

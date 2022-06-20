@@ -16,11 +16,11 @@ module Polaris
 
         args[:wrapper_arguments] ||= {}
         args[:wrapper_arguments][:data] ||= {}
-        args[:wrapper_arguments][:data][:polaris_autocomplete_target] = "option"
+        args[:wrapper_arguments][:data][:target] = "option"
         args[:wrapper_arguments][:data][:label] = @label
 
         args[:data] ||= {}
-        prepend_option(args[:data], :action, "polaris-autocomplete#select")
+        prepend_option(args[:data], :action, "polaris-autocomplete-option-list#select")
       end
     end
 

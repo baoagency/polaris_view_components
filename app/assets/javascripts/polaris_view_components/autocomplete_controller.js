@@ -3,15 +3,19 @@ import { get } from '@rails/request.js'
 import { debounce } from './utils'
 
 export default class extends Controller {
-  static targets = ['popover', 'input', 'results', 'option', 'emptyState']
-  static values = { url: String, selected: Array }
+  static targets = ['popover', 'input']
+  static values = { multiple: Boolean, url: String, selected: Array, selectEventRef: String }
 
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange)
+
+    document.addEventListener(this.selectEventRefValue, this.select);
   }
 
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange)
+
+    document.removeEventListener(this.selectEventRefValue, this.select);
   }
 
   // Actions
@@ -24,14 +28,17 @@ export default class extends Controller {
     }
   }
 
-  select(event) {
-    const input = event.currentTarget
-    const label = input.closest('li').dataset.label
+  select = (event) => {
     const changeEvent = new CustomEvent('polaris-autocomplete:change', {
-      detail: { value: input.value, label, selected: input.checked }
+      detail: event.detail
     })
 
     this.element.dispatchEvent(changeEvent)
+
+    if (!this.multipleValue) {
+      this.popoverController.forceHide()
+      this.inputTarget.value = event.detail.label
+    }
   }
 
   onInputChange = debounce(() => {
@@ -60,12 +67,32 @@ export default class extends Controller {
     return this.application.getControllerForElementAndIdentifier(this.popoverTarget, 'polaris-popover')
   }
 
+  get resultsTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-target="results"]')
+  }
+
+  get optionTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"]')
+  }
+
+  get optionInputTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"] input')
+  }
+
+  get emptyStateTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-target="emptyState"]')
+  }
+
+  get hasEmptyStateTarget() {
+    return this.emptyStateTarget !== null
+  }
+
   get value() {
     return this.inputTarget.value
   }
 
   get visibleOptions() {
-    return this.optionTargets.filter(option => {
+    return [...this.optionTargets].filter(option => {
       return !option.classList.contains('Polaris--hidden')
     })
   }

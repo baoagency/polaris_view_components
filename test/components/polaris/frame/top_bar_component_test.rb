@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SaveBarComponentTest < Minitest::Test
+class TopBarComponentTest < Minitest::Test
   include Polaris::ComponentTestHelpers
 
   def test_default_top_bar
@@ -32,7 +32,6 @@ class SaveBarComponentTest < Minitest::Test
               assert_selector ".Polaris-TopBar-UserMenu__Detail", text: "Detail"
             end
           end
-          assert_selector ".Polaris-Popover", text: "Popover Content"
         end
       end
     end

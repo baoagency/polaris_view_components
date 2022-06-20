@@ -46,6 +46,12 @@ To get started:
 
 It will open demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews located in `demo/test/components/previews`.
 
+To run tests:
+
+```bash
+rake
+```
+
 ## Releases
 
 The library follows [semantic versioning](https://semver.org/). To draft a new release you need to run `script/release` with a new version number:

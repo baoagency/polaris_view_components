@@ -26,9 +26,6 @@ class FrameComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Frame" do
-      assert_selector ".Polaris-Frame__TopBar" do
-        assert_text "Popover Content"
-      end
       assert_selector ".Polaris-Frame__Navigation" do
         assert_selector ".Polaris-Navigation" do
           assert_text "Home"
