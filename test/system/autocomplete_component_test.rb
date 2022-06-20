@@ -33,32 +33,54 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   def test_remote_autocomplete
     with_preview("forms/autocomplete_component/remote")
 
+    local_suggestions = all('[data-controller="polaris-autocomplete"]')[0]
+    remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
+    opened_autocomplete = ".Polaris-Popover__PopoverOverlay--open"
+
     # Local default suggestions
-    within all('[data-controller="polaris-autocomplete"]')[0] do
+    within local_suggestions do
       assert_selector ".Polaris-Label", text: "Tags with local suggestions"
 
-      # Check default suggestions
+      # Open local autocomplete
       find(".Polaris-TextField__Input").click
-      assert_selector ".Polaris-OptionList-Option", text: "Rustic"
-      assert_selector ".Polaris-OptionList-Option", text: "Vintage"
+    end
 
+    within opened_autocomplete do
+      # Check default suggestions
+      assert_selector ".Polaris-OptionList-Option", text: "Rustic"
+      assert_selector ".Polaris-OptionList-Option__Label", text: "Vintage"
+    end
+
+    within local_suggestions do
       # Enter query
       find(".Polaris-TextField__Input").set "Vint"
+    end
+
+    within opened_autocomplete do
       assert_no_selector ".Polaris-OptionList-Option", text: "Rustic"
       assert_selector ".Polaris-OptionList-Option", text: "Vintage"
     end
 
     # Remote default suggestions
-    within all('[data-controller="polaris-autocomplete"]')[1] do
+    within remote_suggestions do
       assert_selector ".Polaris-Label", text: "Tags with remote suggestions"
 
-      # Check default suggestions
+      # Open remote autocomplete
       find(".Polaris-TextField__Input").click
+    end
+
+    within opened_autocomplete do
+      # Check default suggestions
       assert_selector ".Polaris-OptionList-Option", text: "Rustic"
       assert_selector ".Polaris-OptionList-Option", text: "Vintage"
+    end
 
+    within remote_suggestions do
       # Enter query
       find(".Polaris-TextField__Input").set "Vint"
+    end
+
+    within opened_autocomplete do
       assert_no_selector ".Polaris-OptionList-Option", text: "Rustic"
       assert_selector ".Polaris-OptionList-Option", text: "Vintage"
     end

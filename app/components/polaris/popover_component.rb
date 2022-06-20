@@ -61,7 +61,6 @@ module Polaris
       @system_arguments.tap do |opts|
         opts[:tag] = "div"
         opts[:data] ||= {}
-        opts[:data]["polaris_popover_target"] = "popover"
         opts[:classes] = class_names(
           @system_arguments[:classes],
           "Polaris-PositionedOverlay",

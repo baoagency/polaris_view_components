@@ -174,7 +174,7 @@ function formatBytes(bytes, decimals) {
 }
 
 class Autocomplete extends Controller {
-  static targets=[ "popover", "input", "results", "option", "emptyState" ];
+  static targets=[ "popover", "input" ];
   static values={
     url: String,
     selected: Array
@@ -224,11 +224,24 @@ class Autocomplete extends Controller {
   get popoverController() {
     return this.application.getControllerForElementAndIdentifier(this.popoverTarget, "polaris-popover");
   }
+  get resultsTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="results"]');
+  }
+  get optionTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-polaris-autocomplete-target="option"]');
+  }
+  get emptyStateTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="emptyState"]');
+  }
+  get hasEmptyStateTarget() {
+    return this.emptyStateTarget !== null;
+  }
   get value() {
     return this.inputTarget.value;
   }
   get visibleOptions() {
-    return this.optionTargets.filter((option => !option.classList.contains("Polaris--hidden")));
+    const optionsArray = [ ...this.optionTargets ];
+    return optionsArray.filter((option => !option.classList.contains("Polaris--hidden")));
   }
   handleResults() {
     if (this.visibleOptions.length > 0) {
@@ -2275,13 +2288,16 @@ var createPopper = popperGenerator({
 });
 
 class Popover extends Controller {
-  static targets=[ "activator", "popover" ];
+  static targets=[ "activator", "template" ];
   static classes=[ "open", "closed" ];
   static values={
     placement: String,
     active: Boolean
   };
   connect() {
+    const clonedTemplate = this.templateTarget.content.cloneNode(true);
+    this.popoverTarget = clonedTemplate.firstElementChild;
+    document.body.appendChild(clonedTemplate);
     this.popper = createPopper(this.activatorTarget, this.popoverTarget, {
       placement: this.placementValue,
       modifiers: [ {
@@ -2310,7 +2326,7 @@ class Popover extends Controller {
     await this.popper.update();
   }
   hide(event) {
-    if (!this.element.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
+    if (!this.element.contains(event.target) && !this.popoverTarget.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
       this.forceHide();
     }
   }

@@ -3,7 +3,7 @@ import { get } from '@rails/request.js'
 import { debounce } from './utils'
 
 export default class extends Controller {
-  static targets = ['popover', 'input', 'results', 'option', 'emptyState']
+  static targets = ['popover', 'input']
   static values = { url: String, selected: Array }
 
   connect() {
@@ -60,12 +60,31 @@ export default class extends Controller {
     return this.application.getControllerForElementAndIdentifier(this.popoverTarget, 'polaris-popover')
   }
 
+  get resultsTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="results"]')
+  }
+
+  get optionTargets() {
+    return this.popoverController.popoverTarget.querySelectorAll('[data-polaris-autocomplete-target="option"]')
+  }
+
+  get emptyStateTarget() {
+    return this.popoverController.popoverTarget.querySelector('[data-polaris-autocomplete-target="emptyState"]')
+  }
+
+  get hasEmptyStateTarget() {
+    return this.emptyStateTarget !== null
+  }
+
   get value() {
     return this.inputTarget.value
   }
 
   get visibleOptions() {
-    return this.optionTargets.filter(option => {
+    // this.optionTargets returns a NodeList so we have to convert it to an array
+    const optionsArray = [...this.optionTargets]
+
+    return optionsArray.filter(option => {
       return !option.classList.contains('Polaris--hidden')
     })
   }

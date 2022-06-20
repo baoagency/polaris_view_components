@@ -15,25 +15,6 @@ class AutocompleteComponentTest < Minitest::Test
           assert_selector "label", text: "Tags"
           assert_selector ".Polaris-TextField"
         end
-
-        assert_selector ".Polaris-Popover" do
-          assert_selector ".Polaris-OptionList" do
-            assert_selector "input[type='radio'][value='rustic']"
-          end
-        end
-      end
-    end
-  end
-
-  def test_multiple_autocomplete
-    render_inline(Polaris::AutocompleteComponent.new(multiple: true)) do |autocomplete|
-      autocomplete.text_field(label: "Tags")
-      autocomplete.option(label: "Rustic", value: "rustic")
-    end
-
-    assert_selector ".Polaris-Popover" do
-      assert_selector ".Polaris-OptionList" do
-        assert_selector "input[type='checkbox'][value='rustic']"
       end
     end
   end
