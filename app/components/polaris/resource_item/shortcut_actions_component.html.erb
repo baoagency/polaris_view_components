@@ -1,0 +1,21 @@
+<%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
+  <%= render(Polaris::ButtonGroupComponent.new(**system_arguments)) do |group| %>
+    <% buttons.each do |button| %>
+      <% group.button(**button.system_arguments) { button.content } %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @persist_actions %>
+  <%= render(Polaris::BaseComponent.new(**disclosure_arguments)) do %>
+    <%= render(Polaris::PopoverComponent.new(alignment: :right)) do |popover| %>
+      <% popover.button(disclosure: :horizontal_dots, plain: true) %>
+
+      <%= render(Polaris::ActionListComponent.new) do |action_list| %>
+        <% buttons.each do |button| %>
+          <% action_list.item(**button.action_list_item_arguments) { button.content } %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

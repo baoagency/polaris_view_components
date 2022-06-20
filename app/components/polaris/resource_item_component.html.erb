@@ -31,6 +31,9 @@
         <div class="Polaris-ResourceItem__Content">
           <%= content %>
         </div>
+        <% if shortcut_actions.present? %>
+          <%= shortcut_actions %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

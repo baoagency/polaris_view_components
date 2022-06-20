@@ -26,12 +26,20 @@ module Polaris
     end
     renders_one :media
 
+    renders_one :shortcut_actions, ->(**system_arguments) do
+      Polaris::ResourceItem::ShortcutActionsComponent.new(
+        persist_actions: @persist_actions,
+        **system_arguments
+      )
+    end
+
     def initialize(
       url: nil,
       vertical_alignment: ALIGNMENT_DEFAULT,
       cursor: CURSOR_DEFAULT,
       selectable: false,
       selected: false,
+      persist_actions: false,
       offset: false,
       wrapper_arguments: {},
       container_arguments: {},
@@ -42,6 +50,7 @@ module Polaris
       @cursor = fetch_or_fallback(CURSOR_OPTIONS, cursor, CURSOR_DEFAULT)
       @selectable = selectable
       @selected = selected
+      @persist_actions = persist_actions
       @offset = offset
       @wrapper_arguments = wrapper_arguments
       @container_arguments = container_arguments
@@ -82,7 +91,8 @@ module Polaris
           args[:classes],
           "Polaris-ResourceItem",
           "Polaris-ResourceItem--selectable": @selectable,
-          "Polaris-ResourceItem--selected": @selected
+          "Polaris-ResourceItem--selected": @selected,
+          "Polaris-ResourceItem--persistActions": @persist_actions
         )
         prepend_option(args, :style, "cursor: #{@cursor};")
         prepend_option(args[:data], :action, "click->polaris-resource-item#open")

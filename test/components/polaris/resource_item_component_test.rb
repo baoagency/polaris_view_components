@@ -27,6 +27,14 @@ class ResourceItemComponentTest < Minitest::Test
     assert_selector ".Polaris-ResourceItem.Polaris-ResourceItem--selectable"
   end
 
+  def test_persist_actions
+    render_inline(Polaris::ResourceItemComponent.new(persist_actions: true)) do |resource_item|
+      "Content"
+    end
+
+    assert_selector ".Polaris-ResourceItem.Polaris-ResourceItem--persistActions"
+  end
+
   def test_item_with_checkbox
     render_inline(Polaris::ResourceItemComponent.new) do |resource_item|
       resource_item.checkbox(name: "attr[]", value: "val")
@@ -84,6 +92,49 @@ class ResourceItemComponentTest < Minitest::Test
             assert_selector ".Polaris-ResourceItem__Content", text: "Content"
           end
         end
+      end
+    end
+  end
+
+  def test_item_with_shortcut_action
+    render_inline(Polaris::ResourceItemComponent.new) do |c|
+      c.shortcut_actions do |shortcut_action|
+        shortcut_action.button(url: 'https://some-url', content: 'Shortcut action')
+      end
+      "Content"
+    end
+
+    assert_selector ".Polaris-ResourceItem__Container" do
+      assert_selector ".Polaris-ResourceItem__Actions" do
+        assert_selector ".Polaris-ButtonGroup" do
+          assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--segmented" do
+            assert_selector ".Polaris-ButtonGroup__Item" do
+              assert_selector ".Polaris-Button.Polaris-Button--sizeSlim", text: "Shortcut action"
+            end
+          end
+        end
+      end
+    end
+  end
+
+  def test_item_with_persistent_shortcut_action
+    render_inline(Polaris::ResourceItemComponent.new(persist_actions: true)) do |c|
+      c.shortcut_actions do |shortcut_action|
+        shortcut_action.button(url: 'https://some-url', content: 'Shortcut action')
+      end
+      "Content"
+    end
+
+    assert_selector ".Polaris-ResourceItem__Container" do
+      assert_selector ".Polaris-ResourceItem__Actions" do
+        assert_selector ".Polaris-ButtonGroup" do
+          assert_selector ".Polaris-ButtonGroup__Item.Polaris-ButtonGroup__Item--plain" do
+            assert_selector ".Polaris-Button.Polaris-Button--plain", text: "Shortcut action"
+          end
+        end
+      end
+      assert_selector ".Polaris-ResourceItem__Disclosure" do
+        assert_selector "[data-controller='polaris-popover']"
       end
     end
   end
