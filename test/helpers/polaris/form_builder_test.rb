@@ -19,7 +19,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
     @product.validate
     @product.errors.add(:base, "Base Error")
 
-    @rendered_component = @builder.errors_summary
+    @rendered_content = @builder.errors_summary
 
     assert_selector ".Polaris-Banner--statusCritical" do
       assert_text "2 errors with this product"
@@ -39,7 +39,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   test "#polaris_inline_error_for" do
     @product.errors.add(:title, "Error")
 
-    @rendered_component = @builder.polaris_inline_error_for(:title)
+    @rendered_content = @builder.polaris_inline_error_for(:title)
 
     assert_selector ".Polaris-InlineError" do
       assert_selector ".Polaris-InlineError__Icon"
@@ -48,7 +48,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   end
 
   test "#polaris_text_field" do
-    @rendered_component = @builder.polaris_text_field(:title, help_text: "Help Text")
+    @rendered_content = @builder.polaris_text_field(:title, help_text: "Help Text")
 
     assert_selector ".Polaris-Label" do
       assert_selector "label", text: "Title"
@@ -60,7 +60,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   end
 
   test "#polaris_select" do
-    @rendered_component = @builder.polaris_select(:status, options: {"Active" => "active", "Draft" => "draft"})
+    @rendered_content = @builder.polaris_select(:status, options: {"Active" => "active", "Draft" => "draft"})
 
     assert_selector ".Polaris-Label" do
       assert_selector "label", text: "Status"
@@ -73,7 +73,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   end
 
   test "#polaris_check_box" do
-    @rendered_component = @builder.polaris_check_box(:accept, label: "Checkbox Label")
+    @rendered_content = @builder.polaris_check_box(:accept, label: "Checkbox Label")
 
     assert_selector "label.Polaris-Choice" do
       assert_selector ".Polaris-Choice__Label", text: "Checkbox Label"
@@ -84,7 +84,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   end
 
   test "#polaris_radio_button" do
-    @rendered_component = @builder.polaris_radio_button(:access, value: :allow, label: "Radio Label")
+    @rendered_content = @builder.polaris_radio_button(:access, value: :allow, label: "Radio Label")
 
     assert_selector "label.Polaris-Choice" do
       assert_selector ".Polaris-Choice__Label", text: "Radio Label"
@@ -95,7 +95,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
   end
 
   test "#polaris_dropzone" do
-    @rendered_component = @builder.polaris_dropzone(:image, label: "Dropzone Label")
+    @rendered_content = @builder.polaris_dropzone(:image, label: "Dropzone Label")
 
     assert_selector ".Polaris-Label" do
       assert_selector "label", text: "Dropzone Label"
