@@ -46,15 +46,23 @@ To get started:
 
 It will open demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews located in `demo/test/components/previews`.
 
-To release gem run:
+## Releases
+
+The library follows [semantic versioning](https://semver.org/). To draft a new release you need to run `script/release` with a new version number:
+
 ```bash
-script/release
+script/release VERSION
 ```
 
-To release npm package run:
+Where the VERSION is the version number you want to release. This script will update the version in the gem and push it to GitHub and Rubygems automatically.
+
+To release a new version of npm package update the package.json file with the new version number and run:
+
 ```bash
 npm run release
 ```
+
+After that make sure to commit changes in package.json.
 
 ## License
 

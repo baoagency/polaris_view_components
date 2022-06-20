@@ -18,5 +18,17 @@ git tag v$VERSION
 git push --tags
 gem build polaris_view_components.gemspec
 gem push "polaris_view_components-$VERSION.gem"
+rm polaris_view_components.gemspec
 
 echo "Need to publish NPM package too?"
+
+while true; do
+  read -p "Deploy new version to Heroku? [Yn] " yn
+  case $yn in
+    [Yy]* )
+      git push heroku main
+      break;;
+    [Nn]* ) break;;
+    * ) echo "Please answer yes or no.";;
+  esac
+done
