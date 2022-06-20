@@ -1,0 +1,44 @@
+<% items = [
+  {
+    url: 'customers/341',
+    name: 'Mae Jemison',
+    location: 'Decatur, USA',
+    latest_order_url: 'customers/341/latest-order',
+  },
+  {
+    url: 'customers/256',
+    name: 'Ellen Ochoa',
+    location: 'Los Angeles, USA',
+    latest_order_url: 'customers/256/latest-order',
+  },
+] %>
+
+<%= polaris_card(sectioned: false) do %>
+  <%= polaris_resource_list do %>
+    <% items.each do |item| %>
+      <% actions = item[:latest_order_url] ? [
+        {
+          content: 'View latest order',
+          url: item[:latest_order_url],
+        }
+      ] : nil %>
+
+      <%= polaris_resource_item(url: item[:url]) do |c| %>
+        <% c.media do %>
+          <%= polaris_avatar(customer: true, name: item[:name]) %>
+        <% end %>
+
+        <% c.shortcut_actions do |shortcut_action| %>
+          <% actions.each do |action| %>
+            <% shortcut_action.button(url: action[:url], content: action[:content]) %>
+          <% end %>
+        <% end %>
+
+        <h3>
+          <%= polaris_text_style(variation: :strong) { item[:name] } %>
+        </h3>
+        <div><%= item[:location] %></div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
