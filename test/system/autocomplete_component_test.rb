@@ -111,5 +111,6 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     accept_alert "Selected vinyl" do
       find(".Polaris-OptionList-Option", text: "Vinyl").click
     end
+    assert_field "tags", with: "Vinyl"
   end
 end
