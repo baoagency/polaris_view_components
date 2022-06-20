@@ -99,7 +99,7 @@ class ResourceItemComponentTest < Minitest::Test
   def test_item_with_shortcut_action
     render_inline(Polaris::ResourceItemComponent.new) do |c|
       c.shortcut_actions do |shortcut_action|
-        shortcut_action.button(url: 'https://some-url', content: 'Shortcut action')
+        shortcut_action.button(url: "https://some-url", content: "Shortcut action")
       end
       "Content"
     end
@@ -120,7 +120,7 @@ class ResourceItemComponentTest < Minitest::Test
   def test_item_with_persistent_shortcut_action
     render_inline(Polaris::ResourceItemComponent.new(persist_actions: true)) do |c|
       c.shortcut_actions do |shortcut_action|
-        shortcut_action.button(url: 'https://some-url', content: 'Shortcut action')
+        shortcut_action.button(url: "https://some-url", content: "Shortcut action")
       end
       "Content"
     end
