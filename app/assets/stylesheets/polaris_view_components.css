@@ -2268,15 +2268,13 @@ a.Polaris-Tag__Button {
 .Polaris-TextStyle--sizeSmall {
   font-size: 1.25rem;
 }
-/* Remove box-shadow from buttons and links */
-.Polaris-Button::after,
-.Polaris-Button:focus::after,
-.Polaris-Breadcrumbs__Breadcrumb::after {
-  box-shadow: none !important;
-}
-.Polaris-Tabs__Tab:focus > .Polaris-Tabs__Title::after {
-  box-shadow: none !important;
-}
+/* Remove focus styles for non-keyboard focus from buttons and links */
+.Polaris-Button:focus:not(:focus-visible)::after, .Polaris-Breadcrumbs__Breadcrumb:focus:not(:focus-visible)::after {
+    box-shadow: none !important;
+  }
+.Polaris-Tabs__Tab:focus:not(:focus-visible) > .Polaris-Tabs__Title::after {
+    box-shadow: none !important;
+  }
 /* ResourceItem */
 .Polaris-ResourceItem__Owned--offset {
   padding-left: 2rem;
