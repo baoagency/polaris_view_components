@@ -25,7 +25,6 @@ module Polaris
       html_options.delete(:class)
 
       url = url_target(name, options)
-      html_options["href"] ||= url
 
       link = Polaris::LinkComponent.new(url: url, **html_options)
       link = link.with_content(name) unless block

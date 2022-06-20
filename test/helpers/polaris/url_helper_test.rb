@@ -14,4 +14,32 @@ class Polaris::UrlHelperTest < ActionView::TestCase
       polaris_button_to("/url", class: "TestClass") { |b| b.icon(name: "DeleteMinor") }
     )
   end
+
+  test "polaris_link_to helper with name" do
+    assert_dom_equal(
+      %(<a plain="true" data-controller="test" href="/url" data-polaris-unstyled="true" class="Polaris-Link">Name</a>),
+      polaris_link_to("Name", "/url", plain: true, data: {controller: "test"})
+    )
+  end
+
+  test "polaris_link_to helper with block" do
+    assert_dom_equal(
+      %(<a class="TestClass" href="/url" data-polaris-unstyled="true" class="Polaris-Link">Name</a>),
+      polaris_link_to("/url", class: "TestClass") { "Name" }
+    )
+  end
+
+  test "polaris_mail_to helper with email" do
+    assert_dom_equal(
+      %(<a href="mailto:me@domain.com" data-polaris-unstyled="true" class="Polaris-Link">My email</a>),
+      polaris_mail_to("me@domain.com", "My email")
+    )
+  end
+
+  test "polaris_mail_to helper with block" do
+    assert_dom_equal(
+      %(<a href="mailto:me@domain.com" data-polaris-unstyled="true" class="Polaris-Link">Email me</a>),
+      polaris_mail_to("me@domain.com") { "Email me" }
+    )
+  end
 end
