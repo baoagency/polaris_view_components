@@ -1,6 +1,8 @@
 module Polaris
   class EmptySearchResultsComponent < Polaris::Component
-    def initialize(title:, description:, **system_arguments)
+    renders_one :image
+
+    def initialize(title:, description: nil, **system_arguments)
       @title = title
       @description = description
       @system_arguments = system_arguments
