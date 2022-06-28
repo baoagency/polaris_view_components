@@ -37,7 +37,7 @@
       </thead>
       <tbody>
         <% @data.each do |row| %>
-          <tr class="Polaris-DataTable__TableRow <%= "Polaris-DataTable--hoverable" if @hoverable %>">
+          <%= render Polaris::BaseComponent.new(**row_arguments(row)) do %>
             <% columns.each_with_index do |column, index| %>
               <%= render_cell(
                 first: index.zero?,
@@ -49,7 +49,7 @@
                 <%= column.call(row) %>
               <% end %>
             <% end %>
-          </tr>
+          <% end %>
         <% end %>
       </tbody>
       <% if @totals_in_footer %>

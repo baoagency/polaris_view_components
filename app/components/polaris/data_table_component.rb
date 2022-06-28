@@ -35,6 +35,16 @@ module Polaris
       end
     end
 
+    def row_arguments(row)
+      {tag: "tr"}.tap do |args|
+        args[:classes] = class_names(
+          "Polaris-DataTable__TableRow",
+          "Polaris-DataTable--hoverable": @hoverable
+        )
+        args[:id] = dom_id(row) if row.respond_to?(:to_key)
+      end
+    end
+
     def render_cell(**arguments, &block)
       render(DataTable::CellComponent.new(vertical_alignment: @vertical_alignment, **arguments), &block)
     end
