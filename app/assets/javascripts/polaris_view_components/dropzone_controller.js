@@ -180,7 +180,7 @@ export default class extends Controller {
     if (this.acceptedFiles.length === 0) return
 
     if (this.sizeValue == 'small') {
-      this.clearFiles()
+      this.removePreview()
       if (this.hasLoaderTarget)
         this.loaderTarget.classList.remove("Polaris--hidden")
     } else {
@@ -365,6 +365,10 @@ export default class extends Controller {
     this.files = []
     this.rejectedFiles = []
 
+    this.removePreview()
+  }
+
+  removePreview () {
     if (!this.hasPreviewTarget) return
 
     this.previewTarget.remove()
