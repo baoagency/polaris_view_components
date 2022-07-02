@@ -9,7 +9,7 @@ class UploadsController < ApplicationController
     if @file
       render plain: "File: #{@file.original_filename}"
     elsif @attachments.any?
-      render plain: "Attachments: #{@attachments.join(', ')}"
+      render plain: "Attachments (#{@attachments.size}): #{@attachments.join(', ')}"
     else
       render plain: "No files"
     end

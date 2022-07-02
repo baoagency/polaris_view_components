@@ -93,6 +93,28 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
     end
   end
 
+  def test_multiple_direct_uploads
+    with_preview("rails/form_builder_component/dropzone")
+
+    within all("form")[1] do
+      first_dropzone = all(".Polaris-DropZone")[0]
+      second_dropzone = all(".Polaris-DropZone")[1]
+
+      first_dropzone.drop(fixture_file("file.txt"))
+      within first_dropzone do
+        assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
+      end
+      second_dropzone.drop(fixture_file("image.png"))
+      within second_dropzone do
+        assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
+      end
+
+      click_on "Submit"
+    end
+
+    assert_text "Attachments (2)"
+  end
+
   def fixture_file(name)
     Rails.root.join("../test/fixtures/#{name}")
   end
