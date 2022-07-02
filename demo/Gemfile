@@ -4,6 +4,7 @@ ruby File.read(".ruby-version").chomp
 
 gem "rails", "~> 7.0.2"
 gem "puma", "~> 5.0"
+gem "sqlite3"
 gem "sprockets-rails"
 gem "importmap-rails"
 gem "turbo-rails"

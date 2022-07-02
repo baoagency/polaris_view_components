@@ -6,6 +6,7 @@ require "active_job/railtie"
 require "active_model/railtie"
 require "action_controller/railtie"
 require "action_view/railtie"
+require "active_storage/engine"
 require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -24,6 +25,9 @@ module Demo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Store uploaded files on the local file system in a temporary directory.
+    config.active_storage.service = :test
 
     # Don't generate system test files.
     config.generators.system_tests = nil

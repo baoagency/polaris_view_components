@@ -1,7 +1,7 @@
 <%= form_with(model: upload, builder: Polaris::FormBuilder) do |form| %>
   <%= polaris_form_layout do |form_layout| %>
     <% form_layout.item do %>
-      <%= form.polaris_dropzone :file, multiple: false %>
+      <%= form.polaris_dropzone :file_one, multiple: false %>
     <% end %>
     <% form_layout.item do %>
       <%= polaris_button(submit: true) { "Submit" } %>
@@ -15,7 +15,14 @@
   <%= polaris_form_layout do |form_layout| %>
     <% form_layout.item do %>
       <%# With direct upload in ActiveStorage %>
-      <%= form.polaris_dropzone :file, multiple: false, direct_upload: true %>
+      <%= polaris_stack do |stack| %>
+        <% stack.item do %>
+          <%= form.polaris_dropzone :attachment_one, size: :medium, multiple: false, direct_upload: true %>
+        <% end %>
+        <% stack.item do %>
+          <%= form.polaris_dropzone :attachment_two, size: :medium, multiple: false, direct_upload: true %>
+        <% end %>
+      <% end %>
     <% end %>
     <% form_layout.item do %>
       <%= polaris_button(submit: true) { "Submit" } %>
