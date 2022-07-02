@@ -17,10 +17,10 @@
       <%# With direct upload in ActiveStorage %>
       <%= polaris_stack do |stack| %>
         <% stack.item do %>
-          <%= form.polaris_dropzone :attachment_one, size: :medium, multiple: false, direct_upload: true %>
+          <%= form.polaris_dropzone :attachment_one, size: :small, multiple: false, direct_upload: true %>
         <% end %>
         <% stack.item do %>
-          <%= form.polaris_dropzone :attachment_two, size: :medium, multiple: false, direct_upload: true %>
+          <%= form.polaris_dropzone :attachment_two, size: :small, multiple: false, direct_upload: true %>
         <% end %>
       <% end %>
     <% end %>

@@ -102,11 +102,11 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
 
       first_dropzone.drop(fixture_file("file.txt"))
       within first_dropzone do
-        assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
+        assert_selector ".Polaris-DropZone__Preview > .Polaris-Thumbnail", count: 1
       end
       second_dropzone.drop(fixture_file("image.png"))
       within second_dropzone do
-        assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
+        assert_selector ".Polaris-DropZone__Preview > .Polaris-Thumbnail", count: 1
       end
 
       click_on "Submit"
