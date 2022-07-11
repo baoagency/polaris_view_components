@@ -37,6 +37,7 @@ module Polaris
       label_action: nil,
       disabled: false,
       error: false,
+      remove_previews_after_upload: true,
       file_upload_button: nil,
       file_upload_help: "or drop files to upload",
       file_upload_arguments: {},
@@ -62,6 +63,7 @@ module Polaris
       @label_action = label_action
       @disabled = disabled
       @error = error
+      @remove_previews_after_upload = remove_previews_after_upload
       @file_upload_button = file_upload_button
       @file_upload_button ||= "Add #{multiple ? "files" : "file"}"
       @file_upload_help = file_upload_help
@@ -82,7 +84,8 @@ module Polaris
           polaris_dropzone_focused_value: "false",
           polaris_dropzone_drop_on_page_value: @drop_on_page,
           polaris_dropzone_render_preview_value: @preview,
-          polaris_dropzone_size_value: @size
+          polaris_dropzone_size_value: @size,
+          polaris_dropzone_remove_previews_after_upload_value: @remove_previews_after_upload
         }
       }.deep_merge(@system_arguments).tap do |opts|
         prepend_option(opts[:data], :controller, "polaris-dropzone")

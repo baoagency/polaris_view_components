@@ -30,7 +30,8 @@ export default class extends Controller {
     dropOnPage: Boolean,
     focused: Boolean,
     renderPreview: Boolean,
-    size: String
+    size: String,
+    removePreviewsAfterUpload: Boolean
   }
 
   files = []
@@ -164,7 +165,7 @@ export default class extends Controller {
 
   onDirectUploadsEnd = () => {
     this.enable()
-    this.clearFiles()
+    this.clearFiles(this.removePreviewsAfterUploadValue)
 
     if (this.acceptedFiles.length === 0) return
 
@@ -358,14 +359,15 @@ export default class extends Controller {
     return clone
   }
 
-  clearFiles () {
+  clearFiles (removePreview = true) {
     if (!this.previewRendered) return
 
     this.acceptedFiles = []
     this.files = []
     this.rejectedFiles = []
 
-    this.removePreview()
+    if (removePreview)
+      this.removePreview()
   }
 
   removePreview () {
