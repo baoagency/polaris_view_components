@@ -394,7 +394,8 @@ class Dropzone extends Controller {
     dropOnPage: Boolean,
     focused: Boolean,
     renderPreview: Boolean,
-    size: String
+    size: String,
+    removePreviewsAfterUpload: Boolean
   };
   files=[];
   rejectedFiles=[];
@@ -494,7 +495,7 @@ class Dropzone extends Controller {
   };
   onDirectUploadsEnd=() => {
     this.enable();
-    this.clearFiles();
+    this.clearFiles(this.removePreviewsAfterUploadValue);
     if (this.acceptedFiles.length === 0) return;
     if (this.hasLoaderTarget) this.loaderTarget.classList.remove("Polaris--hidden");
   };
@@ -650,12 +651,12 @@ class Dropzone extends Controller {
     }
     return clone;
   }
-  clearFiles() {
+  clearFiles(removePreview = true) {
     if (!this.previewRendered) return;
     this.acceptedFiles = [];
     this.files = [];
     this.rejectedFiles = [];
-    this.removePreview();
+    if (removePreview) this.removePreview();
   }
   removePreview() {
     if (!this.hasPreviewTarget) return;
