@@ -8,7 +8,7 @@
 
 <% if @persist_actions %>
   <%= render(Polaris::BaseComponent.new(**disclosure_arguments)) do %>
-    <%= render(Polaris::PopoverComponent.new(alignment: :right)) do |popover| %>
+    <%= render(Polaris::PopoverComponent.new(**popover_arguments)) do |popover| %>
       <% popover.button(disclosure: :horizontal_dots, plain: true) %>
 
       <%= render(Polaris::ActionListComponent.new) do |action_list| %>
