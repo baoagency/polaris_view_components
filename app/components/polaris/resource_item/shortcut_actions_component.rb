@@ -10,11 +10,13 @@ class Polaris::ResourceItem::ShortcutActionsComponent < Polaris::Component
     persist_actions: false,
     wrapper_arguments: {},
     disclosure_arguments: {},
+    popover_arguments: {},
     **system_arguments
   )
     @persist_actions = persist_actions
     @wrapper_arguments = wrapper_arguments
     @disclosure_arguments = disclosure_arguments
+    @popover_arguments = popover_arguments
     @system_arguments = system_arguments
   end
 
@@ -36,6 +38,13 @@ class Polaris::ResourceItem::ShortcutActionsComponent < Polaris::Component
         "Polaris-ResourceItem__Disclosure"
       )
     end
+  end
+
+  def popover_arguments
+    {
+      alignment: :right,
+      position: :below
+    }.deep_merge(@popover_arguments)
   end
 
   def system_arguments
