@@ -24,11 +24,13 @@ module Polaris
     def initialize(
       multiple: false,
       url: nil,
+      name: nil,
       selected: [],
       **system_arguments
     )
       @multiple = multiple
       @url = url
+      @name = name
       @selected = selected
       @system_arguments = system_arguments
       @select_event_ref = "autocomplete-select-ref-#{SecureRandom.uuid}"
