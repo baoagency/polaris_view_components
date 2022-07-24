@@ -174,7 +174,7 @@ function formatBytes(bytes, decimals) {
 }
 
 class Autocomplete extends Controller {
-  static targets=[ "popover", "input" ];
+  static targets=[ "popover", "input", "hiddenInput" ];
   static values={
     multiple: Boolean,
     url: String,
@@ -204,6 +204,7 @@ class Autocomplete extends Controller {
     if (!this.multipleValue) {
       this.popoverController.forceHide();
       this.inputTarget.value = event.detail.label;
+      this.hiddenInputTarget.value = event.detail.value;
     }
   };
   onInputChange=debounce$1((() => {

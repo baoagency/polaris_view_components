@@ -3,7 +3,7 @@ import { get } from '@rails/request.js'
 import { debounce } from './utils'
 
 export default class extends Controller {
-  static targets = ['popover', 'input']
+  static targets = ['popover', 'input', 'hiddenInput']
   static values = { multiple: Boolean, url: String, selected: Array, selectEventRef: String }
 
   connect() {
@@ -38,6 +38,7 @@ export default class extends Controller {
     if (!this.multipleValue) {
       this.popoverController.forceHide()
       this.inputTarget.value = event.detail.label
+      this.hiddenInputTarget.value = event.detail.value
     }
   }
 
