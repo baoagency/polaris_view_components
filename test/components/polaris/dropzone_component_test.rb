@@ -15,6 +15,14 @@ class ActionListComponentTest < Minitest::Test
     end
   end
 
+  def test_dropzone_preview_template
+    rendered = render_inline(Polaris::DropzoneComponent.new(name: :file_input))
+    template = rendered.at_css("template[data-polaris-dropzone-target=previewTemplate] > *").to_html
+    template_page = Capybara::Node::Simple.new(template)
+
+    assert_selector template_page, ".Polaris-DropZone__Preview", visible: :all
+  end
+
   def test_dropzone_with_label
     render_inline(Polaris::DropzoneComponent.new(label: "Dropzone Label", label_hidden: false))
 

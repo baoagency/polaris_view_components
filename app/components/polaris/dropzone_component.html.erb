@@ -87,12 +87,12 @@
     <template data-polaris-dropzone-target="previewTemplate">
       <%= tag.div(
         data: { polaris_dropzone_target: "preview" },
-        class: [
-          "Polaris-DropZone__Preview",
+        class: {
+          "Polaris-DropZone__Preview": true,
           "Polaris-DropZone__Preview--singleFile": !@multiple,
           "Polaris-DropZone__Preview--sizeMedium": @size == :medium,
           "Polaris-DropZone__Preview--sizeSmall": @size == :small,
-        ]
+        }
       ) do %>
         <% if @size.in?(%i[small]) %>
           <span class="target"></span>
