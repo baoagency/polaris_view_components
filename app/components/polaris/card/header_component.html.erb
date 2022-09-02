@@ -17,8 +17,10 @@
         <% end %>
       <% end %>
 
-      <% stack.item do %>
-        <%= content %>
+      <% if content.present? %>
+        <% stack.item do %>
+          <%= content %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
