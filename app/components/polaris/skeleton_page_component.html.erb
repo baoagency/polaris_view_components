@@ -1,0 +1,23 @@
+<%= render Polaris::BaseComponent.new(**system_arguments) do %>
+  <div class="Polaris-SkeletonPage__Header">
+    <div class="Polaris-SkeletonPage__TitleAndPrimaryAction">
+      <div class="Polaris-SkeletonPage__TitleWrapper">
+        <% if @title.present? %>
+          <h1 class="Polaris-SkeletonPage__Title">
+            <%= @title %>
+          </h1>
+        <% else %>
+          <div class="Polaris-SkeletonPage__SkeletonTitle"></div>
+        <% end %>
+      </div>
+      <% if @primary_action %>
+        <div class="Polaris-SkeletonPage__PrimaryAction">
+          <%= polaris_skeleton_display_text(size: :large) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="Polaris-SkeletonPage__Content">
+    <%= content %>
+  </div>
+<% end %>
