@@ -3,7 +3,7 @@ module Polaris
     ALIGNMENT_DEFAULT = :center
     ALIGNMENT_OPTIONS = [:left, :right, :center]
 
-    POSITION_DEFAULT = :auto
+    POSITION_DEFAULT = :below
     POSITION_OPTIONS = [:auto, :above, :below]
 
     renders_one :button, ->(**system_arguments) do
