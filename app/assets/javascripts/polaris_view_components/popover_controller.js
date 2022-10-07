@@ -29,6 +29,12 @@ export default class extends Controller {
           options: {
             allowedAutoPlacements: ['top-start', 'bottom-start', 'top-end', 'bottom-end']
           },
+        },
+        {
+          name: 'computeStyles',
+          options: {
+            adaptive: false,
+          },
         }
       ]
     })
