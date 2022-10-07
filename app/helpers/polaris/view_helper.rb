@@ -60,6 +60,7 @@ module Polaris
       spinner:                  "Polaris::SpinnerComponent",
       skeleton_body_text:       "Polaris::SkeletonBodyTextComponent",
       skeleton_display_text:    "Polaris::SkeletonDisplayTextComponent",
+      skeleton_page:            "Polaris::SkeletonPageComponent",
       skeleton_thumbnail:       "Polaris::SkeletonThumbnailComponent",
       spacer:                   "Polaris::SpacerComponent",
       tabs:                     "Polaris::TabsComponent",
