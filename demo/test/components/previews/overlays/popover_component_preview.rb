@@ -10,4 +10,7 @@ class Overlays::PopoverComponentPreview < ViewComponent::Preview
 
   def with_custom_activator
   end
+
+  def with_long_page
+  end
 end

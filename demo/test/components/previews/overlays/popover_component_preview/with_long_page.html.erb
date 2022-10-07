@@ -1,0 +1,65 @@
+<%= polaris_skeleton_page(primary_action: true) do %>
+  <%= polaris_layout do |layout| %>
+    <% layout.section do %>
+      <%= polaris_card do %>
+        <%= polaris_skeleton_body_text %>
+      <% end %>
+      <% 2.times do %>
+        <%= polaris_card do %>
+          <%= polaris_text_container do %>
+            <%= polaris_skeleton_display_text(size: :small) %>
+            <%= polaris_skeleton_body_text %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= polaris_card do %>
+        <%= polaris_popover(active: true, position: :below) do |popover| %>
+          <% popover.button(disclosure: true) { "More actions" } %>
+
+          <% popover.pane(fixed: true) do |pane| %>
+            <% pane.section do %>
+              <p>Available sales channels</p>
+            <% end %>
+            <% pane.section do %>
+              <p>Section 2</p>
+            <% end %>
+          <% end %>
+
+          <% popover.pane do |pane| %>
+            <%= polaris_action_list do |action_list| %>
+              <% action_list.item { "Online store" } %>
+              <% action_list.item { "Facebook" } %>
+              <% action_list.item { "Pinterest" } %>
+              <% action_list.item { "Google" } %>
+              <% action_list.item { "TikTok" } %>
+              <% action_list.item { "Shopify POS" } %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% 3.times do %>
+        <%= polaris_card do %>
+          <%= polaris_text_container do %>
+            <%= polaris_skeleton_display_text(size: :small) %>
+            <%= polaris_skeleton_body_text %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% layout.section(secondary: true) do %>
+      <% 5.times do %>
+        <%= polaris_card do |card| %>
+          <% card.section do %>
+            <%= polaris_text_container do %>
+              <%= polaris_skeleton_display_text(size: :small) %>
+              <%= polaris_skeleton_body_text(lines: 2) %>
+            <% end %>
+          <% end %>
+          <% card.section do %>
+            <%= polaris_skeleton_body_text(lines: 1) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
