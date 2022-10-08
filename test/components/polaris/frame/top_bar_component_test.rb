@@ -32,6 +32,7 @@ class TopBarComponentTest < Minitest::Test
               assert_selector ".Polaris-TopBar-UserMenu__Detail", text: "Detail"
             end
           end
+          assert_selector ".Polaris-Popover", text: "Popover Content"
         end
       end
     end

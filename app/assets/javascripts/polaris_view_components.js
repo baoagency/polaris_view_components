@@ -174,20 +174,17 @@ function formatBytes(bytes, decimals) {
 }
 
 class Autocomplete extends Controller {
-  static targets=[ "popover", "input", "hiddenInput" ];
+  static targets=[ "popover", "input", "hiddenInput", "results", "option", "emptyState" ];
   static values={
     multiple: Boolean,
     url: String,
-    selected: Array,
-    selectEventRef: String
+    selected: Array
   };
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange);
-    document.addEventListener(this.selectEventRefValue, this.select);
   }
   disconnect() {
     this.inputTarget.removeEventListener("input", this.onInputChange);
-    document.removeEventListener(this.selectEventRefValue, this.select);
   }
   toggle() {
     if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
@@ -196,17 +193,23 @@ class Autocomplete extends Controller {
       this.handleResults();
     }
   }
-  select=event => {
+  select(event) {
+    const input = event.currentTarget;
+    const label = input.closest("li").dataset.label;
     const changeEvent = new CustomEvent("polaris-autocomplete:change", {
-      detail: event.detail
+      detail: {
+        value: input.value,
+        label: label,
+        selected: input.checked
+      }
     });
     this.element.dispatchEvent(changeEvent);
     if (!this.multipleValue) {
       this.popoverController.forceHide();
-      this.inputTarget.value = event.detail.label;
-      this.hiddenInputTarget.value = event.detail.value;
+      this.inputTarget.value = label;
+      this.hiddenInputTarget.value = input.value;
     }
-  };
+  }
   onInputChange=debounce$1((() => {
     if (this.isRemote) {
       this.fetchResults();
@@ -226,21 +229,6 @@ class Autocomplete extends Controller {
   }
   get popoverController() {
     return this.application.getControllerForElementAndIdentifier(this.popoverTarget, "polaris-popover");
-  }
-  get resultsTarget() {
-    return this.popoverController.popoverTarget.querySelector('[data-target="results"]');
-  }
-  get optionTargets() {
-    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"]');
-  }
-  get optionInputTargets() {
-    return this.popoverController.popoverTarget.querySelectorAll('[data-target="option"] input');
-  }
-  get emptyStateTarget() {
-    return this.popoverController.popoverTarget.querySelector('[data-target="emptyState"]');
-  }
-  get hasEmptyStateTarget() {
-    return this.emptyStateTarget !== null;
   }
   get value() {
     return this.inputTarget.value;
@@ -306,25 +294,6 @@ class Autocomplete extends Controller {
       if (!input) return;
       input.checked = this.selectedValue.includes(input.value);
     }));
-  }
-}
-
-class AutocompleteOptionList extends Controller {
-  static values={
-    selectEventRef: String
-  };
-  select(event) {
-    const input = event.target;
-    const selectedEvent = new CustomEvent(this.selectEventRefValue, {
-      bubbles: true,
-      detail: {
-        input: input,
-        label: input.closest("li").dataset.label,
-        value: input.value,
-        selected: input.checked
-      }
-    });
-    document.dispatchEvent(selectedEvent);
   }
 }
 
@@ -1057,32 +1026,49 @@ var min = Math.min;
 
 var round = Math.round;
 
-function getBoundingClientRect(element, includeScale) {
+function getUAString() {
+  var uaData = navigator.userAgentData;
+  if (uaData != null && uaData.brands) {
+    return uaData.brands.map((function(item) {
+      return item.brand + "/" + item.version;
+    })).join(" ");
+  }
+  return navigator.userAgent;
+}
+
+function isLayoutViewport() {
+  return !/^((?!chrome|android).)*safari/i.test(getUAString());
+}
+
+function getBoundingClientRect(element, includeScale, isFixedStrategy) {
   if (includeScale === void 0) {
     includeScale = false;
   }
-  var rect = element.getBoundingClientRect();
+  if (isFixedStrategy === void 0) {
+    isFixedStrategy = false;
+  }
+  var clientRect = element.getBoundingClientRect();
   var scaleX = 1;
   var scaleY = 1;
-  if (isHTMLElement(element) && includeScale) {
-    var offsetHeight = element.offsetHeight;
-    var offsetWidth = element.offsetWidth;
-    if (offsetWidth > 0) {
-      scaleX = round(rect.width) / offsetWidth || 1;
-    }
-    if (offsetHeight > 0) {
-      scaleY = round(rect.height) / offsetHeight || 1;
-    }
+  if (includeScale && isHTMLElement(element)) {
+    scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
+    scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
   }
+  var _ref = isElement(element) ? getWindow(element) : window, visualViewport = _ref.visualViewport;
+  var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+  var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
+  var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
+  var width = clientRect.width / scaleX;
+  var height = clientRect.height / scaleY;
   return {
-    width: rect.width / scaleX,
-    height: rect.height / scaleY,
-    top: rect.top / scaleY,
-    right: rect.right / scaleX,
-    bottom: rect.bottom / scaleY,
-    left: rect.left / scaleX,
-    x: rect.left / scaleX,
-    y: rect.top / scaleY
+    width: width,
+    height: height,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    left: x,
+    x: x,
+    y: y
   };
 }
 
@@ -1147,8 +1133,8 @@ function getTrueOffsetParent(element) {
 }
 
 function getContainingBlock(element) {
-  var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") !== -1;
-  var isIE = navigator.userAgent.indexOf("Trident") !== -1;
+  var isFirefox = /firefox/i.test(getUAString());
+  var isIE = /Trident/i.test(getUAString());
   if (isIE && isHTMLElement(element)) {
     var elementCss = getComputedStyle$1(element);
     if (elementCss.position === "fixed") {
@@ -1482,7 +1468,7 @@ function getWindowScrollBarX(element) {
   return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
 }
 
-function getViewportRect(element) {
+function getViewportRect(element, strategy) {
   var win = getWindow(element);
   var html = getDocumentElement(element);
   var visualViewport = win.visualViewport;
@@ -1493,7 +1479,8 @@ function getViewportRect(element) {
   if (visualViewport) {
     width = visualViewport.width;
     height = visualViewport.height;
-    if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+    var layoutViewport = isLayoutViewport();
+    if (layoutViewport || !layoutViewport && strategy === "fixed") {
       x = visualViewport.offsetLeft;
       y = visualViewport.offsetTop;
     }
@@ -1563,8 +1550,8 @@ function rectToClientRect(rect) {
   });
 }
 
-function getInnerBoundingClientRect(element) {
-  var rect = getBoundingClientRect(element);
+function getInnerBoundingClientRect(element, strategy) {
+  var rect = getBoundingClientRect(element, false, strategy === "fixed");
   rect.top = rect.top + element.clientTop;
   rect.left = rect.left + element.clientLeft;
   rect.bottom = rect.top + element.clientHeight;
@@ -1576,8 +1563,8 @@ function getInnerBoundingClientRect(element) {
   return rect;
 }
 
-function getClientRectFromMixedType(element, clippingParent) {
-  return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+function getClientRectFromMixedType(element, clippingParent, strategy) {
+  return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
 }
 
 function getClippingParents(element) {
@@ -1592,18 +1579,18 @@ function getClippingParents(element) {
   }));
 }
 
-function getClippingRect(element, boundary, rootBoundary) {
+function getClippingRect(element, boundary, rootBoundary, strategy) {
   var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
   var clippingParents = [].concat(mainClippingParents, [ rootBoundary ]);
   var firstClippingParent = clippingParents[0];
   var clippingRect = clippingParents.reduce((function(accRect, clippingParent) {
-    var rect = getClientRectFromMixedType(element, clippingParent);
+    var rect = getClientRectFromMixedType(element, clippingParent, strategy);
     accRect.top = max(rect.top, accRect.top);
     accRect.right = min(rect.right, accRect.right);
     accRect.bottom = min(rect.bottom, accRect.bottom);
     accRect.left = max(rect.left, accRect.left);
     return accRect;
-  }), getClientRectFromMixedType(element, firstClippingParent));
+  }), getClientRectFromMixedType(element, firstClippingParent, strategy));
   clippingRect.width = clippingRect.right - clippingRect.left;
   clippingRect.height = clippingRect.bottom - clippingRect.top;
   clippingRect.x = clippingRect.left;
@@ -1673,12 +1660,12 @@ function detectOverflow(state, options) {
   if (options === void 0) {
     options = {};
   }
-  var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
+  var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$strategy = _options.strategy, strategy = _options$strategy === void 0 ? state.strategy : _options$strategy, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
   var paddingObject = mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
   var altContext = elementContext === popper ? reference : popper;
   var popperRect = state.rects.popper;
   var element = state.elements[altBoundary ? altContext : elementContext];
-  var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary);
+  var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
   var referenceClientRect = getBoundingClientRect(state.elements.reference);
   var popperOffsets = computeOffsets({
     reference: referenceClientRect,
@@ -2081,7 +2068,7 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
   var isOffsetParentAnElement = isHTMLElement(offsetParent);
   var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
   var documentElement = getDocumentElement(offsetParent);
-  var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled);
+  var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
   var scroll = {
     scrollLeft: 0,
     scrollTop: 0
@@ -2316,17 +2303,15 @@ var createPopper = popperGenerator({
 });
 
 class Popover extends Controller {
-  static targets=[ "activator", "template" ];
+  static targets=[ "activator", "popover", "template" ];
   static classes=[ "open", "closed" ];
   static values={
+    appendToBody: Boolean,
     placement: String,
     active: Boolean
   };
   connect() {
-    const clonedTemplate = this.templateTarget.content.cloneNode(true);
-    this.popoverTarget = clonedTemplate.firstElementChild;
-    document.body.appendChild(clonedTemplate);
-    this.popper = createPopper(this.activatorTarget, this.popoverTarget, {
+    const popperOptions = {
       placement: this.placementValue,
       modifiers: [ {
         name: "offset",
@@ -2339,29 +2324,47 @@ class Popover extends Controller {
           allowedAutoPlacements: [ "top-start", "bottom-start", "top-end", "bottom-end" ]
         }
       } ]
-    });
+    };
+    if (this.appendToBodyValue) {
+      const clonedTemplate = this.templateTarget.content.cloneNode(true);
+      this.target = clonedTemplate.firstElementChild;
+      popperOptions["strategy"] = "fixed";
+      document.body.appendChild(clonedTemplate);
+    }
+    this.popper = createPopper(this.activatorTarget, this.target, popperOptions);
     if (this.activeValue) {
       this.show();
     }
   }
   async toggle() {
-    this.popoverTarget.classList.toggle(this.closedClass);
-    this.popoverTarget.classList.toggle(this.openClass);
+    this.target.classList.toggle(this.closedClass);
+    this.target.classList.toggle(this.openClass);
     await this.popper.update();
   }
   async show() {
-    this.popoverTarget.classList.remove(this.closedClass);
-    this.popoverTarget.classList.add(this.openClass);
+    this.target.classList.remove(this.closedClass);
+    this.target.classList.add(this.openClass);
     await this.popper.update();
   }
   hide(event) {
-    if (!this.element.contains(event.target) && !this.popoverTarget.contains(event.target) && !this.popoverTarget.classList.contains(this.closedClass)) {
-      this.forceHide();
-    }
+    if (this.element.contains(event.target)) return;
+    if (this.target.classList.contains(this.closedClass)) return;
+    if (this.appendToBodyValue && this.target.contains(event.target)) return;
+    this.forceHide();
   }
   forceHide() {
-    this.popoverTarget.classList.remove(this.openClass);
-    this.popoverTarget.classList.add(this.closedClass);
+    this.target.classList.remove(this.openClass);
+    this.target.classList.add(this.closedClass);
+  }
+  get target() {
+    if (this.hasPopoverTarget) {
+      return this.popoverTarget;
+    } else {
+      return this._target;
+    }
+  }
+  set target(value) {
+    this._target = value;
   }
 }
 
@@ -2588,7 +2591,6 @@ class Toast extends Controller {
 
 function registerPolarisControllers(application) {
   application.register("polaris-autocomplete", Autocomplete);
-  application.register("polaris-autocomplete-option-list", AutocompleteOptionList);
   application.register("polaris-button", Button);
   application.register("polaris-collapsible", Collapsible);
   application.register("polaris-dropzone", Dropzone);

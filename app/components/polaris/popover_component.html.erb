@@ -7,7 +7,7 @@
     <% end %>
   </div>
 
-  <template data-polaris-popover-target="template">
+  <% popover = capture do %>
     <%= render Polaris::BaseComponent.new(**system_arguments) do %>
       <%= render Polaris::BaseComponent.new(**popover_arguments) do %>
         <div class="Polaris-Popover__FocusTracker" tabindex="0"></div>
@@ -29,5 +29,13 @@
         <div class="Polaris-Popover__FocusTracker" tabindex="0"></div>
       <% end %>
     <% end %>
-  </template>
+  <% end %>
+
+  <% if @append_to_body %>
+    <template data-polaris-popover-target="template">
+      <%= popover %>
+    </template>
+  <% else %>
+    <%= popover %>
+  <% end %>
 <% end %>

@@ -10,4 +10,7 @@ class Overlays::PopoverComponentPreview < ViewComponent::Preview
 
   def with_custom_activator
   end
+
+  def appended_to_body
+  end
 end

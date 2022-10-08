@@ -26,6 +26,7 @@ class FiltersComponentTest < Minitest::Test
             assert_selector "[data-polaris-popover-target='activator']" do
               assert_selector ".Polaris-Button", text: "Filter"
             end
+            assert_selector "[data-polaris-popover-target='popover']", text: "Content"
           end
         end
       end
