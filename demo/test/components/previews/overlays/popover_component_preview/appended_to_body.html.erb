@@ -1,0 +1,8 @@
+<%= polaris_popover(active: true, append_to_body: true) do |popover| %>
+  <% popover.button(disclosure: true) { "More actions" } %>
+
+  <%= polaris_action_list do |action_list| %>
+    <% action_list.item { "Import" } %>
+    <% action_list.item { "Export" } %>
+  <% end %>
+<% end %>

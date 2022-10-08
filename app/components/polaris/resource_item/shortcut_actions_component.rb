@@ -43,7 +43,8 @@ class Polaris::ResourceItem::ShortcutActionsComponent < Polaris::Component
   def popover_arguments
     {
       alignment: :right,
-      position: :below
+      position: :below,
+      append_to_body: true
     }.deep_merge(@popover_arguments)
   end
 

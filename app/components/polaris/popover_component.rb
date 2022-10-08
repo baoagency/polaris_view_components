@@ -24,6 +24,7 @@ module Polaris
       sectioned: false,
       alignment: ALIGNMENT_DEFAULT,
       position: POSITION_DEFAULT,
+      append_to_body: false,
       wrapper_arguments: {},
       **system_arguments
     )
@@ -36,6 +37,7 @@ module Polaris
       @sectioned = sectioned
       @alignment = fetch_or_fallback(ALIGNMENT_OPTIONS, alignment, ALIGNMENT_DEFAULT)
       @position = fetch_or_fallback(POSITION_OPTIONS, position, POSITION_DEFAULT)
+      @append_to_body = append_to_body
       @wrapper_arguments = wrapper_arguments
       @system_arguments = system_arguments
       @popover_arguments = {}
@@ -47,6 +49,7 @@ module Polaris
         opts[:tag] = "div"
         opts[:data] ||= {}
         prepend_option(opts[:data], :controller, "polaris-popover")
+        opts[:data][:polaris_popover_append_to_body_value] = @append_to_body
         opts[:data][:polaris_popover_active_value] = @active
         opts[:data][:polaris_popover_placement_value] = popperjs_placement
         opts[:data][:polaris_popover_open_class] = "Polaris-Popover__PopoverOverlay--open"
@@ -61,6 +64,9 @@ module Polaris
       @system_arguments.tap do |opts|
         opts[:tag] = "div"
         opts[:data] ||= {}
+        unless @append_to_body
+          opts[:data]["polaris_popover_target"] = "popover"
+        end
         opts[:classes] = class_names(
           @system_arguments[:classes],
           "Polaris-PositionedOverlay",

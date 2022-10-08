@@ -49,4 +49,16 @@ class PopoverComponentSystemTest < ApplicationSystemTestCase
       assert_selector ".Polaris-ActionList__Item", text: "Online store"
     end
   end
+
+  def test_popover_appended_to_body
+    with_preview("overlays/popover_component/appended_to_body")
+
+    close_popover
+    open_popover
+
+    within ".Polaris-Popover" do
+      assert_selector ".Polaris-ActionList__Item", text: "Import"
+      assert_selector ".Polaris-ActionList__Item", text: "Export"
+    end
+  end
 end
