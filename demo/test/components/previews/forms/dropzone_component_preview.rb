@@ -29,6 +29,9 @@ class Forms::DropzoneComponentPreview < ViewComponent::Preview
   def with_custom_file_dialog_trigger
   end
 
+  def with_custom_file_button
+  end
+
   def without_preview
   end
 
