@@ -44,6 +44,7 @@ module Polaris
           opts[:data][:polaris_autocomplete_url_value] = @url
         end
         opts[:data][:polaris_autocomplete_selected_value] = @selected
+        opts[:data][:polaris_autocomplete_multiple_value] = @multiple if @multiple.present?
       end
     end
 
