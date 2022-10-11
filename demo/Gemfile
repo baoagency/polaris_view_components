@@ -12,7 +12,6 @@ gem "stimulus-rails"
 gem "lookbook"
 
 gem "polaris_view_components", path: "../"
-gem "view_component", github: "ViewComponent/view_component", branch: "remove_locking"
 
 group :development, :test do
   gem "foreman"

@@ -1,13 +1,3 @@
-GIT
-  remote: https://github.com/ViewComponent/view_component.git
-  revision: 60758e83d2ccaa6d12ea73c9fc41f6061f248a30
-  branch: remove_locking
-  specs:
-    view_component (2.74.0)
-      activesupport (>= 5.0.0, < 8.0)
-      concurrent-ruby (~> 1.0)
-      method_source (~> 1.0)
-
 PATH
   remote: ..
   specs:
@@ -201,6 +191,10 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    view_component (2.74.1)
+      activesupport (>= 5.0.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -231,7 +225,6 @@ DEPENDENCIES
   sqlite3
   stimulus-rails
   turbo-rails
-  view_component!
   web-console (>= 4.1.0)
 
 RUBY VERSION
