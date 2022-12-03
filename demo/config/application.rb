@@ -43,14 +43,5 @@ module Demo
     else
       config.lookbook.auto_refresh = false
     end
-
-    # Engine overrides
-    overrides = "#{Rails.root}/app/overrides"
-    Rails.autoloaders.main.ignore(overrides)
-    config.to_prepare do
-      Dir.glob("#{overrides}/**/*_override.rb").each do |override|
-        load override
-      end
-    end
   end
 end

@@ -58,7 +58,7 @@ rake
 The library follows [semantic versioning](https://semver.org/). To draft a new release you need to run `script/release` with a new version number:
 
 ```bash
-script/release VERSION
+bin/release VERSION
 ```
 
 Where the VERSION is the version number you want to release. This script will update the version in the gem and push it to GitHub and Rubygems automatically.

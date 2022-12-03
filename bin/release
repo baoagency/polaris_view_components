@@ -1,5 +1,34 @@
 #!/usr/bin/env bash
 
-# used for inline heroku buildpack
+VERSION=$1
 
-echo "--- {}"
+if [ -z $1 ] ; then
+  echo "Please provide version number: script/release 1.0.0" && exit 1;
+fi
+
+printf "module Polaris\n  module ViewComponents\n    VERSION = \"$VERSION\"\n  end\nend\n" > ./lib/polaris/view_components/version.rb
+bundle
+cd demo
+bundle
+cd ..
+git add Gemfile.lock demo/Gemfile.lock lib/polaris/view_components/version.rb
+git commit -m "Bump version for $VERSION"
+git push
+git tag v$VERSION
+git push --tags
+gem build polaris_view_components.gemspec
+gem push "polaris_view_components-$VERSION.gem"
+rm "polaris_view_components-$VERSION.gem"
+
+echo "Need to publish NPM package too?"
+
+while true; do
+  read -p "Deploy new version to Render? [Yn] " yn
+  case $yn in
+    [Yy]* )
+      git push origin main:render
+      break;;
+    [Nn]* ) break;;
+    * ) echo "Please answer yes or no.";;
+  esac
+done
