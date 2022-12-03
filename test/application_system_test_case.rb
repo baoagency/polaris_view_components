@@ -6,7 +6,7 @@ Capybara.default_max_wait_time = 5
 Capybara.default_set_options = {clear: :backspace}
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  DRIVER = ENV["HEADLESS"] == "false" ? :firefox : :headless_firefox
+  DRIVER = (ENV["HEADLESS"] == "false") ? :firefox : :headless_firefox
   DESKTOP_SCREEN_SIZE = [1400, 1400].freeze
   MOBILE_SCREEN_SIZE = [375, 667].freeze
 
@@ -17,7 +17,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
 
   def resize_screen_to(screen)
-    screen_size = screen == :desktop ? DESKTOP_SCREEN_SIZE : MOBILE_SCREEN_SIZE
+    screen_size = (screen == :desktop) ? DESKTOP_SCREEN_SIZE : MOBILE_SCREEN_SIZE
     Capybara.current_session.current_window.resize_to(*screen_size)
   end
 

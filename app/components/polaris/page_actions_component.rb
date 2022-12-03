@@ -33,7 +33,7 @@ module Polaris
     def stack_distribution
       return @distribution if @distribution.present?
 
-      primary_action.present? && secondary_actions.any? ? :equal_spacing : :trailing
+      (primary_action.present? && secondary_actions.any?) ? :equal_spacing : :trailing
     end
   end
 end
