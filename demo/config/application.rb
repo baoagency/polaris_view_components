@@ -37,6 +37,7 @@ module Demo
     config.view_component.preview_controller = "PreviewController"
 
     # Lookbook
+    config.lookbook.project_name = "Polaris ViewComponents"
     if Rails.env.development?
       config.lookbook.listen_paths << Rails.root.join('../app/components')
     else
