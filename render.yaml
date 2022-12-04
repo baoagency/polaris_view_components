@@ -8,6 +8,8 @@ services:
     numInstances: 2
     buildCommand: "./bin/render-build.sh"
     startCommand: "cd demo; bundle exec puma -C config/puma.rb"
+    domains:
+      - polarisviewcomponents.org
     envVars:
       - key: RAILS_ENV
         value: production
