@@ -9,7 +9,7 @@ gem "sprockets-rails"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "lookbook"
+gem "lookbook", github: "kirillplatonov/lookbook", branch: "performance-improvements"
 
 gem "polaris_view_components", path: "../"
 
