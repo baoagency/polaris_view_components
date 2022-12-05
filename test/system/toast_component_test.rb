@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ToastComponentSystemTest < ApplicationSystemTestCase
   def test_basic_toast
-    with_preview("feedback_indicators/toast_component/basic")
+    with_preview("toast_component/basic")
 
     assert_no_selector ".Polaris-Frame-Toast"
 
@@ -14,7 +14,7 @@ class ToastComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_multiple_toasts
-    with_preview("feedback_indicators/toast_component/multiple")
+    with_preview("toast_component/multiple")
 
     assert_no_selector ".Polaris-Frame-Toast"
 

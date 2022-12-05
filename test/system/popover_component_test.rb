@@ -11,7 +11,7 @@ class PopoverComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_default_popover
-    with_preview("overlays/popover_component/with_action_list")
+    with_preview("popover_component/with_action_list")
 
     close_popover
     open_popover
@@ -23,7 +23,7 @@ class PopoverComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_custom_activator
-    with_preview("overlays/popover_component/with_custom_activator")
+    with_preview("popover_component/with_custom_activator")
 
     close_popover
     open_popover
@@ -35,7 +35,7 @@ class PopoverComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_with_content_and_actions
-    with_preview("overlays/popover_component/with_content_and_actions")
+    with_preview("popover_component/with_content_and_actions")
 
     close_popover
     open_popover
@@ -51,7 +51,7 @@ class PopoverComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_popover_appended_to_body
-    with_preview("overlays/popover_component/appended_to_body")
+    with_preview("popover_component/appended_to_body")
 
     close_popover
     open_popover

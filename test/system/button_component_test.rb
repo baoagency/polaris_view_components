@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ButtonComponentSystemTest < ApplicationSystemTestCase
   def test_disable_with_actions
-    with_preview("actions/button_component/disable_with_actions")
+    with_preview("button_component/disable_with_actions")
 
     assert_no_selector ".Polaris-Button--loading"
 
@@ -16,7 +16,7 @@ class ButtonComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_disable_with_loader
-    with_preview("actions/button_component/disable_with_loader")
+    with_preview("button_component/disable_with_loader")
 
     assert_no_selector ".Polaris-Button--loading"
     click_on "Disable on click"

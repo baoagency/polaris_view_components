@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class DropzoneComponentSystemTest < ApplicationSystemTestCase
   def test_file_upload
-    with_preview("forms/dropzone_component/with_file_upload")
+    with_preview("dropzone_component/with_file_upload")
 
     find(".Polaris-DropZone").drop(fixture_file("file.txt"), fixture_file("image.png"))
     assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 2
@@ -19,7 +19,7 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_submiting_file
-    with_preview("rails/form_builder_component/dropzone")
+    with_preview("form_builder_component/dropzone")
 
     within first("form") do
       find(".Polaris-DropZone").drop(fixture_file("file.txt"))
@@ -32,12 +32,12 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_image_upload
-    with_preview("forms/dropzone_component/with_image_upload")
+    with_preview("dropzone_component/with_image_upload")
 
     find(".Polaris-DropZone").drop(fixture_file("file.txt"))
     assert_selector ".Polaris-DropZone__Overlay", text: "This file type isn't accepted"
 
-    with_preview("forms/dropzone_component/with_image_upload")
+    with_preview("dropzone_component/with_image_upload")
 
     find(".Polaris-DropZone").drop(fixture_file("image.png"))
     within ".Polaris-DropZone__Preview" do
@@ -47,7 +47,7 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_single_file_upload
-    with_preview("forms/dropzone_component/with_single_file_upload")
+    with_preview("dropzone_component/with_single_file_upload")
 
     find(".Polaris-DropZone").drop(fixture_file("file.txt"), fixture_file("image.png"))
     assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
@@ -58,7 +58,7 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_drop_on_page
-    with_preview("forms/dropzone_component/with_drop_on_page")
+    with_preview("dropzone_component/with_drop_on_page")
 
     first(".Polaris-Page").drop(fixture_file("file.txt"))
     within ".Polaris-DropZone__Preview" do
@@ -68,12 +68,12 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_accepts_only_svg
-    with_preview("forms/dropzone_component/accepts_only_svg_files")
+    with_preview("dropzone_component/accepts_only_svg_files")
 
     find(".Polaris-DropZone").drop(fixture_file("file.txt"))
     assert_selector ".Polaris-DropZone__Overlay", text: "File type must be .svg"
 
-    with_preview("forms/dropzone_component/with_image_upload")
+    with_preview("dropzone_component/with_image_upload")
 
     find(".Polaris-DropZone").drop(fixture_file("image.svg"))
     within ".Polaris-DropZone__Preview" do
@@ -83,7 +83,7 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_small_dropzone
-    with_preview("forms/dropzone_component/small_sized")
+    with_preview("dropzone_component/small_sized")
 
     find(".Polaris-DropZone").drop(fixture_file("image.png"))
     within ".Polaris-DropZone__Preview" do
@@ -94,7 +94,7 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_multiple_direct_uploads
-    with_preview("rails/form_builder_component/dropzone")
+    with_preview("form_builder_component/dropzone")
 
     within all("form")[1] do
       first_dropzone = all(".Polaris-DropZone")[0]
