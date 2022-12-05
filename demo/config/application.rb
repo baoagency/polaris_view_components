@@ -33,15 +33,12 @@ module Demo
     config.generators.system_tests = nil
 
     # ViewComponent
-    config.view_component.show_previews = true
+    config.view_component.preview_paths << Rails.root.join("app/previews").to_s
+    config.view_component.view_component_path = Rails.root.join("../app/components").to_s
     config.view_component.preview_controller = "PreviewController"
+    config.view_component.show_previews = true
 
     # Lookbook
     config.lookbook.project_name = "Polaris ViewComponents"
-    if Rails.env.development?
-      config.lookbook.listen_paths << Rails.root.join('../app/components')
-    else
-      config.lookbook.auto_refresh = false
-    end
   end
 end

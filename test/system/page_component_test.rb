@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class PageComponentSystemTest < ApplicationSystemTestCase
   def test_action_group
-    with_preview("structure/page_component/with_all_header_elements")
+    with_preview("page_component/with_all_header_elements")
 
     within ".Polaris-ActionMenu--desktop" do
       click_on "Promote"
@@ -15,7 +15,7 @@ class PageComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_action_menu_responsiveness
-    with_preview("structure/page_component/with_all_header_elements")
+    with_preview("page_component/with_all_header_elements")
 
     within ".Polaris-ActionMenu--desktop" do
       assert_selector ".Polaris-ActionMenu-SecondaryAction", text: "Duplicate"
@@ -37,7 +37,7 @@ class PageComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_pagination_responsiveness
-    with_preview("structure/page_component/with_all_header_elements")
+    with_preview("page_component/with_all_header_elements")
 
     assert_selector ".Polaris-Page-Header__PaginationWrapper"
     resize_screen_to :mobile

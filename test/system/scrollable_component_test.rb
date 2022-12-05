@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ScrollableComponentSystemTest < ApplicationSystemTestCase
   def test_scrollable_shadows
-    with_preview("behavior/scrollable_component/with_shadows")
+    with_preview("scrollable_component/with_shadows")
 
     assert_selector ".Polaris-Scrollable.Polaris-Scrollable--hasBottomShadow"
 

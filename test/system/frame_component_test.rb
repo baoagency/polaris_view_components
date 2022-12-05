@@ -6,7 +6,7 @@ class FrameComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_mobile_menu
-    with_preview("structure/frame_component/default")
+    with_preview("frame_component/default")
 
     assert_no_selector ".Polaris-Navigation"
 

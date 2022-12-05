@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class TextFieldComponentSystemTest < ApplicationSystemTestCase
   def test_number_field
-    with_preview("forms/text_field_component/number")
+    with_preview("text_field_component/number")
 
     assert_field "Quantity", with: "1.34"
 
@@ -16,7 +16,7 @@ class TextFieldComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_character_count
-    with_preview("forms/text_field_component/with_character_count")
+    with_preview("text_field_component/with_character_count")
 
     assert_field "Store name", with: "Jaded Pixel"
     assert_selector ".Polaris-TextField__CharacterCount", text: "11/20"
@@ -26,7 +26,7 @@ class TextFieldComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_clear_button
-    with_preview("forms/text_field_component/with_clear_button")
+    with_preview("text_field_component/with_clear_button")
 
     assert_field "Store name", with: "Jaded Pixel"
 

@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   def test_basic_autocomplete
-    with_preview("forms/autocomplete_component/basic")
+    with_preview("autocomplete_component/basic")
 
     # Open autocomplete
     find(".Polaris-TextField__Input").click
@@ -22,7 +22,7 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_preselected_autocomplete
-    with_preview("forms/autocomplete_component/preselected")
+    with_preview("autocomplete_component/preselected")
 
     # Open autocomplete
     find(".Polaris-TextField__Input").click
@@ -37,7 +37,7 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_remote_autocomplete
-    with_preview("forms/autocomplete_component/remote")
+    with_preview("autocomplete_component/remote")
 
     local_suggestions = all('[data-controller="polaris-autocomplete"]')[0]
     remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
@@ -93,7 +93,7 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_empty_state
-    with_preview("forms/autocomplete_component/empty_state")
+    with_preview("autocomplete_component/empty_state")
 
     find(".Polaris-TextField__Input").click
     find(".Polaris-TextField__Input").set "Unknown"
@@ -101,7 +101,7 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_event_handler
-    with_preview("forms/autocomplete_component/event_handler")
+    with_preview("autocomplete_component/event_handler")
 
     # Open autocomplete
     find(".Polaris-TextField__Input").click

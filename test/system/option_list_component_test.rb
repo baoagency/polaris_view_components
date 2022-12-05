@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class OptionListComponentSystemTest < ApplicationSystemTestCase
   def test_single_choice_option_list
-    with_preview("lists_and_tables/option_list_component/single_choice")
+    with_preview("option_list_component/single_choice")
 
     assert_no_selector ".Polaris-OptionList-Option--select"
 
@@ -15,7 +15,7 @@ class OptionListComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_option_list_in_popover
-    with_preview("lists_and_tables/option_list_component/in_popover")
+    with_preview("option_list_component/in_popover")
 
     # Close popover
     find(".Polaris-Page").click

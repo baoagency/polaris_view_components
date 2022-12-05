@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ModalComponentSystemTest < ApplicationSystemTestCase
   def test_basic_modal
-    with_preview("overlays/modal_component/basic")
+    with_preview("modal_component/basic")
 
     # Close modal
     find(".Polaris-Modal-CloseButton").click
@@ -18,7 +18,7 @@ class ModalComponentSystemTest < ApplicationSystemTestCase
   end
 
   def test_custom_close_button
-    with_preview("overlays/modal_component/custom_close_button")
+    with_preview("modal_component/custom_close_button")
 
     assert_selector ".Polaris-Modal-Dialog"
     accept_alert "Close modal" do
