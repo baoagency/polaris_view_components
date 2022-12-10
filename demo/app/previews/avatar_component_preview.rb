@@ -2,7 +2,10 @@ class AvatarComponentPreview < ViewComponent::Preview
   def default
   end
 
-  def customer
+  def extra_small
+  end
+
+  def square
   end
 
   def initials
