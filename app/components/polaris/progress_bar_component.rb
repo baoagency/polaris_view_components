@@ -6,7 +6,8 @@ module Polaris
     COLOR_MAPPINGS = {
       COLOR_DEFAULT => "Polaris-ProgressBar--colorHighlight",
       :primary => "Polaris-ProgressBar--colorPrimary",
-      :success => "Polaris-ProgressBar--colorSuccess"
+      :success => "Polaris-ProgressBar--colorSuccess",
+      :critical => "Polaris-ProgressBar--colorCritical"
     }
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
 
