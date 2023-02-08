@@ -18,65 +18,65 @@ module Polaris
       span,
       legend,
     ]
-    validates :as, inclusion: { in: AS_OPTIONS }
+    validates :as, inclusion: {in: AS_OPTIONS}
 
     VARIANT_DEFAULT = :bodyMd
     VARIANT_MAPPINGS = {
-      :headingXs => "Polaris-Text--headingXs",
-      :headingSm => "Polaris-Text--headingSm",
-      :headingMd => "Polaris-Text--headingMd",
-      :headingLg => "Polaris-Text--headingLg",
-      :headingXl => "Polaris-Text--headingXl",
-      :heading2xl => "Polaris-Text--heading2xl",
-      :heading3xl => "Polaris-Text--heading3xl",
-      :heading4xl => "Polaris-Text--heading4xl",
-      :bodySm => "Polaris-Text--bodySm",
-      :bodyMd => "Polaris-Text--bodyMd",
-      :bodyLg => "Polaris-Text--bodyLg",
+      headingXs: "Polaris-Text--headingXs",
+      headingSm: "Polaris-Text--headingSm",
+      headingMd: "Polaris-Text--headingMd",
+      headingLg: "Polaris-Text--headingLg",
+      headingXl: "Polaris-Text--headingXl",
+      heading2xl: "Polaris-Text--heading2xl",
+      heading3xl: "Polaris-Text--heading3xl",
+      heading4xl: "Polaris-Text--heading4xl",
+      bodySm: "Polaris-Text--bodySm",
+      bodyMd: "Polaris-Text--bodyMd",
+      bodyLg: "Polaris-Text--bodyLg"
     }
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
-    validates :variant, inclusion: { in: VARIANT_OPTIONS }
+    validates :variant, inclusion: {in: VARIANT_OPTIONS}
 
     ALIGNMENT_MAPPINGS = {
-      :start => "Polaris-Text--start",
-      :center => "Polaris-Text--center",
-      :end => "Polaris-Text--end",
-      :justify => "Polaris-Text--justify",
+      start: "Polaris-Text--start",
+      center: "Polaris-Text--center",
+      end: "Polaris-Text--end",
+      justify: "Polaris-Text--justify"
     }
     ALIGNMENT_OPTIONS = ALIGNMENT_MAPPINGS.keys
-    validates :alignment, inclusion: { in: ALIGNMENT_OPTIONS }, allow_nil: true
+    validates :alignment, inclusion: {in: ALIGNMENT_OPTIONS}, allow_nil: true
 
     FONT_WEIGHT_MAPPINGS = {
-      :regular => "Polaris-Text--regular",
-      :medium => "Polaris-Text--medium",
-      :semibold => "Polaris-Text--semibold",
-      :bold => "Polaris-Text--bold",
+      regular: "Polaris-Text--regular",
+      medium: "Polaris-Text--medium",
+      semibold: "Polaris-Text--semibold",
+      bold: "Polaris-Text--bold"
     }
     FONT_WEIGHT_VARIANT_MAPPINGS = {
-      :headingXs => "semibold",
-      :headingSm => "semibold",
-      :headingMd => "semibold",
-      :headingLg => "semibold",
-      :headingXl => "semibold",
-      :heading2xl => "semibold",
-      :heading3xl => "semibold",
-      :heading4xl => "bold",
-      :bodySm => "regular",
-      :bodyMd => "regular",
-      :bodyLg => "regular",
+      headingXs: "semibold",
+      headingSm: "semibold",
+      headingMd: "semibold",
+      headingLg: "semibold",
+      headingXl: "semibold",
+      heading2xl: "semibold",
+      heading3xl: "semibold",
+      heading4xl: "bold",
+      bodySm: "regular",
+      bodyMd: "regular",
+      bodyLg: "regular"
     }
     FONT_WEIGHT_OPTIONS = FONT_WEIGHT_MAPPINGS.keys
-    validates :font_weight, inclusion: { in: FONT_WEIGHT_OPTIONS }, allow_nil: true
+    validates :font_weight, inclusion: {in: FONT_WEIGHT_OPTIONS}, allow_nil: true
 
     COLOR_MAPPINGS = {
-      :success => "Polaris-Text--success",
-      :critical => "Polaris-Text--critical",
-      :warning => "Polaris-Text--warning",
-      :subdued => "Polaris-Text--subdued",
-      :"text-inverse" => "Polaris-Text--text-inverse",
+      success: "Polaris-Text--success",
+      critical: "Polaris-Text--critical",
+      warning: "Polaris-Text--warning",
+      subdued: "Polaris-Text--subdued",
+      "text-inverse": "Polaris-Text--text-inverse"
     }
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
-    validates :color, inclusion: { in: COLOR_OPTIONS }, allow_nil: true
+    validates :color, inclusion: {in: COLOR_OPTIONS}, allow_nil: true
 
     def initialize(
       alignment: nil,
@@ -84,7 +84,7 @@ module Polaris
       break_word: false,
       color: nil,
       font_weight: nil,
-      id: '',
+      id: "",
       truncate: false,
       variant: VARIANT_DEFAULT,
       visually_hidden: false,
@@ -108,7 +108,7 @@ module Polaris
         "Polaris-Text--block": alignment || truncate,
         "Polaris-Text--break": break_word,
         "Polaris-Text--truncate": truncate,
-        "Polaris-Text--visuallyHidden": visually_hidden,
+        "Polaris-Text--visuallyHidden": visually_hidden
       )
     end
 
