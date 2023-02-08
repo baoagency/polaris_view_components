@@ -87,23 +87,23 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@shopify/polaris-icons@^6.6.0":
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-6.6.0.tgz#389eec18ffda60b8e288fb472c27f7325cf8361e"
-  integrity sha512-nlw4DJOCXpqbdnlE8J3PYF5jYdnW1R/xFiw63xrh0Xgb9AErC48VB58SufW2qxWybuw0UJ4g+ozyspd6a4i92g==
+"@shopify/polaris-icons@^6.11.1":
+  version "6.11.1"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-6.11.1.tgz#8a18740fef560c6ed33d1128cd8ad195e819b5f1"
+  integrity sha512-QIEIVOcVRo1SrsUT3weGyOnx7Jgz0A9dP4BKeiPddaISj4JdiQxEtKGBtgsGCKVq2ACaPPOS2Hu7JJq2j/Fu5A==
 
-"@shopify/polaris-tokens@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-6.3.0.tgz#6c127ba92231d7c46cc1b630c93cf10ea8a492b9"
-  integrity sha512-ZYcV/yzTDw/qizqb2zKYi0ryNTWg1fKs492sZajs5Rk6TdEYIJSuIHG4U1iP2RFadIFWyHu5ELC5UZWsUCxP9w==
+"@shopify/polaris-tokens@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-6.4.0.tgz#872bc8338aa6ba85d22b3265d5f329b8bc796c0b"
+  integrity sha512-bGYxsiUQaZkU7QQk+sC665hnbg9ePxWYIfDoNEN/n+Of7G1ori7hkkrE4SLbd1IvTqdD6bNB8BLRhz7wPIqz+w==
 
-"@shopify/polaris@^10.13.0":
-  version "10.13.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-10.13.0.tgz#a827226b7cbe09024505585a67c64589373b95f8"
-  integrity sha512-1Tcvx3vvy5eZdgK8nQH13YgWQOoVtzUiEM2cEutm62zoxf3zUCUejMAyz3J96dRnV5JyXEcAHyIFef62XttRGA==
+"@shopify/polaris@^10.27.0":
+  version "10.27.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-10.27.0.tgz#688df6f7335bfed54bcf7466d39af09a02ed6f9c"
+  integrity sha512-kAfchGnyrF1fO6wbqulDcYG2utoTDod1O+5faqRfNMuEsqslGPrJJPkigh8PJKQfaxRNY45J08zVIQS8xwiVuQ==
   dependencies:
-    "@shopify/polaris-icons" "^6.6.0"
-    "@shopify/polaris-tokens" "^6.3.0"
+    "@shopify/polaris-icons" "^6.11.1"
+    "@shopify/polaris-tokens" "^6.4.0"
     "@types/react" "^18.0.15"
     "@types/react-dom" "^18.0.6"
     "@types/react-transition-group" "^4.4.2"
