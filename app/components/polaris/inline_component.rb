@@ -8,17 +8,17 @@ module Polaris
 
     ALIGN_DEFAULT = :start
     ALIGN_OPTIONS = %i[start center end space-around space-between space-evenly]
-    validates :align, inclusion: { in: ALIGN_OPTIONS }
+    validates :align, inclusion: {in: ALIGN_OPTIONS}
 
     BLOCK_ALIGN_DEFAULT = :center
     BLOCK_ALIGN_OPTIONS = %i[start center end baseline stretch]
-    validates :block_align, inclusion: { in: BLOCK_ALIGN_OPTIONS }
+    validates :block_align, inclusion: {in: BLOCK_ALIGN_OPTIONS}
 
     GAP_DEFAULT = 4
-    validates :gap, inclusion: { in: Polaris::Tokens::Spacing::OPTIONS }
+    validates :gap, inclusion: {in: Polaris::Tokens::Spacing::OPTIONS}
 
     WRAP_DEFAULT = true
-    validates :wrap, inclusion: { in: [true, false] }
+    validates :wrap, inclusion: {in: [true, false]}
 
     def initialize(
       align: ALIGN_DEFAULT,
@@ -32,7 +32,7 @@ module Polaris
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Inline",
+        "Polaris-Inline"
       )
       @system_arguments[:style] = "--pc-inline-align: #{align}; --pc-inline-block-align: #{block_align}; --pc-inline-wrap: #{wrap ? :wrap : :nowrap}; --pc-inline-gap-xs: var(--p-space-#{gap})"
     end
