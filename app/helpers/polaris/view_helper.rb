@@ -65,6 +65,7 @@ module Polaris
       spacer:                   "Polaris::SpacerComponent",
       tabs:                     "Polaris::TabsComponent",
       tag:                      "Polaris::TagComponent",
+      text:                     "Polaris::TextComponent",
       text_container:           "Polaris::TextContainerComponent",
       text_field:               "Polaris::TextFieldComponent",
       text_style:               "Polaris::TextStyleComponent",
