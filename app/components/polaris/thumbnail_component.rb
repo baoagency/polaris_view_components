@@ -13,25 +13,33 @@ module Polaris
     renders_one :icon, Polaris::IconComponent
 
     def initialize(
-      source: nil,
-      size: SIZE_DEFAULT,
       alt: nil,
+      size: SIZE_DEFAULT,
+      source: nil,
+      transparent: false,
       **system_arguments
     )
-      @source = source
       @alt = alt
+      @source = source
+      @transparent = transparent
 
       @system_arguments = system_arguments
-      @system_arguments[:tag] = "span"
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-Thumbnail",
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
-      )
     end
 
     def renders?
       source.present? || icon.present?
+    end
+
+    def system_arguments
+      @system_arguments.tap do |opts|
+        opts[:tag] = :span
+        opts[:classes] = class_names(
+          @system_arguments[:classes],
+          "Polaris-Thumbnail",
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
+          "Polaris-Thumbnail--transparent": @transparent
+        )
+      end
     end
   end
 end
