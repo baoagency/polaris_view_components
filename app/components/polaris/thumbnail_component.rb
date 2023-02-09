@@ -2,6 +2,10 @@
 
 module Polaris
   class ThumbnailComponent < Polaris::Component
+    include ActiveModel::Validations
+
+    attr_reader :size, :transparent
+
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
       small: "Polaris-Thumbnail--sizeSmall",
@@ -9,6 +13,8 @@ module Polaris
       large: "Polaris-Thumbnail--sizeLarge"
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
+    validates :size, inclusion: {in: SIZE_OPTIONS}
+    validates :transparent, inclusion: {in: [true, false]}
 
     renders_one :icon, Polaris::IconComponent
 
@@ -20,6 +26,7 @@ module Polaris
       **system_arguments
     )
       @alt = alt
+      @size = size
       @source = source
       @transparent = transparent
 
@@ -36,7 +43,7 @@ module Polaris
         opts[:classes] = class_names(
           @system_arguments[:classes],
           "Polaris-Thumbnail",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, SIZE_DEFAULT)],
           "Polaris-Thumbnail--transparent": @transparent
         )
       end
