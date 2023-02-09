@@ -3,7 +3,7 @@
 module Polaris
   class VisuallyHiddenComponent < Polaris::Component
     def call
-      content_tag(:span, content, class: "Polaris-VisuallyHidden")
+      render(Polaris::TextComponent.new(as: :span, visually_hidden: true)) { content }
     end
   end
 end
