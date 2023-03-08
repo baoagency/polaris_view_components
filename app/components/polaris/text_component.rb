@@ -53,17 +53,17 @@ module Polaris
       bold: "Polaris-Text--bold"
     }
     FONT_WEIGHT_VARIANT_MAPPINGS = {
-      headingXs: "semibold",
-      headingSm: "semibold",
-      headingMd: "semibold",
-      headingLg: "semibold",
-      headingXl: "semibold",
-      heading2xl: "semibold",
-      heading3xl: "semibold",
-      heading4xl: "bold",
-      bodySm: "regular",
-      bodyMd: "regular",
-      bodyLg: "regular"
+      headingXs: :semibold,
+      headingSm: :semibold,
+      headingMd: :semibold,
+      headingLg: :semibold,
+      headingXl: :semibold,
+      heading2xl: :semibold,
+      heading3xl: :semibold,
+      heading4xl: :bold,
+      bodySm: :regular,
+      bodyMd: :regular,
+      bodyLg: :regular
     }
     FONT_WEIGHT_OPTIONS = FONT_WEIGHT_MAPPINGS.keys
     validates :font_weight, inclusion: {in: FONT_WEIGHT_OPTIONS}, allow_nil: true
@@ -125,7 +125,7 @@ module Polaris
     end
 
     def font_weight_class
-      return FONT_WEIGHT_VARIANT_MAPPINGS[@variant] if @font_weight.nil?
+      return FONT_WEIGHT_MAPPINGS[FONT_WEIGHT_VARIANT_MAPPINGS[@variant]] if @font_weight.nil?
 
       FONT_WEIGHT_MAPPINGS[fetch_or_fallback(FONT_WEIGHT_OPTIONS, @font_weight, FONT_WEIGHT_OPTIONS.first)]
     end
