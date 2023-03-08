@@ -27,6 +27,8 @@ module Polaris
     def initialize(sectioned: false, **system_arguments)
       @counter = 0
       @system_arguments = system_arguments
+
+      @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-Layout"

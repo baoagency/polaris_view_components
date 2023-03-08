@@ -11,7 +11,6 @@ module Polaris
         full_width: false,
         one_half: false,
         one_third: false,
-        one_fourth: false,
         **system_arguments
       )
         @position = position
@@ -25,7 +24,6 @@ module Polaris
           "Polaris-Layout__Section--fullWidth" => full_width,
           "Polaris-Layout__Section--oneHalf" => one_half,
           "Polaris-Layout__Section--oneThird" => one_third,
-          "Polaris-Layout__Section--oneFourth" => one_fourth
         )
       end
 
