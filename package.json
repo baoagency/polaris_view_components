@@ -31,7 +31,7 @@
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
     "@rollup/plugin-node-resolve": "^14.1.0",
-    "@shopify/polaris": "^10.27.0",
+    "@shopify/polaris": "^10.35.0",
     "postcss": "^8.4.19",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.0.1",
