@@ -1,6 +1,6 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
   <div class="Polaris-Navigation__ItemWrapper">
-    <%= link_to @url, class: link_classes, tabindex: "0" do %>
+    <%= link_to @url, **link_arguments do %>
       <% if @icon.present? %>
         <div class="Polaris-Navigation__Icon">
           <%= polaris_icon(name: @icon) %>
