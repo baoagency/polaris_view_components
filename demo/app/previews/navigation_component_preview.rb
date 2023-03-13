@@ -14,6 +14,9 @@ class NavigationComponentPreview < ViewComponent::Preview
   def with_disabled_items
   end
 
+  def with_external_items
+  end
+
   def with_secondary_action
   end
 

@@ -1,0 +1,32 @@
+<%= polaris_navigation do |navigation| %>
+  <% navigation.section do |section| %>
+    <% section.item(
+      url: "#",
+      label: "Home",
+      icon: "HomeMajor"
+    ) do |item| %>
+      <% item.secondary_action(url: "#", icon: "ExternalMinor", external: true) %>
+    <% end %>
+    <% section.item(
+      url: "#",
+      label: "Orders (external)",
+      icon: "OrdersMajor",
+      external: true
+    ) %>
+    <% section.item(
+      url: "#",
+      label: "Products",
+      icon: "ProductsMajor"
+    ) do |item| %>
+      <% item.sub_item(
+        url: "#",
+        label: "All products"
+      ) %>
+      <% item.sub_item(
+        url: "#",
+        label: "Inventory (external)",
+        external: true
+      ) %>
+    <% end %>
+  <% end %>
+<% end %>

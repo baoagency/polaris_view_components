@@ -11,6 +11,8 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
     badge: nil,
     selected: false,
     disabled: false,
+    external: false,
+    link_arguments: {},
     **system_arguments
   )
     @url = url
@@ -19,7 +21,9 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
     @badge = badge
     @selected = selected
     @disabled = disabled
+    @external = external
     @system_arguments = system_arguments
+    @link_arguments = link_arguments
   end
 
   def system_arguments
@@ -29,6 +33,17 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
         @system_arguments[:classes],
         "Polaris-Navigation__ListItem"
       )
+    end
+  end
+
+  def link_arguments
+    @link_arguments.tap do |opts|
+      opts[:class] = class_names(
+        @link_arguments[:classes],
+        link_classes
+      )
+      opts[:tabindex] = "0"
+      opts[:target] = "_blank" if @external
     end
   end
 
