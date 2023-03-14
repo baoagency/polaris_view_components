@@ -23,6 +23,7 @@ module Polaris
     def system_arguments
       @system_arguments.tap do |opts|
         opts[:disabled] = true if @disabled
+        opts[:checked] = true if @checked
         opts[:aria] ||= {}
         opts[:aria][:checked] = @checked
         if indeterminate?
