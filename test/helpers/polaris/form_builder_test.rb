@@ -83,6 +83,14 @@ class Polaris::ViewHelperTest < ActionView::TestCase
     end
   end
 
+  test "#polaris_check_box checked" do
+    @rendered_content = @builder.polaris_check_box(:accept, label: "Checkbox Label", checked: true)
+
+    assert_selector ".Polaris-Checkbox" do
+      assert_selector %(input[name="product[accept]"][type="checkbox"][checked="checked"])
+    end
+  end
+
   test "#polaris_radio_button" do
     @rendered_content = @builder.polaris_radio_button(:access, value: :allow, label: "Radio Label")
 
