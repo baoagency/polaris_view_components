@@ -31,6 +31,7 @@ module Polaris
           @system_arguments[:aria][:checked] = "mixed"
         end
         opts[:class] = opts.delete(:classes)
+        @system_arguments[:form] = @form if @form.present? && !@attribute.present?
       end
     end
 
