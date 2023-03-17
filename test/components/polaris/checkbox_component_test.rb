@@ -39,5 +39,12 @@ class CheckboxComponentTest < Minitest::Test
     render_inline(Polaris::CheckboxComponent.new(label: "Label", checked: :indeterminate))
 
     assert_selector "input.Polaris-Checkbox__Input--indeterminate[type=checkbox][indeterminate]"
+    assert_no_selector "[form]"
+  end
+
+  def test_remote_form
+    render_inline(Polaris::CheckboxComponent.new(form: :form_with_an_id))
+
+    assert_selector "[form=form_with_an_id]"
   end
 end
