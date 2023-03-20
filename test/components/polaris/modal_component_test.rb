@@ -21,8 +21,8 @@ class ModalComponentTest < Minitest::Test
           assert_selector ".Polaris-Modal-Section", visible: :all, text: "Content"
         end
         assert_selector ".Polaris-Modal-Footer > .Polaris-Modal-Footer__FooterContent", visible: :all do
-          assert_selector ".Polaris-Stack .Polaris-Button--primary", visible: :all, text: "Primary"
-          assert_selector ".Polaris-Stack .Polaris-Button", visible: :all, text: "Secondary"
+          assert_selector ".Polaris-LegacyStack .Polaris-Button--primary", visible: :all, text: "Primary"
+          assert_selector ".Polaris-LegacyStack .Polaris-Button", visible: :all, text: "Secondary"
         end
       end
     end

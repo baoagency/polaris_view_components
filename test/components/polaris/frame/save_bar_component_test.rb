@@ -20,9 +20,9 @@ class SaveBarComponentTest < Minitest::Test
         end
         assert_selector ".Polaris-Frame-ContextualSaveBar__Contents" do
           assert_selector "h2.Polaris-Frame-ContextualSaveBar__Message", text: "Message"
-          assert_selector ".Polaris-Frame-ContextualSaveBar__ActionContainer > .Polaris-Stack" do
-            assert_selector ".Polaris-Stack__Item > .Polaris-Button", text: "Discard"
-            assert_selector ".Polaris-Stack__Item > .Polaris-Button--primary", text: "Save"
+          assert_selector ".Polaris-Frame-ContextualSaveBar__ActionContainer > .Polaris-LegacyStack" do
+            assert_selector ".Polaris-LegacyStack__Item > .Polaris-Button", text: "Discard"
+            assert_selector ".Polaris-LegacyStack__Item > .Polaris-Button--primary", text: "Save"
           end
         end
       end

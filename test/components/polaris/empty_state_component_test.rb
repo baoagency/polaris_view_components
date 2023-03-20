@@ -19,12 +19,12 @@ class EmptyStateComponentTest < Minitest::Test
           assert_selector ".Polaris-DisplayText", text: "Title"
           assert_selector ".Polaris-EmptyState__Content", text: "Content"
         end
-        assert_selector ".Polaris-EmptyState__Actions > .Polaris-Stack" do
-          assert_selector ".Polaris-Stack__Item", count: 2
-          assert_selector ".Polaris-Stack__Item:nth-child(1)" do
+        assert_selector ".Polaris-EmptyState__Actions > .Polaris-LegacyStack" do
+          assert_selector ".Polaris-LegacyStack__Item", count: 2
+          assert_selector ".Polaris-LegacyStack__Item:nth-child(1)" do
             assert_selector ".Polaris-Button--primary", text: "Primary Action"
           end
-          assert_selector ".Polaris-Stack__Item:nth-child(2)" do
+          assert_selector ".Polaris-LegacyStack__Item:nth-child(2)" do
             assert_selector ".Polaris-Button", text: "Secondary Action"
           end
         end

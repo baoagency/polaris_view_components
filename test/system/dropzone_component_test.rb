@@ -5,13 +5,13 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
     with_preview("dropzone_component/with_file_upload")
 
     find(".Polaris-DropZone").drop(fixture_file("file.txt"), fixture_file("image.png"))
-    assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 2
-    within ".Polaris-DropZone__Preview > .Polaris-Stack" do
-      assert_selector ".Polaris-Stack__Item:nth-child(1)" do
+    assert_selector ".Polaris-DropZone__Preview > .Polaris-LegacyStack > .Polaris-LegacyStack__Item", count: 2
+    within ".Polaris-DropZone__Preview > .Polaris-LegacyStack" do
+      assert_selector ".Polaris-LegacyStack__Item:nth-child(1)" do
         assert_text "file.txt"
         assert_text "10 Bytes"
       end
-      assert_selector ".Polaris-Stack__Item:nth-child(2)" do
+      assert_selector ".Polaris-LegacyStack__Item:nth-child(2)" do
         assert_text "image.png"
         assert_text "11.37 KB"
       end
@@ -23,7 +23,7 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
 
     within first("form") do
       find(".Polaris-DropZone").drop(fixture_file("file.txt"))
-      assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
+      assert_selector ".Polaris-DropZone__Preview > .Polaris-LegacyStack > .Polaris-LegacyStack__Item", count: 1
 
       click_on "Submit"
     end
@@ -50,7 +50,7 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
     with_preview("dropzone_component/with_single_file_upload")
 
     find(".Polaris-DropZone").drop(fixture_file("file.txt"), fixture_file("image.png"))
-    assert_selector ".Polaris-DropZone__Preview > .Polaris-Stack > .Polaris-Stack__Item", count: 1
+    assert_selector ".Polaris-DropZone__Preview > .Polaris-LegacyStack > .Polaris-LegacyStack__Item", count: 1
     within ".Polaris-DropZone__Preview" do
       assert_text "file.txt"
       assert_text "10 Bytes"
