@@ -5,7 +5,7 @@ module Polaris
     FOOTER_ACTION_ALIGNMENT_DEFAULT = :right
     FOOTER_ACTION_ALIGNMENT_MAPPINGS = {
       FOOTER_ACTION_ALIGNMENT_DEFAULT => "",
-      :left => "Polaris-Card__LeftJustified"
+      :left => "Polaris-LegacyCard__LeftJustified"
     }
     FOOTER_ACTION_ALIGNMENT_OPTIONS = FOOTER_ACTION_ALIGNMENT_MAPPINGS.keys
 
@@ -34,8 +34,8 @@ module Polaris
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Card",
-        "Polaris-Card--subdued": subdued
+        "Polaris-LegacyCard",
+        "Polaris-LegacyCard--subdued": subdued
       )
     end
 
@@ -45,7 +45,7 @@ module Polaris
 
     def footer_classes
       class_names(
-        "Polaris-Card__Footer",
+        "Polaris-LegacyCard__Footer",
         FOOTER_ACTION_ALIGNMENT_MAPPINGS[fetch_or_fallback(FOOTER_ACTION_ALIGNMENT_OPTIONS, @footer_action_alignment, FOOTER_ACTION_ALIGNMENT_DEFAULT)]
       )
     end

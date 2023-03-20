@@ -16,12 +16,12 @@ class Polaris::Card::SectionComponent < Polaris::Component
     @system_arguments[:tag] = :div
     @system_arguments[:classes] = class_names(
       @system_arguments[:classes],
-      "Polaris-Card__Section": !unstyled,
-      "Polaris-Card__Section--flush": flush,
-      "Polaris-Card__Section--subdued": subdued,
-      "Polaris-Card__Section--fullWidth": full_width,
-      "Polaris-Card__Section--borderTop": border_top,
-      "Polaris-Card__Section--borderBottom": border_bottom
+      "Polaris-LegacyCard__Section": !unstyled,
+      "Polaris-LegacyCard__Section--flush": flush,
+      "Polaris-LegacyCard__Section--subdued": subdued,
+      "Polaris-LegacyCard__Section--fullWidth": full_width,
+      "Polaris-LegacyCard__Section--borderTop": border_top,
+      "Polaris-LegacyCard__Section--borderBottom": border_bottom
     )
 
     @title = title
@@ -34,7 +34,7 @@ class Polaris::Card::SectionComponent < Polaris::Component
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Card__Subsection"
+        "Polaris-LegacyCard__Subsection"
       )
     end
 

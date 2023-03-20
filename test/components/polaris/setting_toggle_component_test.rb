@@ -9,7 +9,7 @@ class AvatarComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-Card > .Polaris-Card__Section > .Polaris-SettingAction" do
+    assert_selector ".Polaris-LegacyCard > .Polaris-LegacyCard__Section > .Polaris-SettingAction" do
       assert_selector ".Polaris-SettingAction__Setting", text: "Content"
       assert_selector ".Polaris-SettingAction__Action > .Polaris-Button", text: "Action"
     end

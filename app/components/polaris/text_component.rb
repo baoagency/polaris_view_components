@@ -7,16 +7,16 @@ module Polaris
     attr_reader :as, :variant, :alignment, :font_weight, :color
 
     AS_DEFAULT = :p
-    AS_OPTIONS = %w[
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      span,
-      legend,
+    AS_OPTIONS = %i[
+      h1
+      h2
+      h3
+      h4
+      h5
+      h6
+      p
+      span
+      legend
     ]
     validates :as, inclusion: {in: AS_OPTIONS}
 
