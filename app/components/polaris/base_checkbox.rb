@@ -23,6 +23,7 @@ module Polaris
     def system_arguments
       @system_arguments.tap do |opts|
         opts[:disabled] = true if @disabled
+        opts[:checked] = true if @checked
         opts[:aria] ||= {}
         opts[:aria][:checked] = @checked
         if indeterminate?
@@ -30,6 +31,7 @@ module Polaris
           @system_arguments[:aria][:checked] = "mixed"
         end
         opts[:class] = opts.delete(:classes)
+        opts[:form] = @form if @form.present? && @attribute.blank?
       end
     end
 

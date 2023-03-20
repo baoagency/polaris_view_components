@@ -127,6 +127,25 @@ class NavigationComponentTest < Minitest::Test
     end
   end
 
+  def test_external_items
+    render_inline(Polaris::NavigationComponent.new) do |navigation|
+      navigation.item(url: "/path1", label: "Item 1", icon: "HomeMajor", extenral: true)
+      navigation.item(url: "/path1", label: "Item 2", icon: "HomeMajor") do |item|
+        item.sub_item(url: "#", label: "Sub Item", external: true)
+      end
+    end
+
+    assert_selector ".Polaris-Navigation__Item[target='_blank']" do
+      assert_text "Item 1"
+    end
+    assert_selector ".Polaris-Navigation__Item" do
+      assert_text "Item 2"
+      assert_selector ".Polaris-Navigation__Item[target='_blank']" do
+        assert_text "Sub Item"
+      end
+    end
+  end
+
   def test_secondary_action
     render_inline(Polaris::NavigationComponent.new) do |navigation|
       navigation.item(url: "/path1", label: "Item 1", icon: "HomeMajor") do |item|
