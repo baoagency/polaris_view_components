@@ -11,7 +11,7 @@ class PageActionsComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-PageActions" do
-      assert_selector ".Polaris-LegacyStack.Polaris-LegacyStack--distributionEqualSpacing.Polaris-LegacyStack--spacingTight" do
+      assert_selector ".Polaris-LegacyStack.Polaris-LegacyStack--distributionTrailing.Polaris-LegacyStack--spacingTight" do
         assert_selector ".Polaris-LegacyStack__Item", count: 2
         assert_selector ".Polaris-LegacyStack__Item:nth-child(1)" do
           assert_selector ".Polaris-ButtonGroup" do
