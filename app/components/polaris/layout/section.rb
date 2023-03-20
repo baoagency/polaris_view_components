@@ -23,7 +23,7 @@ module Polaris
           "Polaris-Layout__Section--secondary" => secondary,
           "Polaris-Layout__Section--fullWidth" => full_width,
           "Polaris-Layout__Section--oneHalf" => one_half,
-          "Polaris-Layout__Section--oneThird" => one_third,
+          "Polaris-Layout__Section--oneThird" => one_third
         )
       end
 
