@@ -73,7 +73,7 @@ module Polaris
       critical: "Polaris-Text--critical",
       warning: "Polaris-Text--warning",
       subdued: "Polaris-Text--subdued",
-      "text-inverse": "Polaris-Text--text-inverse"
+      text_inverse: "Polaris-Text--text-inverse"
     }
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
     validates :color, inclusion: {in: COLOR_OPTIONS}, allow_nil: true
@@ -84,7 +84,6 @@ module Polaris
       break_word: false,
       color: nil,
       font_weight: nil,
-      id: "",
       truncate: false,
       variant: VARIANT_DEFAULT,
       visually_hidden: false,

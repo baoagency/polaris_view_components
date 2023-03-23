@@ -10,9 +10,7 @@
   <div class="Polaris-Banner__ContentWrapper">
     <% if @title.present? %>
       <div class="Polaris-Banner__Heading">
-        <p class="Polaris-Heading">
-          <%= @title %>
-        </p>
+        <%= polaris_heading(element: :p) { @title } %>
       </div>
     <% end %>
     <div class="Polaris-Banner__Content">

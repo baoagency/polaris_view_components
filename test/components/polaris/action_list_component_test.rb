@@ -90,7 +90,7 @@ class ActionListComponentTest < Minitest::Test
     assert_selector ".Polaris-ActionList__Content > .Polaris-ActionList__Text" do
       assert_selector ".Polaris-ActionList__ContentBlock" do
         assert_selector ".Polaris-ActionList__ContentBlockInner", text: "Item"
-        assert_selector ".Polaris-TextStyle--variationSubdued", text: "HelpText"
+        assert_selector ".Polaris-Text--subdued", text: "HelpText"
       end
     end
   end

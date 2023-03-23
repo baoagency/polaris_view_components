@@ -10,15 +10,11 @@ module Polaris
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] = element
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-Subheading"
-      )
+      @element = element
     end
 
     def call
-      render(Polaris::BaseComponent.new(**@system_arguments)) { content }
+      render(Polaris::TextComponent.new(as: @element, variant: :headingXs, **@system_arguments)) { content }
     end
   end
 end

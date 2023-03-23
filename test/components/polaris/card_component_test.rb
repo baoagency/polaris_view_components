@@ -48,7 +48,7 @@ class CardComponentTest < Minitest::Test
       card.section { "Section 2" }
     end
 
-    assert_selector ".Polaris-LegacyCard__Header .Polaris-Heading", text: "Separate header"
+    assert_selector ".Polaris-LegacyCard__Header", text: "Separate header"
     assert_selector ".Polaris-LegacyCard__Header .Polaris-Button", text: "Action"
   end
 

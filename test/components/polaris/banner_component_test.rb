@@ -11,7 +11,7 @@ class BannerComponentTest < Minitest::Test
     assert_selector ".Polaris-Banner.Polaris-Banner--withinPage" do
       assert_selector ".Polaris-Banner__Ribbon > .Polaris-Icon.Polaris-Icon--colorBase.Polaris-Icon--applyColor"
       assert_selector ".Polaris-Banner__ContentWrapper" do
-        assert_selector ".Polaris-Banner__Heading > .Polaris-Heading", text: "Banner Header"
+        assert_selector ".Polaris-Banner__Heading", text: "Banner Header"
         assert_selector ".Polaris-Banner__Content", text: "Banner Content"
       end
     end

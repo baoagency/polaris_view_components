@@ -6,6 +6,6 @@ class CaptionComponentTest < Minitest::Test
   def test_caption
     render_inline(Polaris::CaptionComponent.new) { "Caption Content" }
 
-    assert_selector "p.Polaris-Caption", text: "Caption Content"
+    assert_selector "p.Polaris-Text--bodySm", text: "Caption Content"
   end
 end
