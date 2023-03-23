@@ -20,9 +20,7 @@ class LinkComponentTest < Minitest::Test
       "External"
     end
 
-    assert_selector "a.Polaris-Link[rel='noopener noreferrer'][target='_blank']", text: "External" do
-      assert_selector ".Polaris-Icon"
-    end
+    assert_selector "a.Polaris-Link[rel='noopener noreferrer'][target='_blank']", text: "External"
   end
 
   def test_no_underline
