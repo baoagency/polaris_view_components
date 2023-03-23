@@ -20,7 +20,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@hotwired/stimulus": "^3.0.0",
-    "@rails/request.js": "^0.0.6"
+    "@rails/request.js": ">= 0.0.6"
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
