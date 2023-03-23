@@ -8,6 +8,9 @@ class IconComponentPreview < ViewComponent::Preview
   def with_backdrop
   end
 
-  def user_icon
+  def with_custom_svg
+  end
+
+  def with_custom_svg_and_color
   end
 end
