@@ -12,6 +12,6 @@
 
 <% if render_accessibility? %>
   <%= render Polaris::BaseComponent.new(**span_arguments) do %>
-    <%= render Polaris::TextComponent.new(as: :span, variant: :bodySm, visually_hidden: true).with_content(@accessibility_label) %>
+    <%= render Polaris::TextComponent.new(as: :span, variant: :body_sm, visually_hidden: true).with_content(@accessibility_label) %>
   <% end %>
 <% end %>

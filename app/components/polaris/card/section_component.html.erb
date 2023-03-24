@@ -4,7 +4,7 @@
       <% if @actions.present? %>
         <%= polaris_stack(alignment: :trailing) do |stack| %>
           <% stack.item(fill: true) do %>
-            <%= polaris_text(variant: :headingSm, as: :h3) { @title } %>
+            <%= polaris_text(variant: :heading_sm, as: :h3) { @title } %>
           <% end %>
 
           <% stack.item do %>
@@ -16,7 +16,7 @@
           <% end %>
         <% end %>
       <% else %>
-        <%= polaris_text(variant: :headingSm, as: :h3) { @title } %>
+        <%= polaris_text(variant: :heading_sm, as: :h3) { @title } %>
       <% end %>
     </div>
   <% end %>

@@ -6,8 +6,8 @@ module Polaris
 
     SIZE_DEFAULT = :default
     SIZE_MAPPINGS = {
-      SIZE_DEFAULT => :bodyMd,
-      :small => :bodySm
+      SIZE_DEFAULT => :body_md,
+      :small => :body_sm
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 

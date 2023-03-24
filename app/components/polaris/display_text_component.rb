@@ -7,10 +7,10 @@ module Polaris
 
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
-      small: :headingLg,
-      medium: :headingXl,
-      large: :heading2xl,
-      extra_large: :heading4xl
+      small: :heading_lg,
+      medium: :heading_xl,
+      large: :heading_2xl,
+      extra_large: :heading_4xl
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 

@@ -14,7 +14,7 @@ module Polaris
     end
 
     def call
-      render(Polaris::TextComponent.new(as: @element, variant: :headingMd, **@system_arguments)) { content }
+      render(Polaris::TextComponent.new(as: @element, variant: :heading_md, **@system_arguments)) { content }
     end
   end
 end
