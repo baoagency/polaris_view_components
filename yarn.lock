@@ -87,22 +87,22 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@shopify/polaris-icons@^6.11.3":
-  version "6.11.3"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-6.11.3.tgz#f7645e9e5d713de2ddf0e7ba0e36318164d3facf"
-  integrity sha512-+wKkjVgIhSIAX30P4IyVoD1fL1c9mqsSAGpxEnZz+EAsuFtqhzjed7umzxspDt1dgcF5Im2om5A+yQE2ciPtbA==
+"@shopify/polaris-icons@^6.12.0":
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris-icons/-/polaris-icons-6.12.0.tgz#e6a4866e326e4a6fae082d9d7fbfcf5080934500"
+  integrity sha512-KRIC5OUxLjJifqt//fslbRhfTrzBdnYH5sEuJ39fAHwnGQY+o9JnrZyJ2OIiTTRU9OQBgkhMwr1OaisJHMyWcA==
 
 "@shopify/polaris-tokens@^6.8.0":
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/@shopify/polaris-tokens/-/polaris-tokens-6.8.0.tgz#e21a0d8c73a226219e72733538f51b9a7e85550b"
   integrity sha512-1vT7qGz4BiugQzhnpsNL5fU+oh+q4HLPCqzTMvvoJJxzsb6IxH1qA+8C9rSWeHepPbkwIZ+MxOBDDV805aYlCQ==
 
-"@shopify/polaris@^10.37.0":
-  version "10.37.0"
-  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-10.37.0.tgz#e9071d262915775d52c9c6f09be30e80d7dde2e6"
-  integrity sha512-B8/rgKP7k6Q2JgcnRUUivqIvtHMiyfX1eqji93uzMRR2HppoStaX39IWpCgDpvUSgZmmbEYee0nPDiL5dVzN1Q==
+"@shopify/polaris@^10.38.0":
+  version "10.38.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-10.38.0.tgz#16fb5de5cae87118005d1b90c5a512ef4e49b2ce"
+  integrity sha512-FclxcAdvlytyjR4iHYdZXr8kl4eQU4mG3acMo5PKCATbDZKQebYI5aSdaQL9BNBROiolEIJW1pAOHZKgztBKiw==
   dependencies:
-    "@shopify/polaris-icons" "^6.11.3"
+    "@shopify/polaris-icons" "^6.12.0"
     "@shopify/polaris-tokens" "^6.8.0"
     "@types/react" "^18.0.15"
     "@types/react-dom" "^18.0.6"

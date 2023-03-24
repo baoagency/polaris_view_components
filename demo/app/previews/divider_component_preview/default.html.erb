@@ -1,0 +1,16 @@
+<%= polaris_alpha_stack(gap: "5") do %>
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Base" } %>
+  <%= polaris_divider(border_style: :base) %>
+
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Dark" } %>
+  <%= polaris_divider(border_style: :dark) %>
+
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Divider" } %>
+  <%= polaris_divider(border_style: :divider) %>
+
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Divider on dark" } %>
+  <%= polaris_divider(border_style: :divider_on_dark) %>
+
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Transparent" } %>
+  <%= polaris_divider(border_style: :transparent) %>
+<% end %>
