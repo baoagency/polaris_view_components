@@ -13,6 +13,12 @@ class TopBarComponentTest < Minitest::Test
           user_menu.avatar(initials: "K")
           "Popover Content"
         end
+        top_bar.search_field do |search_field|
+          "Search Field Content"
+        end
+        top_bar.secondary_menu do |secondary_menu|
+          "Secondary Menu Content"
+        end
       end
     end
 
@@ -24,6 +30,8 @@ class TopBarComponentTest < Minitest::Test
         end
       end
       assert_selector ".Polaris-TopBar__Contents" do
+        assert_selector ".Polaris-TopBar__SearchField", text: "Search Field Content"
+        assert_selector ".Polaris-TopBar__SecondaryMenu", text: "Secondary Menu Content"
         assert_selector ".Polaris-TopBar-Menu__ActivatorWrapper" do
           assert_selector ".Polaris-TopBar-Menu__Activator" do
             assert_selector ".Polaris-MessageIndicator__MessageIndicatorWrapper > .Polaris-Avatar"
