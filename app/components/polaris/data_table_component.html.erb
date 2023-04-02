@@ -14,7 +14,7 @@
               sorted: column.sorted,
               **column.system_arguments
             ) do %>
-              <%= column.title.html_safe %>
+              <%= column.title&.html_safe %>
             <% end %>
           <% end %>
         </tr>
