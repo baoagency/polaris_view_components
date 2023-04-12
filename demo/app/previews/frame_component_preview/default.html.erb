@@ -6,6 +6,12 @@
   }
 ) do |frame| %>
   <% frame.top_bar do |top_bar| %>
+    <% top_bar.search_field do |search_field| %>
+      <%= polaris_text_field(placeholder: "Search", clear_button: true) %>
+    <% end %>
+    <% top_bar.secondary_menu do |secondary_menu| %>
+      <%= polaris_icon(name: "QuestionMarkMajor", color: :subdued) %>
+    <% end %>
     <% top_bar.user_menu(name: "Kirill", detail: "Platmart") do |user_menu| %>
       <% user_menu.avatar(initials: "K") %>
 
