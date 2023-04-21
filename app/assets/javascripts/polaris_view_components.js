@@ -2589,6 +2589,38 @@ class Toast extends Controller {
   }
 }
 
+class Tooltip extends Controller {
+  static targets=[ "template" ];
+  initialize() {
+    this.shownTooltip = null;
+  }
+  show(event) {
+    const popperOptions = {
+      placement: "bottom-start",
+      modifiers: [ {
+        name: "sameWidth",
+        enabled: true,
+        fn: ({state: state}) => {
+          state.styles.popper.width = `${state.rects.reference.offsetWidth}px`;
+        },
+        effect({state: state}) {
+          state.elements.popper.style.width = `${state.elements.reference.offsetWidth}px`;
+        },
+        phase: "beforeWrite",
+        requires: [ "computeStyles" ]
+      } ]
+    };
+    const element = event.currentTarget;
+    let tooltip = document.createElement("div");
+    tooltip.innerHTML = this.templateTarget.innerHTML;
+    this.shownTooltip = element.appendChild(tooltip);
+    this.popper = createPopper(element, this.shownTooltip, popperOptions);
+  }
+  hide() {
+    this.shownTooltip.remove();
+  }
+}
+
 function registerPolarisControllers(application) {
   application.register("polaris-autocomplete", Autocomplete);
   application.register("polaris-button", Button);
@@ -2604,6 +2636,7 @@ function registerPolarisControllers(application) {
   application.register("polaris-select", Select);
   application.register("polaris-text-field", TextField);
   application.register("polaris-toast", Toast);
+  application.register("polaris-tooltip", Tooltip);
 }
 
-export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField, registerPolarisControllers };
+export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField, Tooltip, registerPolarisControllers };

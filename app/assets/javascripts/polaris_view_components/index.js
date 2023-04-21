@@ -12,8 +12,10 @@ import Scrollable from './scrollable_controller'
 import Select from './select_controller'
 import TextField from './text_field_controller'
 import Toast from './toast_controller'
+import Tooltip from './tooltip_controller'
 
-export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField }
+
+export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField, Tooltip }
 
 export function registerPolarisControllers(application) {
   application.register('polaris-autocomplete', Autocomplete)
@@ -30,4 +32,5 @@ export function registerPolarisControllers(application) {
   application.register('polaris-select', Select)
   application.register('polaris-text-field', TextField)
   application.register('polaris-toast', Toast)
+  application.register('polaris-tooltip', Tooltip)
 }
