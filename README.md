@@ -26,10 +26,10 @@ Render Polaris ViewComponents:
 
 ## Installation
 
-Add to `Gemfile`:
+Add `polaris_view_components` to your Gemfile:
 
-```ruby
-gem "polaris_view_components"
+```bash
+bundle add polaris_view_components
 ```
 
 Run installer:
