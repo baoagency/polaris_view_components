@@ -15,16 +15,15 @@ module Polaris
         count: object.errors.count,
         model: object.class.model_name.human.downcase
       )
-      custom_content = template.capture { yield } if block_given?
 
-      render Polaris::BannerComponent.new(title: title, status: :critical, within: :container) do
+      render Polaris::BannerComponent.new(title: title, status: :critical, within: :container) do |banner|
         [
           render(Polaris::ListComponent.new) do |list|
             object.errors.full_messages.each do |error|
               list.item { error.html_safe }
             end
           end,
-          custom_content
+          (template.capture { yield(banner) } if block_given?)
         ].compact.join.html_safe
       end
     end
