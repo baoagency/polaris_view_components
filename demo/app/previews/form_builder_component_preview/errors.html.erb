@@ -5,6 +5,12 @@
     <% end %>
 
     <%= layout.section do %>
+      <%= form.errors_summary do %>
+        with custom content
+      <% end %>
+    <% end %>
+
+    <%= layout.section do %>
       <%= form.polaris_text_field(:title) %>
     <% end %>
   <% end %>
