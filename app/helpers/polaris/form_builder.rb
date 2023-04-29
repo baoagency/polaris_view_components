@@ -16,12 +16,15 @@ module Polaris
         model: object.class.model_name.human.downcase
       )
 
-      render Polaris::BannerComponent.new(title: title, status: :critical, within: :container) do
-        render(Polaris::ListComponent.new) do |list|
-          object.errors.full_messages.each do |error|
-            list.item { error.html_safe }
-          end
-        end
+      render Polaris::BannerComponent.new(title: title, status: :critical, within: :container) do |banner|
+        [
+          render(Polaris::ListComponent.new) do |list|
+            object.errors.full_messages.each do |error|
+              list.with_item { error.html_safe }
+            end
+          end,
+          (template.capture { yield(banner) } if block_given?)
+        ].compact.join.html_safe
       end
     end
 

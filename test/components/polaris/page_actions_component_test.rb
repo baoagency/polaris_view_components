@@ -5,9 +5,9 @@ class PageActionsComponentTest < Minitest::Test
 
   def test_renders_page_actions
     render_inline(Polaris::PageActionsComponent.new) do |actions|
-      actions.primary_action(url: "/save") { "Primary Button" }
-      actions.secondary_action(url: "/destroy", destructive: true) { "Delete Button" }
-      actions.secondary_action { "Default Button" }
+      actions.with_primary_action(url: "/save") { "Primary Button" }
+      actions.with_secondary_action(url: "/destroy", destructive: true) { "Delete Button" }
+      actions.with_secondary_action { "Default Button" }
     end
 
     assert_selector ".Polaris-PageActions" do
@@ -33,7 +33,7 @@ class PageActionsComponentTest < Minitest::Test
 
   def test_renders_only_primary_action
     render_inline(Polaris::PageActionsComponent.new) do |actions|
-      actions.primary_action(url: "/save") { "Save Button" }
+      actions.with_primary_action(url: "/save") { "Save Button" }
     end
 
     assert_selector ".Polaris-PageActions > .Polaris-LegacyStack--distributionTrailing"

@@ -5,8 +5,8 @@ class FormLayoutComponentTest < Minitest::Test
 
   def test_default_form_layout
     render_inline(Polaris::FormLayoutComponent.new) do |form_layout|
-      form_layout.item { "Item 1" }
-      form_layout.item { "Item 2" }
+      form_layout.with_item { "Item 1" }
+      form_layout.with_item { "Item 2" }
     end
 
     assert_selector ".Polaris-FormLayout" do
@@ -18,9 +18,9 @@ class FormLayoutComponentTest < Minitest::Test
 
   def test_field_group
     render_inline(Polaris::FormLayoutComponent.new) do |form_layout|
-      form_layout.group do |group|
-        group.item { "Item 1" }
-        group.item { "Item 2" }
+      form_layout.with_group do |group|
+        group.with_item { "Item 1" }
+        group.with_item { "Item 2" }
       end
     end
 
@@ -35,9 +35,9 @@ class FormLayoutComponentTest < Minitest::Test
 
   def test_condensed_group
     render_inline(Polaris::FormLayoutComponent.new) do |form_layout|
-      form_layout.group(condensed: true) do |group|
-        group.item { "Item 1" }
-        group.item { "Item 2" }
+      form_layout.with_group(condensed: true) do |group|
+        group.with_item { "Item 1" }
+        group.with_item { "Item 2" }
       end
     end
 

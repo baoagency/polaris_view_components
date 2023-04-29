@@ -25,7 +25,7 @@ class ButtonComponentTest < Minitest::Test
 
   def test_with_removable_button
     render_inline Polaris::TagComponent.new do |tag|
-      tag.remove_button(data: {})
+      tag.with_remove_button(data: {})
       "Content"
     end
 

@@ -5,9 +5,9 @@ class LayoutComponentTest < Minitest::Test
 
   def test_order
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section { "First" }
-      layout.annotated_section(title: "Second") { "Second" }
-      layout.section { "Third" }
+      layout.with_section { "First" }
+      layout.with_annotated_section(title: "Second") { "Second" }
+      layout.with_section { "Third" }
     end
 
     assert_selector ".Polaris-Layout > *:nth-child(1)", text: "First"
@@ -23,7 +23,7 @@ class LayoutComponentTest < Minitest::Test
 
   def test_renders_default_layout_with_section
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section { "Default" }
+      layout.with_section { "Default" }
     end
 
     assert_selector ".Polaris-Layout__Section"
@@ -31,9 +31,9 @@ class LayoutComponentTest < Minitest::Test
 
   def test_renders_multiple_sections
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section { "Default 1" }
-      layout.section { "Default 2" }
-      layout.section { "Default 3" }
+      layout.with_section { "Default 1" }
+      layout.with_section { "Default 2" }
+      layout.with_section { "Default 3" }
     end
 
     assert_selector ".Polaris-Layout__Section", {count: 3}
@@ -41,11 +41,11 @@ class LayoutComponentTest < Minitest::Test
 
   def test_renders_mixed_sections
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section { "Default 1" }
-      layout.annotated_section(title: "Annotated") { "Annotated 1" }
-      layout.section { "Default 2" }
-      layout.annotated_section(title: "Annotated") { "Annotated 2" }
-      layout.section { "Default 3" }
+      layout.with_section { "Default 1" }
+      layout.with_annotated_section(title: "Annotated") { "Annotated 1" }
+      layout.with_section { "Default 2" }
+      layout.with_annotated_section(title: "Annotated") { "Annotated 2" }
+      layout.with_section { "Default 3" }
     end
 
     assert_selector ".Polaris-Layout__Section", {count: 3}
@@ -54,7 +54,7 @@ class LayoutComponentTest < Minitest::Test
 
   def test_renders_secondary_sections
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section(secondary: true) { "Default" }
+      layout.with_section(secondary: true) { "Default" }
     end
 
     assert_selector ".Polaris-Layout__Section--secondary"
@@ -62,7 +62,7 @@ class LayoutComponentTest < Minitest::Test
 
   def test_renders_full_width_sections
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section(full_width: true) { "Default" }
+      layout.with_section(full_width: true) { "Default" }
     end
 
     assert_selector ".Polaris-Layout__Section--fullWidth"
@@ -70,7 +70,7 @@ class LayoutComponentTest < Minitest::Test
 
   def test_renders_one_half_sections
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section(one_half: true) { "Default" }
+      layout.with_section(one_half: true) { "Default" }
     end
 
     assert_selector ".Polaris-Layout__Section--oneHalf"
@@ -78,21 +78,21 @@ class LayoutComponentTest < Minitest::Test
 
   def test_renders_one_third_sections
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.section(one_third: true) { "Default" }
+      layout.with_section(one_third: true) { "Default" }
     end
 
     assert_selector ".Polaris-Layout__Section--oneThird"
   end
 
-  def test_renders_annotated_sections
+  def test_renders_with_annotated_sections
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.annotated_section(title: "Test title") { "Default" }
+      layout.with_annotated_section(title: "Test title") { "Default" }
     end
 
     assert_selector ".Polaris-Layout__AnnotatedSection", text: "Test title"
 
     render_inline(Polaris::LayoutComponent.new) do |layout|
-      layout.annotated_section(title: "Test title", description: "Test description") { "Default" }
+      layout.with_annotated_section(title: "Test title", description: "Test description") { "Default" }
     end
 
     assert_selector ".Polaris-Layout__AnnotationDescription p", text: "Test description"

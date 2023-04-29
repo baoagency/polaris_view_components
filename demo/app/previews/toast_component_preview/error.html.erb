@@ -7,7 +7,7 @@
     }) { "Show toast" } %>
   <% end %>
 
-  <% frame.toasts do %>
+  <% frame.with_toasts do %>
     <%= polaris_toast(id: "demo-toast", hidden: true, error: true) { "Server error" } %>
   <% end %>
 <% end %>

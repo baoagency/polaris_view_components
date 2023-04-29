@@ -5,7 +5,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_default_action_list
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item { "Item" }
+      action_list.with_item { "Item" }
     end
 
     assert_selector ".Polaris-ActionList > .Polaris-ActionList__Section--withoutTitle" do
@@ -19,11 +19,11 @@ class ActionListComponentTest < Minitest::Test
 
   def test_sectioned_action_list
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.section(title: "Section 1") do |section|
-        section.item { "Item" }
+      action_list.with_section(title: "Section 1") do |section|
+        section.with_item { "Item" }
       end
-      action_list.section(title: "Section 2") do |section|
-        section.item { "Item" }
+      action_list.with_section(title: "Section 2") do |section|
+        section.with_item { "Item" }
       end
     end
 
@@ -41,7 +41,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_item_with_url
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item(url: "#") { "Item" }
+      action_list.with_item(url: "#") { "Item" }
     end
 
     assert_selector "li > a.Polaris-ActionList__Item[href='#']" do
@@ -51,7 +51,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_item_with_external_url
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item(url: "#", external: true) { "Item" }
+      action_list.with_item(url: "#", external: true) { "Item" }
     end
 
     assert_selector "a.Polaris-ActionList__Item[target=_blank]"
@@ -59,7 +59,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_item_with_icon
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item(icon: "ImportMinor") { "Item" }
+      action_list.with_item(icon: "ImportMinor") { "Item" }
     end
 
     assert_selector ".Polaris-ActionList__Item > .Polaris-ActionList__Content" do
@@ -69,9 +69,9 @@ class ActionListComponentTest < Minitest::Test
 
   def test_item_with_prefix_and_suffix
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item do |item|
-        item.prefix { "Prefix" }
-        item.suffix { "Suffix" }
+      action_list.with_item do |item|
+        item.with_prefix { "Prefix" }
+        item.with_suffix { "Suffix" }
         "Item"
       end
     end
@@ -84,7 +84,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_item_with_help_text
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item(help_text: "HelpText") { "Item" }
+      action_list.with_item(help_text: "HelpText") { "Item" }
     end
 
     assert_selector ".Polaris-ActionList__Content > .Polaris-ActionList__Text" do
@@ -97,7 +97,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_active_item
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item(active: true) { "Item" }
+      action_list.with_item(active: true) { "Item" }
     end
 
     assert_selector "li > .Polaris-ActionList__Item.Polaris-ActionList--active"
@@ -105,7 +105,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_destructive_item
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.item(destructive: true) { "Item" }
+      action_list.with_item(destructive: true) { "Item" }
     end
 
     assert_selector "li > .Polaris-ActionList__Item.Polaris-ActionList--destructive"

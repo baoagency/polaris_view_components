@@ -3,14 +3,14 @@
     <div class="Polaris-LegacyCard__SectionHeader">
       <% if @actions.present? %>
         <%= polaris_stack(alignment: :trailing) do |stack| %>
-          <% stack.item(fill: true) do %>
+          <% stack.with_item(fill: true) do %>
             <%= polaris_text(variant: :heading_sm, as: :h3) { @title } %>
           <% end %>
 
-          <% stack.item do %>
+          <% stack.with_item do %>
             <%= polaris_button_group do |group| %>
               <% @actions.each do |action| %>
-                <% group.button(**action) %>
+                <% group.with_button(**action) %>
               <% end %>
             <% end %>
           <% end %>

@@ -5,6 +5,6 @@
 ) do |banner| %>
   <p>Add weights to show accurate rates at checkout and when buying shipping labels in Shopify.</p>
 
-  <% banner.action(url: '#') { "Edit variant weights" } %>
-  <% banner.secondary_action(url: "#") { "Learn more" } %>
+  <% banner.with_action(url: '#') { "Edit variant weights" } %>
+  <% banner.with_secondary_action(url: "#") { "Learn more" } %>
 <% end %>

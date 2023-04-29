@@ -44,7 +44,7 @@ class PaginationComponentTest < Minitest::Test
 
   def test_page_with_primary_action
     render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.primary_action { "Primary Button" }
+      page.with_primary_action { "Primary Button" }
     end
 
     assert_selector ".Polaris-Page-Header > .Polaris-Page-Header__Row > .Polaris-Page-Header__RightAlign" do
@@ -56,7 +56,7 @@ class PaginationComponentTest < Minitest::Test
 
   def test_page_with_thumbnail
     render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.thumbnail(source: "/image.png")
+      page.with_thumbnail(source: "/image.png")
     end
 
     assert_selector ".Polaris-Page-Header__TitleWrapper > .Polaris-Header-Title--hasThumbnail" do
@@ -100,7 +100,7 @@ class PaginationComponentTest < Minitest::Test
 
   def test_page_with_title_metadata
     render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.title_metadata { "Title Metadata" }
+      page.with_title_metadata { "Title Metadata" }
     end
 
     assert_selector ".Polaris-Page-Header__TitleWrapper" do
@@ -140,7 +140,7 @@ class PaginationComponentTest < Minitest::Test
 
   def test_action_group
     render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.action_group(
+      page.with_action_group(
         title: "Promote",
         actions: [
           {content: "Share on Facebook", url: "https://facebook.com"},

@@ -13,8 +13,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_multiple_sections
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section { "Section 1" }
-      card.section { "Section 2" }
+      card.with_section { "Section 1" }
+      card.with_section { "Section 2" }
     end
 
     assert_selector ".Polaris-LegacyCard__Section", text: "Section 1"
@@ -23,8 +23,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_multiple_title_sections
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section(title: "Title 1") { "Section 1" }
-      card.section(title: "Title 2") { "Section 2" }
+      card.with_section(title: "Title 1") { "Section 1" }
+      card.with_section(title: "Title 2") { "Section 2" }
     end
 
     assert_selector ".Polaris-LegacyCard__SectionHeader", text: "Title 1"
@@ -33,8 +33,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_section_with_action
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section { "Section 1" }
-      card.section(title: "Title 1", actions: [{content: "Action", url: "https://bao.agency"}]) { "Section 2" }
+      card.with_section { "Section 1" }
+      card.with_section(title: "Title 1", actions: [{content: "Action", url: "https://bao.agency"}]) { "Section 2" }
     end
 
     assert_selector ".Polaris-LegacyCard__SectionHeader .Polaris-Button", text: "Action"
@@ -42,10 +42,10 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_separate_header
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.header(title: "Separate header", actions: [{content: "Action", url: "https://bao.agency"}])
+      card.with_header(title: "Separate header", actions: [{content: "Action", url: "https://bao.agency"}])
 
-      card.section { "Section 1" }
-      card.section { "Section 2" }
+      card.with_section { "Section 1" }
+      card.with_section { "Section 2" }
     end
 
     assert_selector ".Polaris-LegacyCard__Header", text: "Separate header"
@@ -60,8 +60,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_subdued_section
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section { "Section 1" }
-      card.section(subdued: true) { "Section 2" }
+      card.with_section { "Section 1" }
+      card.with_section(subdued: true) { "Section 2" }
     end
 
     assert_selector ".Polaris-LegacyCard__Section--subdued"
@@ -69,8 +69,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_flushed_section
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section { "Section 1" }
-      card.section(flush: true) { "Section 2" }
+      card.with_section { "Section 1" }
+      card.with_section(flush: true) { "Section 2" }
     end
 
     assert_selector ".Polaris-LegacyCard__Section--flush"
@@ -78,8 +78,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_destructive_action
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section { "Section 1" }
-      card.section(title: "Title 1", actions: [{content: "Action", url: "https://bao.agency", destructive: true}]) { "Section 2" }
+      card.with_section { "Section 1" }
+      card.with_section(title: "Title 1", actions: [{content: "Action", url: "https://bao.agency", destructive: true}]) { "Section 2" }
     end
 
     assert_selector ".Polaris-LegacyCard__SectionHeader .Polaris-Button--destructive", text: "Action"
@@ -87,8 +87,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_subsection
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section do |section|
-        section.subsection { "Subsection" }
+      card.with_section do |section|
+        section.with_subsection { "Subsection" }
       end
     end
 
@@ -106,8 +106,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_footer_actions
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.primary_footer_action(url: "https://bao.agency") { "Primary Action" }
-      card.secondary_footer_action(url: "https://bao.agency") { "Secondary Action" }
+      card.with_primary_footer_action(url: "https://bao.agency") { "Primary Action" }
+      card.with_secondary_footer_action(url: "https://bao.agency") { "Secondary Action" }
     end
 
     assert_selector ".Polaris-LegacyCard__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button__Text", text: "Secondary Action"
@@ -116,8 +116,8 @@ class CardComponentTest < Minitest::Test
 
   def test_renders_card_with_destructive_footer_action
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.primary_footer_action(url: "https://bao.agency") { "Primary Action" }
-      card.secondary_footer_action(url: "https://bao.agency", destructive: true) { "Primary Action" }
+      card.with_primary_footer_action(url: "https://bao.agency") { "Primary Action" }
+      card.with_secondary_footer_action(url: "https://bao.agency", destructive: true) { "Primary Action" }
     end
 
     assert_selector ".Polaris-LegacyCard__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button--destructive"
@@ -126,7 +126,7 @@ class CardComponentTest < Minitest::Test
 
   def test_unsectioned_content
     render_inline(Polaris::CardComponent.new(title: "Card")) do |card|
-      card.section { "Sectioned content" }
+      card.with_section { "Sectioned content" }
       "Unsectioned content"
     end
 
@@ -139,8 +139,8 @@ class CardComponentTest < Minitest::Test
 
   def test_tabs
     render_inline(Polaris::CardComponent.new) do |card|
-      card.tabs do |tabs|
-        tabs.tab(title: "Tab Title")
+      card.with_tabs do |tabs|
+        tabs.with_tab(title: "Tab Title")
       end
     end
 

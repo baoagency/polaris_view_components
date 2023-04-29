@@ -11,10 +11,10 @@ class IndexTableComponentTest < Minitest::Test
 
   def test_default_table
     render_inline(Polaris::IndexTableComponent.new(@data)) do |table|
-      table.column("Product") do |row|
+      table.with_column("Product") do |row|
         row[:product]
       end
-      table.column("Price") do |row|
+      table.with_column("Price") do |row|
         row[:price]
       end
     end

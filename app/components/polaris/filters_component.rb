@@ -45,7 +45,7 @@ module Polaris
 
       def call
         polaris_text_field(disabled: @disabled, **@system_arguments) do |text_field|
-          text_field.prefix do
+          text_field.with_prefix do
             polaris_icon(name: "SearchMinor")
           end
         end
@@ -83,7 +83,7 @@ module Polaris
       def call
         render(Polaris::BaseComponent.new(**system_arguments)) do
           render(Polaris::PopoverComponent.new(**popover_arguments)) do |popover|
-            popover.button(disclosure: true, disabled: @disabled) { @label }
+            popover.with_button(disclosure: true, disabled: @disabled) { @label }
             content
           end
         end

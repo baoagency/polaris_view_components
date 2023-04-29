@@ -11,10 +11,10 @@
     </h2>
     <div class="Polaris-Frame-ContextualSaveBar__ActionContainer">
       <%= polaris_stack(spacing: :tight) do |stack| %>
-        <% stack.item do %>
+        <% stack.with_item do %>
           <%= discard_action %>
         <% end %>
-        <% stack.item do %>
+        <% stack.with_item do %>
           <%= save_action %>
         <% end %>
       <% end %>

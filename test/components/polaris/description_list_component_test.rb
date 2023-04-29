@@ -5,8 +5,8 @@ class DescriptionListComponentTest < Minitest::Test
 
   def test_default_description_list
     render_inline(Polaris::DescriptionListComponent.new) do |list|
-      list.item(term: "Term 1") { "Description 1" }
-      list.item(term: "Term 2") { "Description 2" }
+      list.with_item(term: "Term 1") { "Description 1" }
+      list.with_item(term: "Term 2") { "Description 2" }
     end
 
     assert_selector "dl.Polaris-DescriptionList" do
@@ -23,8 +23,8 @@ class DescriptionListComponentTest < Minitest::Test
 
   def test_tight_spacing_description_list
     render_inline(Polaris::DescriptionListComponent.new(spacing: :tight)) do |list|
-      list.item(term: "Term 1") { "Description 1" }
-      list.item(term: "Term 2") { "Description 2" }
+      list.with_item(term: "Term 1") { "Description 1" }
+      list.with_item(term: "Term 2") { "Description 2" }
     end
 
     assert_selector "dl.Polaris-DescriptionList--spacingTight"

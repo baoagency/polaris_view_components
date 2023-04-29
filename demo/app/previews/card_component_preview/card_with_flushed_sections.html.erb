@@ -1,10 +1,10 @@
 <%= polaris_card do |card| %>
-  <% card.section(flush: true) do %>
+  <% card.with_section(flush: true) do %>
     <%= image_tag "https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg",
       alt: "a sheet with purple and orange stripes" %>
   <% end %>
 
-  <% card.section(subdued: true) do %>
+  <% card.with_section(subdued: true) do %>
     <%= polaris_text_container do %>
       You can use sales reports to see information about your customers’ orders
       based on criteria such as sales over time, by channel, or by staff.

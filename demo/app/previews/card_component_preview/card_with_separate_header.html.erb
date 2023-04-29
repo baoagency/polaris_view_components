@@ -1,11 +1,11 @@
 <%= polaris_card do |card| %>
-  <% card.header(title: "Staff accounts", actions: [{ content: "Preview", url: "https://bao.agency" }]) do %>
+  <% card.with_header(title: "Staff accounts", actions: [{ content: "Preview", url: "https://bao.agency" }]) do %>
     <%= polaris_button(plain: true) do %>
       <p>Separate</p>
     <% end %>
   <% end %>
 
-  <% card.section do %>
+  <% card.with_section do %>
     <ul>
       <li>Felix Crafford</li>
       <li>Ezequiel Manno</li>

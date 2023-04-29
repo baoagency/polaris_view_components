@@ -6,19 +6,19 @@
 
 <%= polaris_card(sectioned: false) do %>
   <%= polaris_data_table(data, totals_in_header: true) do |table| %>
-    <% table.column("Product", total: "Totals") do |row| %>
+    <% table.with_column("Product", total: "Totals") do |row| %>
       <%= row[:product] %>
     <% end %>
-    <% table.column("Price", numeric: true) do |row| %>
+    <% table.with_column("Price", numeric: true) do |row| %>
       <%= row[:price] %>
     <% end %>
-    <% table.column("SKU Number", numeric: true) do |row| %>
+    <% table.with_column("SKU Number", numeric: true) do |row| %>
       <%= row[:sku] %>
     <% end %>
-    <% table.column("Net quantity", numeric: true, total: 255) do |row| %>
+    <% table.with_column("Net quantity", numeric: true, total: 255) do |row| %>
       <%= row[:qty] %>
     <% end %>
-    <% table.column("Net sales", numeric: true, total: "$155,830.00") do |row| %>
+    <% table.with_column("Net sales", numeric: true, total: "$155,830.00") do |row| %>
       <%= row[:sales] %>
     <% end %>
   <% end %>

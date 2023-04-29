@@ -1,9 +1,9 @@
 <%= polaris_form_layout do |form_layout| %>
-  <% form_layout.group do |group| %>
-    <% group.item do %>
+  <% form_layout.with_group do |group| %>
+    <% group.with_item do %>
       <%= polaris_text_field(label: "Minimum order", type: :number) %>
     <% end %>
-    <% group.item do %>
+    <% group.with_item do %>
       <%= polaris_text_field(label: "Maximum order", type: :number) %>
     <% end %>
   <% end %>

@@ -104,11 +104,11 @@ module Polaris
 
       def call
         render(Polaris::PopoverComponent.new(position: :below)) do |popover|
-          popover.button(disclosure: true) { @title }
+          popover.with_button(disclosure: true) { @title }
 
           polaris_action_list do |list|
             @actions.each do |action|
-              list.item(**action) { action[:content] }
+              list.with_item(**action) { action[:content] }
             end
           end
         end

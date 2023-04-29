@@ -2,10 +2,10 @@
   title: "USPS has updated their rates",
   status: :info,
 ) do |banner| %>
-  <% banner.dismiss_button(url: "#") %>
+  <% banner.with_dismiss_button(url: "#") %>
 
   <p>Make sure you know how these changes affect your store.</p>
 
-  <% banner.action(url: '#') { "Update rates" } %>
-  <% banner.secondary_action(url: "#") { "Learn more" } %>
+  <% banner.with_action(url: '#') { "Update rates" } %>
+  <% banner.with_secondary_action(url: "#") { "Learn more" } %>
 <% end %>

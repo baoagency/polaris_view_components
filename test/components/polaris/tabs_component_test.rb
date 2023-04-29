@@ -5,8 +5,8 @@ class TabsComponentTest < Minitest::Test
 
   def test_default_tabs
     render_inline(Polaris::TabsComponent.new) do |tabs|
-      tabs.tab(title: "Active", active: true)
-      tabs.tab(title: "With URL", url: "https://shopify.dev")
+      tabs.with_tab(title: "Active", active: true)
+      tabs.with_tab(title: "With URL", url: "https://shopify.dev")
     end
 
     assert_selector ".Polaris-Tabs__Wrapper > ul.Polaris-Tabs" do
@@ -24,7 +24,7 @@ class TabsComponentTest < Minitest::Test
 
   def test_fitted_tabs
     render_inline(Polaris::TabsComponent.new(fitted: true)) do |tabs|
-      tabs.tab(title: "Default")
+      tabs.with_tab(title: "Default")
     end
 
     assert_selector "ul.Polaris-Tabs.Polaris-Tabs--fitted"
@@ -32,8 +32,8 @@ class TabsComponentTest < Minitest::Test
 
   def test_tabs_with_badge
     render_inline(Polaris::TabsComponent.new(fitted: true)) do |tabs|
-      tabs.tab(title: "Default") do |tab|
-        tab.badge { "100" }
+      tabs.with_tab(title: "Default") do |tab|
+        tab.with_badge { "100" }
       end
     end
 

@@ -30,7 +30,7 @@ if IMPORTMAP_BINSTUB.exist?
 
   say "Pin polaris_view_components"
   append_to_file IMPORTMAP_CONFIG_PATH do
-    'pin "polaris-view-components", to: "polaris_view_components.js"\n'
+    %(pin "polaris-view-components", to: "polaris_view_components.js"\n)
   end
 else
   package_json = File.read(Rails.root.join("package.json"))

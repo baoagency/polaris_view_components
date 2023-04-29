@@ -33,7 +33,7 @@ module Polaris
     renders_one :secondary_action, "SecondaryAction"
     renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
-        button.icon(name: "CancelSmallMinor")
+        button.with_icon(name: "CancelSmallMinor")
       end
     end
 

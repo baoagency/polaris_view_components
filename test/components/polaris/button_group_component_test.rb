@@ -5,8 +5,8 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_default_group
     render_inline(Polaris::ButtonGroupComponent.new) do |group|
-      group.button { "Cancel" }
-      group.button(primary: true) { "Save" }
+      group.with_button { "Cancel" }
+      group.with_button(primary: true) { "Save" }
     end
 
     assert_selector ".Polaris-ButtonGroup" do
@@ -22,9 +22,9 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_segmented_group
     render_inline(Polaris::ButtonGroupComponent.new(segmented: true)) do |group|
-      group.button { "Bold" }
-      group.button { "Italic" }
-      group.button { "Underline" }
+      group.with_button { "Bold" }
+      group.with_button { "Italic" }
+      group.with_button { "Underline" }
     end
 
     assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--segmented[data-buttongroup-segmented='true']" do
@@ -34,8 +34,8 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_connected_tops_group
     render_inline(Polaris::ButtonGroupComponent.new(connected_top: true)) do |group|
-      group.button { "Bold" }
-      group.button { "Italic" }
+      group.with_button { "Bold" }
+      group.with_button { "Italic" }
     end
 
     assert_selector ".Polaris-ButtonGroup[data-buttongroup-connected-top='true']"
@@ -43,8 +43,8 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_full_width_group
     render_inline(Polaris::ButtonGroupComponent.new(full_width: true)) do |group|
-      group.button { "Bold" }
-      group.button { "Italic" }
+      group.with_button { "Bold" }
+      group.with_button { "Italic" }
     end
 
     assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--fullWidth[data-buttongroup-full-width='true']"
@@ -52,9 +52,9 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_group_with_text_item
     render_inline(Polaris::ButtonGroupComponent.new) do |group|
-      group.button { "Button1" }
-      group.item { "Item1" }
-      group.button { "Button2" }
+      group.with_button { "Button1" }
+      group.with_item { "Item1" }
+      group.with_button { "Button2" }
     end
 
     assert_selector ".Polaris-ButtonGroup" do
@@ -67,8 +67,8 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_plain_items
     render_inline(Polaris::ButtonGroupComponent.new) do |group|
-      group.button { "Enable two-step authentication" }
-      group.button(plain: true) { "Learn more" }
+      group.with_button { "Enable two-step authentication" }
+      group.with_button(plain: true) { "Learn more" }
     end
 
     assert_selector ".Polaris-ButtonGroup .Polaris-ButtonGroup__Item:nth-child(1)"

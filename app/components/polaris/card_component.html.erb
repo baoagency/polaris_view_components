@@ -32,25 +32,25 @@
       <%= polaris_button_group do |group| %>
         <% if @footer_action_alignment == :right %>
           <% secondary_footer_actions.each do |secondary_footer_action| %>
-            <% group.item do %>
+            <% group.with_item do %>
               <%= secondary_footer_action %>
             <% end %>
           <% end %>
 
           <% if primary_footer_action %>
-            <% group.item do %>
+            <% group.with_item do %>
               <%= primary_footer_action %>
             <% end %>
           <% end %>
         <% else %>
           <% if primary_footer_action %>
-            <% group.item do %>
+            <% group.with_item do %>
               <%= primary_footer_action %>
             <% end %>
           <% end %>
 
           <% secondary_footer_actions.each do |secondary_footer_action| %>
-            <% group.item do %>
+            <% group.with_item do %>
               <%= secondary_footer_action %>
             <% end %>
           <% end %>

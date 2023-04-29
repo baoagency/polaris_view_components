@@ -37,7 +37,7 @@ class ResourceItemComponentTest < Minitest::Test
 
   def test_item_with_checkbox
     render_inline(Polaris::ResourceItemComponent.new) do |resource_item|
-      resource_item.checkbox(name: "attr[]", value: "val")
+      resource_item.with_checkbox(name: "attr[]", value: "val")
       "Content"
     end
 
@@ -54,7 +54,7 @@ class ResourceItemComponentTest < Minitest::Test
 
   def test_item_with_offset_checkbox
     render_inline(Polaris::ResourceItemComponent.new(offset: true)) do |resource_item|
-      resource_item.checkbox(name: "attr[]", value: "val")
+      resource_item.with_checkbox(name: "attr[]", value: "val")
       "Content"
     end
 
@@ -63,7 +63,7 @@ class ResourceItemComponentTest < Minitest::Test
 
   def test_item_with_radio_button
     render_inline(Polaris::ResourceItemComponent.new) do |resource_item|
-      resource_item.radio_button(name: "attr[]", value: "val")
+      resource_item.with_radio_button(name: "attr[]", value: "val")
       "Content"
     end
 
@@ -80,7 +80,7 @@ class ResourceItemComponentTest < Minitest::Test
 
   def test_item_with_media
     render_inline(Polaris::ResourceItemComponent.new) do |c|
-      c.media { "Media" }
+      c.with_media { "Media" }
       "Content"
     end
 
@@ -98,8 +98,8 @@ class ResourceItemComponentTest < Minitest::Test
 
   def test_item_with_shortcut_action
     render_inline(Polaris::ResourceItemComponent.new) do |c|
-      c.shortcut_actions do |shortcut_action|
-        shortcut_action.button(url: "https://some-url", content: "Shortcut action")
+      c.with_shortcut_actions do |shortcut_action|
+        shortcut_action.with_button(url: "https://some-url", content: "Shortcut action")
       end
       "Content"
     end
@@ -119,8 +119,8 @@ class ResourceItemComponentTest < Minitest::Test
 
   def test_item_with_persistent_shortcut_action
     render_inline(Polaris::ResourceItemComponent.new(persist_actions: true)) do |c|
-      c.shortcut_actions do |shortcut_action|
-        shortcut_action.button(url: "https://some-url", content: "Shortcut action")
+      c.with_shortcut_actions do |shortcut_action|
+        shortcut_action.with_button(url: "https://some-url", content: "Shortcut action")
       end
       "Content"
     end

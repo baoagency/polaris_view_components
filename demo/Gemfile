@@ -2,14 +2,14 @@ source "https://rubygems.org"
 
 ruby File.read(".ruby-version").chomp
 
-gem "rails", "~> 7.0.2"
-gem "puma", "~> 5.0"
+gem "rails", "~> 7.0.4"
+gem "puma", "~> 6.0"
 gem "sqlite3"
 gem "sprockets-rails"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "lookbook", github: "kirillplatonov/lookbook", branch: "performance-improvements"
+gem "lookbook", "~> 2.0"
 
 gem "polaris_view_components", path: "../"
 
@@ -18,5 +18,6 @@ group :development, :test do
 end
 
 group :development do
+  gem "listen"
   gem "web-console", ">= 4.1.0"
 end

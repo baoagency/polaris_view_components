@@ -29,7 +29,7 @@
     "release": "npm publish"
   },
   "devDependencies": {
-    "@popperjs/core": "^2.11.6",
+    "@popperjs/core": "^2.11.7",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@shopify/polaris": "^10.38.0",
     "postcss": "^8.4.21",

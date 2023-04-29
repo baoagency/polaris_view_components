@@ -5,44 +5,44 @@
     width: "124px"
   }
 ) do |frame| %>
-  <% frame.top_bar do |top_bar| %>
-    <% top_bar.search_field do |search_field| %>
+  <% frame.with_top_bar do |top_bar| %>
+    <% top_bar.with_search_field do |search_field| %>
       <%= polaris_text_field(placeholder: "Search", clear_button: true) %>
     <% end %>
-    <% top_bar.secondary_menu do |secondary_menu| %>
+    <% top_bar.with_secondary_menu do |secondary_menu| %>
       <%= polaris_icon(name: "QuestionMarkMajor", color: :subdued) %>
     <% end %>
-    <% top_bar.user_menu(name: "Kirill", detail: "Platmart") do |user_menu| %>
-      <% user_menu.avatar(initials: "K") %>
+    <% top_bar.with_user_menu(name: "Kirill", detail: "Platmart") do |user_menu| %>
+      <% user_menu.with_avatar(initials: "K") %>
 
       <%= polaris_action_list do |action_list| %>
-        <% action_list.item(icon: "LogOutMinor", url: "/") { "Log out" } %>
+        <% action_list.with_item(icon: "LogOutMinor", url: "/") { "Log out" } %>
       <% end %>
     <% end %>
   <% end %>
-  <% frame.navigation do |navigation| %>
-    <% navigation.section do |section| %>
-      <% section.item(url: "#", label: "Back to Shopify", icon: "ArrowLeftMinor") %>
+  <% frame.with_navigation do |navigation| %>
+    <% navigation.with_section do |section| %>
+      <% section.with_item(url: "#", label: "Back to Shopify", icon: "ArrowLeftMinor") %>
     <% end %>
-    <% navigation.section(title: "Jaded Pixel App", separator: true) do |section| %>
-      <% section.action(icon: "ConversationMinor") %>
-      <% section.item(url: "#", label: "Dashboard", icon: "HomeMajor") %>
-      <% section.item(url: "#", label: "Jaded Pixel Orders", icon: "OrdersMajor") %>
+    <% navigation.with_section(title: "Jaded Pixel App", separator: true) do |section| %>
+      <% section.with_action(icon: "ConversationMinor") %>
+      <% section.with_item(url: "#", label: "Dashboard", icon: "HomeMajor") %>
+      <% section.with_item(url: "#", label: "Jaded Pixel Orders", icon: "OrdersMajor") %>
     <% end %>
   <% end %>
 
   <%= polaris_page(title: "Account") do %>
     <%= polaris_layout do |layout| %>
-      <% layout.annotated_section(
+      <% layout.with_annotated_section(
         title: "Account details",
         description: "Jaded Pixel will use this as your account information."
       ) do %>
         <%= polaris_card do %>
           <%= polaris_form_layout do |form_layout| %>
-            <% form_layout.item do %>
+            <% form_layout.with_item do %>
               <%= polaris_text_field(label: "Full name", value: "Jaded Pixel") %>
             <% end %>
-            <% form_layout.item do %>
+            <% form_layout.with_item do %>
               <%= polaris_text_field(label: "Email", value: "dharma@jadedpixel.com") %>
             <% end %>
           <% end %>

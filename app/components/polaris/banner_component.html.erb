@@ -20,7 +20,7 @@
         <div class="Polaris-Banner__Actions">
           <%= polaris_button_group do |group| %>
             <% if action %>
-              <% group.item do %>
+              <% group.with_item do %>
                 <div class="Polaris-Banner__PrimaryAction">
                   <%= action %>
                 </div>
@@ -28,7 +28,7 @@
             <% end %>
 
             <% if secondary_action %>
-              <% group.item do %>
+              <% group.with_item do %>
                 <%= secondary_action %>
               <% end %>
             <% end %>
