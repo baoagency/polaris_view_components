@@ -24,7 +24,7 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "build:css": "postcss ./app/assets/stylesheets/polaris_view_components.postcss.css -o ./app/assets/stylesheets/polaris_view_components.css",
+    "build:css": "postcss ./app/assets/stylesheets/polaris_view_components.pcss -o ./app/assets/stylesheets/polaris_view_components.css",
     "prerelease": "yarn build && yarn build:css && git --no-pager diff && echo && npm pack --dry-run && echo && read -n 1 -p \"Look OK? Press any key to publish and commit v$npm_package_version\" && echo",
     "release": "npm publish"
   },

@@ -2464,40 +2464,38 @@ html, body { min-height: 100%; height: 100%; }
 .Polaris-VisuallyHidden { position: absolute !important; top: 0; width: 0.0625rem !important; height: 0.0625rem !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; clip-path: inset(50%) !important; border: 0 !important; white-space: nowrap !important; }
 .shp-Navigation {
   margin: 0 auto;
-  padding: 0 2rem;
-  max-width: 99.8rem;
-  max-width: none;
-  border-bottom: .1rem solid var(--p-border-subdued)
+  padding: 0 20px;
+  border-bottom: 1px solid var(--p-border-subdued);
 }
 @media (max-width: 48.0625em) and (min-width: 30.625em), (min-width: 45.625em) {
   .shp-Navigation {
-    padding: 0 2rem
+    padding: 0 20px;
   }
 }
 @media (min-width: 30.625em) {
   .shp-Navigation {
-    padding: 0 2rem
+    padding: 0 20px;
   }
 }
 @media (max-width: 48.0625em) and (min-width: 46.5em), (min-width: 61.5em) {
   .shp-Navigation {
-    padding: 0 3.2rem
+    padding: 0 32px;
   }
 }
 @media (min-width: 46.5em) {
   .shp-Navigation {
-    padding: 0 3.2rem
+    padding: 0 32px;
   }
 }
 @media (max-width: 30.5625em) {
   .shp-Navigation {
-    padding: 0 1.6rem
+    padding: 0 16px;
   }
 }
 .shp-Navigation_Items {
   display: flex;
   margin: 0;
-  padding: 0 .2rem;
+  padding: 0 2px;
   list-style: none
 }
 .shp-Navigation_Item {
@@ -2514,11 +2512,9 @@ html, body { min-height: 100%; height: 100%; }
   padding: 0;
   background: none;
   border: none;
-  font-size: inherit;
-  line-height: inherit;
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 2rem;
+  line-height: 20px;
   text-transform: none;
   letter-spacing: normal;
   color: var(--p-text-subdued);
@@ -2529,40 +2525,40 @@ html, body { min-height: 100%; height: 100%; }
   min-width: 100%;
   margin-top: 1px;
   margin-bottom: -1px;
-  padding: 0 1.6rem;
+  padding: 0 16px;
   outline: none;
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
-  cursor: pointer
+  cursor: pointer;
 }
 .shp-Navigation_Link:visited {
-  color: inherit
+  color: inherit;
 }
 .shp-Navigation_Link:focus {
-  outline: none
+  outline: none;
 }
 @media (min-width: 40em) {
   .shp-Navigation_Link {
-    font-size: 1.4rem
+    font-size: 14px;
   }
 }
 .shp-Navigation_Link:hover {
-  text-decoration: none
+  text-decoration: none;
 }
 .shp-Navigation_Link:hover .shp-Navigation_LinkText {
   font-weight: 400;
   color: var(--p-text);
   text-decoration: none;
-  border-bottom: .3rem solid var(--p-action-primary)
+  border-bottom: 3px solid var(--p-action-primary);
 }
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
   font-weight: 400;
-  color: var(--p-text)
+  color: var(--p-text);
 }
 .shp-Navigation_LinkText {
-  padding: 1.6rem 0 1.3rem 0;
-  border-bottom: .3rem solid transparent
+  padding: 16px 0 13px 0;
+  border-bottom: 3px solid transparent;
 }
 .shp-Navigation_LinkText {
   display: block;
@@ -2570,11 +2566,11 @@ html, body { min-height: 100%; height: 100%; }
 [aria-selected='true'],
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
   font-weight: 400;
-  color: var(--p-text)
+  color: var(--p-text);
 }
 [aria-selected='true'] .shp-Navigation_LinkText {
   color: var(--p-action-primary);
-  border-bottom: .3rem solid var(--p-action-primary)
+  border-bottom: 3px solid var(--p-action-primary);
 }
 /* Vertical */
 .Polaris-Spacer--verticalSpacingExtraTight {
@@ -2633,10 +2629,10 @@ a.Polaris-Tag__Button {
   text-decoration: none;
 }
 /* CardSection borders */
-.Polaris-Card__Section--borderTop {
+.Polaris-LegacyCard__Section--borderTop {
   border-top: 0.1rem solid var(--p-divider);
 }
-.Polaris-Card__Section--borderBottom {
+.Polaris-LegacyCard__Section--borderBottom {
   border-bottom: 0.1rem solid var(--p-divider);
 }
 /* IndexTable */
@@ -2703,7 +2699,7 @@ a.Polaris-Tag__Button {
       justify-content: center;
       text-align: center;
     }
-.Polaris-DropZone__Preview--sizeMedium .Polaris-Stack.Polaris-Stack--alignmentCenter {
+.Polaris-DropZone__Preview--sizeMedium .Polaris-LegacyStack.Polaris-LegacyStack--alignmentCenter {
         justify-content: center;
       }
 .Polaris-DropZone__Preview--sizeSmall {
