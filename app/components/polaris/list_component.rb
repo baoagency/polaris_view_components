@@ -15,8 +15,16 @@ module Polaris
     }
     TYPE_OPTIONS = TYPE_TAG_MAPPINGS.keys
 
+    SPACING_DEFAULT = :loose
+    SPACING_MAPPINGS = {
+      extra_tight: "Polaris-List--spacingExtraTight",
+      loose: "Polaris-List--spacingLoose"
+    }
+    SPACING_OPTIONS = SPACING_MAPPINGS.keys
+
     def initialize(
       type: TYPE_DEFAULT,
+      spacing: SPACING_DEFAULT,
       **system_arguments
     )
       @system_arguments = system_arguments
@@ -24,7 +32,8 @@ module Polaris
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Polaris-List",
-        TYPE_CLASS_MAPPINGS[fetch_or_fallback(TYPE_OPTIONS, type, "")]
+        TYPE_CLASS_MAPPINGS[fetch_or_fallback(TYPE_OPTIONS, type, "")],
+        SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)]
       )
     end
 
