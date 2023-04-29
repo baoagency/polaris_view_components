@@ -1,5 +1,5 @@
 class NavigationComponentPreview < ViewComponent::Preview
-  def basic
+  def default
   end
 
   def multiple_sections
