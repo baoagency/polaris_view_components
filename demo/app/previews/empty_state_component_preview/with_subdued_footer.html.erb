@@ -3,12 +3,12 @@
     heading: "Manage your inventory transfers",
     image: "https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png",
   ) do |state| %>
-    <% state.primary_action { "Add transfer" } %>
-    <% state.secondary_action(url: "#") { "Learn more" } %>
+    <% state.with_primary_action { "Add transfer" } %>
+    <% state.with_secondary_action(url: "#") { "Learn more" } %>
 
     <p>Track and receive your incoming inventory from suppliers.</p>
 
-    <% state.footer do %>
+    <% state.with_footer do %>
       <p>
         If you don’t want to add a transfer, you can import your inventory from
         <%= polaris_link(url: "#", monochrome: true) { "settings" } %>.

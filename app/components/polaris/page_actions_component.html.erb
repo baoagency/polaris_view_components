@@ -1,10 +1,10 @@
 <%= render(Polaris::BaseComponent.new(**@system_arguments)) do %>
   <%= polaris_stack(spacing: :tight, distribution: stack_distribution) do |stack| %>
     <% if secondary_actions %>
-      <% stack.item do %>
+      <% stack.with_item do %>
         <%= polaris_button_group do |group| %>
           <% secondary_actions.each do |action| %>
-            <% group.item do %>
+            <% group.with_item do %>
               <%= action %>
             <% end %>
           <% end %>
@@ -13,7 +13,7 @@
     <% end %>
 
     <% if primary_action %>
-      <% stack.item do %>
+      <% stack.with_item do %>
         <%= primary_action %>
       <% end %>
     <% end %>

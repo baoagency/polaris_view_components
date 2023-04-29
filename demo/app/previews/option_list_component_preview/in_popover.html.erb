@@ -1,11 +1,11 @@
 <%= polaris_popover(active: true) do |popover| %>
-  <% popover.button(disclosure: true) { "Options" } %>
+  <% popover.with_button(disclosure: true) { "Options" } %>
 
   <%= polaris_option_list(title: "Inventory Location", name: :location) do |list| %>
-    <% list.radio_button(label: "Byward Market", value: "byward_market") %>
-    <% list.radio_button(label: "Centretown", value: "centretown") %>
-    <% list.radio_button(label: "Hintonburg", value: "hintonburg") %>
-    <% list.radio_button(label: "Westboro", value: "westboro") %>
-    <% list.radio_button(label: "Downtown", value: "downtown") %>
+    <% list.with_radio_button(label: "Byward Market", value: "byward_market") %>
+    <% list.with_radio_button(label: "Centretown", value: "centretown") %>
+    <% list.with_radio_button(label: "Hintonburg", value: "hintonburg") %>
+    <% list.with_radio_button(label: "Westboro", value: "westboro") %>
+    <% list.with_radio_button(label: "Downtown", value: "downtown") %>
   <% end %>
 <% end %>

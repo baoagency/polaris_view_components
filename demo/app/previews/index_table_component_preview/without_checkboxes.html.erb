@@ -5,16 +5,16 @@
 
 <%= polaris_card(sectioned: false) do %>
   <%= polaris_index_table(data) do |table| %>
-    <% table.column("Name") do |row| %>
+    <% table.with_column("Name") do |row| %>
       <%= polaris_text_strong { row[:name] } %>
     <% end %>
-    <% table.column("Location") do |row| %>
+    <% table.with_column("Location") do |row| %>
       <%= row[:location] %>
     <% end %>
-    <% table.column("Order count") do |row| %>
+    <% table.with_column("Order count") do |row| %>
       <%= row[:orders] %>
     <% end %>
-    <% table.column("Amount spent") do |row| %>
+    <% table.with_column("Amount spent") do |row| %>
       <%= row[:amount_spent] %>
     <% end %>
   <% end %>

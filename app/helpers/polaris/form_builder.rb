@@ -20,7 +20,7 @@ module Polaris
         [
           render(Polaris::ListComponent.new) do |list|
             object.errors.full_messages.each do |error|
-              list.item { error.html_safe }
+              list.with_item { error.html_safe }
             end
           end,
           (template.capture { yield(banner) } if block_given?)

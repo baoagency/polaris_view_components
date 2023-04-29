@@ -1,6 +1,6 @@
 <%= polaris_skeleton_page(title: "Products", primary_action: true) do %>
   <%= polaris_layout do |layout| %>
-    <% layout.section do %>
+    <% layout.with_section do %>
       <%= polaris_card do %>
         <%= polaris_skeleton_body_text %>
       <% end %>
@@ -11,20 +11,20 @@
         <%= polaris_skeleton_body_text %>
       <% end %>
     <% end %>
-    <% layout.section(secondary: true) do %>
+    <% layout.with_section(secondary: true) do %>
       <%= polaris_card(title: "Sales channels") do |card| %>
-        <% card.section do %>
+        <% card.with_section do %>
           <%= polaris_skeleton_body_text(lines: 2) %>
         <% end %>
-        <% card.section do %>
+        <% card.with_section do %>
           <%= polaris_skeleton_body_text(lines: 1) %>
         <% end %>
       <% end %>
       <%= polaris_card(title: "Organization") do |card| %>
-        <% card.section do %>
+        <% card.with_section do %>
           <%= polaris_skeleton_body_text(lines: 2) %>
         <% end %>
-        <% card.section do %>
+        <% card.with_section do %>
           <%= polaris_skeleton_body_text(lines: 1) %>
         <% end %>
       <% end %>

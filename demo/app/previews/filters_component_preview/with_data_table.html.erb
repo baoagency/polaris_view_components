@@ -5,37 +5,37 @@
 ] %>
 
 <%= polaris_card do |card| %>
-  <% card.section do %>
+  <% card.with_section do %>
     <%= polaris_filters do |filters| %>
-      <% filters.query(
+      <% filters.with_query(
         name: :query,
         placeholder: "Filter items",
       ) %>
-      <% filters.item(label: "Availability", width: "150px") do %>
+      <% filters.with_item(label: "Availability", width: "150px") do %>
         <%= polaris_choice_list(title_hidden: true) do |choice| %>
-          <% choice.checkbox(label: "Online Store", value: "online_store") %>
-          <% choice.checkbox(label: "Point of Sale", value: "point_of_sale") %>
-          <% choice.checkbox(label: "Buy Button", value: "buy_button") %>
+          <% choice.with_checkbox(label: "Online Store", value: "online_store") %>
+          <% choice.with_checkbox(label: "Point of Sale", value: "point_of_sale") %>
+          <% choice.with_checkbox(label: "Buy Button", value: "buy_button") %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
 
-  <% card.section(unstyled: true) do %>
+  <% card.with_section(unstyled: true) do %>
     <%= polaris_data_table(data, totals_in_header: true) do |table| %>
-      <% table.column("Product", total: "Totals") do |row| %>
+      <% table.with_column("Product", total: "Totals") do |row| %>
         <%= row[:product] %>
       <% end %>
-      <% table.column("Price", numeric: true) do |row| %>
+      <% table.with_column("Price", numeric: true) do |row| %>
         <%= row[:price] %>
       <% end %>
-      <% table.column("SKU Number", numeric: true) do |row| %>
+      <% table.with_column("SKU Number", numeric: true) do |row| %>
         <%= row[:sku] %>
       <% end %>
-      <% table.column("Net quantity", numeric: true, total: 255) do |row| %>
+      <% table.with_column("Net quantity", numeric: true, total: 255) do |row| %>
         <%= row[:qty] %>
       <% end %>
-      <% table.column("Net sales", numeric: true, total: "$155,830.00") do |row| %>
+      <% table.with_column("Net sales", numeric: true, total: "$155,830.00") do |row| %>
         <%= row[:sales] %>
       <% end %>
     <% end %>

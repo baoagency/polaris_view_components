@@ -1,13 +1,13 @@
 <%= polaris_stack(alignment: :center) do |stack| %>
-  <% stack.item do %>
+  <% stack.with_item do %>
     <%= polaris_heading do %>
       Order<br>#1136<br>was paid
     <% end %>
   <% end %>
-  <% stack.item do %>
+  <% stack.with_item do %>
     <%= polaris_badge { "Paid" } %>
   <% end %>
-  <% stack.item do %>
+  <% stack.with_item do %>
     <%= polaris_badge { "Fulfilled" } %>
   <% end %>
 <% end %>

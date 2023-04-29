@@ -3,6 +3,6 @@
   multiple: true
 ) do |section| %>
   <% @options.each do |option| %>
-    <%= section.option(label: option[:label], value: option[:value]) %>
+    <%= section.with_option(label: option[:label], value: option[:value]) %>
   <% end %>
 <% end %>

@@ -1,9 +1,6 @@
 require "rails/engine"
 require "view_component"
 require "view_component/version"
-if ViewComponent::VERSION::MAJOR == 2 && ViewComponent::VERSION::MINOR < 43
-  require "view_component/engine"
-end
 
 module Polaris
   module ViewComponents

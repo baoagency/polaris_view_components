@@ -8,11 +8,11 @@
     { content: "Duplicate", url: "/duplicate" },
   ]
 ) do |page| %>
-  <% page.title_metadata do %>
+  <% page.with_title_metadata do %>
     <%= polaris_badge(status: :success) { "Paid" } %>
   <% end %>
-  <% page.primary_action(disabled: true) { "Save" } %>
-  <% page.action_group(
+  <% page.with_primary_action(disabled: true) { "Save" } %>
+  <% page.with_action_group(
     title: "Promote",
     actions: [
       { content: "Share on Facebook", url: "https://facebook.com" },

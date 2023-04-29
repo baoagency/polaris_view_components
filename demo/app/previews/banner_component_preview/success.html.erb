@@ -2,6 +2,6 @@
   title: "Your shipping label is ready to print.",
   status: :success,
 ) do |banner| %>
-  <% banner.dismiss_button(url: "#") %>
-  <% banner.action(url: '#') { "Print label" } %>
+  <% banner.with_dismiss_button(url: "#") %>
+  <% banner.with_action(url: '#') { "Print label" } %>
 <% end %>

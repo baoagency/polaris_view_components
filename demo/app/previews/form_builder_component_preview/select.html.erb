@@ -1,26 +1,26 @@
 <%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
   <%= polaris_form_layout do |form_layout| %>
-    <% form_layout.item do %>
+    <% form_layout.with_item do %>
       <%= form.polaris_select(:status,
         options: { "Active" => "active", "Draft" => "draft" },
       ) %>
     <% end %>
 
-    <% form_layout.item do %>
+    <% form_layout.with_item do %>
       <%= form.polaris_select(:status,
         options: { "Active" => "active", "Draft" => "draft" },
         selected: "draft",
       ) %>
     <% end %>
 
-    <% form_layout.item do %>
+    <% form_layout.with_item do %>
       <%= form.polaris_select(:status,
         options: { "Active" => "active", "Draft" => "draft" },
         select_options: { prompt: "Choose status" },
       ) %>
     <% end %>
 
-    <% form_layout.item do %>
+    <% form_layout.with_item do %>
       <%= form.polaris_select(:status,
         options: { "Active" => "active", "Draft" => "draft" },
         select_options: { include_blank: true },

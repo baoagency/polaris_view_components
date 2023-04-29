@@ -1,14 +1,14 @@
 <%= polaris_card do |card| %>
-  <% card.tabs(fitted: true) do |tabs| %>
-    <% tabs.tab(title: "All", active: true) do |tab| %>
-      <% tab.badge { "10+" } %>
+  <% card.with_tabs(fitted: true) do |tabs| %>
+    <% tabs.with_tab(title: "All", active: true) do |tab| %>
+      <% tab.with_badge { "10+" } %>
     <% end %>
-    <% tabs.tab(title: "Accepts marketing") do |tab| %>
-      <% tab.badge { "4" } %>
+    <% tabs.with_tab(title: "Accepts marketing") do |tab| %>
+      <% tab.with_badge { "4" } %>
     <% end %>
   <% end %>
 
-  <% card.section(title: "All") do %>
+  <% card.with_section(title: "All") do %>
     Tab "All" selected.
   <% end %>
 <% end %>
