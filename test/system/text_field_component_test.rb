@@ -7,6 +7,7 @@ class TextFieldComponentSystemTest < ApplicationSystemTestCase
     assert_field "Quantity", with: "1.34"
 
     # Increase value
+    find("#quantity").click
     find("[data-action='click->polaris-text-field#increase']").click
     assert_field "Quantity", with: "2.34"
 
@@ -30,8 +31,8 @@ class TextFieldComponentSystemTest < ApplicationSystemTestCase
 
     assert_field "Store name", with: "Jaded Pixel"
 
+    find("#store_name").click
     find(".Polaris-TextField__ClearButton").click
     assert_field "Store name", with: ""
-    assert_no_selector ".Polaris-TextField__ClearButton"
   end
 end

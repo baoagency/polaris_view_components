@@ -77,8 +77,8 @@ class ButtonGroupComponentTest < Minitest::Test
 
   def test_nowrap
     render_inline(Polaris::ButtonGroupComponent.new(nowrap: true)) do |group|
-      group.button { "Bold" }
-      group.button { "Italic" }
+      group.with_button { "Bold" }
+      group.with_button { "Italic" }
     end
 
     assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--noWrap"

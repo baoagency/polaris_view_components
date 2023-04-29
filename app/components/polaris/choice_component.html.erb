@@ -21,7 +21,9 @@
     <div class="Polaris-Choice__Descriptions">
       <% if @help_text.present? %>
         <div class="Polaris-Choice__HelpText">
-          <%= @help_text %>
+          <span class="Polaris-Text--root Polaris-Text--subdued">
+            <%= @help_text %>
+          </span>
         </div>
       <% end %>
 
