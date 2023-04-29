@@ -345,6 +345,34 @@ class Collapsible extends Controller {
   }
 }
 
+class DataTable extends Controller {
+  static targets=[ "row" ];
+  connect() {
+    this.rowTargets.forEach((row => {
+      row.addEventListener("mouseover", (() => this.handleHover(row)));
+      row.addEventListener("mouseout", (() => this.handleLeave(row)));
+    }));
+  }
+  disconnect() {
+    this.rowTargets.forEach((row => {
+      row.removeEventListener("mouseover", (() => this.handleHover(row)));
+      row.removeEventListener("mouseout", (() => this.handleLeave(row)));
+    }));
+  }
+  handleHover(row) {
+    const cells = row.querySelectorAll(".Polaris-DataTable__Cell");
+    cells.forEach((cell => {
+      cell.classList.add("Polaris-DataTable__Cell--hovered");
+    }));
+  }
+  handleLeave(row) {
+    const cells = row.querySelectorAll(".Polaris-DataTable__Cell");
+    cells.forEach((cell => {
+      cell.classList.remove("Polaris-DataTable__Cell--hovered");
+    }));
+  }
+}
+
 const dragEvents = [ "dragover", "dragenter", "drop" ];
 
 const SIZES = {
@@ -2593,6 +2621,7 @@ function registerPolarisControllers(application) {
   application.register("polaris-button", Button);
   application.register("polaris-collapsible", Collapsible);
   application.register("polaris-dropzone", Dropzone);
+  application.register("polaris-data-table", DataTable);
   application.register("polaris-frame", Frame);
   application.register("polaris-modal", Modal);
   application.register("polaris-option-list", OptionList);
