@@ -5,8 +5,8 @@ class StackComponentTest < Minitest::Test
 
   def test_default_stack
     render_inline(Polaris::StackComponent.new) do |stack|
-      stack.item { "Item 1" }
-      stack.item { "Item 2" }
+      stack.with_item { "Item 1" }
+      stack.with_item { "Item 2" }
     end
 
     assert_selector ".Polaris-Stack" do
@@ -42,7 +42,7 @@ class StackComponentTest < Minitest::Test
 
   def test_item_fill
     render_inline(Polaris::StackComponent.new) do |stack|
-      stack.item(fill: true) { "Item 1" }
+      stack.with_item(fill: true) { "Item 1" }
     end
 
     assert_selector ".Polaris-Stack > .Polaris-Stack__Item--fill:nth-child(1)", text: "Item 1"

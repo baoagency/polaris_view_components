@@ -8,8 +8,8 @@ class EmptyStateComponentTest < Minitest::Test
       heading: "Title",
       image: "/image.png"
     )) do |state|
-      state.primary_action { "Primary Action" }
-      state.secondary_action { "Secondary Action" }
+      state.with_primary_action { "Primary Action" }
+      state.with_secondary_action { "Secondary Action" }
       "Content"
     end
 
@@ -40,7 +40,7 @@ class EmptyStateComponentTest < Minitest::Test
       heading: "Title",
       image: "/image.png"
     )) do |state|
-      state.footer { "Footer Content" }
+      state.with_footer { "Footer Content" }
     end
 
     assert_selector ".Polaris-EmptyState__Details > .Polaris-EmptyState__FooterContent" do
@@ -72,7 +72,7 @@ class EmptyStateComponentTest < Minitest::Test
       heading: "Title",
       image: "/image.png"
     )) do |state|
-      state.unsectioned_content do
+      state.with_unsectioned_content do
         tag.div id: "unsectioned"
       end
     end

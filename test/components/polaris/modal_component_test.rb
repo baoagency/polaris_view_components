@@ -5,8 +5,8 @@ class ModalComponentTest < Minitest::Test
 
   def test_basic_modal
     render_inline(Polaris::ModalComponent.new(title: "Title")) do |modal|
-      modal.primary_action { "Primary" }
-      modal.secondary_action { "Secondary" }
+      modal.with_primary_action { "Primary" }
+      modal.with_secondary_action { "Secondary" }
 
       "Content"
     end
@@ -54,7 +54,7 @@ class ModalComponentTest < Minitest::Test
 
   def test_custom_close_button
     render_inline(Polaris::ModalComponent.new(title: "Title")) do |modal|
-      modal.close_button(data: {custom_close: true}) { "Primary" }
+      modal.with_close_button(data: {custom_close: true}) { "Primary" }
       "Content"
     end
 
@@ -63,8 +63,8 @@ class ModalComponentTest < Minitest::Test
 
   def test_multiple_sections
     render_inline(Polaris::ModalComponent.new(title: "Title")) do |modal|
-      modal.section { "Section1" }
-      modal.section { "Section2" }
+      modal.with_section { "Section1" }
+      modal.with_section { "Section2" }
     end
 
     assert_selector ".Polaris-Modal__BodyWrapper", visible: :all do

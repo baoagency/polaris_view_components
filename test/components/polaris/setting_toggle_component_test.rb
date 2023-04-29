@@ -5,7 +5,7 @@ class AvatarComponentTest < Minitest::Test
 
   def test_enabled_setting_toggle
     render_inline(Polaris::SettingToggleComponent.new(enabled: true)) do |toggle|
-      toggle.action { "Action" }
+      toggle.with_action { "Action" }
       "Content"
     end
 
@@ -17,7 +17,7 @@ class AvatarComponentTest < Minitest::Test
 
   def test_disabled_setting_toggle
     render_inline(Polaris::SettingToggleComponent.new(enabled: false)) do |toggle|
-      toggle.action { "Action" }
+      toggle.with_action { "Action" }
       "Content"
     end
 

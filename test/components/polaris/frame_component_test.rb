@@ -8,18 +8,18 @@ class FrameComponentTest < Minitest::Test
       url: "/root_url",
       src: "http://example.com/logo.jpg"
     })) do |frame|
-      frame.top_bar do |top_bar|
-        top_bar.user_menu(name: "Kirill", detail: "Platmart") do |user_menu|
-          user_menu.avatar(initials: "K")
+      frame.with_top_bar do |top_bar|
+        top_bar.with_user_menu(name: "Kirill", detail: "Platmart") do |user_menu|
+          user_menu.with_avatar(initials: "K")
           "Popover Content"
         end
       end
-      frame.navigation do |navigation|
-        navigation.item(url: "#", label: "Home", icon: "HomeMajor")
+      frame.with_navigation do |navigation|
+        navigation.with_item(url: "#", label: "Home", icon: "HomeMajor")
       end
-      frame.save_bar(message: "SaveBar Message") do |save_bar|
-        save_bar.save_action { "Save" }
-        save_bar.discard_action { "Discard" }
+      frame.with_save_bar(message: "SaveBar Message") do |save_bar|
+        save_bar.with_save_action { "Save" }
+        save_bar.with_discard_action { "Discard" }
       end
 
       "Frame Content"

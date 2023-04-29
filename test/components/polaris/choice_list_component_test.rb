@@ -5,8 +5,8 @@ class ChoiceListComponentTest < Minitest::Test
 
   def test_single_choice_list
     render_inline(Polaris::ChoiceListComponent.new(title: "Title", name: :input_name)) do |choice|
-      choice.radio_button(label: "First Radio", value: "first_radio")
-      choice.radio_button(label: "Second Radio", value: "second_radio")
+      choice.with_radio_button(label: "First Radio", value: "first_radio")
+      choice.with_radio_button(label: "Second Radio", value: "second_radio")
     end
 
     assert_selector "fieldset.Polaris-ChoiceList" do
@@ -31,7 +31,7 @@ class ChoiceListComponentTest < Minitest::Test
 
   def test_single_choice_list_with_error
     render_inline(Polaris::ChoiceListComponent.new(title: "Title", error: "Error Text")) do |choice|
-      choice.radio_button(label: "First Radio", value: "first_radio")
+      choice.with_radio_button(label: "First Radio", value: "first_radio")
     end
 
     assert_selector ".Polaris-ChoiceList" do
@@ -41,7 +41,7 @@ class ChoiceListComponentTest < Minitest::Test
 
   def test_single_choice_with_children_content
     render_inline(Polaris::ChoiceListComponent.new(title: "Title")) do |choice|
-      choice.radio_button(label: "Label", value: "value") { "Children content" }
+      choice.with_radio_button(label: "Label", value: "value") { "Children content" }
     end
 
     assert_selector ".Polaris-ChoiceList > .Polaris-ChoiceList__Choices" do
@@ -53,8 +53,8 @@ class ChoiceListComponentTest < Minitest::Test
 
   def test_multi_choice_list
     render_inline(Polaris::ChoiceListComponent.new(title: "Title", name: :input_name)) do |choice|
-      choice.checkbox(label: "First Checkbox", value: "first_checkbox")
-      choice.checkbox(label: "Second Checkbox", value: "second_checkbox")
+      choice.with_checkbox(label: "First Checkbox", value: "first_checkbox")
+      choice.with_checkbox(label: "Second Checkbox", value: "second_checkbox")
     end
 
     assert_selector "fieldset.Polaris-ChoiceList" do
