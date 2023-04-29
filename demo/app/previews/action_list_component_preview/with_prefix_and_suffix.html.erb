@@ -1,21 +1,21 @@
 <%= polaris_action_list do |action_list| %>
-  <% action_list.item do |item| %>
-    <% item.prefix do %>
+  <% action_list.with_item do |item| %>
+    <% item.with_prefix do %>
       <%= polaris_thumbnail(
         source: "https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg",
         size: :small,
       ) %>
     <% end %>
-    <% item.suffix do %>
+    <% item.with_suffix do %>
       <%= polaris_icon(name: "ChevronRightMinor") %>
     <% end %>
     Go here
   <% end %>
-  <% action_list.item do |item| %>
-    <% item.prefix do %>
+  <% action_list.with_item do |item| %>
+    <% item.with_prefix do %>
       <%= polaris_avatar(name: "Bob", size: :small, customer: true) %>
     <% end %>
-    <% item.suffix do %>
+    <% item.with_suffix do %>
       <%= polaris_icon(name: "ChevronRightMinor") %>
     <% end %>
     Go there

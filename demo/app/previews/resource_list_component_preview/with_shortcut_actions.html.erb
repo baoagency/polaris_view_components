@@ -24,13 +24,13 @@
       ] : nil %>
 
       <%= polaris_resource_item(url: item[:url]) do |c| %>
-        <% c.media do %>
+        <% c.with_media do %>
           <%= polaris_avatar(customer: true, name: item[:name]) %>
         <% end %>
 
-        <% c.shortcut_actions do |shortcut_action| %>
+        <% c.with_shortcut_actions do |shortcut_action| %>
           <% actions.each do |action| %>
-            <% shortcut_action.button(url: action[:url], content: action[:content]) %>
+            <% shortcut_action.with_button(url: action[:url], content: action[:content]) %>
           <% end %>
         <% end %>
 

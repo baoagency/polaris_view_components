@@ -15,8 +15,8 @@ class ResourceListComponentTest < Minitest::Test
 
   def test_resource_list_with_filters
     render_inline(Polaris::ResourceListComponent.new) do |resource_list|
-      resource_list.filters do |filters|
-        filters.query(name: :query)
+      resource_list.with_filters do |filters|
+        filters.with_query(name: :query)
       end
       "Content"
     end

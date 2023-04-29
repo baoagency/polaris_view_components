@@ -11,10 +11,10 @@ class DataTableComponentTest < Minitest::Test
 
   def test_default_table
     render_inline(Polaris::DataTableComponent.new(@data)) do |table|
-      table.column("Product") do |row|
+      table.with_column("Product") do |row|
         row[:product]
       end
-      table.column("Price", numeric: true) do |row|
+      table.with_column("Price", numeric: true) do |row|
         row[:price]
       end
     end
@@ -37,10 +37,10 @@ class DataTableComponentTest < Minitest::Test
 
   def test_totals_in_header
     render_inline(Polaris::DataTableComponent.new(@data, totals_in_header: true)) do |table|
-      table.column("Product", total: "Totals") do |row|
+      table.with_column("Product", total: "Totals") do |row|
         row[:product]
       end
-      table.column("Price", total: "$100") do |row|
+      table.with_column("Price", total: "$100") do |row|
         row[:price]
       end
     end
@@ -53,10 +53,10 @@ class DataTableComponentTest < Minitest::Test
 
   def test_totals_in_footer
     render_inline(Polaris::DataTableComponent.new(@data, totals_in_footer: true)) do |table|
-      table.column("Product", total: "Totals") do |row|
+      table.with_column("Product", total: "Totals") do |row|
         row[:product]
       end
-      table.column("Price", total: "$100") do |row|
+      table.with_column("Price", total: "$100") do |row|
         row[:price]
       end
     end
@@ -69,13 +69,13 @@ class DataTableComponentTest < Minitest::Test
 
   def test_custom_footer
     render_inline(Polaris::DataTableComponent.new(@data)) do |table|
-      table.column("Product") do |row|
+      table.with_column("Product") do |row|
         row[:product]
       end
-      table.column("Price", numeric: true) do |row|
+      table.with_column("Price", numeric: true) do |row|
         row[:price]
       end
-      table.footer do
+      table.with_footer do
         tag.p "Custom content"
       end
     end
@@ -85,10 +85,10 @@ class DataTableComponentTest < Minitest::Test
 
   def test_sort
     render_inline(Polaris::DataTableComponent.new(@data)) do |table|
-      table.column("Product", sort_url: "/sort1") do |row|
+      table.with_column("Product", sort_url: "/sort1") do |row|
         row[:product]
       end
-      table.column("Price", sort_url: "/sort2", sorted: :asc) do |row|
+      table.with_column("Price", sort_url: "/sort2", sorted: :asc) do |row|
         row[:price]
       end
     end

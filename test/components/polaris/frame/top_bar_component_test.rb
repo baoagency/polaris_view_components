@@ -8,15 +8,15 @@ class TopBarComponentTest < Minitest::Test
       url: "/root_url",
       src: "http://example.com/logo.jpg"
     })) do |frame|
-      frame.top_bar do |top_bar|
-        top_bar.user_menu(name: "Name", detail: "Detail") do |user_menu|
-          user_menu.avatar(initials: "K")
+      frame.with_top_bar do |top_bar|
+        top_bar.with_user_menu(name: "Name", detail: "Detail") do |user_menu|
+          user_menu.with_avatar(initials: "K")
           "Popover Content"
         end
-        top_bar.search_field do |search_field|
+        top_bar.with_search_field do |search_field|
           "Search Field Content"
         end
-        top_bar.secondary_menu do |secondary_menu|
+        top_bar.with_secondary_menu do |secondary_menu|
           "Secondary Menu Content"
         end
       end

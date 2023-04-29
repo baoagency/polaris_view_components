@@ -1,7 +1,7 @@
 <%= polaris_card(sectioned: false) do %>
   <%= polaris_resource_list do %>
     <%= polaris_resource_item(vertical_alignment: :center) do |resource_item| %>
-      <% resource_item.media do %>
+      <% resource_item.with_media do %>
         <%= polaris_avatar(
           customer: true,
           name: "Yi So-Yeon",

@@ -1,6 +1,6 @@
 <%= polaris_skeleton_page(primary_action: true) do %>
   <%= polaris_layout do |layout| %>
-    <% layout.section do %>
+    <% layout.with_section do %>
       <%= polaris_card do %>
         <%= polaris_skeleton_body_text %>
       <% end %>
@@ -13,16 +13,16 @@
         <% end %>
       <% end %>
     <% end %>
-    <% layout.section(secondary: true) do %>
+    <% layout.with_section(secondary: true) do %>
       <% 2.times do %>
         <%= polaris_card do |card| %>
-          <% card.section do %>
+          <% card.with_section do %>
             <%= polaris_text_container do %>
               <%= polaris_skeleton_display_text(size: :small) %>
               <%= polaris_skeleton_body_text(lines: 2) %>
             <% end %>
           <% end %>
-          <% card.section do %>
+          <% card.with_section do %>
             <%= polaris_skeleton_body_text(lines: 1) %>
           <% end %>
         <% end %>

@@ -5,8 +5,8 @@ class ActionListComponentTest < Minitest::Test
 
   def test_single_choice
     render_inline(Polaris::OptionListComponent.new(title: "TITLE")) do |list|
-      list.radio_button(label: "Item 1", value: "item_1")
-      list.radio_button(label: "Item 2", value: "item_2")
+      list.with_radio_button(label: "Item 1", value: "item_1")
+      list.with_radio_button(label: "Item 2", value: "item_2")
     end
 
     assert_selector "ul.Polaris-OptionList" do
@@ -31,8 +31,8 @@ class ActionListComponentTest < Minitest::Test
 
   def test_multi_choice
     render_inline(Polaris::OptionListComponent.new) do |list|
-      list.checkbox(label: "Item 1", value: "item_1")
-      list.checkbox(label: "Item 2", value: "item_2")
+      list.with_checkbox(label: "Item 1", value: "item_1")
+      list.with_checkbox(label: "Item 2", value: "item_2")
     end
 
     assert_selector "ul.Polaris-OptionList" do
@@ -61,7 +61,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_custom_option
     render_inline(Polaris::OptionListComponent.new) do |list|
-      list.option { "CUSTOM_CONTENT" }
+      list.with_option { "CUSTOM_CONTENT" }
     end
 
     assert_selector "ul.Polaris-OptionList__Options > li" do
@@ -71,11 +71,11 @@ class ActionListComponentTest < Minitest::Test
 
   def test_multiple_sections
     render_inline(Polaris::OptionListComponent.new) do |list|
-      list.section(title: "Title 1") do |section|
-        section.option { "Content 1" }
+      list.with_section(title: "Title 1") do |section|
+        section.with_option { "Content 1" }
       end
-      list.section(title: "Title 2") do |section|
-        section.option { "Content 2" }
+      list.with_section(title: "Title 2") do |section|
+        section.with_option { "Content 2" }
       end
     end
 

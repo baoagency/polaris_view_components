@@ -1,5 +1,5 @@
 <%= polaris_popover(active: true) do |popover| %>
-  <% popover.activator do %>
+  <% popover.with_activator do %>
     <%= polaris_button(
       plain: true,
       disclosure: true,
@@ -8,7 +8,7 @@
   <% end %>
 
   <%= polaris_action_list do |action_list| %>
-    <% action_list.item { "Import" } %>
-    <% action_list.item { "Export" } %>
+    <% action_list.with_item { "Import" } %>
+    <% action_list.with_item { "Export" } %>
   <% end %>
 <% end %>

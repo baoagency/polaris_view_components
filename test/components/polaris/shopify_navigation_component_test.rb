@@ -5,8 +5,8 @@ class ShopifyNavigationComponentTest < Minitest::Test
 
   def test_renders_navigation
     render_inline(Polaris::ShopifyNavigationComponent.new) do |nav|
-      nav.link(url: "/page1", active: true) { "Page 1" }
-      nav.link(url: "/page2", target: "_blank") { "Page 2" }
+      nav.with_link(url: "/page1", active: true) { "Page 1" }
+      nav.with_link(url: "/page2", target: "_blank") { "Page 2" }
     end
 
     assert_selector ".shp-Navigation > .Polaris-Stack > ul.shp-Navigation_Items" do

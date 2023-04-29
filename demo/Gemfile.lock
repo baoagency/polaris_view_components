@@ -3,7 +3,7 @@ PATH
   specs:
     polaris_view_components (0.13.0)
       rails (>= 5.0.0)
-      view_component (>= 2.0.0, < 3.0.0)
+      view_component (>= 3.0.0, < 4.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -196,8 +196,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    view_component (2.78.0)
-      activesupport (>= 5.0.0, < 8.0)
+    view_component (3.0.0)
+      activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     web-console (4.2.0)

@@ -15,7 +15,7 @@
   <%= polaris_resource_list do %>
     <% items.each do |item| %>
       <%= polaris_resource_item(url: item[:url]) do |c| %>
-        <% c.media do %>
+        <% c.with_media do %>
           <%= polaris_avatar(customer: true, name: item[:name]) %>
         <% end %>
 

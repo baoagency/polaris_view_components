@@ -9,7 +9,7 @@
     },
   ]
 ) do |page| %>
-  <% page.primary_action(disabled: true) { "Save" } %>
+  <% page.with_primary_action(disabled: true) { "Save" } %>
 
   <%= polaris_card(title: "Credit card") do %>
     <p>Credit card information</p>

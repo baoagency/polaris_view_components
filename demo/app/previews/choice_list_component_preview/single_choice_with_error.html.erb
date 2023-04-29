@@ -3,7 +3,7 @@
   name: :company_name,
   error: "Company name cannot be hidden at this time",
 ) do |choice| %>
-  <% choice.radio_button(label: "Hidden", value: "hidden") %>
-  <% choice.radio_button(label: "Optional", value: "optional") %>
-  <% choice.radio_button(label: "Required", value: "required") %>
+  <% choice.with_radio_button(label: "Hidden", value: "hidden") %>
+  <% choice.with_radio_button(label: "Optional", value: "optional") %>
+  <% choice.with_radio_button(label: "Required", value: "required") %>
 <% end %>

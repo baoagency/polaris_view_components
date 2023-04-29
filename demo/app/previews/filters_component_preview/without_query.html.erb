@@ -13,23 +13,23 @@
 
 <%= polaris_card(sectioned: false) do %>
   <%= polaris_resource_list do |resource_list| %>
-    <% resource_list.filters do |filters| %>
-      <% filters.item(label: "Account status", sectioned: false) do %>
+    <% resource_list.with_filters do |filters| %>
+      <% filters.with_item(label: "Account status", sectioned: false) do %>
         <%= polaris_option_list do |list| %>
-          <% list.checkbox(label: "Enabled", value: "enabled") %>
-          <% list.checkbox(label: "Not invited", value: "not_invited") %>
-          <% list.checkbox(label: "Invited", value: "invited") %>
-          <% list.checkbox(label: "Declined", value: "declined") %>
+          <% list.with_checkbox(label: "Enabled", value: "enabled") %>
+          <% list.with_checkbox(label: "Not invited", value: "not_invited") %>
+          <% list.with_checkbox(label: "Invited", value: "invited") %>
+          <% list.with_checkbox(label: "Declined", value: "declined") %>
         <% end %>
       <% end %>
-      <% filters.item(label: "Tagged with", width: "175px") do %>
+      <% filters.with_item(label: "Tagged with", width: "175px") do %>
         <%= polaris_text_field %>
       <% end %>
     <% end %>
 
     <% items.each do |item| %>
       <%= polaris_resource_item(url: item[:url]) do |c| %>
-        <% c.media do %>
+        <% c.with_media do %>
           <%= polaris_avatar(customer: true, name: item[:name]) %>
         <% end %>
 

@@ -1,17 +1,17 @@
 <%= polaris_autocomplete(multiple: true) do |autocomplete| %>
-  <% autocomplete.text_field(name: :tags, label: "Tags", placeholder: "Search") do |c| %>
-    <% c.prefix do %>
+  <% autocomplete.with_text_field(name: :tags, label: "Tags", placeholder: "Search") do |c| %>
+    <% c.with_prefix do %>
       <%= polaris_icon(name: "SearchMinor") %>
     <% end %>
   <% end %>
 
-  <% autocomplete.section(title: "Section 1") do |section| %>
-    <% section.option(label: "Rustic", value: "rustic") %>
-    <% section.option(label: "Antique", value: "antique") %>
-    <% section.option(label: "Vinyl", value: "vinyl") %>
+  <% autocomplete.with_section(title: "Section 1") do |section| %>
+    <% section.with_option(label: "Rustic", value: "rustic") %>
+    <% section.with_option(label: "Antique", value: "antique") %>
+    <% section.with_option(label: "Vinyl", value: "vinyl") %>
   <% end %>
-  <% autocomplete.section(title: "Section 2") do |section| %>
-    <% section.option(label: "Vintage", value: "vintage") %>
-    <% section.option(label: "Refurbished", value: "refurbished") %>
+  <% autocomplete.with_section(title: "Section 2") do |section| %>
+    <% section.with_option(label: "Vintage", value: "vintage") %>
+    <% section.with_option(label: "Refurbished", value: "refurbished") %>
   <% end %>
 <% end %>

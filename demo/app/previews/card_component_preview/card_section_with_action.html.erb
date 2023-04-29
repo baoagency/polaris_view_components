@@ -1,9 +1,9 @@
 <%= polaris_card(title: "Customer") do |card| %>
-  <% card.section do %>
+  <% card.with_section do %>
     <p>John Smith</p>
   <% end %>
 
-  <% card.section(
+  <% card.with_section(
     title: "Contact information",
     actions: [{ content: "Edit", url: "https://bao.agency" }]
   ) do %>

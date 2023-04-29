@@ -1,19 +1,19 @@
 <%= polaris_autocomplete do |autocomplete| %>
-  <% autocomplete.text_field(name: :tags, label: "Tags", placeholder: "Search") do |c| %>
-    <% c.prefix do %>
+  <% autocomplete.with_text_field(name: :tags, label: "Tags", placeholder: "Search") do |c| %>
+    <% c.with_prefix do %>
       <%= polaris_icon(name: "SearchMinor") %>
     <% end %>
   <% end %>
-  <% autocomplete.empty_state do %>
+  <% autocomplete.with_empty_state do %>
     <div style="text-align: center;">
       <%= polaris_icon(name: "SearchMinor") %>
       <%= polaris_text_container { "Could not find any results" } %>
     </div>
   <% end %>
 
-  <% autocomplete.option(label: "Rustic", value: "rustic") %>
-  <% autocomplete.option(label: "Antique", value: "antique") %>
-  <% autocomplete.option(label: "Vinyl", value: "vinyl") %>
-  <% autocomplete.option(label: "Vintage", value: "vintage") %>
-  <% autocomplete.option(label: "Refurbished", value: "refurbished") %>
+  <% autocomplete.with_option(label: "Rustic", value: "rustic") %>
+  <% autocomplete.with_option(label: "Antique", value: "antique") %>
+  <% autocomplete.with_option(label: "Vinyl", value: "vinyl") %>
+  <% autocomplete.with_option(label: "Vintage", value: "vintage") %>
+  <% autocomplete.with_option(label: "Refurbished", value: "refurbished") %>
 <% end %>

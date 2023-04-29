@@ -23,7 +23,7 @@ class ToastComponentTest < Minitest::Test
 
   def test_with_action
     render_inline(Polaris::ToastComponent.new) do |toast|
-      toast.action { "Action" }
+      toast.with_action { "Action" }
       "Content"
     end
 

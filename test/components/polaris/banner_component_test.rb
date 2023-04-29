@@ -19,7 +19,7 @@ class BannerComponentTest < Minitest::Test
 
   def test_dismissible_banner
     render_inline(Polaris::BannerComponent.new) do |banner|
-      banner.dismiss_button(url: "#")
+      banner.with_dismiss_button(url: "#")
       "Banner Content"
     end
 
@@ -30,8 +30,8 @@ class BannerComponentTest < Minitest::Test
 
   def test_banner_with_actions
     render_inline(Polaris::BannerComponent.new) do |banner|
-      banner.action(url: "/primary") { "Primary Action" }
-      banner.secondary_action(url: "/secondary") { "Secondary Action" }
+      banner.with_action(url: "/primary") { "Primary Action" }
+      banner.with_secondary_action(url: "/secondary") { "Secondary Action" }
     end
 
     assert_selector ".Polaris-Banner > .Polaris-Banner__ContentWrapper > .Polaris-Banner__Content" do

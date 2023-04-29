@@ -5,8 +5,8 @@ class FiltersComponentTest < Minitest::Test
 
   def test_default_filters
     render_inline(Polaris::FiltersComponent.new) do |filters|
-      filters.query(name: :query)
-      filters.item(label: "Filter") do
+      filters.with_query(name: :query)
+      filters.with_item(label: "Filter") do
         "Content"
       end
     end
@@ -47,8 +47,8 @@ class FiltersComponentTest < Minitest::Test
 
   def test_disabled
     render_inline(Polaris::FiltersComponent.new(disabled: true)) do |filters|
-      filters.query(name: :query)
-      filters.item(label: "Filter") do
+      filters.with_query(name: :query)
+      filters.with_item(label: "Filter") do
         "Content"
       end
     end
@@ -71,7 +71,7 @@ class FiltersComponentTest < Minitest::Test
 
   def test_filters_with_tags
     render_inline(Polaris::FiltersComponent.new) do |filters|
-      filters.tags do
+      filters.with_tags do
         "Tags"
       end
       "Content"
