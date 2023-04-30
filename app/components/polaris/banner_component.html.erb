@@ -4,37 +4,45 @@
       <%= dismiss_button %>
     </div>
   <% end %>
-  <div class="Polaris-Banner__Ribbon">
-    <%= render_icon %>
-  </div>
+  <% unless @hide_icon %>
+    <%= polaris_box(padding_inline_end: "4") do %>
+      <%= render_icon %>
+    <% end %>
+  <% end %>
   <div class="Polaris-Banner__ContentWrapper">
     <% if @title.present? %>
-      <div class="Polaris-Banner__Heading">
-        <%= polaris_heading(element: :p) { @title } %>
-      </div>
-    <% end %>
-    <div class="Polaris-Banner__Content">
-      <%= content %>
-
-      <% if action || secondary_action %>
-        <div class="Polaris-Banner__Actions">
-          <%= polaris_button_group do |group| %>
-            <% if action %>
-              <% group.with_item do %>
-                <div class="Polaris-Banner__PrimaryAction">
-                  <%= action %>
-                </div>
-              <% end %>
-            <% end %>
-
-            <% if secondary_action %>
-              <% group.with_item do %>
-                <%= secondary_action %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
+      <%= polaris_text(as: :h2, variant: :headingMd, break_word: true) do %>
+        <%= @title %>
       <% end %>
-    </div>
+    <% end %>
+    <% if content.present? || action || secondary_action %>
+      <%= polaris_box(padding_block_start: "05", padding_block_end: "05") do %>
+        <%= content %>
+
+        <% if action || secondary_action %>
+          <%= polaris_box(
+            padding_block_start: @within == :container ? "3" : "4",
+            padding_block_end: @within == :container ? "1" : nil
+          ) do %>
+            <%= polaris_button_group do |group| %>
+              <% if action %>
+                <% group.with_item do %>
+                  <%= polaris_box(padding_inline_end: "2") do %>
+                    <%= action %>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+              <% if secondary_action %>
+                <% group.with_item do %>
+                  <%= secondary_action %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
