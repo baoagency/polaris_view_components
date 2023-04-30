@@ -4,7 +4,11 @@ module Polaris
     renders_many :sections, ->(**system_arguments) do
       @counter += 1
 
-      Polaris::ActionList::SectionComponent.new(position: @counter, **system_arguments)
+      Polaris::ActionList::SectionComponent.new(
+        position: @counter,
+        multiple_sections: true,
+        **system_arguments
+      )
     end
 
     def initialize(**system_arguments)

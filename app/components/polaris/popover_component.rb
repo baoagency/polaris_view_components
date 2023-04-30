@@ -12,7 +12,9 @@ module Polaris
       Polaris::ButtonComponent.new(**system_arguments)
     end
     renders_one :activator
-    renders_many :panes, Polaris::Popover::PaneComponent
+    renders_many :panes, ->(**system_arguments) do
+      Polaris::Popover::PaneComponent.new(scrollable_shadow: @scrollable_shadow, **system_arguments)
+    end
 
     def initialize(
       active: false,
@@ -25,6 +27,7 @@ module Polaris
       alignment: ALIGNMENT_DEFAULT,
       position: POSITION_DEFAULT,
       append_to_body: false,
+      scrollable_shadow: true,
       wrapper_arguments: {},
       **system_arguments
     )
@@ -37,6 +40,7 @@ module Polaris
       @sectioned = sectioned
       @alignment = fetch_or_fallback(ALIGNMENT_OPTIONS, alignment, ALIGNMENT_DEFAULT)
       @position = fetch_or_fallback(POSITION_OPTIONS, position, POSITION_DEFAULT)
+      @scrollable_shadow = scrollable_shadow
       @append_to_body = append_to_body
       @wrapper_arguments = wrapper_arguments
       @system_arguments = system_arguments

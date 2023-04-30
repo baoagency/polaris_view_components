@@ -14,7 +14,7 @@ class PopoverComponentTest < Minitest::Test
         assert_selector 'button.Polaris-Button[data-action~="polaris-popover#toggle"]', text: "Activator"
       end
       assert_selector ".Polaris-PositionedOverlay.Polaris-Popover__PopoverOverlay--closed" do
-        assert_selector ".Polaris-Popover .Polaris-Popover__Wrapper .Polaris-Popover__Content" do
+        assert_selector ".Polaris-Popover .Polaris-Popover__Content" do
           assert_selector ".Polaris-Popover__Pane.Polaris-Scrollable", text: "Content"
         end
       end

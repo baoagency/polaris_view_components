@@ -19,7 +19,7 @@
     <%= pane_content %>
   <% end %>
 <% else %>
-  <%= render Polaris::ScrollableComponent.new(shadow: true, **system_arguments) do %>
+  <%= render Polaris::ScrollableComponent.new(shadow: @scrollable_shadow, **system_arguments) do %>
     <%= pane_content %>
   <% end %>
 <% end %>

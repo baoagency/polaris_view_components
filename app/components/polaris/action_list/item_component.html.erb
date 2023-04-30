@@ -1,6 +1,6 @@
 <li>
   <%= render Polaris::BaseComponent.new(**system_arguments) do %>
-    <div class="Polaris-ActionList__Content">
+    <%= polaris_horizontal_stack(block_align: "center", gap: "4") do %>
       <% if @icon.present? %>
         <span class="Polaris-ActionList__Prefix">
           <%= polaris_icon(name: @icon) %>
@@ -14,22 +14,20 @@
 
       <span class="Polaris-ActionList__Text">
         <% if @help_text.present? %>
-          <span class="Polaris-ActionList__ContentBlock">
-            <span class="Polaris-ActionList__ContentBlockInner">
-              <%= content %>
-            </span>
-            <%= polaris_text_subdued { @help_text } %>
-          </span>
+          <%= polaris_box { content } %>
+          <%= polaris_text(as: :span, color: :subdued) { @help_text } %>
         <% else %>
           <%= content %>
         <% end %>
       </span>
 
       <% if suffix.present? %>
-        <span class="Polaris-ActionList__Suffix">
-          <%= suffix %>
-        </span>
+        <%= polaris_box do %>
+          <span class="Polaris-ActionList__Suffix">
+            <%= suffix %>
+          </span>
+        <% end %>
       <% end %>
-    </div>
+    <% end %>
   <% end %>
 </li>

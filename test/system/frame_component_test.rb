@@ -13,7 +13,7 @@ class FrameComponentSystemTest < ApplicationSystemTestCase
     # Open menu
     find(".Polaris-TopBar__NavigationIcon").click
     within ".Polaris-Navigation" do
-      assert_selector ".Polaris-Navigation__Text", text: "JADED PIXEL APP"
+      assert_text "Jaded Pixel App"
     end
 
     # Close menu

@@ -1,10 +1,21 @@
-<%= render Polaris::BaseComponent.new(**system_arguments) do %>
+<% section_markup = capture do %>
   <% if @title.present? %>
-    <p class="<%= title_classes %>">
-      <%= @title %>
-    </p>
+    <%= polaris_box(
+      padding_block_start: "4",
+      padding_inline_start: "4",
+      padding_block_end: "2",
+      padding_inline_end: "4"
+    ) do %>
+      <%= polaris_text(as: :p, variant: :headingXs) do %>
+        <%= @title %>
+      <% end %>
+    <% end %>
   <% end %>
-  <ul class="Polaris-ActionList__Actions">
+  <%= polaris_box(
+    as: :ul,
+    padding: "2",
+    padding_block_start: @title.present? ? "0" : (@multiple_sections ? "0" : "2"),
+  ) do %>
     <% if items.present? %>
       <% items.each do |item| %>
         <%= item %>
@@ -12,5 +23,18 @@
     <% else %>
       <%= content %>
     <% end %>
-  </ul>
+  <% end %>
+<% end %>
+
+<% if @multiple_sections %>
+  <%= polaris_box(
+    as: :li,
+    border_color: "border-subdued",
+    border_block_start_width: (@position != 1) ? "1" : nil,
+    padding_block_start: @title.blank? ? "2" : nil
+  ) do %>
+    <%= section_markup %>
+  <% end %>
+<% else%>
+  <%= section_markup %>
 <% end %>

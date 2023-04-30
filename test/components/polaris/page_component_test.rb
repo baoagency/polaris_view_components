@@ -9,14 +9,14 @@ class PaginationComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Page" do
-      assert_selector ".Polaris-Page-Header.Polaris-Page-Header--noBreadcrumbs" do
-        assert_selector ".Polaris-Page-Header__Row > .Polaris-Page-Header__TitleWrapper" do
+      assert_selector ".Polaris-Page-Header--noBreadcrumbs" do
+        assert_selector ".Polaris-Page-Header__TitleWrapper" do
           assert_selector ".Polaris-Header-Title__TitleAndSubtitleWrapper" do
             assert_selector "h1.Polaris-Header-Title", text: "Page Title"
           end
         end
       end
-      assert_selector ".Polaris-Page__Content", text: "Page Content"
+      assert_text "Page Content"
     end
   end
 
@@ -33,7 +33,7 @@ class PaginationComponentTest < Minitest::Test
 
     assert_selector ".Polaris-Page-Header--hasNavigation" do
       assert_selector ".Polaris-Page-Header__Row" do
-        assert_selector ".Polaris-Page-Header__BreadcrumbWrapper > nav" do
+        assert_selector ".Polaris-Page-Header__BreadcrumbWrapper nav" do
           assert_selector "a.Polaris-Breadcrumbs__Breadcrumb[href='/back']" do
             assert_selector ".Polaris-Breadcrumbs__ContentWrapper > .Polaris-Breadcrumbs__Icon > .Polaris-Icon"
           end
@@ -47,7 +47,7 @@ class PaginationComponentTest < Minitest::Test
       page.with_primary_action { "Primary Button" }
     end
 
-    assert_selector ".Polaris-Page-Header > .Polaris-Page-Header__Row > .Polaris-Page-Header__RightAlign" do
+    assert_selector ".Polaris-Page-Header__RightAlign" do
       assert_selector ".Polaris-Page-Header__PrimaryActionWrapper" do
         assert_selector ".Polaris-Button--primary", text: "Primary Button"
       end
@@ -80,7 +80,7 @@ class PaginationComponentTest < Minitest::Test
       "Page Content"
     end
 
-    assert_selector ".Polaris-Page__Content.Polaris-Page--divider", text: "Page Content"
+    assert_selector ".Polaris-Page--divider", text: "Page Content"
   end
 
   def test_page_with_title_metadata
@@ -137,7 +137,7 @@ class PaginationComponentTest < Minitest::Test
 
     assert_selector ".Polaris-ActionMenu--mobile" do
       assert_selector ".Polaris-Popover .Polaris-ActionList" do
-        assert_selector ".Polaris-ActionList__Title", text: "Promote"
+        assert_text "Promote"
         assert_selector ".Polaris-ActionList__Item", text: "Share on Facebook"
         assert_selector ".Polaris-ActionList__Item", text: "Share on Twitter"
       end

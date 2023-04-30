@@ -11,21 +11,28 @@
     <%= render Polaris::BaseComponent.new(**system_arguments) do %>
       <%= render Polaris::BaseComponent.new(**popover_arguments) do %>
         <div class="Polaris-Popover__FocusTracker" tabindex="0"></div>
-        <div style="">
-          <div class="Polaris-Popover__Wrapper">
-            <%= render Polaris::BaseComponent.new(**content_arguments) do %>
-              <% if panes.present? %>
-                <% panes.each do |pane| %>
-                  <%= pane %>
-                <% end %>
-              <% else %>
-                <%= render Polaris::Popover::PaneComponent.new(sectioned: @sectioned) do %>
-                  <%= content %>
-                <% end %>
+        <%= polaris_box(
+          position: :relative,
+          overflow_x: :hidden,
+          overflow_y: :hidden,
+          background: "bg",
+          border_radius: "2"
+        ) do %>
+          <%= render Polaris::BaseComponent.new(**content_arguments) do %>
+            <% if panes.present? %>
+              <% panes.each do |pane| %>
+                <%= pane %>
+              <% end %>
+            <% else %>
+              <%= render Polaris::Popover::PaneComponent.new(
+                sectioned: @sectioned,
+                scrollable_shadow: @scrollable_shadow
+              ) do %>
+                <%= content %>
               <% end %>
             <% end %>
-          </div>
-        </div>
+          <% end %>
+        <% end %>
         <div class="Polaris-Popover__FocusTracker" tabindex="0"></div>
       <% end %>
     <% end %>
