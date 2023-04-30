@@ -10,6 +10,7 @@ module Polaris
       avatar:                   "Polaris::AvatarComponent",
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::BannerComponent",
+      bleed:                    "Polaris::BleedComponent",
       box:                      "Polaris::BoxComponent",
       button:                   "Polaris::ButtonComponent",
       button_group:             "Polaris::ButtonGroupComponent",

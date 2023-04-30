@@ -1,0 +1,42 @@
+<%= polaris_vertical_stack(gap: "6") do %>
+  <%= polaris_box(
+    background: "bg",
+    border_width: "1",
+    border_color: "border-subdued",
+    padding: "8"
+  ) do %>
+    <%= polaris_bleed(margin_inline_start: "8") do %>
+      <%= polaris_placeholder(height: "48px", label: "margin_inline_start") %>
+    <% end %>
+  <% end %>
+  <%= polaris_box(
+    background: "bg",
+    border_width: "1",
+    border_color: "border-subdued",
+    padding: "8"
+  ) do %>
+    <%= polaris_bleed(margin_inline_end: "8") do %>
+      <%= polaris_placeholder(height: "48px", label: "margin_inline_end") %>
+    <% end %>
+  <% end %>
+  <%= polaris_box(
+    background: "bg",
+    border_width: "1",
+    border_color: "border-subdued",
+    padding: "8"
+  ) do %>
+    <%= polaris_bleed(margin_block_start: "8") do %>
+      <%= polaris_placeholder(height: "48px", label: "margin_block_start") %>
+    <% end %>
+  <% end %>
+  <%= polaris_box(
+    background: "bg",
+    border_width: "1",
+    border_color: "border-subdued",
+    padding: "8"
+  ) do %>
+    <%= polaris_bleed(margin_block_end: "8") do %>
+      <%= polaris_placeholder(height: "48px", label: "margin_block_end") %>
+    <% end %>
+  <% end %>
+<% end %>
