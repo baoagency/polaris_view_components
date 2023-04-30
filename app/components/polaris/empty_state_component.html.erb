@@ -1,52 +1,57 @@
-<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
-  <div class="Polaris-EmptyState__Section">
-    <div class="Polaris-EmptyState__DetailsContainer">
-      <div class="Polaris-EmptyState__Details">
+<%= polaris_box(
+  padding_inline_start: "0",
+  padding_inline_end: "0",
+  padding_block_start: "5",
+  padding_block_end: "16",
+  **@system_arguments
+) do %>
+  <%= polaris_vertical_stack(inline_align: "center") do %>
+    <img src="<%= @image %>" role="presentation" class="<%= @image_contained_class %>">
+
+    <%= polaris_box(max_width: @full_width? "100%" : "400px") do %>
+      <%= polaris_vertical_stack(inline_align: "center") do %>
         <% if @heading.present? || content.present? %>
-          <div class="Polaris-TextContainer">
+          <%= polaris_box(padding_block_end: "6") do %>
             <% if @heading.present? %>
-              <p class="Polaris-DisplayText Polaris-DisplayText--sizeSmall">
-                <%= @heading %>
-              </p>
+              <%= polaris_box(padding_block_end: "4") do %>
+                <%= polaris_text(
+                  variant: @within == :container ? :headingLg : :headingXl,
+                  as: :p,
+                  alignment: :center
+                ) do %>
+                  <%= @heading %>
+                <% end %>
+              <% end %>
             <% end %>
             <% if content.present? %>
-              <div class="Polaris-EmptyState__Content">
+              <%= polaris_text(as: :span, color: :subdued, alignment: :center) do %>
                 <%= content %>
-              </div>
+              <% end %>
             <% end %>
-          </div>
+          <% end %>
         <% end %>
         <% if primary_action.present? || secondary_action.present? %>
-          <div class="Polaris-EmptyState__Actions">
-            <%= polaris_stack(spacing: :tight, distribution: :center, alignment: :center) do |stack| %>
-              <% if primary_action.present? %>
-                <% stack.with_item do %>
-                  <%= primary_action %>
-                <% end %>
-              <% end %>
-              <% if secondary_action.present? %>
-                <% stack.with_item do %>
-                  <%= secondary_action %>
-                <% end %>
-              <% end %>
+          <%= polaris_horizontal_stack(align: "center", gap: "2") do %>
+            <% if secondary_action.present? %>
+              <%= secondary_action %>
             <% end %>
-          </div>
+            <% if primary_action.present? %>
+              <%= primary_action %>
+            <% end %>
+          <% end %>
         <% end %>
         <% if footer.present? %>
-          <div class="Polaris-EmptyState__FooterContent">
-            <div class="Polaris-TextContainer">
+          <%= polaris_box(padding_block_start: "4") do %>
+            <%= polaris_text(as: :span, color: :subdued, alignment: :center) do %>
               <%= footer %>
-            </div>
-          </div>
+            <% end %>
+          <% end %>
         <% end %>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
 
-    <div class="Polaris-EmptyState__ImageContainer">
-      <img src="<%= @image %>" role="presentation" alt="" class="Polaris-EmptyState__Image">
-    </div>
-  </div>
-  <% if unsectioned_content.present? %>
-    <%= unsectioned_content %>
+    <% if unsectioned_content.present? %>
+      <%= unsectioned_content %>
+    <% end %>
   <% end %>
 <% end %>
