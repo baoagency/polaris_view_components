@@ -15,7 +15,7 @@ module Polaris
     validates :block_align, inclusion: {in: BLOCK_ALIGN_OPTIONS}
 
     GAP_DEFAULT = 4
-    validates :gap, inclusion: {in: Polaris::Tokens::Spacing::OPTIONS}
+    validates :gap, inclusion: {in: Polaris::Tokens::Spacing::SCALE}
 
     WRAP_DEFAULT = true
     validates :wrap, inclusion: {in: [true, false]}

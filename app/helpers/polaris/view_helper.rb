@@ -11,6 +11,7 @@ module Polaris
       avatar:                   "Polaris::AvatarComponent",
       badge:                    "Polaris::BadgeComponent",
       banner:                   "Polaris::BannerComponent",
+      box:                      "Polaris::BoxComponent",
       button:                   "Polaris::ButtonComponent",
       button_group:             "Polaris::ButtonGroupComponent",
       callout_card:             "Polaris::CalloutCardComponent",

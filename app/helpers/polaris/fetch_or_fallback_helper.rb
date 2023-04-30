@@ -49,5 +49,15 @@ module Polaris
         fallback
       end
     end
+
+    def fetch_or_fallback_nested(allowed_keys, allowed_values, given_value)
+      if given_value.is_a?(Hash)
+        given_value.each_with_object({}) do |(key, value), hash|
+          hash[fetch_or_fallback(allowed_keys, key)] = fetch_or_fallback(allowed_values, value)
+        end
+      else
+        fetch_or_fallback(allowed_values, given_value)
+      end
+    end
   end
 end
