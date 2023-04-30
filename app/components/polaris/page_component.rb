@@ -2,8 +2,9 @@
 
 module Polaris
   class PageComponent < Polaris::Component
+    LONG_TITLE = 34
+
     renders_one :title_metadata
-    renders_one :thumbnail, Polaris::ThumbnailComponent
     renders_one :primary_action, ->(primary: true, **system_arguments) do
       Polaris::ButtonComponent.new(primary: primary, **system_arguments)
     end
@@ -40,11 +41,21 @@ module Polaris
       {
         tag: "div",
         classes: class_names(
-          "Polaris-Page-Header",
           "Polaris-Page-Header--mobileView",
-          "Polaris-Page-Header--mediumTitle",
+          "Polaris-Page-Header--mediumTitle": @title.present? && @title.length <= LONG_TITLE,
+          "Polaris-Page-Header--longTitle": @title.present? && @title.length > LONG_TITLE,
           "Polaris-Page-Header--hasNavigation": @back_url.present?,
           "Polaris-Page-Header--noBreadcrumbs": @back_url.blank?
+        )
+      }
+    end
+
+    def title_arguments
+      {
+        tag: "h1",
+        classes: class_names(
+          "Polaris-Header-Title",
+          "Polaris-Header-Title__TitleWithSubtitle": @subtitle.present?
         )
       }
     end
@@ -63,8 +74,8 @@ module Polaris
       {
         tag: "div",
         classes: class_names(
-          "Polaris-Page__Content",
-          "Polaris-Page--divider": @divider
+          "Polaris-Page__Content": !render_header?,
+          "Polaris-Page--divider": @divider && render_header?
         )
       }
     end
@@ -75,8 +86,8 @@ module Polaris
         opts[:classes] = class_names(
           opts[:classes],
           "Polaris-Page",
-          "Polaris-Page--narrowWidth": @narrow_width,
-          "Polaris-Page--fullWidth": @full_width
+          "Polaris-Page--fullWidth": @full_width,
+          "Polaris-Page--narrowWidth": @narrow_width
         )
       end
     end

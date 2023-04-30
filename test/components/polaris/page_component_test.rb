@@ -54,21 +54,6 @@ class PaginationComponentTest < Minitest::Test
     end
   end
 
-  def test_page_with_thumbnail
-    render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.with_thumbnail(source: "/image.png")
-    end
-
-    assert_selector ".Polaris-Page-Header__TitleWrapper > .Polaris-Header-Title--hasThumbnail" do
-      assert_selector "div:nth-child(1)" do
-        assert_selector ".Polaris-Thumbnail > img[src='/image.png']"
-      end
-      assert_selector ".Polaris-Header-Title__TitleAndSubtitleWrapper:nth-child(2)" do
-        assert_text "Page Title"
-      end
-    end
-  end
-
   def test_page_without_header
     render_inline(Polaris::PageComponent.new) do
       "Page Content"
