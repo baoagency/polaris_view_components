@@ -21,7 +21,7 @@ module Polaris
         render(Polaris::BaseComponent.new(**@system_arguments)) do
           render(Polaris::InlineComponent.new(align: :center)) do
             tag.div(style: "color: #fff;") do
-              render(Polaris::TextComponent.new(as: :h2, variant: :body_md)) do
+              render(Polaris::TextComponent.new(as: :h2, variant: :bodyMd)) do
                 @label
               end
             end

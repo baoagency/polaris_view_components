@@ -20,19 +20,19 @@ module Polaris
     ]
     validates :as, inclusion: {in: AS_OPTIONS}
 
-    VARIANT_DEFAULT = :body_md
+    VARIANT_DEFAULT = :bodyMd
     VARIANT_MAPPINGS = {
-      heading_xs: "Polaris-Text--headingXs",
-      heading_sm: "Polaris-Text--headingSm",
-      heading_md: "Polaris-Text--headingMd",
-      heading_lg: "Polaris-Text--headingLg",
-      heading_xl: "Polaris-Text--headingXl",
-      heading_2xl: "Polaris-Text--heading2xl",
-      heading_3xl: "Polaris-Text--heading3xl",
-      heading_4xl: "Polaris-Text--heading4xl",
-      body_sm: "Polaris-Text--bodySm",
-      body_md: "Polaris-Text--bodyMd",
-      body_lg: "Polaris-Text--bodyLg"
+      headingXs: "Polaris-Text--headingXs",
+      headingSm: "Polaris-Text--headingSm",
+      headingMd: "Polaris-Text--headingMd",
+      headingLg: "Polaris-Text--headingLg",
+      headingXl: "Polaris-Text--headingXl",
+      heading2xl: "Polaris-Text--heading2xl",
+      heading3xl: "Polaris-Text--heading3xl",
+      heading4xl: "Polaris-Text--heading4xl",
+      bodySm: "Polaris-Text--bodySm",
+      bodyMd: "Polaris-Text--bodyMd",
+      bodyLg: "Polaris-Text--bodyLg"
     }
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
     validates :variant, inclusion: {in: VARIANT_OPTIONS}
@@ -53,17 +53,17 @@ module Polaris
       bold: "Polaris-Text--bold"
     }
     FONT_WEIGHT_VARIANT_MAPPINGS = {
-      heading_xs: :semibold,
-      heading_sm: :semibold,
-      heading_md: :semibold,
-      heading_lg: :semibold,
-      heading_xl: :semibold,
-      heading_2xl: :semibold,
-      heading_3xl: :semibold,
-      heading_4xl: :bold,
-      body_sm: :regular,
-      body_md: :regular,
-      body_lg: :regular
+      headingXs: :semibold,
+      headingSm: :semibold,
+      headingMd: :semibold,
+      headingLg: :semibold,
+      headingXl: :semibold,
+      heading2xl: :semibold,
+      heading3xl: :semibold,
+      heading4xl: :bold,
+      bodySm: :regular,
+      bodyMd: :regular,
+      bodyLg: :regular
     }
     FONT_WEIGHT_OPTIONS = FONT_WEIGHT_MAPPINGS.keys
     validates :font_weight, inclusion: {in: FONT_WEIGHT_OPTIONS}, allow_nil: true

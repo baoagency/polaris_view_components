@@ -7,7 +7,7 @@ module Polaris
     end
 
     def call
-      render(Polaris::TextComponent.new(as: :p, variant: :body_sm, **@system_arguments)) { content }
+      render(Polaris::TextComponent.new(as: :p, variant: :bodySm, **@system_arguments)) { content }
     end
   end
 end

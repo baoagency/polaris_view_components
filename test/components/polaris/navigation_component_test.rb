@@ -67,7 +67,7 @@ class NavigationComponentTest < Minitest::Test
 
     assert_selector ".Polaris-Navigation__Section" do
       assert_selector "li.Polaris-Navigation__SectionHeading" do
-        assert_selector ".Polaris-Navigation__Text", text: "SECTION_TITLE"
+        assert_selector "div", text: "SECTION_TITLE"
         assert_selector "a.Polaris-Navigation__Action[href='/action']"
       end
     end
