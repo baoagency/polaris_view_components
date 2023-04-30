@@ -19,9 +19,9 @@
 
   <% if @help_text.present? %>
     <div class="Polaris-Labelled__HelpText">
-      <span class="Polaris-Text--root Polaris-Text--break Polaris-Text--subdued">
+      <%= polaris_text(as: :span, color: :subdued, break_word: true) do %>
         <%= @help_text %>
-      </span>
+      <% end %>
     </div>
   <% end %>
 <% end %>

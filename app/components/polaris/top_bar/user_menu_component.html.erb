@@ -6,8 +6,23 @@
       data-action="polaris-popover#toggle click@window->polaris-popover#hide"
     >
       <span class="Polaris-TopBar-UserMenu__Details">
-        <p class="Polaris-Text--root Polaris-Text--medium Polaris-Text--block Polaris-Text--start Polaris-Text--truncate"><%= @name %></p>
-        <p class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--block Polaris-Text--start Polaris-Text--subdued Polaris-Text--truncate"><%= @detail %></p>
+        <%= polaris_text(
+          as: :p,
+          font_weight: :medium,
+          truncate: true,
+          alignment: :start
+        ) do %>
+          <%= @name %>
+        <% end %>
+        <%= polaris_text(
+          as: :p,
+          variant: :bodySm,
+          truncate: true,
+          alignment: :start,
+          color: :subdued
+        ) do %>
+          <%= @detail %>
+        <% end %>
       </span>
       <div class="Polaris-MessageIndicator__MessageIndicatorWrapper">
         <%= avatar %>

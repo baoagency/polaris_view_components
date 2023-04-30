@@ -2,9 +2,9 @@
   <% if items.present? %>
     <% if @title.present? %>
       <li class="Polaris-Navigation__SectionHeading">
-        <span class="Polaris-Text--root Polaris-Text--headingXs Polaris-Text--subdued">
+        <%= polaris_text(as: :span, color: :subdued, variant: :headingXs) do %>
           <%= @title %>
-        </span>
+        <% end %>
         <%= action %>
       </li>
     <% end %>
