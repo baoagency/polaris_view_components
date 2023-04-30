@@ -34,6 +34,7 @@ module Polaris
       frame:                    "Polaris::FrameComponent",
       filters:                  "Polaris::FiltersComponent",
       heading:                  "Polaris::HeadingComponent",
+      horizontal_grid:          "Polaris::HorizontalGridComponent",
       horizontal_stack:         "Polaris::HorizontalStackComponent",
       icon:                     "Polaris::IconComponent",
       index_table:              "Polaris::IndexTableComponent",
