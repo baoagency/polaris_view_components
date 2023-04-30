@@ -1,10 +1,13 @@
-<%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+<%= polaris_box(as: :ul, padding: "2", **system_arguments) do %>
   <% if sections.present? %>
     <% sections.each do |section| %>
       <%= section %>
     <% end %>
   <% elsif items.present? %>
-    <%= render(Polaris::OptionList::SectionComponent.new(title: @title)) do %>
+    <%= render(Polaris::OptionList::SectionComponent.new(
+      title: @title,
+      position: @sections_count
+    )) do %>
       <% items.each do |item| %>
         <%= item %>
       <% end %>

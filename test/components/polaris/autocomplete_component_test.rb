@@ -17,9 +17,7 @@ class AutocompleteComponentTest < Minitest::Test
         end
 
         assert_selector ".Polaris-Popover" do
-          assert_selector ".Polaris-OptionList" do
-            assert_selector "input[type='radio'][value='rustic']"
-          end
+          assert_selector "input[type='radio'][value='rustic']"
         end
       end
     end
@@ -32,9 +30,7 @@ class AutocompleteComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Popover" do
-      assert_selector ".Polaris-OptionList" do
-        assert_selector "input[type='checkbox'][value='rustic']"
-      end
+      assert_selector "input[type='checkbox'][value='rustic']"
     end
   end
 end
