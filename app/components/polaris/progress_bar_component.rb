@@ -38,5 +38,18 @@ module Polaris
       @animated = animated
       @progress = progress
     end
+
+    def progress_arguments
+      {tag: "div"}.tap do |args|
+        args[:classes] = class_names(
+          "Polaris-ProgressBar__Indicator",
+          "Polaris-ProgressBar__IndicatorAppearDone"
+        )
+        args[:style] = styles_list(
+          "--pc-progress-bar-duration": @animated ? "500ms" : "0ms",
+          "--pc-progress-bar-percent": @progress / 100.0
+        )
+      end
+    end
   end
 end
