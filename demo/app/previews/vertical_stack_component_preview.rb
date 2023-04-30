@@ -1,4 +1,4 @@
-class AlphaStackComponentPreview < ViewComponent::Preview
+class VerticalStackComponentPreview < ViewComponent::Preview
   def gap
   end
 

@@ -4,7 +4,6 @@ module Polaris
     # standard:disable Layout/HashAlignment
     POLARIS_HELPERS = {
       action_list:              "Polaris::ActionListComponent",
-      alpha_stack:              "Polaris::AlphaStackComponent",
       autocomplete:             "Polaris::AutocompleteComponent",
       autocomplete_section:     "Polaris::Autocomplete::SectionComponent",
       autocomplete_option:      "Polaris::Autocomplete::OptionComponent",
@@ -77,6 +76,7 @@ module Polaris
       text_style:               "Polaris::TextStyleComponent",
       thumbnail:                "Polaris::ThumbnailComponent",
       toast:                    "Polaris::ToastComponent",
+      vertical_stack:           "Polaris::VerticalStackComponent",
       visually_hidden:          "Polaris::VisuallyHiddenComponent"
     }.freeze
     # standard:enable Layout/HashAlignment

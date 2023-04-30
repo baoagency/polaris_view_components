@@ -1,7 +1,5 @@
 module Polaris
   class BoxComponent < Polaris::Component
-    include ActiveModel::Validations
-
     AS_DEFAULT = :div
     AS_OPTIONS = %i[div span section legend ul li]
 
@@ -26,7 +24,6 @@ module Polaris
       border_inline_start_width: nil,
       border_inline_end_width: nil,
       color: nil,
-      id: nil,
       min_height: nil,
       min_width: nil,
       max_width: nil,
@@ -39,7 +36,6 @@ module Polaris
       padding_inline_end: nil,
       role: nil,
       shadow: nil,
-      tab_index: nil,
       width: nil,
       position: nil,
       inset_block_start: nil,
@@ -58,8 +54,6 @@ module Polaris
       @system_arguments = system_arguments.tap do |args|
         args[:tag] = fetch_or_fallback(AS_OPTIONS, as, AS_DEFAULT)
         args[:role] = role_value(role)
-        args[:id] = id
-        args[:tabindex] = tab_index
         args[:classes] = class_names(
           args[:classes],
           "Polaris-Box",
@@ -172,13 +166,13 @@ module Polaris
       "var(--p-space-#{fetch_or_fallback(Tokens::Spacing::SCALE, space)})"
     end
 
-    def padding_value(property, value)
-      return {} unless value
+    def padding_value(property, pagging)
+      return {} unless pagging
 
       value = fetch_or_fallback_nested(
         Tokens::Spacing::SCREEN_SIZES,
         Tokens::Spacing::SCALE,
-        value
+        pagging
       )
 
       if value.is_a?(Hash)

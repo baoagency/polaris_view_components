@@ -25,7 +25,9 @@ module Polaris
 
     InvalidValueError = Class.new(StandardError)
 
-    def fetch_or_fallback(allowed_values, given_value, fallback = nil, deprecated_values: nil)
+    def fetch_or_fallback(allowed_values, given_value, fallback = nil, deprecated_values: nil, allow_nil: false)
+      return if allow_nil && given_value.nil?
+
       if allowed_values.include?(given_value)
         given_value
       else
