@@ -2644,7 +2644,7 @@ a.Polaris-Tag__Button {
 .Polaris-Button:focus:not(:focus-visible)::after, .Polaris-Breadcrumbs__Breadcrumb:focus:not(:focus-visible)::after {
     box-shadow: none !important;
   }
-.Polaris-Tabs__Tab:focus:not(:focus-visible) > .Polaris-Tabs__Title::after {
+.Polaris-LegacyTabs__Tab:focus:not(:focus-visible) > .Polaris-LegacyTabs__Title::after {
     box-shadow: none !important;
   }
 /* ResourceItem */

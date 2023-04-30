@@ -144,8 +144,8 @@ class CardComponentTest < Minitest::Test
       end
     end
 
-    assert_selector ".Polaris-LegacyCard > .Polaris-Tabs__Wrapper > ul.Polaris-Tabs" do
-      assert_selector "li.Polaris-Tabs__TabContainer > button.Polaris-Tabs__Tab", text: "Tab Title"
+    assert_selector ".Polaris-LegacyCard > .Polaris-LegacyTabs__Wrapper > ul.Polaris-LegacyTabs" do
+      assert_selector "li.Polaris-LegacyTabs__TabContainer > button.Polaris-LegacyTabs__Tab", text: "Tab Title"
     end
   end
 end

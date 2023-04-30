@@ -9,15 +9,15 @@ class TabsComponentTest < Minitest::Test
       tabs.with_tab(title: "With URL", url: "https://shopify.dev")
     end
 
-    assert_selector ".Polaris-Tabs__Wrapper > ul.Polaris-Tabs" do
-      assert_selector "li.Polaris-Tabs__TabContainer", count: 2
+    assert_selector ".Polaris-LegacyTabs__Wrapper > ul.Polaris-LegacyTabs" do
+      assert_selector "li.Polaris-LegacyTabs__TabContainer", count: 2
       assert_selector "li:nth-of-type(1)" do
-        assert_selector "button.Polaris-Tabs__Tab.Polaris-Tabs__Tab--selected" do
-          assert_selector "span.Polaris-Tabs__Title", text: "Active"
+        assert_selector "button.Polaris-LegacyTabs__Tab.Polaris-LegacyTabs__Tab--selected" do
+          assert_selector "span.Polaris-LegacyTabs__Title", text: "Active"
         end
       end
       assert_selector "li:nth-of-type(2)" do
-        assert_selector %(a.Polaris-Tabs__Tab[href="https://shopify.dev"]), text: "With URL"
+        assert_selector %(a.Polaris-LegacyTabs__Tab[href="https://shopify.dev"]), text: "With URL"
       end
     end
   end
@@ -27,7 +27,7 @@ class TabsComponentTest < Minitest::Test
       tabs.with_tab(title: "Default")
     end
 
-    assert_selector "ul.Polaris-Tabs.Polaris-Tabs--fitted"
+    assert_selector "ul.Polaris-LegacyTabs.Polaris-LegacyTabs--fitted"
   end
 
   def test_tabs_with_badge
@@ -37,7 +37,7 @@ class TabsComponentTest < Minitest::Test
       end
     end
 
-    assert_selector ".Polaris-Tabs__Tab > span.Polaris-Tabs__Title" do
+    assert_selector ".Polaris-LegacyTabs__Tab > span.Polaris-LegacyTabs__Title" do
       assert_text "Default"
       assert_selector "span.Polaris-Badge", text: 100
     end
