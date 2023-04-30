@@ -1,23 +1,61 @@
-<%= render Polaris::BaseComponent.new(**system_arguments) do %>
-  <div class="Polaris-SkeletonPage__Header">
-    <div class="Polaris-SkeletonPage__TitleAndPrimaryAction">
-      <div class="Polaris-SkeletonPage__TitleWrapper">
-        <% if @title.present? %>
-          <h1 class="Polaris-SkeletonPage__Title">
-            <%= @title %>
-          </h1>
-        <% else %>
-          <div class="Polaris-SkeletonPage__SkeletonTitle"></div>
+<%= polaris_vertical_stack(gap: "4", **system_arguments) do %>
+  <%= polaris_box(
+    with: "100%",
+    padding: "0",
+    padding_inline_start: {sm: "6"},
+    padding_inline_end: {sm: "6"},
+    max_width: page_width
+  ) do %>
+    <%= polaris_vertical_stack do %>
+      <%= polaris_box(
+        padding_block_start: {xs: "4", md: "5"},
+        padding_block_end: {xs: "4", md: "5"},
+        padding_inline_start: {xs: "4", sm: "0"},
+        padding_inline_end: {xs: "4", sm: "0"},
+        width: "100%"
+      ) do %>
+        <%= polaris_horizontal_stack(gap: "4", align: "space-between", block_align: "center") do %>
+          <%= polaris_horizontal_stack(gap: "4") do %>
+            <% if @back_action %>
+              <%= polaris_box(
+                border_radius: "1",
+                background: "bg-strong",
+                min_height: "2.25rem",
+                min_width: "2.25rem",
+                max_width: "2.25rem"
+              ) %>
+            <% end %>
+            <%= polaris_box(padding_block_start: "1", padding_block_end: "1") do %>
+              <% if @title.present? %>
+                <h1 class="Polaris-SkeletonPage__Title">
+                  <%= @title %>
+                </h1>
+              <% else %>
+                <div class="Polaris-SkeletonPage__SkeletonTitle">
+                  <%= polaris_box(
+                    border_radius: "1",
+                    background: "bg-strong",
+                    min_height: "28px",
+                    min_width: "120px"
+                  ) %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if @primary_action %>
+            <%= polaris_box(
+              id: "SkeletonPage-PrimaryAction",
+              border_radius: "1",
+              background: "bg-strong",
+              min_height: "2.25rem",
+              min_width: "6.25rem"
+            ) %>
+          <% end %>
         <% end %>
-      </div>
-      <% if @primary_action %>
-        <div class="Polaris-SkeletonPage__PrimaryAction">
-          <%= polaris_skeleton_display_text(size: :large) %>
-        </div>
       <% end %>
-    </div>
-  </div>
-  <div class="Polaris-SkeletonPage__Content">
-    <%= content %>
-  </div>
+      <%= polaris_box(padding_block_end: "2", width: "100%") do %>
+        <%= content %>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
