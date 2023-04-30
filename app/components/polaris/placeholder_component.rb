@@ -1,17 +1,19 @@
 module Polaris
   class PlaceholderComponent < Polaris::Component
-    def initialize(height: "auto", width: "auto", label: nil)
+    def initialize(height: "auto", width: "auto", label: nil, show_border: false)
       @label = label
+      border = show_border ? "1px dashed var(--p-color-bg-success-subdued)" : "none"
       @system_arguments = {
         tag: :div,
         style: [
-          "background-color: #7B47F1",
+          "background-color: var(--p-color-text-info)",
           "color: #fff",
           "width: #{width}",
           "height: #{height}",
           "display: flex",
           "align-items: center",
-          "justify-content: center"
+          "justify-content: center",
+          "border-inline-start: #{border}"
         ].join(";")
       }
     end
