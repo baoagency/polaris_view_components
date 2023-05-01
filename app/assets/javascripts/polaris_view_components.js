@@ -2591,7 +2591,7 @@ class Toast extends Controller {
     const height = this.element.offsetHeight + this.heightOffset;
     const translateIn = height * -1;
     const translateOut = 150 - height;
-    return `--toast-translate-y-in: ${translateIn}px; --toast-translate-y-out: ${translateOut}px;`;
+    return `--pc-toast-manager-translate-y-in: ${translateIn}px; --pc-toast-manager-translate-y-out: ${translateOut}px;`;
   }
   get timeoutDuration() {
     if (this.durationValue > 0) {
