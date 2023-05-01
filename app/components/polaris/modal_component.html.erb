@@ -30,7 +30,7 @@
             border_color: "border-subdued"
           ) do %>
             <%= polaris_horizontal_grid(columns: {xs: "1fr auto"}, gap: "4") do %>
-              <%= polaris_horizontal_stack(gap: "4", block_align: "center") do %>
+              <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
                 <%= polaris_text(as: :h2, variant: :headingLg, break_word: true) do %>
                   <%= @title %>
                 <% end %>
@@ -57,7 +57,7 @@
         </div>
 
         <% if render_footer? %>
-          <%= polaris_horizontal_stack(gap: "4", block_align: "center") do %>
+          <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
             <%= polaris_box(
               border_color: "border-subdued",
               border_block_start_width: "1",

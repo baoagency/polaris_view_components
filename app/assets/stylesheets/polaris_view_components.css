@@ -2647,10 +2647,6 @@ a.Polaris-Tag__Button {
 .Polaris-LegacyTabs__Tab:focus:not(:focus-visible) > .Polaris-LegacyTabs__Title::after {
     box-shadow: none !important;
   }
-/* ResourceItem */
-.Polaris-ResourceItem__Owned--offset {
-  padding-left: 2rem;
-}
 /* Popover */
 .Polaris-Popover {
   margin: 0;
@@ -2756,4 +2752,61 @@ a.Polaris-Tag__Button {
 /* ActionList */
 .Polaris-ActionList__Item {
   border: none !important;
+}
+/* ResourceItem Actions + Disclosure */
+.Polaris-ResourceItem__Actions {
+  display: none;
+}
+.Polaris-ResourceItem:hover .Polaris-ResourceItem__Actions {
+  display: flex;
+}
+@media (max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em) {
+  [data-has-navigation] .Polaris-ResourceItem__Actions {
+    display: none !important;
+  }
+}
+@media (max-width: 46.5em) {
+  .Polaris-ResourceItem__Actions {
+    display: none !important;
+  }
+}
+.Polaris-ResourceItem--persistActions .Polaris-ResourceItem__Actions {
+  display: flex;
+}
+@media (max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em) {
+  [data-has-navigation] .Polaris-ResourceItem--persistActions .Polaris-ResourceItem__Actions {
+    display: none !important;
+  }
+}
+@media (max-width: 46.5em) {
+  .Polaris-ResourceItem--persistActions .Polaris-ResourceItem__Actions {
+    display: none !important;
+  }
+}
+.Polaris-ResourceItem__Disclosure {
+  position: relative;
+  top: -0.7rem;
+  right: -1.65rem;
+  display: none;
+  width: 4.8rem;
+  pointer-events: initial;
+}
+.Polaris-ResourceItem--selectMode .Polaris-ResourceItem__Disclosure {
+  display: none;
+}
+@media (max-width: 45em), (min-width: 48.0625em) and (max-width: 61.5em) {
+  [data-has-navigation] .Polaris-ResourceItem__Disclosure {
+    display: flex;
+    flex: 0 0 4.8rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 46.5em) {
+  .Polaris-ResourceItem__Disclosure {
+    display: flex;
+    flex: 0 0 4.8rem;
+    justify-content: center;
+    align-items: center;
+  }
 }

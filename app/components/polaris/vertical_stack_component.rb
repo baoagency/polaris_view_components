@@ -3,12 +3,23 @@ module Polaris
     AS_DEFAULT = :div
     AS_OPTIONS = %i[div ul ol fieldset]
 
-    ALIGN_OPTIONS = %w[start center end space-around space-between space-evenly]
-    INLINE_ALIGN_OPTIONS = %w[start center end baseline stretch]
+    ALIGN_DEFAULT = :default
+    ALIGN_MAPPINGS = {
+      default: "",
+      start: "start",
+      center: "center",
+      end: "end",
+      space_around: "space-around",
+      space_between: "space-between",
+      space_evenly: "space-evenly"
+    }
+    ALIGN_OPTIONS = ALIGN_MAPPINGS.keys
+
+    INLINE_ALIGN_OPTIONS = %i[start center end baseline stretch]
 
     def initialize(
       as: AS_DEFAULT,
-      align: nil,
+      align: ALIGN_DEFAULT,
       inline_align: nil,
       gap: nil,
       reverse_order: false,
@@ -24,7 +35,7 @@ module Polaris
         )
         args[:style] = styles_list(
           args[:style],
-          "--pc-vertical-stack-align": fetch_or_fallback(ALIGN_OPTIONS, align, allow_nil: true),
+          "--pc-vertical-stack-align": ALIGN_MAPPINGS[fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)],
           "--pc-vertical-stack-inline-align": fetch_or_fallback(INLINE_ALIGN_OPTIONS, inline_align, allow_nil: true),
           "--pc-vertical-stack-order": reverse_order ? "column-reverse" : "column",
           **gap_value(gap)

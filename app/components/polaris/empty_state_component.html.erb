@@ -5,11 +5,11 @@
   padding_block_end: "16",
   **@system_arguments
 ) do %>
-  <%= polaris_vertical_stack(inline_align: "center") do %>
+  <%= polaris_vertical_stack(inline_align: :center) do %>
     <img src="<%= @image %>" role="presentation" class="<%= @image_contained_class %>">
 
     <%= polaris_box(max_width: @full_width? "100%" : "400px") do %>
-      <%= polaris_vertical_stack(inline_align: "center") do %>
+      <%= polaris_vertical_stack(inline_align: :center) do %>
         <% if @heading.present? || content.present? %>
           <%= polaris_box(padding_block_end: "6") do %>
             <% if @heading.present? %>
@@ -31,7 +31,7 @@
           <% end %>
         <% end %>
         <% if primary_action.present? || secondary_action.present? %>
-          <%= polaris_horizontal_stack(align: "center", gap: "2") do %>
+          <%= polaris_horizontal_stack(align: :center, gap: "2") do %>
             <% if secondary_action.present? %>
               <%= secondary_action %>
             <% end %>

@@ -10,29 +10,52 @@
           data-polaris-resource-item-target="link"></a>
       <% end %>
 
-      <%= render(Polaris::BaseComponent.new(**container_arguments)) do %>
-        <% if owned? %>
-          <%= render(Polaris::BaseComponent.new(**owned_arguments)) do %>
-            <% if checkbox.present? || radio_button.present? %>
-              <div class="Polaris-ResourceItem__Handle">
-                <div class="Polaris-ResourceItem__CheckboxWrapper">
-                  <%= checkbox.presence || radio_button %>
-                </div>
-              </div>
+      <%= render(Polaris::BoxComponent.new(**container_arguments)) do %>
+        <%= polaris_horizontal_grid(columns: "1fr auto") do %>
+          <%= polaris_horizontal_grid(
+            gap: "5",
+            columns: (media.present? || @selectable) ? "auto 1fr" : "1fr"
+          ) do %>
+            <% if owned? %>
+              <%= polaris_horizontal_stack(
+                gap: "4",
+                block_align: (media.present? && @selectable) ? :center : @vertical_alignment
+              ) do %>
+                <% if checkbox.present? || radio_button.present? %>
+                  <%= polaris_bleed(margin_block: "2", margin_inline: "3") do %>
+                    <%= polaris_box(
+                      z_index: "var(--pc-resource-item-content-stacking-order)",
+                      padding_inline_start: @offset ? "8" : "3",
+                      padding_inline_end: "3",
+                      padding_block_start: "3",
+                      padding_block_end: "2"
+                    ) do %>
+                      <%= checkbox.presence || radio_button %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+                <% if media.present? %>
+                  <%= media %>
+                <% end %>
+              <% end %>
             <% end %>
 
-            <% if media.present? %>
-              <div class="Polaris-ResourceItem__Media">
-                <%= media %>
-              </div>
+            <%= polaris_horizontal_stack(gap: "4", block_align: @vertical_alignment || :center) do %>
+              <%= polaris_box(
+                width: "100%",
+                padding: "0",
+                padding_inline_start: "0",
+                padding_inline_end: "0"
+              ) do %>
+                <%= content %>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-        <div class="Polaris-ResourceItem__Content">
-          <%= content %>
-        </div>
-        <% if shortcut_actions.present? %>
-          <%= shortcut_actions %>
+
+          <% if shortcut_actions.present? %>
+            <%= shortcut_actions %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
