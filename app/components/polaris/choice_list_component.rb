@@ -45,12 +45,8 @@ module Polaris
       @disabled = disabled
 
       @system_arguments = system_arguments
-      @system_arguments[:tag] = "fieldset"
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-ChoiceList",
-        "Polaris-ChoiceList--titleHidden": title_hidden
-      )
+      @system_arguments[:as] = :fieldset
+      @system_arguments[:gap] = {xs: "4", md: "0"}
     end
 
     def items

@@ -1,19 +1,28 @@
-<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
-  <legend class="Polaris-ChoiceList__Title">
-    <%= @title %>
-  </legend>
+<%= polaris_vertical_stack(**@system_arguments) do %>
+  <% if @title.present? %>
+    <%= polaris_box(
+      as: :legend,
+      padding_block_end: {xs: "5", md: "1"},
+      visually_hidden: @title_hidden
+    ) do %>
+      <%= @title %>
+    <% end %>
+  <% end %>
 
-  <ul class="Polaris-ChoiceList__Choices">
+  <%= polaris_vertical_stack(as: :ul, gap: {xs: "4", md: "0"}) do %>
     <% items.each do |item| %>
       <li>
         <%= item %>
       </li>
     <% end %>
-  </ul>
+  <% end %>
 
   <% if @error.present? %>
-    <div class="Polaris-ChoiceList__ChoiceError">
+    <%= polaris_box(
+      padding_block_start: {xs: "0", md: "1"},
+      padding_block_end: "2"
+    ) do %>
       <%= polaris_inline_error { @error } %>
-    </div>
+    <% end %>
   <% end %>
 <% end %>
