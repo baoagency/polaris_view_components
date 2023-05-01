@@ -24,7 +24,7 @@ class OptionListComponentSystemTest < ApplicationSystemTestCase
     # Open popover
     click_on "Options"
     within ".Polaris-Popover" do
-      assert_text "INVENTORY LOCATION"
+      assert_text "Inventory Location"
       find("label", text: "Centretown").click
       assert_selector ".Polaris-OptionList-Option--select", text: "Centretown"
     end

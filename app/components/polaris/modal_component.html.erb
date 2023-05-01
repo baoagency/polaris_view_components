@@ -20,20 +20,31 @@
   <div>
     <%= render(Polaris::BaseComponent.new(**dialog_arguments)) do %>
       <div class="<%= modal_classes %>">
-        <div class="<%= header_classes %>">
-          <div class="Polaris-Modal-Header__Title">
-            <%= polaris_display_text(element: :h2, size: :small) do %>
-              <%= @title %>
-            <% end %>
-          </div>
-          <% if close_button.present? %>
-            <%= close_button %>
-          <% else %>
-            <%= render(Polaris::BaseComponent.new(**close_button_arguments)) do %>
-              <%= polaris_icon(name: "MobileCancelMajor", color: :base) %>
+          <% if @title.present? %>
+          <%= polaris_box(
+            padding_block_start: "4",
+            padding_block_end: "4",
+            padding_inline_start: "5",
+            padding_inline_end: "5",
+            border_block_end_width: "1",
+            border_color: "border-subdued"
+          ) do %>
+            <%= polaris_horizontal_grid(columns: {xs: "1fr auto"}, gap: "4") do %>
+              <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
+                <%= polaris_text(as: :h2, variant: :headingLg, break_word: true) do %>
+                  <%= @title %>
+                <% end %>
+              <% end %>
+              <% if close_button.present? %>
+                <%= close_button %>
+              <% else %>
+                <%= render(Polaris::BaseComponent.new(**close_button_arguments)) do %>
+                  <%= polaris_icon(name: "MobileCancelMajor", color: :base) %>
+                <% end %>
+              <% end %>
             <% end %>
           <% end %>
-        </div>
+        <% end %>
 
         <div class="Polaris-Modal__BodyWrapper">
           <% if @scrollable %>
@@ -46,8 +57,14 @@
         </div>
 
         <% if render_footer? %>
-          <div class="Polaris-Modal-Footer">
-            <div class="Polaris-Modal-Footer__FooterContent">
+          <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
+            <%= polaris_box(
+              border_color: "border-subdued",
+              border_block_start_width: "1",
+              min_height: "var(--p-space-16)",
+              padding: "4",
+              width: "100%"
+            ) do %>
               <%= polaris_stack(alignment: :center) do |stack| %>
                 <% stack.with_item(fill: true) do %>
                 <% end %>
@@ -60,18 +77,18 @@
                           <%= action %>
                         <% end %>
                       <% end %>
+                    <% end %>
 
-                      <% if primary_action %>
-                        <% group.with_item do %>
-                          <%= primary_action %>
-                        <% end %>
+                    <% if primary_action %>
+                      <% group.with_item do %>
+                        <%= primary_action %>
                       <% end %>
                     <% end %>
                   <% end %>
                 <% end %>
               <% end %>
-            </div>
-          </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     <% end %>

@@ -5,6 +5,7 @@ module Polaris
     include ClassNameHelper
     include FetchOrFallbackHelper
     include OptionHelper
+    include StylesListHelper
     include ViewHelper
   end
 end

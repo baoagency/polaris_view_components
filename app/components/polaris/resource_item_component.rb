@@ -5,13 +5,6 @@ module Polaris
     CURSOR_DEFAULT = :default
     CURSOR_OPTIONS = %i[default pointer]
 
-    ALIGNMENT_DEFAULT = :default
-    ALIGNMENT_MAPPINGS = {
-      ALIGNMENT_DEFAULT => "",
-      :center => "Polaris-ResourceItem--alignmentCenter"
-    }
-    ALIGNMENT_OPTIONS = ALIGNMENT_MAPPINGS.keys
-
     renders_one :checkbox, ->(**system_arguments) do
       Polaris::CheckboxComponent.new(
         label_hidden: true,
@@ -35,7 +28,7 @@ module Polaris
 
     def initialize(
       url: nil,
-      vertical_alignment: ALIGNMENT_DEFAULT,
+      vertical_alignment: nil,
       cursor: CURSOR_DEFAULT,
       selectable: false,
       selected: false,
@@ -71,14 +64,15 @@ module Polaris
     end
 
     def container_arguments
-      {
-        tag: "div"
-      }.deep_merge(@container_arguments).tap do |args|
+      @container_arguments.tap do |args|
         args[:classes] = class_names(
-          args[:classes],
-          "Polaris-ResourceItem__Container",
-          ALIGNMENT_MAPPINGS[fetch_or_fallback(ALIGNMENT_OPTIONS, @vertical_alignment, ALIGNMENT_DEFAULT)]
+          args[:classes]
         )
+        args[:position] = :relative
+        args[:padding] = "3"
+        args[:padding_inline_start] = {xs: "4", sm: "5"}
+        args[:padding_inline_end] = {xs: "4", sm: "5"}
+        args[:z_index] = "var(--pc-resource-item-content-stacking-order)"
       end
     end
 
@@ -101,17 +95,6 @@ module Polaris
 
     def owned?
       checkbox.present? || radio_button.present? || media.present?
-    end
-
-    def owned_arguments
-      {
-        tag: "div",
-        classes: class_names(
-          "Polaris-ResourceItem__Owned",
-          "Polaris-ResourceItem__OwnedNoMedia": media.blank?,
-          "Polaris-ResourceItem__Owned--offset": @offset
-        )
-      }
     end
 
     private

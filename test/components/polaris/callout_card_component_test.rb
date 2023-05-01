@@ -13,9 +13,9 @@ class CalloutCardComponentTest < Minitest::Test
       "Callout Text"
     end
 
-    assert_selector ".Polaris-Card > .Polaris-CalloutCard__Container > .Polaris-Card__Section > .Polaris-CalloutCard" do
+    assert_selector ".Polaris-LegacyCard > .Polaris-CalloutCard__Container > .Polaris-LegacyCard__Section > .Polaris-CalloutCard" do
       assert_selector ".Polaris-CalloutCard__Content" do
-        assert_selector ".Polaris-CalloutCard__Title > .Polaris-Heading", text: "Callout Title"
+        assert_selector ".Polaris-CalloutCard__Title", text: "Callout Title"
         assert_selector ".Polaris-TextContainer", text: "Callout Text"
         assert_selector ".Polaris-CalloutCard__Buttons" do
           assert_selector ".Polaris-Button", text: "Primary Action"

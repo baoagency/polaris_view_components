@@ -54,7 +54,7 @@ class SelectComponentTest < Minitest::Test
 
     assert_selector ".Polaris-Labelled--hidden" do
       assert_selector ".Polaris-Select__Content" do
-        assert_selector ".Polaris-Select__InlineLabel", text: "Input Label"
+        assert_text "Input Label"
       end
     end
   end

@@ -89,8 +89,7 @@ class LayoutComponentTest < Minitest::Test
       layout.with_annotated_section(title: "Test title") { "Default" }
     end
 
-    assert_selector ".Polaris-Layout__AnnotatedSection"
-    assert_selector ".Polaris-Layout__AnnotatedSection .Polaris-Heading", text: "Test title"
+    assert_selector ".Polaris-Layout__AnnotatedSection", text: "Test title"
 
     render_inline(Polaris::LayoutComponent.new) do |layout|
       layout.with_annotated_section(title: "Test title", description: "Test description") { "Default" }

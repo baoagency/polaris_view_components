@@ -1,81 +1,83 @@
-<%= render Polaris::BaseComponent.new(**system_arguments) do %>
-  <div class="Polaris-DataTable__ScrollContainer">
-    <table class="Polaris-DataTable__Table">
-      <thead>
-        <tr>
-          <% columns.each_with_index do |column, index| %>
-            <%= render_cell(
-              first: index.zero?,
-              numeric: column.numeric,
-              tag: "th",
-              scope: "col",
-              header: true,
-              sort_url: column.sort_url,
-              sorted: column.sorted,
-              **column.system_arguments
-            ) do %>
-              <%= column.title&.html_safe %>
-            <% end %>
-          <% end %>
-        </tr>
-        <% if @totals_in_header %>
+<%= render Polaris::BaseComponent.new(**wrapper_arguments) do %>
+  <%= render Polaris::BaseComponent.new(**system_arguments) do %>
+    <div class="Polaris-DataTable__ScrollContainer">
+      <table class="Polaris-DataTable__Table">
+        <thead>
           <tr>
             <% columns.each_with_index do |column, index| %>
               <%= render_cell(
                 first: index.zero?,
                 numeric: column.numeric,
-                tag: (index.zero? ? "th" : "td"),
-                scope: ("row" if index.zero?),
-                total: true,
+                tag: "th",
+                scope: "col",
+                header: true,
+                sort_url: column.sort_url,
+                sorted: column.sorted,
                 **column.system_arguments
               ) do %>
-                <%= column.total %>
+                <%= column.title&.html_safe %>
               <% end %>
             <% end %>
           </tr>
-        <% end %>
-      </thead>
-      <tbody>
-        <% @data.each do |row| %>
-          <%= render Polaris::BaseComponent.new(**row_arguments(row)) do %>
-            <% columns.each_with_index do |column, index| %>
-              <%= render_cell(
-                first: index.zero?,
-                numeric: column.numeric,
-                tag: (index.zero? ? "th" : "td"),
-                scope: ("row" if index.zero?),
-                **column.system_arguments
-              ) do %>
-                <%= column.call(row) %>
+          <% if @totals_in_header %>
+            <tr>
+              <% columns.each_with_index do |column, index| %>
+                <%= render_cell(
+                  first: index.zero?,
+                  numeric: column.numeric,
+                  tag: (index.zero? ? "th" : "td"),
+                  scope: ("row" if index.zero?),
+                  total: true,
+                  **column.system_arguments
+                ) do %>
+                  <%= column.total %>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </thead>
+        <tbody>
+          <% @data.each do |row| %>
+            <%= render Polaris::BaseComponent.new(**row_arguments(row)) do %>
+              <% columns.each_with_index do |column, index| %>
+                <%= render_cell(
+                  first: index.zero?,
+                  numeric: column.numeric,
+                  tag: (index.zero? ? "th" : "td"),
+                  scope: ("row" if index.zero?),
+                  **column.system_arguments
+                ) do %>
+                  <%= column.call(row) %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
-        <% end %>
-      </tbody>
-      <% if @totals_in_footer %>
-        <tfoot>
-          <tr>
-            <% columns.each_with_index do |column, index| %>
-              <%= render_cell(
-                first: index.zero?,
-                numeric: column.numeric,
-                tag: (index.zero? ? "th" : "td"),
-                scope: ("row" if index.zero?),
-                total: true,
-                total_footer: true,
-                **column.system_arguments
-              ) do %>
-                <%= column.total %>
+        </tbody>
+        <% if @totals_in_footer %>
+          <tfoot>
+            <tr>
+              <% columns.each_with_index do |column, index| %>
+                <%= render_cell(
+                  first: index.zero?,
+                  numeric: column.numeric,
+                  tag: (index.zero? ? "th" : "td"),
+                  scope: ("row" if index.zero?),
+                  total: true,
+                  total_footer: true,
+                  **column.system_arguments
+                ) do %>
+                  <%= column.total %>
+                <% end %>
               <% end %>
-            <% end %>
-          </tr>
-        </tfoot>
-      <% end %>
-    </table>
-  </div>
-  <% if footer.present? %>
-    <div class="Polaris-DataTable__Footer">
-      <%= footer %>
+            </tr>
+          </tfoot>
+        <% end %>
+      </table>
     </div>
+    <% if footer.present? %>
+      <div class="Polaris-DataTable__Footer">
+        <%= footer %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>

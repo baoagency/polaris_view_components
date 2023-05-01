@@ -41,7 +41,7 @@ export default class extends Controller {
     const translateIn = height * -1
     const translateOut = 150 - height
 
-    return `--toast-translate-y-in: ${translateIn}px; --toast-translate-y-out: ${translateOut}px;`
+    return `--pc-toast-manager-translate-y-in: ${translateIn}px; --pc-toast-manager-translate-y-out: ${translateOut}px;`
   }
 
   get timeoutDuration() {

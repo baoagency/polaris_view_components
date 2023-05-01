@@ -1,5 +1,5 @@
 <%= render(Polaris::BaseComponent.new(**@system_arguments)) do %>
-  <%= polaris_stack(spacing: :tight, distribution: stack_distribution) do |stack| %>
+  <%= polaris_stack(distribution: :trailing, spacing: :tight) do |stack| %>
     <% if secondary_actions %>
       <% stack.with_item do %>
         <%= polaris_button_group do |group| %>

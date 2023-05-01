@@ -6,9 +6,9 @@ class CardComponentTest < Minitest::Test
   def test_renders_default
     render_inline(Polaris::CardComponent.new(title: "Card")) { "Content" }
 
-    assert_selector ".Polaris-Card"
-    assert_selector ".Polaris-Card__Header"
-    assert_selector ".Polaris-Card__Section"
+    assert_selector ".Polaris-LegacyCard"
+    assert_selector ".Polaris-LegacyCard__Header"
+    assert_selector ".Polaris-LegacyCard__Section"
   end
 
   def test_renders_card_with_multiple_sections
@@ -17,8 +17,8 @@ class CardComponentTest < Minitest::Test
       card.with_section { "Section 2" }
     end
 
-    assert_selector ".Polaris-Card__Section", text: "Section 1"
-    assert_selector ".Polaris-Card__Section", text: "Section 2"
+    assert_selector ".Polaris-LegacyCard__Section", text: "Section 1"
+    assert_selector ".Polaris-LegacyCard__Section", text: "Section 2"
   end
 
   def test_renders_card_with_multiple_title_sections
@@ -27,8 +27,8 @@ class CardComponentTest < Minitest::Test
       card.with_section(title: "Title 2") { "Section 2" }
     end
 
-    assert_selector ".Polaris-Card__SectionHeader", text: "Title 1"
-    assert_selector ".Polaris-Card__SectionHeader", text: "Title 2"
+    assert_selector ".Polaris-LegacyCard__SectionHeader", text: "Title 1"
+    assert_selector ".Polaris-LegacyCard__SectionHeader", text: "Title 2"
   end
 
   def test_renders_card_section_with_action
@@ -37,7 +37,7 @@ class CardComponentTest < Minitest::Test
       card.with_section(title: "Title 1", actions: [{content: "Action", url: "https://bao.agency"}]) { "Section 2" }
     end
 
-    assert_selector ".Polaris-Card__SectionHeader .Polaris-Button", text: "Action"
+    assert_selector ".Polaris-LegacyCard__SectionHeader .Polaris-Button", text: "Action"
   end
 
   def test_renders_card_with_separate_header
@@ -48,14 +48,14 @@ class CardComponentTest < Minitest::Test
       card.with_section { "Section 2" }
     end
 
-    assert_selector ".Polaris-Card__Header .Polaris-Heading", text: "Separate header"
-    assert_selector ".Polaris-Card__Header .Polaris-Button", text: "Action"
+    assert_selector ".Polaris-LegacyCard__Header", text: "Separate header"
+    assert_selector ".Polaris-LegacyCard__Header .Polaris-Button", text: "Action"
   end
 
   def test_renders_subdued_card_for_secondary_content
     render_inline(Polaris::CardComponent.new(title: "Subdued", subdued: true)) { "Body" }
 
-    assert_selector ".Polaris-Card--subdued"
+    assert_selector ".Polaris-LegacyCard--subdued"
   end
 
   def test_renders_card_with_subdued_section
@@ -64,7 +64,7 @@ class CardComponentTest < Minitest::Test
       card.with_section(subdued: true) { "Section 2" }
     end
 
-    assert_selector ".Polaris-Card__Section--subdued"
+    assert_selector ".Polaris-LegacyCard__Section--subdued"
   end
 
   def test_renders_card_with_flushed_section
@@ -73,7 +73,7 @@ class CardComponentTest < Minitest::Test
       card.with_section(flush: true) { "Section 2" }
     end
 
-    assert_selector ".Polaris-Card__Section--flush"
+    assert_selector ".Polaris-LegacyCard__Section--flush"
   end
 
   def test_renders_card_with_destructive_action
@@ -82,7 +82,7 @@ class CardComponentTest < Minitest::Test
       card.with_section(title: "Title 1", actions: [{content: "Action", url: "https://bao.agency", destructive: true}]) { "Section 2" }
     end
 
-    assert_selector ".Polaris-Card__SectionHeader .Polaris-Button--destructive", text: "Action"
+    assert_selector ".Polaris-LegacyCard__SectionHeader .Polaris-Button--destructive", text: "Action"
   end
 
   def test_renders_card_with_subsection
@@ -92,7 +92,7 @@ class CardComponentTest < Minitest::Test
       end
     end
 
-    assert_selector ".Polaris-Card__Subsection", text: "Subsection"
+    assert_selector ".Polaris-LegacyCard__Subsection", text: "Subsection"
   end
 
   def test_renders_card_with_header_actions
@@ -101,7 +101,7 @@ class CardComponentTest < Minitest::Test
       actions: [{content: "Header action", url: "https://bao.agency"}]
     )) { "Body" }
 
-    assert_selector ".Polaris-Card__Header .Polaris-Button"
+    assert_selector ".Polaris-LegacyCard__Header .Polaris-Button"
   end
 
   def test_renders_card_with_footer_actions
@@ -110,8 +110,8 @@ class CardComponentTest < Minitest::Test
       card.with_secondary_footer_action(url: "https://bao.agency") { "Secondary Action" }
     end
 
-    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button__Text", text: "Secondary Action"
-    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary", text: "Primary Action"
+    assert_selector ".Polaris-LegacyCard__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button__Text", text: "Secondary Action"
+    assert_selector ".Polaris-LegacyCard__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary", text: "Primary Action"
   end
 
   def test_renders_card_with_destructive_footer_action
@@ -120,8 +120,8 @@ class CardComponentTest < Minitest::Test
       card.with_secondary_footer_action(url: "https://bao.agency", destructive: true) { "Primary Action" }
     end
 
-    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button--destructive"
-    assert_selector ".Polaris-Card__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary"
+    assert_selector ".Polaris-LegacyCard__Footer .Polaris-ButtonGroup__Item:nth-child(1) .Polaris-Button--destructive"
+    assert_selector ".Polaris-LegacyCard__Footer .Polaris-ButtonGroup__Item:nth-child(2) .Polaris-Button--primary"
   end
 
   def test_unsectioned_content
@@ -130,9 +130,9 @@ class CardComponentTest < Minitest::Test
       "Unsectioned content"
     end
 
-    assert_selector ".Polaris-Card" do
-      assert_selector ".Polaris-Card__Header:nth-child(1)"
-      assert_selector ".Polaris-Card__Section:nth-child(2)", text: "Sectioned content"
+    assert_selector ".Polaris-LegacyCard" do
+      assert_selector ".Polaris-LegacyCard__Header:nth-child(1)"
+      assert_selector ".Polaris-LegacyCard__Section:nth-child(2)", text: "Sectioned content"
       assert_selector ":nth-child(3)", text: "Unsectioned content"
     end
   end
@@ -144,8 +144,8 @@ class CardComponentTest < Minitest::Test
       end
     end
 
-    assert_selector ".Polaris-Card > .Polaris-Tabs__Wrapper > ul.Polaris-Tabs" do
-      assert_selector "li.Polaris-Tabs__TabContainer > button.Polaris-Tabs__Tab", text: "Tab Title"
+    assert_selector ".Polaris-LegacyCard > .Polaris-LegacyTabs__Wrapper > ul.Polaris-LegacyTabs" do
+      assert_selector "li.Polaris-LegacyTabs__TabContainer > button.Polaris-LegacyTabs__Tab", text: "Tab Title"
     end
   end
 end

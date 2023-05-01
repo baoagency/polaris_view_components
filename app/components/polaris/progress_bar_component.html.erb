@@ -5,10 +5,7 @@
     max="100"
   ></progress>
 
-  <div
-    class="Polaris-ProgressBar__Indicator<% if @animated %> Polaris-ProgressBar__Animated<% end %>"
-    style="width: <%= @progress %>%;"
-  >
+  <%= render Polaris::BaseComponent.new(**progress_arguments) do %>
     <span class="Polaris-ProgressBar__Label"><%= @progress %>%</span>
-  </div>
+  <% end %>
 <% end %>

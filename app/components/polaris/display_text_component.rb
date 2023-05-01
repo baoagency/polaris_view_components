@@ -7,10 +7,10 @@ module Polaris
 
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
-      small: "Polaris-DisplayText--sizeSmall",
-      medium: "Polaris-DisplayText--sizeMedium",
-      large: "Polaris-DisplayText--sizeLarge",
-      extra_large: "Polaris-DisplayText--sizeExtraLarge"
+      small: :headingLg,
+      medium: :headingXl,
+      large: :heading2xl,
+      extra_large: :heading4xl
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -20,16 +20,12 @@ module Polaris
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] = element
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-DisplayText",
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
-      )
+      @element = element
+      @variant = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
     end
 
     def call
-      render(Polaris::BaseComponent.new(**@system_arguments)) { content }
+      render(Polaris::TextComponent.new(as: @element, variant: @variant, **@system_arguments)) { content }
     end
   end
 end

@@ -32,7 +32,9 @@ module Polaris
 
       def call
         safe_join [
-          tag.dt(class: "Polaris-DescriptionList__Term") { @term },
+          tag.dt(class: "Polaris-DescriptionList__Term") do
+            render(Polaris::TextComponent.new(as: :span, variant: :headingSm).with_content(@term))
+          end,
           tag.dd(class: "Polaris-DescriptionList__Description") { content }
         ]
       end

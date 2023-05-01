@@ -29,7 +29,7 @@ class AvatarComponentTest < Minitest::Test
   def test_renders_image
     render_inline(Polaris::AvatarComponent.new(source: "/image.png"))
 
-    assert_selector "span.Polaris-Avatar.Polaris-Avatar--hasImage" do
+    assert_selector "span.Polaris-Avatar" do
       assert_selector "img.Polaris-Avatar__Image[src='/image.png']"
     end
   end

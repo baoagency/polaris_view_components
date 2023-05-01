@@ -5,13 +5,28 @@
       class="Polaris-TopBar-Menu__Activator"
       data-action="polaris-popover#toggle click@window->polaris-popover#hide"
     >
+      <span class="Polaris-TopBar-UserMenu__Details">
+        <%= polaris_text(
+          as: :p,
+          font_weight: :medium,
+          truncate: true,
+          alignment: :start
+        ) do %>
+          <%= @name %>
+        <% end %>
+        <%= polaris_text(
+          as: :p,
+          variant: :bodySm,
+          truncate: true,
+          alignment: :start,
+          color: :subdued
+        ) do %>
+          <%= @detail %>
+        <% end %>
+      </span>
       <div class="Polaris-MessageIndicator__MessageIndicatorWrapper">
         <%= avatar %>
       </div>
-      <span class="Polaris-TopBar-UserMenu__Details">
-        <p class="Polaris-TopBar-UserMenu__Name"><%= @name %></p>
-        <p class="Polaris-TopBar-UserMenu__Detail"><%= @detail %></p>
-      </span>
     </button>
   <% end %>
 

@@ -1,39 +1,42 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
   <% if render_header? %>
-    <%= render Polaris::BaseComponent.new(**header_arguments) do %>
-      <div class="Polaris-Page-Header__Row">
-        <% if @back_url.present? %>
-          <div class="Polaris-Page-Header__BreadcrumbWrapper">
-            <nav role="navigation">
-              <a class="Polaris-Breadcrumbs__Breadcrumb" href="<%= @back_url %>" data-polaris-unstyled="true">
-                <span class="Polaris-Breadcrumbs__ContentWrapper">
-                  <span class="Polaris-Breadcrumbs__Icon">
-                    <%= polaris_icon(name: "ArrowLeftMinor") %>
-                  </span>
-                </span>
-              </a>
-            </nav>
-          </div>
-        <% end %>
+    <%= polaris_box(
+      position: :relative,
+      padding_block_start: {xs: "4", md: "5"},
+      padding_block_end: {xs: "4", md: "5"},
+      padding_inline_start: {xs: "4", sm: "0"},
+      padding_inline_end: {xs: "4", sm: "0"}
+    ) do %>
+      <%= render Polaris::BaseComponent.new(**header_arguments) do %>
+        <div class="Polaris-Page-Header__Row">
+          <% if @back_url.present? %>
+            <div class="Polaris-Page-Header__BreadcrumbWrapper">
+              <%= polaris_box(max_width: "100%", padding_inline_end: "4", print_hidden: true) do %>
+                <nav role="navigation">
+                  <a class="Polaris-Breadcrumbs__Breadcrumb" href="<%= @back_url %>" data-polaris-unstyled="true">
+                    <span class="Polaris-Breadcrumbs__ContentWrapper">
+                      <span class="Polaris-Breadcrumbs__Icon">
+                        <%= polaris_icon(name: "ArrowLeftMinor") %>
+                      </span>
+                    </span>
+                  </a>
+                </nav>
+              <% end %>
+            </div>
+          <% end %>
 
-        <div class="Polaris-Page-Header__TitleWrapper">
-          <%= tag.div(class: ["Polaris-Header-Title--hasThumbnail": thumbnail.present?]) do %>
-            <% if thumbnail.present? %>
-              <div>
-                <%= thumbnail %>
-              </div>
-            <% end %>
+          <div class="Polaris-Page-Header__TitleWrapper">
             <div class="Polaris-Header-Title__TitleAndSubtitleWrapper">
               <% if @title.present? %>
                 <% if title_metadata.present? %>
                   <div class="Polaris-Header-Title__TitleWithMetadataWrapper">
-                    <h1 class="Polaris-Header-Title"><%= @title %></h1>
+                    <%= render Polaris::BaseComponent.new(**title_arguments).with_content(@title) %>
                     <div class="Polaris-Header-Title__TitleMetadata">
                       <%= title_metadata %>
                     </div>
                   </div>
                 <% else %>
-                  <h1 class="Polaris-Header-Title"><%= @title %></h1>
+                  <%= render Polaris::BaseComponent.new(**title_arguments).with_content(@title) %>
                 <% end %>
               <% end %>
 
@@ -43,88 +46,88 @@
                 <% end %>
               <% end %>
             </div>
+          </div>
+
+          <% if @secondary_actions.any? || action_group.present? || render_primary_action? || has_pagination? %>
+            <div class="Polaris-Page-Header__RightAlign">
+              <div class="Polaris-Page-Header__Actions">
+                <% if @secondary_actions.any? || action_group.present? %>
+                  <div class="Polaris-ActionMenu Polaris-ActionMenu--mobile">
+                    <div class="Polaris-ActionMenu-RollupActions__RollupActivator">
+                      <%= polaris_popover(position: :below, alignment: :right) do |popover| %>
+                        <% popover.with_button do |button| %>
+                          <% button.with_icon(name: "HorizontalDotsMinor") %>
+                        <% end %>
+                        <%= polaris_action_list(style: "text-align: left;") do |action_list| %>
+                          <% if @secondary_actions.any? %>
+                            <% action_list.with_section do |section| %>
+                              <% @secondary_actions.each do |action| %>
+                                <% section.with_item(**action) { action[:content] } %>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+
+                          <% if action_group.present? %>
+                            <% action_list.with_section(title: action_group.title) do |section| %>
+                              <% action_group.actions.each do |action| %>
+                                <% section.with_item(**action) { action[:content] } %>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="Polaris-ActionMenu Polaris-ActionMenu--desktop">
+                    <div class="Polaris-ActionMenu-Actions__ActionsLayout">
+                      <%= polaris_button_group(spacing: :extra_tight) do |group| %>
+                        <% @secondary_actions.each do |action| %>
+                          <% group.with_item do %>
+                            <% destructive = action.delete(:destructive) %>
+                            <% tag.span(class: ["Polaris-ActionMenu-SecondaryAction", "Polaris-ActionMenu-SecondaryAction--destructive": destructive]) do %>
+                              <%= polaris_button(**action) { action[:content] } %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                        <% if action_group.present? %>
+                          <% group.with_item do %>
+                            <span class="Polaris-ActionMenu-SecondaryAction">
+                              <%= action_group %>
+                            </span>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <% if render_primary_action? %>
+                  <div class="Polaris-Page-Header__PrimaryActionWrapper">
+                    <%= primary_action || custom_primary_action %>
+                  </div>
+                <% end %>
+                <% if has_pagination? %>
+                  <div class="Polaris-Page-Header__PaginationWrapper">
+                    <nav aria-label="Pagination">
+                      <%= polaris_button_group(segmented: true) do |group| %>
+                        <% group.with_item do %>
+                          <%= polaris_button(url: @prev_url, outline: true, disabled: @prev_url.blank?) do |button| %>
+                            <% button.with_icon(name: "ChevronLeftMinor") %>
+                          <% end %>
+                        <% end %>
+                        <% group.with_item do %>
+                          <%= polaris_button(url: @next_url, outline: true, disabled: @next_url.blank?) do |button| %>
+                            <% button.with_icon(name: "ChevronRightMinor") %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    </nav>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
-
-        <% if @secondary_actions.any? || action_group.present? || render_primary_action? || has_pagination? %>
-          <div class="Polaris-Page-Header__RightAlign">
-            <div class="Polaris-Page-Header__Actions">
-              <% if @secondary_actions.any? || action_group.present? %>
-                <div class="Polaris-ActionMenu Polaris-ActionMenu--mobile">
-                  <div class="Polaris-ActionMenu-RollupActions__RollupActivator">
-                    <%= polaris_popover(position: :below, alignment: :right) do |popover| %>
-                      <% popover.with_button do |button| %>
-                        <% button.with_icon(name: "HorizontalDotsMinor") %>
-                      <% end %>
-                      <%= polaris_action_list(style: "text-align: left;") do |action_list| %>
-                        <% if @secondary_actions.any? %>
-                          <% action_list.with_section do |section| %>
-                            <% @secondary_actions.each do |action| %>
-                              <% section.with_item(**action) { action[:content] } %>
-                            <% end %>
-                          <% end %>
-                        <% end %>
-
-                        <% if action_group.present? %>
-                          <% action_list.with_section(title: action_group.title) do |section| %>
-                            <% action_group.actions.each do |action| %>
-                              <% section.with_item(**action) { action[:content] } %>
-                            <% end %>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="Polaris-ActionMenu Polaris-ActionMenu--desktop">
-                  <div class="Polaris-ActionMenu-Actions__ActionsLayout">
-                    <%= polaris_button_group(spacing: :extra_tight) do |group| %>
-                      <% @secondary_actions.each do |action| %>
-                        <% group.with_item do %>
-                          <% destructive = action.delete(:destructive) %>
-                          <% tag.span(class: ["Polaris-ActionMenu-SecondaryAction", "Polaris-ActionMenu-SecondaryAction--destructive": destructive]) do %>
-                            <%= polaris_button(**action) { action[:content] } %>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                      <% if action_group.present? %>
-                        <% group.with_item do %>
-                          <span class="Polaris-ActionMenu-SecondaryAction">
-                            <%= action_group %>
-                          </span>
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-              <% if render_primary_action? %>
-                <div class="Polaris-Page-Header__PrimaryActionWrapper">
-                  <%= primary_action || custom_primary_action %>
-                </div>
-              <% end %>
-              <% if has_pagination? %>
-                <div class="Polaris-Page-Header__PaginationWrapper">
-                  <nav aria-label="Pagination">
-                    <%= polaris_button_group(segmented: true) do |group| %>
-                      <% group.with_item do %>
-                        <%= polaris_button(url: @prev_url, outline: true, disabled: @prev_url.blank?) do |button| %>
-                          <% button.with_icon(name: "ChevronLeftMinor") %>
-                        <% end %>
-                      <% end %>
-                      <% group.with_item do %>
-                        <%= polaris_button(url: @next_url, outline: true, disabled: @next_url.blank?) do |button| %>
-                          <% button.with_icon(name: "ChevronRightMinor") %>
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                  </nav>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
 

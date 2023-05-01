@@ -22,6 +22,7 @@ class Polaris::OptionList::SectionComponent < Polaris::Component
   end
 
   def initialize(
+    position: 0,
     title: nil,
     form: nil,
     attribute: nil,
@@ -29,6 +30,7 @@ class Polaris::OptionList::SectionComponent < Polaris::Component
     selected: [],
     **system_arguments
   )
+    @position = position
     @title = title
     @form = form
     @attribute = attribute
@@ -40,10 +42,6 @@ class Polaris::OptionList::SectionComponent < Polaris::Component
   def system_arguments
     @system_arguments.tap do |opts|
       opts[:tag] = "ul"
-      opts[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-OptionList__Options"
-      )
     end
   end
 

@@ -1,4 +1,4 @@
-<%= render Polaris::BaseComponent.new(tag: 'span', **@system_arguments) do %>
+<%= render Polaris::BaseComponent.new(**system_arguments) do %>
   <% if @source %>
     <%= image_tag @source, class: "Polaris-Avatar__Image", role: "presentation" %>
   <% else %>

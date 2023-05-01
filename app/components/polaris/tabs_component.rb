@@ -13,7 +13,7 @@ module Polaris
         opts[:tag] = "div"
         opts[:classes] = class_names(
           @wrapper_arguments[:classes],
-          "Polaris-Tabs__Wrapper"
+          "Polaris-LegacyTabs__Wrapper"
         )
       end
     end
@@ -24,8 +24,8 @@ module Polaris
         opts[:role] = "tablist"
         opts[:classes] = class_names(
           @system_arguments[:classes],
-          "Polaris-Tabs",
-          "Polaris-Tabs--fitted": @fitted
+          "Polaris-LegacyTabs",
+          "Polaris-LegacyTabs--fitted": @fitted
         )
       end
     end

@@ -26,8 +26,8 @@ class Polaris::Tabs::TabComponent < Polaris::Component
       end
       opts[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Tabs__Tab",
-        "Polaris-Tabs__Tab--selected": @active
+        "Polaris-LegacyTabs__Tab",
+        "Polaris-LegacyTabs__Tab--selected": @active
       )
     end
   end

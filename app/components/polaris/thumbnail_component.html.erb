@@ -1,4 +1,4 @@
-<%= render Polaris::BaseComponent.new(**@system_arguments) do %>
+<%= render Polaris::BaseComponent.new(**system_arguments) do %>
   <% if @source.present? %>
     <img src="<%= @source %>" alt="<%= @alt %>">
   <% else %>

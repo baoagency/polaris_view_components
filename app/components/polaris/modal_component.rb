@@ -87,10 +87,6 @@ module Polaris
       )
     end
 
-    def header_classes
-      @title.present? ? "Polaris-Modal-Header" : "Polaris-Modal-Header--titleHidden"
-    end
-
     def render_footer?
       primary_action.present? || secondary_actions.any?
     end

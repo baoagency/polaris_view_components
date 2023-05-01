@@ -1,12 +1,16 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
-  <% if sections.present? %>
-    <% sections.each do |section| %>
-      <%= section %>
-    <% end %>
-  <% else %>
-    <%= render Polaris::ActionList::SectionComponent.new do %>
-      <% items.each do |item| %>
-        <%= item %>
+  <%= polaris_box(as: sections.present? ? :ul : :div) do %>
+    <% if sections.present? %>
+      <% sections.each do |section| %>
+        <%= section %>
+      <% end %>
+    <% else %>
+      <%= render Polaris::ActionList::SectionComponent.new(
+        multiple_sections: false
+      ) do %>
+        <% items.each do |item| %>
+          <%= item %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

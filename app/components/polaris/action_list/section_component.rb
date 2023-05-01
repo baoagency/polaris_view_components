@@ -1,8 +1,14 @@
 class Polaris::ActionList::SectionComponent < Polaris::Component
   renders_many :items, Polaris::ActionList::ItemComponent
 
-  def initialize(position: 1, title: nil, **system_arguments)
+  def initialize(
+    position: 1,
+    multiple_sections: false,
+    title: nil,
+    **system_arguments
+  )
     @position = position
+    @multiple_sections = multiple_sections
     @title = title
     @system_arguments = system_arguments
   end
@@ -10,17 +16,6 @@ class Polaris::ActionList::SectionComponent < Polaris::Component
   def system_arguments
     @system_arguments.tap do |opts|
       opts[:tag] = "div"
-      opts[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-ActionList__Section--withoutTitle": @title.blank?
-      )
     end
-  end
-
-  def title_classes
-    class_names(
-      "Polaris-ActionList__Title",
-      "Polaris-ActionList--firstSectionWithTitle": @position == 1
-    )
   end
 end

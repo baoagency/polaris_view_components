@@ -1,10 +1,10 @@
 <%= render Polaris::BaseComponent.new(**@system_arguments) do %>
   <% if @title.present? && @title.is_a?(String) %>
-    <div class="Polaris-Card__SectionHeader">
+    <div class="Polaris-LegacyCard__SectionHeader">
       <% if @actions.present? %>
         <%= polaris_stack(alignment: :trailing) do |stack| %>
           <% stack.with_item(fill: true) do %>
-            <%= polaris_subheading { @title } %>
+            <%= polaris_text(variant: :headingSm, as: :h3) { @title } %>
           <% end %>
 
           <% stack.with_item do %>
@@ -16,7 +16,7 @@
           <% end %>
         <% end %>
       <% else %>
-        <%= polaris_subheading { @title } %>
+        <%= polaris_text(variant: :headingSm, as: :h3) { @title } %>
       <% end %>
     </div>
   <% end %>

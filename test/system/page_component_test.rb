@@ -30,7 +30,7 @@ class PageComponentSystemTest < ApplicationSystemTestCase
     end
     within ".Polaris-Popover" do
       assert_text "Duplicate"
-      assert_text "PROMOTE"
+      assert_text "Promote"
       assert_text "Share on Facebook"
       assert_text "Share on Twitter"
     end

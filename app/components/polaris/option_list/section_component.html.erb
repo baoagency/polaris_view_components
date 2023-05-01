@@ -1,14 +1,30 @@
-<li>
+<%= polaris_box(
+  as: :li,
+  padding_block_start: @position.zero? ? nil : "2"
+) do %>
   <% if @title.present? %>
-    <p class="Polaris-OptionList__Title"><%= @title %></p>
-  <% end %>
-  <ul class="Polaris-OptionList__Options">
-    <% if items.present? %>
-      <% items.each do |item| %>
-        <%= item %>
+    <%= polaris_box(
+      padding_block_start: @position.zero? ? "2" : "4",
+      padding_inline_start: "2",
+      padding_block_end: "2",
+      padding_inline_end: "2",
+      border_color: !@position.zero? ? "border-subdued" : nil,
+      border_block_start_width: !@position.zero? ? "1" : nil
+    ) do %>
+      <%= polaris_text(as: :p, variant: :headingXs) do %>
+        <%= @title %>
       <% end %>
-    <% else %>
-      <%= content %>
     <% end %>
-  </ul>
-</li>
+  <% end %>
+  <%= polaris_bleed(margin_block_start: @title.present? ? nil : "05") do %>
+    <%= polaris_box(as: :ul) do %>
+      <% if items.present? %>
+        <% items.each do |item| %>
+          <%= item %>
+        <% end %>
+      <% else %>
+        <%= content %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

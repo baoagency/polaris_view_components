@@ -1,7 +1,10 @@
 module Polaris
   class OptionListComponent < Polaris::Component
     renders_many :sections, ->(**system_arguments) do
+      @sections_count += 1
+
       Polaris::OptionList::SectionComponent.new(
+        position: @sections_count - 1,
         form: @form,
         attribute: @attribute,
         name: @name,
@@ -39,6 +42,8 @@ module Polaris
       selected: [],
       **system_arguments
     )
+      @sections_count = 0
+
       @title = title
       @form = form
       @attribute = attribute
@@ -48,15 +53,10 @@ module Polaris
     end
 
     def system_arguments
-      @system_arguments.tap do |opts|
-        opts[:tag] = "ul"
-        opts[:data] ||= {}
-        prepend_option(opts[:data], :controller, "polaris-option-list")
-        opts[:data][:polaris_option_list_selected_class] = "Polaris-OptionList-Option--select"
-        opts[:classes] = class_names(
-          @system_arguments[:classes],
-          "Polaris-OptionList"
-        )
+      @system_arguments.tap do |args|
+        args[:data] ||= {}
+        prepend_option(args[:data], :controller, "polaris-option-list")
+        args[:data][:polaris_option_list_selected_class] = "Polaris-OptionList-Option--select"
       end
     end
 

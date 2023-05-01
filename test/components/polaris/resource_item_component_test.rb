@@ -11,9 +11,7 @@ class ResourceItemComponentTest < Minitest::Test
     assert_selector "li.Polaris-ResourceItem__ListItem" do
       assert_selector ".Polaris-ResourceItem__ItemWrapper" do
         assert_selector ".Polaris-ResourceItem[style='cursor: default;']" do
-          assert_selector ".Polaris-ResourceItem__Container" do
-            assert_selector ".Polaris-ResourceItem__Content", text: "Content"
-          end
+          assert_text "Content"
         end
       end
     end
@@ -41,24 +39,9 @@ class ResourceItemComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-ResourceItem__Container" do
-      assert_selector ".Polaris-ResourceItem__Owned.Polaris-ResourceItem__OwnedNoMedia" do
-        assert_selector ".Polaris-ResourceItem__Handle > .Polaris-ResourceItem__CheckboxWrapper" do
-          assert_selector ".Polaris-Choice.Polaris-Choice--labelHidden" do
-            assert_selector "input[type=checkbox]"
-          end
-        end
-      end
+    assert_selector ".Polaris-Choice.Polaris-Choice--labelHidden" do
+      assert_selector "input[type=checkbox]"
     end
-  end
-
-  def test_item_with_offset_checkbox
-    render_inline(Polaris::ResourceItemComponent.new(offset: true)) do |resource_item|
-      resource_item.with_checkbox(name: "attr[]", value: "val")
-      "Content"
-    end
-
-    assert_selector ".Polaris-ResourceItem__Owned.Polaris-ResourceItem__Owned--offset"
   end
 
   def test_item_with_radio_button
@@ -67,14 +50,8 @@ class ResourceItemComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-ResourceItem__Container" do
-      assert_selector ".Polaris-ResourceItem__Owned.Polaris-ResourceItem__OwnedNoMedia" do
-        assert_selector ".Polaris-ResourceItem__Handle > .Polaris-ResourceItem__CheckboxWrapper" do
-          assert_selector ".Polaris-Choice.Polaris-Choice--labelHidden" do
-            assert_selector "input[type=radio]"
-          end
-        end
-      end
+    assert_selector ".Polaris-Choice.Polaris-Choice--labelHidden" do
+      assert_selector "input[type=radio]"
     end
   end
 
@@ -87,10 +64,8 @@ class ResourceItemComponentTest < Minitest::Test
     assert_selector "li.Polaris-ResourceItem__ListItem" do
       assert_selector ".Polaris-ResourceItem__ItemWrapper" do
         assert_selector ".Polaris-ResourceItem[style='cursor: default;']" do
-          assert_selector ".Polaris-ResourceItem__Container" do
-            assert_selector ".Polaris-ResourceItem__Owned > .Polaris-ResourceItem__Media", text: "Media"
-            assert_selector ".Polaris-ResourceItem__Content", text: "Content"
-          end
+          assert_text "Media"
+          assert_text "Content"
         end
       end
     end
@@ -104,13 +79,11 @@ class ResourceItemComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-ResourceItem__Container" do
-      assert_selector ".Polaris-ResourceItem__Actions" do
-        assert_selector ".Polaris-ButtonGroup" do
-          assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--segmented" do
-            assert_selector ".Polaris-ButtonGroup__Item" do
-              assert_selector ".Polaris-Button.Polaris-Button--sizeSlim", text: "Shortcut action"
-            end
+    assert_selector ".Polaris-ResourceItem__Actions" do
+      assert_selector ".Polaris-ButtonGroup" do
+        assert_selector ".Polaris-ButtonGroup.Polaris-ButtonGroup--segmented" do
+          assert_selector ".Polaris-ButtonGroup__Item" do
+            assert_selector ".Polaris-Button.Polaris-Button--sizeSlim", text: "Shortcut action"
           end
         end
       end
@@ -125,27 +98,13 @@ class ResourceItemComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-ResourceItem__Container" do
-      assert_selector ".Polaris-ResourceItem__Actions" do
-        assert_selector ".Polaris-ButtonGroup" do
-          assert_selector ".Polaris-ButtonGroup__Item.Polaris-ButtonGroup__Item--plain" do
-            assert_selector ".Polaris-Button.Polaris-Button--plain", text: "Shortcut action"
-          end
-        end
-      end
-      assert_selector ".Polaris-ResourceItem__Disclosure" do
-        assert_selector "[data-controller='polaris-popover']"
+    assert_selector ".Polaris-ButtonGroup" do
+      assert_selector ".Polaris-ButtonGroup__Item.Polaris-ButtonGroup__Item--plain" do
+        assert_selector ".Polaris-Button.Polaris-Button--plain", text: "Shortcut action"
       end
     end
-  end
-
-  def test_item_with_vertical_alignment
-    render_inline(Polaris::ResourceItemComponent.new(vertical_alignment: :center)) do
-      "Content"
-    end
-
-    assert_selector ".Polaris-ResourceItem" do
-      assert_selector ".Polaris-ResourceItem__Container.Polaris-ResourceItem--alignmentCenter"
+    assert_selector ".Polaris-ResourceItem__Disclosure" do
+      assert_selector "[data-controller='polaris-popover']"
     end
   end
 end

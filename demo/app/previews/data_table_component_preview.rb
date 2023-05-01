@@ -13,4 +13,7 @@ class DataTableComponentPreview < ViewComponent::Preview
 
   def with_row_links
   end
+
+  def increased_density
+  end
 end

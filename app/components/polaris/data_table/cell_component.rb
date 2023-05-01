@@ -17,6 +17,7 @@ class Polaris::DataTable::CellComponent < Polaris::Component
     total_footer: false,
     sorted: false,
     sort_url: nil,
+    hoverable: true,
     **system_arguments
   )
     @vertical_alignment = vertical_alignment
@@ -27,6 +28,7 @@ class Polaris::DataTable::CellComponent < Polaris::Component
     @total_footer = total_footer
     @sorted = sorted
     @sort_url = sort_url
+    @hoverable = hoverable
     @system_arguments = system_arguments
   end
 

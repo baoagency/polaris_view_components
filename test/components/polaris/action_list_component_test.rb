@@ -8,9 +8,9 @@ class ActionListComponentTest < Minitest::Test
       action_list.with_item { "Item" }
     end
 
-    assert_selector ".Polaris-ActionList > .Polaris-ActionList__Section--withoutTitle" do
-      assert_selector "ul.Polaris-ActionList__Actions > li" do
-        assert_selector "button.Polaris-ActionList__Item > .Polaris-ActionList__Content" do
+    assert_selector ".Polaris-ActionList" do
+      assert_selector "ul > li" do
+        assert_selector "button.Polaris-ActionList__Item" do
           assert_selector ".Polaris-ActionList__Text", text: "Item"
         end
       end
@@ -28,14 +28,8 @@ class ActionListComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-ActionList" do
-      assert_selector "div:nth-child(1)" do
-        assert_selector "p.Polaris-ActionList__Title.Polaris-ActionList--firstSectionWithTitle" do
-          assert_text "Section 1"
-        end
-      end
-      assert_selector "div:nth-child(2) > p.Polaris-ActionList__Title" do
-        assert_text "Section 2"
-      end
+      assert_text "Section 1"
+      assert_text "Section 2"
     end
   end
 
@@ -45,7 +39,7 @@ class ActionListComponentTest < Minitest::Test
     end
 
     assert_selector "li > a.Polaris-ActionList__Item[href='#']" do
-      assert_selector ".Polaris-ActionList__Content > .Polaris-ActionList__Text", text: "Item"
+      assert_selector ".Polaris-ActionList__Text", text: "Item"
     end
   end
 
@@ -62,7 +56,7 @@ class ActionListComponentTest < Minitest::Test
       action_list.with_item(icon: "ImportMinor") { "Item" }
     end
 
-    assert_selector ".Polaris-ActionList__Item > .Polaris-ActionList__Content" do
+    assert_selector ".Polaris-ActionList__Item" do
       assert_selector ".Polaris-ActionList__Prefix > .Polaris-Icon"
     end
   end
@@ -76,10 +70,8 @@ class ActionListComponentTest < Minitest::Test
       end
     end
 
-    assert_selector ".Polaris-ActionList__Content" do
-      assert_selector ".Polaris-ActionList__Prefix", text: "Prefix"
-      assert_selector ".Polaris-ActionList__Suffix", text: "Suffix"
-    end
+    assert_selector ".Polaris-ActionList__Prefix", text: "Prefix"
+    assert_selector ".Polaris-ActionList__Suffix", text: "Suffix"
   end
 
   def test_item_with_help_text
@@ -87,11 +79,9 @@ class ActionListComponentTest < Minitest::Test
       action_list.with_item(help_text: "HelpText") { "Item" }
     end
 
-    assert_selector ".Polaris-ActionList__Content > .Polaris-ActionList__Text" do
-      assert_selector ".Polaris-ActionList__ContentBlock" do
-        assert_selector ".Polaris-ActionList__ContentBlockInner", text: "Item"
-        assert_selector ".Polaris-TextStyle--variationSubdued", text: "HelpText"
-      end
+    assert_selector ".Polaris-ActionList__Text" do
+      assert_text "Item"
+      assert_text "HelpText"
     end
   end
 

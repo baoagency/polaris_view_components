@@ -19,7 +19,9 @@
 
   <% if @help_text.present? %>
     <div class="Polaris-Labelled__HelpText">
-      <%= @help_text %>
+      <%= polaris_text(as: :span, color: :subdued, break_word: true) do %>
+        <%= @help_text %>
+      <% end %>
     </div>
   <% end %>
 <% end %>

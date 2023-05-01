@@ -28,6 +28,7 @@ module Polaris
       full_width: false,
       segmented: false,
       spacing: SPACING_DEFAULT,
+      nowrap: false,
       **system_arguments
     )
       @counter = 0
@@ -47,7 +48,8 @@ module Polaris
         "Polaris-ButtonGroup",
         SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)],
         "Polaris-ButtonGroup--fullWidth": full_width,
-        "Polaris-ButtonGroup--segmented": segmented
+        "Polaris-ButtonGroup--segmented": segmented,
+        "Polaris-ButtonGroup--noWrap": nowrap
       )
     end
 

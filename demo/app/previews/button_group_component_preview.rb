@@ -19,4 +19,7 @@ class ButtonGroupComponentPreview < ViewComponent::Preview
 
   def with_plain_item
   end
+
+  def nowrap
+  end
 end

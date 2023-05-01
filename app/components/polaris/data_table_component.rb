@@ -16,6 +16,7 @@ module Polaris
       vertical_alignment: ALIGNMENT_DEFAULT,
       totals_in_header: false,
       totals_in_footer: false,
+      increased_density: false,
       **system_arguments
     )
       @data = data
@@ -23,6 +24,7 @@ module Polaris
       @vertical_alignment = fetch_or_fallback(ALIGNMENT_OPTIONS, vertical_alignment, ALIGNMENT_DEFAULT)
       @totals_in_header = totals_in_header
       @totals_in_footer = totals_in_footer
+      @increased_density = increased_density
       @system_arguments = system_arguments
     end
 
@@ -32,7 +34,18 @@ module Polaris
           args[:classes],
           "Polaris-DataTable"
         )
+        args[:data] ||= {}
+        args[:data][:controller] = "polaris-data-table"
       end
+    end
+
+    def wrapper_arguments
+      {
+        tag: "div",
+        classes: class_names(
+          "Polaris-DataTable__IncreasedTableDensity": @increased_density
+        )
+      }
     end
 
     def row_arguments(row)
@@ -42,6 +55,8 @@ module Polaris
           "Polaris-DataTable--hoverable": @hoverable
         )
         args[:id] = dom_id(row) if row.respond_to?(:to_key)
+        args[:data] ||= {}
+        args[:data][:polaris_data_table_target] = "row"
       end
     end
 

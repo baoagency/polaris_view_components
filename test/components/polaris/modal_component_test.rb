@@ -13,17 +13,14 @@ class ModalComponentTest < Minitest::Test
 
     assert_selector ".Polaris-Modal-Dialog__Container", visible: :all do
       assert_selector ".Polaris-Modal-Dialog > .Polaris-Modal-Dialog__Modal", visible: :all do
-        assert_selector ".Polaris-Modal-Header", visible: :all do
-          assert_selector ".Polaris-Modal-Header__Title > h2", visible: :all, text: "Title"
-          assert_selector "button.Polaris-Modal-CloseButton > .Polaris-Icon"
-        end
+        assert_selector "h2", visible: :all, text: "Title"
+        assert_selector "button.Polaris-Modal-CloseButton > .Polaris-Icon"
+
         assert_selector ".Polaris-Modal__BodyWrapper > .Polaris-Modal__Body.Polaris-Scrollable", visible: :all do
           assert_selector ".Polaris-Modal-Section", visible: :all, text: "Content"
         end
-        assert_selector ".Polaris-Modal-Footer > .Polaris-Modal-Footer__FooterContent", visible: :all do
-          assert_selector ".Polaris-Stack .Polaris-Button--primary", visible: :all, text: "Primary"
-          assert_selector ".Polaris-Stack .Polaris-Button", visible: :all, text: "Secondary"
-        end
+        assert_selector ".Polaris-LegacyStack .Polaris-Button--primary", visible: :all, text: "Primary"
+        assert_selector ".Polaris-LegacyStack .Polaris-Button", visible: :all, text: "Secondary"
       end
     end
   end
@@ -58,7 +55,7 @@ class ModalComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-Modal-Header > button[data-custom-close]", visible: :all
+    assert_selector "button[data-custom-close]", visible: :all
   end
 
   def test_multiple_sections
@@ -72,13 +69,5 @@ class ModalComponentTest < Minitest::Test
       assert_selector ".Polaris-Modal-Section:nth-of-type(1)", visible: :all, text: "Section1"
       assert_selector ".Polaris-Modal-Section:nth-of-type(2)", visible: :all, text: "Section2"
     end
-  end
-
-  def test_without_title
-    render_inline(Polaris::ModalComponent.new(title: false)) do |modal|
-      "Content"
-    end
-
-    assert_selector ".Polaris-Modal-Header--titleHidden"
   end
 end
