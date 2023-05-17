@@ -26,12 +26,14 @@ module Polaris
       url: nil,
       name: nil,
       selected: [],
+      popover_arguments: {},
       **system_arguments
     )
       @multiple = multiple
       @url = url
       @name = name
       @selected = selected
+      @popover_arguments = popover_arguments
       @system_arguments = system_arguments
     end
 
@@ -53,10 +55,11 @@ module Polaris
         alignment: :left,
         full_width: true,
         inline: false,
-        wrapper_arguments: {
-          data: {polaris_autocomplete_target: "popover"}
-        }
-      }
+        wrapper_arguments: {}
+      }.deep_merge(@popover_arguments).tap do |opts|
+        opts[:wrapper_arguments][:data] ||= {}
+        prepend_option(opts[:wrapper_arguments][:data], :polaris_autocomplete_target, "popover")
+      end
     end
 
     def option_list_arguments
