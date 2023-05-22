@@ -207,7 +207,7 @@ class Autocomplete extends Controller {
     if (!this.multipleValue) {
       this.popoverController.forceHide();
       this.inputTarget.value = label;
-      this.hiddenInputTarget.value = input.value;
+      if (this.hasHiddenInputTarget) this.hiddenInputTarget.value = input.value;
     }
   }
   onInputChange=debounce$1((() => {
