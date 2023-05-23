@@ -16,7 +16,7 @@ class ModalComponentTest < Minitest::Test
         assert_selector "h2", visible: :all, text: "Title"
         assert_selector "button.Polaris-Modal-CloseButton > .Polaris-Icon"
 
-        assert_selector ".Polaris-Modal__BodyWrapper > .Polaris-Modal__Body.Polaris-Scrollable", visible: :all do
+        assert_selector ".Polaris-Modal__Body.Polaris-Scrollable", visible: :all do
           assert_selector ".Polaris-Modal-Section", visible: :all, text: "Content"
         end
         assert_selector ".Polaris-LegacyStack .Polaris-Button--primary", visible: :all, text: "Primary"
@@ -64,10 +64,8 @@ class ModalComponentTest < Minitest::Test
       modal.with_section { "Section2" }
     end
 
-    assert_selector ".Polaris-Modal__BodyWrapper", visible: :all do
-      assert_selector ".Polaris-Modal-Section", visible: :all, count: 2
-      assert_selector ".Polaris-Modal-Section:nth-of-type(1)", visible: :all, text: "Section1"
-      assert_selector ".Polaris-Modal-Section:nth-of-type(2)", visible: :all, text: "Section2"
-    end
+    assert_selector ".Polaris-Modal-Section", visible: :all, count: 2
+    assert_selector ".Polaris-Modal-Section:nth-of-type(1)", visible: :all, text: "Section1"
+    assert_selector ".Polaris-Modal-Section:nth-of-type(2)", visible: :all, text: "Section2"
   end
 end

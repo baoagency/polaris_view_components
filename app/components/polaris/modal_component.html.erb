@@ -46,15 +46,13 @@
           <% end %>
         <% end %>
 
-        <div class="Polaris-Modal__BodyWrapper">
-          <% if @scrollable %>
-            <%= polaris_scrollable(classes: "Polaris-Modal__Body") do %>
-              <%= modal_content %>
-            <% end %>
-          <% else %>
+        <% if @scrollable %>
+          <%= polaris_scrollable(classes: "Polaris-Modal__Body") do %>
             <%= modal_content %>
           <% end %>
-        </div>
+        <% else %>
+          <%= modal_content %>
+        <% end %>
 
         <% if render_footer? %>
           <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
