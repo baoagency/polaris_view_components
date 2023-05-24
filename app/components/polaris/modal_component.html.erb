@@ -20,8 +20,9 @@
   <div>
     <%= render(Polaris::BaseComponent.new(**dialog_arguments)) do %>
       <div class="<%= modal_classes %>">
-          <% if @title.present? %>
+        <% if @title.present? %>
           <%= polaris_box(
+            classes: "Polaris-Modal-Header",
             padding_block_start: "4",
             padding_block_end: "4",
             padding_inline_start: "5",
@@ -29,7 +30,11 @@
             border_block_end_width: "1",
             border_color: "border-subdued"
           ) do %>
-            <%= polaris_horizontal_grid(columns: {xs: "1fr auto"}, gap: "4") do %>
+            <%= polaris_horizontal_grid(
+              classes: "Polaris-Modal-Header__Title",
+              columns: {xs: "1fr auto"},
+              gap: "4"
+            ) do %>
               <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
                 <%= polaris_text(as: :h2, variant: :headingLg, break_word: true) do %>
                   <%= @title %>
@@ -55,7 +60,7 @@
         <% end %>
 
         <% if render_footer? %>
-          <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
+          <%= polaris_horizontal_stack(classes: "Polaris-Modal-Footer", gap: "4", block_align: :center) do %>
             <%= polaris_box(
               border_color: "border-subdued",
               border_block_start_width: "1",
