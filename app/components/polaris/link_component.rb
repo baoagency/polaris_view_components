@@ -30,7 +30,7 @@ module Polaris
 
     def call
       render(Polaris::BaseComponent.new(**@system_arguments)) do
-        content.strip.html_safe
+        content&.strip&.html_safe
       end
     end
   end
