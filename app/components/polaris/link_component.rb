@@ -31,7 +31,7 @@ module Polaris
     def call
       render(Polaris::BaseComponent.new(**@system_arguments)) do
         safe_join [
-          content.strip.html_safe,
+          content&.strip&.html_safe,
           (external_icon if @external)
         ].compact
       end
