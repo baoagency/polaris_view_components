@@ -48,6 +48,7 @@ module Polaris
       label_hidden: false,
       label_action: nil,
       disabled: false,
+      readonly: false,
       required: false,
       help_text: nil,
       error: false,
@@ -78,6 +79,7 @@ module Polaris
       @label_hidden = label_hidden
       @label_action = label_action
       @disabled = disabled
+      @readonly = readonly
       @required = required
       @help_text = help_text
       @error = error
@@ -112,6 +114,7 @@ module Polaris
           opts[:classes],
           "Polaris-TextField",
           "Polaris-TextField--disabled": @disabled,
+          "Polaris-TextField--readOnly": @readonly,
           "Polaris-TextField--error": @error,
           "Polaris-TextField--hasValue": @value.present?,
           "Polaris-TextField--multiline": @multiline
@@ -128,6 +131,7 @@ module Polaris
       default_options = {
         value: @value,
         disabled: @disabled,
+        readonly: @readonly,
         required: @required,
         placeholder: @placeholder,
         maxlength: @maxlength,

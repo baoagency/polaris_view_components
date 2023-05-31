@@ -204,6 +204,18 @@ class TextFieldComponentTest < Minitest::Test
     end
   end
 
+  def test_readonly
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      label: "Label",
+      readonly: true
+    ))
+
+    assert_selector ".Polaris-TextField.Polaris-TextField--readOnly" do
+      assert_selector "input[readonly=readonly]"
+    end
+  end
+
   def test_character_count
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
