@@ -41,6 +41,9 @@ class TextFieldComponentPreview < ViewComponent::Preview
   def disabled
   end
 
+  def readonly
+  end
+
   def with_character_count
   end
 
