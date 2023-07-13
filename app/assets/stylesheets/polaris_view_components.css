@@ -2385,3 +2385,30 @@ a.Polaris-Tag__Button {
 .Polaris-ActionList__Item {
   border: none !important;
 }
+/* Tooltip */
+.Polaris-Tooltip {
+  opacity: 1; box-shadow: var(--p-popover-shadow); border-radius: var(--p-border-radius-base); pointer-events: none; -webkit-backface-visibility: hidden; backface-visibility: hidden; will-change: opacity, left, top; transition: opacity 200ms cubic-bezier(0.36, 0, 1, 1) 100ms;
+}
+.Polaris-Tooltip-Arrow,.Polaris-Tooltip-Arrow::before {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  z-index: -1;
+}
+.Polaris-Tooltip-Arrow::before {
+  content: '';
+  transform: rotate(45deg);
+  background-color: var(--p-surface);
+}
+.Polaris-Tooltip[data-popper-placement^='top'] > .Polaris-Tooltip-Arrow {
+  bottom: -4px;
+}
+.Polaris-Tooltip[data-popper-placement^='bottom'] > .Polaris-Tooltip-Arrow {
+  top: -4px;
+}
+.Polaris-Tooltip[data-popper-placement^='left'] > .Polaris-Tooltip-Arrow {
+  right: -4px;
+}
+.Polaris-Tooltip[data-popper-placement^='right'] > .Polaris-Tooltip-Arrow {
+  left: -4px;
+}

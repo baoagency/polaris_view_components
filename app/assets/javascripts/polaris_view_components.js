@@ -2591,33 +2591,63 @@ class Toast extends Controller {
 
 class Tooltip extends Controller {
   static targets=[ "template" ];
+  static values={
+    active: Boolean,
+    position: String
+  };
   initialize() {
     this.shownTooltip = null;
   }
+  getOffset() {
+    switch (this.positionValue) {
+     case "top":
+      return [ 0, -4 ];
+
+     case "bottom":
+      return [ 0, 4 ];
+
+     case "right":
+      return [ 0, 6 ];
+
+     default:
+      return [ 0, 4 ];
+    }
+  }
   show(event) {
+    if (!this.activeValue) return;
     const popperOptions = {
-      placement: "bottom-start",
+      placement: this.positionValue,
       modifiers: [ {
-        name: "sameWidth",
+        name: "matchReferenceSize",
         enabled: true,
-        fn: ({state: state}) => {
-          state.styles.popper.width = `${state.rects.reference.offsetWidth}px`;
-        },
-        effect({state: state}) {
-          state.elements.popper.style.width = `${state.elements.reference.offsetWidth}px`;
+        fn: ({state: state, instance: instance}) => {
+          const widthOrHeight = state.placement.startsWith("left") || state.placement.startsWith("right") ? "height" : "width";
+          const popperSize = state.rects.popper[widthOrHeight];
+          const referenceSize = state.rects.reference[widthOrHeight];
+          if (popperSize >= referenceSize) return;
+          state.styles.popper[widthOrHeight] = `${referenceSize}px`;
+          instance.update();
         },
         phase: "beforeWrite",
         requires: [ "computeStyles" ]
+      }, {
+        name: "offset",
+        options: {
+          offset: this.getOffset()
+        }
       } ]
     };
     const element = event.currentTarget;
     let tooltip = document.createElement("div");
+    tooltip.className = "Polaris-Tooltip";
     tooltip.innerHTML = this.templateTarget.innerHTML;
     this.shownTooltip = element.appendChild(tooltip);
     this.popper = createPopper(element, this.shownTooltip, popperOptions);
   }
   hide() {
-    this.shownTooltip.remove();
+    if (this.shownTooltip) {
+      this.shownTooltip.remove();
+    }
   }
 }
 

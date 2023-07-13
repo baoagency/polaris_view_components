@@ -1,12 +1,9 @@
-<%= render(Polaris::BaseComponent.new(tag: 'span', **@system_arguments)) do %>
+<%= render(Polaris::BaseComponent.new(tag: "span", **@system_arguments)) do %>
   <%= content %>
   <template data-polaris-tooltip-target="template">
-    <div class="Polaris-PositionedOverlay">
-      <div class="Polaris-Tooltip-TooltipOverlay Polaris-Tooltip-TooltipOverlay--measured Polaris-Tooltip-TooltipOverlay--instant">
-        <div class="Polaris-Tooltip-TooltipOverlay__Content Polaris-Tooltip-TooltipOverlay--default">
-          <%= @text %>
-        </div>
-      </div>
+    <div class="Polaris-Tooltip-TooltipOverlay__Content Polaris-Tooltip-TooltipOverlay--default">
+      <%= @text %>
     </div>
+    <div class="Polaris-Tooltip-Arrow" data-popper-arrow="true"></div>
   </template>
 <% end %>
