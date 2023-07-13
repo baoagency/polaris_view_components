@@ -2,7 +2,6 @@ module Polaris
   class TooltipComponent < Polaris::Component
     POSITION_OPTIONS = [:top, :bottom, :left, :right]
     DEFAULT_POSITION = :bottom
-    DEFAULT_PADDING = 4
 
     def initialize(
       text: nil,
