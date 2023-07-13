@@ -133,8 +133,8 @@ class TextFieldComponentTest < Minitest::Test
       name: :input_name,
       label: "Label"
     )) do |c|
-      c.prefix(icon: "BillingStatementDollarMajor")
-      c.suffix(icon: "EmailMajor")
+      c.with_prefix(icon: "BillingStatementDollarMajor")
+      c.with_suffix(icon: "EmailMajor")
     end
 
     assert_selector ".Polaris-TextField > .Polaris-TextField__Prefix > .Polaris-Icon"
@@ -146,8 +146,8 @@ class TextFieldComponentTest < Minitest::Test
       name: :input_name,
       label: "Label"
     )) do |c|
-      c.prefix { "Prefix" }
-      c.suffix { "Suffix" }
+      c.with_prefix { "Prefix" }
+      c.with_suffix { "Suffix" }
     end
 
     assert_selector ".Polaris-TextField > .Polaris-TextField__Prefix", text: "Prefix"
@@ -159,8 +159,8 @@ class TextFieldComponentTest < Minitest::Test
       name: :input_name,
       label: "Label"
     )) do |text_field|
-      text_field.connected_left { "Left Content" }
-      text_field.connected_right { "Right Content" }
+      text_field.with_connected_left { "Left Content" }
+      text_field.with_connected_right { "Right Content" }
     end
 
     assert_selector ".Polaris-Connected" do
@@ -201,6 +201,18 @@ class TextFieldComponentTest < Minitest::Test
 
     assert_selector ".Polaris-TextField.Polaris-TextField--disabled" do
       assert_selector "input[disabled=disabled]"
+    end
+  end
+
+  def test_readonly
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      label: "Label",
+      readonly: true
+    ))
+
+    assert_selector ".Polaris-TextField.Polaris-TextField--readOnly" do
+      assert_selector "input[readonly=readonly]"
     end
   end
 

@@ -1,6 +1,6 @@
 <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
   <%= render(Polaris::PopoverComponent.new(**popover_arguments)) do |popover| %>
-    <% popover.activator do %>
+    <% popover.with_activator do %>
       <%= text_field %>
       <% if @name.present? %>
         <%= hidden_field_tag @name, nil, data: {polaris_autocomplete_target: "hiddenInput"} %>

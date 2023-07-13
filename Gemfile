@@ -4,14 +4,15 @@ gemspec
 
 gem "rake", "~> 13.0"
 gem "rails", "~> 7.0.4"
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.0"
 gem "sprockets-rails"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "lookbook", github: "kirillplatonov/lookbook", branch: "performance-improvements"
+gem "lookbook", "~> 2.0"
 
 gem "foreman"
 gem "capybara"
 gem "sqlite3"
 gem "standard"
+gem "selenium-webdriver", "=4.9.0"

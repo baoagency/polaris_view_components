@@ -17,9 +17,6 @@ class PageComponentPreview < ViewComponent::Preview
   def with_external_link
   end
 
-  def with_thumbnail
-  end
-
   def full_width
   end
 

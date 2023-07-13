@@ -5,7 +5,7 @@ class PopoverComponentTest < Minitest::Test
 
   def test_default_popover
     render_inline(Polaris::PopoverComponent.new) do |popover|
-      popover.button { "Activator" }
+      popover.with_button { "Activator" }
       "Content"
     end
 
@@ -14,7 +14,7 @@ class PopoverComponentTest < Minitest::Test
         assert_selector 'button.Polaris-Button[data-action~="polaris-popover#toggle"]', text: "Activator"
       end
       assert_selector ".Polaris-PositionedOverlay.Polaris-Popover__PopoverOverlay--closed" do
-        assert_selector ".Polaris-Popover .Polaris-Popover__Wrapper .Polaris-Popover__Content" do
+        assert_selector ".Polaris-Popover .Polaris-Popover__Content" do
           assert_selector ".Polaris-Popover__Pane.Polaris-Scrollable", text: "Content"
         end
       end
@@ -23,7 +23,7 @@ class PopoverComponentTest < Minitest::Test
 
   def test_custom_activator
     render_inline(Polaris::PopoverComponent.new) do |popover|
-      popover.activator do
+      popover.with_activator do
         tag.p "Activator"
       end
       "Content"
@@ -36,7 +36,7 @@ class PopoverComponentTest < Minitest::Test
 
   def test_fixed_panes
     render_inline(Polaris::PopoverComponent.new) do |popover|
-      popover.pane(fixed: true) do
+      popover.with_pane(fixed: true) do
         "Content"
       end
     end
@@ -58,7 +58,7 @@ class PopoverComponentTest < Minitest::Test
 
   def test_sectioned_panes
     render_inline(Polaris::PopoverComponent.new) do |popover|
-      popover.pane(sectioned: true) do
+      popover.with_pane(sectioned: true) do
         "Content"
       end
     end
@@ -70,9 +70,9 @@ class PopoverComponentTest < Minitest::Test
 
   def test_multiple_sections
     render_inline(Polaris::PopoverComponent.new) do |popover|
-      popover.pane do |pane|
-        pane.section { "Section 1" }
-        pane.section { "Section 2" }
+      popover.with_pane do |pane|
+        pane.with_section { "Section 1" }
+        pane.with_section { "Section 2" }
       end
     end
 

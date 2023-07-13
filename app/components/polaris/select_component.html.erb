@@ -21,9 +21,11 @@
       <% if @disabled %>aria-disabled="true"<% end %>
     >
       <% if @label_inline %>
-        <span class="Polaris-Select__InlineLabel">
-          <%= @label %>
-        </span>
+        <%= polaris_box(padding_inline_end: "1") do %>
+          <%= polaris_text(as: :span, color: :subdued, truncate: true) do %>
+            <%= @label %>
+          <% end %>
+        <% end %>
       <% end %>
       <span
         class="Polaris-Select__SelectedOption"

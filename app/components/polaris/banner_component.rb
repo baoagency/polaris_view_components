@@ -28,12 +28,12 @@ module Polaris
     }
 
     renders_one :action, ->(**system_arguments) do
-      Polaris::ButtonComponent.new(classes: "Polaris-Banner__Button", **system_arguments)
+      Polaris::ButtonComponent.new(classes: "Polaris-Banner__Button Polaris-Banner__PrimaryAction", **system_arguments)
     end
     renders_one :secondary_action, "SecondaryAction"
     renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
-        button.icon(name: "CancelSmallMinor")
+        button.with_icon(name: "CancelSmallMinor")
       end
     end
 
@@ -41,11 +41,13 @@ module Polaris
       status: STATUS_DEFAULT,
       within: WITHIN_DEFAULT,
       icon: nil,
+      hide_icon: false,
       title: nil,
       **system_arguments
     )
       @status = status
       @icon = icon || default_icon(status)
+      @hide_icon = hide_icon
       @title = title
 
       @system_arguments = system_arguments

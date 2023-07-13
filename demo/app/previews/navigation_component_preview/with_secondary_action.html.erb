@@ -1,21 +1,21 @@
 <%= polaris_navigation do |navigation| %>
-  <% navigation.section do |section| %>
-    <% section.item(
+  <% navigation.with_section do |section| %>
+    <% section.with_item(
       url: "#",
       label: "Home",
-      icon: "HomeMajor"
+      icon: "HomeMinor"
     ) %>
-    <% section.item(
+    <% section.with_item(
       url: "#",
       label: "Orders",
-      icon: "OrdersMajor"
+      icon: "OrdersMinor"
     ) do |item| %>
-      <% item.secondary_action(url: "#", icon: "CirclePlusOutlineMinor") %>
+      <% item.with_secondary_action(url: "#", icon: "CirclePlusOutlineMinor") %>
     <% end %>
-    <% section.item(
+    <% section.with_item(
       url: "#",
       label: "Products",
-      icon: "ProductsMajor"
+      icon: "ProductsMinor"
     ) %>
   <% end %>
 <% end %>

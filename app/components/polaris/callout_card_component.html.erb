@@ -6,7 +6,7 @@
       </div>
     <% end %>
 
-    <div class="Polaris-Card__Section">
+    <div class="Polaris-LegacyCard__Section">
       <div class="Polaris-CalloutCard">
         <div class="Polaris-CalloutCard__Content">
           <% if @title.present? %>
@@ -23,10 +23,10 @@
             <div class="Polaris-CalloutCard__Buttons">
               <% if primary_action.present? && secondary_action.present? %>
                 <%= polaris_button_group do |group| %>
-                  <% group.item do %>
+                  <% group.with_item do %>
                     <%= primary_action %>
                   <% end %>
-                  <% group.item do %>
+                  <% group.with_item do %>
                     <%= secondary_action %>
                   <% end %>
                 <% end %>

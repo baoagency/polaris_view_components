@@ -11,6 +11,7 @@ module Polaris
         @description = description
 
         @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "Polaris-Layout__AnnotatedSection"

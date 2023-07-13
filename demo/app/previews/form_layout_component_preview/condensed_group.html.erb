@@ -1,15 +1,15 @@
 <%= polaris_form_layout do |form_layout| %>
-  <% form_layout.group(condensed: true) do |group| %>
-    <% group.item do %>
+  <% form_layout.with_group(condensed: true) do |group| %>
+    <% group.with_item do %>
       <%= polaris_text_field(label: "Length") %>
     <% end %>
-    <% group.item do %>
+    <% group.with_item do %>
       <%= polaris_text_field(label: "Width") %>
     <% end %>
-    <% group.item do %>
+    <% group.with_item do %>
       <%= polaris_text_field(label: "Height") %>
     <% end %>
-    <% group.item do %>
+    <% group.with_item do %>
       <%= polaris_text_field(label: "Unit") %>
     <% end %>
   <% end %>

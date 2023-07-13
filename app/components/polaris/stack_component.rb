@@ -5,35 +5,35 @@ module Polaris
     ALIGNMENT_DEFAULT = :default
     ALIGNMENT_MAPPINGS = {
       ALIGNMENT_DEFAULT => "",
-      :leading => "Polaris-Stack--alignmentLeading",
-      :trailing => "Polaris-Stack--alignmentTrailing",
-      :center => "Polaris-Stack--alignmentCenter",
-      :fill => "Polaris-Stack--alignmentFill",
-      :baseline => "Polaris-Stack--alignmentBaseline"
+      :leading => "Polaris-LegacyStack--alignmentLeading",
+      :trailing => "Polaris-LegacyStack--alignmentTrailing",
+      :center => "Polaris-LegacyStack--alignmentCenter",
+      :fill => "Polaris-LegacyStack--alignmentFill",
+      :baseline => "Polaris-LegacyStack--alignmentBaseline"
     }
     ALIGNMENT_OPTIONS = ALIGNMENT_MAPPINGS.keys
 
     DISTRIBUTION_DEFAULT = :default
     DISTRIBUTION_MAPPINGS = {
       DISTRIBUTION_DEFAULT => "",
-      :equal_spacing => "Polaris-Stack--distributionEqualSpacing",
-      :leading => "Polaris-Stack--distributionLeading",
-      :trailing => "Polaris-Stack--distributionTrailing",
-      :center => "Polaris-Stack--distributionCenter",
-      :fill => "Polaris-Stack--distributionFill",
-      :fill_evenly => "Polaris-Stack--distributionFillEvenly"
+      :equal_spacing => "Polaris-LegacyStack--distributionEqualSpacing",
+      :leading => "Polaris-LegacyStack--distributionLeading",
+      :trailing => "Polaris-LegacyStack--distributionTrailing",
+      :center => "Polaris-LegacyStack--distributionCenter",
+      :fill => "Polaris-LegacyStack--distributionFill",
+      :fill_evenly => "Polaris-LegacyStack--distributionFillEvenly"
     }
     DISTRIBUTION_OPTIONS = DISTRIBUTION_MAPPINGS.keys
 
     SPACING_DEFAULT = :default
     SPACING_MAPPINGS = {
       SPACING_DEFAULT => "",
-      :extra_tight => "Polaris-Stack--spacingExtraTight",
-      :tight => "Polaris-Stack--spacingTight",
-      :base_tight => "Polaris-Stack--spacingBaseTight",
-      :loose => "Polaris-Stack--spacingLoose",
-      :extra_loose => "Polaris-Stack--spacingExtraLoose",
-      :none => "Polaris-Stack--spacingNone"
+      :extra_tight => "Polaris-LegacyStack--spacingExtraTight",
+      :tight => "Polaris-LegacyStack--spacingTight",
+      :base_tight => "Polaris-LegacyStack--spacingBaseTight",
+      :loose => "Polaris-LegacyStack--spacingLoose",
+      :extra_loose => "Polaris-LegacyStack--spacingExtraLoose",
+      :none => "Polaris-LegacyStack--spacingNone"
     }
     SPACING_OPTIONS = SPACING_MAPPINGS.keys
 
@@ -51,12 +51,12 @@ module Polaris
       @system_arguments[:tag] = "div"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Stack",
+        "Polaris-LegacyStack",
         ALIGNMENT_MAPPINGS[fetch_or_fallback(ALIGNMENT_OPTIONS, alignment, ALIGNMENT_DEFAULT)],
         DISTRIBUTION_MAPPINGS[fetch_or_fallback(DISTRIBUTION_OPTIONS, distribution, DISTRIBUTION_DEFAULT)],
         SPACING_MAPPINGS[fetch_or_fallback(SPACING_OPTIONS, spacing, SPACING_DEFAULT)],
-        "Polaris-Stack--vertical": vertical,
-        "Polaris-Stack--noWrap": !wrap
+        "Polaris-LegacyStack--vertical": vertical,
+        "Polaris-LegacyStack--noWrap": !wrap
       )
     end
   end

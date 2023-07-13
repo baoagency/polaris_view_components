@@ -7,9 +7,9 @@ class SaveBarComponentTest < Minitest::Test
     render_inline(Polaris::FrameComponent.new(logo: {
       src: "http://example.com/logo.jpg"
     })) do |frame|
-      frame.save_bar(message: "Message") do |save_bar|
-        save_bar.save_action { "Save" }
-        save_bar.discard_action { "Discard" }
+      frame.with_save_bar(message: "Message") do |save_bar|
+        save_bar.with_save_action { "Save" }
+        save_bar.with_discard_action { "Discard" }
       end
     end
 
@@ -19,10 +19,10 @@ class SaveBarComponentTest < Minitest::Test
           assert_selector "img[src='http://example.com/logo.jpg']"
         end
         assert_selector ".Polaris-Frame-ContextualSaveBar__Contents" do
-          assert_selector "h2.Polaris-Frame-ContextualSaveBar__Message", text: "Message"
-          assert_selector ".Polaris-Frame-ContextualSaveBar__ActionContainer > .Polaris-Stack" do
-            assert_selector ".Polaris-Stack__Item > .Polaris-Button", text: "Discard"
-            assert_selector ".Polaris-Stack__Item > .Polaris-Button--primary", text: "Save"
+          assert_selector "h2", text: "Message"
+          assert_selector ".Polaris-Frame-ContextualSaveBar__ActionContainer > .Polaris-LegacyStack" do
+            assert_selector ".Polaris-LegacyStack__Item > .Polaris-Button", text: "Discard"
+            assert_selector ".Polaris-LegacyStack__Item > .Polaris-Button--primary", text: "Save"
           end
         end
       end
@@ -31,9 +31,9 @@ class SaveBarComponentTest < Minitest::Test
 
   def test_full_width
     render_inline(Polaris::FrameComponent.new) do |frame|
-      frame.save_bar(message: "Message", full_width: true) do |save_bar|
-        save_bar.save_action { "Save" }
-        save_bar.discard_action { "Discard" }
+      frame.with_save_bar(message: "Message", full_width: true) do |save_bar|
+        save_bar.with_save_action { "Save" }
+        save_bar.with_discard_action { "Discard" }
       end
     end
 

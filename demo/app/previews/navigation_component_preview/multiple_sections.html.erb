@@ -1,29 +1,29 @@
 <%= polaris_navigation do |navigation| %>
-  <% navigation.section do |section| %>
-    <% section.item(
+  <% navigation.with_section do |section| %>
+    <% section.with_item(
       url: "#",
       label: "Home",
-      icon: "HomeMajor"
+      icon: "HomeMinor"
     ) %>
-    <% section.item(
+    <% section.with_item(
       url: "#",
       label: "Orders",
-      icon: "OrdersMajor"
+      icon: "OrdersMinor"
     ) %>
-    <% section.item(
+    <% section.with_item(
       url: "#",
       label: "Products",
-      icon: "ProductsMajor"
+      icon: "ProductsMinor"
     ) %>
   <% end %>
 
-  <% navigation.section(title: "Sales channels") do |section| %>
-    <% section.action(icon: "CirclePlusOutlineMinor") %>
+  <% navigation.with_section(title: "Sales channels") do |section| %>
+    <% section.with_action(icon: "CirclePlusOutlineMinor") %>
 
-    <% section.item(
+    <% section.with_item(
       url: "#",
       label: "Online Store",
-      icon: "OnlineStoreMajor"
+      icon: "OnlineStoreMinor"
     ) %>
   <% end %>
 <% end %>

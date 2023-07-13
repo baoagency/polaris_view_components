@@ -8,7 +8,7 @@ module Polaris
     end
     renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
-        button.icon(name: "CancelSmallMinor")
+        button.with_icon(name: "CancelSmallMinor")
       end
     end
 
@@ -24,7 +24,7 @@ module Polaris
       @system_arguments[:tag] = "div"
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-Card"
+        "Polaris-LegacyCard"
       )
     end
 

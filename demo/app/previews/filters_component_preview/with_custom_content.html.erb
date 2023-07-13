@@ -13,9 +13,9 @@
 
 <%= polaris_card(sectioned: false) do %>
   <%= polaris_resource_list do |resource_list| %>
-    <% resource_list.filters do |filters| %>
-      <% filters.query(name: :query, placeholder: "Filter customers") %>
-      <% filters.item(label: "Tagged with", width: "175px") do %>
+    <% resource_list.with_filters do |filters| %>
+      <% filters.with_query(name: :query, placeholder: "Filter customers") %>
+      <% filters.with_item(label: "Tagged with", width: "175px") do %>
         <%= polaris_text_field %>
       <% end %>
 
@@ -26,7 +26,7 @@
 
     <% items.each do |item| %>
       <%= polaris_resource_item(url: item[:url]) do |c| %>
-        <% c.media do %>
+        <% c.with_media do %>
           <%= polaris_avatar(customer: true, name: item[:name]) %>
         <% end %>
 

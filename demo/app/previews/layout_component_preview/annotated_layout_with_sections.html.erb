@@ -1,0 +1,22 @@
+<%= polaris_layout do |layout| %>
+  <% layout.with_section(one_third: true) do %>
+    <div style="margin-top: var(--p-space-5)">
+      <%= polaris_text_container do %>
+        <%= polaris_text(variant: :headingMd, as: :h2) do %>
+          Store details
+        <% end %>
+
+        <%= polaris_text(color: :subdued, as: :p) do %>
+          Shopify and your customers will use this information to contact
+          you.
+        <% end %>
+        </div>
+      <% end %>
+  <% end %>
+
+  <% layout.with_section do %>
+    <%= polaris_card(title: "Online store dashboard", sectioned: true) do %>
+      <p>View a summary of your online store’s performance.</p>
+    <% end %>
+  <% end %>
+<% end %>

@@ -3,7 +3,7 @@
   value: "10.6",
   type: :number,
 ) do |c| %>
-  <% c.connected_left do %>
+  <% c.with_connected_left do %>
     <%= polaris_select(
       name: :weight_unit,
       label: "Weight unit",
@@ -12,7 +12,7 @@
       selected: "kg",
     ) %>
   <% end %>
-  <% c.connected_right do %>
+  <% c.with_connected_right do %>
     <%= polaris_button { "Submit" } %>
   <% end %>
 <% end %>

@@ -1,5 +1,5 @@
 <%= polaris_page(title: 'Jar With Lock-Lid') do |page| %>
-  <% page.primary_action(url: '#', disabled: true) { 'Save' } %>
+  <% page.with_primary_action(url: '#', disabled: true) { 'Save' } %>
 
   <%= polaris_dropzone(drop_on_page: true) %>
 <% end %>

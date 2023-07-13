@@ -8,14 +8,14 @@ class CalloutCardComponentTest < Minitest::Test
       title: "Callout Title",
       illustration: "/image.png"
     )) do |callout|
-      callout.primary_action(url: "#") { "Primary Action" }
+      callout.with_primary_action(url: "#") { "Primary Action" }
 
       "Callout Text"
     end
 
-    assert_selector ".Polaris-Card > .Polaris-CalloutCard__Container > .Polaris-Card__Section > .Polaris-CalloutCard" do
+    assert_selector ".Polaris-LegacyCard > .Polaris-CalloutCard__Container > .Polaris-LegacyCard__Section > .Polaris-CalloutCard" do
       assert_selector ".Polaris-CalloutCard__Content" do
-        assert_selector ".Polaris-CalloutCard__Title > .Polaris-Heading", text: "Callout Title"
+        assert_selector ".Polaris-CalloutCard__Title", text: "Callout Title"
         assert_selector ".Polaris-TextContainer", text: "Callout Text"
         assert_selector ".Polaris-CalloutCard__Buttons" do
           assert_selector ".Polaris-Button", text: "Primary Action"
@@ -27,8 +27,8 @@ class CalloutCardComponentTest < Minitest::Test
 
   def test_callout_card_with_secondary_action
     render_inline(Polaris::CalloutCardComponent.new(title: "Callout Title")) do |callout|
-      callout.primary_action(url: "#") { "Primary Action" }
-      callout.secondary_action(url: "#") { "Secondary Action" }
+      callout.with_primary_action(url: "#") { "Primary Action" }
+      callout.with_secondary_action(url: "#") { "Secondary Action" }
     end
 
     assert_selector ".Polaris-CalloutCard__Buttons > .Polaris-ButtonGroup" do
@@ -47,7 +47,7 @@ class CalloutCardComponentTest < Minitest::Test
       title: "Callout Title",
       illustration: "/image.png"
     )) do |callout|
-      callout.dismiss_button(url: "#")
+      callout.with_dismiss_button(url: "#")
     end
 
     assert_selector ".Polaris-CalloutCard__Container.Polaris-CalloutCard--hasDismiss" do

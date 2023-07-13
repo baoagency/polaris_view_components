@@ -1,19 +1,19 @@
 <%= polaris_frame do |frame| %>
-  <% frame.navigation do |navigation| %>
-    <% navigation.section do |section| %>
-      <% section.item(url: "#", label: "Back to Shopify", icon: "ArrowLeftMinor") %>
+  <% frame.with_navigation do |navigation| %>
+    <% navigation.with_section do |section| %>
+      <% section.with_item(url: "#", label: "Back to Shopify", icon: "ArrowLeftMinor") %>
     <% end %>
-    <% navigation.section(title: "Jaded Pixel App", separator: true) do |section| %>
-      <% section.action(icon: "ConversationMinor") %>
-      <% section.item(url: "#", label: "Dashboard", icon: "HomeMajor") %>
-      <% section.item(url: "#", label: "Jaded Pixel Orders", icon: "OrdersMajor") %>
+    <% navigation.with_section(title: "Jaded Pixel App", separator: true) do |section| %>
+      <% section.with_action(icon: "ConversationMinor") %>
+      <% section.with_item(url: "#", label: "Dashboard", icon: "HomeMajor") %>
+      <% section.with_item(url: "#", label: "Jaded Pixel Orders", icon: "OrdersMajor") %>
     <% end %>
   <% end %>
 
   <%= polaris_page(title: "Toast example") do %>
     <%= polaris_button_group(segmented: true) do |group| %>
       <% 3.times do |i| %>
-        <%= group.button(data: {
+        <%= group.with_button(data: {
           controller: "polaris",
           target: "#demo-toast#{i + 1}",
           action: "polaris#showToast",
@@ -22,7 +22,7 @@
     <% end %>
   <% end %>
 
-  <% frame.toasts do %>
+  <% frame.with_toasts do %>
     <%= polaris_toast(id: "demo-toast1", hidden: true) { "Lorem Ipsum is simply dummy text of the printing and typesetting industry." } %>
     <%= polaris_toast(id: "demo-toast2", hidden: true) { "Lorem Ipsum is simply dummy " } %>
     <%= polaris_toast(id: "demo-toast3", hidden: true) { "3. Lorem Ipsum is simply dummy text of the printing and typesetting industry." } %>

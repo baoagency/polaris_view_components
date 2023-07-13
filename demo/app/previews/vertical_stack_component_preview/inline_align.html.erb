@@ -1,0 +1,25 @@
+<%= polaris_page do %>
+  <%= polaris_vertical_stack(gap: "8") do %>
+    <%= polaris_vertical_stack(inline_align: :start) do %>
+      <%= polaris_placeholder(height: "48px", width: "320px", label: "Start") %>
+      <%= polaris_placeholder(height: "48px", width: "320px") %>
+      <%= polaris_placeholder(height: "48px", width: "320px") %>
+    <% end %>
+
+    <%= polaris_divider %>
+
+    <%= polaris_vertical_stack(inline_align: :center) do %>
+      <%= polaris_placeholder(height: "48px", width: "320px", label: "Center") %>
+      <%= polaris_placeholder(height: "48px", width: "320px") %>
+      <%= polaris_placeholder(height: "48px", width: "320px") %>
+    <% end %>
+
+    <%= polaris_divider %>
+
+    <%= polaris_vertical_stack(inline_align: :end) do %>
+      <%= polaris_placeholder(height: "48px", width: "320px", label: "End") %>
+      <%= polaris_placeholder(height: "48px", width: "320px") %>
+      <%= polaris_placeholder(height: "48px", width: "320px") %>
+    <% end %>
+  <% end %>
+<% end %>

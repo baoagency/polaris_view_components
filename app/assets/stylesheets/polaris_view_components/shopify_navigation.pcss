@@ -1,0 +1,128 @@
+.shp-Navigation {
+  margin: 0 auto;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--p-border-subdued);
+}
+
+@media (max-width: 48.0625em) and (min-width: 30.625em),(min-width: 45.625em) {
+  .shp-Navigation {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 30.625em) {
+  .shp-Navigation {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 48.0625em) and (min-width: 46.5em),(min-width: 61.5em) {
+  .shp-Navigation {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 46.5em) {
+  .shp-Navigation {
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 30.5625em) {
+  .shp-Navigation {
+    padding: 0 16px;
+  }
+}
+
+.shp-Navigation_Items {
+  display: flex;
+  margin: 0;
+  padding: 0 2px;
+  list-style: none
+}
+
+.shp-Navigation_Item {
+  display: flex;
+  margin: 0;
+  padding: 0
+}
+
+.shp-Navigation_Link {
+  color: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--p-text-subdued);
+  position: relative;
+  z-index: 400;
+  justify-content: center;
+  width: 100%;
+  min-width: 100%;
+  margin-top: 1px;
+  margin-bottom: -1px;
+  padding: 0 16px;
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.shp-Navigation_Link:visited {
+  color: inherit;
+}
+
+.shp-Navigation_Link:focus {
+  outline: none;
+}
+
+@media (min-width: 40em) {
+  .shp-Navigation_Link {
+    font-size: 14px;
+  }
+}
+
+.shp-Navigation_Link:hover {
+  text-decoration: none;
+}
+
+.shp-Navigation_Link:hover .shp-Navigation_LinkText {
+  font-weight: 400;
+  color: var(--p-text);
+  text-decoration: none;
+  border-bottom: 3px solid var(--p-action-primary);
+}
+
+.shp-Navigation_Link:focus .shp-Navigation_LinkText {
+  font-weight: 400;
+  color: var(--p-text);
+}
+
+.shp-Navigation_LinkText {
+  padding: 16px 0 13px 0;
+  border-bottom: 3px solid transparent;
+}
+
+.shp-Navigation_LinkText {
+  display: block;
+}
+
+[aria-selected='true'],
+.shp-Navigation_Link:focus .shp-Navigation_LinkText {
+  font-weight: 400;
+  color: var(--p-text);
+}
+
+[aria-selected='true'] .shp-Navigation_LinkText {
+  color: var(--p-action-primary);
+  border-bottom: 3px solid var(--p-action-primary);
+}

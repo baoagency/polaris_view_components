@@ -1,6 +1,6 @@
 class Polaris::Navigation::ItemComponent < Polaris::Component
   renders_many :sub_items, Polaris::Navigation::ItemComponent
-  renders_one :secondary_action, "SecondaryActionComponent"
+  renders_many :secondary_actions, "SecondaryActionComponent"
 
   attr_reader :selected
 
@@ -88,11 +88,13 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
     end
 
     def call
-      render(Polaris::BaseComponent.new(**system_arguments)) do
-        if @icon.present?
-          render(Polaris::IconComponent.new(name: @icon))
-        else
-          content
+      tag.span do
+        render(Polaris::BaseComponent.new(**system_arguments)) do
+          if @icon.present?
+            render(Polaris::IconComponent.new(name: @icon))
+          else
+            content
+          end
         end
       end
     end

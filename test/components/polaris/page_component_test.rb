@@ -9,14 +9,14 @@ class PaginationComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Page" do
-      assert_selector ".Polaris-Page-Header.Polaris-Page-Header--noBreadcrumbs" do
-        assert_selector ".Polaris-Page-Header__Row > .Polaris-Page-Header__TitleWrapper" do
+      assert_selector ".Polaris-Page-Header--noBreadcrumbs" do
+        assert_selector ".Polaris-Page-Header__TitleWrapper" do
           assert_selector ".Polaris-Header-Title__TitleAndSubtitleWrapper" do
             assert_selector "h1.Polaris-Header-Title", text: "Page Title"
           end
         end
       end
-      assert_selector ".Polaris-Page__Content", text: "Page Content"
+      assert_text "Page Content"
     end
   end
 
@@ -33,7 +33,7 @@ class PaginationComponentTest < Minitest::Test
 
     assert_selector ".Polaris-Page-Header--hasNavigation" do
       assert_selector ".Polaris-Page-Header__Row" do
-        assert_selector ".Polaris-Page-Header__BreadcrumbWrapper > nav" do
+        assert_selector ".Polaris-Page-Header__BreadcrumbWrapper nav" do
           assert_selector "a.Polaris-Breadcrumbs__Breadcrumb[href='/back']" do
             assert_selector ".Polaris-Breadcrumbs__ContentWrapper > .Polaris-Breadcrumbs__Icon > .Polaris-Icon"
           end
@@ -44,27 +44,12 @@ class PaginationComponentTest < Minitest::Test
 
   def test_page_with_primary_action
     render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.primary_action { "Primary Button" }
+      page.with_primary_action { "Primary Button" }
     end
 
-    assert_selector ".Polaris-Page-Header > .Polaris-Page-Header__Row > .Polaris-Page-Header__RightAlign" do
+    assert_selector ".Polaris-Page-Header__RightAlign" do
       assert_selector ".Polaris-Page-Header__PrimaryActionWrapper" do
         assert_selector ".Polaris-Button--primary", text: "Primary Button"
-      end
-    end
-  end
-
-  def test_page_with_thumbnail
-    render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.thumbnail(source: "/image.png")
-    end
-
-    assert_selector ".Polaris-Page-Header__TitleWrapper > .Polaris-Header-Title--hasThumbnail" do
-      assert_selector "div:nth-child(1)" do
-        assert_selector ".Polaris-Thumbnail > img[src='/image.png']"
-      end
-      assert_selector ".Polaris-Header-Title__TitleAndSubtitleWrapper:nth-child(2)" do
-        assert_text "Page Title"
       end
     end
   end
@@ -95,12 +80,12 @@ class PaginationComponentTest < Minitest::Test
       "Page Content"
     end
 
-    assert_selector ".Polaris-Page__Content.Polaris-Page--divider", text: "Page Content"
+    assert_selector ".Polaris-Page--divider", text: "Page Content"
   end
 
   def test_page_with_title_metadata
     render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.title_metadata { "Title Metadata" }
+      page.with_title_metadata { "Title Metadata" }
     end
 
     assert_selector ".Polaris-Page-Header__TitleWrapper" do
@@ -140,7 +125,7 @@ class PaginationComponentTest < Minitest::Test
 
   def test_action_group
     render_inline(Polaris::PageComponent.new(title: "Page Title")) do |page|
-      page.action_group(
+      page.with_action_group(
         title: "Promote",
         actions: [
           {content: "Share on Facebook", url: "https://facebook.com"},
@@ -152,7 +137,7 @@ class PaginationComponentTest < Minitest::Test
 
     assert_selector ".Polaris-ActionMenu--mobile" do
       assert_selector ".Polaris-Popover .Polaris-ActionList" do
-        assert_selector ".Polaris-ActionList__Title", text: "Promote"
+        assert_text "Promote"
         assert_selector ".Polaris-ActionList__Item", text: "Share on Facebook"
         assert_selector ".Polaris-ActionList__Item", text: "Share on Twitter"
       end

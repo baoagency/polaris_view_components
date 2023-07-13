@@ -1,5 +1,5 @@
 module Polaris
   module ViewComponents
-    VERSION = "0.13.0"
+    VERSION = "1.0.1"
   end
 end

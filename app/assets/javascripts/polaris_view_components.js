@@ -207,7 +207,7 @@ class Autocomplete extends Controller {
     if (!this.multipleValue) {
       this.popoverController.forceHide();
       this.inputTarget.value = label;
-      this.hiddenInputTarget.value = input.value;
+      if (this.hasHiddenInputTarget) this.hiddenInputTarget.value = input.value;
     }
   }
   onInputChange=debounce$1((() => {
@@ -342,6 +342,34 @@ class Collapsible extends Controller {
   }
   get isClosed() {
     return this.element.classList.contains("Polaris-Collapsible--isFullyClosed");
+  }
+}
+
+class DataTable extends Controller {
+  static targets=[ "row" ];
+  connect() {
+    this.rowTargets.forEach((row => {
+      row.addEventListener("mouseover", (() => this.handleHover(row)));
+      row.addEventListener("mouseout", (() => this.handleLeave(row)));
+    }));
+  }
+  disconnect() {
+    this.rowTargets.forEach((row => {
+      row.removeEventListener("mouseover", (() => this.handleHover(row)));
+      row.removeEventListener("mouseout", (() => this.handleLeave(row)));
+    }));
+  }
+  handleHover(row) {
+    const cells = row.querySelectorAll(".Polaris-DataTable__Cell");
+    cells.forEach((cell => {
+      cell.classList.add("Polaris-DataTable__Cell--hovered");
+    }));
+  }
+  handleLeave(row) {
+    const cells = row.querySelectorAll(".Polaris-DataTable__Cell");
+    cells.forEach((cell => {
+      cell.classList.remove("Polaris-DataTable__Cell--hovered");
+    }));
   }
 }
 
@@ -1028,7 +1056,7 @@ var round = Math.round;
 
 function getUAString() {
   var uaData = navigator.userAgentData;
-  if (uaData != null && uaData.brands) {
+  if (uaData != null && uaData.brands && Array.isArray(uaData.brands)) {
     return uaData.brands.map((function(item) {
       return item.brand + "/" + item.version;
     })).join(" ");
@@ -1277,9 +1305,8 @@ var unsetSides = {
   left: "auto"
 };
 
-function roundOffsetsByDPR(_ref) {
+function roundOffsetsByDPR(_ref, win) {
   var x = _ref.x, y = _ref.y;
-  var win = window;
   var dpr = win.devicePixelRatio || 1;
   return {
     x: round(x * dpr) / dpr || 0,
@@ -1336,7 +1363,7 @@ function mapToStyles(_ref2) {
   var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
     x: x,
     y: y
-  }) : {
+  }, getWindow(popper)) : {
     x: x,
     y: y
   };
@@ -2272,8 +2299,8 @@ function popperGenerator(generatorOptions) {
       }
     }));
     function runModifierEffects() {
-      state.orderedModifiers.forEach((function(_ref3) {
-        var name = _ref3.name, _ref3$options = _ref3.options, options = _ref3$options === void 0 ? {} : _ref3$options, effect = _ref3.effect;
+      state.orderedModifiers.forEach((function(_ref) {
+        var name = _ref.name, _ref$options = _ref.options, options = _ref$options === void 0 ? {} : _ref$options, effect = _ref.effect;
         if (typeof effect === "function") {
           var cleanupFn = effect({
             state: state,
@@ -2564,7 +2591,7 @@ class Toast extends Controller {
     const height = this.element.offsetHeight + this.heightOffset;
     const translateIn = height * -1;
     const translateOut = 150 - height;
-    return `--toast-translate-y-in: ${translateIn}px; --toast-translate-y-out: ${translateOut}px;`;
+    return `--pc-toast-manager-translate-y-in: ${translateIn}px; --pc-toast-manager-translate-y-out: ${translateOut}px;`;
   }
   get timeoutDuration() {
     if (this.durationValue > 0) {
@@ -2600,9 +2627,6 @@ class Tooltip extends Controller {
   }
   getOffset() {
     switch (this.positionValue) {
-     case "top":
-      return [ 0, -4 ];
-
      case "bottom":
       return [ 0, 4 ];
 
@@ -2656,6 +2680,7 @@ function registerPolarisControllers(application) {
   application.register("polaris-button", Button);
   application.register("polaris-collapsible", Collapsible);
   application.register("polaris-dropzone", Dropzone);
+  application.register("polaris-data-table", DataTable);
   application.register("polaris-frame", Frame);
   application.register("polaris-modal", Modal);
   application.register("polaris-option-list", OptionList);

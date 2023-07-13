@@ -1,13 +1,13 @@
 <%= polaris_card(sectioned: false, style: "max-width: 300px") do %>
   <%= polaris_option_list do |list| %>
-    <% list.section(name: :sale) do |section| %>
-      <% section.checkbox(label: "Sale item type", value: "type") %>
-      <% section.checkbox(label: "Sale kind", value: "kind") %>
+    <% list.with_section(name: :sale) do |section| %>
+      <% section.with_checkbox(label: "Sale item type", value: "type") %>
+      <% section.with_checkbox(label: "Sale kind", value: "kind") %>
     <% end %>
-    <% list.section(title: "Traffic", name: :traffic) do |section| %>
-      <% section.checkbox(label: "Traffic referrer source", value: "source") %>
-      <% section.checkbox(label: "Traffic referrer host", value: "host") %>
-      <% section.checkbox(label: "Traffic referrer path", value: "path") %>
+    <% list.with_section(title: "Traffic", name: :traffic) do |section| %>
+      <% section.with_checkbox(label: "Traffic referrer source", value: "source") %>
+      <% section.with_checkbox(label: "Traffic referrer host", value: "host") %>
+      <% section.with_checkbox(label: "Traffic referrer path", value: "path") %>
     <% end %>
   <% end %>
 <% end %>

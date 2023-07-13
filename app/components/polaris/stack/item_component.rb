@@ -4,8 +4,8 @@ class Polaris::Stack::ItemComponent < Polaris::Component
     @system_arguments[:tag] = "div"
     @system_arguments[:classes] = class_names(
       @system_arguments[:classes],
-      "Polaris-Stack__Item",
-      "Polaris-Stack__Item--fill": fill
+      "Polaris-LegacyStack__Item",
+      "Polaris-LegacyStack__Item--fill": fill
     )
   end
 

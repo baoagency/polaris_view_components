@@ -9,17 +9,17 @@ class BannerComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Banner.Polaris-Banner--withinPage" do
-      assert_selector ".Polaris-Banner__Ribbon > .Polaris-Icon.Polaris-Icon--colorBase.Polaris-Icon--applyColor"
+      assert_selector ".Polaris-Icon.Polaris-Icon--colorBase.Polaris-Icon--applyColor"
       assert_selector ".Polaris-Banner__ContentWrapper" do
-        assert_selector ".Polaris-Banner__Heading > .Polaris-Heading", text: "Banner Header"
-        assert_selector ".Polaris-Banner__Content", text: "Banner Content"
+        assert_text "Banner Header"
+        assert_text "Banner Content"
       end
     end
   end
 
   def test_dismissible_banner
     render_inline(Polaris::BannerComponent.new) do |banner|
-      banner.dismiss_button(url: "#")
+      banner.with_dismiss_button(url: "#")
       "Banner Content"
     end
 
@@ -30,12 +30,12 @@ class BannerComponentTest < Minitest::Test
 
   def test_banner_with_actions
     render_inline(Polaris::BannerComponent.new) do |banner|
-      banner.action(url: "/primary") { "Primary Action" }
-      banner.secondary_action(url: "/secondary") { "Secondary Action" }
+      banner.with_action(url: "/primary") { "Primary Action" }
+      banner.with_secondary_action(url: "/secondary") { "Secondary Action" }
     end
 
-    assert_selector ".Polaris-Banner > .Polaris-Banner__ContentWrapper > .Polaris-Banner__Content" do
-      assert_selector ".Polaris-Banner__Actions > .Polaris-ButtonGroup" do
+    assert_selector ".Polaris-Banner > .Polaris-Banner__ContentWrapper" do
+      assert_selector ".Polaris-ButtonGroup" do
         assert_selector ".Polaris-ButtonGroup__Item", count: 2
         assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)" do
           assert_selector ".Polaris-Banner__PrimaryAction" do

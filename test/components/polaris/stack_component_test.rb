@@ -5,46 +5,46 @@ class StackComponentTest < Minitest::Test
 
   def test_default_stack
     render_inline(Polaris::StackComponent.new) do |stack|
-      stack.item { "Item 1" }
-      stack.item { "Item 2" }
+      stack.with_item { "Item 1" }
+      stack.with_item { "Item 2" }
     end
 
-    assert_selector ".Polaris-Stack" do
-      assert_selector ".Polaris-Stack__Item", count: 2
-      assert_selector ".Polaris-Stack__Item:nth-child(1)", text: "Item 1"
-      assert_selector ".Polaris-Stack__Item:nth-child(2)", text: "Item 2"
+    assert_selector ".Polaris-LegacyStack" do
+      assert_selector ".Polaris-LegacyStack__Item", count: 2
+      assert_selector ".Polaris-LegacyStack__Item:nth-child(1)", text: "Item 1"
+      assert_selector ".Polaris-LegacyStack__Item:nth-child(2)", text: "Item 2"
     end
   end
 
   def test_spacing
     render_inline(Polaris::StackComponent.new(spacing: :loose))
 
-    assert_selector ".Polaris-Stack--spacingLoose"
+    assert_selector ".Polaris-LegacyStack--spacingLoose"
   end
 
   def test_wrapping
     render_inline(Polaris::StackComponent.new(wrap: false))
 
-    assert_selector ".Polaris-Stack--noWrap"
+    assert_selector ".Polaris-LegacyStack--noWrap"
   end
 
   def test_alignment
     render_inline(Polaris::StackComponent.new(alignment: :center))
 
-    assert_selector ".Polaris-Stack--alignmentCenter"
+    assert_selector ".Polaris-LegacyStack--alignmentCenter"
   end
 
   def test_distribution
     render_inline(Polaris::StackComponent.new(distribution: :fill))
 
-    assert_selector ".Polaris-Stack--distributionFill"
+    assert_selector ".Polaris-LegacyStack--distributionFill"
   end
 
   def test_item_fill
     render_inline(Polaris::StackComponent.new) do |stack|
-      stack.item(fill: true) { "Item 1" }
+      stack.with_item(fill: true) { "Item 1" }
     end
 
-    assert_selector ".Polaris-Stack > .Polaris-Stack__Item--fill:nth-child(1)", text: "Item 1"
+    assert_selector ".Polaris-LegacyStack > .Polaris-LegacyStack__Item--fill:nth-child(1)", text: "Item 1"
   end
 end

@@ -9,7 +9,7 @@
   title: "Reach more shoppers with Instagram product tags",
   open: true,
 ) do |modal| %>
-  <% modal.close_button(onclick: "alert('Close modal');") %>
+  <% modal.with_close_button(onclick: "alert('Close modal');") %>
 
   <%= polaris_text_container do %>
     <p>
@@ -19,6 +19,6 @@
     </p>
   <% end %>
 
-  <% modal.primary_action { "Add instagram" } %>
-  <% modal.secondary_action { "Learn more" } %>
+  <% modal.with_primary_action { "Add instagram" } %>
+  <% modal.with_secondary_action { "Learn more" } %>
 <% end %>

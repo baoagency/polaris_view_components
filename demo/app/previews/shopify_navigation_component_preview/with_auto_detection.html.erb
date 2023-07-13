@@ -1,5 +1,5 @@
 <%= polaris_shopify_navigation(auto_detect_active: true) do |nav| %>
-  <% nav.link(url: "/page1", active: true) { "Page 1" } %>
-  <% nav.link(url: "/page2") { "Page 2" } %>
-  <% nav.link(url: "https://shopify.com", target: "_blank") { "Shopify" } %>
+  <% nav.with_link(url: "/page1", active: true) { "Page 1" } %>
+  <% nav.with_link(url: "/page2") { "Page 2" } %>
+  <% nav.with_link(url: "https://shopify.com", target: "_blank") { "Shopify" } %>
 <% end %>

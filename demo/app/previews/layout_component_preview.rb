@@ -22,6 +22,10 @@ class LayoutComponentPreview < ViewComponent::Preview
   def annotated_layout
   end
 
+  # Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
+  def annotated_layout_with_sections
+  end
+
   # Use for settings pages that need a banner or other content at the top.
   def annotated_layout_with_banner_at_the_top
   end

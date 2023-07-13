@@ -1,6 +1,6 @@
 {
   "name": "polaris-view-components",
-  "version": "0.13.0",
+  "version": "1.0.0",
   "description": "ViewComponents for Polaris Design System",
   "main": "app/assets/javascripts/polaris_view_components.js",
   "module": "app/assets/javascripts/polaris_view_components/index.js",
@@ -24,15 +24,15 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "build:css": "postcss ./app/assets/stylesheets/polaris_view_components.postcss.css -o ./app/assets/stylesheets/polaris_view_components.css",
+    "build:css": "postcss ./app/assets/stylesheets/polaris_view_components.pcss -o ./app/assets/stylesheets/polaris_view_components.css",
     "prerelease": "yarn build && yarn build:css && git --no-pager diff && echo && npm pack --dry-run && echo && read -n 1 -p \"Look OK? Press any key to publish and commit v$npm_package_version\" && echo",
     "release": "npm publish"
   },
   "devDependencies": {
-    "@popperjs/core": "^2.11.6",
+    "@popperjs/core": "^2.11.8",
     "@rollup/plugin-node-resolve": "^14.1.0",
-    "@shopify/polaris": "7.6.0",
-    "postcss": "^8.4.21",
+    "@shopify/polaris": "^10.49.1",
+    "postcss": "^8.4.24",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
     "postcss-nested": "^6.0.1",

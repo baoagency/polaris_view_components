@@ -9,13 +9,13 @@
   title: "Reach more shoppers with Instagram product tags",
   open: true,
 ) do |modal| %>
-  <% modal.section do %>
+  <% modal.with_section do %>
     <p>Section 1</p>
   <% end %>
-  <% modal.section do %>
+  <% modal.with_section do %>
     <p>Section 2</p>
   <% end %>
 
-  <% modal.primary_action { "Add instagram" } %>
-  <% modal.secondary_action { "Learn more" } %>
+  <% modal.with_primary_action { "Add instagram" } %>
+  <% modal.with_secondary_action { "Learn more" } %>
 <% end %>

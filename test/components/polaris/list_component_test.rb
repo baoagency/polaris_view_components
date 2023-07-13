@@ -5,9 +5,9 @@ class ListComponentTest < Minitest::Test
 
   def test_renders_bulleted_list
     render_inline(Polaris::ListComponent.new) do |list|
-      list.item { "One" }
-      list.item { "Two" }
-      list.item { "Three" }
+      list.with_item { "One" }
+      list.with_item { "Two" }
+      list.with_item { "Three" }
     end
 
     assert_selector "ul.Polaris-List"
@@ -16,9 +16,9 @@ class ListComponentTest < Minitest::Test
 
   def test_renders_numbered_list
     render_inline(Polaris::ListComponent.new(type: :number)) do |list|
-      list.item { "One" }
-      list.item { "Two" }
-      list.item { "Three" }
+      list.with_item { "One" }
+      list.with_item { "Two" }
+      list.with_item { "Three" }
     end
 
     assert_selector "ol.Polaris-List--typeNumber"

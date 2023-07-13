@@ -11,9 +11,7 @@ export default class extends Controller {
 
   getOffset() {
     switch (this.positionValue) {
-      case "top":
-        return [0, -4]
-      case "bottom":
+      case "top", "bottom":
         return [0, 4]
       case "left", "right":
         return [0, 6]

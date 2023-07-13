@@ -1,11 +1,16 @@
 <%= polaris_layout do |layout| %>
-  <% layout.section do %>
+  <% layout.with_section do %>
     <%= polaris_card(title: "Order details", sectioned: true) do %>
-      <p>View a summary of your order.</p>
+      <p>
+        Use to follow a normal section with a secondary section to create
+        a 2/3 + 1/3 layout on detail pages (such as individual product or
+        order pages). Can also be used on any page that needs to structure
+        a lot of content. This layout stacks the columns on small screens.
+      </p>
     <% end %>
   <% end %>
 
-  <% layout.section(secondary: true) do %>
+  <% layout.with_section(secondary: true) do %>
     <%= polaris_card(title: "Tags", sectioned: true) do %>
       <p>Add tags to your order.</p>
     <% end %>

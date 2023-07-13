@@ -109,7 +109,7 @@ class ButtonComponentTest < Minitest::Test
 
   def test_text_with_icon_button
     render_inline(Polaris::ButtonComponent.new) do |button|
-      button.icon(name: "CirclePlusMajor")
+      button.with_icon(name: "CirclePlusMajor")
       "Button"
     end
 
@@ -121,7 +121,7 @@ class ButtonComponentTest < Minitest::Test
 
   def test_icon_only_button
     render_inline(Polaris::ButtonComponent.new) do |button|
-      button.icon(name: "CirclePlusMajor")
+      button.with_icon(name: "CirclePlusMajor")
     end
 
     assert_selector "button.Polaris-Button--iconOnly" do

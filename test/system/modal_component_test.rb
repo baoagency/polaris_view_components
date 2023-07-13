@@ -11,7 +11,7 @@ class ModalComponentSystemTest < ApplicationSystemTestCase
     # Open modal
     click_on "Open"
     within ".Polaris-Modal-Dialog" do
-      assert_selector ".Polaris-Modal-Header__Title", text: "Reach more shoppers"
+      assert_text "Reach more shoppers"
       assert_selector ".Polaris-Modal-Section", text: "Use Instagram posts to share your products"
       assert_selector ".Polaris-Button", text: "Add instagram"
     end

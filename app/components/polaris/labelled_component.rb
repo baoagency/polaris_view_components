@@ -23,7 +23,7 @@ module Polaris
 
       if label_action && label_action[:content].present?
         label_content = label_action.delete(:content)
-        label_action(**label_action) { label_content }
+        with_label_action(**label_action) { label_content }
       end
 
       @system_arguments = system_arguments

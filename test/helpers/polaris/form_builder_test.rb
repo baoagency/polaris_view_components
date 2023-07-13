@@ -23,10 +23,8 @@ class Polaris::ViewHelperTest < ActionView::TestCase
 
     assert_selector ".Polaris-Banner--statusCritical" do
       assert_text "2 errors with this product"
-      assert_selector ".Polaris-Banner__Content" do
-        assert_selector "li", text: "Base Error"
-        assert_selector "li", text: "Title can't be blank"
-      end
+      assert_selector "li", text: "Base Error"
+      assert_selector "li", text: "Title can't be blank"
     end
   end
 

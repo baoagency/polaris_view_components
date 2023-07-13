@@ -5,11 +5,11 @@ class AvatarComponentTest < Minitest::Test
 
   def test_enabled_setting_toggle
     render_inline(Polaris::SettingToggleComponent.new(enabled: true)) do |toggle|
-      toggle.action { "Action" }
+      toggle.with_action { "Action" }
       "Content"
     end
 
-    assert_selector ".Polaris-Card > .Polaris-Card__Section > .Polaris-SettingAction" do
+    assert_selector ".Polaris-LegacyCard > .Polaris-LegacyCard__Section > .Polaris-SettingAction" do
       assert_selector ".Polaris-SettingAction__Setting", text: "Content"
       assert_selector ".Polaris-SettingAction__Action > .Polaris-Button", text: "Action"
     end
@@ -17,7 +17,7 @@ class AvatarComponentTest < Minitest::Test
 
   def test_disabled_setting_toggle
     render_inline(Polaris::SettingToggleComponent.new(enabled: false)) do |toggle|
-      toggle.action { "Action" }
+      toggle.with_action { "Action" }
       "Content"
     end
 

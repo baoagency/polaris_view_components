@@ -28,14 +28,4 @@ class DisplayTextComponentTest < Minitest::Test
 
     assert_selector ".Polaris-ProgressBar--colorSuccess", count: 1
   end
-
-  def test_animated_option
-    render_inline(Polaris::ProgressBarComponent.new(progress: 75))
-
-    assert_selector ".Polaris-ProgressBar__Animated", count: 1
-
-    render_inline(Polaris::ProgressBarComponent.new(progress: 75, animated: false))
-
-    assert_selector ".Polaris-ProgressBar__Animated", count: 0
-  end
 end

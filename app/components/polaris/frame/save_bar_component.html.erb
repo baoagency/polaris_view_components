@@ -6,15 +6,20 @@
   <% end %>
 
   <div class="<%= content_classes %>">
-    <h2 class="Polaris-Frame-ContextualSaveBar__Message">
+    <%= polaris_text(
+      as: :h2,
+      variant: :headingMd,
+      truncate: true,
+      color: :text_inverse
+    ) do %>
       <%= @message %>
-    </h2>
+    <% end %>
     <div class="Polaris-Frame-ContextualSaveBar__ActionContainer">
       <%= polaris_stack(spacing: :tight) do |stack| %>
-        <% stack.item do %>
+        <% stack.with_item do %>
           <%= discard_action %>
         <% end %>
-        <% stack.item do %>
+        <% stack.with_item do %>
           <%= save_action %>
         <% end %>
       <% end %>

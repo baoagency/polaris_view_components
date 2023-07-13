@@ -5,8 +5,8 @@ class AutocompleteComponentTest < Minitest::Test
 
   def test_basic_autocomplete
     render_inline(Polaris::AutocompleteComponent.new) do |autocomplete|
-      autocomplete.text_field(label: "Tags")
-      autocomplete.option(label: "Rustic", value: "rustic")
+      autocomplete.with_text_field(label: "Tags")
+      autocomplete.with_option(label: "Rustic", value: "rustic")
     end
 
     assert_selector '[data-controller="polaris-autocomplete"]' do
@@ -17,9 +17,7 @@ class AutocompleteComponentTest < Minitest::Test
         end
 
         assert_selector ".Polaris-Popover" do
-          assert_selector ".Polaris-OptionList" do
-            assert_selector "input[type='radio'][value='rustic']"
-          end
+          assert_selector "input[type='radio'][value='rustic']"
         end
       end
     end
@@ -27,14 +25,12 @@ class AutocompleteComponentTest < Minitest::Test
 
   def test_multiple_autocomplete
     render_inline(Polaris::AutocompleteComponent.new(multiple: true)) do |autocomplete|
-      autocomplete.text_field(label: "Tags")
-      autocomplete.option(label: "Rustic", value: "rustic")
+      autocomplete.with_text_field(label: "Tags")
+      autocomplete.with_option(label: "Rustic", value: "rustic")
     end
 
     assert_selector ".Polaris-Popover" do
-      assert_selector ".Polaris-OptionList" do
-        assert_selector "input[type='checkbox'][value='rustic']"
-      end
+      assert_selector "input[type='checkbox'][value='rustic']"
     end
   end
 end

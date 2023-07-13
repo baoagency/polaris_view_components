@@ -4,8 +4,6 @@ Polaris ViewComponents is an implementation of the Polaris Design System using [
 
 ![Polaris ViewComponents](.github/assets/preview.png)
 
-> **This library is under active development. Breaking changes are likely until stable release.**
-
 ## Preview
 
 https://polarisviewcomponents.org
@@ -26,10 +24,10 @@ Render Polaris ViewComponents:
 
 ## Installation
 
-Add to `Gemfile`:
+Add `polaris_view_components` to your Gemfile:
 
-```ruby
-gem "polaris_view_components"
+```bash
+bundle add polaris_view_components
 ```
 
 Run installer:

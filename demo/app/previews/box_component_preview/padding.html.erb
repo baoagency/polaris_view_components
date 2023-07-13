@@ -1,0 +1,17 @@
+<%= polaris_box(border_color: "border-caution", border_width: "2", padding: "4") do %>
+  <p>Simple padding</p>
+<% end %>
+
+<%= polaris_box(
+  border_color: "border-caution",
+  border_width: "2",
+  padding: {
+    xs: "1",
+    sm: "3",
+    md: "5",
+    lg: "8",
+    xl: "16"
+  }
+) do %>
+  <p>Responsive padding</p>
+<% end %>
