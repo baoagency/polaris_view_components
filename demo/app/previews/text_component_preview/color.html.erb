@@ -1,5 +1,5 @@
 <%= polaris_stack(vertical: true) do |stack| %>
-  <% stack.item do %>
+  <% stack.with_item do %>
     <%= polaris_text(variant: :bodyMd, as: :p, color: :subdued) do %>
       Use to de-emphasize a piece of text that is less important to merchants
       than other nearby text. May also be used to indicate when normal content
@@ -8,7 +8,7 @@
     <% end %>
   <% end %>
 
-  <% stack.item do %>
+  <% stack.with_item do %>
     <%= polaris_text(variant: :bodyMd, as: :p, color: :success) do %>
       Use to de-emphasize a piece of text that is less important to merchants
       than other nearby text. May also be used to indicate when normal content
@@ -17,7 +17,7 @@
     <% end %>
   <% end %>
 
-  <% stack.item do %>
+  <% stack.with_item do %>
     <%= polaris_text(variant: :bodyMd, as: :p, color: :warning) do %>
       Use to de-emphasize a piece of text that is less important to merchants
       than other nearby text. May also be used to indicate when normal content
@@ -26,7 +26,7 @@
     <% end %>
   <% end %>
 
-  <% stack.item do %>
+  <% stack.with_item do %>
     <%= polaris_text(variant: :bodyMd, as: :p, color: :critical) do %>
       Use to de-emphasize a piece of text that is less important to merchants
       than other nearby text. May also be used to indicate when normal content
