@@ -409,7 +409,7 @@ button::-moz-focus-inner, [type='button']::-moz-focus-inner, [type='reset']::-mo
 .Polaris-Tooltip-TooltipOverlay--measured.Polaris-Tooltip-TooltipOverlay--positionedAbove:not(.Polaris-Tooltip-TooltipOverlay--instant) { animation: var(--p-motion-keyframes-appear-above) var(--p-motion-duration-50) var(--p-motion-ease-out) var(--p-motion-duration-100) 1 both; }
 @media (prefers-reduced-motion) { .Polaris-Tooltip-TooltipOverlay--measured.Polaris-Tooltip-TooltipOverlay--positionedAbove:not(.Polaris-Tooltip-TooltipOverlay--instant) { animation: none; } }
 .Polaris-Tooltip-TooltipOverlay--positionedAbove { margin: var(--p-space-4) var(--p-space-4) var(--pc-tooltip-overlay-offset); }
-.Polaris-Tooltip-TooltipOverlay__Content { position: relative; background-color: var(--p-color-bg); color: var(--p-color-text); word-break: break-word; border-radius: var(--p-border-radius-2); padding: var(--p-space-1) var(--p-space-2); }
+.Polaris-Tooltip-TooltipOverlay__Content { position: relative; background-color: var(--p-color-bg); color: var(--p-color-text); word-break: break-word; border-radius: var(--pc-tooltip-border-radius); padding: var(--pc-tooltip-padding); }
 .Polaris-Tooltip-TooltipOverlay--default { max-width: 12.5rem; }
 .Polaris-Tooltip-TooltipOverlay--wide { max-width: 17.1875rem; }
 [data-polaris-tooltip-activator] { outline: 0; position: relative; }
@@ -2821,6 +2821,10 @@ a.Polaris-Tag__Button {
   backface-visibility: hidden;
   will-change: opacity, left, top;
   transition: opacity 200ms cubic-bezier(0.36, 0, 1, 1) 100ms;
+}
+.Polaris-Tooltip-TooltipOverlay__Content {
+  border-radius: var(--p-border-radius-2);
+  padding: var(--p-space-1) var(--p-space-2);
 }
 .Polaris-Tooltip-Arrow,.Polaris-Tooltip-Arrow::before {
   position: absolute;
