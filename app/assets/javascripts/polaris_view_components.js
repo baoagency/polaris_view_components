@@ -2628,13 +2628,13 @@ class Tooltip extends Controller {
   getOffset() {
     switch (this.positionValue) {
      case "bottom":
-      return [ 0, 4 ];
+      return [ 0, 8 ];
 
      case "right":
       return [ 0, 6 ];
 
      default:
-      return [ 0, 4 ];
+      return [ 0, 8 ];
     }
   }
   show(event) {
