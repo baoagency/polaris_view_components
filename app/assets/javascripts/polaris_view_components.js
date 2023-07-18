@@ -2642,19 +2642,6 @@ class Tooltip extends Controller {
     const popperOptions = {
       placement: this.positionValue,
       modifiers: [ {
-        name: "matchReferenceSize",
-        enabled: true,
-        fn: ({state: state, instance: instance}) => {
-          const widthOrHeight = state.placement.startsWith("left") || state.placement.startsWith("right") ? "height" : "width";
-          const popperSize = state.rects.popper[widthOrHeight];
-          const referenceSize = state.rects.reference[widthOrHeight];
-          if (popperSize >= referenceSize) return;
-          state.styles.popper[widthOrHeight] = `${referenceSize}px`;
-          instance.update();
-        },
-        phase: "beforeWrite",
-        requires: [ "computeStyles" ]
-      }, {
         name: "offset",
         options: {
           offset: this.getOffset()
