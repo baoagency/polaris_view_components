@@ -37,7 +37,7 @@ export default class extends Controller {
 
     const element = event.currentTarget;
 
-    let tooltip = document.createElement("div");
+    let tooltip = document.createElement("span");
     tooltip.className = "Polaris-Tooltip"
     tooltip.innerHTML = this.templateTarget.innerHTML;
 
