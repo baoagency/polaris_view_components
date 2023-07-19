@@ -80,6 +80,7 @@ module Polaris
       text_style:               "Polaris::TextStyleComponent",
       thumbnail:                "Polaris::ThumbnailComponent",
       toast:                    "Polaris::ToastComponent",
+      tooltip:                  "Polaris::TooltipComponent",
       vertical_stack:           "Polaris::VerticalStackComponent",
       visually_hidden:          "Polaris::VisuallyHiddenComponent"
     }.freeze

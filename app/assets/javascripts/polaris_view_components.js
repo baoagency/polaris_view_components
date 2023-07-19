@@ -2299,8 +2299,8 @@ function popperGenerator(generatorOptions) {
       }
     }));
     function runModifierEffects() {
-      state.orderedModifiers.forEach((function(_ref3) {
-        var name = _ref3.name, _ref3$options = _ref3.options, options = _ref3$options === void 0 ? {} : _ref3$options, effect = _ref3.effect;
+      state.orderedModifiers.forEach((function(_ref) {
+        var name = _ref.name, _ref$options = _ref.options, options = _ref$options === void 0 ? {} : _ref$options, effect = _ref.effect;
         if (typeof effect === "function") {
           var cleanupFn = effect({
             state: state,
@@ -2616,6 +2616,52 @@ class Toast extends Controller {
   }
 }
 
+class Tooltip extends Controller {
+  static targets=[ "template" ];
+  static values={
+    active: Boolean,
+    position: String
+  };
+  initialize() {
+    this.shownTooltip = null;
+  }
+  getOffset() {
+    switch (this.positionValue) {
+     case "bottom":
+      return [ 0, 8 ];
+
+     case "right":
+      return [ 0, 6 ];
+
+     default:
+      return [ 0, 8 ];
+    }
+  }
+  show(event) {
+    if (!this.activeValue) return;
+    const popperOptions = {
+      placement: this.positionValue,
+      modifiers: [ {
+        name: "offset",
+        options: {
+          offset: this.getOffset()
+        }
+      } ]
+    };
+    const element = event.currentTarget;
+    let tooltip = document.createElement("span");
+    tooltip.className = "Polaris-Tooltip";
+    tooltip.innerHTML = this.templateTarget.innerHTML;
+    this.shownTooltip = element.appendChild(tooltip);
+    this.popper = createPopper(element, this.shownTooltip, popperOptions);
+  }
+  hide() {
+    if (this.shownTooltip) {
+      this.shownTooltip.remove();
+    }
+  }
+}
+
 function registerPolarisControllers(application) {
   application.register("polaris-autocomplete", Autocomplete);
   application.register("polaris-button", Button);
@@ -2632,6 +2678,7 @@ function registerPolarisControllers(application) {
   application.register("polaris-select", Select);
   application.register("polaris-text-field", TextField);
   application.register("polaris-toast", Toast);
+  application.register("polaris-tooltip", Tooltip);
 }
 
-export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField, registerPolarisControllers };
+export { Frame, Modal, Polaris, Popover, ResourceItem, Scrollable, Select, TextField, Tooltip, registerPolarisControllers };
