@@ -1,6 +1,6 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
   <% if @source %>
-    <%= image_tag @source, class: "Polaris-Avatar__Image", role: "presentation" %>
+    <img src="<%= @source %>" class="Polaris-Avatar__Image" role="presentation" onerror="this.src=''" />
   <% else %>
     <span class="Polaris-Avatar__Initials">
       <% if @initials %>

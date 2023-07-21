@@ -2299,8 +2299,8 @@ function popperGenerator(generatorOptions) {
       }
     }));
     function runModifierEffects() {
-      state.orderedModifiers.forEach((function(_ref3) {
-        var name = _ref3.name, _ref3$options = _ref3.options, options = _ref3$options === void 0 ? {} : _ref3$options, effect = _ref3.effect;
+      state.orderedModifiers.forEach((function(_ref) {
+        var name = _ref.name, _ref$options = _ref.options, options = _ref$options === void 0 ? {} : _ref$options, effect = _ref.effect;
         if (typeof effect === "function") {
           var cleanupFn = effect({
             state: state,
