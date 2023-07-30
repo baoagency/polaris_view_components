@@ -138,4 +138,210 @@ class SelectComponentTest < Minitest::Test
       assert_selector ".Polaris-InlineError", text: "Inline Error"
     end
   end
+
+  def test_grouped_select_with_hash
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      grouped: true,
+      options: {
+        "North America" => [["United States", "US"], "Canada"],
+        "Europe" => ["Denmark", "Germany", "France"]
+      },
+      selected: "US"
+    ))
+
+    assert_selector "div" do
+      assert_selector ".Polaris-Labelled__LabelWrapper > .Polaris-Label" do
+        assert_selector "label.Polaris-Label__Text[for=input_name]", text: "Input Label"
+      end
+      assert_selector ".Polaris-Select[data-controller='polaris-select']" do
+        assert_selector "select.Polaris-Select__Input[name=input_name][data-action='polaris-select#update']" do
+          assert_selector "optgroup", count: 2
+          assert_selector "optgroup[label='North America']" do
+            assert_selector "option[value='US']:nth-child(1)", text: "United States"
+            assert_selector "option[value='Canada']:nth-child(2)", text: "Canada"
+          end
+          assert_selector "optgroup[label='Europe']" do
+            assert_selector "option[value='Denmark']:nth-child(1)", text: "Denmark"
+            assert_selector "option[value='Germany']:nth-child(2)", text: "Germany"
+            assert_selector "option[value='France']:nth-child(3)", text: "France"
+          end
+        end
+        assert_selector ".Polaris-Select__Content" do
+          assert_selector ".Polaris-Select__SelectedOption[data-polaris-select-target='selectedOption']", text: "United States"
+          assert_selector ".Polaris-Select__Icon > .Polaris-Icon"
+          assert_selector ".Polaris-Select__Backdrop"
+        end
+      end
+    end
+  end
+
+  def test_grouped_select_with_array
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      grouped: true,
+      options: [
+        ["North America",
+          [["United States", "US"], "Canada"]],
+        ["Europe",
+          ["Denmark", "Germany", "France"]]
+      ],
+      selected: "France"
+    ))
+
+    assert_selector "div" do
+      assert_selector ".Polaris-Labelled__LabelWrapper > .Polaris-Label" do
+        assert_selector "label.Polaris-Label__Text[for=input_name]", text: "Input Label"
+      end
+      assert_selector ".Polaris-Select[data-controller='polaris-select']" do
+        assert_selector "select.Polaris-Select__Input[name=input_name][data-action='polaris-select#update']" do
+          assert_selector "optgroup", count: 2
+          assert_selector "optgroup[label='North America']" do
+            assert_selector "option[value='US']:nth-child(1)", text: "United States"
+            assert_selector "option[value='Canada']:nth-child(2)", text: "Canada"
+          end
+          assert_selector "optgroup[label='Europe']" do
+            assert_selector "option[value='Denmark']:nth-child(1)", text: "Denmark"
+            assert_selector "option[value='Germany']:nth-child(2)", text: "Germany"
+            assert_selector "option[value='France']:nth-child(3)", text: "France"
+          end
+        end
+        assert_selector ".Polaris-Select__Content" do
+          assert_selector ".Polaris-Select__SelectedOption[data-polaris-select-target='selectedOption']", text: "France"
+          assert_selector ".Polaris-Select__Icon > .Polaris-Icon"
+          assert_selector ".Polaris-Select__Backdrop"
+        end
+      end
+    end
+  end
+
+  def test_grouped_select_with_prompt
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      grouped: true,
+      options: [
+        ["North America",
+          [["United States", "US"], "Canada"]],
+        ["Europe",
+          ["Denmark", "Germany", "France"]]
+      ],
+      selected: "France",
+      prompt: "Select country"
+    ))
+
+    assert_selector "div" do
+      assert_selector ".Polaris-Labelled__LabelWrapper > .Polaris-Label" do
+        assert_selector "label.Polaris-Label__Text[for=input_name]", text: "Input Label"
+      end
+      assert_selector ".Polaris-Select[data-controller='polaris-select']" do
+        assert_selector "select.Polaris-Select__Input[name=input_name][data-action='polaris-select#update']" do
+          assert_selector "option", text: "Select country"
+          assert_selector "optgroup", count: 2
+          assert_selector "optgroup[label='North America']" do
+            assert_selector "option[value='US']:nth-child(1)", text: "United States"
+            assert_selector "option[value='Canada']:nth-child(2)", text: "Canada"
+          end
+          assert_selector "optgroup[label='Europe']" do
+            assert_selector "option[value='Denmark']:nth-child(1)", text: "Denmark"
+            assert_selector "option[value='Germany']:nth-child(2)", text: "Germany"
+            assert_selector "option[value='France']:nth-child(3)", text: "France"
+          end
+        end
+        assert_selector ".Polaris-Select__Content" do
+          assert_selector ".Polaris-Select__SelectedOption[data-polaris-select-target='selectedOption']", text: "France"
+          assert_selector ".Polaris-Select__Icon > .Polaris-Icon"
+          assert_selector ".Polaris-Select__Backdrop"
+        end
+      end
+    end
+  end
+
+  def test_grouped_select_with_divider_with_selected
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      grouped: true,
+      options: [
+        [["United States", "US"], "Canada"],
+        ["Denmark", "Germany", "France"]
+      ],
+      divider: "------------",
+      selected: "Canada"
+    ))
+
+    assert_selector "div" do
+      assert_selector ".Polaris-Labelled__LabelWrapper > .Polaris-Label" do
+        assert_selector "label.Polaris-Label__Text[for=input_name]", text: "Input Label"
+      end
+      assert_selector ".Polaris-Select[data-controller='polaris-select']" do
+        assert_selector "select.Polaris-Select__Input[name=input_name][data-action='polaris-select#update']" do
+          assert_selector "optgroup[label='------------']", count: 2
+        end
+        assert_selector ".Polaris-Select__Content" do
+          assert_selector ".Polaris-Select__SelectedOption[data-polaris-select-target='selectedOption']", text: "Canada"
+          assert_selector ".Polaris-Select__Icon > .Polaris-Icon"
+          assert_selector ".Polaris-Select__Backdrop"
+        end
+      end
+    end
+  end
+
+  def test_grouped_select_with_divider_without_selected
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      grouped: true,
+      options: [
+        ["North America",
+          [["United States", "US"], "Canada"]],
+        ["Europe",
+          ["Denmark", "Germany", "France"]]
+      ],
+      divider: "------------"
+    ))
+
+    assert_selector "div" do
+      assert_selector ".Polaris-Labelled__LabelWrapper > .Polaris-Label" do
+        assert_selector "label.Polaris-Label__Text[for=input_name]", text: "Input Label"
+      end
+      assert_selector ".Polaris-Select[data-controller='polaris-select']" do
+        assert_selector "select.Polaris-Select__Input[name=input_name][data-action='polaris-select#update']" do
+          assert_selector "optgroup[label='------------']", count: 2
+        end
+        assert_selector ".Polaris-Select__Content" do
+          assert_selector ".Polaris-Select__SelectedOption[data-polaris-select-target='selectedOption']", text: ""
+          assert_selector ".Polaris-Select__Icon > .Polaris-Icon"
+          assert_selector ".Polaris-Select__Backdrop"
+        end
+      end
+    end
+  end
+
+  def test_select_with_time_zone
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Time zone",
+      time_zone: true,
+      selected: "Eastern Time (US & Canada)"
+    ))
+
+    assert_selector "div" do
+      assert_selector ".Polaris-Labelled__LabelWrapper > .Polaris-Label" do
+        assert_selector "label.Polaris-Label__Text[for=input_name]", text: "Time zone"
+      end
+      assert_selector ".Polaris-Select[data-controller='polaris-select']" do
+        assert_selector "select.Polaris-Select__Input[name=input_name][data-action='polaris-select#update']" do
+          assert_selector "option", count: 151
+        end
+        assert_selector ".Polaris-Select__Content" do
+          assert_selector ".Polaris-Select__SelectedOption[data-polaris-select-target='selectedOption']", text: "(GMT-05:00) Eastern Time (US & Canada)"
+          assert_selector ".Polaris-Select__Icon > .Polaris-Icon"
+          assert_selector ".Polaris-Select__Backdrop"
+        end
+      end
+    end
+  end
 end

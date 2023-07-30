@@ -3,13 +3,16 @@
 module Polaris
   class SelectComponent < Polaris::Component
     def initialize(
-      options:,
+      options: {},
       form: nil,
       attribute: nil,
       name: nil,
       selected: nil,
       disabled_options: nil,
       label: nil,
+      prompt: nil,
+      divider: nil,
+      time_zone: nil,
       label_hidden: false,
       label_inline: false,
       label_action: nil,
@@ -17,6 +20,7 @@ module Polaris
       required: false,
       help_text: nil,
       error: false,
+      grouped: false,
       wrapper_arguments: {},
       select_options: {},
       input_options: {},
@@ -32,6 +36,14 @@ module Polaris
       @label_hidden = label_hidden
       @label_inline = label_inline
       @disabled = disabled
+      @grouped = grouped
+      @prompt = prompt
+      @divider = divider
+      @time_zone = time_zone
+
+      if @time_zone
+        @options = ::ActiveSupport::TimeZone.all
+      end
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = "div"
@@ -73,10 +85,52 @@ module Polaris
     end
 
     def selected_option
-      option = @options.to_a.find { |i| i.last.to_s == @selected.to_s }
-      return unless option
+      if @grouped
+        grouped_selected_option
+      else
+        options_to_find = @time_zone ? @options.map { |z| [z.to_s, z.name] } : @options.to_a
+        option = options_to_find.find { |i| i.last.to_s == @selected.to_s }
+        return unless option
 
-      option.first
+        option.first
+      end
+    end
+
+    def build_options_for_select
+      if @grouped
+        grouped_options_for_select(
+          @options,
+          @selected,
+          disabled: @disabled_options,
+          prompt: @prompt,
+          divider: @divider
+        )
+      elsif @time_zone
+        time_zone_options_for_select(@selected)
+      else
+        options_for_select(@options, selected: @selected, disabled: @disabled_options)
+      end
+    end
+
+    private
+
+    def grouped_selected_option
+      @options.each do |group|
+        group_to_traverse = @divider ? group[1] : group
+        if group_to_traverse.is_a?(String)
+          return group_to_traverse if group_to_traverse == @selected.to_s
+
+          next
+        end
+
+        group_to_traverse.each do |item|
+          if item.is_a?(Array) && item[1] == @selected.to_s
+            return item[0]
+          elsif item.is_a?(String) && item == @selected.to_s
+            return item
+          end
+        end
+      end
     end
   end
 end
