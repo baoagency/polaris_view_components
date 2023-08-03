@@ -2,6 +2,12 @@ class SelectComponentPreview < ViewComponent::Preview
   def default
   end
 
+  def grouped
+  end
+
+  def time_zone
+  end
+
   def inline_label
   end
 

@@ -1,0 +1,40 @@
+<%= polaris_select(
+  name: :country,
+  label: "Country",
+  grouped: true,
+  options: {
+    'North America' => [['United States','US'], 'Canada'],
+    'Europe' => ['Denmark','Germany','France']
+  },
+  selected: "Canada"
+) %>
+
+<br>
+
+<%= polaris_select(
+  name: :country,
+  label: "Country",
+  grouped: true,
+  options: [
+    ['North America',
+     [['United States','US'],'Canada']],
+    ['Europe',
+     ['Denmark','Germany','France']]
+  ],
+  selected: "Canada",
+  prompt: "Select country"
+) %>
+
+<br>
+
+<%= polaris_select(
+  name: :country,
+  label: "Country",
+  grouped: true,
+  options: [
+    [['United States','US'], 'Canada'],
+    ['Denmark','Germany','France']
+  ],
+  prompt: "Select country",
+  divider: "---------"
+) %>

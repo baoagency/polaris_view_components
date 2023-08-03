@@ -1,0 +1,6 @@
+<%= polaris_select(
+  name: :time_zone,
+  time_zone: true,
+  label: "Time zone",
+  selected: ActiveSupport::TimeZone.new('Eastern Time (US & Canada)').name
+) %>

@@ -26,5 +26,15 @@
         select_options: { include_blank: true },
       ) %>
     <% end %>
+
+    <% form_layout.with_item do %>
+      <%= form.polaris_select(:country,
+        options: {
+          'North America' => [['United States','US'], 'Canada'],
+          'Europe' => ['Denmark','Germany','France']
+        },
+        grouped: true
+      ) %>
+    <% end %>
   <% end %>
 <% end %>
