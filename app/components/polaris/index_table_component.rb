@@ -28,8 +28,8 @@ module Polaris
       end
     end
 
-    def render_cell(**, &block)
-      render(IndexTable::CellComponent.new(**), &block)
+    def render_cell(**arguments, &block)
+      render(IndexTable::CellComponent.new(**arguments), &block)
     end
   end
 end

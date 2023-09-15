@@ -60,8 +60,8 @@ module Polaris
       end
     end
 
-    def render_cell(**, &block)
-      render(DataTable::CellComponent.new(vertical_alignment: @vertical_alignment, **), &block)
+    def render_cell(**arguments, &block)
+      render(DataTable::CellComponent.new(vertical_alignment: @vertical_alignment, **arguments), &block)
     end
   end
 end
