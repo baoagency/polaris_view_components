@@ -1,4 +1,5 @@
 require "test_helper"
+require "webdrivers/geckodriver"
 
 Capybara.server = :puma, {Silent: true}
 Capybara.default_max_wait_time = 5
