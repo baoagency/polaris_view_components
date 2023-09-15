@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "view_component", ">= 3.0.0", "< 4.0.0"
 
   spec.add_development_dependency "capybara", "~> 3"
-  spec.add_development_dependency "selenium-webdriver", "~> 4.1"
+  spec.add_development_dependency "selenium-webdriver", "~> 4.12"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "sprockets-rails"
