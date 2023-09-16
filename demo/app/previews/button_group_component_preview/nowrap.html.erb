@@ -1,6 +1,6 @@
 <div style="max-width: 100px;">
   <%= polaris_button_group(nowrap: true) do |group| %>
-    <%= group.button { "Very long button text" } %>
-    <%= group.button(primary: true) { "Save" } %>
+    <%= group.with_button { "Very long button text" } %>
+    <%= group.with_button(primary: true) { "Save" } %>
   <% end %>
 </div>

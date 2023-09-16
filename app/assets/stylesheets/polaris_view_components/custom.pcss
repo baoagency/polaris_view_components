@@ -21,12 +21,18 @@ a.Polaris-Tag__Button {
   text-decoration: none;
 }
 
-/* CardSection borders */
-.Polaris-LegacyCard__Section--borderTop {
-  border-top: 0.1rem solid var(--p-divider);
+/* Card */
+
+.Polaris-LegacyCard {
+  overflow: initial;
 }
+
+.Polaris-LegacyCard__Section--borderTop {
+  border-top: 0.1rem solid var(--p-color-border-subdued);
+}
+
 .Polaris-LegacyCard__Section--borderBottom {
-  border-bottom: 0.1rem solid var(--p-divider);
+  border-bottom: 0.1rem solid var(--p-color-border-subdued);
 }
 
 /* IndexTable */
@@ -60,31 +66,31 @@ a.Polaris-Tag__Button {
 
 /* Filters */
 
-.Polaris-Filters-ConnectedFilterControl__RightContainer {
-  .Polaris-Filters-ConnectedFilterControl__Item {
+.Polaris-LegacyFilters-ConnectedFilterControl__RightContainer {
+  .Polaris-LegacyFilters-ConnectedFilterControl__Item {
     & > div > div > button {
-      margin-right: var(--p-button-group-item-spacing);
+      margin-right: -1px;
       border-radius: 0;
     }
 
     &:first-of-type > div > div > button {
-      border-top-left-radius: var(--p-border-radius-base);
-      border-bottom-left-radius: var(--p-border-radius-base);
+      border-top-left-radius: var(--p-border-radius-1);
+      border-bottom-left-radius: var(--p-border-radius-1);
     }
   }
 
-  &.Polaris-Filters-ConnectedFilterControl--queryFieldHidden {
-    .Polaris-Filters-ConnectedFilterControl__Item:first-of-type > div > div > button {
-      border-top-left-radius: var(--p-border-radius-base);
-      border-bottom-left-radius: var(--p-border-radius-base);
+  &.Polaris-LegacyFilters-ConnectedFilterControl--queryFieldHidden {
+    .Polaris-LegacyFilters-ConnectedFilterControl__Item:first-of-type > div > div > button {
+      border-top-left-radius: var(--p-border-radius-1);
+      border-bottom-left-radius: var(--p-border-radius-1);
     }
   }
 }
 
-.Polaris-Filters-ConnectedFilterControl__RightContainerWithoutMoreFilters {
-  .Polaris-Filters-ConnectedFilterControl__Item:last-child > div > div > button {
-    border-top-right-radius: var(--p-border-radius-base);
-    border-bottom-right-radius: var(--p-border-radius-base);
+.Polaris-LegacyFilters-ConnectedFilterControl__RightContainerWithoutMoreFilters {
+  .Polaris-LegacyFilters-ConnectedFilterControl__Item:last-child > div > div > button {
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
   }
 }
 
@@ -280,7 +286,7 @@ a.Polaris-Tag__Button {
 .Polaris-Tooltip-Arrow::before {
   content: '';
   transform: rotate(45deg);
-  background-color: var(--p-surface);
+  background-color: var(--p-color-bg);
 }
 
 .Polaris-Tooltip[data-popper-placement^='top'] > .Polaris-Tooltip-Arrow {
@@ -297,4 +303,27 @@ a.Polaris-Tag__Button {
 
 .Polaris-Tooltip[data-popper-placement^='right'] > .Polaris-Tooltip-Arrow {
   left: -4px;
+}
+
+/* Polaris-VisuallyHidden */
+
+.Polaris-VisuallyHidden {
+  position: absolute !important;
+  top: 0;
+  width: 0.0625rem !important;
+  height: 0.0625rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Frame - TopBar */
+
+.Polaris-Frame__TopBar {
+  .Polaris-TopBar-SearchField > div {
+    width: 100%;
+  }
 }

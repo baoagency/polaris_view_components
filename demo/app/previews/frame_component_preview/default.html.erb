@@ -9,9 +9,6 @@
     <% top_bar.with_search_field do |search_field| %>
       <%= polaris_text_field(placeholder: "Search", clear_button: true) %>
     <% end %>
-    <% top_bar.with_secondary_menu do |secondary_menu| %>
-      <%= polaris_icon(name: "QuestionMarkMajor", color: :subdued) %>
-    <% end %>
     <% top_bar.with_user_menu(name: "Kirill", detail: "Platmart") do |user_menu| %>
       <% user_menu.with_avatar(initials: "K") %>
 

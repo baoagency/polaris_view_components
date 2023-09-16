@@ -1,33 +1,57 @@
 <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
-  <button data-action="polaris-frame#openMenu" type="button" class="Polaris-TopBar__NavigationIcon">
-    <%= polaris_icon(name: "MobileHamburgerMajor") %>
-  </button>
+  <div class="Polaris-TopBar__Container">
+    <div class="Polaris-TopBar__LeftContent">
+      <button data-action="polaris-frame#openMenu" type="button" class="Polaris-TopBar__NavigationIcon">
+        <%= polaris_icon(name: "MobileHamburgerMajor") %>
+      </button>
 
-  <% if @logo.present? %>
-    <div class="Polaris-TopBar__LogoContainer Polaris-TopBar__LogoDisplayControl">
-      <%= link_to(@logo.url,
-        class: "Polaris-TopBar__LogoLink",
-        style: "width: #{@logo.width}"
-      ) do %>
-        <%= image_tag @logo.src,
-          class: "Polaris-TopBar__Logo",
-          style: "width: #{@logo.width}",
-          alt: @logo.alt %>
+      <% if @logo.present? %>
+        <div class="Polaris-TopBar__LogoContainer Polaris-TopBar__LogoDisplayControl">
+          <%= link_to(@logo.url,
+            class: "Polaris-TopBar__LogoLink",
+            style: "width: #{@logo.width}"
+          ) do %>
+            <%= image_tag @logo.src,
+              class: "Polaris-TopBar__Logo",
+              style: "width: #{@logo.width}",
+              alt: @logo.alt %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
 
-  <div class="Polaris-TopBar__Contents">
-    <div class="Polaris-TopBar__SearchField">
-      <%= search_field %>
-    </div>
-    <div class="Polaris-TopBar__SecondaryMenu">
-      <%= secondary_menu %>
-    </div>
-    <div>
-      <div class="Polaris-TopBar-Menu__ActivatorWrapper">
-        <%= user_menu %>
+    <div class="Polaris-TopBar__Search">
+      <div class="Polaris-TopBar-SearchField">
+        <%= search_field %>
       </div>
     </div>
+
+    <div class="Polaris-TopBar__RightContent">
+      <div>
+        <div class="Polaris-TopBar-Menu__ActivatorWrapper">
+          <%= user_menu %>
+        </div>
+      </div>
+    </div>
+
+
+    <%
+=begin%>
+
+    <div class="Polaris-TopBar__Contents">
+      <div class="Polaris-TopBar__SearchField">
+        <%= search_field %>
+      </div>
+      <div class="Polaris-TopBar__SecondaryMenu">
+        <%= secondary_menu %>
+      </div>
+      <div>
+        <div class="Polaris-TopBar-Menu__ActivatorWrapper">
+          <%= user_menu %>
+        </div>
+      </div>
+    </div>
+<%
+=end%>
   </div>
 <% end %>

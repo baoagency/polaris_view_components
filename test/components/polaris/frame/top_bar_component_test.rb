@@ -16,9 +16,6 @@ class TopBarComponentTest < Minitest::Test
         top_bar.with_search_field do |search_field|
           "Search Field Content"
         end
-        top_bar.with_secondary_menu do |secondary_menu|
-          "Secondary Menu Content"
-        end
       end
     end
 

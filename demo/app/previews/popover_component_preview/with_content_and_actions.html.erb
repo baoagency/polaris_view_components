@@ -5,18 +5,12 @@
     <% pane.with_section do %>
       <p>Available sales channels</p>
     <% end %>
-    <% pane.with_section do %>
-      <p>Section 2</p>
-    <% end %>
   <% end %>
 
   <% popover.with_pane do |pane| %>
     <%= polaris_action_list do |action_list| %>
       <% action_list.with_item { "Online store" } %>
       <% action_list.with_item { "Facebook" } %>
-      <% action_list.with_item { "Pinterest" } %>
-      <% action_list.with_item { "Google" } %>
-      <% action_list.with_item { "TikTok" } %>
       <% action_list.with_item { "Shopify POS" } %>
     <% end %>
   <% end %>
