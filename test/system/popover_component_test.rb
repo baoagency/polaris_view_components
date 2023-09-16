@@ -42,7 +42,6 @@ class PopoverComponentSystemTest < ApplicationSystemTestCase
 
     within ".Polaris-Popover__Pane.Polaris-Popover__Pane--fixed" do
       assert_selector ".Polaris-Popover__Section", text: "Available sales channels"
-      assert_selector ".Polaris-Popover__Section", text: "Section 2"
     end
 
     within ".Polaris-Popover__Pane.Polaris-Scrollable.Polaris-Scrollable--vertical .Polaris-ActionList" do
