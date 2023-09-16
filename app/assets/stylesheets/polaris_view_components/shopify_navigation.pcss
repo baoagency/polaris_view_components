@@ -1,7 +1,7 @@
 .shp-Navigation {
   margin: 0 auto;
   padding: 0 20px;
-  border-bottom: 1px solid var(--p-border-subdued);
+  border-bottom: 1px solid var(--p-color-border);
 }
 
 @media (max-width: 48.0625em) and (min-width: 30.625em),(min-width: 45.625em) {
@@ -61,7 +61,7 @@
   line-height: 20px;
   text-transform: none;
   letter-spacing: normal;
-  color: var(--p-text-subdued);
+  color: var(--p-color-text-subdued);
   position: relative;
   z-index: 400;
   justify-content: center;
@@ -97,14 +97,14 @@
 
 .shp-Navigation_Link:hover .shp-Navigation_LinkText {
   font-weight: 400;
-  color: var(--p-text);
+  color: var(--p-color-text);
   text-decoration: none;
-  border-bottom: 3px solid var(--p-action-primary);
+  border-bottom: 3px solid var(--p-color-bg-primary);
 }
 
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
   font-weight: 400;
-  color: var(--p-text);
+  color: var(--p-color-text);
 }
 
 .shp-Navigation_LinkText {
@@ -119,10 +119,10 @@
 [aria-selected='true'],
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
   font-weight: 400;
-  color: var(--p-text);
+  color: var(--p-color-text);
 }
 
 [aria-selected='true'] .shp-Navigation_LinkText {
-  color: var(--p-action-primary);
-  border-bottom: 3px solid var(--p-action-primary);
+  color: var(--p-color-text-primary);
+  border-bottom: 3px solid var(--p-color-bg-primary);
 }

@@ -7,7 +7,4 @@ class HorizontalStackComponentPreview < ViewComponent::Preview
 
   def block_align
   end
-
-  def align
-  end
 end

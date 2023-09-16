@@ -21,16 +21,16 @@ module Polaris
         opts[:tag] = "div"
         opts[:classes] = class_names(
           @system_arguments[:classes],
-          "Polaris-Filters"
+          "Polaris-LegacyFilters"
         )
       end
     end
 
     def items_wrapper_classes
       class_names(
-        "Polaris-Filters-ConnectedFilterControl__RightContainer",
-        "Polaris-Filters-ConnectedFilterControl__RightContainerWithoutMoreFilters",
-        "Polaris-Filters-ConnectedFilterControl--queryFieldHidden": @query.blank?
+        "Polaris-LegacyFilters-ConnectedFilterControl__RightContainer",
+        "Polaris-LegacyFilters-ConnectedFilterControl__RightContainerWithoutMoreFilters",
+        "Polaris-LegacyFilters-ConnectedFilterControl--queryFieldHidden": @query.blank?
       )
     end
 
@@ -66,7 +66,7 @@ module Polaris
           opts[:tag] = "div"
           opts[:classes] = class_names(
             @system_arguments[:classes],
-            "Polaris-Filters-ConnectedFilterControl__Item"
+            "Polaris-LegacyFilters-ConnectedFilterControl__Item"
           )
         end
       end

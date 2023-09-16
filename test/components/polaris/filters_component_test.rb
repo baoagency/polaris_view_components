@@ -11,18 +11,18 @@ class FiltersComponentTest < Minitest::Test
       end
     end
 
-    assert_selector ".Polaris-Filters > .Polaris-Filters-ConnectedFilterControl__Wrapper" do
-      assert_selector ".Polaris-Filters-ConnectedFilterControl" do
+    assert_selector ".Polaris-LegacyFilters > .Polaris-LegacyFilters-ConnectedFilterControl__Wrapper" do
+      assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl" do
         # Query
-        assert_selector ".Polaris-Filters-ConnectedFilterControl__CenterContainer" do
-          assert_selector ".Polaris-Filters-ConnectedFilterControl__Item > .Polaris-Labelled--hidden" do
+        assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__CenterContainer" do
+          assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__Item > .Polaris-Labelled--hidden" do
             assert_selector ".Polaris-Labelled__LabelWrapper label", text: "Query"
             assert_selector ".Polaris-Connected .Polaris-TextField input[name=query]"
           end
         end
         # Filter
-        assert_selector ".Polaris-Filters-ConnectedFilterControl__RightContainer" do
-          assert_selector ".Polaris-Filters-ConnectedFilterControl__Item > [data-controller='polaris-popover']" do
+        assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__RightContainer" do
+          assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__Item > [data-controller='polaris-popover']" do
             assert_selector "[data-polaris-popover-target='activator']" do
               assert_selector ".Polaris-Button", text: "Filter"
             end
@@ -38,8 +38,8 @@ class FiltersComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-Filters-ConnectedFilterControl__Wrapper" do
-      assert_selector ".Polaris-Filters-ConnectedFilterControl__AuxiliaryContainer" do
+    assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__Wrapper" do
+      assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__AuxiliaryContainer" do
         assert_text "Content"
       end
     end
@@ -53,10 +53,10 @@ class FiltersComponentTest < Minitest::Test
       end
     end
 
-    assert_selector ".Polaris-Filters-ConnectedFilterControl__CenterContainer" do
+    assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__CenterContainer" do
       assert_selector "input[disabled]"
     end
-    assert_selector ".Polaris-Filters-ConnectedFilterControl__RightContainer" do
+    assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__RightContainer" do
       assert_selector "button[disabled]"
     end
   end
@@ -66,7 +66,7 @@ class FiltersComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-Filters > .Polaris-Filters__HelpText", text: "Help Text"
+    assert_selector ".Polaris-LegacyFilters > .Polaris-LegacyFilters__HelpText", text: "Help Text"
   end
 
   def test_filters_with_tags
@@ -77,6 +77,6 @@ class FiltersComponentTest < Minitest::Test
       "Content"
     end
 
-    assert_selector ".Polaris-Filters > .Polaris-Filters__TagsContainer", text: "Tags"
+    assert_selector ".Polaris-LegacyFilters > .Polaris-LegacyFilters__TagsContainer", text: "Tags"
   end
 end

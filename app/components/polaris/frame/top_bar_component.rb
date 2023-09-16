@@ -1,7 +1,6 @@
 class Polaris::Frame::TopBarComponent < Polaris::Component
   renders_one :user_menu, Polaris::TopBar::UserMenuComponent
   renders_one :search_field
-  renders_one :secondary_menu
 
   def initialize(logo:, **system_arguments)
     @logo = logo.is_a?(Hash) ? Polaris::Logo.new(**logo) : logo

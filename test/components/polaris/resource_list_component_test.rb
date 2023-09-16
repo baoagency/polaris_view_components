@@ -22,7 +22,7 @@ class ResourceListComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-ResourceList__ResourceListWrapper" do
-      assert_selector ".Polaris-ResourceList__FiltersWrapper > .Polaris-Filters"
+      assert_selector ".Polaris-ResourceList__FiltersWrapper > .Polaris-LegacyFilters"
     end
   end
 
