@@ -258,53 +258,6 @@ a.Polaris-Tag__Button {
   }
 }
 
-/* Tooltip */
-
-.Polaris-Tooltip {
-  position: relative;
-  opacity: 1;
-  box-shadow: var(--p-shadow-lg);
-  border-radius: var(--p-border-radius-2);
-  pointer-events: none;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  will-change: opacity, left, top;
-  transition: opacity 200ms cubic-bezier(0.36, 0, 1, 1) 100ms;
-}
-.Polaris-Tooltip-TooltipOverlay__Content {
-  border-radius: var(--p-border-radius-2);
-  padding: var(--p-space-1) var(--p-space-2);
-}
-
-.Polaris-Tooltip-Arrow,.Polaris-Tooltip-Arrow::before {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  z-index: -1;
-}
-
-.Polaris-Tooltip-Arrow::before {
-  content: '';
-  transform: rotate(45deg);
-  background-color: var(--p-color-bg);
-}
-
-.Polaris-Tooltip[data-popper-placement^='top'] > .Polaris-Tooltip-Arrow {
-  bottom: -4px;
-}
-
-.Polaris-Tooltip[data-popper-placement^='bottom'] > .Polaris-Tooltip-Arrow {
-  top: -4px;
-}
-
-.Polaris-Tooltip[data-popper-placement^='left'] > .Polaris-Tooltip-Arrow {
-  right: -4px;
-}
-
-.Polaris-Tooltip[data-popper-placement^='right'] > .Polaris-Tooltip-Arrow {
-  left: -4px;
-}
-
 /* Polaris-VisuallyHidden */
 
 .Polaris-VisuallyHidden {

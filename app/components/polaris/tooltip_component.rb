@@ -20,7 +20,12 @@ module Polaris
       prepend_option(
         system_arguments[:data],
         :action,
-        "mouseenter->polaris-tooltip#show mouseleave->polaris-tooltip#hide"
+        %w[
+          mouseenter->polaris-tooltip#show
+          mouseleave->polaris-tooltip#hide
+          focus->polaris-tooltip#show
+          blur->polaris-tooltip#hide
+        ].join(" ")
       )
       prepend_option(system_arguments[:data], :controller, "polaris-tooltip")
     end

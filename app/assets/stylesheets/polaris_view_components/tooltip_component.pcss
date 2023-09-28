@@ -1,0 +1,31 @@
+.Polaris-Tooltip {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  box-shadow: var(--p-shadow-lg);
+  border-radius: var(--p-border-radius-2);
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: opacity, left, top;
+  transition: opacity 200ms cubic-bezier(0.36, 0, 1, 1) 100ms;
+}
+.Polaris-Tooltip-TooltipOverlay__Content {
+  border-radius: var(--p-border-radius-2);
+  padding: var(--p-space-1) var(--p-space-2);
+}
+
+.Polaris-Tooltip-Arrow,.Polaris-Tooltip-Arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  z-index: -1;
+}
+
+.Polaris-Tooltip-Arrow::before {
+  content: '';
+  transform: rotate(45deg);
+  background-color: var(--p-color-bg);
+}
