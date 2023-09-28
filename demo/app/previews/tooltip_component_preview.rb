@@ -4,4 +4,7 @@ class TooltipComponentPreview < ViewComponent::Preview
 
   def inside_paragraph
   end
+
+  def long_page
+  end
 end
