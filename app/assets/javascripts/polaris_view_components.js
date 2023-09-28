@@ -942,11 +942,11 @@ var afterWrite = "afterWrite";
 
 var modifierPhases = [ beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite ];
 
-function getNodeName(element) {
+function getNodeName$1(element) {
   return element ? (element.nodeName || "").toLowerCase() : null;
 }
 
-function getWindow(node) {
+function getWindow$1(node) {
   if (node == null) {
     return window;
   }
@@ -957,21 +957,21 @@ function getWindow(node) {
   return node;
 }
 
-function isElement(node) {
-  var OwnElement = getWindow(node).Element;
+function isElement$1(node) {
+  var OwnElement = getWindow$1(node).Element;
   return node instanceof OwnElement || node instanceof Element;
 }
 
-function isHTMLElement(node) {
-  var OwnElement = getWindow(node).HTMLElement;
+function isHTMLElement$1(node) {
+  var OwnElement = getWindow$1(node).HTMLElement;
   return node instanceof OwnElement || node instanceof HTMLElement;
 }
 
-function isShadowRoot(node) {
+function isShadowRoot$1(node) {
   if (typeof ShadowRoot === "undefined") {
     return false;
   }
-  var OwnElement = getWindow(node).ShadowRoot;
+  var OwnElement = getWindow$1(node).ShadowRoot;
   return node instanceof OwnElement || node instanceof ShadowRoot;
 }
 
@@ -981,7 +981,7 @@ function applyStyles(_ref) {
     var style = state.styles[name] || {};
     var attributes = state.attributes[name] || {};
     var element = state.elements[name];
-    if (!isHTMLElement(element) || !getNodeName(element)) {
+    if (!isHTMLElement$1(element) || !getNodeName$1(element)) {
       return;
     }
     Object.assign(element.style, style);
@@ -1024,7 +1024,7 @@ function effect$2(_ref2) {
         style[property] = "";
         return style;
       }), {});
-      if (!isHTMLElement(element) || !getNodeName(element)) {
+      if (!isHTMLElement$1(element) || !getNodeName$1(element)) {
         return;
       }
       Object.assign(element.style, style);
@@ -1048,11 +1048,11 @@ function getBasePlacement(placement) {
   return placement.split("-")[0];
 }
 
-var max = Math.max;
+var max$1 = Math.max;
 
-var min = Math.min;
+var min$1 = Math.min;
 
-var round = Math.round;
+var round$1 = Math.round;
 
 function getUAString() {
   var uaData = navigator.userAgentData;
@@ -1068,7 +1068,7 @@ function isLayoutViewport() {
   return !/^((?!chrome|android).)*safari/i.test(getUAString());
 }
 
-function getBoundingClientRect(element, includeScale, isFixedStrategy) {
+function getBoundingClientRect$1(element, includeScale, isFixedStrategy) {
   if (includeScale === void 0) {
     includeScale = false;
   }
@@ -1078,11 +1078,11 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy) {
   var clientRect = element.getBoundingClientRect();
   var scaleX = 1;
   var scaleY = 1;
-  if (includeScale && isHTMLElement(element)) {
-    scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
-    scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
+  if (includeScale && isHTMLElement$1(element)) {
+    scaleX = element.offsetWidth > 0 ? round$1(clientRect.width) / element.offsetWidth || 1 : 1;
+    scaleY = element.offsetHeight > 0 ? round$1(clientRect.height) / element.offsetHeight || 1 : 1;
   }
-  var _ref = isElement(element) ? getWindow(element) : window, visualViewport = _ref.visualViewport;
+  var _ref = isElement$1(element) ? getWindow$1(element) : window, visualViewport = _ref.visualViewport;
   var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
   var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
   var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
@@ -1101,7 +1101,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy) {
 }
 
 function getLayoutRect(element) {
-  var clientRect = getBoundingClientRect(element);
+  var clientRect = getBoundingClientRect$1(element);
   var width = element.offsetWidth;
   var height = element.offsetHeight;
   if (Math.abs(clientRect.width - width) <= 1) {
@@ -1122,7 +1122,7 @@ function contains(parent, child) {
   var rootNode = child.getRootNode && child.getRootNode();
   if (parent.contains(child)) {
     return true;
-  } else if (rootNode && isShadowRoot(rootNode)) {
+  } else if (rootNode && isShadowRoot$1(rootNode)) {
     var next = child;
     do {
       if (next && parent.isSameNode(next)) {
@@ -1134,47 +1134,47 @@ function contains(parent, child) {
   return false;
 }
 
-function getComputedStyle$1(element) {
-  return getWindow(element).getComputedStyle(element);
+function getComputedStyle$2(element) {
+  return getWindow$1(element).getComputedStyle(element);
 }
 
-function isTableElement(element) {
-  return [ "table", "td", "th" ].indexOf(getNodeName(element)) >= 0;
+function isTableElement$1(element) {
+  return [ "table", "td", "th" ].indexOf(getNodeName$1(element)) >= 0;
 }
 
-function getDocumentElement(element) {
-  return ((isElement(element) ? element.ownerDocument : element.document) || window.document).documentElement;
+function getDocumentElement$1(element) {
+  return ((isElement$1(element) ? element.ownerDocument : element.document) || window.document).documentElement;
 }
 
-function getParentNode(element) {
-  if (getNodeName(element) === "html") {
+function getParentNode$1(element) {
+  if (getNodeName$1(element) === "html") {
     return element;
   }
-  return element.assignedSlot || element.parentNode || (isShadowRoot(element) ? element.host : null) || getDocumentElement(element);
+  return element.assignedSlot || element.parentNode || (isShadowRoot$1(element) ? element.host : null) || getDocumentElement$1(element);
 }
 
-function getTrueOffsetParent(element) {
-  if (!isHTMLElement(element) || getComputedStyle$1(element).position === "fixed") {
+function getTrueOffsetParent$1(element) {
+  if (!isHTMLElement$1(element) || getComputedStyle$2(element).position === "fixed") {
     return null;
   }
   return element.offsetParent;
 }
 
-function getContainingBlock(element) {
+function getContainingBlock$1(element) {
   var isFirefox = /firefox/i.test(getUAString());
   var isIE = /Trident/i.test(getUAString());
-  if (isIE && isHTMLElement(element)) {
-    var elementCss = getComputedStyle$1(element);
+  if (isIE && isHTMLElement$1(element)) {
+    var elementCss = getComputedStyle$2(element);
     if (elementCss.position === "fixed") {
       return null;
     }
   }
-  var currentNode = getParentNode(element);
-  if (isShadowRoot(currentNode)) {
+  var currentNode = getParentNode$1(element);
+  if (isShadowRoot$1(currentNode)) {
     currentNode = currentNode.host;
   }
-  while (isHTMLElement(currentNode) && [ "html", "body" ].indexOf(getNodeName(currentNode)) < 0) {
-    var css = getComputedStyle$1(currentNode);
+  while (isHTMLElement$1(currentNode) && [ "html", "body" ].indexOf(getNodeName$1(currentNode)) < 0) {
+    var css = getComputedStyle$2(currentNode);
     if (css.transform !== "none" || css.perspective !== "none" || css.contain === "paint" || [ "transform", "perspective" ].indexOf(css.willChange) !== -1 || isFirefox && css.willChange === "filter" || isFirefox && css.filter && css.filter !== "none") {
       return currentNode;
     } else {
@@ -1184,24 +1184,24 @@ function getContainingBlock(element) {
   return null;
 }
 
-function getOffsetParent(element) {
-  var window = getWindow(element);
-  var offsetParent = getTrueOffsetParent(element);
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === "static") {
-    offsetParent = getTrueOffsetParent(offsetParent);
+function getOffsetParent$1(element) {
+  var window = getWindow$1(element);
+  var offsetParent = getTrueOffsetParent$1(element);
+  while (offsetParent && isTableElement$1(offsetParent) && getComputedStyle$2(offsetParent).position === "static") {
+    offsetParent = getTrueOffsetParent$1(offsetParent);
   }
-  if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle$1(offsetParent).position === "static")) {
+  if (offsetParent && (getNodeName$1(offsetParent) === "html" || getNodeName$1(offsetParent) === "body" && getComputedStyle$2(offsetParent).position === "static")) {
     return window;
   }
-  return offsetParent || getContainingBlock(element) || window;
+  return offsetParent || getContainingBlock$1(element) || window;
 }
 
 function getMainAxisFromPlacement(placement) {
   return [ "top", "bottom" ].indexOf(placement) >= 0 ? "x" : "y";
 }
 
-function within(min$1, value, max$1) {
-  return max(min$1, min(value, max$1));
+function within(min, value, max) {
+  return max$1(min, min$1(value, max));
 }
 
 function withinMaxClamp(min, value, max) {
@@ -1236,7 +1236,7 @@ var toPaddingObject = function toPaddingObject(padding, state) {
   return mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
 };
 
-function arrow(_ref) {
+function arrow$1(_ref) {
   var _state$modifiersData$;
   var state = _ref.state, name = _ref.name, options = _ref.options;
   var arrowElement = state.elements.arrow;
@@ -1254,7 +1254,7 @@ function arrow(_ref) {
   var maxProp = axis === "y" ? bottom : right;
   var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets[axis] - state.rects.popper[len];
   var startDiff = popperOffsets[axis] - state.rects.reference[axis];
-  var arrowOffsetParent = getOffsetParent(arrowElement);
+  var arrowOffsetParent = getOffsetParent$1(arrowElement);
   var clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
   var centerToReference = endDiff / 2 - startDiff / 2;
   var min = paddingObject[minProp];
@@ -1284,11 +1284,11 @@ function effect$1(_ref2) {
   state.elements.arrow = arrowElement;
 }
 
-var arrow$1 = {
+var arrow$2 = {
   name: "arrow",
   enabled: true,
   phase: "main",
-  fn: arrow,
+  fn: arrow$1,
   effect: effect$1,
   requires: [ "popperOffsets" ],
   requiresIfExists: [ "preventOverflow" ]
@@ -1309,8 +1309,8 @@ function roundOffsetsByDPR(_ref, win) {
   var x = _ref.x, y = _ref.y;
   var dpr = win.devicePixelRatio || 1;
   return {
-    x: round(x * dpr) / dpr || 0,
-    y: round(y * dpr) / dpr || 0
+    x: round$1(x * dpr) / dpr || 0,
+    y: round$1(y * dpr) / dpr || 0
   };
 }
 
@@ -1333,12 +1333,12 @@ function mapToStyles(_ref2) {
   var sideY = top;
   var win = window;
   if (adaptive) {
-    var offsetParent = getOffsetParent(popper);
+    var offsetParent = getOffsetParent$1(popper);
     var heightProp = "clientHeight";
     var widthProp = "clientWidth";
-    if (offsetParent === getWindow(popper)) {
-      offsetParent = getDocumentElement(popper);
-      if (getComputedStyle$1(offsetParent).position !== "static" && position === "absolute") {
+    if (offsetParent === getWindow$1(popper)) {
+      offsetParent = getDocumentElement$1(popper);
+      if (getComputedStyle$2(offsetParent).position !== "static" && position === "absolute") {
         heightProp = "scrollHeight";
         widthProp = "scrollWidth";
       }
@@ -1363,7 +1363,7 @@ function mapToStyles(_ref2) {
   var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
     x: x,
     y: y
-  }, getWindow(popper)) : {
+  }, getWindow$1(popper)) : {
     x: x,
     y: y
   };
@@ -1426,7 +1426,7 @@ var passive = {
 function effect(_ref) {
   var state = _ref.state, instance = _ref.instance, options = _ref.options;
   var _options$scroll = options.scroll, scroll = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
-  var window = getWindow(state.elements.popper);
+  var window = getWindow$1(state.elements.popper);
   var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
   if (scroll) {
     scrollParents.forEach((function(scrollParent) {
@@ -1464,7 +1464,7 @@ var hash$1 = {
   top: "bottom"
 };
 
-function getOppositePlacement(placement) {
+function getOppositePlacement$1(placement) {
   return placement.replace(/left|right|bottom|top/g, (function(matched) {
     return hash$1[matched];
   }));
@@ -1482,7 +1482,7 @@ function getOppositeVariationPlacement(placement) {
 }
 
 function getWindowScroll(node) {
-  var win = getWindow(node);
+  var win = getWindow$1(node);
   var scrollLeft = win.pageXOffset;
   var scrollTop = win.pageYOffset;
   return {
@@ -1491,13 +1491,13 @@ function getWindowScroll(node) {
   };
 }
 
-function getWindowScrollBarX(element) {
-  return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
+function getWindowScrollBarX$1(element) {
+  return getBoundingClientRect$1(getDocumentElement$1(element)).left + getWindowScroll(element).scrollLeft;
 }
 
-function getViewportRect(element, strategy) {
-  var win = getWindow(element);
-  var html = getDocumentElement(element);
+function getViewportRect$1(element, strategy) {
+  var win = getWindow$1(element);
+  var html = getDocumentElement$1(element);
   var visualViewport = win.visualViewport;
   var width = html.clientWidth;
   var height = html.clientHeight;
@@ -1515,22 +1515,22 @@ function getViewportRect(element, strategy) {
   return {
     width: width,
     height: height,
-    x: x + getWindowScrollBarX(element),
+    x: x + getWindowScrollBarX$1(element),
     y: y
   };
 }
 
-function getDocumentRect(element) {
+function getDocumentRect$1(element) {
   var _element$ownerDocumen;
-  var html = getDocumentElement(element);
+  var html = getDocumentElement$1(element);
   var winScroll = getWindowScroll(element);
   var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-  var width = max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-  var height = max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
-  var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
+  var width = max$1(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+  var height = max$1(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+  var x = -winScroll.scrollLeft + getWindowScrollBarX$1(element);
   var y = -winScroll.scrollTop;
-  if (getComputedStyle$1(body || html).direction === "rtl") {
-    x += max(html.clientWidth, body ? body.clientWidth : 0) - width;
+  if (getComputedStyle$2(body || html).direction === "rtl") {
+    x += max$1(html.clientWidth, body ? body.clientWidth : 0) - width;
   }
   return {
     width: width,
@@ -1541,18 +1541,18 @@ function getDocumentRect(element) {
 }
 
 function isScrollParent(element) {
-  var _getComputedStyle = getComputedStyle$1(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
+  var _getComputedStyle = getComputedStyle$2(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
   return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
 }
 
 function getScrollParent(node) {
-  if ([ "html", "body", "#document" ].indexOf(getNodeName(node)) >= 0) {
+  if ([ "html", "body", "#document" ].indexOf(getNodeName$1(node)) >= 0) {
     return node.ownerDocument.body;
   }
-  if (isHTMLElement(node) && isScrollParent(node)) {
+  if (isHTMLElement$1(node) && isScrollParent(node)) {
     return node;
   }
-  return getScrollParent(getParentNode(node));
+  return getScrollParent(getParentNode$1(node));
 }
 
 function listScrollParents(element, list) {
@@ -1562,13 +1562,13 @@ function listScrollParents(element, list) {
   }
   var scrollParent = getScrollParent(element);
   var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
-  var win = getWindow(scrollParent);
+  var win = getWindow$1(scrollParent);
   var target = isBody ? [ win ].concat(win.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
   var updatedList = list.concat(target);
-  return isBody ? updatedList : updatedList.concat(listScrollParents(getParentNode(target)));
+  return isBody ? updatedList : updatedList.concat(listScrollParents(getParentNode$1(target)));
 }
 
-function rectToClientRect(rect) {
+function rectToClientRect$1(rect) {
   return Object.assign({}, rect, {
     left: rect.x,
     top: rect.y,
@@ -1577,8 +1577,8 @@ function rectToClientRect(rect) {
   });
 }
 
-function getInnerBoundingClientRect(element, strategy) {
-  var rect = getBoundingClientRect(element, false, strategy === "fixed");
+function getInnerBoundingClientRect$1(element, strategy) {
+  var rect = getBoundingClientRect$1(element, false, strategy === "fixed");
   rect.top = rect.top + element.clientTop;
   rect.left = rect.left + element.clientLeft;
   rect.bottom = rect.top + element.clientHeight;
@@ -1591,31 +1591,31 @@ function getInnerBoundingClientRect(element, strategy) {
 }
 
 function getClientRectFromMixedType(element, clippingParent, strategy) {
-  return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+  return clippingParent === viewport ? rectToClientRect$1(getViewportRect$1(element, strategy)) : isElement$1(clippingParent) ? getInnerBoundingClientRect$1(clippingParent, strategy) : rectToClientRect$1(getDocumentRect$1(getDocumentElement$1(element)));
 }
 
 function getClippingParents(element) {
-  var clippingParents = listScrollParents(getParentNode(element));
-  var canEscapeClipping = [ "absolute", "fixed" ].indexOf(getComputedStyle$1(element).position) >= 0;
-  var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
-  if (!isElement(clipperElement)) {
+  var clippingParents = listScrollParents(getParentNode$1(element));
+  var canEscapeClipping = [ "absolute", "fixed" ].indexOf(getComputedStyle$2(element).position) >= 0;
+  var clipperElement = canEscapeClipping && isHTMLElement$1(element) ? getOffsetParent$1(element) : element;
+  if (!isElement$1(clipperElement)) {
     return [];
   }
   return clippingParents.filter((function(clippingParent) {
-    return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== "body";
+    return isElement$1(clippingParent) && contains(clippingParent, clipperElement) && getNodeName$1(clippingParent) !== "body";
   }));
 }
 
-function getClippingRect(element, boundary, rootBoundary, strategy) {
+function getClippingRect$1(element, boundary, rootBoundary, strategy) {
   var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
   var clippingParents = [].concat(mainClippingParents, [ rootBoundary ]);
   var firstClippingParent = clippingParents[0];
   var clippingRect = clippingParents.reduce((function(accRect, clippingParent) {
     var rect = getClientRectFromMixedType(element, clippingParent, strategy);
-    accRect.top = max(rect.top, accRect.top);
-    accRect.right = min(rect.right, accRect.right);
-    accRect.bottom = min(rect.bottom, accRect.bottom);
-    accRect.left = max(rect.left, accRect.left);
+    accRect.top = max$1(rect.top, accRect.top);
+    accRect.right = min$1(rect.right, accRect.right);
+    accRect.bottom = min$1(rect.bottom, accRect.bottom);
+    accRect.left = max$1(rect.left, accRect.left);
     return accRect;
   }), getClientRectFromMixedType(element, firstClippingParent, strategy));
   clippingRect.width = clippingRect.right - clippingRect.left;
@@ -1683,7 +1683,7 @@ function computeOffsets(_ref) {
   return offsets;
 }
 
-function detectOverflow(state, options) {
+function detectOverflow$1(state, options) {
   if (options === void 0) {
     options = {};
   }
@@ -1692,15 +1692,15 @@ function detectOverflow(state, options) {
   var altContext = elementContext === popper ? reference : popper;
   var popperRect = state.rects.popper;
   var element = state.elements[altBoundary ? altContext : elementContext];
-  var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
-  var referenceClientRect = getBoundingClientRect(state.elements.reference);
+  var clippingClientRect = getClippingRect$1(isElement$1(element) ? element : element.contextElement || getDocumentElement$1(state.elements.popper), boundary, rootBoundary, strategy);
+  var referenceClientRect = getBoundingClientRect$1(state.elements.reference);
   var popperOffsets = computeOffsets({
     reference: referenceClientRect,
     element: popperRect,
     strategy: "absolute",
     placement: placement
   });
-  var popperClientRect = rectToClientRect(Object.assign({}, popperRect, popperOffsets));
+  var popperClientRect = rectToClientRect$1(Object.assign({}, popperRect, popperOffsets));
   var elementClientRect = elementContext === popper ? popperClientRect : referenceClientRect;
   var overflowOffsets = {
     top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
@@ -1736,7 +1736,7 @@ function computeAutoPlacement(state, options) {
     allowedPlacements = placements$1;
   }
   var overflows = allowedPlacements.reduce((function(acc, placement) {
-    acc[placement] = detectOverflow(state, {
+    acc[placement] = detectOverflow$1(state, {
       placement: placement,
       boundary: boundary,
       rootBoundary: rootBoundary,
@@ -1753,11 +1753,11 @@ function getExpandedFallbackPlacements(placement) {
   if (getBasePlacement(placement) === auto) {
     return [];
   }
-  var oppositePlacement = getOppositePlacement(placement);
+  var oppositePlacement = getOppositePlacement$1(placement);
   return [ getOppositeVariationPlacement(placement), oppositePlacement, getOppositeVariationPlacement(oppositePlacement) ];
 }
 
-function flip(_ref) {
+function flip$1(_ref) {
   var state = _ref.state, options = _ref.options, name = _ref.name;
   if (state.modifiersData[name]._skip) {
     return;
@@ -1766,7 +1766,7 @@ function flip(_ref) {
   var preferredPlacement = state.options.placement;
   var basePlacement = getBasePlacement(preferredPlacement);
   var isBasePlacement = basePlacement === preferredPlacement;
-  var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [ getOppositePlacement(preferredPlacement) ] : getExpandedFallbackPlacements(preferredPlacement));
+  var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [ getOppositePlacement$1(preferredPlacement) ] : getExpandedFallbackPlacements(preferredPlacement));
   var placements = [ preferredPlacement ].concat(fallbackPlacements).reduce((function(acc, placement) {
     return acc.concat(getBasePlacement(placement) === auto ? computeAutoPlacement(state, {
       placement: placement,
@@ -1788,7 +1788,7 @@ function flip(_ref) {
     var isStartVariation = getVariation(placement) === start;
     var isVertical = [ top, bottom ].indexOf(_basePlacement) >= 0;
     var len = isVertical ? "width" : "height";
-    var overflow = detectOverflow(state, {
+    var overflow = detectOverflow$1(state, {
       placement: placement,
       boundary: boundary,
       rootBoundary: rootBoundary,
@@ -1797,9 +1797,9 @@ function flip(_ref) {
     });
     var mainVariationSide = isVertical ? isStartVariation ? right : left : isStartVariation ? bottom : top;
     if (referenceRect[len] > popperRect[len]) {
-      mainVariationSide = getOppositePlacement(mainVariationSide);
+      mainVariationSide = getOppositePlacement$1(mainVariationSide);
     }
-    var altVariationSide = getOppositePlacement(mainVariationSide);
+    var altVariationSide = getOppositePlacement$1(mainVariationSide);
     var checks = [];
     if (checkMainAxis) {
       checks.push(overflow[_basePlacement] <= 0);
@@ -1844,11 +1844,11 @@ function flip(_ref) {
   }
 }
 
-var flip$1 = {
+var flip$2 = {
   name: "flip",
   enabled: true,
   phase: "main",
-  fn: flip,
+  fn: flip$1,
   requiresIfExists: [ "offset" ],
   data: {
     _skip: false
@@ -1881,10 +1881,10 @@ function hide(_ref) {
   var referenceRect = state.rects.reference;
   var popperRect = state.rects.popper;
   var preventedOffsets = state.modifiersData.preventOverflow;
-  var referenceOverflow = detectOverflow(state, {
+  var referenceOverflow = detectOverflow$1(state, {
     elementContext: "reference"
   });
-  var popperAltOverflow = detectOverflow(state, {
+  var popperAltOverflow = detectOverflow$1(state, {
     altBoundary: true
   });
   var referenceClippingOffsets = getSideOffsets(referenceOverflow, referenceRect);
@@ -1928,7 +1928,7 @@ function distanceAndSkiddingToXY(placement, rects, offset) {
   };
 }
 
-function offset(_ref2) {
+function offset$1(_ref2) {
   var state = _ref2.state, options = _ref2.options, name = _ref2.name;
   var _options$offset = options.offset, offset = _options$offset === void 0 ? [ 0, 0 ] : _options$offset;
   var data = placements.reduce((function(acc, placement) {
@@ -1943,12 +1943,12 @@ function offset(_ref2) {
   state.modifiersData[name] = data;
 }
 
-var offset$1 = {
+var offset$2 = {
   name: "offset",
   enabled: true,
   phase: "main",
   requires: [ "popperOffsets" ],
-  fn: offset
+  fn: offset$1
 };
 
 function popperOffsets(_ref) {
@@ -1976,7 +1976,7 @@ function getAltAxis(axis) {
 function preventOverflow(_ref) {
   var state = _ref.state, options = _ref.options, name = _ref.name;
   var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, padding = options.padding, _options$tether = options.tether, tether = _options$tether === void 0 ? true : _options$tether, _options$tetherOffset = options.tetherOffset, tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
-  var overflow = detectOverflow(state, {
+  var overflow = detectOverflow$1(state, {
     boundary: boundary,
     rootBoundary: rootBoundary,
     padding: padding,
@@ -2014,8 +2014,8 @@ function preventOverflow(_ref) {
     var altSide = mainAxis === "y" ? bottom : right;
     var len = mainAxis === "y" ? "height" : "width";
     var offset = popperOffsets[mainAxis];
-    var min$1 = offset + overflow[mainSide];
-    var max$1 = offset - overflow[altSide];
+    var min = offset + overflow[mainSide];
+    var max = offset - overflow[altSide];
     var additive = tether ? -popperRect[len] / 2 : 0;
     var minLen = variation === start ? referenceRect[len] : popperRect[len];
     var maxLen = variation === start ? -popperRect[len] : -referenceRect[len];
@@ -2030,12 +2030,12 @@ function preventOverflow(_ref) {
     var arrowLen = within(0, referenceRect[len], arrowRect[len]);
     var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
     var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
-    var arrowOffsetParent = state.elements.arrow && getOffsetParent(state.elements.arrow);
+    var arrowOffsetParent = state.elements.arrow && getOffsetParent$1(state.elements.arrow);
     var clientOffset = arrowOffsetParent ? mainAxis === "y" ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
     var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
     var tetherMin = offset + minOffset - offsetModifierValue - clientOffset;
     var tetherMax = offset + maxOffset - offsetModifierValue;
-    var preventedOffset = within(tether ? min(min$1, tetherMin) : min$1, offset, tether ? max(max$1, tetherMax) : max$1);
+    var preventedOffset = within(tether ? min$1(min, tetherMin) : min, offset, tether ? max$1(max, tetherMax) : max);
     popperOffsets[mainAxis] = preventedOffset;
     data[mainAxis] = preventedOffset - offset;
   }
@@ -2073,8 +2073,8 @@ function getHTMLElementScroll(element) {
   };
 }
 
-function getNodeScroll(node) {
-  if (node === getWindow(node) || !isHTMLElement(node)) {
+function getNodeScroll$1(node) {
+  if (node === getWindow$1(node) || !isHTMLElement$1(node)) {
     return getWindowScroll(node);
   } else {
     return getHTMLElementScroll(node);
@@ -2083,8 +2083,8 @@ function getNodeScroll(node) {
 
 function isElementScaled(element) {
   var rect = element.getBoundingClientRect();
-  var scaleX = round(rect.width) / element.offsetWidth || 1;
-  var scaleY = round(rect.height) / element.offsetHeight || 1;
+  var scaleX = round$1(rect.width) / element.offsetWidth || 1;
+  var scaleY = round$1(rect.height) / element.offsetHeight || 1;
   return scaleX !== 1 || scaleY !== 1;
 }
 
@@ -2092,10 +2092,10 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
   if (isFixed === void 0) {
     isFixed = false;
   }
-  var isOffsetParentAnElement = isHTMLElement(offsetParent);
-  var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
-  var documentElement = getDocumentElement(offsetParent);
-  var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
+  var isOffsetParentAnElement = isHTMLElement$1(offsetParent);
+  var offsetParentIsScaled = isHTMLElement$1(offsetParent) && isElementScaled(offsetParent);
+  var documentElement = getDocumentElement$1(offsetParent);
+  var rect = getBoundingClientRect$1(elementOrVirtualElement, offsetParentIsScaled, isFixed);
   var scroll = {
     scrollLeft: 0,
     scrollTop: 0
@@ -2105,15 +2105,15 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
     y: 0
   };
   if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
-    if (getNodeName(offsetParent) !== "body" || isScrollParent(documentElement)) {
-      scroll = getNodeScroll(offsetParent);
+    if (getNodeName$1(offsetParent) !== "body" || isScrollParent(documentElement)) {
+      scroll = getNodeScroll$1(offsetParent);
     }
-    if (isHTMLElement(offsetParent)) {
-      offsets = getBoundingClientRect(offsetParent, true);
+    if (isHTMLElement$1(offsetParent)) {
+      offsets = getBoundingClientRect$1(offsetParent, true);
       offsets.x += offsetParent.clientLeft;
       offsets.y += offsetParent.clientTop;
     } else if (documentElement) {
-      offsets.x = getWindowScrollBarX(documentElement);
+      offsets.x = getWindowScrollBarX$1(documentElement);
     }
   }
   return {
@@ -2235,7 +2235,7 @@ function popperGenerator(generatorOptions) {
         cleanupModifierEffects();
         state.options = Object.assign({}, defaultOptions, state.options, options);
         state.scrollParents = {
-          reference: isElement(reference) ? listScrollParents(reference) : reference.contextElement ? listScrollParents(reference.contextElement) : [],
+          reference: isElement$1(reference) ? listScrollParents(reference) : reference.contextElement ? listScrollParents(reference.contextElement) : [],
           popper: listScrollParents(popper)
         };
         var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers, state.options.modifiers)));
@@ -2254,7 +2254,7 @@ function popperGenerator(generatorOptions) {
           return;
         }
         state.rects = {
-          reference: getCompositeRect(reference, getOffsetParent(popper), state.options.strategy === "fixed"),
+          reference: getCompositeRect(reference, getOffsetParent$1(popper), state.options.strategy === "fixed"),
           popper: getLayoutRect(popper)
         };
         state.reset = false;
@@ -2323,7 +2323,7 @@ function popperGenerator(generatorOptions) {
   };
 }
 
-var defaultModifiers = [ eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1, offset$1, flip$1, preventOverflow$1, arrow$1, hide$1 ];
+var defaultModifiers = [ eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1, offset$2, flip$2, preventOverflow$1, arrow$2, hide$1 ];
 
 var createPopper = popperGenerator({
   defaultModifiers: defaultModifiers
@@ -2616,48 +2616,1266 @@ class Toast extends Controller {
   }
 }
 
+const min = Math.min;
+
+const max = Math.max;
+
+const round = Math.round;
+
+const floor = Math.floor;
+
+const createCoords = v => ({
+  x: v,
+  y: v
+});
+
+const oppositeSideMap = {
+  left: "right",
+  right: "left",
+  bottom: "top",
+  top: "bottom"
+};
+
+const oppositeAlignmentMap = {
+  start: "end",
+  end: "start"
+};
+
+function clamp(start, value, end) {
+  return max(start, min(value, end));
+}
+
+function evaluate(value, param) {
+  return typeof value === "function" ? value(param) : value;
+}
+
+function getSide(placement) {
+  return placement.split("-")[0];
+}
+
+function getAlignment(placement) {
+  return placement.split("-")[1];
+}
+
+function getOppositeAxis(axis) {
+  return axis === "x" ? "y" : "x";
+}
+
+function getAxisLength(axis) {
+  return axis === "y" ? "height" : "width";
+}
+
+function getSideAxis(placement) {
+  return [ "top", "bottom" ].includes(getSide(placement)) ? "y" : "x";
+}
+
+function getAlignmentAxis(placement) {
+  return getOppositeAxis(getSideAxis(placement));
+}
+
+function getAlignmentSides(placement, rects, rtl) {
+  if (rtl === void 0) {
+    rtl = false;
+  }
+  const alignment = getAlignment(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const length = getAxisLength(alignmentAxis);
+  let mainAlignmentSide = alignmentAxis === "x" ? alignment === (rtl ? "end" : "start") ? "right" : "left" : alignment === "start" ? "bottom" : "top";
+  if (rects.reference[length] > rects.floating[length]) {
+    mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
+  }
+  return [ mainAlignmentSide, getOppositePlacement(mainAlignmentSide) ];
+}
+
+function getExpandedPlacements(placement) {
+  const oppositePlacement = getOppositePlacement(placement);
+  return [ getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement) ];
+}
+
+function getOppositeAlignmentPlacement(placement) {
+  return placement.replace(/start|end/g, (alignment => oppositeAlignmentMap[alignment]));
+}
+
+function getSideList(side, isStart, rtl) {
+  const lr = [ "left", "right" ];
+  const rl = [ "right", "left" ];
+  const tb = [ "top", "bottom" ];
+  const bt = [ "bottom", "top" ];
+  switch (side) {
+   case "top":
+   case "bottom":
+    if (rtl) return isStart ? rl : lr;
+    return isStart ? lr : rl;
+
+   case "left":
+   case "right":
+    return isStart ? tb : bt;
+
+   default:
+    return [];
+  }
+}
+
+function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
+  const alignment = getAlignment(placement);
+  let list = getSideList(getSide(placement), direction === "start", rtl);
+  if (alignment) {
+    list = list.map((side => side + "-" + alignment));
+    if (flipAlignment) {
+      list = list.concat(list.map(getOppositeAlignmentPlacement));
+    }
+  }
+  return list;
+}
+
+function getOppositePlacement(placement) {
+  return placement.replace(/left|right|bottom|top/g, (side => oppositeSideMap[side]));
+}
+
+function expandPaddingObject(padding) {
+  return {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    ...padding
+  };
+}
+
+function getPaddingObject(padding) {
+  return typeof padding !== "number" ? expandPaddingObject(padding) : {
+    top: padding,
+    right: padding,
+    bottom: padding,
+    left: padding
+  };
+}
+
+function rectToClientRect(rect) {
+  return {
+    ...rect,
+    top: rect.y,
+    left: rect.x,
+    right: rect.x + rect.width,
+    bottom: rect.y + rect.height
+  };
+}
+
+function computeCoordsFromPlacement(_ref, placement, rtl) {
+  let {reference: reference, floating: floating} = _ref;
+  const sideAxis = getSideAxis(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const alignLength = getAxisLength(alignmentAxis);
+  const side = getSide(placement);
+  const isVertical = sideAxis === "y";
+  const commonX = reference.x + reference.width / 2 - floating.width / 2;
+  const commonY = reference.y + reference.height / 2 - floating.height / 2;
+  const commonAlign = reference[alignLength] / 2 - floating[alignLength] / 2;
+  let coords;
+  switch (side) {
+   case "top":
+    coords = {
+      x: commonX,
+      y: reference.y - floating.height
+    };
+    break;
+
+   case "bottom":
+    coords = {
+      x: commonX,
+      y: reference.y + reference.height
+    };
+    break;
+
+   case "right":
+    coords = {
+      x: reference.x + reference.width,
+      y: commonY
+    };
+    break;
+
+   case "left":
+    coords = {
+      x: reference.x - floating.width,
+      y: commonY
+    };
+    break;
+
+   default:
+    coords = {
+      x: reference.x,
+      y: reference.y
+    };
+  }
+  switch (getAlignment(placement)) {
+   case "start":
+    coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+    break;
+
+   case "end":
+    coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+    break;
+  }
+  return coords;
+}
+
+const computePosition$1 = async (reference, floating, config) => {
+  const {placement: placement = "bottom", strategy: strategy = "absolute", middleware: middleware = [], platform: platform} = config;
+  const validMiddleware = middleware.filter(Boolean);
+  const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(floating));
+  let rects = await platform.getElementRects({
+    reference: reference,
+    floating: floating,
+    strategy: strategy
+  });
+  let {x: x, y: y} = computeCoordsFromPlacement(rects, placement, rtl);
+  let statefulPlacement = placement;
+  let middlewareData = {};
+  let resetCount = 0;
+  for (let i = 0; i < validMiddleware.length; i++) {
+    const {name: name, fn: fn} = validMiddleware[i];
+    const {x: nextX, y: nextY, data: data, reset: reset} = await fn({
+      x: x,
+      y: y,
+      initialPlacement: placement,
+      placement: statefulPlacement,
+      strategy: strategy,
+      middlewareData: middlewareData,
+      rects: rects,
+      platform: platform,
+      elements: {
+        reference: reference,
+        floating: floating
+      }
+    });
+    x = nextX != null ? nextX : x;
+    y = nextY != null ? nextY : y;
+    middlewareData = {
+      ...middlewareData,
+      [name]: {
+        ...middlewareData[name],
+        ...data
+      }
+    };
+    if (reset && resetCount <= 50) {
+      resetCount++;
+      if (typeof reset === "object") {
+        if (reset.placement) {
+          statefulPlacement = reset.placement;
+        }
+        if (reset.rects) {
+          rects = reset.rects === true ? await platform.getElementRects({
+            reference: reference,
+            floating: floating,
+            strategy: strategy
+          }) : reset.rects;
+        }
+        ({x: x, y: y} = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
+      }
+      i = -1;
+      continue;
+    }
+  }
+  return {
+    x: x,
+    y: y,
+    placement: statefulPlacement,
+    strategy: strategy,
+    middlewareData: middlewareData
+  };
+};
+
+async function detectOverflow(state, options) {
+  var _await$platform$isEle;
+  if (options === void 0) {
+    options = {};
+  }
+  const {x: x, y: y, platform: platform, rects: rects, elements: elements, strategy: strategy} = state;
+  const {boundary: boundary = "clippingAncestors", rootBoundary: rootBoundary = "viewport", elementContext: elementContext = "floating", altBoundary: altBoundary = false, padding: padding = 0} = evaluate(options, state);
+  const paddingObject = getPaddingObject(padding);
+  const altContext = elementContext === "floating" ? "reference" : "floating";
+  const element = elements[altBoundary ? altContext : elementContext];
+  const clippingClientRect = rectToClientRect(await platform.getClippingRect({
+    element: ((_await$platform$isEle = await (platform.isElement == null ? void 0 : platform.isElement(element))) != null ? _await$platform$isEle : true) ? element : element.contextElement || await (platform.getDocumentElement == null ? void 0 : platform.getDocumentElement(elements.floating)),
+    boundary: boundary,
+    rootBoundary: rootBoundary,
+    strategy: strategy
+  }));
+  const rect = elementContext === "floating" ? {
+    ...rects.floating,
+    x: x,
+    y: y
+  } : rects.reference;
+  const offsetParent = await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(elements.floating));
+  const offsetScale = await (platform.isElement == null ? void 0 : platform.isElement(offsetParent)) ? await (platform.getScale == null ? void 0 : platform.getScale(offsetParent)) || {
+    x: 1,
+    y: 1
+  } : {
+    x: 1,
+    y: 1
+  };
+  const elementClientRect = rectToClientRect(platform.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform.convertOffsetParentRelativeRectToViewportRelativeRect({
+    rect: rect,
+    offsetParent: offsetParent,
+    strategy: strategy
+  }) : rect);
+  return {
+    top: (clippingClientRect.top - elementClientRect.top + paddingObject.top) / offsetScale.y,
+    bottom: (elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom) / offsetScale.y,
+    left: (clippingClientRect.left - elementClientRect.left + paddingObject.left) / offsetScale.x,
+    right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
+  };
+}
+
+const arrow = options => ({
+  name: "arrow",
+  options: options,
+  async fn(state) {
+    const {x: x, y: y, placement: placement, rects: rects, platform: platform, elements: elements, middlewareData: middlewareData} = state;
+    const {element: element, padding: padding = 0} = evaluate(options, state) || {};
+    if (element == null) {
+      return {};
+    }
+    const paddingObject = getPaddingObject(padding);
+    const coords = {
+      x: x,
+      y: y
+    };
+    const axis = getAlignmentAxis(placement);
+    const length = getAxisLength(axis);
+    const arrowDimensions = await platform.getDimensions(element);
+    const isYAxis = axis === "y";
+    const minProp = isYAxis ? "top" : "left";
+    const maxProp = isYAxis ? "bottom" : "right";
+    const clientProp = isYAxis ? "clientHeight" : "clientWidth";
+    const endDiff = rects.reference[length] + rects.reference[axis] - coords[axis] - rects.floating[length];
+    const startDiff = coords[axis] - rects.reference[axis];
+    const arrowOffsetParent = await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(element));
+    let clientSize = arrowOffsetParent ? arrowOffsetParent[clientProp] : 0;
+    if (!clientSize || !await (platform.isElement == null ? void 0 : platform.isElement(arrowOffsetParent))) {
+      clientSize = elements.floating[clientProp] || rects.floating[length];
+    }
+    const centerToReference = endDiff / 2 - startDiff / 2;
+    const largestPossiblePadding = clientSize / 2 - arrowDimensions[length] / 2 - 1;
+    const minPadding = min(paddingObject[minProp], largestPossiblePadding);
+    const maxPadding = min(paddingObject[maxProp], largestPossiblePadding);
+    const min$1 = minPadding;
+    const max = clientSize - arrowDimensions[length] - maxPadding;
+    const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
+    const offset = clamp(min$1, center, max);
+    const shouldAddOffset = !middlewareData.arrow && getAlignment(placement) != null && center != offset && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
+    const alignmentOffset = shouldAddOffset ? center < min$1 ? center - min$1 : center - max : 0;
+    return {
+      [axis]: coords[axis] + alignmentOffset,
+      data: {
+        [axis]: offset,
+        centerOffset: center - offset - alignmentOffset,
+        ...shouldAddOffset && {
+          alignmentOffset: alignmentOffset
+        }
+      },
+      reset: shouldAddOffset
+    };
+  }
+});
+
+const flip = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "flip",
+    options: options,
+    async fn(state) {
+      var _middlewareData$arrow, _middlewareData$flip;
+      const {placement: placement, middlewareData: middlewareData, rects: rects, initialPlacement: initialPlacement, platform: platform, elements: elements} = state;
+      const {mainAxis: checkMainAxis = true, crossAxis: checkCrossAxis = true, fallbackPlacements: specifiedFallbackPlacements, fallbackStrategy: fallbackStrategy = "bestFit", fallbackAxisSideDirection: fallbackAxisSideDirection = "none", flipAlignment: flipAlignment = true, ...detectOverflowOptions} = evaluate(options, state);
+      if ((_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) {
+        return {};
+      }
+      const side = getSide(placement);
+      const isBasePlacement = getSide(initialPlacement) === initialPlacement;
+      const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
+      const fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipAlignment ? [ getOppositePlacement(initialPlacement) ] : getExpandedPlacements(initialPlacement));
+      if (!specifiedFallbackPlacements && fallbackAxisSideDirection !== "none") {
+        fallbackPlacements.push(...getOppositeAxisPlacements(initialPlacement, flipAlignment, fallbackAxisSideDirection, rtl));
+      }
+      const placements = [ initialPlacement, ...fallbackPlacements ];
+      const overflow = await detectOverflow(state, detectOverflowOptions);
+      const overflows = [];
+      let overflowsData = ((_middlewareData$flip = middlewareData.flip) == null ? void 0 : _middlewareData$flip.overflows) || [];
+      if (checkMainAxis) {
+        overflows.push(overflow[side]);
+      }
+      if (checkCrossAxis) {
+        const sides = getAlignmentSides(placement, rects, rtl);
+        overflows.push(overflow[sides[0]], overflow[sides[1]]);
+      }
+      overflowsData = [ ...overflowsData, {
+        placement: placement,
+        overflows: overflows
+      } ];
+      if (!overflows.every((side => side <= 0))) {
+        var _middlewareData$flip2, _overflowsData$filter;
+        const nextIndex = (((_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) || 0) + 1;
+        const nextPlacement = placements[nextIndex];
+        if (nextPlacement) {
+          return {
+            data: {
+              index: nextIndex,
+              overflows: overflowsData
+            },
+            reset: {
+              placement: nextPlacement
+            }
+          };
+        }
+        let resetPlacement = (_overflowsData$filter = overflowsData.filter((d => d.overflows[0] <= 0)).sort(((a, b) => a.overflows[1] - b.overflows[1]))[0]) == null ? void 0 : _overflowsData$filter.placement;
+        if (!resetPlacement) {
+          switch (fallbackStrategy) {
+           case "bestFit":
+            {
+              var _overflowsData$map$so;
+              const placement = (_overflowsData$map$so = overflowsData.map((d => [ d.placement, d.overflows.filter((overflow => overflow > 0)).reduce(((acc, overflow) => acc + overflow), 0) ])).sort(((a, b) => a[1] - b[1]))[0]) == null ? void 0 : _overflowsData$map$so[0];
+              if (placement) {
+                resetPlacement = placement;
+              }
+              break;
+            }
+
+           case "initialPlacement":
+            resetPlacement = initialPlacement;
+            break;
+          }
+        }
+        if (placement !== resetPlacement) {
+          return {
+            reset: {
+              placement: resetPlacement
+            }
+          };
+        }
+      }
+      return {};
+    }
+  };
+};
+
+async function convertValueToCoords(state, options) {
+  const {placement: placement, platform: platform, elements: elements} = state;
+  const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
+  const side = getSide(placement);
+  const alignment = getAlignment(placement);
+  const isVertical = getSideAxis(placement) === "y";
+  const mainAxisMulti = [ "left", "top" ].includes(side) ? -1 : 1;
+  const crossAxisMulti = rtl && isVertical ? -1 : 1;
+  const rawValue = evaluate(options, state);
+  let {mainAxis: mainAxis, crossAxis: crossAxis, alignmentAxis: alignmentAxis} = typeof rawValue === "number" ? {
+    mainAxis: rawValue,
+    crossAxis: 0,
+    alignmentAxis: null
+  } : {
+    mainAxis: 0,
+    crossAxis: 0,
+    alignmentAxis: null,
+    ...rawValue
+  };
+  if (alignment && typeof alignmentAxis === "number") {
+    crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
+  }
+  return isVertical ? {
+    x: crossAxis * crossAxisMulti,
+    y: mainAxis * mainAxisMulti
+  } : {
+    x: mainAxis * mainAxisMulti,
+    y: crossAxis * crossAxisMulti
+  };
+}
+
+const offset = function(options) {
+  if (options === void 0) {
+    options = 0;
+  }
+  return {
+    name: "offset",
+    options: options,
+    async fn(state) {
+      const {x: x, y: y} = state;
+      const diffCoords = await convertValueToCoords(state, options);
+      return {
+        x: x + diffCoords.x,
+        y: y + diffCoords.y,
+        data: diffCoords
+      };
+    }
+  };
+};
+
+const shift = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "shift",
+    options: options,
+    async fn(state) {
+      const {x: x, y: y, placement: placement} = state;
+      const {mainAxis: checkMainAxis = true, crossAxis: checkCrossAxis = false, limiter: limiter = {
+        fn: _ref => {
+          let {x: x, y: y} = _ref;
+          return {
+            x: x,
+            y: y
+          };
+        }
+      }, ...detectOverflowOptions} = evaluate(options, state);
+      const coords = {
+        x: x,
+        y: y
+      };
+      const overflow = await detectOverflow(state, detectOverflowOptions);
+      const crossAxis = getSideAxis(getSide(placement));
+      const mainAxis = getOppositeAxis(crossAxis);
+      let mainAxisCoord = coords[mainAxis];
+      let crossAxisCoord = coords[crossAxis];
+      if (checkMainAxis) {
+        const minSide = mainAxis === "y" ? "top" : "left";
+        const maxSide = mainAxis === "y" ? "bottom" : "right";
+        const min = mainAxisCoord + overflow[minSide];
+        const max = mainAxisCoord - overflow[maxSide];
+        mainAxisCoord = clamp(min, mainAxisCoord, max);
+      }
+      if (checkCrossAxis) {
+        const minSide = crossAxis === "y" ? "top" : "left";
+        const maxSide = crossAxis === "y" ? "bottom" : "right";
+        const min = crossAxisCoord + overflow[minSide];
+        const max = crossAxisCoord - overflow[maxSide];
+        crossAxisCoord = clamp(min, crossAxisCoord, max);
+      }
+      const limitedCoords = limiter.fn({
+        ...state,
+        [mainAxis]: mainAxisCoord,
+        [crossAxis]: crossAxisCoord
+      });
+      return {
+        ...limitedCoords,
+        data: {
+          x: limitedCoords.x - x,
+          y: limitedCoords.y - y
+        }
+      };
+    }
+  };
+};
+
+function getNodeName(node) {
+  if (isNode(node)) {
+    return (node.nodeName || "").toLowerCase();
+  }
+  return "#document";
+}
+
+function getWindow(node) {
+  var _node$ownerDocument;
+  return (node == null ? void 0 : (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+}
+
+function getDocumentElement(node) {
+  var _ref;
+  return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
+}
+
+function isNode(value) {
+  return value instanceof Node || value instanceof getWindow(value).Node;
+}
+
+function isElement(value) {
+  return value instanceof Element || value instanceof getWindow(value).Element;
+}
+
+function isHTMLElement(value) {
+  return value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement;
+}
+
+function isShadowRoot(value) {
+  if (typeof ShadowRoot === "undefined") {
+    return false;
+  }
+  return value instanceof ShadowRoot || value instanceof getWindow(value).ShadowRoot;
+}
+
+function isOverflowElement(element) {
+  const {overflow: overflow, overflowX: overflowX, overflowY: overflowY, display: display} = getComputedStyle$1(element);
+  return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && ![ "inline", "contents" ].includes(display);
+}
+
+function isTableElement(element) {
+  return [ "table", "td", "th" ].includes(getNodeName(element));
+}
+
+function isContainingBlock(element) {
+  const webkit = isWebKit();
+  const css = getComputedStyle$1(element);
+  return css.transform !== "none" || css.perspective !== "none" || (css.containerType ? css.containerType !== "normal" : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== "none" : false) || !webkit && (css.filter ? css.filter !== "none" : false) || [ "transform", "perspective", "filter" ].some((value => (css.willChange || "").includes(value))) || [ "paint", "layout", "strict", "content" ].some((value => (css.contain || "").includes(value)));
+}
+
+function getContainingBlock(element) {
+  let currentNode = getParentNode(element);
+  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
+    if (isContainingBlock(currentNode)) {
+      return currentNode;
+    } else {
+      currentNode = getParentNode(currentNode);
+    }
+  }
+  return null;
+}
+
+function isWebKit() {
+  if (typeof CSS === "undefined" || !CSS.supports) return false;
+  return CSS.supports("-webkit-backdrop-filter", "none");
+}
+
+function isLastTraversableNode(node) {
+  return [ "html", "body", "#document" ].includes(getNodeName(node));
+}
+
+function getComputedStyle$1(element) {
+  return getWindow(element).getComputedStyle(element);
+}
+
+function getNodeScroll(element) {
+  if (isElement(element)) {
+    return {
+      scrollLeft: element.scrollLeft,
+      scrollTop: element.scrollTop
+    };
+  }
+  return {
+    scrollLeft: element.pageXOffset,
+    scrollTop: element.pageYOffset
+  };
+}
+
+function getParentNode(node) {
+  if (getNodeName(node) === "html") {
+    return node;
+  }
+  const result = node.assignedSlot || node.parentNode || isShadowRoot(node) && node.host || getDocumentElement(node);
+  return isShadowRoot(result) ? result.host : result;
+}
+
+function getNearestOverflowAncestor(node) {
+  const parentNode = getParentNode(node);
+  if (isLastTraversableNode(parentNode)) {
+    return node.ownerDocument ? node.ownerDocument.body : node.body;
+  }
+  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
+    return parentNode;
+  }
+  return getNearestOverflowAncestor(parentNode);
+}
+
+function getOverflowAncestors(node, list, traverseIframes) {
+  var _node$ownerDocument2;
+  if (list === void 0) {
+    list = [];
+  }
+  if (traverseIframes === void 0) {
+    traverseIframes = true;
+  }
+  const scrollableAncestor = getNearestOverflowAncestor(node);
+  const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
+  const win = getWindow(scrollableAncestor);
+  if (isBody) {
+    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], win.frameElement && traverseIframes ? getOverflowAncestors(win.frameElement) : []);
+  }
+  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
+}
+
+function getCssDimensions(element) {
+  const css = getComputedStyle$1(element);
+  let width = parseFloat(css.width) || 0;
+  let height = parseFloat(css.height) || 0;
+  const hasOffset = isHTMLElement(element);
+  const offsetWidth = hasOffset ? element.offsetWidth : width;
+  const offsetHeight = hasOffset ? element.offsetHeight : height;
+  const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
+  if (shouldFallback) {
+    width = offsetWidth;
+    height = offsetHeight;
+  }
+  return {
+    width: width,
+    height: height,
+    $: shouldFallback
+  };
+}
+
+function unwrapElement(element) {
+  return !isElement(element) ? element.contextElement : element;
+}
+
+function getScale(element) {
+  const domElement = unwrapElement(element);
+  if (!isHTMLElement(domElement)) {
+    return createCoords(1);
+  }
+  const rect = domElement.getBoundingClientRect();
+  const {width: width, height: height, $: $} = getCssDimensions(domElement);
+  let x = ($ ? round(rect.width) : rect.width) / width;
+  let y = ($ ? round(rect.height) : rect.height) / height;
+  if (!x || !Number.isFinite(x)) {
+    x = 1;
+  }
+  if (!y || !Number.isFinite(y)) {
+    y = 1;
+  }
+  return {
+    x: x,
+    y: y
+  };
+}
+
+const noOffsets = createCoords(0);
+
+function getVisualOffsets(element) {
+  const win = getWindow(element);
+  if (!isWebKit() || !win.visualViewport) {
+    return noOffsets;
+  }
+  return {
+    x: win.visualViewport.offsetLeft,
+    y: win.visualViewport.offsetTop
+  };
+}
+
+function shouldAddVisualOffsets(element, isFixed, floatingOffsetParent) {
+  if (isFixed === void 0) {
+    isFixed = false;
+  }
+  if (!floatingOffsetParent || isFixed && floatingOffsetParent !== getWindow(element)) {
+    return false;
+  }
+  return isFixed;
+}
+
+function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
+  if (includeScale === void 0) {
+    includeScale = false;
+  }
+  if (isFixedStrategy === void 0) {
+    isFixedStrategy = false;
+  }
+  const clientRect = element.getBoundingClientRect();
+  const domElement = unwrapElement(element);
+  let scale = createCoords(1);
+  if (includeScale) {
+    if (offsetParent) {
+      if (isElement(offsetParent)) {
+        scale = getScale(offsetParent);
+      }
+    } else {
+      scale = getScale(element);
+    }
+  }
+  const visualOffsets = shouldAddVisualOffsets(domElement, isFixedStrategy, offsetParent) ? getVisualOffsets(domElement) : createCoords(0);
+  let x = (clientRect.left + visualOffsets.x) / scale.x;
+  let y = (clientRect.top + visualOffsets.y) / scale.y;
+  let width = clientRect.width / scale.x;
+  let height = clientRect.height / scale.y;
+  if (domElement) {
+    const win = getWindow(domElement);
+    const offsetWin = offsetParent && isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
+    let currentIFrame = win.frameElement;
+    while (currentIFrame && offsetParent && offsetWin !== win) {
+      const iframeScale = getScale(currentIFrame);
+      const iframeRect = currentIFrame.getBoundingClientRect();
+      const css = getComputedStyle$1(currentIFrame);
+      const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
+      const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
+      x *= iframeScale.x;
+      y *= iframeScale.y;
+      width *= iframeScale.x;
+      height *= iframeScale.y;
+      x += left;
+      y += top;
+      currentIFrame = getWindow(currentIFrame).frameElement;
+    }
+  }
+  return rectToClientRect({
+    width: width,
+    height: height,
+    x: x,
+    y: y
+  });
+}
+
+function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
+  let {rect: rect, offsetParent: offsetParent, strategy: strategy} = _ref;
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  const documentElement = getDocumentElement(offsetParent);
+  if (offsetParent === documentElement) {
+    return rect;
+  }
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  let scale = createCoords(1);
+  const offsets = createCoords(0);
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
+    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isHTMLElement(offsetParent)) {
+      const offsetRect = getBoundingClientRect(offsetParent);
+      scale = getScale(offsetParent);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    }
+  }
+  return {
+    width: rect.width * scale.x,
+    height: rect.height * scale.y,
+    x: rect.x * scale.x - scroll.scrollLeft * scale.x + offsets.x,
+    y: rect.y * scale.y - scroll.scrollTop * scale.y + offsets.y
+  };
+}
+
+function getClientRects(element) {
+  return Array.from(element.getClientRects());
+}
+
+function getWindowScrollBarX(element) {
+  return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
+}
+
+function getDocumentRect(element) {
+  const html = getDocumentElement(element);
+  const scroll = getNodeScroll(element);
+  const body = element.ownerDocument.body;
+  const width = max(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
+  const height = max(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
+  let x = -scroll.scrollLeft + getWindowScrollBarX(element);
+  const y = -scroll.scrollTop;
+  if (getComputedStyle$1(body).direction === "rtl") {
+    x += max(html.clientWidth, body.clientWidth) - width;
+  }
+  return {
+    width: width,
+    height: height,
+    x: x,
+    y: y
+  };
+}
+
+function getViewportRect(element, strategy) {
+  const win = getWindow(element);
+  const html = getDocumentElement(element);
+  const visualViewport = win.visualViewport;
+  let width = html.clientWidth;
+  let height = html.clientHeight;
+  let x = 0;
+  let y = 0;
+  if (visualViewport) {
+    width = visualViewport.width;
+    height = visualViewport.height;
+    const visualViewportBased = isWebKit();
+    if (!visualViewportBased || visualViewportBased && strategy === "fixed") {
+      x = visualViewport.offsetLeft;
+      y = visualViewport.offsetTop;
+    }
+  }
+  return {
+    width: width,
+    height: height,
+    x: x,
+    y: y
+  };
+}
+
+function getInnerBoundingClientRect(element, strategy) {
+  const clientRect = getBoundingClientRect(element, true, strategy === "fixed");
+  const top = clientRect.top + element.clientTop;
+  const left = clientRect.left + element.clientLeft;
+  const scale = isHTMLElement(element) ? getScale(element) : createCoords(1);
+  const width = element.clientWidth * scale.x;
+  const height = element.clientHeight * scale.y;
+  const x = left * scale.x;
+  const y = top * scale.y;
+  return {
+    width: width,
+    height: height,
+    x: x,
+    y: y
+  };
+}
+
+function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
+  let rect;
+  if (clippingAncestor === "viewport") {
+    rect = getViewportRect(element, strategy);
+  } else if (clippingAncestor === "document") {
+    rect = getDocumentRect(getDocumentElement(element));
+  } else if (isElement(clippingAncestor)) {
+    rect = getInnerBoundingClientRect(clippingAncestor, strategy);
+  } else {
+    const visualOffsets = getVisualOffsets(element);
+    rect = {
+      ...clippingAncestor,
+      x: clippingAncestor.x - visualOffsets.x,
+      y: clippingAncestor.y - visualOffsets.y
+    };
+  }
+  return rectToClientRect(rect);
+}
+
+function hasFixedPositionAncestor(element, stopNode) {
+  const parentNode = getParentNode(element);
+  if (parentNode === stopNode || !isElement(parentNode) || isLastTraversableNode(parentNode)) {
+    return false;
+  }
+  return getComputedStyle$1(parentNode).position === "fixed" || hasFixedPositionAncestor(parentNode, stopNode);
+}
+
+function getClippingElementAncestors(element, cache) {
+  const cachedResult = cache.get(element);
+  if (cachedResult) {
+    return cachedResult;
+  }
+  let result = getOverflowAncestors(element, [], false).filter((el => isElement(el) && getNodeName(el) !== "body"));
+  let currentContainingBlockComputedStyle = null;
+  const elementIsFixed = getComputedStyle$1(element).position === "fixed";
+  let currentNode = elementIsFixed ? getParentNode(element) : element;
+  while (isElement(currentNode) && !isLastTraversableNode(currentNode)) {
+    const computedStyle = getComputedStyle$1(currentNode);
+    const currentNodeIsContaining = isContainingBlock(currentNode);
+    if (!currentNodeIsContaining && computedStyle.position === "fixed") {
+      currentContainingBlockComputedStyle = null;
+    }
+    const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === "static" && !!currentContainingBlockComputedStyle && [ "absolute", "fixed" ].includes(currentContainingBlockComputedStyle.position) || isOverflowElement(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor(element, currentNode);
+    if (shouldDropCurrentNode) {
+      result = result.filter((ancestor => ancestor !== currentNode));
+    } else {
+      currentContainingBlockComputedStyle = computedStyle;
+    }
+    currentNode = getParentNode(currentNode);
+  }
+  cache.set(element, result);
+  return result;
+}
+
+function getClippingRect(_ref) {
+  let {element: element, boundary: boundary, rootBoundary: rootBoundary, strategy: strategy} = _ref;
+  const elementClippingAncestors = boundary === "clippingAncestors" ? getClippingElementAncestors(element, this._c) : [].concat(boundary);
+  const clippingAncestors = [ ...elementClippingAncestors, rootBoundary ];
+  const firstClippingAncestor = clippingAncestors[0];
+  const clippingRect = clippingAncestors.reduce(((accRect, clippingAncestor) => {
+    const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
+    accRect.top = max(rect.top, accRect.top);
+    accRect.right = min(rect.right, accRect.right);
+    accRect.bottom = min(rect.bottom, accRect.bottom);
+    accRect.left = max(rect.left, accRect.left);
+    return accRect;
+  }), getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
+  return {
+    width: clippingRect.right - clippingRect.left,
+    height: clippingRect.bottom - clippingRect.top,
+    x: clippingRect.left,
+    y: clippingRect.top
+  };
+}
+
+function getDimensions(element) {
+  return getCssDimensions(element);
+}
+
+function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  const documentElement = getDocumentElement(offsetParent);
+  const isFixed = strategy === "fixed";
+  const rect = getBoundingClientRect(element, true, isFixed, offsetParent);
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  const offsets = createCoords(0);
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+    if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isOffsetParentAnElement) {
+      const offsetRect = getBoundingClientRect(offsetParent, true, isFixed, offsetParent);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    } else if (documentElement) {
+      offsets.x = getWindowScrollBarX(documentElement);
+    }
+  }
+  return {
+    x: rect.left + scroll.scrollLeft - offsets.x,
+    y: rect.top + scroll.scrollTop - offsets.y,
+    width: rect.width,
+    height: rect.height
+  };
+}
+
+function getTrueOffsetParent(element, polyfill) {
+  if (!isHTMLElement(element) || getComputedStyle$1(element).position === "fixed") {
+    return null;
+  }
+  if (polyfill) {
+    return polyfill(element);
+  }
+  return element.offsetParent;
+}
+
+function getOffsetParent(element, polyfill) {
+  const window = getWindow(element);
+  if (!isHTMLElement(element)) {
+    return window;
+  }
+  let offsetParent = getTrueOffsetParent(element, polyfill);
+  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === "static") {
+    offsetParent = getTrueOffsetParent(offsetParent, polyfill);
+  }
+  if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle$1(offsetParent).position === "static" && !isContainingBlock(offsetParent))) {
+    return window;
+  }
+  return offsetParent || getContainingBlock(element) || window;
+}
+
+const getElementRects = async function(_ref) {
+  let {reference: reference, floating: floating, strategy: strategy} = _ref;
+  const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
+  const getDimensionsFn = this.getDimensions;
+  return {
+    reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
+    floating: {
+      x: 0,
+      y: 0,
+      ...await getDimensionsFn(floating)
+    }
+  };
+};
+
+function isRTL(element) {
+  return getComputedStyle$1(element).direction === "rtl";
+}
+
+const platform = {
+  convertOffsetParentRelativeRectToViewportRelativeRect: convertOffsetParentRelativeRectToViewportRelativeRect,
+  getDocumentElement: getDocumentElement,
+  getClippingRect: getClippingRect,
+  getOffsetParent: getOffsetParent,
+  getElementRects: getElementRects,
+  getClientRects: getClientRects,
+  getDimensions: getDimensions,
+  getScale: getScale,
+  isElement: isElement,
+  isRTL: isRTL
+};
+
+function observeMove(element, onMove) {
+  let io = null;
+  let timeoutId;
+  const root = getDocumentElement(element);
+  function cleanup() {
+    clearTimeout(timeoutId);
+    io && io.disconnect();
+    io = null;
+  }
+  function refresh(skip, threshold) {
+    if (skip === void 0) {
+      skip = false;
+    }
+    if (threshold === void 0) {
+      threshold = 1;
+    }
+    cleanup();
+    const {left: left, top: top, width: width, height: height} = element.getBoundingClientRect();
+    if (!skip) {
+      onMove();
+    }
+    if (!width || !height) {
+      return;
+    }
+    const insetTop = floor(top);
+    const insetRight = floor(root.clientWidth - (left + width));
+    const insetBottom = floor(root.clientHeight - (top + height));
+    const insetLeft = floor(left);
+    const rootMargin = -insetTop + "px " + -insetRight + "px " + -insetBottom + "px " + -insetLeft + "px";
+    const options = {
+      rootMargin: rootMargin,
+      threshold: max(0, min(1, threshold)) || 1
+    };
+    let isFirstUpdate = true;
+    function handleObserve(entries) {
+      const ratio = entries[0].intersectionRatio;
+      if (ratio !== threshold) {
+        if (!isFirstUpdate) {
+          return refresh();
+        }
+        if (!ratio) {
+          timeoutId = setTimeout((() => {
+            refresh(false, 1e-7);
+          }), 100);
+        } else {
+          refresh(false, ratio);
+        }
+      }
+      isFirstUpdate = false;
+    }
+    try {
+      io = new IntersectionObserver(handleObserve, {
+        ...options,
+        root: root.ownerDocument
+      });
+    } catch (e) {
+      io = new IntersectionObserver(handleObserve, options);
+    }
+    io.observe(element);
+  }
+  refresh(true);
+  return cleanup;
+}
+
+function autoUpdate(reference, floating, update, options) {
+  if (options === void 0) {
+    options = {};
+  }
+  const {ancestorScroll: ancestorScroll = true, ancestorResize: ancestorResize = true, elementResize: elementResize = typeof ResizeObserver === "function", layoutShift: layoutShift = typeof IntersectionObserver === "function", animationFrame: animationFrame = false} = options;
+  const referenceEl = unwrapElement(reference);
+  const ancestors = ancestorScroll || ancestorResize ? [ ...referenceEl ? getOverflowAncestors(referenceEl) : [], ...getOverflowAncestors(floating) ] : [];
+  ancestors.forEach((ancestor => {
+    ancestorScroll && ancestor.addEventListener("scroll", update, {
+      passive: true
+    });
+    ancestorResize && ancestor.addEventListener("resize", update);
+  }));
+  const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
+  let reobserveFrame = -1;
+  let resizeObserver = null;
+  if (elementResize) {
+    resizeObserver = new ResizeObserver((_ref => {
+      let [firstEntry] = _ref;
+      if (firstEntry && firstEntry.target === referenceEl && resizeObserver) {
+        resizeObserver.unobserve(floating);
+        cancelAnimationFrame(reobserveFrame);
+        reobserveFrame = requestAnimationFrame((() => {
+          resizeObserver && resizeObserver.observe(floating);
+        }));
+      }
+      update();
+    }));
+    if (referenceEl && !animationFrame) {
+      resizeObserver.observe(referenceEl);
+    }
+    resizeObserver.observe(floating);
+  }
+  let frameId;
+  let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
+  if (animationFrame) {
+    frameLoop();
+  }
+  function frameLoop() {
+    const nextRefRect = getBoundingClientRect(reference);
+    if (prevRefRect && (nextRefRect.x !== prevRefRect.x || nextRefRect.y !== prevRefRect.y || nextRefRect.width !== prevRefRect.width || nextRefRect.height !== prevRefRect.height)) {
+      update();
+    }
+    prevRefRect = nextRefRect;
+    frameId = requestAnimationFrame(frameLoop);
+  }
+  update();
+  return () => {
+    ancestors.forEach((ancestor => {
+      ancestorScroll && ancestor.removeEventListener("scroll", update);
+      ancestorResize && ancestor.removeEventListener("resize", update);
+    }));
+    cleanupIo && cleanupIo();
+    resizeObserver && resizeObserver.disconnect();
+    resizeObserver = null;
+    if (animationFrame) {
+      cancelAnimationFrame(frameId);
+    }
+  };
+}
+
+const computePosition = (reference, floating, options) => {
+  const cache = new Map;
+  const mergedOptions = {
+    platform: platform,
+    ...options
+  };
+  const platformWithCache = {
+    ...mergedOptions.platform,
+    _c: cache
+  };
+  return computePosition$1(reference, floating, {
+    ...mergedOptions,
+    platform: platformWithCache
+  });
+};
+
 class Tooltip extends Controller {
   static targets=[ "template" ];
   static values={
     active: Boolean,
     position: String
   };
-  initialize() {
-    this.shownTooltip = null;
-  }
-  getOffset() {
-    switch (this.positionValue) {
-     case "bottom":
-      return [ 0, 8 ];
-
-     case "right":
-      return [ 0, 6 ];
-
-     default:
-      return [ 0, 8 ];
-    }
-  }
   show(event) {
     if (!this.activeValue) return;
-    const popperOptions = {
-      placement: this.positionValue,
-      modifiers: [ {
-        name: "offset",
-        options: {
-          offset: this.getOffset()
-        }
-      } ]
-    };
     const element = event.currentTarget;
     let tooltip = document.createElement("span");
     tooltip.className = "Polaris-Tooltip";
     tooltip.innerHTML = this.templateTarget.innerHTML;
-    this.shownTooltip = element.appendChild(tooltip);
-    this.popper = createPopper(element, this.shownTooltip, popperOptions);
+    this.tooltip = element.appendChild(tooltip);
+    const arrowElement = element.querySelector("[data-tooltip-arrow]");
+    autoUpdate(element, this.tooltip, (() => {
+      computePosition(element, this.tooltip, {
+        placement: this.positionValue,
+        middleware: [ offset(this.offsetValue), flip(), shift({
+          padding: 5
+        }), arrow({
+          element: arrowElement
+        }) ]
+      }).then((({x: x, y: y, placement: placement, middlewareData: middlewareData}) => {
+        Object.assign(this.tooltip.style, {
+          left: `${x}px`,
+          top: `${y}px`
+        });
+        const {x: arrowX, y: arrowY} = middlewareData.arrow;
+        const staticSide = {
+          top: "bottom",
+          right: "left",
+          bottom: "top",
+          left: "right"
+        }[placement.split("-")[0]];
+        Object.assign(arrowElement.style, {
+          left: arrowX != null ? `${arrowX}px` : "",
+          top: arrowY != null ? `${arrowY}px` : "",
+          right: "",
+          bottom: "",
+          [staticSide]: "-4px"
+        });
+      }));
+    }));
   }
   hide() {
-    if (this.shownTooltip) {
-      this.shownTooltip.remove();
+    if (this.tooltip) {
+      this.tooltip.remove();
+    }
+  }
+  get offsetValue() {
+    switch (this.positionValue) {
+     case "top":
+     case "bottom":
+     case "left":
+      return 8;
+
+     case "right":
+      return 6;
     }
   }
 }
