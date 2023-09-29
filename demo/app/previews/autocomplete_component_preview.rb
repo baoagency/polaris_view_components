@@ -19,4 +19,7 @@ class AutocompleteComponentPreview < ViewComponent::Preview
 
   def event_handler
   end
+
+  def long_page
+  end
 end
