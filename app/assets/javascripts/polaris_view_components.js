@@ -2098,7 +2098,8 @@ class Popover extends Controller {
   static values={
     appendToBody: Boolean,
     placement: String,
-    active: Boolean
+    active: Boolean,
+    textFieldActivator: Boolean
   };
   connect() {
     if (this.appendToBodyValue) {
@@ -2120,8 +2121,8 @@ class Popover extends Controller {
     if (this.cleanup) {
       this.cleanup();
     }
-    this.cleanup = autoUpdate(this.activatorTarget, this.target, (() => {
-      computePosition(this.activatorTarget, this.target, {
+    this.cleanup = autoUpdate(this.activator, this.target, (() => {
+      computePosition(this.activator, this.target, {
         placement: this.placementValue,
         middleware: [ offset(5), flip(), shift({
           padding: 5
@@ -2157,6 +2158,13 @@ class Popover extends Controller {
     this.target.style.display = "none";
     this.target.classList.remove(this.openClass);
     this.target.classList.add(this.closedClass);
+  }
+  get activator() {
+    if (this.textFieldActivatorValue) {
+      return this.activatorTarget.querySelector('[data-controller="polaris-text-field"]');
+    } else {
+      return this.activatorTarget;
+    }
   }
   get target() {
     if (this.hasPopoverTarget) {
