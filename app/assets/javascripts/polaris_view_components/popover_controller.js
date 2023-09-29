@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { createPopper } from "@popperjs/core/dist/esm"
+import { computePosition, autoUpdate, offset, flip, shift } from "@floating-ui/dom"
 
 export default class extends Controller {
   static targets = ["activator", "popover", "template"]
@@ -11,48 +11,59 @@ export default class extends Controller {
   }
 
   connect() {
-    const popperOptions = {
-      placement: this.placementValue,
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 5],
-          },
-        },
-        {
-          name: 'flip',
-          options: {
-            allowedAutoPlacements: ['top-start', 'bottom-start', 'top-end', 'bottom-end']
-          },
-        }
-      ]
-    }
-
     if (this.appendToBodyValue) {
       const clonedTemplate = this.templateTarget.content.cloneNode(true)
       this.target = clonedTemplate.firstElementChild
-      popperOptions['strategy'] = 'fixed'
-
       document.body.appendChild(clonedTemplate)
     }
 
-    this.popper = createPopper(this.activatorTarget, this.target, popperOptions)
+    this.target.style.display = 'none'
+
     if (this.activeValue) {
       this.show()
     }
   }
 
-  async toggle() {
-    this.target.classList.toggle(this.closedClass)
-    this.target.classList.toggle(this.openClass)
-    await this.popper.update()
+  disconnect() {
+    if (this.cleanup) {
+      this.cleanup()
+    }
   }
 
-  async show() {
+  updatePosition() {
+    if (this.cleanup) {
+      this.cleanup()
+    }
+    this.cleanup = autoUpdate(this.activatorTarget, this.target, () => {
+      computePosition(this.activatorTarget, this.target, {
+        placement: this.placementValue,
+        middleware: [
+          offset(5),
+          flip(),
+          shift({ padding: 5 })
+        ]
+      }).then(({x, y}) => {
+        Object.assign(this.target.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        })
+      })
+    })
+  }
+
+  toggle() {
+    if (this.target.classList.contains(this.openClass)) {
+      this.forceHide()
+    } else {
+      this.show()
+    }
+  }
+
+  show() {
+    this.target.style.display = 'block'
     this.target.classList.remove(this.closedClass)
     this.target.classList.add(this.openClass)
-    await this.popper.update()
+    this.updatePosition()
   }
 
   hide(event) {
@@ -64,6 +75,7 @@ export default class extends Controller {
   }
 
   forceHide() {
+    this.target.style.display = 'none'
     this.target.classList.remove(this.openClass)
     this.target.classList.add(this.closedClass)
   }

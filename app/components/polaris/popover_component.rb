@@ -55,7 +55,7 @@ module Polaris
         prepend_option(opts[:data], :controller, "polaris-popover")
         opts[:data][:polaris_popover_append_to_body_value] = @append_to_body
         opts[:data][:polaris_popover_active_value] = @active
-        opts[:data][:polaris_popover_placement_value] = popperjs_placement
+        opts[:data][:polaris_popover_placement_value] = popover_placement
         opts[:data][:polaris_popover_open_class] = "Polaris-Popover__PopoverOverlay--open"
         opts[:data][:polaris_popover_closed_class] = "Polaris-Popover__PopoverOverlay--closed"
         if @inline
@@ -106,13 +106,13 @@ module Polaris
       end
     end
 
-    def popperjs_placement
+    def popover_placement
       placement =
         case @position
         when :above then "top"
         when :below then "bottom"
         else
-          "auto"
+          "bottom"
         end
       placement += "-start" if @alignment == :left
       placement += "-end" if @alignment == :right
