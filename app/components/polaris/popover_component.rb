@@ -28,6 +28,7 @@ module Polaris
       position: POSITION_DEFAULT,
       append_to_body: false,
       scrollable_shadow: true,
+      text_field_activator: false,
       wrapper_arguments: {},
       **system_arguments
     )
@@ -41,6 +42,7 @@ module Polaris
       @alignment = fetch_or_fallback(ALIGNMENT_OPTIONS, alignment, ALIGNMENT_DEFAULT)
       @position = fetch_or_fallback(POSITION_OPTIONS, position, POSITION_DEFAULT)
       @scrollable_shadow = scrollable_shadow
+      @text_field_activator = text_field_activator
       @append_to_body = append_to_body
       @wrapper_arguments = wrapper_arguments
       @system_arguments = system_arguments
@@ -56,6 +58,7 @@ module Polaris
         opts[:data][:polaris_popover_append_to_body_value] = @append_to_body
         opts[:data][:polaris_popover_active_value] = @active
         opts[:data][:polaris_popover_placement_value] = popover_placement
+        opts[:data][:polaris_popover_text_field_activator_value] = @text_field_activator
         opts[:data][:polaris_popover_open_class] = "Polaris-Popover__PopoverOverlay--open"
         opts[:data][:polaris_popover_closed_class] = "Polaris-Popover__PopoverOverlay--closed"
         if @inline

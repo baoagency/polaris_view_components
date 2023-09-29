@@ -55,6 +55,7 @@ module Polaris
         alignment: :left,
         full_width: true,
         inline: false,
+        text_field_activator: true,
         wrapper_arguments: {}
       }.deep_merge(@popover_arguments).tap do |opts|
         opts[:wrapper_arguments][:data] ||= {}
