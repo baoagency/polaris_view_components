@@ -11,6 +11,15 @@ export default class extends Controller {
     }
   }
 
+  disableWithoutLoader(event) {
+    if (this.button.disabled) {
+      event.preventDefault()
+    } else {
+      this.button.disabled = true
+      this.button.classList.add("Polaris-Button--disabled")
+    }
+  }
+
   enable() {
     if (this.button.disabled) {
       this.button.disabled = false
