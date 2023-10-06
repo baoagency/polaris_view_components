@@ -6,6 +6,7 @@ module Polaris
       name: nil,
       checked: false,
       disabled: false,
+      mulitple: false,
       value: "1",
       unchecked_value: "0",
       **system_arguments
@@ -22,8 +23,9 @@ module Polaris
 
     def system_arguments
       @system_arguments.tap do |opts|
-        opts[:disabled] = true if @disabled
         opts[:checked] = true if @checked
+        opts[:disabled] = true if @disabled
+        opts[:multiple] = true if @multiple
         opts[:aria] ||= {}
         opts[:aria][:checked] = @checked
         if indeterminate?

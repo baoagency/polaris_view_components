@@ -87,5 +87,30 @@ module Polaris
       end
       render Polaris::DropzoneComponent.new(form: self, attribute: method, **options, &block)
     end
+
+    def polaris_collection_check_boxes(method, collection, value_method, text_method, **options, &block)
+      options[:error] ||= error_for(method)
+      if options[:error_hidden] && options[:error]
+        options[:error] = !!options[:error]
+      end
+
+      value = object&.public_send(method)
+      if value.present?
+        options[:selected] = value.map { |el| el.public_send(value_method) }
+      end
+
+      render Polaris::ChoiceListComponent.new(
+        form: self,
+        title: method.to_s.humanize,
+        attribute: method,
+        name: method,
+        **options,
+        &block
+      ) do |choice|
+        collection.each do |item|
+          choice.with_checkbox(label: item.public_send(text_method), value: item.public_send(value_method))
+        end
+      end
+    end
   end
 end

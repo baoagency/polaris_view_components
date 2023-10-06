@@ -5,13 +5,14 @@ class Polaris::ViewHelperTest < ActionView::TestCase
 
   class Product
     include ActiveModel::Model
-    attr_accessor :title, :status, :accept, :access
+    attr_accessor :title, :status, :accept, :access, :selected_markets
 
     validates :title, presence: true
   end
 
   setup do
     @product = Product.new
+    @available_markets = [Market.new(id: 1, name: "US"), Market.new(id: 2, name: "Spain")]
     @builder = Polaris::FormBuilder.new(:product, @product, self, {})
   end
 
@@ -108,6 +109,42 @@ class Polaris::ViewHelperTest < ActionView::TestCase
     end
     assert_selector ".Polaris-DropZone" do
       assert_selector %(input[type=file][name="product[image][]"])
+    end
+  end
+
+  test "#polaris_collection_check_boxes" do
+    @rendered_content = @builder.polaris_collection_check_boxes(:selected_markets, @available_markets, :id, :name)
+
+    assert_selector "legend", text: "Selected markets"
+    assert_selector "ul" do
+      assert_selector "li", count: 2
+      assert_selector "li:nth-child(1)" do
+        assert_selector "input[type=checkbox][name='product[selected_markets][]'][value=1]"
+        assert_text "US"
+      end
+      assert_selector "li:nth-child(2)" do
+        assert_selector "input[type=checkbox][name='product[selected_markets][]'][value=2]"
+        assert_text "Spain"
+      end
+    end
+  end
+
+  test "#polaris_collection_check_boxes with selected_markets" do
+    @product.selected_markets = [Market.new(id: 1, name: "US")]
+    @rendered_content = @builder.polaris_collection_check_boxes(:selected_markets, @available_markets, :id, :name)
+
+    assert_selector "legend", text: "Selected markets"
+    assert_selector "ul" do
+      assert_selector "li", count: 2
+      assert_selector "li:nth-child(1)" do
+        assert_selector "input[type=checkbox][name='product[selected_markets][]'][value=1][checked='checked']"
+        assert_text "US"
+      end
+      assert_selector "li:nth-child(2)" do
+        assert_selector "input[type=checkbox][name='product[selected_markets][]'][value=2]"
+        assert_no_selector "input[type=checkbox][name='product[selected_markets][]'][value=2][checked='checked']"
+        assert_text "Spain"
+      end
     end
   end
 end

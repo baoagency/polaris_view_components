@@ -1,0 +1,3 @@
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= form.polaris_collection_check_boxes(:selected_markets, available_markets, :id, :name) %>
+<% end %>
