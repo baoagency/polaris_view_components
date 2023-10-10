@@ -16,6 +16,7 @@ module Polaris
       label_hidden: false,
       checked: false,
       disabled: false,
+      multiple: false,
       help_text: nil,
       error: nil,
       value: "1",
@@ -29,6 +30,7 @@ module Polaris
       @name = name
       @checked = checked
       @disabled = disabled
+      @multiple = multiple
       @value = value
       @unchecked_value = unchecked_value
 
@@ -76,6 +78,7 @@ module Polaris
         name: @name,
         checked: @checked,
         disabled: @disabled,
+        multiple: @multiple,
         value: @value,
         unchecked_value: @unchecked_value,
         **@input_options

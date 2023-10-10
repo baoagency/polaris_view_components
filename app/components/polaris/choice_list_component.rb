@@ -10,6 +10,7 @@ module Polaris
         value: value,
         checked: @selected.include?(value),
         disabled: disabled || @disabled,
+        multiple: true,
         **system_arguments
       )
     end
