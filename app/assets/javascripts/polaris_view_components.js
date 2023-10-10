@@ -307,6 +307,14 @@ class Button extends Controller {
       this.buttonContent.insertAdjacentHTML("afterbegin", this.spinnerHTML);
     }
   }
+  disableWithoutLoader(event) {
+    if (this.button.disabled) {
+      event.preventDefault();
+    } else {
+      this.button.disabled = true;
+      this.button.classList.add("Polaris-Button--disabled");
+    }
+  }
   enable() {
     if (this.button.disabled) {
       this.button.disabled = false;
@@ -872,6 +880,9 @@ class Polaris extends Controller {
   }
   disableButton() {
     this.findElement("button").disable();
+  }
+  disableButtonWithoutLoader() {
+    this.findElement("button").disableWithoutLoader();
   }
   enableButton() {
     this.findElement("button").enable();

@@ -16,6 +16,14 @@
       data: {
         controller: "polaris",
         target: "#demo-button",
+        action: "polaris#disableButtonWithoutLoader"
+      }
+    ) { "Disable without loader" } %> |
+    <%= polaris_button(
+      plain: true,
+      data: {
+        controller: "polaris",
+        target: "#demo-button",
         action: "polaris#enableButton"
       }
     ) { "Enable" } %>

@@ -9,6 +9,10 @@ export default class extends Controller {
     this.findElement("button").disable()
   }
 
+  disableButtonWithoutLoader() {
+    this.findElement("button").disableWithoutLoader()
+  }
+
   enableButton() {
     this.findElement("button").enable()
   }
