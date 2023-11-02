@@ -52,6 +52,7 @@ module Polaris
       required: false,
       help_text: nil,
       error: false,
+      clear_errors_on_focus: false,
       wrapper_arguments: {},
       input_options: {},
       **system_arguments
@@ -83,6 +84,7 @@ module Polaris
       @required = required
       @help_text = help_text
       @error = error
+      @clear_errors_on_focus = clear_errors_on_focus
       @wrapper_arguments = wrapper_arguments
       @input_options = input_options
       @system_arguments = system_arguments
@@ -98,7 +100,8 @@ module Polaris
         label_action: @label_action,
         required: @required,
         help_text: @help_text,
-        error: @error
+        error: @error,
+        classes: "polaris-text-field-wrapper"
       }.deep_merge(@wrapper_arguments)
     end
 
@@ -136,8 +139,14 @@ module Polaris
         placeholder: @placeholder,
         maxlength: @maxlength,
         minlength: @minlength,
-        data: {polaris_text_field_target: "input"}
+        data: {
+          polaris_text_field_target: "input"
+        }
       }
+      if @clear_errors_on_focus
+        append_option(default_options[:data], :action, "focus->polaris-text-field#clearErrorMessages")
+      end
+
       if @type == :number
         default_options.merge!({
           step: @step,

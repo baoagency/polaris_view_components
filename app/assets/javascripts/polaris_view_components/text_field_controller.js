@@ -34,6 +34,18 @@ export default class extends Controller {
     }
   }
 
+  clearErrorMessages() {
+    const wrapper = this.inputTarget.parentElement
+    const inlineError = this.inputTarget.closest(".polaris-text-field-wrapper").querySelector(".Polaris-InlineError")
+
+    if (wrapper) {
+      wrapper.classList.remove("Polaris-TextField--error")
+    }
+    if (inlineError) {
+      inlineError.remove()
+    }
+  }
+
   increase() {
     this.changeNumber(1)
   }

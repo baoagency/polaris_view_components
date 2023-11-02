@@ -38,6 +38,9 @@ class TextFieldComponentPreview < ViewComponent::Preview
   def with_inline_error
   end
 
+  def clear_error_on_focus
+  end
+
   def disabled
   end
 
