@@ -35,4 +35,13 @@ class TextFieldComponentSystemTest < ApplicationSystemTestCase
     find(".Polaris-TextField__ClearButton").click
     assert_field "Store name", with: ""
   end
+
+  def test_clear_errors
+    with_preview("text_field_component/clear_error_on_focus")
+
+    find("#store_name").click
+
+    assert_no_selector "Polaris-TextField--error"
+    assert_no_selector "Polaris-Labelled__Error"
+  end
 end

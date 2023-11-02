@@ -13,5 +13,9 @@
     <%= layout.with_section do %>
       <%= form.polaris_text_field(:title) %>
     <% end %>
+
+    <%= layout.with_section do %>
+      <%= form.polaris_text_field(:title, clear_errors_on_focus: true) %>
+    <% end %>
   <% end %>
 <% end %>
