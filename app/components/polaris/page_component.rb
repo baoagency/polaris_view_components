@@ -18,6 +18,7 @@ module Polaris
       back_url: nil,
       prev_url: nil,
       next_url: nil,
+      pagination_label: nil,
       narrow_width: false,
       full_width: false,
       divider: false,
@@ -30,6 +31,7 @@ module Polaris
       @back_url = back_url
       @prev_url = prev_url
       @next_url = next_url
+      @pagination_label = pagination_label
       @narrow_width = narrow_width
       @full_width = full_width
       @divider = divider

@@ -108,10 +108,15 @@
                 <% if has_pagination? %>
                   <div class="Polaris-Page-Header__PaginationWrapper">
                     <nav aria-label="Pagination">
-                      <%= polaris_button_group(segmented: true) do |group| %>
+                      <%= polaris_button_group(segmented: @pagination_label.blank?) do |group| %>
                         <% group.with_item do %>
                           <%= polaris_button(url: @prev_url, outline: true, disabled: @prev_url.blank?) do |button| %>
                             <% button.with_icon(name: "ChevronLeftMinor") %>
+                          <% end %>
+                        <% end %>
+                        <% if @pagination_label.present? %>
+                          <% group.with_item do %>
+                            <div aria-live="polite"><%= @pagination_label %></div>
                           <% end %>
                         <% end %>
                         <% group.with_item do %>
