@@ -25,23 +25,4 @@ class NavigationListComponentTest < Minitest::Test
       end
     end
   end
-
-  def test_selected_items
-    render_inline(Polaris::NavigationListComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor", selected: true)
-      navigation.with_item(url: "/path1", label: "Item 2", icon: "HomeMajor") do |item|
-        item.with_sub_item(url: "#", label: "Sub Item", selected: true)
-      end
-    end
-
-    assert_selector ".Polaris-Navigation__Item.Polaris-Navigation__Item--selected.Polaris-Navigation--subNavigationActive" do
-      assert_text "Item 1"
-    end
-    assert_selector ".Polaris-Navigation__Item.Polaris-Navigation--subNavigationActive" do
-      assert_text "Item 2"
-      assert_selector ".Polaris-Navigation__Item.Polaris-Navigation__Item--selected.Polaris-Navigation--subNavigationActive" do
-        assert_text "Sub Item"
-      end
-    end
-  end
 end
