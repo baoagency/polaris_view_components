@@ -1,0 +1,18 @@
+<%= polaris_navigation_list do |navigation| %>
+  <% navigation.with_item(
+    url: "#",
+    label: "Home"
+  ) %>
+  <% navigation.with_item(
+    url: "#",
+    label: "Orders",
+    icon: "OrdersMinor",
+    badge: "15"
+  ) %>
+  <% navigation.with_item(
+    url: "#",
+    label: "Products",
+    icon: "ProductsMinor",
+    selected: true
+  ) %>
+<% end %>
