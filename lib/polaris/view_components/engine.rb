@@ -33,10 +33,7 @@ module Polaris
 
       initializer "polaris_view_components.helpers" do
         ActiveSupport.on_load(:action_controller_base) do
-          require "polaris/view_helper"
           helper Polaris::ViewHelper
-
-          require "polaris/url_helper"
           helper Polaris::UrlHelper
         end
       end
