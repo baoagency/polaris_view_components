@@ -95,6 +95,15 @@ class CardComponentTest < Minitest::Test
     assert_selector ".Polaris-LegacyCard__Subsection", text: "Subsection"
   end
 
+  def test_renders_card_with_subtitle
+    render_inline(Polaris::CardComponent.new(
+      title: "Card",
+      subtitle: "Subtitle"
+    )) { "Body" }
+
+    assert_selector ".Polaris-Text--subdued", text: "Subtitle"
+  end
+
   def test_renders_card_with_header_actions
     render_inline(Polaris::CardComponent.new(
       title: "Card",

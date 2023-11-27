@@ -19,6 +19,7 @@ module Polaris
 
     def initialize(
       title: "",
+      subtitle: nil,
       actions: [],
       sectioned: true,
       subdued: false,
@@ -26,6 +27,7 @@ module Polaris
       **system_arguments
     )
       @title = title
+      @subtitle = subtitle
       @actions = actions
       @sectioned = sectioned
       @footer_action_alignment = footer_action_alignment

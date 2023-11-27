@@ -3,6 +3,10 @@ class CardComponentPreview < ViewComponent::Preview
   def default
   end
 
+  # A description of the card’s content.
+  def card_with_subtitle
+  end
+
   # Use for less important card actions, or actions merchants may do before reviewing the contents of the card. For example, merchants may want to add items to a card containing a long list, or enter a customer’s new address.
   def card_with_header_actions
   end

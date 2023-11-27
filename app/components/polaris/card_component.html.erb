@@ -20,9 +20,17 @@
   <% if content.present? %>
     <% if @sectioned %>
       <%= render Polaris::Card::SectionComponent.new do %>
+        <% if @subtitle.present? %>
+          <%= polaris_text_style(variation: :subdued) { @subtitle } %>
+          <%= polaris_spacer(vertical: :loose) %>
+        <% end %>
         <%= content %>
       <% end %>
     <% else %>
+      <% if @subtitle.present? %>
+        <%= polaris_text_style(variation: :subdued) { @subtitle } %>
+        <%= polaris_spacer(vertical: :loose) %>
+      <% end %>
       <%= content %>
     <% end %>
   <% end %>
