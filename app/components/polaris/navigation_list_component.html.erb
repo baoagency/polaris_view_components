@@ -1,5 +1,7 @@
-<%= polaris_card(sectioned: false, style: "padding-top: 1em; padding-bottom: 1em;") do |card| %>
-  <% items.each do |item| %>
-    <%= item %>
-  <% end %>
+<%= polaris_card(sectioned: false, classes: "NavigationList") do |card| %>
+  <ul>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  </ul>
 <% end %>
