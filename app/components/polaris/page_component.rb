@@ -13,6 +13,7 @@ module Polaris
 
     def initialize(
       title: nil,
+      force_medium_title: nil,
       subtitle: nil,
       compact_title: false,
       back_url: nil,
@@ -26,6 +27,7 @@ module Polaris
       **system_arguments
     )
       @title = title
+      @force_medium_title = force_medium_title
       @subtitle = subtitle
       @compact_title = compact_title
       @back_url = back_url
@@ -44,8 +46,8 @@ module Polaris
         tag: "div",
         classes: class_names(
           "Polaris-Page-Header--mobileView",
-          "Polaris-Page-Header--mediumTitle": @title.present? && @title.length <= LONG_TITLE,
-          "Polaris-Page-Header--longTitle": @title.present? && @title.length > LONG_TITLE,
+          "Polaris-Page-Header--mediumTitle": @title.present? && (@force_medium_title || @title.length <= LONG_TITLE),
+          "Polaris-Page-Header--longTitle": @title.present? && @title.length > LONG_TITLE && !@force_medium_title,
           "Polaris-Page-Header--hasNavigation": @back_url.present?,
           "Polaris-Page-Header--noBreadcrumbs": @back_url.blank?
         )
