@@ -2,6 +2,8 @@
 
 module Polaris
   class PageComponent < Polaris::Component
+    include ActionView::Helpers::SanitizeHelper
+
     LONG_TITLE = 34
 
     renders_one :title_metadata
@@ -44,12 +46,17 @@ module Polaris
         tag: "div",
         classes: class_names(
           "Polaris-Page-Header--mobileView",
-          "Polaris-Page-Header--mediumTitle": @title.present? && @title.length <= LONG_TITLE,
-          "Polaris-Page-Header--longTitle": @title.present? && @title.length > LONG_TITLE,
+          "Polaris-Page-Header--mediumTitle": @title.present? && title_length <= LONG_TITLE,
+          "Polaris-Page-Header--longTitle": @title.present? && title_length > LONG_TITLE,
           "Polaris-Page-Header--hasNavigation": @back_url.present?,
           "Polaris-Page-Header--noBreadcrumbs": @back_url.blank?
         )
       }
+    end
+
+    def title_length
+      stripped_title = strip_tags(@title)&.strip
+      stripped_title.present? ? stripped_title.length : 0
     end
 
     def title_arguments
