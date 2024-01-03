@@ -42,7 +42,6 @@ module Polaris
     end
 
     def header_arguments
-      title_length = strip_tags(@title)&.strip.length
       {
         tag: "div",
         classes: class_names(
@@ -53,6 +52,11 @@ module Polaris
           "Polaris-Page-Header--noBreadcrumbs": @back_url.blank?
         )
       }
+    end
+
+    def title_length
+      stripped_title = strip_tags(@title)&.strip
+      stripped_title.present? ? stripped_title.length : 0
     end
 
     def title_arguments
