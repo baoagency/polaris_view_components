@@ -42,7 +42,7 @@ module Polaris
     end
 
     def header_arguments
-      title_length = strip_tags(@title).strip.length
+      title_length = strip_tags(@title)&.strip.length
       {
         tag: "div",
         classes: class_names(
