@@ -2,6 +2,8 @@
 
 module Polaris
   class PageComponent < Polaris::Component
+    include ActionView::Helpers::SanitizeHelper
+
     LONG_TITLE = 34
 
     renders_one :title_metadata
