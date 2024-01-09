@@ -279,4 +279,25 @@ class TextFieldComponentTest < Minitest::Test
       assert_selector ".Polaris-TextField__CharacterCount.Polaris-TextField__AlignFieldBottom", text: "15/40"
     end
   end
+
+  def test_clear_errors_on_focus
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      value: "Value",
+      label: "Label",
+      clear_errors_on_focus: true
+    ))
+
+    assert_selector "input[name=input_name][data-action~='focus->polaris-text-field#clearErrorMessages']"
+
+    render_inline(Polaris::TextFieldComponent.new(
+      name: :input_name,
+      value: "Value",
+      label: "Label",
+      clear_errors_on_focus: true,
+      input_options: {data: {action: "custom#action"}}
+    ))
+
+    assert_selector "input[name=input_name][data-action~='focus->polaris-text-field#clearErrorMessages']"
+  end
 end
