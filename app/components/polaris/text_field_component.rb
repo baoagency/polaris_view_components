@@ -143,10 +143,6 @@ module Polaris
           polaris_text_field_target: "input"
         }
       }
-      if @clear_errors_on_focus
-        append_option(default_options[:data], :action, "focus->polaris-text-field#clearErrorMessages")
-      end
-
       if @type == :number
         default_options.merge!({
           step: @step,
@@ -166,6 +162,9 @@ module Polaris
           "Polaris-TextField--monospaced": @monospaced,
           "Polaris-TextField__Input--suffixed": @suffix.present?
         )
+        if @clear_errors_on_focus
+          prepend_option(opts[:data], :action, "focus->polaris-text-field#clearErrorMessages")
+        end
         prepend_option(opts[:data], :action, "polaris-text-field#syncValue")
       end
     end
