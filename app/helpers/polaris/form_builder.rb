@@ -16,7 +16,12 @@ module Polaris
         model: object.class.model_name.human.downcase
       )
 
-      render Polaris::BannerComponent.new(title: title, status: :critical, within: :container) do |banner|
+      render Polaris::BannerComponent.new(
+        title: title,
+        status: :critical,
+        within: :container,
+        data: {errors_summary: true}
+      ) do |banner|
         [
           render(Polaris::ListComponent.new) do |list|
             object.errors.full_messages.each do |error|
