@@ -1,14 +1,21 @@
 <%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
-  <label class="Polaris-OptionList-Option__Label">
+  <label class="Polaris-OptionList-Option__Label Polaris-OptionList-Option__CheckboxLabel Polaris-OptionList-Option__MultiSelectOption">
     <div class="Polaris-OptionList-Option__Checkbox">
-      <div class="Polaris-OptionList-Checkbox">
-        <%= checkbox %>
-        <div class="Polaris-OptionList-Checkbox__Backdrop"></div>
-        <div class="Polaris-OptionList-Checkbox__Icon">
-          <%= polaris_icon(name: "TickMinor") %>
-        </div>
-      </div>
+      <label class="Polaris-Choice Polaris-Checkbox__ChoiceLabel">
+        <span class="Polaris-Choice__Control">
+          <span class="Polaris-Checkbox">
+            <%= checkbox %>
+            <div class="Polaris-Checkbox__Backdrop"></div>
+            <span class="Polaris-Checkbox__Icon Polaris-Checkbox--animated">
+              <svg viewBox="0 0 16 16" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path class="Polaris-Checkbox--checked" d="M1.5,5.5L3.44655,8.22517C3.72862,8.62007,4.30578,8.64717,4.62362,8.28044L10.5,1.5" transform="translate(2 2.980376)" opacity="0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"></path></svg>
+            </span>
+          </span>
+        </span>
+        <span class="Polaris-Choice__Label">
+          <span></span>
+        </span>
+      </label>
     </div>
-    <%= @label %>
+    <span><%= @label %></span>
   </label>
 <% end %>

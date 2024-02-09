@@ -26,7 +26,7 @@ class Polaris::OptionList::CheckboxComponent < Polaris::Component
     @system_arguments.tap do |opts|
       opts[:classes] = class_names(
         @system_arguments[:classes],
-        "Polaris-OptionList-Checkbox__Input"
+        "Polaris-Checkbox__Input"
       )
     end
   end
