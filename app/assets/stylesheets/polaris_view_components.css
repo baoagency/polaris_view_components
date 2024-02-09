@@ -3744,9 +3744,6 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-OptionList-Option__Checkbox
       fill: var(--p-color-text-brand-on-bg-fill);
       color: var(--p-color-text-brand-on-bg-fill);
     }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage {
-    padding: var(--p-space-500);
-}
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner {
     padding: 0 !important;
   }
