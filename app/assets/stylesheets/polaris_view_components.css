@@ -3712,33 +3712,33 @@ html.Polaris-Summer-Editions-2023 {
   --p-font-weight-medium: 550;
   --p-font-weight-semibold: 650;
   --p-font-weight-bold: 700;
-  --p-color-bg-surface-secondary: #fafafa;
+  --p-color-bg-surface-secondary: #f7f7f7;
   --p-color-icon: rgba(74, 74, 74, 1);
 
   --pc-stack-spacing: var(--p-space-300);
 }
 /* Polaris no longer uses different button styling depending on the context, so we can override all buttons at once. */
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:hover {
-      background: var(--p-color-bg-surface-secondary) !important;
-      color: var(--p-color-text) !important;
-      box-shadow: var(--pc-button-shadow-hover) !important;
-      border: none !important;
-    }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly {
-      padding: var(--p-space-100);
-    }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly:hover {
-        background: rgba(0, 0, 0, 0.1) !important;
-        box-shadow: none !important;
-      }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly svg {
-        fill: var(--p-color-icon);
-      }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button .Polaris-Button__Content {
-      color: var(--pc-button-color);
-      font-size: var(--p-font-size-350);
+    font-size: var(--p-font-size-350);
+    font-weight: var(--p-font-weight-regular);
+  }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain):hover {
+      box-shadow: var(--pc-button-shadow-hover);
+      border: none;
+    }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain) .Polaris-Button__Content {
       font-weight: var(--p-font-weight-semibold);
       line-height: var(--p-font-line-height-500);
+    }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly {
+    padding: var(--p-space-100);
+  }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly:hover {
+      background: rgba(0, 0, 0, 0.1) !important;
+      box-shadow: none !important;
+    }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly svg {
+      fill: var(--p-color-icon);
     }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner {
     padding: 0 !important;
@@ -3780,13 +3780,13 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-Banner--statusWarning .Polaris-Banner__TopBar svg {
           fill: var(--p-color-text-warning-on-bg-fill) !important;
         }
-html[class~="Polaris-Summer-Editions-2023"].Polaris-Banner--statusCritical .Polaris-Banner__TopBar {
-      color: var(--p-color-text-critical-on-bg-fill);
-      background-color: var(--p-color-bg-fill-critical);
-    }
-html[class~="Polaris-Summer-Editions-2023"].Polaris-Banner--statusCritical .Polaris-Banner__TopBar svg {
-        fill: var(--p-color-text-critical-on-bg-fill) !important;
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-Banner--statusCritical .Polaris-Banner__TopBar {
+        color: var(--p-color-text-critical-on-bg-fill);
+        background-color: var(--p-color-bg-fill-critical);
       }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-Banner--statusCritical .Polaris-Banner__TopBar svg {
+          fill: var(--p-color-text-critical-on-bg-fill) !important;
+        }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinContentContainer .Polaris-Banner__TopBar {
       padding: var(--p-space-300) 0 var(--p-space-200) var(--p-space-300);
     }
@@ -3809,3 +3809,27 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinContentContai
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinContentContainer.Polaris-Banner--statusCritical {
       background-color: var(--p-color-bg-surface-critical);
     }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Header {
+    padding-top: var(--p-space-400);
+  }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Section {
+    padding: var(--p-space-200) var(--p-space-400);
+  }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Section:last-child {
+      padding-bottom: var(--p-space-400);
+    }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--flush {
+      padding: 0;
+    }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--flush img {
+        border-top-left-radius: var(--p-border-radius-300);
+        border-top-right-radius: var(--p-border-radius-300);
+        width: 100%;
+      }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Footer {
+    padding-top: var(--p-space-100);
+  }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard ul {
+    margin: 0 0 var(--p-space-200) 0;
+    padding-left: var(--p-space-500);
+  }
