@@ -346,9 +346,13 @@
     margin: 0;
     padding-inline-start: 0;
   }.NavigationList .Polaris-Navigation__Item {
-    padding-bottom: var(--p-space-1);
-    padding-top: var(--p-space-1);
-  }.Polaris--hidden {
+    padding-bottom: var(--p-space-05);
+    padding-top: var(--p-space-05);
+  }.NavigationList .Polaris-Navigation__Item.Polaris-Navigation__Item--selected {
+      background-color: var(--p-color-bg-surface-tertiary);
+    }.NavigationList .Polaris-Navigation__Item:hover {
+      background-color: var(--p-color-bg-surface-tertiary);
+    }.Polaris--hidden {
   display: none !important;
 }/* Add missing 1/4 section for layout */@media (min-width: 30.625em) {
   .Polaris-Layout__Section--oneFourth {

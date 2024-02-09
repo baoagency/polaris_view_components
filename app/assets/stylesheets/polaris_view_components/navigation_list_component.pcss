@@ -8,7 +8,15 @@
   }
 
   .Polaris-Navigation__Item {
-    padding-bottom: var(--p-space-1);
-    padding-top: var(--p-space-1);
+    padding-bottom: var(--p-space-05);
+    padding-top: var(--p-space-05);
+
+    &.Polaris-Navigation__Item--selected {
+      background-color: var(--p-color-bg-surface-tertiary);
+    }
+
+    &:hover {
+      background-color: var(--p-color-bg-surface-tertiary);
+    }
   }
 }
