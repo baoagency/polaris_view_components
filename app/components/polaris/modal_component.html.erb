@@ -23,12 +23,13 @@
         <% if @title.present? %>
           <%= polaris_box(
             classes: "Polaris-Modal-Header",
-            padding_block_start: "4",
-            padding_block_end: "4",
-            padding_inline_start: "5",
-            padding_inline_end: "5",
+            padding_block_start: "2",
+            padding_block_end: "2",
+            padding_inline_start: "4",
+            padding_inline_end: "4",
             border_block_end_width: "1",
-            border_color: "border-subdued"
+            border_color: "border-subdued",
+            background: "bg-subdued"
           ) do %>
             <%= polaris_horizontal_grid(
               classes: "Polaris-Modal-Header__Title",
@@ -36,7 +37,7 @@
               gap: "4"
             ) do %>
               <%= polaris_horizontal_stack(gap: "4", block_align: :center) do %>
-                <%= polaris_text(as: :h2, variant: :headingLg, break_word: true) do %>
+                <%= polaris_text(as: :h2, variant: :headingMd, break_word: true) do %>
                   <%= @title %>
                 <% end %>
               <% end %>
@@ -64,9 +65,9 @@
             <%= polaris_box(
               border_color: "border-subdued",
               border_block_start_width: "1",
-              min_height: "var(--p-space-16)",
+              min_height: "var(--p-space-12)",
               padding: "4",
-              width: "100%"
+              width: "100%",
             ) do %>
               <%= polaris_stack(alignment: :center) do |stack| %>
                 <% stack.with_item(fill: true) do %>

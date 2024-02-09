@@ -1,24 +1,14 @@
-html[class~="Polaris-Summer-Editions-2023"] {
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
+
   /* Polaris no longer uses different button styling depending on the context, so we can override all buttons at once. */
-
-  .Polaris-Button .Polaris-Button__Content {
-    font-size: var(--p-font-size-350);
-    font-weight: var(--p-font-weight-regular);
-  }
-
-  .Polaris-Button:not(.Polaris-Button--plain) {
+  &:not(.Polaris-Button--plain) {
     &:hover {
       box-shadow: var(--pc-button-shadow-hover);
       border: none;
     }
-
-    .Polaris-Button__Content {
-      font-weight: var(--p-font-weight-semibold);
-      line-height: var(--p-font-line-height-500);
-    }
   }
 
-  .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly {
+  &.Polaris-Button--plain.Polaris-Button--iconOnly {
     padding: var(--p-space-100);
 
     &:hover {
@@ -28,6 +18,16 @@ html[class~="Polaris-Summer-Editions-2023"] {
 
     svg {
       fill: var(--p-color-icon);
+    }
+  }
+}
+
+@media (max-width: 30.625em) {
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
+    .Polaris-Button__Content {
+      font-size: var(--p-font-size-350);
+      font-weight: var(--p-font-weight-semibold);
+      line-height: var(--p-font-line-height-500);
     }
   }
 }

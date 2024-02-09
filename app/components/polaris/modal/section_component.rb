@@ -15,7 +15,7 @@ class Polaris::Modal::SectionComponent < Polaris::Component
 
   def call
     render(Polaris::BaseComponent.new(**system_arguments)) do
-      render(Polaris::BoxComponent.new(as: :section, padding: "5")) do
+      render(Polaris::BoxComponent.new(as: :section, padding: "4")) do
         content
       end
     end
