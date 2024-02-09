@@ -3740,6 +3740,10 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button .Polaris-Button__Con
       font-weight: var(--p-font-weight-semibold);
       line-height: var(--p-font-line-height-500);
     }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-OptionList-Option__Checkbox .Polaris-Checkbox__Icon > svg {
+      fill: var(--p-color-text-brand-on-bg-fill);
+      color: var(--p-color-text-brand-on-bg-fill);
+    }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner {
     padding: 0 !important;
   }
