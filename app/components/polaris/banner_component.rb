@@ -4,7 +4,7 @@ module Polaris
   class BannerComponent < Polaris::Component
     STATUS_DEFAULT = :default
     STATUS_MAPPINGS = {
-      STATUS_DEFAULT => "",
+      STATUS_DEFAULT => "Polaris-Banner--statusInfo",
       :success => "Polaris-Banner--statusSuccess",
       :info => "Polaris-Banner--statusInfo",
       :warning => "Polaris-Banner--statusWarning",
@@ -28,9 +28,11 @@ module Polaris
     }
 
     renders_one :action, ->(**system_arguments) do
-      Polaris::ButtonComponent.new(classes: "Polaris-Banner__Button Polaris-Banner__PrimaryAction", **system_arguments)
+      Polaris::ButtonComponent.new(**system_arguments)
     end
-    renders_one :secondary_action, "SecondaryAction"
+    renders_one :secondary_action, ->(**system_arguments) do
+      Polaris::ButtonComponent.new(**system_arguments)
+    end
     renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
         button.with_icon(name: "CancelSmallMinor")
@@ -74,18 +76,8 @@ module Polaris
       end
     end
 
-    class SecondaryAction < Polaris::Component
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-      end
-
-      def call
-        render(BaseButton.new(classes: "Polaris-Banner__SecondaryAction", **@system_arguments)) do
-          tag.span(class: "Polaris-Banner__Text") do
-            content
-          end
-        end
-      end
+    def within_container?
+      @within == :container
     end
   end
 end

@@ -1,0 +1,106 @@
+html[class~="Polaris-Summer-Editions-2023"] {
+
+  .Polaris-Banner {
+    padding: 0 !important;
+
+    h2 {
+      font-size: var(--p-font-size-325);
+    }
+
+    .Polaris-VerticalStack,
+    .Polaris-Banner__TopBar {
+      width: 100%;
+      border-top-left-radius: var(--p-border-radius-300);
+      border-top-right-radius: var(--p-border-radius-300);
+    }
+
+
+    .Polaris-Banner__Dismiss {
+      top: var(--p-space-200);
+      right: var(--p-space-200);
+    }
+  }
+
+  .Polaris-Banner--withinPage {
+
+    .Polaris-Banner__TopBar {
+      padding: var(--p-space-300);
+    }
+
+    &.Polaris-Banner--statusInfo {
+      .Polaris-Banner__TopBar {
+        color: var(--p-color-text-info-on-bg-fill);
+        background-color: var(--p-color-bg-fill-info);
+
+        svg {
+          fill: var(--p-color-text-info-on-bg-fill) !important;
+        }
+      }
+    }
+
+    &.Polaris-Banner--statusSuccess {
+      .Polaris-Banner__TopBar {
+        color: var(--p-color-text-success-on-bg-fill);
+        background-color: var(--p-color-bg-fill-success);
+
+        svg {
+          fill: var(--p-color-text-success-on-bg-fill) !important;
+        }
+      }
+    }
+
+    &.Polaris-Banner--statusWarning {
+      .Polaris-Banner__TopBar {
+        color: var(--p-color-text-warning-on-bg-fill);
+        background-color: var(--p-color-bg-fill-warning);
+
+        svg {
+          fill: var(--p-color-text-warning-on-bg-fill) !important;
+        }
+      }
+    }
+  }
+
+  &.Polaris-Banner--statusCritical {
+    .Polaris-Banner__TopBar {
+      color: var(--p-color-text-critical-on-bg-fill);
+      background-color: var(--p-color-bg-fill-critical);
+
+      svg {
+        fill: var(--p-color-text-critical-on-bg-fill) !important;
+      }
+    }
+  }
+
+  .Polaris-Banner--withinContentContainer {
+
+    .Polaris-Banner__TopBar {
+      padding: var(--p-space-300) 0 var(--p-space-200) var(--p-space-300);
+    }
+
+    .Polaris-VerticalStack {
+      flex-direction: row;
+      align-items: start;
+    }
+
+    .Polaris-Banner__TopBar {
+      width: auto;
+    }
+
+    &.Polaris-Banner--statusInfo {
+      background-color: var(--p-color-bg-surface-info);
+    }
+
+    &.Polaris-Banner--statusSuccess {
+      background-color: var(--p-color-bg-surface-success);
+    }
+
+    &.Polaris-Banner--statusWarning {
+      background-color: var(--p-color-bg-surface-warning);
+    }
+
+    &.Polaris-Banner--statusCritical {
+      background-color: var(--p-color-bg-surface-critical);
+    }
+  }
+}
