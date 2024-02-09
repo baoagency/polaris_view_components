@@ -1,9 +1,9 @@
 <% section_markup = capture do %>
   <% if @title.present? %>
     <%= polaris_box(
-      padding_block_start: "4",
+      padding_block_start: "3",
       padding_inline_start: "4",
-      padding_block_end: "2",
+      padding_block_end: "1",
       padding_inline_end: "4"
     ) do %>
       <%= polaris_text(as: :p, variant: :headingXs) do %>
@@ -12,16 +12,17 @@
     <% end %>
   <% end %>
   <%= polaris_box(
-    as: :ul,
-    padding: "2",
-    padding_block_start: @title.present? ? "0" : (@multiple_sections ? "0" : "2"),
+    padding: "1_5",
+    padding_block_start: @title.present? ? "0" : (@multiple_sections ? "0" : "1_5"),
   ) do %>
-    <% if items.present? %>
-      <% items.each do |item| %>
-        <%= item %>
+    <%= polaris_vertical_stack(as: :ul, gap: "1") do %>
+      <% if items.present? %>
+        <% items.each do |item| %>
+          <%= item %>
+        <% end %>
+      <% else %>
+        <%= content %>
       <% end %>
-    <% else %>
-      <%= content %>
     <% end %>
   <% end %>
 <% end %>
