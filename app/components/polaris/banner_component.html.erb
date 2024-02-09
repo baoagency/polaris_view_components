@@ -1,47 +1,57 @@
 <%= render Polaris::BaseComponent.new(tag: 'div', **@system_arguments) do %>
-  <% if dismiss_button %>
-    <div class="Polaris-Banner__Dismiss">
-      <%= dismiss_button %>
-    </div>
-  <% end %>
-  <% unless @hide_icon %>
-    <%= polaris_box(padding_inline_end: "4") do %>
-      <%= render_icon %>
-    <% end %>
-  <% end %>
-  <div class="Polaris-Banner__ContentWrapper">
-    <% if @title.present? %>
-      <%= polaris_text(as: :h2, variant: :headingMd, break_word: true) do %>
-        <%= @title %>
+  <%= polaris_vertical_stack do %>
+
+    <%= polaris_horizontal_stack(classes: "Polaris-Banner__TopBar", wrap: false, gap: within_container? ? "1" : "2") do %>
+      <% unless @hide_icon %>
+        <%= polaris_box do %>
+          <%= render_icon %>
+        <% end %>
+      <% end %>
+      <% if @title.present? %>
+        <%= polaris_box(padding_inline_end: "4") do %>
+          <%= polaris_text(as: :h2, variant: :headingMd, break_word: true) do %>
+            <%= @title %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if dismiss_button %>
+        <div class="Polaris-Banner__Dismiss">
+          <%= dismiss_button %>
+        </div>
       <% end %>
     <% end %>
-    <% if content.present? || action || secondary_action %>
-      <%= polaris_box(padding_block_start: "05", padding_block_end: "05") do %>
-        <%= content %>
 
-        <% if action || secondary_action %>
-          <%= polaris_box(
-            padding_block_start: @within == :container ? "3" : "4",
-            padding_block_end: @within == :container ? "1" : nil
-          ) do %>
-            <%= polaris_button_group do |group| %>
-              <% if action %>
-                <% group.with_item do %>
-                  <%= polaris_box(padding_inline_end: "2") do %>
-                    <%= action %>
+    <%= polaris_box(padding: within_container? ? "2" : "3") do %>
+      <%= polaris_vertical_stack(gap: within_container? ? "1" : "3") do %>
+        <% if content.present? || action || secondary_action %>
+
+          <%= polaris_box(padding_inline_end: within_container? ? "2" : nil) do %>
+            <%= content %>
+          <% end %>
+
+          <% if action || secondary_action %>
+            <%= polaris_box do %>
+              <%= polaris_button_group do |group| %>
+                <% if action %>
+                  <% group.with_item do %>
+                    <%= polaris_box(padding_inline_end: "1") do %>
+                      <%= action %>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
 
-              <% if secondary_action %>
-                <% group.with_item do %>
-                  <%= secondary_action %>
+                <% if secondary_action %>
+                  <% group.with_item do %>
+                    <%= secondary_action %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
           <% end %>
+
         <% end %>
       <% end %>
     <% end %>
-  </div>
+
+  <% end %>
 <% end %>
