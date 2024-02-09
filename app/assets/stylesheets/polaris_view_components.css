@@ -3709,20 +3709,41 @@ a.Polaris-Tag__Button {
   }
 html.Polaris-Summer-Editions-2023 {
   --p-font-weight-regular: 450;
+  --p-font-weight-medium: 550;
+  --p-font-weight-semibold: 650;
+  --p-font-weight-bold: 700;
+  --p-color-bg-surface-secondary: #fafafa;
+  --p-color-icon: rgba(74, 74, 74, 1);
 }
+/* Polaris no longer uses different button styling depending on the context, so we can override all buttons at once. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:hover {
+      background: var(--p-color-bg-surface-secondary) !important;
+      color: var(--p-color-text) !important;
+      box-shadow: var(--pc-button-shadow-hover) !important;
+      border: none !important;
+    }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly svg {
+      fill: var(--p-color-icon);
+    }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button .Polaris-Button__Content {
+      color: var(--pc-button-color);
+      font-size: var(--p-font-size-350);
+      font-weight: var(--p-font-weight-semibold);
+      line-height: var(--p-font-line-height-500);
+    }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage {
     padding: var(--p-space-500);
   }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage .Polaris-Banner--statusInfo {
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-Banner--statusInfo {
       box-shadow: 0px 3px 0px 0px var(--p-color-bg-fill-info) inset;
     }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage .Polaris-Banner--statusSuccess {
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-Banner--statusSuccess {
       box-shadow: 0px 3px 0px 0px var(--p-color-bg-fill-success) inset;
     }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage .Polaris-Banner--statusWarning {
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-Banner--statusWarning {
       box-shadow: 0px 3px 0px 0px var(--p-color-bg-fill-warning) inset;
     }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage .Polaris-Banner--statusCritical {
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinPage.Polaris-Banner--statusCritical {
       box-shadow: 0px 3px 0px 0px var(--p-color-bg-fill-critical) inset;
     }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner--withinContentContainer {

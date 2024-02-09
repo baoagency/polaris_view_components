@@ -4,7 +4,7 @@ module Polaris
   class BannerComponent < Polaris::Component
     STATUS_DEFAULT = :default
     STATUS_MAPPINGS = {
-      STATUS_DEFAULT => "",
+      STATUS_DEFAULT => "Polaris-Banner--statusInfo",
       :success => "Polaris-Banner--statusSuccess",
       :info => "Polaris-Banner--statusInfo",
       :warning => "Polaris-Banner--statusWarning",
