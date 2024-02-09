@@ -110,6 +110,10 @@ module Polaris
       doc.to_html.html_safe
     end
 
+    def polaris_html_classes
+      "Polaris-Summer-Editions-2023"
+    end
+
     def polaris_html_styles
       %(--pc-frame-global-ribbon-height:0px; --pc-frame-offset:0px;)
     end

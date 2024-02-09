@@ -8,20 +8,20 @@ if APPLICATION_LAYOUT_PATH.exist?
   insert_into_file APPLICATION_LAYOUT_PATH.to_s, "\n    <%= stylesheet_link_tag \"polaris_view_components\" %>", before: /\s*<\/head>/
 
   if File.read(APPLICATION_LAYOUT_PATH).include?("<body>")
-    say "Add Polaris inline styles for <html> in application layout"
-    gsub_file APPLICATION_LAYOUT_PATH.to_s, "<html", "<html style=\"<%= polaris_html_styles %>\""
+    say "Add Polaris classes and inline styles for <html> in application layout"
+    gsub_file APPLICATION_LAYOUT_PATH.to_s, "<html", "<html class=\"<%= polaris_html_classes %>\" style=\"<%= polaris_html_styles %>\""
 
     say "Add Polaris inline styles for <body> in application layout"
     gsub_file APPLICATION_LAYOUT_PATH.to_s, "<body>", "<body style=\"<%= polaris_body_styles %>\">"
   else
     say "<body> tag is not found in application layout.", :red
-    say "        Replace <html> with <html style=\"<%= polaris_html_styles %>\"> in your custom layour."
+    say "        Replace <html> with <html class=\"<%= polaris_html_classes %>\" style=\"<%= polaris_html_styles %>\"> in your custom layour."
     say "        Replace <body> with <body style=\"<%= polaris_body_styles %>\"> in your custom layour."
   end
 else
   say "Default application.html.erb is missing!", :red
   say "        1. Add <%= stylesheet_link_tag \"polaris_view_components\" %> within the <head> tag in your custom layout."
-  say "        2. Replace <html> with <html style=\"<%= polaris_html_styles %>\"> in your custom layour."
+  say "        2. Replace <html> with <html class=\"<%= polaris_html_classes %>\" style=\"<%= polaris_html_styles %>\"> in your custom layour."
   say "        3. Replace <body> with <body style=\"<%= polaris_body_styles %>\"> in your custom layour."
 end
 
