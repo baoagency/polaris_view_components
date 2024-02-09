@@ -12,8 +12,8 @@
     <% end %>
   <% end %>
   <%= polaris_box(
-    padding: "1_5",
-    padding_block_start: @title.present? ? "0" : (@multiple_sections ? "0" : "1_5"),
+    padding: "2",
+    padding_block_start: @title.present? ? "0" : (@multiple_sections ? "0" : "2"),
   ) do %>
     <%= polaris_vertical_stack(as: :ul, gap: "1") do %>
       <% if items.present? %>
