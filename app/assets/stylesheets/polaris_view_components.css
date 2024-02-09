@@ -3818,6 +3818,10 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyC
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Section {
     padding: var(--p-space-200) var(--p-space-400);
   }
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Section ul {
+      margin: 0 0 var(--p-space-200) 0;
+      padding-left: var(--p-space-500);
+    }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Section:last-child {
       padding-bottom: var(--p-space-400);
     }
@@ -3831,10 +3835,6 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyC
       }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Footer {
     padding-top: var(--p-space-100);
-  }
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard ul {
-    margin: 0 0 var(--p-space-200) 0;
-    padding-left: var(--p-space-500);
   }
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal {
 
