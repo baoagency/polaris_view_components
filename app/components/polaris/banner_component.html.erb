@@ -22,7 +22,7 @@
     <% end %>
 
     <%= polaris_box(padding: within_container? ? "2" : "3") do %>
-      <%= polaris_vertical_stack(gap: within_container? ? "1" : "3") do %>
+      <%= polaris_vertical_stack(classes: "Polaris-Banner__ContentWrapper", gap: within_container? ? "1" : "3") do %>
         <% if content.present? || action || secondary_action %>
 
           <%= polaris_box(padding_inline_end: within_container? ? "2" : nil) do %>
