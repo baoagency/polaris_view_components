@@ -59,15 +59,14 @@ html[class~="Polaris-Summer-Editions-2023"] {
         }
       }
     }
-  }
+    &.Polaris-Banner--statusCritical {
+      .Polaris-Banner__TopBar {
+        color: var(--p-color-text-critical-on-bg-fill);
+        background-color: var(--p-color-bg-fill-critical);
 
-  &.Polaris-Banner--statusCritical {
-    .Polaris-Banner__TopBar {
-      color: var(--p-color-text-critical-on-bg-fill);
-      background-color: var(--p-color-bg-fill-critical);
-
-      svg {
-        fill: var(--p-color-text-critical-on-bg-fill) !important;
+        svg {
+          fill: var(--p-color-text-critical-on-bg-fill) !important;
+        }
       }
     }
   }
