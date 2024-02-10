@@ -48,19 +48,26 @@ module Polaris
       **system_arguments
     )
       @status = status
+      @within = within
       @icon = icon || default_icon(status)
       @hide_icon = hide_icon
       @title = title
-
       @system_arguments = system_arguments
-      @system_arguments[:tabindex] = 0
-      @system_arguments[:role] = "status"
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-Banner",
-        STATUS_MAPPINGS[fetch_or_fallback(STATUS_OPTIONS, status, STATUS_DEFAULT)],
-        WITHIN_MAPPINGS[fetch_or_fallback(WITHIN_OPTIONS, within, WITHIN_DEFAULT)]
-      )
+    end
+
+    def system_arguments
+      @system_arguments.tap do |opts|
+        opts[:tabindex] = 0
+        opts[:role] = "status"
+        opts[:tag] = "div"
+        opts[:classes] = class_names(
+          opts[:classes],
+          "Polaris-Banner",
+          STATUS_MAPPINGS[fetch_or_fallback(STATUS_OPTIONS, @status, STATUS_DEFAULT)],
+          WITHIN_MAPPINGS[fetch_or_fallback(WITHIN_OPTIONS, @within, WITHIN_DEFAULT)],
+          "Polaris-Banner--onlyTitle": has_title? && !has_content?
+        )
+      end
     end
 
     def render_icon
@@ -69,8 +76,9 @@ module Polaris
 
     def default_icon(status)
       case status
-      when :success then "CircleTickMajor"
+      when :success then "CheckIcon"
       when :critical then "DiamondAlertMajor"
+      when :warning then "AlertTriangleIcon"
       else
         "CircleInformationMajor"
       end
@@ -78,6 +86,14 @@ module Polaris
 
     def within_container?
       @within == :container
+    end
+
+    def has_title?
+      @title.present?
+    end
+
+    def has_content?
+      content.present? || action || secondary_action
     end
   end
 end
