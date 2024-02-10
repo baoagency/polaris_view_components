@@ -505,31 +505,59 @@
 }/* Frame - TopBar */.Polaris-Frame__TopBar .Polaris-TopBar-SearchField > div {
     width: 100%;
   }html.Polaris-Summer-Editions-2023 {
+  --p-font-size-300: 0.75rem;
   --p-font-weight-regular: 450;
   --p-font-weight-medium: 550;
   --p-font-weight-semibold: 650;
   --p-font-weight-bold: 700;
   --p-color-bg-surface-secondary: #f7f7f7;
   --p-color-icon: rgba(74, 74, 74, 1);
-
   --p-space-1_5: var(--p-space-1_5-experimental);
-
   --pc-stack-spacing: var(--p-space-300);
-}/* Polaris no longer uses different button styling depending on the context, so we can override all buttons at once. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain):hover {
+  --p-color-button-gradient-bg-fill: linear-gradient(180deg,rgba(48,48,48,0) 63.53%,hsla(0,0%,100%,.15));
+}/* Polaris no longer uses different button styling depending on the context,
+   so we can override all buttons at once. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain):hover {
       box-shadow: var(--pc-button-shadow-hover);
       border: none;
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly {
+    }/* Dimsiss buttons */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly {
     padding: var(--p-space-100);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly:hover {
       background: rgba(0, 0, 0, 0.05) !important;
       box-shadow: none !important;
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly svg {
       fill: var(--p-color-icon);
-    }@media (max-width: 30.625em) {
-    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button .Polaris-Button__Content {
-      font-size: var(--p-font-size-350);
-      font-weight: var(--p-font-weight-semibold);
-      line-height: var(--p-font-line-height-500);
+    }/* Plain */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain {
+    box-shadow: none !important;
+  }/* Tertiary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--monochrome.Polaris-Button--plain.Polaris-Button--removeUnderline>.Polaris-Button__Content {
+      font-size: var(--p-font-size-300);
+      font-weight: var(--p-font-weight-medium) !important;
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--monochrome.Polaris-Button--plain.Polaris-Button--removeUnderline:hover {
+      background: var(--p-color-bg-fill-tertiary);
+    }/* Loading */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--loading svg {
+      fill: var(--p-color-icon-disabled);
+    }/* Destructive */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive {
+    --pc-button-color: var(--p-color-bg-fill-critical);
+    --pc-button-text: var(--p-color-bg-surface);
+    --pc-button-color-hover: var(--p-color-bg-fill-critical-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-critical-active);
+    --pc-button-color-depressed: var(--p-color-bg-fill-critical-selected);
+    box-shadow: var(--p-shadow-button-primary-critical);
+  }/* Primary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary {
+    --pc-button-bg-gradient: var(--p-color-button-gradient-bg-fill);
+    --pc-button-color: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand);
+    --pc-button-text: var(--p-color-bg-surface);
+    --pc-button-color-hover: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand-hover);
+    --pc-button-color-active: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand-active);
+    --pc-button-color-depressed: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand-selected);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary:hover {
+      --pc-button-text: var(--p-color-bg-surface);
+    }@media (max-width: 767px) {
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--monochrome.Polaris-Button--plain)>.Polaris-Button__Content, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--monochrome.Polaris-Button--plain.Polaris-Button--removeUnderline>.Polaris-Button__Content {
+      font-size: var(--p-font-size-350) !important;
+      line-height: var(--p-font-line-height-500) !important;
+    }
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--monochrome.Polaris-Button--plain):not(.Polaris-Button--disclosure.Polaris-Button--plain)>.Polaris-Button__Content, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--monochrome.Polaris-Button--plain.Polaris-Button--removeUnderline>.Polaris-Button__Content {
+      font-weight: var(--p-font-weight-semibold) !important;
     }
 }html[class~="Polaris-Summer-Editions-2023"] .Polaris-OptionList-Option__Checkbox .Polaris-Checkbox__Icon > svg {
       fill: var(--p-color-text-brand-on-bg-fill);

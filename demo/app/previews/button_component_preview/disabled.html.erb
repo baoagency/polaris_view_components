@@ -1,1 +1,6 @@
-<%= polaris_button(disabled: true) { "Buy shipping label" } %>
+<%= polaris_horizontal_stack(gap: "4") do %>
+  <%= polaris_button(disabled: true) { "Buy shipping label" } %>
+  <%= polaris_button(primary: true, disabled: true) { "Buy shipping label" } %>
+  <%= polaris_button(plain: true, monochrome: true, remove_underline: true, disabled: true) { "Buy shipping label" } %>
+  <%= polaris_button(disabled: true) { "Buy shipping label" } %>
+<% end %>
