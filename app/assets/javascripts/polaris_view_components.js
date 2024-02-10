@@ -2432,11 +2432,12 @@ class Tooltip extends Controller {
     let tooltip = document.createElement("span");
     tooltip.className = "Polaris-Tooltip";
     tooltip.innerHTML = this.templateTarget.innerHTML;
-    this.tooltip = element.appendChild(tooltip);
-    const arrowElement = element.querySelector("[data-tooltip-arrow]");
+    document.body.appendChild(tooltip);
+    this.tooltip = tooltip;
+    const arrowElement = this.tooltip.querySelector(".Polaris-Tooltip-Arrow");
     computePosition(element, this.tooltip, {
       placement: this.positionValue,
-      middleware: [ offset(this.offsetValue), flip(), shift({
+      middleware: [ offset(10), flip(), shift({
         padding: 5
       }), arrow({
         element: arrowElement
@@ -2446,20 +2447,43 @@ class Tooltip extends Controller {
         left: `${x}px`,
         top: `${y}px`
       });
-      const {x: arrowX, y: arrowY} = middlewareData.arrow;
-      const staticSide = {
-        top: "bottom",
-        right: "left",
-        bottom: "top",
-        left: "right"
-      }[placement.split("-")[0]];
       Object.assign(arrowElement.style, {
-        left: arrowX != null ? `${arrowX}px` : "",
-        top: arrowY != null ? `${arrowY}px` : "",
+        left: "",
+        top: "",
         right: "",
-        bottom: "",
-        [staticSide]: "-4px"
+        bottom: ""
       });
+      const {x: arrowX, y: arrowY} = middlewareData.arrow || {};
+      const primaryPlacement = placement.split("-")[0];
+      switch (primaryPlacement) {
+       case "top":
+        Object.assign(arrowElement.style, {
+          left: arrowX ? `${arrowX}px` : "",
+          bottom: "-4px"
+        });
+        break;
+
+       case "bottom":
+        Object.assign(arrowElement.style, {
+          left: arrowX ? `${arrowX}px` : "",
+          top: "-4px"
+        });
+        break;
+
+       case "left":
+        Object.assign(arrowElement.style, {
+          top: arrowY ? `${arrowY}px` : "",
+          right: "-4px"
+        });
+        break;
+
+       case "right":
+        Object.assign(arrowElement.style, {
+          top: arrowY ? `${arrowY}px` : "",
+          left: "-4px"
+        });
+        break;
+      }
     }));
   }
   hide() {

@@ -319,8 +319,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: var(--p-z-index-2);
   opacity: 1;
-  box-shadow: var(--p-shadow-lg);
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 5px);
   border-radius: var(--p-border-radius-2);
   pointer-events: none;
   -webkit-backface-visibility: hidden;
@@ -515,6 +516,7 @@
   --p-space-1_5: var(--p-space-1_5-experimental);
 
   --pc-stack-spacing: var(--p-space-300);
+
 }/* Polaris no longer uses different button styling depending on the context, so we can override all buttons at once. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain):hover {
       box-shadow: var(--pc-button-shadow-hover);
       border: none;
