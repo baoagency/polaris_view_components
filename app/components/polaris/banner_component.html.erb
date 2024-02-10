@@ -76,6 +76,7 @@
           <%= polaris_box(
             padding: within_container? ? nil : "1",
             padding_block_start: (has_title? || within_container?) ? nil : "1_5",
+            classes: has_title? ? nil : "Polaris-Banner__ContainerContentWrapper"
           ) do %>
             <%= polaris_vertical_stack(gap: "1") do %>
               <% if has_title? %>
