@@ -319,6 +319,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: var(--p-z-index-2);
   opacity: 1;
   box-shadow: var(--p-shadow-lg);
   border-radius: var(--p-border-radius-2);

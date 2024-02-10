@@ -25,13 +25,13 @@ export default class extends Controller {
         shift({ padding: 5 }),
         arrow({ element: arrowElement })
       ]
-    }).then(({x, y, placement, middlewareData}) => {
+    }).then(({ x, y, placement, middlewareData }) => {
       Object.assign(this.tooltip.style, {
         left: `${x}px`,
         top: `${y}px`,
       })
 
-      const {x: arrowX, y: arrowY} = middlewareData.arrow;
+      const { x: arrowX, y: arrowY } = middlewareData.arrow;
 
       const staticSide = {
         top: 'bottom',
