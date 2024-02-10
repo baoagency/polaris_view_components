@@ -513,18 +513,23 @@
   --p-font-weight-medium: 550;
   --p-font-weight-semibold: 650;
   --p-font-weight-bold: 700;
-  --p-color-bg-surface-secondary: #f7f7f7;
-  --p-color-icon: rgba(74, 74, 74, 1);
+
   --p-space-1_5: var(--p-space-1_5-experimental);
   --pc-stack-spacing: var(--p-space-300);
-  --p-color-button-gradient-bg-fill: linear-gradient(180deg,rgba(48,48,48,0) 63.53%,hsla(0,0%,100%,.15));
+
+  --p-color-bg-surface-secondary: rgba(247, 247, 247, 1);
   --p-color-bg-inverse: #1a1a1a;
   --p-color-bg-fill-inverse: #303030
+  --p-color-icon: rgba(74, 74, 74, 1);
+  --p-color-border: rgba(235, 235, 235, 1);
+  --p-color-button-gradient-bg-fill: linear-gradient(180deg,rgba(48,48,48,0) 63.53%,hsla(0,0%,100%,.15));
 }/* Polaris no longer uses different button styling depending on the context,
    so we can override all buttons at once. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain):hover {
       box-shadow: var(--pc-button-shadow-hover);
       border: none;
-    }/* Dimsiss buttons */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly {
+    }/* IconOnly */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--iconOnly {
+    padding: var(--p-space-150) var(--p-space-100);
+  }/* Dimsiss buttons */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly {
     padding: var(--p-space-100);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly:hover {
       background: rgba(0, 0, 0, 0.05) !important;
