@@ -76,7 +76,8 @@ module Polaris
           sectioned: @sectioned,
           style: ("width: #{@width}" if @width.present?),
           position: :below,
-          alignment: :left
+          alignment: :left,
+          append_to_body: true
         }
       end
 
