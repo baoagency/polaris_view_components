@@ -3,12 +3,15 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
     padding-top: var(--p-space-400);
   }
 
-  .Polaris-LegacyCard__Section {
-    padding: var(--p-space-200) var(--p-space-400);
+  .Polaris-LegacyCard__Header+.Polaris-LegacyCard__Section {
+    padding-top: var(--p-space-200);
+  }
 
-    ul {
-      margin: 0 0 var(--p-space-200) 0;
-      padding-left: var(--p-space-500);
+  .Polaris-LegacyCard__Section {
+    padding: var(--p-space-400) var(--p-space-400) var(--p-space-200);
+
+    &+.Polaris-LegacyCard__Section {
+      padding-top: var(--p-space-200);
     }
 
     &:last-child {
@@ -31,10 +34,8 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
   }
 
   &.Polaris-LegacyCard--withoutTitle {
-    .Polaris-LegacyCard__Section {
-      &:first-child {
-        padding-top: var(--p-space-400);
-      }
+    .Polaris-LegacyCard__Section:first-child {
+      padding-top: var(--p-space-400);
     }
   }
 }
