@@ -554,6 +554,8 @@
     --pc-button-color-depressed: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand-selected);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary:hover {
       --pc-button-text: var(--p-color-bg-surface);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary:active {
+      box-shadow: var(--pc-button-box-shadow_active);
     }@media (max-width: 767px) {
     html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--monochrome.Polaris-Button--plain)>.Polaris-Button__Content, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--monochrome.Polaris-Button--plain.Polaris-Button--removeUnderline>.Polaris-Button__Content {
       font-size: var(--p-font-size-350) !important;
