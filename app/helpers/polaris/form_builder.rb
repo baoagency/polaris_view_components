@@ -6,7 +6,7 @@ module Polaris
 
     delegate :render, :pluralize, to: :template
 
-    def errors_summary
+    def errors_summary(within: :container)
       return if object.blank?
       return unless object.errors.any?
 
@@ -19,7 +19,7 @@ module Polaris
       render Polaris::BannerComponent.new(
         title: title,
         status: :critical,
-        within: :container,
+        within: within,
         data: {errors_summary: true}
       ) do |banner|
         [
