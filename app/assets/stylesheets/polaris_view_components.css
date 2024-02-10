@@ -664,4 +664,10 @@
     padding: var(--p-space-300) var(--p-space-400) var(--p-space-100);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Popover .Polaris-Popover__Content .Polaris-Popover__Pane:last-child > .Polaris-Popover__Section > .Polaris-Box {
     padding: var(--p-space-300) var(--p-space-300);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-CalloutCard__Container .Polaris-CalloutCard__Dismiss {
+    display: flex;
+    width: 1.75rem;
+    height: 1.75rem;
+    right: var(--p-space-300);
+    top: var(--p-space-300);
   }
