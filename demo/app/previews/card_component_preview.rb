@@ -72,4 +72,7 @@ class CardComponentPreview < ViewComponent::Preview
 
   def section_with_borders
   end
+
+  def without_title
+  end
 end
