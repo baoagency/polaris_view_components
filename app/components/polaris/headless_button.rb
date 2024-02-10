@@ -83,10 +83,11 @@ module Polaris
         "Polaris-Button--loading": loading,
         "Polaris-Button--fullWidth": full_width,
         "Polaris-Button--monochrome": monochrome,
-        "Polaris-Button--outline": outline,
+        # "Polaris-Button--outline": outline,
         "Polaris-Button--plain": plain,
         "Polaris-Button--primary": primary,
         "Polaris-Button--pressed": pressed,
+        "Polaris-Button--disclosure": disclosure,
         "Polaris-Button--removeUnderline": (plain && monochrome && remove_underline)
       )
     end

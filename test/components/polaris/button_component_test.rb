@@ -11,18 +11,6 @@ class ButtonComponentTest < Minitest::Test
     end
   end
 
-  def test_outline_button
-    render_inline(Polaris::ButtonComponent.new(outline: true)) { "Button" }
-
-    assert_selector "button.Polaris-Button--outline"
-  end
-
-  def test_outline_monochrome_button
-    render_inline(Polaris::ButtonComponent.new(outline: true, monochrome: true)) { "Button" }
-
-    assert_selector "button.Polaris-Button--outline.Polaris-Button--monochrome"
-  end
-
   def test_plain_button
     render_inline(Polaris::ButtonComponent.new(plain: true)) { "Button" }
 
