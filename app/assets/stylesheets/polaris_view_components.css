@@ -516,6 +516,8 @@
   --p-space-1_5: var(--p-space-1_5-experimental);
   --pc-stack-spacing: var(--p-space-300);
   --p-color-button-gradient-bg-fill: linear-gradient(180deg,rgba(48,48,48,0) 63.53%,hsla(0,0%,100%,.15));
+  --p-color-bg-inverse: #1a1a1a;
+  --p-color-bg-fill-inverse: #303030
 }/* Polaris no longer uses different button styling depending on the context,
    so we can override all buttons at once. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain):hover {
       box-shadow: var(--pc-button-shadow-hover);
@@ -670,4 +672,39 @@
     height: 1.75rem;
     right: var(--p-space-300);
     top: var(--p-space-300);
-  }
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button {
+  --pc-color-text: var(--p-color-text-inverse);
+  --pc-button-text: var(--p-color-text-inverse);
+  --pc-button-color: var(--p-color-bg-fill-inverse);
+  --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
+  --pc-button-color-active: var(--p-color-bg-fill-inverse-active);
+  --pc-button-color-depressed: var(--p-color-bg-fill-inverse-hover);
+  --pc-button-color-disabled: var(--pc-button-bg);
+  background: var(--p-color-bg-fill-inverse);
+  box-shadow: none;
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button:hover {
+    background: var(--p-color-bg-fill-inverse-hover);
+    color: var(--p-color-text-inverse);
+    box-shadow: none;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary {
+    --pc-button-color-hover: var(--p-color-bg-fill-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-active);
+    --pc-button-color-depressed: var(--p-color-bg-fill-hover);
+    --pc-button-color-disabled: var(--pc-button-bg);
+    color: #303030;
+    background: var(--p-color-bg-fill);
+    box-shadow: 0 0.0625rem 0 0 hsla(0, 0%, 100%, .48) inset, -0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0 -0.09375rem 0 0 rgba(0, 0, 0, .25) inset;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary:hover {
+      background: var(--p-color-bg-fill-hover);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary:before,
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary:after {
+      box-shadow: none;
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary.Polaris-Button--disabled {
+      background: #616161;
+      color: #303030;
+      box-shadow: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
