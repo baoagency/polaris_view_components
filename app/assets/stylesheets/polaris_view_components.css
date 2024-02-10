@@ -274,7 +274,7 @@
   font-weight: 400;
   color: var(--p-color-text);
   text-decoration: none;
-  border-bottom: 3px solid var(--p-color-bg-primary);
+  border-bottom: 3px solid var(--p-color-bg-fill-tertiary-hover);
 }.shp-Navigation_Link:focus .shp-Navigation_LinkText {
   font-weight: 400;
   color: var(--p-color-text);
@@ -707,4 +707,10 @@
       -moz-user-select: none;
       user-select: none;
       pointer-events: none;
-    }
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Navigation .Polaris-Navigation__Item.Polaris-Navigation__Item--selected {
+      background-color: var(--p-color-nav-bg-surface-selected) !important;
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Navigation .Polaris-Navigation__Item:hover {
+      background-color: var(--p-color-bg-surface-tertiary);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs__Wrapper {
+  margin-bottom: var(--p-space-200);
+}
