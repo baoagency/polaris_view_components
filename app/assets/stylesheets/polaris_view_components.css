@@ -274,7 +274,7 @@
   font-weight: 400;
   color: var(--p-color-text);
   text-decoration: none;
-  border-bottom: 3px solid var(--p-color-bg-primary);
+  border-bottom: 3px solid var(--p-color-bg-fill-tertiary-hover);
 }.shp-Navigation_Link:focus .shp-Navigation_LinkText {
   font-weight: 400;
   color: var(--p-color-text);
@@ -516,6 +516,8 @@
   --p-space-1_5: var(--p-space-1_5-experimental);
   --pc-stack-spacing: var(--p-space-300);
   --p-color-button-gradient-bg-fill: linear-gradient(180deg,rgba(48,48,48,0) 63.53%,hsla(0,0%,100%,.15));
+  --p-color-bg-inverse: #1a1a1a;
+  --p-color-bg-fill-inverse: #303030
 }/* Polaris no longer uses different button styling depending on the context,
    so we can override all buttons at once. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button:not(.Polaris-Button--plain):hover {
       box-shadow: var(--pc-button-shadow-hover);
@@ -654,6 +656,8 @@
     background: transparent !important;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction a:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction button:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionList__Item:hover {
       background: var(--p-color-bg-surface-secondary-hover) !important;
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction a.Polaris-ActionList--active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction button.Polaris-ActionList--active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionList__Item.Polaris-ActionList--active {
+      background: var(--p-color-bg-surface-secondary-active) !important;
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction a.Polaris-ActionList--destructive:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction button.Polaris-ActionList--destructive:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionList__Item.Polaris-ActionList--destructive:hover {
         background: var(--p-color-bg-surface-critical-hover) !important;
       }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction a.Polaris-ActionList--destructive svg, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction button.Polaris-ActionList--destructive svg, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionList__Item.Polaris-ActionList--destructive svg {
@@ -662,4 +666,51 @@
     padding: var(--p-space-300) var(--p-space-400) var(--p-space-100);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Popover .Polaris-Popover__Content .Polaris-Popover__Pane:last-child > .Polaris-Popover__Section > .Polaris-Box {
     padding: var(--p-space-300) var(--p-space-300);
-  }
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-CalloutCard__Container .Polaris-CalloutCard__Dismiss {
+    display: flex;
+    width: 1.75rem;
+    height: 1.75rem;
+    right: var(--p-space-300);
+    top: var(--p-space-300);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button {
+  --pc-color-text: var(--p-color-text-inverse);
+  --pc-button-text: var(--p-color-text-inverse);
+  --pc-button-color: var(--p-color-bg-fill-inverse);
+  --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
+  --pc-button-color-active: var(--p-color-bg-fill-inverse-active);
+  --pc-button-color-depressed: var(--p-color-bg-fill-inverse-hover);
+  --pc-button-color-disabled: var(--pc-button-bg);
+  background: var(--p-color-bg-fill-inverse);
+  box-shadow: none;
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button:hover {
+    background: var(--p-color-bg-fill-inverse-hover);
+    color: var(--p-color-text-inverse);
+    box-shadow: none;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary {
+    --pc-button-color-hover: var(--p-color-bg-fill-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-active);
+    --pc-button-color-depressed: var(--p-color-bg-fill-hover);
+    --pc-button-color-disabled: var(--pc-button-bg);
+    color: #303030;
+    background: var(--p-color-bg-fill);
+    box-shadow: 0 0.0625rem 0 0 hsla(0, 0%, 100%, .48) inset, -0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0 -0.09375rem 0 0 rgba(0, 0, 0, .25) inset;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary:hover {
+      background: var(--p-color-bg-fill-hover);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary:before,
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary:after {
+      box-shadow: none;
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button.Polaris-Button--primary.Polaris-Button--disabled {
+      background: #616161;
+      color: #303030;
+      box-shadow: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Navigation .Polaris-Navigation__Item.Polaris-Navigation__Item--selected {
+      background-color: var(--p-color-nav-bg-surface-selected) !important;
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Navigation .Polaris-Navigation__Item:hover {
+      background-color: var(--p-color-bg-surface-tertiary);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs__Wrapper {
+  margin-bottom: var(--p-space-200);
+}

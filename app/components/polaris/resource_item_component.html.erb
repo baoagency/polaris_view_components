@@ -13,12 +13,12 @@
       <%= render(Polaris::BoxComponent.new(**container_arguments)) do %>
         <%= polaris_horizontal_grid(columns: "1fr auto") do %>
           <%= polaris_horizontal_grid(
-            gap: "5",
+            gap: "3",
             columns: (media.present? || @selectable) ? "auto 1fr" : "1fr"
           ) do %>
             <% if owned? %>
               <%= polaris_horizontal_stack(
-                gap: "4",
+                gap: "3",
                 block_align: (media.present? && @selectable) ? :center : @vertical_alignment
               ) do %>
                 <% if checkbox.present? || radio_button.present? %>
@@ -41,12 +41,12 @@
               <% end %>
             <% end %>
 
-            <%= polaris_horizontal_stack(gap: "4", block_align: @vertical_alignment || :center) do %>
+            <%= polaris_horizontal_stack(gap: "2", block_align: @vertical_alignment || :center) do %>
               <%= polaris_box(
                 width: "100%",
                 padding: "0",
                 padding_inline_start: "0",
-                padding_inline_end: "0"
+                padding_inline_end: "2"
               ) do %>
                 <%= content %>
               <% end %>
