@@ -22,4 +22,10 @@ class BannerComponentPreview < ViewComponent::Preview
 
   def within_card
   end
+
+  def within_card_with_title
+  end
+
+  def only_title
+  end
 end

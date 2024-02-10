@@ -24,7 +24,7 @@ class BannerComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Banner" do
-      assert_selector ".Polaris-Banner__Dismiss > .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly"
+      assert_selector ".Polaris-Banner__DismissButton > .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly"
     end
   end
 
