@@ -366,11 +366,11 @@
   text-decoration: none;
 }/* Card */.Polaris-LegacyCard {
   overflow: initial;
-}.Polaris-LegacyCard__Section--borderTop {
-  border-top: 0.1rem solid var(--p-color-border-subdued);
-}.Polaris-LegacyCard__Section--borderBottom {
-  border-bottom: 0.1rem solid var(--p-color-border-subdued);
-}/* IndexTable *//* TestStyle sizes */.Polaris-TextStyle--sizeSmall {
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--borderTop {
+    border-top: 0.1rem solid var(--p-color-border-subdued) !important;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Section--borderBottom {
+    border-bottom: 0.1rem solid var(--p-color-border-subdued) !important;
+  }/* IndexTable *//* TestStyle sizes */.Polaris-TextStyle--sizeSmall {
   font-size: 1.25rem;
 }/* Remove focus styles for non-keyboard focus from buttons and links */.Polaris-Button:focus:not(:focus-visible)::after, .Polaris-Breadcrumbs__Breadcrumb:focus:not(:focus-visible)::after {
     box-shadow: none !important;
