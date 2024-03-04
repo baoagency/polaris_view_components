@@ -15,3 +15,5 @@ gem "foreman"
 gem "capybara"
 gem "sqlite3"
 gem "standard"
+# TODO: Keep until support for Ruby 2.7 is dropped
+gem "selenium-webdriver", "=4.9.0"
