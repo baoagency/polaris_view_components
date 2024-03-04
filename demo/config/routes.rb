@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :suggestions, only: :index
   resource :uploads, only: :create
 
-  get 'test', to: "test#hello"
+  get "up" => "rails/health#show", as: :rails_health_check
 
-  root to: redirect('/lookbook')
+  root to: redirect("/lookbook")
 end
