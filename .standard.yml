@@ -1,5 +1,6 @@
 ignore:
   - demo/bin/**/*
   - demo/config/**/*
+  - demo/db/**/*
   - '**/*':
     - Style/ArgumentsForwarding

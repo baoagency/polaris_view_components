@@ -87,8 +87,7 @@ module Polaris
         "Polaris-Button--plain": plain,
         "Polaris-Button--primary": primary,
         "Polaris-Button--pressed": pressed,
-        "Polaris-Button--disclosure": disclosure,
-        "Polaris-Button--removeUnderline": (plain && monochrome && remove_underline)
+        "Polaris-Button--removeUnderline": plain && monochrome && remove_underline
       )
     end
 
