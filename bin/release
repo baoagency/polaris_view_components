@@ -23,10 +23,10 @@ rm "polaris_view_components-$VERSION.gem"
 echo "Need to publish NPM package too?"
 
 while true; do
-  read -p "Deploy new version to Render? [Yn] " yn
+  read -p "Deploy new version of polarisviewcomponents.org? [Yn] " yn
   case $yn in
     [Yy]* )
-      git push origin main:render
+      kamal deploy
       break;;
     [Nn]* ) break;;
     * ) echo "Please answer yes or no.";;
