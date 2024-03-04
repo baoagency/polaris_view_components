@@ -45,7 +45,7 @@ module Polaris
     end
 
     def render_accessibility?
-      (!@has_focusable_parent && @accessibility_label.present?)
+      !@has_focusable_parent && @accessibility_label.present?
     end
   end
 end

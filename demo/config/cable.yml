@@ -1,0 +1,8 @@
+development:
+  adapter: test
+
+test:
+  adapter: test
+
+production:
+  adapter: test
