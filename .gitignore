@@ -18,3 +18,4 @@
 /demo/db/*.sqlite3-*
 /demo/log/*.log
 .DS_Store
+.env

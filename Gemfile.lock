@@ -131,6 +131,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     net-imap (0.3.7)
       date
@@ -142,11 +143,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.4-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
+    nokogiri (1.15.4)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.23.0)
     parser (3.2.2.3)
@@ -226,9 +224,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.6-arm64-darwin)
-    sqlite3 (1.6.6-x86_64-darwin)
-    sqlite3 (1.6.6-x86_64-linux)
+    sqlite3 (1.6.6)
+      mini_portile2 (~> 2.8.0)
     standard (1.31.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -270,9 +267,11 @@ GEM
     zeitwerk (2.6.11)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-20
   arm64-darwin-21
   arm64-darwin-22
+  arm64-darwin-23
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-linux
@@ -297,4 +296,4 @@ DEPENDENCIES
   webdrivers (~> 5.0)
 
 BUNDLED WITH
-   2.3.11
+   2.5.6
