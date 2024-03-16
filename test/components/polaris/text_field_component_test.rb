@@ -288,7 +288,7 @@ class TextFieldComponentTest < Minitest::Test
       clear_errors_on_focus: true
     ))
 
-    assert_selector "input[name=input_name][data-action~='focus->polaris-text-field#clearErrorMessages']"
+    assert_selector "input[name=input_name][data-action~='click->polaris-text-field#clearErrorMessages']"
 
     render_inline(Polaris::TextFieldComponent.new(
       name: :input_name,
@@ -298,6 +298,6 @@ class TextFieldComponentTest < Minitest::Test
       input_options: {data: {action: "custom#action"}}
     ))
 
-    assert_selector "input[name=input_name][data-action~='focus->polaris-text-field#clearErrorMessages']"
+    assert_selector "input[name=input_name][data-action~='click->polaris-text-field#clearErrorMessages']"
   end
 end
