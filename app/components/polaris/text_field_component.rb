@@ -163,7 +163,7 @@ module Polaris
           "Polaris-TextField__Input--suffixed": @suffix.present?
         )
         if @clear_errors_on_focus
-          prepend_option(opts[:data], :action, "focus->polaris-text-field#clearErrorMessages")
+          prepend_option(opts[:data], :action, "click->polaris-text-field#clearErrorMessages")
         end
         prepend_option(opts[:data], :action, "polaris-text-field#syncValue")
       end
