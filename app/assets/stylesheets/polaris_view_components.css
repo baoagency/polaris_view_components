@@ -729,7 +729,9 @@
       background-color: var(--p-color-bg-surface-tertiary);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs__Wrapper {
   margin-bottom: var(--p-space-200);
-}html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-CloseButton:hover {
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs__Wrapper:has(+.Polaris-IndexTable) {
+    margin-bottom: 0 !important;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-CloseButton:hover {
     background: var(--p-color-bg-fill-tertiary);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-FormLayout {
   --pc-form-layout-gap: var(--p-space-400);
@@ -761,4 +763,6 @@
     font-size: var(--p-font-size-325);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-List .Polaris-List__Item:last-child {
     margin-bottom: 0 !important;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField input[type="date"], html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField input[type="time"] {
+    display: block;
   }
