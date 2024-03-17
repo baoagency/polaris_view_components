@@ -1,13 +1,21 @@
-<%= polaris_card(title: "Online store dashboard") do |card| %>
+<%= polaris_card do |card| %>
   <% card.with_section(border_bottom: true) do %>
-    <p>Styled section</p>
+    <p>Border bottom</p>
   <% end %>
 
-  <% card.with_section(unstyled: true) do %>
-    <p>Untyled section</p>
+  <% card.with_section(border_bottom: true) do %>
+    <p>Border bottom 2</p>
+  <% end %>
+
+  <% card.with_section do %>
+    <p>Regular section</p>
   <% end %>
 
   <% card.with_section(border_top: true) do %>
-    <p>Styled section</p>
+    <p>Border top</p>
+  <% end %>
+
+  <% card.with_section(border_top: true) do %>
+    <p>Border top 2</p>
   <% end %>
 <% end %>

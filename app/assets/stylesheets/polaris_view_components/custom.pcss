@@ -30,10 +30,20 @@ a.Polaris-Tag__Button {
 html[class~="Polaris-Summer-Editions-2023"] {
   .Polaris-LegacyCard__Section--borderTop {
     border-top: 0.1rem solid var(--p-color-border-subdued) !important;
+    padding-top: var(--p-space-300) !important;
+  }
+
+  .Polaris-LegacyCard__Section:has(+.Polaris-LegacyCard__Section--borderTop) {
+    padding-bottom: var(--p-space-300) !important;
   }
 
   .Polaris-LegacyCard__Section--borderBottom {
     border-bottom: 0.1rem solid var(--p-color-border-subdued) !important;
+    padding-bottom: var(--p-space-300) !important;
+
+    & + .Polaris-LegacyCard__Section {
+      padding-top: var(--p-space-300) !important;
+    }
   }
 }
 
