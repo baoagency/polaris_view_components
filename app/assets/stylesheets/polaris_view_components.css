@@ -733,7 +733,7 @@
     background: var(--p-color-bg-fill-tertiary);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-FormLayout {
   --pc-form-layout-gap: var(--p-space-400);
-  --pc-form-layout-item-top: var(--p-space-400);
+  --pc-form-layout-item-top: calc(var(--p-space-400) - 2px);
 }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Page-Header {
     font-weight: var(--p-font-weight-bold);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Page-Header--smallTitle .Polaris-Header-Title {
