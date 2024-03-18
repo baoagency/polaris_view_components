@@ -35,6 +35,10 @@ Run installer:
 bin/rails polaris_view_components:install
 ```
 
+## Upgrade
+
+Check out [UPGRADING.md](UPGRADING.md) for upgrade instructions.
+
 ## Development
 
 To get started:
