@@ -11,43 +11,65 @@ export default class extends Controller {
     const element = event.currentTarget;
 
     let tooltip = document.createElement("span");
-    tooltip.className = "Polaris-Tooltip"
+    tooltip.className = "Polaris-Tooltip";
     tooltip.innerHTML = this.templateTarget.innerHTML;
-    this.tooltip = element.appendChild(tooltip);
+    document.body.appendChild(tooltip); // Append tooltip to body for better positioning control
+    this.tooltip = tooltip;
 
-    const arrowElement = element.querySelector("[data-tooltip-arrow]");
+    const arrowElement = this.tooltip.querySelector(".Polaris-Tooltip-Arrow");
 
     computePosition(element, this.tooltip, {
       placement: this.positionValue,
       middleware: [
-        offset(this.offsetValue),
+        offset(10),
         flip(),
         shift({ padding: 5 }),
-        arrow({ element: arrowElement })
-      ]
-    }).then(({x, y, placement, middlewareData}) => {
+        arrow({ element: arrowElement }),
+      ],
+    }).then(({ x, y, placement, middlewareData }) => {
       Object.assign(this.tooltip.style, {
         left: `${x}px`,
         top: `${y}px`,
-      })
+      });
 
-      const {x: arrowX, y: arrowY} = middlewareData.arrow;
-
-      const staticSide = {
-        top: 'bottom',
-        right: 'left',
-        bottom: 'top',
-        left: 'right',
-      }[placement.split('-')[0]];
-
+      // Reset any previously set styles on the arrow
       Object.assign(arrowElement.style, {
-        left: arrowX != null ? `${arrowX}px` : '',
-        top: arrowY != null ? `${arrowY}px` : '',
+        left: '',
+        top: '',
         right: '',
         bottom: '',
-        [staticSide]: '-4px',
       });
-    })
+
+      const { x: arrowX, y: arrowY } = middlewareData.arrow || {};
+      const primaryPlacement = placement.split('-')[0];
+
+      switch (primaryPlacement) {
+        case 'top':
+          Object.assign(arrowElement.style, {
+            left: arrowX ? `${arrowX}px` : '',
+            bottom: '-4px', // Aligns arrow to the bottom edge of the tooltip
+          });
+          break;
+        case 'bottom':
+          Object.assign(arrowElement.style, {
+            left: arrowX ? `${arrowX}px` : '',
+            top: '-4px', // Aligns arrow to the top edge of the tooltip
+          });
+          break;
+        case 'left':
+          Object.assign(arrowElement.style, {
+            top: arrowY ? `${arrowY}px` : '',
+            right: '-4px', // Aligns arrow to the right edge of the tooltip
+          });
+          break;
+        case 'right':
+          Object.assign(arrowElement.style, {
+            top: arrowY ? `${arrowY}px` : '',
+            left: '-4px', // Aligns arrow to the left edge of the tooltip
+          });
+          break;
+      }
+    });
   }
 
   hide() {

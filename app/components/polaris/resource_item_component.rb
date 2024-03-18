@@ -70,8 +70,6 @@ module Polaris
         )
         args[:position] = :relative
         args[:padding] = "3"
-        args[:padding_inline_start] = {xs: "4", sm: "5"}
-        args[:padding_inline_end] = {xs: "4", sm: "5"}
         args[:z_index] = "var(--pc-resource-item-content-stacking-order)"
       end
     end

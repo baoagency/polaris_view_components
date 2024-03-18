@@ -1,0 +1,41 @@
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
+  .Polaris-LegacyCard__Header {
+    padding-top: var(--p-space-400);
+  }
+
+  .Polaris-LegacyCard__Header+.Polaris-LegacyCard__Section {
+    padding-top: var(--p-space-200);
+  }
+
+  .Polaris-LegacyCard__Section {
+    padding: var(--p-space-400) var(--p-space-400) var(--p-space-200);
+
+    &+.Polaris-LegacyCard__Section {
+      padding-top: var(--p-space-200);
+    }
+
+    &:last-child {
+      padding-bottom: var(--p-space-400);
+    }
+
+    &.Polaris-LegacyCard__Section--flush {
+      padding: 0;
+
+      img {
+        border-top-left-radius: var(--p-border-radius-300);
+        border-top-right-radius: var(--p-border-radius-300);
+        width: 100%;
+      }
+    }
+  }
+
+  .Polaris-LegacyCard__Footer {
+    padding-top: var(--p-space-100);
+  }
+
+  &.Polaris-LegacyCard--withoutTitle {
+    .Polaris-LegacyCard__Section:first-child {
+      padding-top: var(--p-space-400);
+    }
+  }
+}

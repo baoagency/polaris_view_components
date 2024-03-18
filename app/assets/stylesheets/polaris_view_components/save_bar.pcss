@@ -1,0 +1,46 @@
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button {
+  --pc-color-text: var(--p-color-text-inverse);
+  --pc-button-text: var(--p-color-text-inverse);
+  --pc-button-color: var(--p-color-bg-fill-inverse);
+  --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
+  --pc-button-color-active: var(--p-color-bg-fill-inverse-active);
+  --pc-button-color-depressed: var(--p-color-bg-fill-inverse-hover);
+  --pc-button-color-disabled: var(--pc-button-bg);
+  background: var(--p-color-bg-fill-inverse);
+  box-shadow: none;
+
+  &:hover {
+    background: var(--p-color-bg-fill-inverse-hover);
+    color: var(--p-color-text-inverse);
+    box-shadow: none;
+  }
+
+  &.Polaris-Button--primary {
+    --pc-button-color-hover: var(--p-color-bg-fill-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-active);
+    --pc-button-color-depressed: var(--p-color-bg-fill-hover);
+    --pc-button-color-disabled: var(--pc-button-bg);
+    color: #303030;
+    background: var(--p-color-bg-fill);
+    box-shadow: 0 0.0625rem 0 0 hsla(0, 0%, 100%, .48) inset, -0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0 -0.09375rem 0 0 rgba(0, 0, 0, .25) inset;
+
+    &:hover {
+      background: var(--p-color-bg-fill-hover);
+    }
+
+    &:before,
+    &:after {
+      box-shadow: none;
+    }
+
+    &.Polaris-Button--disabled {
+      background: #616161;
+      color: #303030;
+      box-shadow: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+}

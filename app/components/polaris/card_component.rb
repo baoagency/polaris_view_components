@@ -28,15 +28,21 @@ module Polaris
       @title = title
       @actions = actions
       @sectioned = sectioned
+      @subdued = subdued
       @footer_action_alignment = footer_action_alignment
-
       @system_arguments = system_arguments
-      @system_arguments[:tag] = :div
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        "Polaris-LegacyCard",
-        "Polaris-LegacyCard--subdued": subdued
-      )
+    end
+
+    def system_arguments
+      @system_arguments.tap do |opts|
+        opts[:tag] = :div
+        opts[:classes] = class_names(
+          opts[:classes],
+          "Polaris-LegacyCard",
+          "Polaris-LegacyCard--subdued": @subdued,
+          "Polaris-LegacyCard--withoutTitle": @title.blank?
+        )
+      end
     end
 
     def render_footer?

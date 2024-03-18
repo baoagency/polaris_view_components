@@ -15,7 +15,7 @@ class Polaris::Popover::SectionComponent < Polaris::Component
 
   def call
     render(Polaris::BaseComponent.new(**system_arguments)) do
-      render(Polaris::BoxComponent.new(padding: "4")) do
+      render(Polaris::BoxComponent.new(padding: "2")) do
         content
       end
     end

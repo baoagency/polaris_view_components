@@ -31,7 +31,7 @@
   "devDependencies": {
     "@floating-ui/dom": "^1.5.3",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@shopify/polaris": "^11.19.0",
+    "@shopify/polaris": "^11.26.0",
     "postcss": "^8.4.35",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",

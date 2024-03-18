@@ -1,11 +1,13 @@
 <%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
   <%= polaris_layout do |layout| %>
     <%= layout.with_section do %>
-      <%= form.errors_summary %>
+      <%= polaris_card do %>
+        <%= form.errors_summary %>
+      <% end %>
     <% end %>
 
     <%= layout.with_section do %>
-      <%= form.errors_summary do %>
+      <%= form.errors_summary(within: :page) do %>
         with custom content
       <% end %>
     <% end %>

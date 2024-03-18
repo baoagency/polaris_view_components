@@ -1,7 +1,7 @@
 <%= polaris_card(sectioned: false, classes: "NavigationList") do |card| %>
-  <ul>
+  <%= polaris_vertical_stack(as: :ul, gap: "1") do %>
     <% items.each do |item| %>
       <%= item %>
     <% end %>
-  </ul>
+  <% end %>
 <% end %>

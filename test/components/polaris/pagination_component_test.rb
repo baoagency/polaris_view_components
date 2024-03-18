@@ -9,11 +9,11 @@ class PaginationComponentTest < Minitest::Test
     assert_selector "nav[aria-label=Pagination] > .Polaris-ButtonGroup.Polaris-ButtonGroup--segmented" do
       assert_selector ".Polaris-ButtonGroup__Item", count: 2
       assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)" do
-        assert_selector "a.Polaris-Button.Polaris-Button--outline.Polaris-Button--iconOnly[href='/previous.html']"
+        assert_selector "a.Polaris-Button.Polaris-Button--iconOnly[href='/previous.html']"
         assert_selector ".Polaris-Button__Icon > .Polaris-Icon"
       end
       assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)" do
-        assert_selector "a.Polaris-Button.Polaris-Button--outline.Polaris-Button--iconOnly[href='/next.html']"
+        assert_selector "a.Polaris-Button.Polaris-Button--iconOnly[href='/next.html']"
         assert_selector ".Polaris-Button__Icon > .Polaris-Icon"
       end
     end

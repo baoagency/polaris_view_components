@@ -24,7 +24,7 @@ class BannerComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Banner" do
-      assert_selector ".Polaris-Banner__Dismiss > .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly"
+      assert_selector ".Polaris-Banner__DismissButton > .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly"
     end
   end
 
@@ -34,18 +34,14 @@ class BannerComponentTest < Minitest::Test
       banner.with_secondary_action(url: "/secondary") { "Secondary Action" }
     end
 
-    assert_selector ".Polaris-Banner > .Polaris-Banner__ContentWrapper" do
+    assert_selector ".Polaris-Banner .Polaris-Banner__ContentWrapper" do
       assert_selector ".Polaris-ButtonGroup" do
         assert_selector ".Polaris-ButtonGroup__Item", count: 2
         assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)" do
-          assert_selector ".Polaris-Banner__PrimaryAction" do
-            assert_selector "a.Polaris-Banner__Button[href='/primary']", text: "Primary Action"
-          end
+          assert_selector "a.Polaris-Button[href='/primary']", text: "Primary Action"
         end
         assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)" do
-          assert_selector "a.Polaris-Banner__SecondaryAction[href='/secondary']" do
-            assert_selector "span.Polaris-Banner__Text", text: "Secondary Action"
-          end
+          assert_selector "a.Polaris-Button[href='/secondary']", text: "Secondary Action"
         end
       end
     end
