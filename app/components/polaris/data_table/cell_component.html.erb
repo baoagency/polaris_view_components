@@ -3,9 +3,9 @@
     <%= link_to @sort_url, class: "Polaris-DataTable__Heading" do %>
       <span class="Polaris-DataTable__Icon">
         <% if @sorted == :asc %>
-          <%= polaris_icon(name: "CaretUpMinor") %>
+          <%= polaris_icon(name: "CaretUpIcon") %>
         <% else %>
-          <%= polaris_icon(name: "CaretDownMinor") %>
+          <%= polaris_icon(name: "CaretDownIcon") %>
         <% end %>
       </span>
       <%= content %>

@@ -3,20 +3,20 @@
     <% section.with_item(
       url: "#",
       label: "Home",
-      icon: "HomeMinor"
+      icon: "HomeIcon"
     ) do |item| %>
-      <% item.with_secondary_action(url: "#", icon: "ExternalMinor", external: true) %>
+      <% item.with_secondary_action(url: "#", icon: "ExternalIcon", external: true) %>
     <% end %>
     <% section.with_item(
       url: "#",
       label: "Orders (external)",
-      icon: "OrdersMinor",
+      icon: "OrderIcon",
       external: true
     ) %>
     <% section.with_item(
       url: "#",
       label: "Products",
-      icon: "ProductsMinor"
+      icon: "ProductIcon"
     ) do |item| %>
       <% item.with_sub_item(
         url: "#",

@@ -133,8 +133,8 @@ class TextFieldComponentTest < Minitest::Test
       name: :input_name,
       label: "Label"
     )) do |c|
-      c.with_prefix(icon: "BillingStatementDollarMajor")
-      c.with_suffix(icon: "EmailMajor")
+      c.with_prefix(icon: "ReceiptDollarFilledIcon")
+      c.with_suffix(icon: "EmailIcon")
     end
 
     assert_selector ".Polaris-TextField > .Polaris-TextField__Prefix > .Polaris-Icon"

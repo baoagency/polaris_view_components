@@ -1,12 +1,12 @@
 <%= polaris_frame do |frame| %>
   <% frame.with_navigation do |navigation| %>
     <% navigation.with_section do |section| %>
-      <% section.with_item(url: "#", label: "Back to Shopify", icon: "ArrowLeftMinor") %>
+      <% section.with_item(url: "#", label: "Back to Shopify", icon: "ArrowLeftIcon") %>
     <% end %>
     <% navigation.with_section(title: "Jaded Pixel App", separator: true) do |section| %>
-      <% section.with_action(icon: "ConversationMinor") %>
-      <% section.with_item(url: "#", label: "Dashboard", icon: "HomeMajor") %>
-      <% section.with_item(url: "#", label: "Jaded Pixel Orders", icon: "OrdersMajor") %>
+      <% section.with_action(icon: "ChatIcon") %>
+      <% section.with_item(url: "#", label: "Dashboard", icon: "HomeIcon") %>
+      <% section.with_item(url: "#", label: "Jaded Pixel Orders", icon: "OrderIcon") %>
     <% end %>
   <% end %>
 

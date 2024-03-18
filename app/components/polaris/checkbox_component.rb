@@ -64,7 +64,7 @@ module Polaris
     end
 
     def icon_name
-      indeterminate? ? "MinusMinor" : "TickSmallMinor"
+      indeterminate? ? "MinusIcon" : "CheckSmallIcon"
     end
 
     def before_render

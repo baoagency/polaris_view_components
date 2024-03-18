@@ -5,9 +5,9 @@ class ExceptionListComponentTest < Minitest::Test
 
   def test_exception_list
     render_inline(Polaris::ExceptionListComponent.new) do |list|
-      list.with_item(icon: "NoteMinor", title: "Title 1") { "Default Note" }
-      list.with_item(icon: "NoteMinor", title: "Title 2", status: :warning) { "Warning Note" }
-      list.with_item(icon: "NoteMinor", title: "Title 3", status: :critical) { "Critical Note" }
+      list.with_item(icon: "NoteIcon", title: "Title 1") { "Default Note" }
+      list.with_item(icon: "NoteIcon", title: "Title 2", status: :warning) { "Warning Note" }
+      list.with_item(icon: "NoteIcon", title: "Title 3", status: :critical) { "Critical Note" }
     end
 
     assert_selector "ul.Polaris-ExceptionList" do

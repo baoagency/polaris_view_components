@@ -16,7 +16,7 @@
                   <a class="Polaris-Breadcrumbs__Breadcrumb" href="<%= @back_url %>" data-polaris-unstyled="true">
                     <span class="Polaris-Breadcrumbs__ContentWrapper">
                       <span class="Polaris-Breadcrumbs__Icon">
-                        <%= polaris_icon(name: "ArrowLeftMinor") %>
+                        <%= polaris_icon(name: "ArrowLeftIcon") %>
                       </span>
                     </span>
                   </a>
@@ -56,7 +56,7 @@
                     <div class="Polaris-ActionMenu-RollupActions__RollupActivator">
                       <%= polaris_popover(position: :below, alignment: :right) do |popover| %>
                         <% popover.with_button do |button| %>
-                          <% button.with_icon(name: "HorizontalDotsMinor") %>
+                          <% button.with_icon(name: "MenuHorizontalIcon") %>
                         <% end %>
                         <%= polaris_action_list(style: "text-align: left;") do |action_list| %>
                           <% if @secondary_actions.any? %>
@@ -111,7 +111,7 @@
                       <%= polaris_button_group(segmented: @pagination_label.blank?) do |group| %>
                         <% group.with_item do %>
                           <%= polaris_button(url: @prev_url, outline: true, disabled: @prev_url.blank?) do |button| %>
-                            <% button.with_icon(name: "ChevronLeftMinor") %>
+                            <% button.with_icon(name: "ChevronLeftIcon") %>
                           <% end %>
                         <% end %>
                         <% if @pagination_label.present? %>
@@ -121,7 +121,7 @@
                         <% end %>
                         <% group.with_item do %>
                           <%= polaris_button(url: @next_url, outline: true, disabled: @next_url.blank?) do |button| %>
-                            <% button.with_icon(name: "ChevronRightMinor") %>
+                            <% button.with_icon(name: "ChevronRightIcon") %>
                           <% end %>
                         <% end %>
                       <% end %>

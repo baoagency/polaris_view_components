@@ -25,17 +25,17 @@
 <br>
 
 <%= polaris_text_field(name: :field, placeholder: "Text field") do |c| %>
-  <% c.with_prefix(icon: "BillingStatementDollarMajor") %>
-  <% c.with_suffix(icon: "EmailMajor") %>
+  <% c.with_prefix(icon: "ReceiptDollarFilledIcon") %>
+  <% c.with_suffix(icon: "EmailIcon") %>
 <% end %>
 
 <br>
 
 <%= polaris_text_field(name: :field, placeholder: "Text field") do |c| %>
   <% c.with_prefix do %>
-    <%= polaris_icon(name: "BillingStatementDollarMajor") %>
+    <%= polaris_icon(name: "ReceiptDollarFilledIcon") %>
   <% end %>
   <% c.with_suffix do %>
-    <%= polaris_icon(name: "EmailMajor") %>
+    <%= polaris_icon(name: "EmailIcon") %>
   <% end %>
 <% end %>

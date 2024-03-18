@@ -103,7 +103,7 @@ class PaginationComponentTest < Minitest::Test
       title: "Page Title",
       secondary_actions: [
         {content: "Duplicate", url: "/duplicate"},
-        {content: "Download", url: "/download", icon_name: "ArrowDownMinor"}
+        {content: "Download", url: "/download", icon_name: "ArrowDownIcon"}
       ]
     )) do
       "Page Content"
