@@ -25,7 +25,7 @@ class ThumbnailComponentTest < Minitest::Test
 
   def test_thumbnail_with_icon
     render_inline(Polaris::ThumbnailComponent.new) do |thumbnail|
-      thumbnail.with_icon(name: "NoteMinor")
+      thumbnail.with_icon(name: "NoteIcon")
     end
 
     assert_selector ".Polaris-Thumbnail > .Polaris-Icon"

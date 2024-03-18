@@ -9,7 +9,7 @@ module Polaris
         type: type,
         **system_arguments
       ) do |button|
-        polaris_icon(name: "CancelSmallMinor")
+        polaris_icon(name: "XSmallIcon")
       end
     end
 

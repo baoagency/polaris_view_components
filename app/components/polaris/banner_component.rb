@@ -35,7 +35,7 @@ module Polaris
     end
     renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
-        button.with_icon(name: "CancelSmallMinor")
+        button.with_icon(name: "XSmallIcon")
       end
     end
 
@@ -77,10 +77,10 @@ module Polaris
     def default_icon(status)
       case status
       when :success then "CheckIcon"
-      when :critical then "DiamondAlertMajor"
+      when :critical then "AlertDiamondIcon"
       when :warning then "AlertTriangleIcon"
       else
-        "CircleInformationMajor"
+        "InfoIcon"
       end
     end
 

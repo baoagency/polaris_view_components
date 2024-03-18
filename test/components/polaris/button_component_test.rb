@@ -97,7 +97,7 @@ class ButtonComponentTest < Minitest::Test
 
   def test_text_with_icon_button
     render_inline(Polaris::ButtonComponent.new) do |button|
-      button.with_icon(name: "CirclePlusMajor")
+      button.with_icon(name: "PlusCircleIcon")
       "Button"
     end
 
@@ -109,7 +109,7 @@ class ButtonComponentTest < Minitest::Test
 
   def test_icon_only_button
     render_inline(Polaris::ButtonComponent.new) do |button|
-      button.with_icon(name: "CirclePlusMajor")
+      button.with_icon(name: "PlusCircleIcon")
     end
 
     assert_selector "button.Polaris-Button--iconOnly" do
@@ -118,12 +118,12 @@ class ButtonComponentTest < Minitest::Test
   end
 
   def test_icon_shortcut
-    render_inline(Polaris::ButtonComponent.new(icon_name: "CirclePlusMajor"))
+    render_inline(Polaris::ButtonComponent.new(icon_name: "PlusCircleIcon"))
     assert_selector "button.Polaris-Button--iconOnly" do
       assert_selector ".Polaris-Button__Icon > .Polaris-Icon"
     end
 
-    render_inline(Polaris::ButtonComponent.new(icon_name: "CirclePlusMajor")) do
+    render_inline(Polaris::ButtonComponent.new(icon_name: "PlusCircleIcon")) do
       "Button"
     end
 

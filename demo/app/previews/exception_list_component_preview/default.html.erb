@@ -1,13 +1,13 @@
 <%= polaris_exception_list do |list| %>
-  <% list.with_item(icon: "NoteMinor", title: "Note") do %>
+  <% list.with_item(icon: "NoteIcon", title: "Note") do %>
     This customer is awesome. Make sure to treat them right!
   <% end %>
 
-  <% list.with_item(icon: "CircleAlertMajor", title: "Warning", status: :warning) do %>
+  <% list.with_item(icon: "AlertCircleIcon", title: "Warning", status: :warning) do %>
     This customer is awesome. Make sure to treat them right!
   <% end %>
 
-  <% list.with_item(icon: "DiamondAlertMajor", title: "Critical", status: :critical) do %>
+  <% list.with_item(icon: "AlertDiamondIcon", title: "Critical", status: :critical) do %>
     This customer is awesome. Make sure to treat them right!
   <% end %>
 <% end %>

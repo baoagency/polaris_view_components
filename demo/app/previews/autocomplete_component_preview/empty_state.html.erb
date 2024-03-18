@@ -1,12 +1,12 @@
 <%= polaris_autocomplete do |autocomplete| %>
   <% autocomplete.with_text_field(name: :tags, label: "Tags", placeholder: "Search") do |c| %>
     <% c.with_prefix do %>
-      <%= polaris_icon(name: "SearchMinor") %>
+      <%= polaris_icon(name: "SearchIcon") %>
     <% end %>
   <% end %>
   <% autocomplete.with_empty_state do %>
     <div style="text-align: center;">
-      <%= polaris_icon(name: "SearchMinor") %>
+      <%= polaris_icon(name: "SearchIcon") %>
       <%= polaris_text_container { "Could not find any results" } %>
     </div>
   <% end %>

@@ -8,7 +8,7 @@ module Polaris
     end
     renders_one :dismiss_button, ->(**system_arguments) do
       render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
-        button.with_icon(name: "CancelSmallMinor")
+        button.with_icon(name: "XSmallIcon")
       end
     end
 

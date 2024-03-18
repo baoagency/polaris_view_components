@@ -53,7 +53,7 @@ class ActionListComponentTest < Minitest::Test
 
   def test_item_with_icon
     render_inline(Polaris::ActionListComponent.new) do |action_list|
-      action_list.with_item(icon: "ImportMinor") { "Item" }
+      action_list.with_item(icon: "ImportIcon") { "Item" }
     end
 
     assert_selector ".Polaris-ActionList__Item" do

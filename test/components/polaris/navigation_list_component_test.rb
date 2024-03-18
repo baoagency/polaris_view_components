@@ -5,8 +5,8 @@ class NavigationListComponentTest < Minitest::Test
 
   def test_default_navigation
     render_inline(Polaris::NavigationListComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor")
-      navigation.with_item(url: "/path2", label: "Item 2", icon: "OrdersMajor", selected: true)
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon")
+      navigation.with_item(url: "/path2", label: "Item 2", icon: "OrderIcon", selected: true)
     end
 
     assert_selector "div.Polaris-LegacyCard" do

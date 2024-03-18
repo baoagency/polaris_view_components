@@ -5,7 +5,7 @@ module Polaris
     renders_one :close_button, ->(**system_arguments) do
       button_arguments = @close_button_arguments.deep_merge(system_arguments)
       render(Polaris::BaseComponent.new(**button_arguments)) do
-        polaris_icon(name: "MobileCancelMajor", color: :base)
+        polaris_icon(name: "XIcon", color: :base)
       end
     end
     renders_many :sections, Polaris::Modal::SectionComponent

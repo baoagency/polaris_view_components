@@ -15,7 +15,7 @@ class FrameComponentTest < Minitest::Test
         end
       end
       frame.with_navigation do |navigation|
-        navigation.with_item(url: "#", label: "Home", icon: "HomeMajor")
+        navigation.with_item(url: "#", label: "Home", icon: "HomeIcon")
       end
       frame.with_save_bar(message: "SaveBar Message") do |save_bar|
         save_bar.with_save_action { "Save" }

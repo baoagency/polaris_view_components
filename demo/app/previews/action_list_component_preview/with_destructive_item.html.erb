@@ -3,9 +3,9 @@
 
   <%= polaris_action_list do |action_list| %>
     <% action_list.with_section(title: "File options") do |section| %>
-      <% section.with_item(icon: "ImportMinor", active: true) { "Import file" } %>
-      <% section.with_item(icon: "ExportMinor") { "Export file" } %>
-      <% section.with_item(icon: "DeleteMinor", destructive: true) { "Delete file" } %>
+      <% section.with_item(icon: "ImportIcon", active: true) { "Import file" } %>
+      <% section.with_item(icon: "ExportIcon") { "Export file" } %>
+      <% section.with_item(icon: "DeleteIcon", destructive: true) { "Delete file" } %>
     <% end %>
   <% end %>
 <% end %>

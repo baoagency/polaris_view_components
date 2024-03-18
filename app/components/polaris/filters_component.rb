@@ -46,7 +46,7 @@ module Polaris
       def call
         polaris_text_field(disabled: @disabled, **@system_arguments) do |text_field|
           text_field.with_prefix do
-            polaris_icon(name: "SearchMinor")
+            polaris_icon(name: "SearchIcon")
           end
         end
       end

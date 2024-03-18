@@ -5,8 +5,8 @@ class NavigationComponentTest < Minitest::Test
 
   def test_default_navigation
     render_inline(Polaris::NavigationComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor")
-      navigation.with_item(url: "/path2", label: "Item 2", icon: "OrdersMajor")
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon")
+      navigation.with_item(url: "/path2", label: "Item 2", icon: "OrderIcon")
     end
 
     assert_selector "nav.Polaris-Navigation > .Polaris-Navigation__PrimaryNavigation.Polaris-Scrollable" do
@@ -34,7 +34,7 @@ class NavigationComponentTest < Minitest::Test
 
   def test_item_badge
     render_inline(Polaris::NavigationComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor", badge: "BADGE")
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon", badge: "BADGE")
     end
 
     assert_selector ".Polaris-Navigation__ListItem .Polaris-Navigation__Item" do
@@ -45,10 +45,10 @@ class NavigationComponentTest < Minitest::Test
   def test_multiple_sections
     render_inline(Polaris::NavigationComponent.new) do |navigation|
       navigation.with_section do |section|
-        section.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor")
+        section.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon")
       end
       navigation.with_section do |section|
-        navigation.with_item(url: "/path2", label: "Item 2", icon: "OrdersMajor")
+        navigation.with_item(url: "/path2", label: "Item 2", icon: "OrderIcon")
       end
     end
 
@@ -60,8 +60,8 @@ class NavigationComponentTest < Minitest::Test
   def test_section_heading
     render_inline(Polaris::NavigationComponent.new) do |navigation|
       navigation.with_section(title: "SECTION_TITLE") do |section|
-        section.with_action(url: "/action", icon: "CirclePlusOutlineMinor")
-        section.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor")
+        section.with_action(url: "/action", icon: "PlusCircleIcon")
+        section.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon")
       end
     end
 
@@ -75,7 +75,7 @@ class NavigationComponentTest < Minitest::Test
 
   def test_sub_items
     render_inline(Polaris::NavigationComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor") do |item|
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon") do |item|
         item.with_sub_item(url: "/sub_item", label: "Sub Item")
       end
     end
@@ -91,8 +91,8 @@ class NavigationComponentTest < Minitest::Test
 
   def test_selected_items
     render_inline(Polaris::NavigationComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor", selected: true)
-      navigation.with_item(url: "/path1", label: "Item 2", icon: "HomeMajor") do |item|
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon", selected: true)
+      navigation.with_item(url: "/path1", label: "Item 2", icon: "HomeIcon") do |item|
         item.with_sub_item(url: "#", label: "Sub Item", selected: true)
       end
     end
@@ -110,8 +110,8 @@ class NavigationComponentTest < Minitest::Test
 
   def test_disabled_items
     render_inline(Polaris::NavigationComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor", disabled: true)
-      navigation.with_item(url: "/path1", label: "Item 2", icon: "HomeMajor") do |item|
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon", disabled: true)
+      navigation.with_item(url: "/path1", label: "Item 2", icon: "HomeIcon") do |item|
         item.with_sub_item(url: "#", label: "Sub Item", disabled: true)
       end
     end
@@ -129,8 +129,8 @@ class NavigationComponentTest < Minitest::Test
 
   def test_external_items
     render_inline(Polaris::NavigationComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor", extenral: true)
-      navigation.with_item(url: "/path1", label: "Item 2", icon: "HomeMajor") do |item|
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon", extenral: true)
+      navigation.with_item(url: "/path1", label: "Item 2", icon: "HomeIcon") do |item|
         item.with_sub_item(url: "#", label: "Sub Item", external: true)
       end
     end
@@ -148,8 +148,8 @@ class NavigationComponentTest < Minitest::Test
 
   def test_secondary_action
     render_inline(Polaris::NavigationComponent.new) do |navigation|
-      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor") do |item|
-        item.with_secondary_action(url: "#", icon: "CirclePlusOutlineMinor")
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon") do |item|
+        item.with_secondary_action(url: "#", icon: "PlusCircleIcon")
       end
     end
 
@@ -161,7 +161,7 @@ class NavigationComponentTest < Minitest::Test
   def test_section_separator
     render_inline(Polaris::NavigationComponent.new) do |navigation|
       navigation.with_section(separator: true) do |section|
-        section.with_item(url: "/path1", label: "Item 1", icon: "HomeMajor")
+        section.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon")
       end
     end
 

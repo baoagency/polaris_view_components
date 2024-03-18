@@ -1,7 +1,7 @@
 <%= polaris_autocomplete(multiple: true, url: suggestions_path) do |autocomplete| %>
   <% autocomplete.with_text_field(label: "Tags with local suggestions", placeholder: "Search") do |c| %>
     <% c.with_prefix do %>
-      <%= polaris_icon(name: "SearchMinor") %>
+      <%= polaris_icon(name: "SearchIcon") %>
     <% end %>
   <% end %>
 
@@ -19,7 +19,7 @@
 <%= polaris_autocomplete(multiple: true, url: suggestions_path) do |autocomplete| %>
   <% autocomplete.with_text_field(label: "Tags with remote suggestions", placeholder: "Search") do |c| %>
     <% c.with_prefix do %>
-      <%= polaris_icon(name: "SearchMinor") %>
+      <%= polaris_icon(name: "SearchIcon") %>
     <% end %>
   <% end %>
 <% end %>
