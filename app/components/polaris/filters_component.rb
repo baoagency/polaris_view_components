@@ -77,7 +77,7 @@ module Polaris
           style: ("width: #{@width}" if @width.present?),
           position: :below,
           alignment: :left,
-          append_to_body: true
+          append_to_body: false
         }
       end
 

@@ -387,7 +387,9 @@
 }.Polaris-Popover__PopoverOverlay--closed {
   visibility: hidden;
   pointer-events: none;
-}/* Filters */.Polaris-LegacyFilters-ConnectedFilterControl__RightContainer .Polaris-LegacyFilters-ConnectedFilterControl__Item > div > div > button {
+}/* Filters */.Polaris-LegacyFilters-ConnectedFilterControl__RightContainer .Polaris-LegacyFilters-ConnectedFilterControl__Item {
+    z-index: auto;
+  }.Polaris-LegacyFilters-ConnectedFilterControl__RightContainer .Polaris-LegacyFilters-ConnectedFilterControl__Item > div > div > button {
       margin-right: -1px;
       border-radius: 0;
     }.Polaris-LegacyFilters-ConnectedFilterControl__RightContainer .Polaris-LegacyFilters-ConnectedFilterControl__Item:first-of-type > div > div > button {
