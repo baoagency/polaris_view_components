@@ -10,7 +10,7 @@ class EmptySearchResultsComponentTest < Minitest::Test
     ))
 
     assert_selector ".Polaris-EmptySearchResults > .Polaris-EmptySearchResults__Content" do
-      assert_selector ".Polaris-Text--headingLg", text: "TITLE"
+      assert_selector "p", text: "TITLE"
       assert_selector ".Polaris-Text--subdued", text: "DESCRIPTION"
     end
   end
