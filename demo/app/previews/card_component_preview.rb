@@ -75,4 +75,7 @@ class CardComponentPreview < ViewComponent::Preview
 
   def without_title
   end
+
+  def borderless
+  end
 end

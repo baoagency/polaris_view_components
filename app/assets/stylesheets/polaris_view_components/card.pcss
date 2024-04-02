@@ -38,4 +38,13 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
       padding-top: var(--p-space-400);
     }
   }
+
+  &.Polaris-LegacyCard--borderless {
+    border: none;
+    box-shadow: none;
+
+    &::before {
+      content: none;
+    }
+  }
 }
