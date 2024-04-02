@@ -22,6 +22,7 @@ module Polaris
       actions: [],
       sectioned: true,
       subdued: false,
+      borders: true,
       footer_action_alignment: FOOTER_ACTION_ALIGNMENT_DEFAULT,
       **system_arguments
     )
@@ -29,6 +30,7 @@ module Polaris
       @actions = actions
       @sectioned = sectioned
       @subdued = subdued
+      @borders = borders
       @footer_action_alignment = footer_action_alignment
       @system_arguments = system_arguments
     end
@@ -40,7 +42,8 @@ module Polaris
           opts[:classes],
           "Polaris-LegacyCard",
           "Polaris-LegacyCard--subdued": @subdued,
-          "Polaris-LegacyCard--withoutTitle": @title.blank?
+          "Polaris-LegacyCard--withoutTitle": @title.blank?,
+          "Polaris-LegacyCard--borderless": !@borders
         )
       end
     end

@@ -361,6 +361,11 @@
     padding-top: var(--p-space-100);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--withoutTitle .Polaris-LegacyCard__Section:first-child {
       padding-top: var(--p-space-400);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless {
+    border: none;
+    box-shadow: none;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless::before {
+      content: none;
     }.Polaris--hidden {
   display: none !important;
 }/* Add missing 1/4 section for layout */@media (min-width: 30.625em) {
