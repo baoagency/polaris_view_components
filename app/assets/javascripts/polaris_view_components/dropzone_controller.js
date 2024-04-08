@@ -332,7 +332,7 @@ export default class extends Controller {
   }
 
   renderFile (file) {
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png']
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/svg+xml']
     const clone = this.itemTemplateTarget.content.cloneNode(true)
     const [icon, thumbnail, content, fileSize] = [
       clone.querySelector('[data-target="icon"]'),
