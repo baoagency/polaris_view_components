@@ -639,7 +639,7 @@ class Dropzone extends Controller {
     this.element.classList.toggle("Polaris-DropZone--hasError", show);
   }
   renderFile(file) {
-    const validImageTypes = [ "image/gif", "image/jpeg", "image/png" ];
+    const validImageTypes = [ "image/gif", "image/jpeg", "image/png", "image/svg+xml" ];
     const clone = this.itemTemplateTarget.content.cloneNode(true);
     const [icon, thumbnail, content, fileSize] = [ clone.querySelector('[data-target="icon"]'), clone.querySelector('[data-target="thumbnail"]'), clone.querySelector('[data-target="content"]'), clone.querySelector('[data-target="file-size"]') ];
     if (validImageTypes.includes(file.type)) {
