@@ -115,6 +115,35 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
     assert_text "Attachments (2)"
   end
 
+  def test_reselect_file
+    with_preview("dropzone_component/with_file_upload")
+
+    find(".Polaris-DropZone").drop(fixture_file("file.txt"), fixture_file("image.png"))
+    assert_selector ".Polaris-DropZone__Preview > .Polaris-LegacyStack > .Polaris-LegacyStack__Item", count: 2
+    within ".Polaris-DropZone__Preview > .Polaris-LegacyStack" do
+      assert_selector ".Polaris-LegacyStack__Item:nth-child(1)" do
+        assert_text "file.txt"
+        assert_text "10 Bytes"
+      end
+      assert_selector ".Polaris-LegacyStack__Item:nth-child(2)" do
+        assert_text "image.png"
+        assert_text "11.37 KB"
+      end
+    end
+
+    page.attach_file(fixture_file("image.png")) do
+      page.find(".Polaris-DropZone").click
+    end
+
+    assert_selector ".Polaris-DropZone__Preview > .Polaris-LegacyStack > .Polaris-LegacyStack__Item", count: 1
+    within ".Polaris-DropZone__Preview > .Polaris-LegacyStack" do
+      assert_selector ".Polaris-LegacyStack__Item:nth-child(1)" do
+        assert_text "image.png"
+        assert_text "11.37 KB"
+      end
+    end
+  end
+
   def fixture_file(name)
     Rails.root.join("../test/fixtures/#{name}")
   end

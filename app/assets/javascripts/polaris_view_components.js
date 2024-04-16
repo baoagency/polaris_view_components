@@ -451,8 +451,8 @@ class Dropzone extends Controller {
   onChange(e) {
     this.stopEvent(e);
     if (this.disabled) return;
-    this.clearFiles();
     const fileList = getDataTransferFiles(e);
+    this.clearFiles();
     const {files: files, acceptedFiles: acceptedFiles, rejectedFiles: rejectedFiles} = this.getValidatedFiles(fileList);
     this.dragTargets = [];
     this.files = files;

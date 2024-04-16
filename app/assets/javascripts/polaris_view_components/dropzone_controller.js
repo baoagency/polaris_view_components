@@ -94,9 +94,9 @@ export default class extends Controller {
     this.stopEvent(e)
     if (this.disabled) return
 
+    const fileList = getDataTransferFiles(e)
     this.clearFiles()
 
-    const fileList = getDataTransferFiles(e)
     const { files, acceptedFiles, rejectedFiles } = this.getValidatedFiles(fileList)
     this.dragTargets = []
 
