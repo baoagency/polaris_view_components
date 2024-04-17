@@ -35,4 +35,9 @@ class FormBuilderComponentPreview < ViewComponent::Preview
     upload = Upload.new
     render_with_template(locals: {upload: upload})
   end
+
+  def autocomplete
+    product = Product.new
+    render_with_template(locals: {product: product})
+  end
 end
