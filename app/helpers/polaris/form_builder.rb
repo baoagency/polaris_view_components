@@ -117,5 +117,13 @@ module Polaris
         end
       end
     end
+
+    def polaris_autocomplete(method, **options, &block)
+      options[:error] ||= error_for(method)
+      if options[:error_hidden] && options[:error]
+        options[:error] = !!options[:error]
+      end
+      render Polaris::AutocompleteComponent.new(form: self, attribute: method, name: method, **options), &block
+    end
   end
 end

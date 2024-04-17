@@ -11,7 +11,7 @@ module Polaris
       system_arguments[:input_options][:data] ||= {}
       system_arguments[:input_options][:data][:polaris_autocomplete_target] = "input"
 
-      TextFieldComponent.new(**system_arguments)
+      TextFieldComponent.new(form: @form, attribute: @attribute, name: @name, **system_arguments)
     end
     renders_many :sections, ->(**system_arguments) do
       Autocomplete::SectionComponent.new(multiple: @multiple, **system_arguments)
@@ -22,16 +22,20 @@ module Polaris
     renders_one :empty_state
 
     def initialize(
+      form: nil,
+      attribute: nil,
+      name: nil,
       multiple: false,
       url: nil,
-      name: nil,
       selected: [],
       popover_arguments: {},
       **system_arguments
     )
+      @form = form
+      @attribute = attribute
+      @name = name
       @multiple = multiple
       @url = url
-      @name = name
       @selected = selected
       @popover_arguments = popover_arguments
       @system_arguments = system_arguments

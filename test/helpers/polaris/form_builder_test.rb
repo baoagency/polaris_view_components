@@ -5,7 +5,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
 
   class Product
     include ActiveModel::Model
-    attr_accessor :title, :status, :accept, :access, :selected_markets
+    attr_accessor :title, :status, :accept, :access, :selected_markets, :tags
 
     validates :title, presence: true
   end
@@ -145,6 +145,25 @@ class Polaris::ViewHelperTest < ActionView::TestCase
         assert_no_selector "input[type=checkbox][name='product[selected_markets][]'][value=2][checked='checked']"
         assert_text "Spain"
       end
+    end
+  end
+
+  test "#polaris_autocomplete" do
+    @rendered_content = @builder.polaris_autocomplete(:tags) do |autocomplete|
+      autocomplete.with_text_field(label: "Tags", placeholder: "Search")
+
+      autocomplete.with_option(label: "Rustic", value: "rustic")
+      autocomplete.with_option(label: "Antique", value: "antique")
+      autocomplete.with_option(label: "Vinyl", value: "vinyl")
+      autocomplete.with_option(label: "Vintage", value: "vintage")
+      autocomplete.with_option(label: "Refurbished", value: "refurbished")
+    end
+
+    assert_selector ".Polaris-Label" do
+      assert_selector "label", text: "Tags"
+    end
+    assert_selector ".Polaris-TextField" do
+      assert_selector %(input[name="product[tags]"])
     end
   end
 end

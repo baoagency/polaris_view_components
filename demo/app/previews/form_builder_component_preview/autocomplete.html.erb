@@ -1,0 +1,15 @@
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= form.polaris_autocomplete(:tags) do |autocomplete| %>
+    <% autocomplete.with_text_field(label: "Tags", placeholder: "Search") do |c| %>
+      <% c.with_prefix do %>
+        <%= polaris_icon(name: "SearchIcon") %>
+      <% end %>
+    <% end %>
+
+    <% autocomplete.with_option(label: "Rustic", value: "rustic") %>
+    <% autocomplete.with_option(label: "Antique", value: "antique") %>
+    <% autocomplete.with_option(label: "Vinyl", value: "vinyl") %>
+    <% autocomplete.with_option(label: "Vintage", value: "vintage") %>
+    <% autocomplete.with_option(label: "Refurbished", value: "refurbished") %>
+  <% end %>
+<% end %>
