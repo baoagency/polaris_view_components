@@ -38,6 +38,7 @@ module Polaris
       **system_arguments
     )
       @title = title
+      @title_hidden = title_hidden
       @error = error
       @form = form
       @attribute = attribute
