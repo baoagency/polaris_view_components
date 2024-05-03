@@ -3,7 +3,7 @@ class Polaris::FormLayout::GroupComponent < Polaris::Component
 
   renders_many :items, "GroupItemComponent"
 
-  def initialize(position:, condensed: false, **system_arguments)
+  def initialize(position:, condensed: false, wrapper_arguments: {}, **system_arguments)
     @position = position
 
     @system_arguments = system_arguments
@@ -13,7 +13,7 @@ class Polaris::FormLayout::GroupComponent < Polaris::Component
       "Polaris-FormLayout__Items"
     )
 
-    @wrapper_arguments = {}
+    @wrapper_arguments = wrapper_arguments
     @wrapper_arguments[:tag] = "div"
     @wrapper_arguments[:role] = "group"
     @wrapper_arguments[:classes] = class_names(
