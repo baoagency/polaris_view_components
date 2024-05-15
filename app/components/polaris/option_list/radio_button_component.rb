@@ -1,12 +1,19 @@
 class Polaris::OptionList::RadioButtonComponent < Polaris::Component
+  renders_one :prefix
+  renders_one :suffix
+
   def initialize(
     label:,
     value:,
+    prefix: nil,
+    suffix: nil,
     wrapper_arguments: {},
     **system_arguments
   )
     @label = label
     @value = value
+    @prefix = prefix
+    @suffix = suffix
     @wrapper_arguments = wrapper_arguments
     @system_arguments = system_arguments
   end
@@ -28,23 +35,6 @@ class Polaris::OptionList::RadioButtonComponent < Polaris::Component
         @system_arguments[:classes],
         "Polaris--hidden"
       )
-    end
-  end
-
-  def call
-    render(Polaris::BaseComponent.new(**wrapper_arguments)) do
-      tag.label(
-        class: "Polaris-OptionList-Option__SingleSelectOption",
-        data: {
-          polaris_option_list_target: "radioButton",
-          action: "click->polaris-option-list#update"
-        }
-      ) do
-        safe_join [
-          radio_button,
-          @label
-        ]
-      end
     end
   end
 

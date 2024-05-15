@@ -1,5 +1,8 @@
 module Polaris
   class Autocomplete::OptionComponent < Component
+    renders_one :prefix
+    renders_one :suffix
+
     def initialize(
       label:,
       multiple: false,
@@ -21,14 +24,6 @@ module Polaris
 
         args[:data] ||= {}
         prepend_option(args[:data], :action, "polaris-autocomplete#select")
-      end
-    end
-
-    def call
-      if @multiple
-        render OptionList::CheckboxComponent.new(**system_arguments)
-      else
-        render OptionList::RadioButtonComponent.new(**system_arguments)
       end
     end
   end

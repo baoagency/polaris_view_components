@@ -1,0 +1,43 @@
+<%= polaris_autocomplete do |autocomplete| %>
+  <% autocomplete.with_text_field(name: :tags, label: "Tags", placeholder: "Search") do |c| %>
+    <% c.with_prefix do %>
+      <%= polaris_icon(name: "SearchIcon") %>
+    <% end %>
+  <% end %>
+
+  <% autocomplete.with_option(label: "Rustic", value: "rustic") do |option| %>
+    <% option.with_prefix do %>
+      <%= polaris_thumbnail(
+        source: "https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg",
+        alt: "Black choker necklace",
+        size: :small,
+      ) %>
+    <% end %>
+  <% end %>
+  <% autocomplete.with_option(label: "Antique", value: "antique") do |option| %>
+    <% option.with_suffix do %>
+      <%= polaris_thumbnail(
+        source: "https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg",
+        alt: "Black choker necklace",
+        size: :small,
+      ) %>
+    <% end %>
+  <% end %>
+  <% autocomplete.with_option(label: "Vinyl", value: "vinyl") do |option| %>
+    <% option.with_prefix do %>
+      <%= polaris_thumbnail(
+        source: "https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg",
+        alt: "Black choker necklace",
+        size: :small,
+      ) %>
+    <% end %>
+    <% option.with_suffix do %>
+      <%= polaris_thumbnail(
+        source: "https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg",
+        alt: "Black choker necklace",
+        size: :small,
+      ) %>
+    <% end %>
+  <% end %>
+<% end %>
+
