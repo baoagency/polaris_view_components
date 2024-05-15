@@ -2,6 +2,9 @@ class AutocompleteComponentPreview < ViewComponent::Preview
   def basic
   end
 
+  def with_prefix_or_suffix
+  end
+
   def multiselect
   end
 

@@ -1,0 +1,5 @@
+<% if @multiple %>
+  <%= render Polaris::OptionList::CheckboxComponent.new(**system_arguments) %>
+<% else %>
+  <%= render Polaris::OptionList::RadioButtonComponent.new(**system_arguments, prefix: prefix, suffix: suffix) %>
+<% end %>

@@ -1,0 +1,22 @@
+<% pref = prefix || @prefix %>
+<% suf = suffix || @suffix %>
+
+<%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
+  <%= tag.label(
+    class: "Polaris-OptionList-Option__SingleSelectOption",
+    data: {
+      polaris_option_list_target: "radioButton",
+      action: "click->polaris-option-list#update"
+    }
+  ) do %>
+    <%= tag.div(class: "Polaris-OptionList-Option__Layout", style: suf.blank? ? "justify-content: normal;" : "") do %>
+      <% if pref %>
+        <%= tag.div(pref, style: "margin-right: 5px;") %>
+      <% end %>
+      <%= tag.div { safe_join [radio_button, @label] } %>
+      <% if suf %>
+        <%= tag.div(suf, style: "margin-left: 5px;") %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ActionListComponentTest < Minitest::Test
+class OptionListComponentTest < Minitest::Test
   include Polaris::ComponentTestHelpers
 
   def test_single_choice
@@ -11,6 +11,28 @@ class ActionListComponentTest < Minitest::Test
 
     assert_text "Item 1"
     assert_text "Item 2"
+  end
+
+  def test_option_prefix
+    render_inline(Polaris::OptionListComponent.new) do |list|
+      list.with_radio_button(label: "Item 1", value: "item_1") do |button|
+        button.with_prefix { "Prefix" }
+      end
+    end
+
+    assert_text "Item 1"
+    assert_text "Prefix"
+  end
+
+  def test_option_suffix
+    render_inline(Polaris::OptionListComponent.new) do |list|
+      list.with_radio_button(label: "Item 1", value: "item_1") do |button|
+        button.with_suffix { "Suffix" }
+      end
+    end
+
+    assert_text "Item 1"
+    assert_text "Suffix"
   end
 
   def test_multi_choice
