@@ -46,7 +46,7 @@ module Polaris
         tag: "div",
         classes: class_names(
           "Polaris-Page-Header--mobileView",
-          "Polaris-Page-Header--mediumTitle": @title.present? && title_length <= LONG_TITLE,
+          "Polaris-Page-Header--largeTitle": @title.present? && title_length <= LONG_TITLE,
           "Polaris-Page-Header--longTitle": @title.present? && title_length > LONG_TITLE,
           "Polaris-Page-Header--hasNavigation": @back_url.present?,
           "Polaris-Page-Header--noBreadcrumbs": @back_url.blank?
