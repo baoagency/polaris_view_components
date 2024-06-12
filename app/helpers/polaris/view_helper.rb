@@ -115,7 +115,7 @@ module Polaris
     end
 
     def polaris_html_styles
-      %(--pc-frame-global-ribbon-height:0px; --pc-frame-offset:0px;)
+      %(--pc-frame-global-ribbon-height:0px; --pc-frame-offset:65px;)
     end
 
     def polaris_body_styles
