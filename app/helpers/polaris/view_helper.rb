@@ -100,7 +100,14 @@ module Polaris
     end
 
     def polaris_icon_source(name)
-      path = ViewComponents::Engine.root.join("app", "assets", "icons", "polaris", "#{name}.svg")
+      paths = [
+        ViewComponents::Engine.root.join("app", "assets", "icons", "polaris", "#{name}.svg"),
+        Rails.root.join("app", "assets", "icons", "polaris", "#{name}.svg")
+      ]
+
+      path = paths.find { |path| File.exist?(path) }
+      return unless path
+
       file = File.read(path)
       doc = Nokogiri::HTML::DocumentFragment.parse(file)
       svg = doc.at_css "svg"
