@@ -1,6 +1,6 @@
 <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
   <div>
-    <div class="<%= toast_classes %>">
+    <div class="<%= toast_classes %>" data-turbo-temporary>
       <%= content %>
 
       <% if action.present? %>
