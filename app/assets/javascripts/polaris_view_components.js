@@ -502,12 +502,7 @@ class Dropzone extends Controller {
   onDirectUploadsStart=() => {
     this.disable();
   };
-  onDirectUploadsEnd=() => {
-    this.enable();
-    this.clearFiles(this.removePreviewsAfterUploadValue);
-    if (this.acceptedFiles.length === 0) return;
-    if (this.hasLoaderTarget) this.loaderTarget.classList.remove("Polaris--hidden");
-  };
+  onDirectUploadsEnd=event => {};
   onDirectUploadInitialize=event => {
     const {target: target, detail: detail} = event;
     const {id: id, file: file} = detail;
@@ -537,6 +532,7 @@ class Dropzone extends Controller {
     if (!progressBar) return;
     const progressElement = progressBar.querySelector(".Polaris-ProgressBar__Indicator");
     progressElement.style.width = `${progress}%`;
+    progressElement.style.setProperty("--pc-progress-bar-percent", progress);
   };
   onDirectUploadError=event => {
     const {id: id, error: error} = event.detail;
@@ -665,7 +661,9 @@ class Dropzone extends Controller {
     this.acceptedFiles = [];
     this.files = [];
     this.rejectedFiles = [];
-    if (removePreview) this.removePreview();
+    if (removePreview) {
+      this.removePreview();
+    }
   }
   removePreview() {
     if (!this.hasPreviewTarget) return;

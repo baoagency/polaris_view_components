@@ -163,14 +163,7 @@ export default class extends Controller {
     this.disable()
   }
 
-  onDirectUploadsEnd = () => {
-    this.enable()
-    this.clearFiles(this.removePreviewsAfterUploadValue)
-
-    if (this.acceptedFiles.length === 0) return
-
-    if (this.hasLoaderTarget)
-      this.loaderTarget.classList.remove("Polaris--hidden")
+  onDirectUploadsEnd = (event) => {
   }
 
   onDirectUploadInitialize = (event) => {
@@ -208,6 +201,7 @@ export default class extends Controller {
 
     const progressElement = progressBar.querySelector('.Polaris-ProgressBar__Indicator')
     progressElement.style.width = `${progress}%`
+    progressElement.style.setProperty("--pc-progress-bar-percent", progress)
   }
 
   onDirectUploadError = (event) => {
@@ -366,8 +360,9 @@ export default class extends Controller {
     this.files = []
     this.rejectedFiles = []
 
-    if (removePreview)
+    if (removePreview) {
       this.removePreview()
+    }
   }
 
   removePreview () {
