@@ -4,6 +4,8 @@ export default class extends Controller {
   disable(event) {
     if (this.button.disabled) {
       event.preventDefault()
+      this.button.classList.add("Polaris-Button--disabled", "Polaris-Button--loading")
+      this.buttonContent.insertAdjacentHTML("afterbegin", this.spinnerHTML)
     } else {
       this.button.disabled = true
       this.button.classList.add("Polaris-Button--disabled", "Polaris-Button--loading")
@@ -14,6 +16,7 @@ export default class extends Controller {
   disableWithoutLoader(event) {
     if (this.button.disabled) {
       event.preventDefault()
+      this.button.classList.add("Polaris-Button--disabled")
     } else {
       this.button.disabled = true
       this.button.classList.add("Polaris-Button--disabled")
