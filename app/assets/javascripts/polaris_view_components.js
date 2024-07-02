@@ -536,6 +536,7 @@ class Dropzone extends Controller {
   };
   onDirectUploadError=event => {
     const {id: id, error: error} = event.detail;
+    this.enable();
     const progressBar = document.getElementById(`direct-upload-${id}`);
     if (!progressBar) return;
     event.preventDefault();

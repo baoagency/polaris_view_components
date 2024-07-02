@@ -206,6 +206,7 @@ export default class extends Controller {
 
   onDirectUploadError = (event) => {
     const { id, error } = event.detail
+    this.enable()
     const progressBar = document.getElementById(`direct-upload-${id}`)
     if (!progressBar) return
 
