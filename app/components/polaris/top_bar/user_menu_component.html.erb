@@ -14,14 +14,16 @@
         ) do %>
           <%= @name %>
         <% end %>
-        <%= polaris_text(
-          as: :p,
-          variant: :bodySm,
-          truncate: true,
-          alignment: :start,
-          color: :subdued
-        ) do %>
-          <%= @detail %>
+        <% if @detail.present? %>
+          <%= polaris_text(
+            as: :p,
+            variant: :bodySm,
+            truncate: true,
+            alignment: :start,
+            color: :subdued
+          ) do %>
+            <%= @detail %>
+          <% end %>
         <% end %>
       </span>
       <div class="Polaris-MessageIndicator__MessageIndicatorWrapper">
