@@ -77,4 +77,13 @@ class AvatarComponentPreview < ViewComponent::Preview
       }
     )
   end
+
+  # @param icon text "name of Polaris icon"
+  def icon(icon: "StoreIcon")
+    render_with_template(
+      locals: {
+        icon: icon
+      }
+    )
+  end
 end
