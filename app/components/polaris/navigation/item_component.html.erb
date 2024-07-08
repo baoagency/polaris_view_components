@@ -1,19 +1,37 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
   <div class="Polaris-Navigation__ItemWrapper">
     <div class="Polaris-Navigation__ItemInnerWrapper">
-      <%= link_to @url, **link_arguments do %>
-        <% if @icon.present? %>
-          <div class="Polaris-Navigation__Icon">
-            <%= polaris_icon(name: @icon) %>
-          </div>
+      <% if @action_type == :link %>
+        <%= link_to @url, **link_arguments do %>
+          <% if @icon.present? %>
+            <div class="Polaris-Navigation__Icon">
+              <%= polaris_icon(name: @icon) %>
+            </div>
+          <% end %>
+          <span class="Polaris-Navigation__Text">
+            <%= @label %>
+          </span>
+          <% if @badge.present? %>
+            <div class="Polaris-Navigation__Badge">
+              <%= polaris_badge { @badge } %>
+            </div>
+          <% end %>
         <% end %>
-        <span class="Polaris-Navigation__Text">
-          <%= @label %>
-        </span>
-        <% if @badge.present? %>
-          <div class="Polaris-Navigation__Badge">
-            <%= polaris_badge { @badge } %>
-          </div>
+      <% else %>
+        <%= button_to @url, **link_arguments do %>
+          <% if @icon.present? %>
+            <div class="Polaris-Navigation__Icon">
+              <%= polaris_icon(name: @icon) %>
+            </div>
+          <% end %>
+          <span class="Polaris-Navigation__Text">
+            <%= @label %>
+          </span>
+          <% if @badge.present? %>
+            <div class="Polaris-Navigation__Badge">
+              <%= polaris_badge { @badge } %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
       <% if secondary_actions.present? %>

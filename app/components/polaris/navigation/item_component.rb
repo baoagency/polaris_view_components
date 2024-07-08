@@ -12,6 +12,7 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
     selected: false,
     disabled: false,
     external: false,
+    action_type: :link,
     link_arguments: {},
     **system_arguments
   )
@@ -23,7 +24,8 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
     @disabled = disabled
     @external = external
     @system_arguments = system_arguments
-    @link_arguments = link_arguments
+    @action_type = action_type
+    @link_arguments = link_arguments.merge
   end
 
   def system_arguments
