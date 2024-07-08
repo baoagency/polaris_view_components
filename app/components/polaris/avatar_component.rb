@@ -27,6 +27,7 @@ module Polaris
       size: SIZE_DEFAULT,
       shape: SHAPE_DEFAULT,
       source: nil,
+      icon: nil,
       **system_arguments
     )
       @customer = customer
@@ -35,6 +36,7 @@ module Polaris
       @size = size
       @shape = shape
       @source = source
+      @icon = icon
       @system_arguments = system_arguments
     end
 
