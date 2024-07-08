@@ -25,7 +25,7 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
     @external = external
     @system_arguments = system_arguments
     @action_type = action_type
-    @link_arguments = link_arguments.merge
+    @link_arguments = link_arguments
   end
 
   def system_arguments
