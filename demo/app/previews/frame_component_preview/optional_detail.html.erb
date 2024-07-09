@@ -1,0 +1,50 @@
+<%= polaris_frame(
+  logo: {
+    url: "/",
+    src: "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg",
+    width: "124px"
+  }
+) do |frame| %>
+  <% frame.with_top_bar do |top_bar| %>
+    <% top_bar.with_search_field do |search_field| %>
+      <%= polaris_text_field(placeholder: "Search", clear_button: true) %>
+    <% end %>
+    <% top_bar.with_user_menu(name: "Kirill") do |user_menu| %>
+      <% user_menu.with_avatar(initials: "K") %>
+
+      <%= polaris_action_list do |action_list| %>
+        <% action_list.with_item(icon: "ExitIcon", url: "/") { "Log out" } %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% frame.with_navigation do |navigation| %>
+    <% navigation.with_section do |section| %>
+      <% section.with_item(url: "#", label: "Back to Shopify", icon: "ArrowLeftIcon") %>
+    <% end %>
+    <% navigation.with_section(title: "Jaded Pixel App", separator: true) do |section| %>
+      <% section.with_action(icon: "ChatIcon") %>
+      <% section.with_item(url: "#", label: "Dashboard", icon: "HomeIcon") %>
+      <% section.with_item(url: "#", label: "Jaded Pixel Orders", icon: "OrderIcon") %>
+    <% end %>
+  <% end %>
+
+  <%= polaris_page(title: "Account") do %>
+    <%= polaris_layout do |layout| %>
+      <% layout.with_annotated_section(
+        title: "Account details",
+        description: "Jaded Pixel will use this as your account information."
+      ) do %>
+        <%= polaris_card do %>
+          <%= polaris_form_layout do |form_layout| %>
+            <% form_layout.with_item do %>
+              <%= polaris_text_field(label: "Full name", value: "Jaded Pixel") %>
+            <% end %>
+            <% form_layout.with_item do %>
+              <%= polaris_text_field(label: "Email", value: "dharma@jadedpixel.com") %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
