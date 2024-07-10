@@ -26,6 +26,7 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
     @system_arguments = system_arguments
     @action_type = action_type
     @link_arguments = link_arguments
+    @item_inner_wrapper_classes = item_inner_wrapper_classes
   end
 
   def system_arguments
@@ -47,6 +48,14 @@ class Polaris::Navigation::ItemComponent < Polaris::Component
       opts[:tabindex] = "0"
       opts[:target] = "_blank" if @external
     end
+  end
+
+  def item_inner_wrapper_classes
+    class_names(
+      "Polaris-Navigation__ItemInnerWrapper",
+      "Polaris-Navigation__ItemInnerWrapper--selected": @selected,
+      "Polaris-Navigation__ItemInnerDisabled": @disabled
+    )
   end
 
   def link_classes
