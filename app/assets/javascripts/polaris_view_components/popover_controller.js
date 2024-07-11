@@ -8,6 +8,7 @@ export default class extends Controller {
     appendToBody: Boolean,
     placement: String,
     active: Boolean,
+    fixed: Boolean,
     textFieldActivator: Boolean
   }
 
@@ -32,24 +33,26 @@ export default class extends Controller {
   }
 
   updatePosition() {
-    if (this.cleanup) {
-      this.cleanup()
-    }
-    this.cleanup = autoUpdate(this.activator, this.target, () => {
-      computePosition(this.activator, this.target, {
-        placement: this.placementValue,
-        middleware: [
-          offset(5),
-          flip(),
-          shift({ padding: 5 })
-        ]
-      }).then(({x, y}) => {
-        Object.assign(this.target.style, {
-          left: `${x}px`,
-          top: `${y}px`,
+    if (!this.fixedValue) {
+      if (this.cleanup) {
+        this.cleanup()
+      }
+      this.cleanup = autoUpdate(this.activator, this.target, () => {
+        computePosition(this.activator, this.target, {
+          placement: this.placementValue,
+          middleware: [
+            offset(5),
+            flip(),
+            shift({ padding: 5 })
+          ]
+        }).then(({x, y}) => {
+          Object.assign(this.target.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+          })
         })
       })
-    })
+    }
   }
 
   toggle() {

@@ -174,7 +174,7 @@ function formatBytes(bytes, decimals) {
 }
 
 class Autocomplete extends Controller {
-  static targets=[ "popover", "input", "hiddenInput", "results", "option", "emptyState" ];
+  static targets=[ "popover", "input", "hiddenInput", "results", "option", "emptyState", "fetchingState" ];
   static values={
     multiple: Boolean,
     url: String,
@@ -187,9 +187,7 @@ class Autocomplete extends Controller {
     this.inputTarget.removeEventListener("input", this.onInputChange);
   }
   toggle() {
-    if (this.isRemote && this.visibleOptions.length == 0 && this.value.length == 0) {
-      this.fetchResults();
-    } else {
+    if (this.visibleOptions.length > 0) {
       this.handleResults();
     }
   }
@@ -212,11 +210,15 @@ class Autocomplete extends Controller {
   }
   onInputChange=debounce((() => {
     if (this.isRemote) {
-      this.fetchResults();
+      if (this.value.length > 0) {
+        this.fetchResults();
+      } else {
+        this.popoverController.forceHide();
+      }
     } else {
       this.filterOptions();
     }
-  }), 200);
+  }), 500);
   reset() {
     this.inputTarget.value = "";
     this.optionTargets.forEach((option => {
@@ -242,6 +244,7 @@ class Autocomplete extends Controller {
       this.popoverController.show();
       this.checkSelected();
     } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
+      this.popoverController.show();
       this.showEmptyState();
     } else {
       this.popoverController.forceHide();
@@ -265,12 +268,20 @@ class Autocomplete extends Controller {
     this.handleResults();
   }
   async fetchResults() {
+    if (this.hasFetchingStateTarget) {
+      this.popoverController.show();
+      this.showFetchingState();
+    }
     const response = await get(this.urlValue, {
       query: {
         q: this.value
       }
     });
     if (response.ok) {
+      if (this.hasFetchingStateTarget) {
+        this.popoverController.forceHide();
+        this.hideFetchingState();
+      }
       const results = await response.html;
       this.resultsTarget.innerHTML = results;
       this.handleResults();
@@ -279,7 +290,20 @@ class Autocomplete extends Controller {
   showEmptyState() {
     if (this.hasEmptyStateTarget) {
       this.resultsTarget.classList.add("Polaris--hidden");
+      this.fetchingStateTarget.classList.add("Polaris--hidden");
       this.emptyStateTarget.classList.remove("Polaris--hidden");
+    }
+  }
+  showFetchingState() {
+    if (this.hasFetchingStateTarget) {
+      this.fetchingStateTarget.classList.remove("Polaris--hidden");
+      this.emptyStateTarget.classList.add("Polaris--hidden");
+      this.resultsTarget.classList.add("Polaris--hidden");
+    }
+  }
+  hideFetchingState() {
+    if (this.hasFetchingStateTarget) {
+      this.fetchingStateTarget.classList.add("Polaris--hidden");
     }
   }
   hideEmptyState() {
@@ -2112,6 +2136,7 @@ class Popover extends Controller {
     appendToBody: Boolean,
     placement: String,
     active: Boolean,
+    fixed: Boolean,
     textFieldActivator: Boolean
   };
   connect() {
@@ -2131,22 +2156,24 @@ class Popover extends Controller {
     }
   }
   updatePosition() {
-    if (this.cleanup) {
-      this.cleanup();
-    }
-    this.cleanup = autoUpdate(this.activator, this.target, (() => {
-      computePosition(this.activator, this.target, {
-        placement: this.placementValue,
-        middleware: [ offset(5), flip(), shift({
-          padding: 5
-        }) ]
-      }).then((({x: x, y: y}) => {
-        Object.assign(this.target.style, {
-          left: `${x}px`,
-          top: `${y}px`
-        });
+    if (!this.fixedValue) {
+      if (this.cleanup) {
+        this.cleanup();
+      }
+      this.cleanup = autoUpdate(this.activator, this.target, (() => {
+        computePosition(this.activator, this.target, {
+          placement: this.placementValue,
+          middleware: [ offset(5), flip(), shift({
+            padding: 5
+          }) ]
+        }).then((({x: x, y: y}) => {
+          Object.assign(this.target.style, {
+            left: `${x}px`,
+            top: `${y}px`
+          });
+        }));
       }));
-    }));
+    }
   }
   toggle() {
     if (this.target.classList.contains(this.openClass)) {

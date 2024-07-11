@@ -400,6 +400,8 @@
 }.Polaris-Popover__PopoverOverlay--closed {
   visibility: hidden;
   pointer-events: none;
+}.Polaris-Popover__PopoverOverlay--fixed {
+  position: fixed;
 }/* Filters */.Polaris-LegacyFilters-ConnectedFilterControl__RightContainer .Polaris-LegacyFilters-ConnectedFilterControl__Item {
     z-index: auto;
   }.Polaris-LegacyFilters-ConnectedFilterControl__RightContainer .Polaris-LegacyFilters-ConnectedFilterControl__Item > div > div > button {

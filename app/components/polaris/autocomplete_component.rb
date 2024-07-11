@@ -10,8 +10,10 @@ module Polaris
       system_arguments[:input_options] ||= {}
       system_arguments[:input_options][:data] ||= {}
       system_arguments[:input_options][:data][:polaris_autocomplete_target] = "input"
+      error_message = error_for(@attribute)
+      error = error_message.presence || false
 
-      TextFieldComponent.new(form: @form, attribute: @attribute, name: @name, **system_arguments)
+      TextFieldComponent.new(form: @form, attribute: @attribute, name: @name, error: error, **system_arguments)
     end
     renders_many :sections, ->(**system_arguments) do
       Autocomplete::SectionComponent.new(multiple: @multiple, **system_arguments)
@@ -20,6 +22,7 @@ module Polaris
       Autocomplete::OptionComponent.new(multiple: @multiple, **system_arguments)
     end
     renders_one :empty_state
+    renders_one :fetching_state
 
     def initialize(
       form: nil,
@@ -39,6 +42,13 @@ module Polaris
       @selected = selected
       @popover_arguments = popover_arguments
       @system_arguments = system_arguments
+    end
+
+    def error_for(attribute)
+      return if @form&.object.blank?
+      return unless @form.object.errors.key?(attribute)
+
+      raw @form.object.errors.full_messages_for(attribute)&.first
     end
 
     def system_arguments

@@ -18,6 +18,15 @@
       </div>
     <% end %>
 
+    <% if fetching_state.present? %>
+      <div
+        data-polaris-autocomplete-target="fetchingState"
+        class="Polaris-Autocomplete__EmptyState Polaris--hidden"
+      >
+        <%= fetching_state %>
+      </div>
+    <% end %>
+
     <%= polaris_option_list(**option_list_arguments) do |list| %>
       <% if sections.present? %>
         <% sections.each do |section| %>
