@@ -309,7 +309,8 @@
       background: var(--p-color-bg-fill-tertiary);
     }/* Loading */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--loading svg {
       fill: var(--p-color-icon-disabled);
-    }/* Destructive */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive {
+    }/* Destructive */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive,
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:is(.Polaris-Button--primary) {
     --pc-button-color: var(--p-color-bg-fill-critical);
     --pc-button-text: var(--p-color-bg-surface);
     --pc-button-color-hover: var(--p-color-bg-fill-critical-hover);
