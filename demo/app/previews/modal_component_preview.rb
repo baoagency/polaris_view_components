@@ -17,6 +17,9 @@ class ModalComponentPreview < ViewComponent::Preview
   def with_primary_action
   end
 
+  def with_destructive_primary_action
+  end
+
   def without_title
   end
 end

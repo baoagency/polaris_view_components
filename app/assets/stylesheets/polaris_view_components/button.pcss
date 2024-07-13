@@ -52,7 +52,8 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
   }
 
   /* Destructive */
-  &.Polaris-Button--destructive {
+  &.Polaris-Button--destructive,
+  &.Polaris-Button--destructive:is(.Polaris-Button--primary) {
     --pc-button-color: var(--p-color-bg-fill-critical);
     --pc-button-text: var(--p-color-bg-surface);
     --pc-button-color-hover: var(--p-color-bg-fill-critical-hover);

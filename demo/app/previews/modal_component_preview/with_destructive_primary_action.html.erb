@@ -1,0 +1,22 @@
+<%= polaris_button(data: {
+  controller: "polaris",
+  target: "#demo-modal",
+  action: "polaris#openModal",
+}) { "Open" } %>
+
+<%= polaris_modal(
+  id: "demo-modal",
+  title: "Reach more shoppers with Instagram product tags",
+  open: true,
+) do |modal| %>
+  <%= polaris_text_container do %>
+    <p>
+      Use Instagram posts to share your products with millions of
+      people. Let shoppers buy from your store without leaving
+    Instagram.
+    </p>
+  <% end %>
+
+  <% modal.with_primary_action(destructive: true) { "Discard changes" } %>
+  <% modal.with_secondary_action(data: { action: "polaris-modal#close" }) { "Continue editing" } %>
+<% end %>
