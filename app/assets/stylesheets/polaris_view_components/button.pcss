@@ -1,6 +1,8 @@
 /* Polaris no longer uses different button styling depending on the context,
    so we can override all buttons at once. */
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
+
+
   &:not(.Polaris-Button--plain) {
     &:hover {
       box-shadow: var(--pc-button-shadow-hover);
@@ -60,6 +62,10 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
     --pc-button-color-active: var(--p-color-bg-fill-critical-active);
     --pc-button-color-depressed: var(--p-color-bg-fill-critical-selected);
     box-shadow: var(--p-shadow-button-primary-critical);
+
+    &:active {
+      background: var(--pc-button-color-active);
+    }
   }
 
   /* Primary */

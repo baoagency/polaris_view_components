@@ -317,7 +317,9 @@
     --pc-button-color-active: var(--p-color-bg-fill-critical-active);
     --pc-button-color-depressed: var(--p-color-bg-fill-critical-selected);
     box-shadow: var(--p-shadow-button-primary-critical);
-  }/* Primary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary {
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:is(.Polaris-Button--primary):active {
+      background: var(--pc-button-color-active);
+    }/* Primary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary {
     --pc-button-bg-gradient: var(--p-color-button-gradient-bg-fill);
     --pc-button-color: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand);
     --pc-button-text: var(--p-color-bg-surface);
