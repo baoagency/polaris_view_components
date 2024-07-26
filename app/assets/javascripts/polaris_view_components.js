@@ -833,7 +833,8 @@ class Modal extends Controller {
   }
   open() {
     this.element.classList.remove(this.hiddenClass);
-    this.element.insertAdjacentHTML("afterend", `<div class="${this.backdropClass}"></div>`);
+    const dropElement = `<div class="${this.backdropClass}" data-action="click->polaris#closeModal"></div>`;
+    this.element.insertAdjacentHTML("afterend", dropElement);
     this.backdrop = this.element.nextElementSibling;
   }
   close() {
@@ -877,6 +878,9 @@ class OptionList extends Controller {
 class Polaris extends Controller {
   openModal() {
     this.findElement("modal").open();
+  }
+  closeModal() {
+    this.findElement("modal").close();
   }
   disableButton() {
     this.findElement("button").disable();

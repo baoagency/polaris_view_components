@@ -5,6 +5,10 @@ export default class extends Controller {
     this.findElement("modal").open()
   }
 
+  closeModal() {
+    this.findElement("modal").close()
+  }
+
   disableButton() {
     this.findElement("button").disable()
   }

@@ -14,7 +14,8 @@ export default class extends Controller {
 
   open() {
     this.element.classList.remove(this.hiddenClass)
-    this.element.insertAdjacentHTML('afterend', `<div class="${this.backdropClass}"></div>`)
+    const dropElement = `<div class="${this.backdropClass}" data-action="click->polaris#closeModal"></div>`
+    this.element.insertAdjacentHTML('afterend', dropElement)
     this.backdrop = this.element.nextElementSibling
   }
 
