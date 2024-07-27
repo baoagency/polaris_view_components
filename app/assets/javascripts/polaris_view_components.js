@@ -833,7 +833,7 @@ class Modal extends Controller {
   }
   open() {
     this.element.classList.remove(this.hiddenClass);
-    const dropElement = `<div class="${this.backdropClass}" data-action="click->polaris#closeModal"></div>`;
+    const dropElement = `<div class="${this.backdropClass}" data-controller="polaris" data-target="#${this.element.id}" data-action="click->polaris#closeModal"></div>`;
     this.element.insertAdjacentHTML("afterend", dropElement);
     this.backdrop = this.element.nextElementSibling;
   }
