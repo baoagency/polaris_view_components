@@ -57,7 +57,7 @@ rake
 
 ## Releases
 
-The library follows [semantic versioning](https://semver.org/). To draft a new release you need to run `script/release` with a new version number:
+The library follows [semantic versioning](https://semver.org/). To draft a new release you need to run `bin/release` with a new version number:
 
 ```bash
 bin/release VERSION

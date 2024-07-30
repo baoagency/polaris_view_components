@@ -3,7 +3,7 @@
 VERSION=$1
 
 if [ -z $1 ] ; then
-  echo "Please provide version number: script/release 1.0.0" && exit 1;
+  echo "Please provide version number: bin/release 1.0.0" && exit 1;
 fi
 
 printf "module Polaris\n  module ViewComponents\n    VERSION = \"$VERSION\"\n  end\nend\n" > ./lib/polaris/view_components/version.rb
