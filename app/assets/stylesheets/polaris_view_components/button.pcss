@@ -54,7 +54,6 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
   }
 
   /* Destructive */
-  &.Polaris-Button--destructive,
   &.Polaris-Button--destructive:is(.Polaris-Button--primary) {
     --pc-button-color: var(--p-color-bg-fill-critical);
     --pc-button-text: var(--p-color-bg-surface);
@@ -66,6 +65,13 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
     &:active {
       background: var(--pc-button-color-active);
     }
+  }
+
+  &.Polaris-Button--destructive:not(..Polaris-Button--primary) {
+    --pc-button-color: var(--p-color-text-critical);
+    --pc-button-color-hover: var(--p-color-text-critical-hover);
+    --pc-button-color-active: var(--p-color-text-critical-active);
+    --pc-button-icon-fill: currentColor;
   }
 
   /* Primary */

@@ -309,17 +309,21 @@
       background: var(--p-color-bg-fill-tertiary);
     }/* Loading */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--loading svg {
       fill: var(--p-color-icon-disabled);
-    }/* Destructive */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive,
-  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:is(.Polaris-Button--primary) {
+    }/* Destructive */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:is(.Polaris-Button--primary) {
     --pc-button-color: var(--p-color-bg-fill-critical);
     --pc-button-text: var(--p-color-bg-surface);
     --pc-button-color-hover: var(--p-color-bg-fill-critical-hover);
     --pc-button-color-active: var(--p-color-bg-fill-critical-active);
     --pc-button-color-depressed: var(--p-color-bg-fill-critical-selected);
     box-shadow: var(--p-shadow-button-primary-critical);
-  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:is(.Polaris-Button--primary):active {
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:is(.Polaris-Button--primary):active {
       background: var(--pc-button-color-active);
-    }/* Primary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary {
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:not(..Polaris-Button--primary) {
+    --pc-button-color: var(--p-color-text-critical);
+    --pc-button-color-hover: var(--p-color-text-critical-hover);
+    --pc-button-color-active: var(--p-color-text-critical-active);
+    --pc-button-icon-fill: currentColor;
+  }/* Primary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary {
     --pc-button-bg-gradient: var(--p-color-button-gradient-bg-fill);
     --pc-button-color: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand);
     --pc-button-text: var(--p-color-bg-surface);
