@@ -6,11 +6,13 @@ module Polaris
       previous_url: nil,
       next_url: nil,
       label: nil,
+      button_data: {},
       **system_arguments
     )
       @previous_url = previous_url
       @next_url = next_url
       @label = label
+      @button_data = button_data
 
       @system_arguments = system_arguments
       @system_arguments["aria-label"] = "Pagination"
