@@ -23,6 +23,9 @@ class ButtonComponentPreview < ViewComponent::Preview
   def primary
   end
 
+  def primary_destructive
+  end
+
   def destructive
   end
 
