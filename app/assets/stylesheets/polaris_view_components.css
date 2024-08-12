@@ -319,11 +319,13 @@
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:is(.Polaris-Button--primary):active {
       background: var(--pc-button-color-active);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:not(.Polaris-Button--primary) {
-    --pc-button-color: var(--p-color-text-critical);
-    --pc-button-color-hover: var(--p-color-text-critical-hover);
-    --pc-button-color-active: var(--p-color-text-critical-active);
+    --pc-button-text: var(--p-color-text-critical);
     --pc-button-icon-fill: currentColor;
-  }/* Primary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary {
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:not(.Polaris-Button--primary):active {
+      --pc-button-text: var(--p-color-text-critical-active);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:not(.Polaris-Button--primary):hover {
+      --pc-button-text: var(--p-color-text-critical-hover);
+    }/* Primary */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--primary {
     --pc-button-bg-gradient: var(--p-color-button-gradient-bg-fill);
     --pc-button-color: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand);
     --pc-button-text: var(--p-color-bg-surface);
