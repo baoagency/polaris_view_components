@@ -12,18 +12,22 @@
       <% end %>
     </div>
   <% end %>
-
-  <%= polaris_scrollable(classes: "Polaris-Navigation__PrimaryNavigation") do %>
-    <% if sections.present? %>
-      <% sections.each do |section| %>
-        <%= section %>
-      <% end %>
-    <% else %>
-      <%= render(Polaris::Navigation::SectionComponent.new) do %>
-        <% items.each do |item| %>
-          <%= item %>
+  <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100vh;">
+    <%= polaris_scrollable(classes: "Polaris-Navigation__PrimaryNavigation") do %>
+      <% if sections.present? %>
+        <% sections.each do |section| %>
+          <%= section %>
+        <% end %>
+      <% else %>
+        <%= render(Polaris::Navigation::SectionComponent.new) do %>
+          <% items.each do |item| %>
+            <%= item %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
+    <% if footer? %>
+      <%= footer %>
+    <% end %>
+  </div>
 </nav>
