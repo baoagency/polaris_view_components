@@ -300,7 +300,7 @@ class Autocomplete extends Controller {
 class Button extends Controller {
   disable(event) {
     if (this.button.disabled) {
-      event.preventDefault();
+      if (event) event.preventDefault();
     } else {
       this.button.disabled = true;
       this.button.classList.add("Polaris-Button--disabled", "Polaris-Button--loading");
@@ -309,7 +309,7 @@ class Button extends Controller {
   }
   disableWithoutLoader(event) {
     if (this.button.disabled) {
-      event.preventDefault();
+      if (event) event.preventDefault();
     } else {
       this.button.disabled = true;
       this.button.classList.add("Polaris-Button--disabled");

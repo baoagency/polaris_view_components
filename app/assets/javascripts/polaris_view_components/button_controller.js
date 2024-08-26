@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   disable(event) {
     if (this.button.disabled) {
-      event.preventDefault()
+      if (event) event.preventDefault()
     } else {
       this.button.disabled = true
       this.button.classList.add("Polaris-Button--disabled", "Polaris-Button--loading")
@@ -13,7 +13,7 @@ export default class extends Controller {
 
   disableWithoutLoader(event) {
     if (this.button.disabled) {
-      event.preventDefault()
+      if (event) event.preventDefault()
     } else {
       this.button.disabled = true
       this.button.classList.add("Polaris-Button--disabled")
