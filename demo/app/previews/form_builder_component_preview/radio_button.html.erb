@@ -2,10 +2,12 @@
   <%= form.polaris_radio_button(:access,
     value: :allow,
     label: "Allow access",
+    checked: true,
   ) %>
 
   <%= form.polaris_radio_button(:access,
     value: :deny,
     label: "Deny access",
+    checked: false,
   ) %>
 <% end %>
