@@ -23,6 +23,7 @@ module Polaris
         opts[:disabled] = true if @disabled
         opts[:aria] ||= {}
         opts[:aria][:checked] = @checked
+        opts[:checked] = @checked
         opts[:class] = opts.delete(:classes)
       end
     end
