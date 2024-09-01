@@ -4,6 +4,8 @@
       <%= text_field %>
       <% if @form.present? && @attribute.present? %>
         <%= @form.hidden_field @attribute, data: {polaris_autocomplete_target: "hiddenInput"} %>
+      <% elsif !@multiple %>
+        <%= hidden_field_tag @name, @selected, data: {polaris_autocomplete_target: "hiddenInput"} %>
       <% else %>
         <%= hidden_field_tag @name, nil, data: {polaris_autocomplete_target: "hiddenInput"} %>
       <% end %>

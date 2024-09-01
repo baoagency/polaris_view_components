@@ -1,18 +1,33 @@
-<%= polaris_autocomplete(
-  multiple: true,
-  selected: ["antique", "vintage"],
-) do |autocomplete| %>
-  <% autocomplete.with_text_field(label: "Tags", placeholder: "Search") do |c| %>
-    <% c.with_prefix do %>
-      <%= polaris_icon(name: "SearchIcon") %>
+<%= polaris_text_container do %>
+  <%= polaris_autocomplete(
+    multiple: true,
+    selected: ["antique", "vintage"],
+  ) do |autocomplete| %>
+    <% autocomplete.with_text_field(label: "Tags (multiple)", placeholder: "Search") do |c| %>
+      <% c.with_prefix do %>
+        <%= polaris_icon(name: "SearchIcon") %>
+      <% end %>
+    <% end %>
+
+    <% autocomplete.with_section(title: "Suggested tags") do |section| %>
+      <% section.with_option(label: "Rustic", value: "rustic") %>
+      <% section.with_option(label: "Antique", value: "antique") %>
+      <% section.with_option(label: "Vinyl", value: "vinyl") %>
+      <% section.with_option(label: "Vintage", value: "vintage") %>
+      <% section.with_option(label: "Refurbished", value: "refurbished") %>
     <% end %>
   <% end %>
 
-  <% autocomplete.with_section(title: "Suggested tags") do |section| %>
-    <% section.with_option(label: "Rustic", value: "rustic") %>
-    <% section.with_option(label: "Antique", value: "antique") %>
-    <% section.with_option(label: "Vinyl", value: "vinyl") %>
-    <% section.with_option(label: "Vintage", value: "vintage") %>
-    <% section.with_option(label: "Refurbished", value: "refurbished") %>
+  <%= polaris_autocomplete(selected: "vinyl") do |autocomplete| %>
+    <% autocomplete.with_text_field(
+      name: :tags,
+      label: "Tag (single)",
+      placeholder: "Search",
+      value: "Vinyl"
+    ) do |c| %>
+      <% c.with_prefix do %>
+        <%= polaris_icon(name: "SearchIcon") %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
