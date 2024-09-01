@@ -24,16 +24,18 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   def test_preselected_autocomplete
     with_preview("autocomplete_component/preselected")
 
-    # Open autocomplete
-    find(".Polaris-TextField__Input").click
-    assert_no_selector ".Polaris-Checkbox__Input:checked[value=rustic]"
-    assert_selector ".Polaris-Checkbox__Input:checked[value=antique]"
-    assert_selector ".Polaris-Checkbox__Input:checked[value=vintage]"
+    within first('[data-controller="polaris-autocomplete"]') do
+      # Open autocomplete
+      find(".Polaris-TextField__Input").click
+      assert_no_selector ".Polaris-Checkbox__Input:checked[value=rustic]"
+      assert_selector ".Polaris-Checkbox__Input:checked[value=antique]"
+      assert_selector ".Polaris-Checkbox__Input:checked[value=vintage]"
 
-    # Enter query
-    find(".Polaris-TextField__Input").set "Vin"
-    assert_no_selector ".Polaris-Checkbox__Input:checked[value=vinyl]"
-    assert_selector ".Polaris-Checkbox__Input:checked[value=vintage]"
+      # Enter query
+      find(".Polaris-TextField__Input").set "Vin"
+      assert_no_selector ".Polaris-Checkbox__Input:checked[value=vinyl]"
+      assert_selector ".Polaris-Checkbox__Input:checked[value=vintage]"
+    end
   end
 
   def test_remote_autocomplete
