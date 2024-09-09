@@ -4,7 +4,7 @@ module Polaris
       form: nil,
       attribute: nil,
       name: nil,
-      checked: false,
+      checked: nil,
       disabled: false,
       value: nil,
       **system_arguments
@@ -22,9 +22,17 @@ module Polaris
       @system_arguments.tap do |opts|
         opts[:disabled] = true if @disabled
         opts[:aria] ||= {}
-        opts[:aria][:checked] = @checked
-        opts[:checked] = @checked
         opts[:class] = opts.delete(:classes)
+
+        if @form.present? && @attribute.present?
+          unless @checked.nil?
+            opts[:aria][:checked] = !!@checked
+            opts[:checked] = !!@checked
+          end
+        else
+          opts[:aria][:checked] = !!@checked
+          opts[:checked] = !!@checked
+        end
       end
     end
 
