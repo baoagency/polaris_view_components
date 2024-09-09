@@ -54,7 +54,7 @@ module Polaris
       if options[:error_hidden] && options[:error]
         options[:error] = !!options[:error]
       end
-      render Polaris::TextFieldComponent.new(form: self, attribute: method, **options, &block)
+      render Polaris::TextFieldComponent.new(form: self, attribute: method, **options), &block
     end
 
     def polaris_select(method, **options, &block)

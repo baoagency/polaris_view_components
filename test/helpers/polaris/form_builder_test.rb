@@ -58,6 +58,25 @@ class Polaris::ViewHelperTest < ActionView::TestCase
     end
   end
 
+  test "#polaris_text_field_with_block" do
+    @rendered_content = @builder.polaris_text_field(:title, help_text: "Help Text") do |c|
+      c.with_connected_right do
+        polaris_button { "Submit" }
+      end
+    end
+
+    assert_selector ".Polaris-Label" do
+      assert_selector "label", text: "Title"
+    end
+    assert_selector ".Polaris-TextField" do
+      assert_selector %(input[name="product[title]"])
+      assert_selector ".Polaris-Labelled__HelpText", text: "Help Text"
+    end
+    assert_selector ".Polaris-Button" do
+      assert_selector "div", text: "Submit"
+    end
+  end
+
   test "#polaris_select" do
     @rendered_content = @builder.polaris_select(:status, options: {"Active" => "active", "Draft" => "draft"})
 
