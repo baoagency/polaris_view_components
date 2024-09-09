@@ -15,7 +15,7 @@ class FormBuilderComponentPreview < ViewComponent::Preview
   end
 
   def radio_button
-    product = Product.new
+    product = Product.new(access: :allow)
     render_with_template(locals: {product: product})
   end
 

@@ -1,13 +1,11 @@
 <%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
   <%= form.polaris_radio_button(:access,
     value: :allow,
-    label: "Allow access",
-    checked: true,
+    label: "Allow access"
   ) %>
 
   <%= form.polaris_radio_button(:access,
     value: :deny,
-    label: "Deny access",
-    checked: false,
+    label: "Deny access"
   ) %>
 <% end %>

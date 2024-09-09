@@ -8,7 +8,7 @@ module Polaris
       name: nil,
       label: nil,
       label_hidden: false,
-      checked: false,
+      checked: nil,
       disabled: false,
       help_text: nil,
       value: nil,

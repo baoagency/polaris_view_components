@@ -101,6 +101,30 @@ class Polaris::ViewHelperTest < ActionView::TestCase
     end
   end
 
+  test "#polaris_radio_button checked" do
+    @product = Product.new(access: :allow)
+    @builder = Polaris::FormBuilder.new(:product, @product, self, {})
+    @rendered_content = @builder.polaris_radio_button(:access, value: :allow, label: "Radio Label")
+
+    assert_selector "label.Polaris-Choice" do
+      assert_selector ".Polaris-Choice__Label", text: "Radio Label"
+      assert_selector ".Polaris-RadioButton" do
+        assert_selector %(input[name="product[access]"][value="allow"][type="radio"][checked="checked"])
+      end
+    end
+  end
+
+  test "#polaris_radio_button checked manually" do
+    @rendered_content = @builder.polaris_radio_button(:access, value: :allow, checked: true, label: "Radio Label")
+
+    assert_selector "label.Polaris-Choice" do
+      assert_selector ".Polaris-Choice__Label", text: "Radio Label"
+      assert_selector ".Polaris-RadioButton" do
+        assert_selector %(input[name="product[access]"][value="allow"][type="radio"][checked="checked"])
+      end
+    end
+  end
+
   test "#polaris_dropzone" do
     @rendered_content = @builder.polaris_dropzone(:image, label: "Dropzone Label")
 
