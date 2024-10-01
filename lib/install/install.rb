@@ -30,7 +30,7 @@ if IMPORTMAP_BINSTUB.exist?
 
   unless importmaps.include?("@rails/request.js")
     say "Pin @rails/request.js dependency"
-    run "bin/importmap pin @rails/request.js --download"
+    run "bin/importmap pin @rails/request.js"
   end
 
   say "Pin polaris_view_components"
