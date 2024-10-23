@@ -1,21 +1,25 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
-  <div class="Polaris-IndexTable-ScrollContainer">
-    <table class="Polaris-IndexTable__Table">
-      <thead>
-        <tr>
-          <% columns.each_with_index do |column, index| %>
-            <th class="Polaris-IndexTable__TableHeading">
-              <%= column.title %>
-            </th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <% @data.each do |row| %>
-          <%= render Polaris::BaseComponent.new(**row_arguments(row)) do %>
+  <% if @data.empty? %>
+    <%= empty_state %>
+  <% else %>
+    <div class="Polaris-IndexTable-ScrollContainer">
+      <table class="Polaris-IndexTable__Table">
+        <thead>
+          <tr>
             <% columns.each_with_index do |column, index| %>
-              <%= render_cell(flush: column.flush, **column.system_arguments) do %>
-                <%= column.call(row) %>
+              <th class="Polaris-IndexTable__TableHeading">
+                <%= column.title %>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @data.each do |row| %>
+            <%= render Polaris::BaseComponent.new(**row_arguments(row)) do %>
+              <% columns.each_with_index do |column, index| %>
+                <%= render_cell(flush: column.flush, **column.system_arguments) do %>
+                  <%= column.call(row) %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>

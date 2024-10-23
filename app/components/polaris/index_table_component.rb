@@ -3,6 +3,7 @@ module Polaris
     renders_many :columns, ->(title, **system_arguments, &block) do
       IndexTable::ColumnComponent.new(title, **system_arguments, &block)
     end
+    renders_one :empty_state
 
     def initialize(data, **system_arguments)
       @data = data

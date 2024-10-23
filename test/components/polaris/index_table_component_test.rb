@@ -37,4 +37,14 @@ class IndexTableComponentTest < Minitest::Test
       end
     end
   end
+
+  def test_empty_state
+    render_inline(Polaris::IndexTableComponent.new([])) do |table|
+      table.with_empty_state do |row|
+        "Empty state"
+      end
+    end
+
+    assert_selector ".Polaris-IndexTable", text: "Empty state"
+  end
 end
