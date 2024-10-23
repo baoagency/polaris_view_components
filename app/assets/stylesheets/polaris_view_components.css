@@ -535,7 +535,9 @@
   white-space: nowrap !important;
 }/* Frame - TopBar */.Polaris-Frame__TopBar .Polaris-TopBar-SearchField > div {
     width: 100%;
-  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):first-child,
+  }/* Select *//* Fix for Safari bug: https://github.com/baoagency/polaris_view_components/issues/454 */select.Polaris-Select__Input {
+  font-weight: 400;
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):first-child,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Heading:not(.Polaris-DataTable__Heading--flush):first-child {
     padding-left: var(--p-space-400);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):last-child,
