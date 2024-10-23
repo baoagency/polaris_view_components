@@ -1,0 +1,19 @@
+<% data = [] %>
+<%= polaris_index_table(data) do |table| %>
+  <% table.with_column("Name") do |row| %>
+    <%= polaris_text_strong { row[:name] } %>
+  <% end %>
+
+  <% table.with_empty_state do %>
+    <%= polaris_card do %>
+      <%= polaris_empty_state(
+        heading: "Manage your inventory transfers",
+        image: "https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png",
+      ) do |state| %>
+        <% state.with_primary_action { "Add transfer" } %>
+        <% state.with_secondary_action(url: "#") { "Learn more" } %>
+        <p>Track and receive your incoming inventory from suppliers.</p>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
