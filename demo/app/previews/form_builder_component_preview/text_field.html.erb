@@ -1,3 +1,22 @@
 <%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
   <%= form.polaris_text_field(:title, help_text: "Note about text field") %>
 <% end %>
+
+<%= polaris_spacer(vertical: :base) %>
+
+<%= form_with(model: product, builder: Polaris::FormBuilder) do |form| %>
+  <%= form.polaris_text_field(:title, help_text: "Note about text field") do |c| %>
+    <% c.with_connected_left do %>
+      <%= polaris_select(
+        name: :weight_unit,
+        label: "Weight unit",
+        label_hidden: true,
+        options: { "kd" => "kg", "lb" => "lb" },
+        selected: "kg",
+      ) %>
+    <% end %>
+    <% c.with_connected_right do %>
+      <%= polaris_button { "Submit" } %>
+    <% end %>
+  <% end %>
+<% end %>
