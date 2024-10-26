@@ -27,9 +27,11 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "view_component", ">= 3.0.0", "< 4.0.0"
 
   spec.add_development_dependency "webdrivers", "~> 5.0"
-  spec.add_development_dependency "selenium-webdriver", "~> 4.1"
+  spec.add_development_dependency "selenium-webdriver", "~> 4.10"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "sprockets-rails"
-  spec.add_development_dependency "kamal"
+  spec.add_development_dependency "kamal", "~> 2.0"
+  spec.add_development_dependency "dotenv"
+  spec.add_development_dependency "sqlite3"
 end
