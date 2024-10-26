@@ -10,6 +10,7 @@
 
 # demo app
 /demo/tmp/
+!/demo/tmp/.keep
 /demo/node_modules/
 /demo/config/master.key
 /demo/public/packs/

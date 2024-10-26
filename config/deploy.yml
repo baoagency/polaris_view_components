@@ -1,7 +1,7 @@
 <% require "dotenv"; Dotenv.load(".env") %>
 
-service: polaris_view_components
-image: kirillplatonov/polaris_view_components
+service: polaris_view_components-legacy
+image: kirillplatonov/polaris_view_components-legacy
 servers:
   - 195.201.128.126
 proxy:
