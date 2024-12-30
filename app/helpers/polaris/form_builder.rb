@@ -103,6 +103,7 @@ module Polaris
       if value.present?
         options[:selected] = value.map { |el| el.public_send(value_method) }
       end
+      input_options = options.delete(:input_options) || {}
 
       render Polaris::ChoiceListComponent.new(
         form: self,
@@ -113,7 +114,11 @@ module Polaris
         &block
       ) do |choice|
         collection.each do |item|
-          choice.with_checkbox(label: item.public_send(text_method), value: item.public_send(value_method))
+          choice.with_checkbox(
+            label: item.public_send(text_method),
+            value: item.public_send(value_method),
+            input_options: input_options
+          )
         end
       end
     end
