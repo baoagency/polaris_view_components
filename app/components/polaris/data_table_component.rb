@@ -35,7 +35,7 @@ module Polaris
           "Polaris-DataTable"
         )
         args[:data] ||= {}
-        args[:data][:controller] = "polaris-data-table"
+        args[:data][:controller] = "polaris-data-table" if @hoverable
       end
     end
 
