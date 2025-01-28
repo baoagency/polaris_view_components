@@ -11,9 +11,9 @@
           <span class="Polaris-Navigation__Text">
             <%= @label %>
           </span>
-          <% if @badge.present? %>
+          <% if badge? || @badge.present? %>
             <div class="Polaris-Navigation__Badge">
-              <%= polaris_badge { @badge } %>
+              <%= badge? ? badge : (polaris_badge { @badge }) %>
             </div>
           <% end %>
         <% end %>
@@ -27,9 +27,9 @@
           <span class="Polaris-Navigation__Text">
             <%= @label %>
           </span>
-          <% if @badge.present? %>
+          <% if badge? || @badge.present? %>
             <div class="Polaris-Navigation__Badge">
-              <%= polaris_badge { @badge } %>
+              <%= badge? ? badge : (polaris_badge { @badge }) %>
             </div>
           <% end %>
         <% end %>

@@ -1,4 +1,5 @@
 class Polaris::Navigation::ItemComponent < Polaris::Component
+  renders_one :badge, Polaris::BadgeComponent
   renders_many :sub_items, Polaris::Navigation::ItemComponent
   renders_many :secondary_actions, "SecondaryActionComponent"
 
