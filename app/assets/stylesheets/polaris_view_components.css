@@ -595,14 +595,13 @@
     font-size: var(--p-font-size-500);
     line-height: var(--p-font-line-height-600);
   }html[class~="Polaris-Summer-Editions-2023"] [aria-label='Pagination'] .Polaris-Button {
-    background-color: var(--p-color-bg-fill-tertiary);
     border: none !important;
     box-shadow: none;
-  }html[class~="Polaris-Summer-Editions-2023"] [aria-label='Pagination'] .Polaris-Button:hover {
-      background-color: var(--p-color-bg-fill-tertiary-hover);
-      box-shadow: none;
-      border: none;
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Popover .Polaris-Popover__Content .Polaris-Popover__Pane:first-child > .Polaris-Popover__Section > .Polaris-Box {
+  }html[class~="Polaris-Summer-Editions-2023"] [aria-label='Pagination'] .Polaris-Button:not([disabled]) {
+      background-color: var(--p-color-bg-fill-tertiary);
+    }html[class~="Polaris-Summer-Editions-2023"] [aria-label='Pagination'] .Polaris-Button:not([disabled]):hover {
+        background-color: var(--p-color-bg-fill-tertiary-hover);
+      }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Popover .Polaris-Popover__Content .Polaris-Popover__Pane:first-child > .Polaris-Popover__Section > .Polaris-Box {
     padding: var(--p-space-300) var(--p-space-400) var(--p-space-100);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Popover .Polaris-Popover__Content .Polaris-Popover__Pane:last-child > .Polaris-Popover__Section > .Polaris-Box {
     padding: var(--p-space-300) var(--p-space-300);
