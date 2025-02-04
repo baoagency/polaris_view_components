@@ -42,6 +42,18 @@ class NavigationComponentTest < Minitest::Test
     end
   end
 
+  def test_item_badge_child
+    render_inline(Polaris::NavigationComponent.new) do |navigation|
+      navigation.with_item(url: "/path1", label: "Item 1", icon: "HomeIcon") do |item|
+        item.with_badge(status: :success) { "SUCCESS" }
+      end
+    end
+
+    assert_selector ".Polaris-Navigation__ListItem .Polaris-Navigation__Item" do
+      assert_selector ".Polaris-Navigation__Badge > .Polaris-Badge--statusSuccess", text: "SUCCESS"
+    end
+  end
+
   def test_multiple_sections
     render_inline(Polaris::NavigationComponent.new) do |navigation|
       navigation.with_section do |section|
