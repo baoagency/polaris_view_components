@@ -2134,6 +2134,10 @@ class Popover extends Controller {
     if (this.cleanup) {
       this.cleanup();
     }
+    if (this.target && this.appendToBodyValue) {
+      this.target.remove();
+    }
+    this._target = null;
   }
   updatePosition() {
     if (this.cleanup) {
@@ -2142,7 +2146,10 @@ class Popover extends Controller {
     this.cleanup = autoUpdate(this.activator, this.target, (() => {
       computePosition(this.activator, this.target, {
         placement: this.placementValue,
-        middleware: [ offset(5), flip(), shift({
+        middleware: [ offset(5), flip({
+          fallbackPlacements: [ this.placementValue ],
+          fallbackStrategy: "bestFit"
+        }), shift({
           padding: 5
         }) ]
       }).then((({x: x, y: y}) => {
