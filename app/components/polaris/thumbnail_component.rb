@@ -8,6 +8,7 @@ module Polaris
 
     SIZE_DEFAULT = :medium
     SIZE_MAPPINGS = {
+      extra_small: "Polaris-Thumbnail--sizeExtraSmall",
       small: "Polaris-Thumbnail--sizeSmall",
       medium: "Polaris-Thumbnail--sizeMedium",
       large: "Polaris-Thumbnail--sizeLarge"
@@ -29,6 +30,8 @@ module Polaris
       @size = size
       @source = source
       @transparent = transparent
+
+      @size = :extra_small if [:xsmall, :x_small, :xs].include?(@size)
 
       @system_arguments = system_arguments
     end
