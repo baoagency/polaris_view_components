@@ -31,7 +31,8 @@ export default class extends Controller {
     focused: Boolean,
     renderPreview: Boolean,
     size: String,
-    removePreviewsAfterUpload: Boolean
+    removePreviewsAfterUpload: Boolean,
+    keepExistingUploads: Boolean
   }
 
   files = []
@@ -94,7 +95,7 @@ export default class extends Controller {
     this.stopEvent(e)
     if (this.disabled) return
 
-    const fileList = getDataTransferFiles(e)
+    const fileList = getDataTransferFiles(e, this.files, this.keepExistingUploadsValue)
     this.clearFiles()
 
     const { files, acceptedFiles, rejectedFiles } = this.getValidatedFiles(fileList)
@@ -475,20 +476,32 @@ export function fileAccepted (file, accept) {
   return file.type === 'application/x-moz-file' || accepts(file, accept)
 }
 
-export function getDataTransferFiles (event) {
+export function getDataTransferFiles (event, existingFiles, keepExistingUploads) {
   if (isDragEvent(event) && event.dataTransfer) {
     const dt = event.dataTransfer
 
     if (dt.files && dt.files.length) {
-      return Array.from(dt.files)
+      if (keepExistingUploads) {
+        return existingFiles.concat(Array.from(dt.files))
+      } else {
+        return Array.from(dt.files)
+      }
     } else if (dt.items && dt.items.length) {
       // Chrome is the only browser that allows to read the file list on drag
       // events and uses `items` instead of `files` in this case.
-      return Array.from(dt.items)
+      if (keepExistingUploads) {
+        return existingFiles.concat(Array.from(dt.items))
+      } else {
+        return Array.from(dt.items)
+      }
     }
   } else if (isChangeEvent(event) && event.target.files) {
     // Return files from even when a file was selected from an upload dialog
-    return Array.from(event.target.files)
+    if (keepExistingUploads) {
+      return existingFiles.concat(Array.from(event.target.files))
+    } else {
+      return Array.from(event.target.files)
+    }
   }
 
   return []

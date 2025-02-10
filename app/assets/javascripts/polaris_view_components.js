@@ -428,7 +428,8 @@ class Dropzone extends Controller {
     focused: Boolean,
     renderPreview: Boolean,
     size: String,
-    removePreviewsAfterUpload: Boolean
+    removePreviewsAfterUpload: Boolean,
+    keepExistingUploads: Boolean
   };
   files=[];
   rejectedFiles=[];
@@ -478,7 +479,7 @@ class Dropzone extends Controller {
   onChange(e) {
     this.stopEvent(e);
     if (this.disabled) return;
-    const fileList = getDataTransferFiles(e);
+    const fileList = getDataTransferFiles(e, this.files, this.keepExistingUploadsValue);
     this.clearFiles();
     const {files: files, acceptedFiles: acceptedFiles, rejectedFiles: rejectedFiles} = this.getValidatedFiles(fileList);
     this.dragTargets = [];
@@ -773,16 +774,28 @@ function fileAccepted(file, accept) {
   return file.type === "application/x-moz-file" || accepts(file, accept);
 }
 
-function getDataTransferFiles(event) {
+function getDataTransferFiles(event, existingFiles, keepExistingUploads) {
   if (isDragEvent(event) && event.dataTransfer) {
     const dt = event.dataTransfer;
     if (dt.files && dt.files.length) {
-      return Array.from(dt.files);
+      if (keepExistingUploads) {
+        return existingFiles.concat(Array.from(dt.files));
+      } else {
+        return Array.from(dt.files);
+      }
     } else if (dt.items && dt.items.length) {
-      return Array.from(dt.items);
+      if (keepExistingUploads) {
+        return existingFiles.concat(Array.from(dt.items));
+      } else {
+        return Array.from(dt.items);
+      }
     }
   } else if (isChangeEvent(event) && event.target.files) {
-    return Array.from(event.target.files);
+    if (keepExistingUploads) {
+      return existingFiles.concat(Array.from(event.target.files));
+    } else {
+      return Array.from(event.target.files);
+    }
   }
   return [];
 }
