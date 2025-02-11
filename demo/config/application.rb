@@ -46,5 +46,6 @@ module Demo
 
     # Lookbook
     config.lookbook.project_name = "Polaris ViewComponents"
+    config.lookbook.page_paths = ["app/pages"]
   end
 end
