@@ -30,6 +30,7 @@ module Polaris
       name: nil,
       multiple: false,
       url: nil,
+      add_input_event_listener: true,
       selected: [],
       popover_arguments: {},
       **system_arguments
@@ -39,6 +40,7 @@ module Polaris
       @name = name
       @multiple = multiple
       @url = url
+      @add_input_event_listener = add_input_event_listener
       @selected = selected
       @popover_arguments = popover_arguments
       @system_arguments = system_arguments
@@ -60,6 +62,7 @@ module Polaris
           opts[:data][:polaris_autocomplete_url_value] = @url
         end
         opts[:data][:polaris_autocomplete_selected_value] = @selected
+        opts[:data][:polaris_autocomplete_add_input_event_listener_value] = @add_input_event_listener
         opts[:data][:polaris_autocomplete_multiple_value] = @multiple if @multiple.present?
       end
     end

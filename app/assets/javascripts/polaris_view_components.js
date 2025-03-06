@@ -178,13 +178,18 @@ class Autocomplete extends Controller {
   static values={
     multiple: Boolean,
     url: String,
-    selected: Array
+    selected: Array,
+    addInputEventListener: Boolean
   };
   connect() {
-    this.inputTarget.addEventListener("input", this.onInputChange);
+    if (this.addInputEventListener) {
+      this.inputTarget.addEventListener("input", this.onInputChange);
+    }
   }
   disconnect() {
-    this.inputTarget.removeEventListener("input", this.onInputChange);
+    if (this.addInputEventListener) {
+      this.inputTarget.removeEventListener("input", this.onInputChange);
+    }
   }
   toggle() {
     if (this.visibleOptions.length > 0) {

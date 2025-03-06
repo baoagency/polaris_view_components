@@ -4,14 +4,18 @@ import { debounce } from './utils'
 
 export default class extends Controller {
   static targets = ['popover', 'input', 'hiddenInput', 'results', 'option', 'emptyState', 'fetchingState']
-  static values = { multiple: Boolean, url: String, selected: Array }
+  static values = { multiple: Boolean, url: String, selected: Array, addInputEventListener: Boolean }
 
   connect() {
-    this.inputTarget.addEventListener("input", this.onInputChange)
+    if (this.addInputEventListener) {
+      this.inputTarget.addEventListener("input", this.onInputChange)
+    }
   }
 
   disconnect() {
-    this.inputTarget.removeEventListener("input", this.onInputChange)
+    if (this.addInputEventListener) {
+      this.inputTarget.removeEventListener("input", this.onInputChange)
+    }
   }
 
   // Actions
