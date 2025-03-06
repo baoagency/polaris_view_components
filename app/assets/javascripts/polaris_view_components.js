@@ -256,9 +256,11 @@ class Autocomplete extends Controller {
         option.classList.remove("Polaris--hidden");
       }));
     } else {
-      const filterRegex = new RegExp(this.value, "i");
+      const searchTerms = this.value.toLowerCase().trim().split(/\s+/);
       this.optionTargets.forEach((option => {
-        if (option.dataset.label.match(filterRegex)) {
+        const label = option.dataset.label.toLowerCase();
+        const allTermsMatch = searchTerms.every((term => label.includes(term)));
+        if (allTermsMatch) {
           option.classList.remove("Polaris--hidden");
         } else {
           option.classList.add("Polaris--hidden");

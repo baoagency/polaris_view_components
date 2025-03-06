@@ -98,15 +98,25 @@ export default class extends Controller {
         option.classList.remove('Polaris--hidden')
       })
     } else {
-      const filterRegex = new RegExp(this.value, 'i')
+      const searchTerms = this.value.toLowerCase().trim().split(/\s+/);
       this.optionTargets.forEach(option => {
-        if (option.dataset.label.match(filterRegex)) {
-          option.classList.remove('Polaris--hidden')
+        const label = option.dataset.label.toLowerCase();
+        
+        // Check if all search terms are present in the label
+        const allTermsMatch = searchTerms.every(term => {
+          // Allow for some fuzzy matching by checking if term is at least
+          // partially contained in any word in the label
+          return label.includes(term);
+        });
+        
+        if (allTermsMatch) {
+          option.classList.remove('Polaris--hidden');
         } else {
-          option.classList.add('Polaris--hidden')
+          option.classList.add('Polaris--hidden');
         }
-      })
+      });
     }
+
     this.handleResults()
   }
 
