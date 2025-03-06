@@ -7,13 +7,13 @@ export default class extends Controller {
   static values = { multiple: Boolean, url: String, selected: Array, addInputEventListener: Boolean }
 
   connect() {
-    if (this.addInputEventListener) {
+    if (this.addInputEventListenerValue) {
       this.inputTarget.addEventListener("input", this.onInputChange)
     }
   }
 
   disconnect() {
-    if (this.addInputEventListener) {
+    if (this.addInputEventListenerValue) {
       this.inputTarget.removeEventListener("input", this.onInputChange)
     }
   }

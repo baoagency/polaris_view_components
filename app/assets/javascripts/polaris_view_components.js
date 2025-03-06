@@ -182,12 +182,12 @@ class Autocomplete extends Controller {
     addInputEventListener: Boolean
   };
   connect() {
-    if (this.addInputEventListener) {
+    if (this.addInputEventListenerValue) {
       this.inputTarget.addEventListener("input", this.onInputChange);
     }
   }
   disconnect() {
-    if (this.addInputEventListener) {
+    if (this.addInputEventListenerValue) {
       this.inputTarget.removeEventListener("input", this.onInputChange);
     }
   }
