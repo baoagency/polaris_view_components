@@ -355,6 +355,34 @@ export default class extends Controller {
     return clone
   }
 
+  removeFile(event) {
+		this.stopEvent(event);
+		const clickedButton = event.target;
+		const container = clickedButton.closest(".Polaris-LegacyStack");
+
+		const fileName = container.querySelector(
+			".Polaris-LegacyStack__Item [data-file-name]"
+		).dataset.fileName;
+
+		this.acceptedFiles = this.acceptedFiles.filter(
+			(file) => file.name !== fileName
+		);
+		this.files = this.files.filter((file) => file.name !== fileName);
+
+		container.closest(".Polaris-LegacyStack__Item").remove();
+		if (this.files.length === 0) {
+			this.removePreview();
+			this.toggleFileUpload(true);
+			this.toggleErrorOverlay(false);
+		}
+
+		const fileRemovedEvent = new CustomEvent("polaris-dropzone:file-removed", {
+			bubbles: true, // Allow the event to bubble up the DOM
+		});
+		this.element.dispatchEvent(fileRemovedEvent);
+
+	}
+
   clearFiles (removePreview = true) {
     if (!this.previewRendered) return
 
@@ -482,7 +510,7 @@ export function getDataTransferFiles (event, existingFiles, keepExistingUploads)
 
     if (dt.files && dt.files.length) {
       if (keepExistingUploads) {
-        return existingFiles.concat(Array.from(dt.files))
+        return handleExistingUploads(existingFiles, Array.from(dt.files));
       } else {
         return Array.from(dt.files)
       }
@@ -490,7 +518,7 @@ export function getDataTransferFiles (event, existingFiles, keepExistingUploads)
       // Chrome is the only browser that allows to read the file list on drag
       // events and uses `items` instead of `files` in this case.
       if (keepExistingUploads) {
-        return existingFiles.concat(Array.from(dt.items))
+        return handleExistingUploads(existingFiles, Array.from(dt.items));
       } else {
         return Array.from(dt.items)
       }
@@ -498,13 +526,24 @@ export function getDataTransferFiles (event, existingFiles, keepExistingUploads)
   } else if (isChangeEvent(event) && event.target.files) {
     // Return files from even when a file was selected from an upload dialog
     if (keepExistingUploads) {
-      return existingFiles.concat(Array.from(event.target.files))
+      return handleExistingUploads(existingFiles, Array.from(event.target.files));
     } else {
       return Array.from(event.target.files)
     }
   }
 
   return []
+}
+
+export function handleExistingUploads(existingFiles, newFiles) {
+  if (existingFiles.length === 0) {
+    return newFiles;
+  }
+
+  const existingNames = existingFiles.map(file => file.name);
+  const filteredNewFiles = newFiles.filter(file => !existingNames.includes(file.name));
+
+  return existingFiles.concat(filteredNewFiles);
 }
 
 function accepts (file, acceptedFiles = ['']) {

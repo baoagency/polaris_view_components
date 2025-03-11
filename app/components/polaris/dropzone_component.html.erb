@@ -101,7 +101,7 @@
         <% if @size.in?(%i[small]) %>
           <span class="target"></span>
         <% else %>
-          <%= polaris_stack(vertical: true) do %>
+          <%= polaris_stack(vertical: true, style: "width: 100%;") do %>
             <span class="target"></span>
           <% end %>
         <% end %>
@@ -157,6 +157,13 @@
                 style: "margin-top: 4px;"
               ) { @upload_error_text } %>
             <% end %>
+
+						<% stack.with_item do %>
+							<button data-action="click->polaris-dropzone#removeFile" style="cursor:pointer">
+								<%= polaris_icon(name: "XIcon", color: :base) %>
+							</button>
+						<% end %>
+
           <% end %>
         <% end %>
       <% end %>

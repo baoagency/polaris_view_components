@@ -689,6 +689,24 @@ class Dropzone extends Controller {
     }
     return clone;
   }
+  removeFile(event) {
+    this.stopEvent(event);
+    const clickedButton = event.target;
+    const container = clickedButton.closest(".Polaris-LegacyStack");
+    const fileName = container.querySelector(".Polaris-LegacyStack__Item [data-file-name]").dataset.fileName;
+    this.acceptedFiles = this.acceptedFiles.filter((file => file.name !== fileName));
+    this.files = this.files.filter((file => file.name !== fileName));
+    container.closest(".Polaris-LegacyStack__Item").remove();
+    if (this.files.length === 0) {
+      this.removePreview();
+      this.toggleFileUpload(true);
+      this.toggleErrorOverlay(false);
+    }
+    const fileRemovedEvent = new CustomEvent("polaris-dropzone:file-removed", {
+      bubbles: true
+    });
+    this.element.dispatchEvent(fileRemovedEvent);
+  }
   clearFiles(removePreview = true) {
     if (!this.previewRendered) return;
     this.acceptedFiles = [];
@@ -786,25 +804,34 @@ function getDataTransferFiles(event, existingFiles, keepExistingUploads) {
     const dt = event.dataTransfer;
     if (dt.files && dt.files.length) {
       if (keepExistingUploads) {
-        return existingFiles.concat(Array.from(dt.files));
+        return handleExistingUploads(existingFiles, Array.from(dt.files));
       } else {
         return Array.from(dt.files);
       }
     } else if (dt.items && dt.items.length) {
       if (keepExistingUploads) {
-        return existingFiles.concat(Array.from(dt.items));
+        return handleExistingUploads(existingFiles, Array.from(dt.items));
       } else {
         return Array.from(dt.items);
       }
     }
   } else if (isChangeEvent(event) && event.target.files) {
     if (keepExistingUploads) {
-      return existingFiles.concat(Array.from(event.target.files));
+      return handleExistingUploads(existingFiles, Array.from(event.target.files));
     } else {
       return Array.from(event.target.files);
     }
   }
   return [];
+}
+
+function handleExistingUploads(existingFiles, newFiles) {
+  if (existingFiles.length === 0) {
+    return newFiles;
+  }
+  const existingNames = existingFiles.map((file => file.name));
+  const filteredNewFiles = newFiles.filter((file => !existingNames.includes(file.name)));
+  return existingFiles.concat(filteredNewFiles);
 }
 
 function accepts(file, acceptedFiles = [ "" ]) {
