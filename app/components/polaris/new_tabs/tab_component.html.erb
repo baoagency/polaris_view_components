@@ -4,8 +4,8 @@
       <% stack.with_item do %>
         <%= polaris_text(variant: :bodySm, as: :span, font_weight: :medium) { @title } %>
       <% end %>
-      <% stack.with_item do %>
-        <% if badge.present? %>
+      <% if badge.present? %>
+        <% stack.with_item do %>
           <%= badge %>
         <% end %>
       <% end %>
