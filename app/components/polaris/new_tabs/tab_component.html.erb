@@ -1,0 +1,14 @@
+<li class="Polaris-Tabs__TabContainer" role="presentation">
+  <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+    <%= polaris_stack(alignment: :center, distribution: :center, spacing: :tight) do |stack| %>
+      <% stack.with_item do %>
+        <%= polaris_text(variant: :bodySm, as: :span, font_weight: :medium) { @title } %>
+      <% end %>
+      <% stack.with_item do %>
+        <% if badge.present? %>
+          <%= badge %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</li>
