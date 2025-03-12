@@ -1,0 +1,14 @@
+<%= polaris_box(
+  padding_block_start: {xs: "0", sm: "0", md: "2"},
+  padding_block_end: {xs: "0", sm: "0", md: "2"},
+  padding_inline_start: {xs: "0", md: "1"},
+  padding_inline_end: {xs: "0", md: "1"}
+) do %>
+  <%= render(Polaris::BaseComponent.new(**wrapper_arguments)) do %>
+    <%= render(Polaris::BaseComponent.new(**system_arguments)) do %>
+      <% tabs.each do |tab| %>
+        <%= tab %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

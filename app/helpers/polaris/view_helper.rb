@@ -74,6 +74,7 @@ module Polaris
       skeleton_thumbnail:       "Polaris::SkeletonThumbnailComponent",
       spacer:                   "Polaris::SpacerComponent",
       tabs:                     "Polaris::TabsComponent",
+      new_tabs:                 "Polaris::NewTabsComponent",
       tag:                      "Polaris::TagComponent",
       text:                     "Polaris::TextComponent",
       text_container:           "Polaris::TextContainerComponent",
