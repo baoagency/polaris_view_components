@@ -1,6 +1,22 @@
-<%= polaris_text_field(
-  name: :tariff_code,
-  value: "6201.11.0000",
-  label: "Tariff code",
-  label_action: { url: "#", content: "Look up codes" },
-) %>
+<%= polaris_text_container do %>
+  <%= polaris_text_field(
+    name: :tariff_code,
+    value: "6201.11.0000",
+    label: "Tariff code",
+    label_action: { url: "#", content: "Look up codes" },
+  ) %>
+
+  <%= polaris_text_field(
+    name: :tariff_code,
+    value: "6201.11.0000",
+    label: "Tariff code",
+    label_action: { url: "#", content: "Add", icon_name: "PlusCircleIcon" },
+  ) %>
+
+  <%= polaris_text_field(
+    name: :tariff_code,
+    value: "6201.11.0000",
+    label: "Tariff code",
+    label_action: { url: "#", icon_name: "PlusCircleIcon" },
+  ) %>
+<% end %>
