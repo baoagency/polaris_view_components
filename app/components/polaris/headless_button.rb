@@ -43,6 +43,7 @@ module Polaris
       size: SIZE_DEFAULT,
       text_align: TEXT_ALIGN_DEFAULT,
       icon_name: nil,
+      tooltip: nil,
       **system_arguments
     )
       @tag = url.present? ? "a" : "button"
@@ -55,7 +56,7 @@ module Polaris
       @disclosure = fetch_or_fallback(DISCLOSURE_OPTIONS, disclosure, DISCLOSURE_DEFAULT)
       @disclosure = :down if @disclosure === true
       @icon_name = icon_name
-
+      @tooltip = tooltip
       @system_arguments = system_arguments
       @system_arguments[:type] = submit ? "submit" : "button"
       if loading

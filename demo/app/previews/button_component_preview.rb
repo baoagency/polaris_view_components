@@ -70,4 +70,7 @@ class ButtonComponentPreview < ViewComponent::Preview
 
   def external
   end
+
+  def with_tooltip
+  end
 end
