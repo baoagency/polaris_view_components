@@ -21,6 +21,7 @@ module Polaris
       help_text: nil,
       error: false,
       grouped: false,
+      clear_errors_on_focus: false,
       wrapper_arguments: {},
       select_options: {},
       input_options: {},
@@ -69,6 +70,7 @@ module Polaris
         error: error
       }.merge(wrapper_arguments)
 
+      @clear_errors_on_focus = clear_errors_on_focus
       @select_options = select_options
 
       @input_options = input_options
@@ -77,6 +79,9 @@ module Polaris
       @input_options[:disabled] = disabled
       @input_options[:data] ||= {}
       prepend_option(@input_options[:data], :polaris_select_target, "select")
+      if @clear_errors_on_focus
+        prepend_option(@input_options[:data], :action, "click->polaris-select#clearErrorMessages")
+      end
       prepend_option(@input_options[:data], :action, "polaris-select#update")
     end
 

@@ -344,4 +344,27 @@ class SelectComponentTest < Minitest::Test
       end
     end
   end
+
+  def test_clear_errors_on_focus
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      options: {"Option 1" => "option1", "Option 2" => "option2"},
+      selected: "option2",
+      clear_errors_on_focus: true
+    ))
+
+    assert_selector "select[name=input_name][data-action~='click->polaris-select#clearErrorMessages']"
+
+    render_inline(Polaris::SelectComponent.new(
+      name: :input_name,
+      label: "Input Label",
+      options: {"Option 1" => "option1", "Option 2" => "option2"},
+      selected: "option2",
+      clear_errors_on_focus: true,
+      input_options: {data: {action: "custom#action"}}
+    ))
+
+    assert_selector "select[name=input_name][data-action~='click->polaris-select#clearErrorMessages']"
+  end
 end

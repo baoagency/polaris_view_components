@@ -28,4 +28,7 @@ class SelectComponentPreview < ViewComponent::Preview
 
   def with_inline_error
   end
+
+  def clear_error_on_focus
+  end
 end

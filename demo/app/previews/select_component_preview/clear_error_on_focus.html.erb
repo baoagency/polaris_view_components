@@ -1,0 +1,12 @@
+<%= polaris_select(
+  name: :date_range,
+  label: "Date range",
+  options: {
+    "Today" => "today",
+    "Yesterday" => "yesterday",
+    "Last 7 days" => "lastWeek",
+  },
+  selected: "yesterday",
+  error: "Incorrect date range",
+  clear_errors_on_focus: true
+) %>
