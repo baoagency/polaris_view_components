@@ -10,7 +10,7 @@
       <div class="Polaris-Button__Icon">
         <%= icon.presence || polaris_icon(name: @icon_name) %>
       </div>
-      <% if content.present? %>
+      <% if content.present? && !@plain %>
         &nbsp;
       <% end %>
     <% end %>

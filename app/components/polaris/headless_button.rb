@@ -50,6 +50,7 @@ module Polaris
         "Polaris-Button__Text",
         "Polaris-Button--removeUnderline": plain && monochrome && remove_underline
       )
+      @plain = plain
       @loading = loading
       @disclosure = fetch_or_fallback(DISCLOSURE_OPTIONS, disclosure, DISCLOSURE_DEFAULT)
       @disclosure = :down if @disclosure === true
