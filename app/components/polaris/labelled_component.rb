@@ -21,9 +21,13 @@ module Polaris
       @help_text = help_text
       @error = error
 
-      if label_action && label_action[:content].present?
-        label_content = label_action.delete(:content)
-        with_label_action(**label_action) { label_content }
+      if label_action
+        if label_action[:content].present?
+          label_content = label_action.delete(:content)
+          with_label_action(**label_action) { label_content }
+        elsif label_action[:icon_name].present?
+          with_label_action(**label_action)
+        end
       end
 
       @system_arguments = system_arguments
