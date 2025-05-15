@@ -1,39 +1,49 @@
-<%= render Polaris::BaseComponent.new(tag: @tag, **system_arguments) do %>
-  <span class="Polaris-Button__Content">
-    <% if @loading %>
-      <span class="Polaris-Button__Spinner">
-        <%= polaris_spinner(size: :small) %>
-      </span>
-    <% end %>
-
-    <% if icon.present? || @icon_name.present? %>
-      <div class="Polaris-Button__Icon">
-        <%= icon.presence || polaris_icon(name: @icon_name) %>
-      </div>
-      <% if content.present? && !@plain %>
-        &nbsp;
+<% button_content = capture do %>
+  <%= render Polaris::BaseComponent.new(tag: @tag, **system_arguments) do %>
+    <span class="Polaris-Button__Content">
+      <% if @loading %>
+        <span class="Polaris-Button__Spinner">
+          <%= polaris_spinner(size: :small) %>
+        </span>
       <% end %>
-    <% end %>
 
-    <% if content.present? %>
-      <div class="<%= @text_classes %>">
-        <%= content %>
-      </div>
-    <% end %>
-
-    <% if @disclosure.present? %>
-      <div class="Polaris-Button__Icon">
-        <% case @disclosure %>
-        <% when :down %>
-          <%= polaris_icon(name: "CaretDownIcon") %>
-        <% when :up %>
-          <%= polaris_icon(name: "CaretUpIcon") %>
-        <% when :select %>
-          <%= polaris_icon(name: "SelectIcon") %>
-        <% when :horizontal_dots %>
-          <%= polaris_icon(name: "MenuHorizontalIcon") %>
+      <% if icon.present? || @icon_name.present? %>
+        <div class="Polaris-Button__Icon">
+          <%= icon.presence || polaris_icon(name: @icon_name) %>
+        </div>
+        <% if content.present? && !@plain %>
+          &nbsp;
         <% end %>
-      </div>
-    <% end %>
-  </span>
+      <% end %>
+
+      <% if content.present? %>
+        <div class="<%= @text_classes %>">
+          <%= content %>
+        </div>
+      <% end %>
+
+      <% if @disclosure.present? %>
+        <div class="Polaris-Button__Icon">
+          <% case @disclosure %>
+          <% when :down %>
+            <%= polaris_icon(name: "CaretDownIcon") %>
+          <% when :up %>
+            <%= polaris_icon(name: "CaretUpIcon") %>
+          <% when :select %>
+            <%= polaris_icon(name: "SelectIcon") %>
+          <% when :horizontal_dots %>
+            <%= polaris_icon(name: "MenuHorizontalIcon") %>
+          <% end %>
+        </div>
+      <% end %>
+    </span>
+  <% end %>
+<% end %>
+
+<% if @tooltip.present? %>
+  <%= polaris_tooltip(text: @tooltip) do %>
+    <%= button_content %>
+  <% end %>
+<% else %>
+  <%= button_content %>
 <% end %>
