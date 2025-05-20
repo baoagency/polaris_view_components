@@ -58,6 +58,55 @@ class Polaris::ViewHelperTest < ActionView::TestCase
     end
   end
 
+  test "#polaris_text_field with error" do
+    @product.errors.add(:title, "Error")
+    @rendered_content = @builder.polaris_text_field(:title)
+
+    assert_selector ".Polaris-Label" do
+      assert_selector "label", text: "Title"
+    end
+    assert_selector ".Polaris-TextField" do
+      assert_selector %(input[name="product[title]"])
+
+      assert_selector ".Polaris-Labelled__Error" do
+        assert_selector ".Polaris-InlineError" do
+          assert_selector ".Polaris-InlineError__Icon"
+          assert_text "Title Error"
+        end
+      end
+    end
+  end
+
+  test "#polaris_text_field with error can be hidden" do
+    @product.errors.add(:title, "Error")
+    @rendered_content = @builder.polaris_text_field(:title, error_hidden: true)
+
+    assert_selector ".Polaris-Label" do
+      assert_selector "label", text: "Title"
+    end
+    assert_selector ".Polaris-TextField.Polaris-TextField--error" do
+      assert_selector %(input[name="product[title]"])
+
+      assert_no_selector ".Polaris-Labelled__Error"
+    end
+  end
+
+  test "#polaris_text_field with error can be removed" do
+    @product.errors.add(:title, "Error")
+    @rendered_content = @builder.polaris_text_field(:title, error: false)
+
+    assert_selector ".Polaris-Label" do
+      assert_selector "label", text: "Title"
+    end
+
+    assert_selector ".Polaris-TextField" do
+      assert_selector %(input[name="product[title]"])
+      assert_no_selector ".Polaris-Labelled__Error"
+    end
+
+    assert_no_selector ".Polaris-TextField.Polaris-TextField--error"
+  end
+
   test "#polaris_text_field_with_block" do
     @rendered_content = @builder.polaris_text_field(:title, help_text: "Help Text") do |c|
       c.with_connected_right do
