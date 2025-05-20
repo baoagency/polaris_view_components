@@ -50,18 +50,14 @@ module Polaris
     end
 
     def polaris_text_field(method, **options, &block)
-      options[:error] ||= error_for(method)
-      if options[:error_hidden] && options[:error]
-        options[:error] = !!options[:error]
-      end
+      apply_error_options(options, method)
+
       render Polaris::TextFieldComponent.new(form: self, attribute: method, **options), &block
     end
 
     def polaris_select(method, **options, &block)
-      options[:error] ||= error_for(method)
-      if options[:error_hidden] && options[:error]
-        options[:error] = !!options[:error]
-      end
+      apply_error_options(options, method)
+
       value = object&.public_send(method)
       if value.present?
         options[:selected] = value
@@ -70,34 +66,25 @@ module Polaris
     end
 
     def polaris_check_box(method, **options, &block)
-      options[:error] ||= error_for(method)
-      if options[:error_hidden] && options[:error]
-        options[:error] = !!options[:error]
-      end
+      apply_error_options(options, method)
+
       render Polaris::CheckboxComponent.new(form: self, attribute: method, **options, &block)
     end
 
     def polaris_radio_button(method, **options, &block)
-      options[:error] ||= error_for(method)
-      if options[:error_hidden] && options[:error]
-        options[:error] = !!options[:error]
-      end
+      apply_error_options(options, method)
+
       render Polaris::RadioButtonComponent.new(form: self, attribute: method, **options, &block)
     end
 
     def polaris_dropzone(method, **options, &block)
-      options[:error] ||= error_for(method)
-      if options[:error_hidden] && options[:error]
-        options[:error] = !!options[:error]
-      end
+      apply_error_options(options, method)
+
       render Polaris::DropzoneComponent.new(form: self, attribute: method, **options, &block)
     end
 
     def polaris_collection_check_boxes(method, collection, value_method, text_method, **options, &block)
-      options[:error] ||= error_for(method)
-      if options[:error_hidden] && options[:error]
-        options[:error] = !!options[:error]
-      end
+      apply_error_options(options, method)
 
       value = object&.public_send(method)
       if value.present?
@@ -124,11 +111,19 @@ module Polaris
     end
 
     def polaris_autocomplete(method, **options, &block)
-      options[:error] ||= error_for(method)
+      apply_error_options(options, method)
+
+      render Polaris::AutocompleteComponent.new(form: self, attribute: method, name: method, **options), &block
+    end
+
+    private
+
+    def apply_error_options(options, method)
+      options[:error] ||= error_for(method) unless options.has_key?(:error)
+
       if options[:error_hidden] && options[:error]
         options[:error] = !!options[:error]
       end
-      render Polaris::AutocompleteComponent.new(form: self, attribute: method, name: method, **options), &block
     end
   end
 end
