@@ -203,12 +203,12 @@ class Autocomplete extends Controller {
         selected: input.checked
       }
     });
-    this.element.dispatchEvent(changeEvent);
     if (!this.multipleValue) {
       this.popoverController.forceHide();
       this.inputTarget.value = label;
       if (this.hasHiddenInputTarget) this.hiddenInputTarget.value = input.value;
     }
+    this.element.dispatchEvent(changeEvent);
   }
   onInputChange=debounce((() => {
     if (this.isRemote) {
