@@ -39,6 +39,10 @@ module Demo
     config.generators.system_tests = nil
 
     # ViewComponent
+    # ViewComponent 4.x uses previews.paths, but Lookbook still uses preview_paths
+    config.view_component.previews.paths ||= []
+    config.view_component.previews.paths << Rails.root.join("app/previews").to_s
+    # For Lookbook compatibility (backward compatibility)
     config.view_component.preview_paths ||= []
     config.view_component.preview_paths << Rails.root.join("app/previews").to_s
     config.view_component.view_component_path = Rails.root.join("../app/components").to_s
