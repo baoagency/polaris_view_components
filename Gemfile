@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 13.0"
-gem "rails", "~> 7.1.3.2"
+gem "rails", "~> 8.1"
 gem "puma", "~> 6.0"
 gem "sprockets-rails"
 gem "importmap-rails"
@@ -15,5 +15,4 @@ gem "foreman"
 gem "capybara"
 gem "sqlite3"
 gem "standard"
-# TODO: Keep until support for Ruby 2.7 is dropped
-gem "selenium-webdriver", "=4.9.0"
+gem "selenium-webdriver"
