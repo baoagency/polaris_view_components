@@ -9,7 +9,7 @@ gem "sprockets-rails"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "lookbook", "~> 2.0"
+gem "lookbook", "~> 2.3"
 
 gem "polaris_view_components", path: "../"
 
