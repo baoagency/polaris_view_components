@@ -334,7 +334,7 @@ class SelectComponentTest < Minitest::Test
       end
       assert_selector ".Polaris-Select[data-controller='polaris-select']" do
         assert_selector "select.Polaris-Select__Input[name=input_name][data-action='polaris-select#update']" do
-          assert_selector "option", count: 151
+          assert_selector "option", count: 152
         end
         assert_selector ".Polaris-Select__Content" do
           assert_selector ".Polaris-Select__SelectedOption[data-polaris-select-target='selectedOption']", text: "(GMT-05:00) Eastern Time (US & Canada)"
