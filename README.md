@@ -73,6 +73,18 @@ npm run release
 
 After that make sure to commit changes in package.json.
 
+## Deploy
+
+Before deploying make sure to:
+
+1. Copy `demo/config/master.key` from 1Password
+2. Set `KAMAL_REGISTRY_PASSWORD` in `.env`
+
+Then run:
+```bash
+kamal deploy
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
