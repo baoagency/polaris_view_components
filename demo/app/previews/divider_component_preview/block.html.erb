@@ -1,0 +1,13 @@
+<%= polaris_horizontal_stack(gap: "5") do %>
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Default" } %>
+  <%= polaris_divider(direction: "block") %>
+
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Border" } %>
+  <%= polaris_divider(border_color: "border", direction: "block") %>
+
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Border inverse" } %>
+  <%= polaris_divider(border_color: "border-inverse", direction: "block") %>
+
+  <%= polaris_text(as: :h1, variant: :headingXs) { "Transparent" } %>
+  <%= polaris_divider(border_color: "transparent", direction: "block") %>
+<% end %>
