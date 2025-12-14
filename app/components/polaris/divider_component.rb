@@ -6,7 +6,7 @@ module Polaris
 
     SUPPORTED_DIRECTIONS = %w[inline block].freeze
 
-    validates :direction, inclusion: { in: SUPPORTED_DIRECTIONS }
+    validates :direction, inclusion: {in: SUPPORTED_DIRECTIONS}
 
     def initialize(
       border_color: "border-subdued",
@@ -46,7 +46,7 @@ module Polaris
         {
           "border-inline-start": "var(--p-border-width-#{fetch_or_fallback(Tokens::Border::WIDTH_SCALE, border_width)}) solid #{border_color_value(border_color)}",
           "inline-size": "auto",
-          "min-block-size": "100%",
+          "min-block-size": "100%"
         }
       else
         {
