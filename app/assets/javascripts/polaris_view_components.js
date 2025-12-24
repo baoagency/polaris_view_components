@@ -839,10 +839,14 @@ class Modal extends Controller {
     const dropElement = `<div class="${this.backdropClass}" data-controller="polaris" data-target="#${this.element.id}" data-action="click->polaris#closeModal"></div>`;
     this.element.insertAdjacentHTML("afterend", dropElement);
     this.backdrop = this.element.nextElementSibling;
+    const event = new CustomEvent("polarisModalOpened");
+    window.dispatchEvent(event);
   }
   close() {
     this.element.classList.add(this.hiddenClass);
     this.backdrop.remove();
+    const event = new CustomEvent("polarisModalClosed");
+    window.dispatchEvent(event);
   }
 }
 
