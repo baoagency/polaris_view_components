@@ -24,8 +24,21 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'yarn'
+
+      - name: Install yarn
+        run: |
+          yarn install --pure-lockfile
+
       - name: StandardRb check
         run: bundle exec standardrb
+
+      - name: Run Herb Linter
+        run: yarn run herb:lint
 
       - name: Run tests
         run: bundle exec rake

@@ -6,7 +6,7 @@
   **@system_arguments
 ) do %>
   <%= polaris_vertical_stack(inline_align: :center) do %>
-    <img src="<%= @image %>" role="presentation" class="<%= @image_contained_class %>">
+    <img src="<%= @image %>" role="presentation" class="<%= @image_contained_class %>" alt="">
 
     <%= polaris_box(max_width: @full_width? "100%" : "400px") do %>
       <%= polaris_vertical_stack(inline_align: :center) do %>
