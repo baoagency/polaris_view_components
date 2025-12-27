@@ -22,9 +22,9 @@ module Polaris
     def label_template
       if max_length?
         "{count} of #{@max_length} characters used"
+      else
+        "{count} characters"
       end
-
-      "{count} characters"
     end
 
     def text_template
@@ -40,7 +40,7 @@ module Polaris
     end
 
     def normalized_value
-      @text_field.value.to_s || ""
+      @text_field.value.to_s
     end
 
     def count
