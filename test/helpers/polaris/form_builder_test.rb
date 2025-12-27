@@ -5,6 +5,7 @@ class Polaris::ViewHelperTest < ActionView::TestCase
 
   class Product
     include ActiveModel::Model
+
     attr_accessor :title, :status, :accept, :access, :selected_markets, :tags
 
     validates :title, presence: true
