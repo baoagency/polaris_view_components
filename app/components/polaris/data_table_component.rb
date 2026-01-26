@@ -56,7 +56,6 @@ module Polaris
         )
         args[:id] = dom_id(row) if row.respond_to?(:to_key)
         args[:data] ||= {}
-        args[:data][:polaris_data_table_target] = "row"
       end
     end
 

@@ -537,11 +537,14 @@
     width: 100%;
   }/* Select *//* Fix for Safari bug: https://github.com/baoagency/polaris_view_components/issues/454 */select.Polaris-Select__Input {
   font-weight: 400;
-}html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):first-child,
-  html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Heading:not(.Polaris-DataTable__Heading--flush):first-child {
+}html[class~='Polaris-Summer-Editions-2023'] .Polaris-DataTable .Polaris-DataTable__ScrollContainer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1000px;
+  }html[class~='Polaris-Summer-Editions-2023'] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):first-child,
+  html[class~='Polaris-Summer-Editions-2023'] .Polaris-DataTable .Polaris-DataTable__Heading:not(.Polaris-DataTable__Heading--flush):first-child {
     padding-left: var(--p-space-400);
-  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):last-child,
-  html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Heading:not(.Polaris-DataTable__Heading--flush):last-child {
+  }html[class~='Polaris-Summer-Editions-2023'] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):last-child,
+  html[class~='Polaris-Summer-Editions-2023'] .Polaris-DataTable .Polaris-DataTable__Heading:not(.Polaris-DataTable__Heading--flush):last-child {
     padding-right: var(--p-space-400);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-FooterHelp .Polaris-FooterHelp__Text {
     font-size: var(--p-font-size-325);

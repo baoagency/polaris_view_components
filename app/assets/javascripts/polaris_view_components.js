@@ -357,30 +357,39 @@ class Collapsible extends Controller {
 }
 
 class DataTable extends Controller {
-  static targets=[ "row" ];
   connect() {
-    this.rowTargets.forEach((row => {
-      row.addEventListener("mouseover", (() => this.handleHover(row)));
-      row.addEventListener("mouseout", (() => this.handleLeave(row)));
-    }));
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
+    this.element.addEventListener("mouseover", this.handleMouseOver);
+    this.element.addEventListener("mouseout", this.handleMouseOut);
   }
   disconnect() {
-    this.rowTargets.forEach((row => {
-      row.removeEventListener("mouseover", (() => this.handleHover(row)));
-      row.removeEventListener("mouseout", (() => this.handleLeave(row)));
-    }));
+    this.element.removeEventListener("mouseover", this.handleMouseOver);
+    this.element.removeEventListener("mouseout", this.handleMouseOut);
   }
-  handleHover(row) {
-    const cells = row.querySelectorAll(".Polaris-DataTable__Cell");
-    cells.forEach((cell => {
-      cell.classList.add("Polaris-DataTable__Cell--hovered");
-    }));
+  handleMouseOver(event) {
+    const row = event.target.closest(".Polaris-DataTable--hoverable");
+    if (row && row !== this.hoveredRow) {
+      this.clearHoveredRow();
+      this.hoveredRow = row;
+      row.querySelectorAll(".Polaris-DataTable__Cell").forEach((cell => {
+        cell.classList.add("Polaris-DataTable__Cell--hovered");
+      }));
+    }
   }
-  handleLeave(row) {
-    const cells = row.querySelectorAll(".Polaris-DataTable__Cell");
-    cells.forEach((cell => {
-      cell.classList.remove("Polaris-DataTable__Cell--hovered");
-    }));
+  handleMouseOut(event) {
+    const row = event.target.closest(".Polaris-DataTable--hoverable");
+    if (row && !row.contains(event.relatedTarget)) {
+      this.clearHoveredRow();
+    }
+  }
+  clearHoveredRow() {
+    if (this.hoveredRow) {
+      this.hoveredRow.querySelectorAll(".Polaris-DataTable__Cell").forEach((cell => {
+        cell.classList.remove("Polaris-DataTable__Cell--hovered");
+      }));
+      this.hoveredRow = null;
+    }
   }
 }
 
