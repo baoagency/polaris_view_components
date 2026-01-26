@@ -358,8 +358,8 @@ class Collapsible extends Controller {
 
 class DataTable extends Controller {
   connect() {
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseOut = this.handleMouseOut.bind(this);
+    this.handleMouseOver = debounce(this.handleMouseOver.bind(this), 50);
+    this.handleMouseOut = debounce(this.handleMouseOut.bind(this), 50);
     this.element.addEventListener("mouseover", this.handleMouseOver);
     this.element.addEventListener("mouseout", this.handleMouseOut);
   }
