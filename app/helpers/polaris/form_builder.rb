@@ -58,7 +58,7 @@ module Polaris
     def polaris_select(method, **options, &block)
       apply_error_options(options, method)
 
-      value = object&.public_send(method)
+      value = object.public_send(method) if object.respond_to?(method)
       if value.present?
         options[:selected] = value
       end
@@ -86,7 +86,7 @@ module Polaris
     def polaris_collection_check_boxes(method, collection, value_method, text_method, **options, &block)
       apply_error_options(options, method)
 
-      value = object&.public_send(method)
+      value = object.public_send(method) if object.respond_to?(method)
       if value.present?
         options[:selected] = value.map { |el| el.public_send(value_method) }
       end
