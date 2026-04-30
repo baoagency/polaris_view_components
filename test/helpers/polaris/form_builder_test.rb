@@ -140,6 +140,19 @@ class Polaris::ViewHelperTest < ActionView::TestCase
     end
   end
 
+  # Rails 7.2 changed `form_with` to default `model:` from `nil` to `false`,
+  # so `form_with(scope: :foo)` with no model now exposes `object` as `false`.
+  test "#polaris_select when object is false (form_with without a model on Rails 7.2+)" do
+    builder = Polaris::FormBuilder.new(:time_travel, false, self, {})
+
+    @rendered_content = builder.polaris_select(:advance_seconds, options: {"1 minute" => 60})
+
+    assert_selector ".Polaris-Select" do
+      assert_selector %(select[name="time_travel[advance_seconds]"])
+      assert_selector "option[value='60']"
+    end
+  end
+
   test "#polaris_check_box" do
     @rendered_content = @builder.polaris_check_box(:accept, label: "Checkbox Label")
 
@@ -238,6 +251,21 @@ class Polaris::ViewHelperTest < ActionView::TestCase
         assert_no_selector "input[type=checkbox][name='product[selected_markets][]'][value=2][checked='checked']"
         assert_text "Spain"
       end
+    end
+  end
+
+  # Rails 7.2 changed `form_with` to default `model:` from `nil` to `false`,
+  # so `form_with(scope: :foo)` with no model now exposes `object` as `false`.
+  test "#polaris_collection_check_boxes when object is false (form_with without a model on Rails 7.2+)" do
+    builder = Polaris::FormBuilder.new(:filters, false, self, {})
+
+    @rendered_content = builder.polaris_collection_check_boxes(:selected_markets, @available_markets, :id, :name)
+
+    assert_selector "legend", text: "Selected markets"
+    assert_selector "ul" do
+      assert_selector "li", count: 2
+      assert_selector "input[type=checkbox][name='filters[selected_markets][]'][value=1]"
+      assert_selector "input[type=checkbox][name='filters[selected_markets][]'][value=2]"
     end
   end
 
