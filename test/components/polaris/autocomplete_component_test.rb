@@ -13,7 +13,7 @@ class AutocompleteComponentTest < Minitest::Test
       assert_selector '[data-controller="polaris-popover"]' do
         assert_selector '[data-polaris-popover-target="activator"]' do
           assert_selector "label", text: "Tags"
-          assert_selector ".Polaris-TextField"
+          assert_selector ".Polaris-TextField input[autocomplete='off']"
         end
 
         assert_selector ".Polaris-Popover" do
@@ -21,6 +21,17 @@ class AutocompleteComponentTest < Minitest::Test
         end
       end
     end
+  end
+
+  def test_custom_browser_autocomplete_setting
+    render_inline(Polaris::AutocompleteComponent.new) do |autocomplete|
+      autocomplete.with_text_field(
+        label: "Country",
+        input_options: {autocomplete: "country-name"}
+      )
+    end
+
+    assert_selector ".Polaris-TextField input[autocomplete='country-name']"
   end
 
   def test_multiple_autocomplete

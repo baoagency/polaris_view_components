@@ -37,6 +37,8 @@ module Polaris
     class QueryComponent < Polaris::Component
       def initialize(clear_button: true, disabled: false, **system_arguments)
         @disabled = disabled
+        system_arguments[:input_options] ||= {}
+        system_arguments[:input_options][:autocomplete] ||= "off"
         @system_arguments = system_arguments.merge(
           label_hidden: true,
           clear_button: clear_button
