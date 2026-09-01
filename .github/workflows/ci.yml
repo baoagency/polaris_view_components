@@ -24,21 +24,23 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
-          cache: 'yarn'
+          cache: 'pnpm'
 
-      - name: Install yarn
-        run: |
-          yarn install --pure-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: StandardRb check
         run: bundle exec standardrb
 
       - name: Run Herb Linter
-        run: yarn run herb:lint
+        run: pnpm herb:lint
 
       - name: Run tests
         run: bundle exec rake
