@@ -22,4 +22,10 @@
       <%= polaris_icon(name: "SearchIcon") %>
     <% end %>
   <% end %>
+
+  <% autocomplete.with_empty_state do %>
+    <%= polaris_text_subdued do %>
+      No matching suggestions found.
+    <% end %>
+  <% end %>
 <% end %>

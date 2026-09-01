@@ -6,6 +6,8 @@ export default class extends Controller {
   static targets = ['popover', 'input', 'hiddenInput', 'results', 'option', 'emptyState']
   static values = { multiple: Boolean, url: String, selected: Array }
 
+  latestRequestId = 0
+
   connect() {
     this.inputTarget.addEventListener("input", this.onInputChange)
   }
@@ -84,6 +86,7 @@ export default class extends Controller {
       this.checkSelected()
     } else if (this.value.length > 0 && this.hasEmptyStateTarget) {
       this.showEmptyState()
+      this.popoverController.show()
     } else {
       this.popoverController.forceHide()
     }
@@ -108,11 +111,16 @@ export default class extends Controller {
   }
 
   async fetchResults() {
+    const query = this.value
+    const requestId = ++this.latestRequestId
     const response = await get(this.urlValue, {
-      query: { q: this.value }
+      query: { q: query }
     })
     if (response.ok) {
       const results = await response.html
+
+      if (requestId !== this.latestRequestId || query !== this.value) return
+
       this.resultsTarget.innerHTML = results
       this.handleResults()
     }

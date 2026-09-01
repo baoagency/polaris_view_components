@@ -94,6 +94,51 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     end
   end
 
+  def test_remote_autocomplete_opens_popover_for_empty_results
+    with_preview("autocomplete_component/remote")
+
+    remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
+    within remote_suggestions do
+      find(".Polaris-TextField__Input").set "Unknown"
+    end
+
+    within ".Polaris-Popover__PopoverOverlay--open" do
+      assert_selector ".Polaris-Autocomplete__EmptyState", text: "No matching suggestions found."
+    end
+  end
+
+  def test_remote_autocomplete_ignores_out_of_order_responses
+    with_preview("autocomplete_component/remote")
+
+    page.execute_script <<~JAVASCRIPT
+      window.fetch = (url) => {
+        const query = new URL(url, window.location.origin).searchParams.get("q")
+        const delay = query === "Slow" ? 800 : 50
+        const results = `<li data-polaris-autocomplete-target="option" data-label="${query}">${query}</li>`
+
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(new Response(results, {
+            status: 200,
+            headers: {"Content-Type": "text/html"}
+          })), delay)
+        })
+      }
+    JAVASCRIPT
+
+    remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
+    within remote_suggestions do
+      input = find(".Polaris-TextField__Input")
+      input.set "Slow"
+      sleep 0.3
+      input.set "Fast"
+    end
+
+    assert_selector '[data-polaris-autocomplete-target="option"][data-label="Fast"]'
+    sleep 0.7
+    assert_selector '[data-polaris-autocomplete-target="option"][data-label="Fast"]'
+    assert_no_selector '[data-polaris-autocomplete-target="option"][data-label="Slow"]'
+  end
+
   def test_empty_state
     with_preview("autocomplete_component/empty_state")
 
