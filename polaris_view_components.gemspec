@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name = "polaris_view_components"
   spec.version = Polaris::ViewComponents::VERSION
   spec.authors = ["Dan Gamble", "Kirill Platonov"]
-  spec.email = ["dan@dangamble.co.uk"]
+  spec.email = ["dan@dangamble.co.uk", "mail@kirillplatonov.com"]
 
   spec.homepage = "https://github.com/baoagency/polaris-view-components"
   spec.summary = "ViewComponents for Polaris Design System"
