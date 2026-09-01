@@ -17,7 +17,7 @@ class FiltersComponentTest < Minitest::Test
         assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__CenterContainer" do
           assert_selector ".Polaris-LegacyFilters-ConnectedFilterControl__Item > .Polaris-Labelled--hidden" do
             assert_selector ".Polaris-Labelled__LabelWrapper label", text: "Query"
-            assert_selector ".Polaris-Connected .Polaris-TextField input[name=query]"
+            assert_selector ".Polaris-Connected .Polaris-TextField input[name=query][autocomplete='off']"
           end
         end
         # Filter
@@ -31,6 +31,17 @@ class FiltersComponentTest < Minitest::Test
         end
       end
     end
+  end
+
+  def test_custom_browser_autocomplete_setting
+    render_inline(Polaris::FiltersComponent.new) do |filters|
+      filters.with_query(
+        name: :query,
+        input_options: {autocomplete: "organization"}
+      )
+    end
+
+    assert_selector ".Polaris-TextField input[autocomplete='organization']"
   end
 
   def test_custom_content

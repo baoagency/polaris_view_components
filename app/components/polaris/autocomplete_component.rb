@@ -8,6 +8,7 @@ module Polaris
       ])
 
       system_arguments[:input_options] ||= {}
+      system_arguments[:input_options][:autocomplete] ||= "off"
       system_arguments[:input_options][:data] ||= {}
       system_arguments[:input_options][:data][:polaris_autocomplete_target] = "input"
 
