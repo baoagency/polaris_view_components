@@ -42,11 +42,11 @@ else
 
   unless package_json.include?("@rails/request.js")
     say "Add @rails/request.js dependency"
-    run "yarn add @rails/request.js"
+    run "pnpm add @rails/request.js"
   end
 
   say "Add polaris-view-components package"
-  run "yarn add polaris-view-components"
+  run "pnpm add polaris-view-components"
 end
 
 if STIMULUS_PATH.exist?

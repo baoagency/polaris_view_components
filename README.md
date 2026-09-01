@@ -44,7 +44,7 @@ Check out [UPGRADING.md](UPGRADING.md) for upgrade instructions.
 To get started:
 
 1. Run: `bundle install`
-1. Run: `yarn install`
+1. Run: `pnpm install`
 1. Run: `bin/dev`
 
 It will open demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews located in `demo/test/components/previews`.
@@ -68,7 +68,7 @@ Where the VERSION is the version number you want to release. This script will up
 To release a new version of npm package update the package.json file with the new version number and run:
 
 ```bash
-npm run release
+pnpm release
 ```
 
 After that make sure to commit changes in package.json.
