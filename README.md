@@ -47,7 +47,7 @@ To get started:
 1. Run: `pnpm install`
 1. Run: `bin/dev`
 
-It will open demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews located in `demo/test/components/previews`.
+It will open the demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews are located in `demo/app/previews`.
 
 To run tests:
 
@@ -57,7 +57,9 @@ rake
 
 ## Releases
 
-The library follows [semantic versioning](https://semver.org/). To draft a new release you need to run `bin/release` with a new version number:
+The library follows [semantic versioning](https://semver.org/). See [GitHub Releases](https://github.com/baoagency/polaris_view_components/releases) for release notes.
+
+To draft a new release you need to run `bin/release` with a new version number:
 
 ```bash
 bin/release VERSION
