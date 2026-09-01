@@ -17,7 +17,7 @@ Bundler.require(*Rails.groups)
 module Demo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 8.1
+    config.load_defaults Rails::VERSION::STRING.to_f
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -40,8 +40,10 @@ module Demo
 
     # ViewComponent
     # ViewComponent 4.x uses previews.paths, but Lookbook still uses preview_paths
-    config.view_component.previews.paths ||= []
-    config.view_component.previews.paths << Rails.root.join("app/previews").to_s
+    if config.view_component.respond_to?(:previews) && config.view_component.previews
+      config.view_component.previews.paths ||= []
+      config.view_component.previews.paths << Rails.root.join("app/previews").to_s
+    end
     # For Lookbook compatibility (backward compatibility)
     config.view_component.preview_paths ||= []
     config.view_component.preview_paths << Rails.root.join("app/previews").to_s
