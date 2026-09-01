@@ -49,6 +49,7 @@ jobs:
     name: ViewComponent ${{ matrix.name }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - name: minimum (3.0.0)
@@ -60,6 +61,7 @@ jobs:
             rails-version: "~> 8.1"
             view-component-version: "< 5.0"
     env:
+      BUNDLE_GEMFILE: gemfiles/view_component.gemfile
       POLARIS_RAILS_VERSION: ${{ matrix.rails-version }}
       POLARIS_VIEW_COMPONENT_VERSION: ${{ matrix.view-component-version }}
 
@@ -84,7 +86,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Resolve compatibility dependencies
-        run: bundle update rails view_component --jobs 4 --retry 3
+        run: bundle install --jobs 4 --retry 3
 
       - name: Run tests
         run: bundle exec rake
