@@ -76,11 +76,10 @@ module Polaris
 
     def default_icon(status)
       case status
-      when :success then "CheckIcon"
-      when :critical then "AlertDiamondIcon"
-      when :warning then "AlertTriangleIcon"
+      when :success then "CheckCircleFilledIcon"
+      when :critical, :warning then "AlertCircleFilledIcon"
       else
-        "InfoIcon"
+        "InfoFilledIcon"
       end
     end
 
