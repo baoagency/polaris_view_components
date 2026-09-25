@@ -9,7 +9,7 @@ Visual changes to review in your app:
 - Page background is white, and cards use a larger radius with a soft shadow instead of a bevel.
 - Buttons are pill-shaped. Secondary buttons have a flat gray fill, primary buttons are black, and destructive buttons use a soft red fill.
 - Text fields, selects, checkboxes, and radio buttons use shadow outlines and a blue focus ring.
-- Banners use a full tinted background. Badges and avatars use the new color palette.
+- Banners use a full tinted background and filled status icons by default (`InfoFilledIcon`, `CheckCircleFilledIcon`, `AlertCircleFilledIcon`). Pass `icon:` to `polaris_banner` to keep a different icon. Badges and avatars use the new color palette.
 - Tabs are displayed as pills, and the `Navigation` sidebar uses the dark admin theme.
 - Typography uses regular (400) body text and medium (500) headings, set in the bundled `ShopifyInter` font (the Inter fork used in the Shopify admin), with Inter as a fallback for other scripts.
 
