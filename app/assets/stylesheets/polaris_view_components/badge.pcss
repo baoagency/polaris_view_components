@@ -1,0 +1,61 @@
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge {
+  --pc-badge-bg: rgba(0, 0, 0, 0.05);
+  --pc-badge-text: var(--p-color-text-secondary);
+  min-height: 1.25rem;
+  padding: var(--p-space-025) var(--p-space-150);
+  gap: var(--p-space-100);
+  border-radius: var(--p-border-radius-200);
+  background-color: var(--pc-badge-bg);
+  color: var(--pc-badge-text);
+  font-weight: var(--p-font-weight-medium);
+
+  .Polaris-Text--root {
+    font-size: var(--p-font-size-300);
+    font-weight: inherit;
+    line-height: 1.125rem;
+    letter-spacing: -0.01em;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+
+  &.Polaris-Badge--statusInfo {
+    --pc-badge-bg: var(--p-color-bg-fill-info-secondary);
+    --pc-badge-text: #01596f;
+  }
+
+  &.Polaris-Badge--statusSuccess {
+    --pc-badge-bg: var(--p-color-bg-fill-success-secondary);
+    --pc-badge-text: #214b03;
+  }
+
+  &.Polaris-Badge--statusAttention {
+    --pc-badge-bg: var(--p-color-bg-fill-caution-secondary);
+    --pc-badge-text: #573b00;
+  }
+
+  &.Polaris-Badge--statusWarning {
+    --pc-badge-bg: var(--p-color-bg-fill-warning-secondary);
+    --pc-badge-text: #6f2e01;
+  }
+
+  &.Polaris-Badge--statusCritical {
+    --pc-badge-bg: var(--p-color-bg-fill-critical-secondary);
+    --pc-badge-text: #7e100c;
+  }
+
+  &.Polaris-Badge--statusNew {
+    font-weight: var(--p-font-weight-semibold);
+  }
+
+  &.Polaris-Badge__sizeLarge--experimental,
+  &.Polaris-Badge--sizeLarge {
+    min-height: 1.75rem;
+    padding: var(--p-space-100) var(--p-space-200);
+  }
+}
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge-Pip {
+  --pc-pip-color: currentColor;
+}

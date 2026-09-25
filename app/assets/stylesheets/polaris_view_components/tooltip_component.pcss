@@ -5,8 +5,8 @@
   left: 0;
   z-index: var(--p-z-index-2);
   opacity: 1;
-  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 5px);
-  border-radius: var(--p-border-radius-2);
+  filter: drop-shadow(rgba(0, 0, 0, 0.12) 0 2px 6px);
+  border-radius: var(--p-border-radius-200);
   pointer-events: none;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -14,8 +14,10 @@
   transition: opacity 200ms cubic-bezier(0.36, 0, 1, 1) 100ms;
 }
 .Polaris-Tooltip-TooltipOverlay__Content {
-  border-radius: var(--p-border-radius-2);
-  padding: var(--p-space-1) var(--p-space-2);
+  border-radius: var(--p-border-radius-200);
+  padding: var(--p-space-100) var(--p-space-200);
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-400);
 }
 
 .Polaris-Tooltip-Arrow,.Polaris-Tooltip-Arrow::before {
@@ -28,5 +30,5 @@
 .Polaris-Tooltip-Arrow::before {
   content: '';
   transform: rotate(45deg);
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
 }

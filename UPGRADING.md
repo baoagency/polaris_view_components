@@ -1,5 +1,20 @@
 # Upgrading guide
 
+## Upgrading to `v4.0.0`
+
+Version 4 updates the styles to the new Polaris design language used in the Shopify admin (the same look as [Polaris web components](https://shopify.dev/docs/api/app-home/web-components)). Components, their arguments, and the rendered markup are unchanged, so no application code changes are required.
+
+Visual changes to review in your app:
+
+- Page background is white, and cards use a larger radius with a soft shadow instead of a bevel.
+- Buttons are pill-shaped. Secondary buttons have a flat gray fill, primary buttons are black, and destructive buttons use a soft red fill.
+- Text fields, selects, checkboxes, and radio buttons use shadow outlines and a blue focus ring.
+- Banners use a full tinted background. Badges and avatars use the new color palette.
+- Tabs are displayed as pills, and the `Navigation` sidebar uses the dark admin theme.
+- Typography uses regular (400) body text and medium (500) headings. The `ShopifyInter` font is used when it is available on the page, with the bundled Inter as a fallback.
+
+If you override Polaris CSS custom properties (for example `--p-color-bg-app` or `--p-color-bg-fill-brand`), check that your overrides still apply, since many tokens have new values.
+
 ## Upgrading to `v3.0.0`
 
 Version 3 updates the supported Ruby, Rails, and ViewComponent versions. Before upgrading, make sure your application uses:
