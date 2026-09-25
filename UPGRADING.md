@@ -11,7 +11,7 @@ Visual changes to review in your app:
 - Text fields, selects, checkboxes, and radio buttons use shadow outlines and a blue focus ring.
 - Banners use a full tinted background. Badges and avatars use the new color palette.
 - Tabs are displayed as pills, and the `Navigation` sidebar uses the dark admin theme.
-- Typography uses regular (400) body text and medium (500) headings. The `ShopifyInter` font is used when it is available on the page, with the bundled Inter as a fallback.
+- Typography uses regular (400) body text and medium (500) headings, set in the bundled `ShopifyInter` font (the Inter fork used in the Shopify admin), with Inter as a fallback for other scripts.
 
 If you override Polaris CSS custom properties (for example `--p-color-bg-app` or `--p-color-bg-fill-brand`), check that your overrides still apply, since many tokens have new values.
 
