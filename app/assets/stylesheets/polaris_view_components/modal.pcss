@@ -1,5 +1,54 @@
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-CloseButton {
-  &:hover {
-    background: var(--p-color-bg-fill-tertiary);
+html[class~="Polaris-Summer-Editions-2023"] {
+  .Polaris-Modal-Dialog__Modal {
+    box-shadow: var(--p-shadow-dialog);
+  }
+
+  @media (min-width: 48em) {
+    .Polaris-Modal-Dialog__Modal {
+      border-radius: var(--p-border-radius-dialog);
+    }
+  }
+
+  .Polaris-Modal-Header {
+    --pc-box-background: var(--p-color-bg-surface) !important;
+    --pc-box-border-block-end-width: 0 !important;
+    --pc-box-padding-block-start-xs: var(--p-space-400) !important;
+    --pc-box-padding-block-end-xs: var(--p-space-200) !important;
+
+    .Polaris-Text--root {
+      font-size: 0.9375rem;
+      line-height: 1.375rem;
+    }
+  }
+
+  .Polaris-Modal-Section:not(:last-of-type) {
+    border-bottom: none;
+  }
+
+  .Polaris-Modal-Footer > .Polaris-Box {
+    --pc-box-border-block-start-width: 0 !important;
+  }
+
+  .Polaris-Modal-CloseButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: var(--p-space-100);
+    margin-right: calc(var(--p-space-100) * -1);
+    border-radius: var(--p-border-radius-full);
+
+    &:hover {
+      background: var(--p-color-bg-fill-transparent-hover);
+    }
+
+    &:active {
+      background: var(--p-color-bg-fill-transparent-active);
+    }
+
+    &::after {
+      border-radius: var(--p-border-radius-full);
+    }
   }
 }

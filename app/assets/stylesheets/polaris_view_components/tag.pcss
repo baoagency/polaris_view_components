@@ -1,0 +1,38 @@
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag {
+  min-height: 1.25rem;
+  padding-inline: var(--p-space-150);
+  border-radius: var(--p-border-radius-tag);
+  background-color: var(--p-color-bg-fill-secondary);
+  color: var(--p-color-text);
+  font-size: var(--p-font-size-300);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-400);
+
+  &.Polaris-Tag--clickable,
+  &.Polaris-Tag--linkable {
+    &:hover {
+      background: var(--p-color-bg-fill-secondary-hover);
+    }
+
+    &:active {
+      background: var(--p-color-bg-fill-secondary-active);
+    }
+  }
+
+  &.Polaris-Tag--disabled {
+    background: var(--p-color-bg-fill-disabled);
+    color: var(--p-color-text-disabled);
+  }
+
+  .Polaris-Tag__Button {
+    border-radius: var(--p-border-radius-full);
+
+    svg {
+      fill: var(--p-color-icon-secondary);
+    }
+
+    &:hover {
+      background: var(--p-color-bg-fill-transparent-hover);
+    }
+  }
+}

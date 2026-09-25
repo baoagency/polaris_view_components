@@ -1,11 +1,60 @@
+/* Navigation uses the dark sidebar from the Shopify admin */
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Navigation {
+  --p-color-text: #e3e3e3;
+  --p-color-text-secondary: #b5b5b5;
+  --p-color-text-disabled: #8a8a8a;
+  --p-color-icon: #e3e3e3;
+  --p-color-icon-hover: #fff;
+  --p-color-icon-secondary: #b5b5b5;
+  --p-color-icon-disabled: #8a8a8a;
+  --p-color-bg-surface-secondary-hover: rgba(255, 255, 255, 0.06);
+  --p-color-bg-surface-secondary-active: rgba(255, 255, 255, 0.11);
+  --p-color-bg-surface-selected: rgba(255, 255, 255, 0.11);
+  --p-color-bg-surface-tertiary: rgba(255, 255, 255, 0.06);
+  --p-color-nav-bg-surface-selected: rgba(255, 255, 255, 0.11);
+  background-color: #1a1a1a;
+  color: var(--p-color-text);
+
   .Polaris-Navigation__Item {
+    border-radius: var(--p-border-radius-200);
+
     &.Polaris-Navigation__Item--selected {
       background-color: var(--p-color-nav-bg-surface-selected) !important;
+      color: #fff;
+
+      .Polaris-Navigation__Text {
+        color: #fff;
+        font-weight: var(--p-font-weight-medium);
+      }
+
+      svg {
+        fill: #fff;
+      }
     }
 
     &:hover {
       background-color: var(--p-color-bg-surface-tertiary);
     }
+  }
+
+  .Polaris-Navigation__ItemInnerWrapper {
+    border-radius: var(--p-border-radius-200);
+  }
+
+  .Polaris-Navigation__Icon svg {
+    fill: var(--p-color-icon);
+  }
+
+  .Polaris-Navigation__SectionHeading .Polaris-Navigation__Text {
+    color: var(--p-color-text-secondary);
+  }
+
+  .Polaris-Navigation__SecondaryAction svg,
+  .Polaris-Navigation__SectionHeading svg {
+    fill: var(--p-color-icon-secondary);
+  }
+
+  .Polaris-Navigation__SecondaryAction:hover {
+    background-color: var(--p-color-bg-surface-secondary-hover);
   }
 }

@@ -6,7 +6,67 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs__Wrapper {
   }
 }
 
+/* Legacy tabs are displayed as pills */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs {
+  gap: var(--p-space-050);
+
+  .Polaris-LegacyTabs__Tab {
+    padding: var(--p-space-100) 0;
+  }
+
+  .Polaris-LegacyTabs__Title {
+    min-height: 1.75rem;
+    padding: var(--p-space-150) var(--p-space-300);
+    border-radius: var(--p-border-radius-full);
+    color: var(--p-color-text);
+    font-size: var(--p-font-size-300);
+    font-weight: var(--p-font-weight-medium);
+    line-height: var(--p-font-line-height-400);
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .Polaris-LegacyTabs__Tab:hover .Polaris-LegacyTabs__Title,
+  .Polaris-LegacyTabs__Tab:focus-visible .Polaris-LegacyTabs__Title {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--p-color-text);
+    font-weight: var(--p-font-weight-medium);
+  }
+
+  .Polaris-LegacyTabs__Tab--selected .Polaris-LegacyTabs__Title,
+  .Polaris-LegacyTabs__Tab--selected:hover .Polaris-LegacyTabs__Title {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text);
+  }
+
+  .Polaris-LegacyTabs__Tab:active .Polaris-LegacyTabs__Title {
+    background-color: var(--p-color-bg-fill-transparent-active);
+  }
+}
+
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tabs__Wrapper {
+  .Polaris-Tabs__Tab {
+    border-radius: var(--p-border-radius-full);
+    color: var(--p-color-text);
+
+    &::after {
+      border-radius: var(--p-border-radius-full);
+    }
+  }
+
+  .Polaris-Tabs__Tab:not([aria-disabled='true']):hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .Polaris-Tabs__Tab--active,
+  .Polaris-Tabs__Tab--active:not([aria-disabled='true']):hover {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text);
+    border-radius: var(--p-border-radius-full);
+  }
+
   .Polaris-Tabs__Tab:active, .Polaris-Tabs__Tab:focus {
     background-color: var(--p-color-bg-fill-transparent-hover);
     color: var(--p-color-text-brand);

@@ -1,46 +1,56 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-ContextualSaveBar .Polaris-Frame-ContextualSaveBar__ActionContainer .Polaris-Button {
-  --pc-color-text: var(--p-color-text-inverse);
-  --pc-button-text: var(--p-color-text-inverse);
-  --pc-button-color: var(--p-color-bg-fill-inverse);
-  --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
-  --pc-button-color-active: var(--p-color-bg-fill-inverse-active);
-  --pc-button-color-depressed: var(--p-color-bg-fill-inverse-hover);
-  --pc-button-color-disabled: var(--pc-button-bg);
-  background: var(--p-color-bg-fill-inverse);
+  --pc-button-bg: rgba(255, 255, 255, 0.12);
+  --pc-button-bg-hover: rgba(255, 255, 255, 0.18);
+  --pc-button-bg-active: rgba(255, 255, 255, 0.24);
+  --pc-button-fg: #fff;
+  --pc-button-fg-hover: #fff;
+  --pc-button-icon: #fff;
+  --pc-button-shadow: none;
+  background: var(--pc-button-bg);
   box-shadow: none;
 
+  &::before,
+  &::after {
+    box-shadow: none;
+  }
+
   &:hover {
-    background: var(--p-color-bg-fill-inverse-hover);
-    color: var(--p-color-text-inverse);
+    background: var(--pc-button-bg-hover);
+    color: var(--pc-button-fg-hover);
     box-shadow: none;
   }
 
   &.Polaris-Button--primary {
-    --pc-button-color-hover: var(--p-color-bg-fill-hover);
-    --pc-button-color-active: var(--p-color-bg-fill-active);
-    --pc-button-color-depressed: var(--p-color-bg-fill-hover);
-    --pc-button-color-disabled: var(--pc-button-bg);
-    color: #303030;
-    background: var(--p-color-bg-fill);
-    box-shadow: 0 0.0625rem 0 0 hsla(0, 0%, 100%, .48) inset, -0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0.0625rem 0 0 0 hsla(0, 0%, 100%, .2) inset, 0 -0.09375rem 0 0 rgba(0, 0, 0, .25) inset;
+    --pc-button-bg: #fff;
+    --pc-button-bg-hover: #f2f2f2;
+    --pc-button-bg-active: #ebebeb;
+    --pc-button-fg: #101010;
+    --pc-button-fg-hover: #101010;
+    --pc-button-icon: #101010;
+    background: var(--pc-button-bg);
+    color: var(--pc-button-fg);
 
     &:hover {
-      background: var(--p-color-bg-fill-hover);
-    }
-
-    &:before,
-    &:after {
-      box-shadow: none;
+      background: var(--pc-button-bg-hover);
     }
 
     &.Polaris-Button--disabled {
-      background: #616161;
-      color: #303030;
+      background: rgba(255, 255, 255, 0.24);
+      color: rgba(255, 255, 255, 0.5);
       box-shadow: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       user-select: none;
       pointer-events: none;
     }
+  }
+}
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Frame-Toast {
+  border-radius: var(--p-border-radius-300);
+  box-shadow: var(--p-shadow-toast, var(--p-shadow-lg));
+
+  &::before {
+    content: none;
   }
 }
