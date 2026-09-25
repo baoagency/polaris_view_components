@@ -1,0 +1,56 @@
+/* Checkbox and radio button */
+html[class~="Polaris-Summer-Editions-2023"] {
+  .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Backdrop {
+    border: none;
+    background-color: var(--p-color-input-bg-surface);
+    box-shadow: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem rgba(0, 0, 0, 0.2);
+  }
+
+  .Polaris-Checkbox__Backdrop {
+    border-radius: var(--p-border-radius-100);
+  }
+
+  .Polaris-Checkbox__ChoiceLabel:hover .Polaris-Checkbox__Backdrop,
+  .Polaris-Choice:hover .Polaris-Checkbox__Input:not(:checked, :disabled) + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:not(:checked, :disabled) + .Polaris-RadioButton__Backdrop,
+  .Polaris-Choice:hover .Polaris-RadioButton__Input:not(:checked, :disabled) + .Polaris-RadioButton__Backdrop {
+    background-color: var(--p-color-input-bg-surface);
+    box-shadow: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem rgba(0, 0, 0, 0.35);
+  }
+
+  .Polaris-Checkbox__Input:checked + .Polaris-Checkbox__Backdrop,
+  .Polaris-Checkbox__Input.Polaris-Checkbox__Input--indeterminate + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Input:checked:not([disabled]) + .Polaris-RadioButton__Backdrop,
+  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:checked:not([disabled]) + .Polaris-RadioButton__Backdrop {
+    border: none;
+    background-color: var(--p-color-bg-fill-brand);
+    box-shadow: 0 0.0625rem 0.0625rem -0.03125rem rgba(0, 0, 0, 0.13), inset 0 0 0 0.03125rem rgba(0, 0, 0, 0.4), inset 0 0.09375rem 0.125rem -0.0625rem rgba(255, 255, 255, 0.42);
+  }
+
+  .Polaris-Checkbox__Input:disabled + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Input:disabled + .Polaris-RadioButton__Backdrop {
+    background-color: var(--p-color-bg-fill-disabled);
+    box-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.08);
+  }
+
+  .Polaris-Checkbox__Input:disabled:checked + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Input:disabled:checked + .Polaris-RadioButton__Backdrop {
+    background-color: var(--p-color-bg-fill-brand-disabled);
+    box-shadow: none;
+  }
+
+  .Polaris-Checkbox--error .Polaris-Checkbox__Input + .Polaris-Checkbox__Backdrop {
+    background-color: var(--p-color-input-bg-surface);
+    box-shadow: var(--p-shadow-input-critical);
+  }
+
+  .Polaris-Checkbox--error .Polaris-Checkbox__Input:checked + .Polaris-Checkbox__Backdrop {
+    background-color: var(--p-color-bg-fill-critical);
+    box-shadow: none !important;
+  }
+
+  .Polaris-Choice__Label {
+    font-size: var(--p-font-size-325);
+  }
+}

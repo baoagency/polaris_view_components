@@ -1,7 +1,7 @@
 .shp-Navigation {
   margin: 0 auto;
   padding: 0 20px;
-  border-bottom: 1px solid var(--p-color-border);
+  border-bottom: 1px solid var(--p-color-border-secondary);
 }
 
 @media (max-width: 48.0625em) and (min-width: 30.625em),(min-width: 45.625em) {
@@ -36,8 +36,9 @@
 
 .shp-Navigation_Items {
   display: flex;
+  gap: 4px;
   margin: 0;
-  padding: 0 2px;
+  padding: 8px 2px;
   list-style: none
 }
 
@@ -67,9 +68,7 @@
   justify-content: center;
   width: 100%;
   min-width: 100%;
-  margin-top: 1px;
-  margin-bottom: -1px;
-  padding: 0 16px;
+  padding: 0;
   outline: none;
   text-align: center;
   white-space: nowrap;
@@ -96,33 +95,32 @@
 }
 
 .shp-Navigation_Link:hover .shp-Navigation_LinkText {
-  font-weight: 400;
   color: var(--p-color-text);
   text-decoration: none;
-  border-bottom: 3px solid var(--p-color-bg-fill-tertiary-hover);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
-  font-weight: 400;
   color: var(--p-color-text);
-}
-
-.shp-Navigation_LinkText {
-  padding: 16px 0 13px 0;
-  border-bottom: 3px solid transparent;
 }
 
 .shp-Navigation_LinkText {
   display: block;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.01em;
 }
 
 [aria-selected='true'],
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
-  font-weight: 400;
   color: var(--p-color-text);
 }
 
-[aria-selected='true'] .shp-Navigation_LinkText {
-  color: var(--p-color-text-primary);
-  border-bottom: 3px solid var(--p-color-bg-primary);
+[aria-selected='true'] .shp-Navigation_LinkText,
+[aria-selected='true']:hover .shp-Navigation_LinkText {
+  color: var(--p-color-text);
+  background-color: var(--p-color-bg-fill-transparent-hover);
 }

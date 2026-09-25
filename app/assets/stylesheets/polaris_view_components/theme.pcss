@@ -1,0 +1,322 @@
+/* Tokens from the updated Polaris design language (Shopify admin "admin-next" theme).
+   Legacy token names are aliased too, since Polaris CSS still reads both. */
+html[class~="Polaris-Summer-Editions-2023"] {
+  /* Typography */
+  --p-font-family-sans: "ShopifyInter", "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --p-font-weight-regular: 400;
+  --p-font-weight-medium: 500;
+  --p-font-weight-semibold: 600;
+  --p-font-weight-bold: 600;
+  --p-font-letter-spacing-dense: -0.005em;
+  --p-font-letter-spacing-denser: -0.01em;
+  --p-font-letter-spacing-densest: -0.02em;
+
+  /* Backgrounds */
+  --p-color-bg: #fff;
+  --p-color-bg-app: #fff;
+  --p-color-bg-inverse: #0a0a0a;
+  --p-color-bg-surface: #fff;
+  --p-color-bg-surface-hover: #f7f7f7;
+  --p-color-bg-surface-active: #f2f2f2;
+  --p-color-bg-surface-selected: #f2f2f2;
+  --p-color-bg-surface-disabled: #00000008;
+  --p-color-bg-surface-secondary: #f7f7f7;
+  --p-color-bg-surface-secondary-hover: #f2f2f2;
+  --p-color-bg-surface-secondary-active: #ebebeb;
+  --p-color-bg-surface-secondary-selected: #ebebeb;
+  --p-color-bg-surface-tertiary: #f2f2f2;
+  --p-color-bg-surface-tertiary-hover: #ebebeb;
+  --p-color-bg-surface-tertiary-active: #ddd;
+  --p-color-bg-surface-brand: #f7f7f7;
+  --p-color-bg-surface-brand-hover: #f2f2f2;
+  --p-color-bg-surface-brand-active: #ebebeb;
+  --p-color-bg-surface-brand-selected: #ebebeb;
+  --p-color-bg-surface-inverse: #1b1b1b;
+  --p-color-bg-surface-info: #d0f6ff;
+  --p-color-bg-surface-info-hover: #b2e9f6;
+  --p-color-bg-surface-info-active: #95e7fc;
+  --p-color-bg-surface-success: #e6fdd4;
+  --p-color-bg-surface-success-hover: #ccf5ae;
+  --p-color-bg-surface-success-active: #bbf88f;
+  --p-color-bg-surface-caution: #ffefcc;
+  --p-color-bg-surface-caution-hover: #ffe4a8;
+  --p-color-bg-surface-caution-active: #ffe08f;
+  --p-color-bg-surface-warning: #ffeddb;
+  --p-color-bg-surface-warning-hover: #ffe3c7;
+  --p-color-bg-surface-warning-active: #ffd1a5;
+  --p-color-bg-surface-critical: #ffe7e6;
+  --p-color-bg-surface-critical-hover: #ffd0cc;
+  --p-color-bg-surface-critical-active: #ffb3af;
+
+  /* Fills */
+  --p-color-bg-fill-disabled: #00000008;
+  --p-color-bg-fill-secondary: #ebebeb;
+  --p-color-bg-fill-secondary-hover: #ddd;
+  --p-color-bg-fill-secondary-active: #d0d0d0;
+  --p-color-bg-fill-tertiary: #ddd;
+  --p-color-bg-fill-tertiary-hover: #d0d0d0;
+  --p-color-bg-fill-tertiary-active: #c0c0c0;
+  --p-color-bg-fill-transparent-hover: #00000014;
+  --p-color-bg-fill-transparent-active: #00000021;
+  --p-color-bg-fill-transparent-selected: #00000021;
+  --p-color-bg-fill-transparent-secondary: #00000014;
+  --p-color-bg-fill-transparent-secondary-hover: #00000021;
+  --p-color-bg-fill-transparent-secondary-active: #0000002e;
+  --p-color-bg-fill-brand: #101010;
+  --p-color-bg-fill-brand-hover: #0a0a0a;
+  --p-color-bg-fill-brand-active: #0a0a0a;
+  --p-color-bg-fill-brand-selected: #101010;
+  --p-color-bg-fill-brand-disabled: #00000021;
+  --p-color-bg-fill-inverse: #1b1b1b;
+  --p-color-bg-fill-inverse-hover: #303030;
+  --p-color-bg-fill-inverse-active: #606060;
+  --p-color-bg-fill-info: #5bc9eb;
+  --p-color-bg-fill-info-hover: #3dbce5;
+  --p-color-bg-fill-info-active: #00b0de;
+  --p-color-bg-fill-info-secondary: #7de3fe;
+  --p-color-bg-fill-success: #5ccb00;
+  --p-color-bg-fill-success-hover: #4eac00;
+  --p-color-bg-fill-success-active: #408e00;
+  --p-color-bg-fill-success-secondary: #aafb6a;
+  --p-color-bg-fill-caution: #ffb837;
+  --p-color-bg-fill-caution-hover: #ffac07;
+  --p-color-bg-fill-caution-active: #de9500;
+  --p-color-bg-fill-caution-secondary: #ffdc72;
+  --p-color-bg-fill-warning: #ff8a3e;
+  --p-color-bg-fill-warning-hover: #ff771c;
+  --p-color-bg-fill-warning-active: #f46800;
+  --p-color-bg-fill-warning-secondary: #ffbf80;
+  --p-color-bg-fill-critical: #de0004;
+  --p-color-bg-fill-critical-hover: #d40004;
+  --p-color-bg-fill-critical-active: #b80004;
+  --p-color-bg-fill-critical-selected: #b80004;
+  --p-color-bg-fill-critical-secondary: #ffd0cc;
+
+  /* Text */
+  --p-color-text: #101010;
+  --p-color-text-secondary: #4a4a4a;
+  --p-color-text-disabled: #a6a6a6;
+  --p-color-text-link: #0048e3;
+  --p-color-text-link-hover: #0040ca;
+  --p-color-text-link-active: #0d3faa;
+  --p-color-text-link-inverse: #7ea6ff;
+  --p-color-text-brand: #101010;
+  --p-color-text-brand-hover: #101010;
+  --p-color-text-inverse: #fff;
+  --p-color-text-inverse-secondary: #a6a6a6;
+  --p-color-text-info: #004253;
+  --p-color-text-info-hover: #004253;
+  --p-color-text-info-active: #002c38;
+  --p-color-text-info-on-bg-fill: #002c38;
+  --p-color-text-success: #183700;
+  --p-color-text-success-hover: #0f2400;
+  --p-color-text-success-active: #0f2400;
+  --p-color-text-success-on-bg-fill: #0f2400;
+  --p-color-text-caution: #432e00;
+  --p-color-text-caution-hover: #312100;
+  --p-color-text-caution-active: #312100;
+  --p-color-text-caution-on-bg-fill: #312100;
+  --p-color-text-warning: #532100;
+  --p-color-text-warning-hover: #381600;
+  --p-color-text-warning-active: #381600;
+  --p-color-text-warning-on-bg-fill: #381600;
+  --p-color-text-critical: #d40004;
+  --p-color-text-critical-hover: #b80004;
+  --p-color-text-critical-active: #8e0003;
+  --p-color-text-critical-on-bg-fill: #fff;
+
+  /* Borders */
+  --p-color-border: #ddd;
+  --p-color-border-hover: #d0d0d0;
+  --p-color-border-disabled: #f7f7f7;
+  --p-color-border-secondary: #f2f2f2;
+  --p-color-border-tertiary: #c0c0c0;
+  --p-color-border-focus: #4680ff;
+  --p-color-border-brand: #d0d0d0;
+  --p-color-border-info: #7de3fe;
+  --p-color-border-success: #bbf88f;
+  --p-color-border-caution: #ffe4a8;
+  --p-color-border-warning: #ffe3c7;
+  --p-color-border-critical: #e80004;
+  --p-color-border-critical-secondary: #ff9492;
+  --p-color-border-inverse: #606060;
+  --p-color-border-inverse-hover: #c0c0c0;
+  --p-color-border-inverse-active: #d0d0d0;
+
+  /* Icons */
+  --p-color-icon: #101010;
+  --p-color-icon-hover: #0a0a0a;
+  --p-color-icon-active: #0a0a0a;
+  --p-color-icon-disabled: #a6a6a6;
+  --p-color-icon-secondary: #606060;
+  --p-color-icon-secondary-hover: #4a4a4a;
+  --p-color-icon-secondary-active: #303030;
+  --p-color-icon-brand: #0a0a0a;
+  --p-color-icon-inverse: #d0d0d0;
+  --p-color-icon-info: #00b0de;
+  --p-color-icon-success: #5ccb00;
+  --p-color-icon-caution: #ffac07;
+  --p-color-icon-warning: #ff771c;
+  --p-color-icon-critical: #e80004;
+
+  /* Inputs */
+  --p-color-input-bg-surface: #fff;
+  --p-color-input-bg-surface-hover: #fff;
+  --p-color-input-bg-surface-active: #fff;
+  --p-color-input-border: #8c8c8c;
+  --p-color-input-border-hover: #606060;
+  --p-color-input-border-active: #4680ff;
+
+  /* Avatars */
+  --p-color-avatar-bg-fill: #a6a6a6;
+  --p-color-avatar-text-on-bg-fill: #101010;
+  --p-color-avatar-one-bg-fill: #eb2abb;
+  --p-color-avatar-one-text-on-bg-fill: #fff;
+  --p-color-avatar-two-bg-fill: #5ccb00;
+  --p-color-avatar-two-text-on-bg-fill: #fff;
+  --p-color-avatar-three-bg-fill: #00b0de;
+  --p-color-avatar-three-text-on-bg-fill: #fff;
+  --p-color-avatar-four-bg-fill: #0051fc;
+  --p-color-avatar-four-text-on-bg-fill: #fff;
+  --p-color-avatar-five-bg-fill: #e80004;
+  --p-color-avatar-five-text-on-bg-fill: #fff;
+
+  /* Shadows */
+  --p-shadow-container: 0 0 0.125rem 0 rgba(0, 0, 0, 0.24), 0 0.125rem 0.75rem 0 rgba(0, 0, 0, 0.02), 0 0.25rem 1rem 0 rgba(0, 0, 0, 0.02), 0 0.25rem 3rem 0 rgba(0, 0, 0, 0.02);
+  --p-shadow-popover: 0 0.125rem 0.125rem -0.0625rem rgba(0, 0, 0, 0.06), 0 0.1875rem 0.25rem -0.125rem rgba(0, 0, 0, 0.06), 0 0.375rem 0.5rem -0.1875rem rgba(0, 0, 0, 0.06), 0 0.75rem 1rem -0.25rem rgba(0, 0, 0, 0.06), 0 0 0 0.0625rem rgba(0, 0, 0, 0.08);
+  --p-shadow-dialog: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.06), 0 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.06), 0 0.5rem 0.75rem -0.25rem rgba(0, 0, 0, 0.06), 0 1rem 1.5rem -0.375rem rgba(0, 0, 0, 0.06), 0 2rem 3rem -0.5rem rgba(0, 0, 0, 0.06), 0 0 0 0.0625rem rgba(0, 0, 0, 0.08);
+  --p-shadow-input: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem rgba(0, 0, 0, 0.13);
+  --p-shadow-input-focus: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem #4680ff, 0 0 0 0.1875rem rgba(53, 115, 246, 0.06);
+  --p-shadow-input-critical: 0 0 0 0.0625rem #eb0014, 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), inset 0 0 0.5rem 0.0625rem rgba(224, 61, 80, 0.05);
+  --p-shadow-input-critical-focus: 0 0 0 0.0625rem #ff2b3a, 0 0 0 0.1875rem rgba(255, 43, 58, 0.14), inset 0 0 0.5rem 0.0625rem rgba(255, 43, 58, 0.05);
+  --p-shadow-button-primary: 0 0.0625rem 0.03125rem -0.03125rem rgba(0, 0, 0, 0.13), 0 0.0625rem 0.125rem -0.03125rem rgba(0, 0, 0, 0.13), 0 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.13), 0 0.125rem 0.1875rem -0.09375rem rgba(0, 0, 0, 0.13), inset 0 0 0.25rem 0.0625rem #101010, inset 0 0 0.25rem 0.125rem rgba(255, 255, 255, 0.1), inset 0 0 0.75rem -0.375rem rgba(255, 255, 255, 0.75);
+  --p-shadow-button-primary-critical: 0 0.0625rem 0.03125rem -0.03125rem rgba(229, 0, 0, 0.16), 0 0.0625rem 0.125rem -0.03125rem rgba(229, 0, 0, 0.16), 0 0.25rem 0.375rem -0.125rem rgba(229, 0, 0, 0.16), 0 0.125rem 0.1875rem -0.09375rem rgba(255, 0, 0, 0.1), inset 0 0 0.25rem 0.0625rem #f50000, inset 0 0 0.25rem 0.125rem rgba(255, 255, 255, 0.1), inset 0 0 0.75rem -0.375rem rgba(255, 255, 255, 0.75);
+  --p-shadow-page-button: 0 0 0 0.0625rem rgba(0, 0, 0, 0.07), 0 0.125rem 1.25rem 0 rgba(0, 0, 0, 0.03), 0 0.3125rem 1.25rem 0 rgba(0, 0, 0, 0.03), 0 0.5rem 3.75rem 0 rgba(0, 0, 0, 0.03);
+  --p-color-button-gradient-bg-fill: radial-gradient(50% 50% at 50% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(49.59% 37.11% at 50.41% 101.56%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 66.46%);
+
+  /* Radius */
+  --p-border-radius-action: 9999px;
+  --p-border-radius-control: 0.75rem;
+  --p-border-radius-container: 1.25rem;
+  --p-border-radius-popover: 1rem;
+  --p-border-radius-dialog: 1.5rem;
+  --p-border-radius-tag: 0.5rem;
+
+  /* Legacy aliases */
+  --p-color-bg-app-selected: var(--p-color-bg-surface-selected);
+  --p-color-bg-subdued: var(--p-color-bg-surface-secondary);
+  --p-color-bg-subdued-hover: var(--p-color-bg-surface-secondary-hover);
+  --p-color-bg-subdued-active: var(--p-color-bg-surface-secondary-active);
+  --p-color-bg-secondary-experimental: var(--p-color-bg-surface-tertiary);
+  --p-color-bg-info-subdued: var(--p-color-bg-surface-info);
+  --p-color-bg-info-subdued-hover: var(--p-color-bg-surface-info-hover);
+  --p-color-bg-info-subdued-active: var(--p-color-bg-surface-info-active);
+  --p-color-bg-success-subdued: var(--p-color-bg-surface-success);
+  --p-color-bg-success-subdued-hover: var(--p-color-bg-surface-success-hover);
+  --p-color-bg-success-subdued-active: var(--p-color-bg-surface-success-active);
+  --p-color-bg-caution-subdued: var(--p-color-bg-surface-caution);
+  --p-color-bg-caution-subdued-hover: var(--p-color-bg-surface-caution-hover);
+  --p-color-bg-caution-subdued-active: var(--p-color-bg-surface-caution-active);
+  --p-color-bg-warning-subdued-experimental: var(--p-color-bg-surface-warning);
+  --p-color-bg-critical-subdued: var(--p-color-bg-surface-critical);
+  --p-color-bg-critical-subdued-hover: var(--p-color-bg-surface-critical-hover);
+  --p-color-bg-critical-subdued-active: var(--p-color-bg-surface-critical-active);
+  --p-color-bg-transparent-disabled-experimental: var(--p-color-bg-fill-disabled);
+  --p-color-bg-inset: var(--p-color-bg-fill-secondary);
+  --p-color-bg-strong: var(--p-color-bg-fill-tertiary);
+  --p-color-bg-strong-hover: var(--p-color-bg-fill-tertiary-hover);
+  --p-color-bg-strong-active: var(--p-color-bg-fill-tertiary-active);
+  --p-color-bg-transparent-hover-experimental: var(--p-color-bg-fill-transparent-hover);
+  --p-color-bg-transparent-active-experimental: var(--p-color-bg-fill-transparent-active);
+  --p-color-bg-transparent-subdued-experimental: var(--p-color-bg-fill-transparent-secondary);
+  --p-color-bg-transparent-primary-disabled-experimental: var(--p-color-bg-fill-brand-disabled);
+  --p-color-bg-inset-strong: var(--p-color-bg-fill-inverse);
+  --p-color-bg-inverse-hover: var(--p-color-bg-fill-inverse-hover);
+  --p-color-bg-inverse-active: var(--p-color-bg-fill-inverse-active);
+  --p-color-bg-info-strong: var(--p-color-bg-fill-info);
+  --p-color-bg-info: var(--p-color-bg-fill-info-secondary);
+  --p-color-bg-success-strong: var(--p-color-bg-fill-success);
+  --p-color-bg-success-strong-hover-experimental: var(--p-color-bg-fill-success-hover);
+  --p-color-bg-success-strong-active-experimental: var(--p-color-bg-fill-success-active);
+  --p-color-bg-success: var(--p-color-bg-fill-success-secondary);
+  --p-color-bg-caution-strong: var(--p-color-bg-fill-caution);
+  --p-color-bg-caution: var(--p-color-bg-fill-caution-secondary);
+  --p-color-bg-warning-strong-experimental: var(--p-color-bg-fill-warning);
+  --p-color-bg-warning: var(--p-color-bg-fill-warning-secondary);
+  --p-color-bg-critical-strong: var(--p-color-bg-fill-critical);
+  --p-color-bg-critical-strong-hover: var(--p-color-bg-fill-critical-hover);
+  --p-color-bg-critical-strong-active: var(--p-color-bg-fill-critical-active);
+  --p-color-bg-critical: var(--p-color-bg-fill-critical-secondary);
+  --p-color-text-subdued: var(--p-color-text-secondary);
+  --p-color-text-primary: var(--p-color-text-brand);
+  --p-color-text-primary-hover: var(--p-color-text-brand-hover);
+  --p-color-text-inverse-subdued: var(--p-color-text-inverse-secondary);
+  --p-color-text-info-strong: var(--p-color-text-info-on-bg-fill);
+  --p-color-border-subdued: var(--p-color-border-secondary);
+  --p-color-border-interactive-focus: var(--p-color-border-focus);
+  --p-color-border-primary: var(--p-color-border-brand);
+  --p-color-border-critical-strong-experimental: var(--p-color-border-critical-secondary);
+  --p-color-icon-subdued: var(--p-color-icon-secondary);
+  --p-color-icon-primary: var(--p-color-icon-brand);
+  --p-color-bg-input: var(--p-color-input-bg-surface);
+  --p-color-bg-input-hover-experimental: var(--p-color-input-bg-surface-hover);
+  --p-color-bg-input-active-experimental: var(--p-color-input-bg-surface-active);
+  --p-color-border-input: var(--p-color-input-border);
+  --p-color-border-input-hover: var(--p-color-input-border-hover);
+  --p-color-border-input-active-experimental: var(--p-color-input-border-active);
+  --p-color-avatar-background-experimental: var(--p-color-avatar-bg-fill);
+  --p-color-avatar-color-experimental: var(--p-color-avatar-text-on-bg-fill);
+  --p-color-avatar-style-one-background-experimental: var(--p-color-avatar-one-bg-fill);
+  --p-color-avatar-style-one-color-experimental: var(--p-color-avatar-one-text-on-bg-fill);
+  --p-color-avatar-style-two-background-experimental: var(--p-color-avatar-two-bg-fill);
+  --p-color-avatar-style-two-color-experimental: var(--p-color-avatar-two-text-on-bg-fill);
+  --p-color-avatar-style-three-background-experimental: var(--p-color-avatar-three-bg-fill);
+  --p-color-avatar-style-three-color-experimental: var(--p-color-avatar-three-text-on-bg-fill);
+  --p-color-avatar-style-four-background-experimental: var(--p-color-avatar-four-bg-fill);
+  --p-color-avatar-style-four-color-experimental: var(--p-color-avatar-four-text-on-bg-fill);
+  --p-color-avatar-style-five-background-experimental: var(--p-color-avatar-five-bg-fill);
+  --p-color-avatar-style-five-color-experimental: var(--p-color-avatar-five-text-on-bg-fill);
+  --p-color-text-on-color: #fff;
+  --p-color-icon-on-color: #fff;
+  --p-color-bg-interactive: var(--p-color-bg-fill-brand);
+  --p-color-bg-interactive-hover: var(--p-color-bg-fill-brand-hover);
+  --p-color-bg-primary: var(--p-color-bg-fill-brand);
+  --p-color-bg-primary-hover: var(--p-color-bg-fill-brand-hover);
+  --p-color-bg-primary-active: var(--p-color-bg-fill-brand-active);
+  --p-color-text-interactive: var(--p-color-text-link);
+  --p-color-text-interactive-hover: var(--p-color-text-link-hover);
+  --p-color-text-interactive-active: var(--p-color-text-link-active);
+  --p-color-border-interactive: var(--p-color-border-focus);
+  --p-color-icon-interactive: var(--p-color-text-link);
+}
+
+/* Base typography */
+html[class~="Polaris-Summer-Editions-2023"] {
+  font-feature-settings: "calt" on, "ss03" on, "cv02" on, "cv03" on, "cv04" on, "cv09" on;
+
+  body {
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Headings use medium weight */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Text--root:is(
+  .Polaris-Text--headingXs,
+  .Polaris-Text--headingSm,
+  .Polaris-Text--headingMd,
+  .Polaris-Text--headingLg,
+  .Polaris-Text--headingXl,
+  .Polaris-Text--heading2xl,
+  .Polaris-Text--heading3xl
+) {
+  font-weight: var(--p-font-weight-medium);
+}
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Text--root:is(
+  .Polaris-Text--headingLg,
+  .Polaris-Text--headingXl,
+  .Polaris-Text--heading2xl,
+  .Polaris-Text--heading3xl
+) {
+  letter-spacing: -0.02em;
+}

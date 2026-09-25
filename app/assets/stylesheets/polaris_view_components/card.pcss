@@ -22,10 +22,19 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
       padding: 0;
 
       img {
-        border-top-left-radius: var(--p-border-radius-300);
-        border-top-right-radius: var(--p-border-radius-300);
+        border-top-left-radius: var(--p-border-radius-container);
+        border-top-right-radius: var(--p-border-radius-container);
         width: 100%;
       }
+    }
+  }
+
+  .Polaris-LegacyCard__Section--subdued {
+    padding-top: var(--p-space-300);
+    padding-bottom: var(--p-space-300);
+
+    &:last-child {
+      padding-bottom: var(--p-space-400);
     }
   }
 
@@ -45,6 +54,32 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
 
     &::before {
       content: none;
+    }
+  }
+}
+
+@media (min-width: 30.625em) {
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
+    border: none;
+    border-radius: var(--p-border-radius-container);
+    box-shadow: var(--p-shadow-container);
+
+    &::before {
+      content: none;
+    }
+
+    .Polaris-LegacyCard__Section:first-child {
+      border-top-left-radius: var(--p-border-radius-container);
+      border-top-right-radius: var(--p-border-radius-container);
+    }
+
+    .Polaris-LegacyCard__Section:last-child {
+      border-bottom-left-radius: var(--p-border-radius-container);
+      border-bottom-right-radius: var(--p-border-radius-container);
+    }
+
+    &.Polaris-LegacyCard--borderless {
+      box-shadow: none;
     }
   }
 }

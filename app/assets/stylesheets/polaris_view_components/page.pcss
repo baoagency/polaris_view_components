@@ -1,20 +1,111 @@
 html[class~="Polaris-Summer-Editions-2023"] {
   .Polaris-Page-Header {
-    font-weight: var(--p-font-weight-bold);
+    font-weight: var(--p-font-weight-medium);
   }
 
-  .Polaris-Page-Header--smallTitle .Polaris-Header-Title {
-    font-size: var(--p-font-size-300);
-    line-height: var(--p-font-line-height-400);
+  .Polaris-Header-Title {
+    font-size: 1.625rem;
+    font-weight: var(--p-font-weight-medium);
+    line-height: var(--p-font-line-height-800);
+    letter-spacing: -0.02em;
   }
 
-  .Polaris-Page-Header--mediumTitle .Polaris-Header-Title {
-    font-size: var(--p-font-size-400);
-    line-height: var(--p-font-line-height-500);
+  .Polaris-Page-Header--smallTitle .Polaris-Header-Title,
+  .Polaris-Page-Header--longTitle .Polaris-Header-Title {
+    font-size: 1.375rem;
+    line-height: var(--p-font-line-height-700);
   }
 
-  .Polaris-Page-Header--largeTitle .Polaris-Header-Title {
-    font-size: var(--p-font-size-500);
-    line-height: var(--p-font-line-height-600);
+  .Polaris-Header-Title__SubTitle {
+    color: var(--p-color-text-secondary);
+  }
+
+  /* Back button */
+  .Polaris-Page-Header__BreadcrumbWrapper :is(a, button) {
+    border-radius: var(--p-border-radius-full);
+    background-color: var(--p-color-bg-surface);
+    box-shadow: var(--p-shadow-page-button) !important;
+
+    &:is(:hover, :focus-visible) {
+      background-color: var(--p-color-bg-surface-hover);
+    }
+
+    &:active {
+      background-color: var(--p-color-bg-surface-active);
+      box-shadow: var(--p-shadow-page-button) !important;
+    }
+  }
+
+  /* Header actions */
+  .Polaris-ActionMenu-SecondaryAction :is(a, button) {
+    border-radius: var(--p-border-radius-full) !important;
+    background-color: var(--p-color-bg-surface) !important;
+    box-shadow: var(--p-shadow-page-button) !important;
+
+    &:is(:hover, :focus) {
+      background-color: var(--p-color-bg-surface-hover) !important;
+      box-shadow: var(--p-shadow-page-button) !important;
+    }
+
+    &:active {
+      background-color: var(--p-color-bg-surface-active) !important;
+      box-shadow: var(--p-shadow-page-button) !important;
+    }
+
+    &[aria-disabled='true'] {
+      background-color: var(--p-color-bg-surface) !important;
+      color: var(--p-color-text-disabled);
+    }
+  }
+
+  .Polaris-ActionMenu-SecondaryAction--destructive :is(a, button) {
+    color: #7e100c !important;
+
+    svg {
+      fill: currentColor;
+    }
+  }
+
+  .Polaris-ActionMenu-RollupActions__RollupActivator button[type='button'] {
+    border-radius: var(--p-border-radius-full);
+    background: var(--p-color-bg-surface);
+    box-shadow: var(--p-shadow-page-button);
+
+    &:hover,
+    &:focus:not(:active) {
+      background: var(--p-color-bg-surface-hover);
+    }
+
+    &:active {
+      background: var(--p-color-bg-surface-active);
+    }
+  }
+
+  .Polaris-Page-Header__PaginationWrapper [data-buttongroup-segmented='true'] {
+    gap: var(--p-space-100);
+
+    .Polaris-ButtonGroup__Item:not(:first-child) {
+      margin-left: 0;
+    }
+
+    .Polaris-Button,
+    .Polaris-Button::before,
+    .Polaris-Button::after {
+      border-radius: var(--p-border-radius-full) !important;
+    }
+
+    .Polaris-Button,
+    .Polaris-Button--disabled {
+      --pc-button-bg: var(--p-color-bg-surface);
+      --pc-button-bg-hover: var(--p-color-bg-surface-hover);
+      --pc-button-bg-active: var(--p-color-bg-surface-active);
+      --pc-button-shadow: var(--p-shadow-page-button);
+      background: var(--pc-button-bg) !important;
+      box-shadow: var(--pc-button-shadow) !important;
+    }
+
+    .Polaris-Button:not(.Polaris-Button--disabled):hover {
+      background: var(--pc-button-bg-hover) !important;
+    }
   }
 }

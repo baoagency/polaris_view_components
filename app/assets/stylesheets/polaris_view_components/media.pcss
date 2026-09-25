@@ -1,0 +1,76 @@
+/* Avatar */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar {
+  &.Polaris-Avatar--sizeExtraSmall {
+    border-radius: 0.375rem;
+  }
+
+  &.Polaris-Avatar--sizeSmall {
+    border-radius: 0.4375rem;
+  }
+
+  &.Polaris-Avatar--sizeMedium {
+    border-radius: 0.5rem;
+  }
+
+  &.Polaris-Avatar--sizeLarge {
+    border-radius: 0.625rem;
+  }
+
+  &.Polaris-Avatar--shapeRound {
+    border-radius: var(--p-border-radius-full);
+  }
+
+  .Polaris-Avatar__Text {
+    font-weight: var(--p-font-weight-medium);
+  }
+}
+
+/* Thumbnail */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail {
+  &,
+  &::after {
+    border-radius: var(--p-border-radius-300);
+  }
+
+  &.Polaris-Thumbnail--sizeExtraSmall,
+  &.Polaris-Thumbnail--sizeExtraSmall::after {
+    border-radius: var(--p-border-radius-150);
+  }
+
+  &.Polaris-Thumbnail--sizeSmall,
+  &.Polaris-Thumbnail--sizeSmall::after {
+    border-radius: var(--p-border-radius-200);
+  }
+}
+
+/* Progress bar */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ProgressBar {
+  --pc-progress-bar-background: var(--p-color-bg-fill-transparent-secondary);
+  border-radius: var(--p-border-radius-full);
+
+  .Polaris-ProgressBar__Indicator {
+    border-radius: var(--p-border-radius-full);
+  }
+
+  &.Polaris-ProgressBar--sizeSmall {
+    height: 0.375rem;
+  }
+
+  &.Polaris-ProgressBar--sizeMedium {
+    height: 0.5rem;
+  }
+}
+
+/* Skeletons */
+html[class~="Polaris-Summer-Editions-2023"] {
+  .Polaris-SkeletonBodyText,
+  .Polaris-SkeletonDisplayText__DisplayText,
+  .Polaris-SkeletonThumbnail {
+    border-radius: var(--p-border-radius-200);
+  }
+
+  .Polaris-SkeletonBodyText::after,
+  .Polaris-SkeletonDisplayText__DisplayText::after {
+    border-radius: var(--p-border-radius-200);
+  }
+}

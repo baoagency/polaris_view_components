@@ -2,24 +2,39 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList {
   .Polaris-ActionMenu-SecondaryAction a,
   .Polaris-ActionMenu-SecondaryAction button,
   .Polaris-ActionList__Item {
-    padding: var(--p-space-200);
+    padding: var(--p-space-150) var(--p-space-200);
+    border-radius: var(--p-border-radius-300);
     background: transparent !important;
 
     &:hover {
-      background: var(--p-color-bg-surface-secondary-hover) !important;
+      background: var(--p-color-bg-fill-transparent-hover) !important;
     }
 
+    &:active,
     &.Polaris-ActionList--active {
-      background: var(--p-color-bg-surface-secondary-active) !important;
+      background: var(--p-color-bg-fill-transparent-active) !important;
+      font-weight: var(--p-font-weight-medium);
     }
 
     &.Polaris-ActionList--destructive {
+      color: var(--p-color-text-critical);
+
       &:hover {
-        background: var(--p-color-bg-surface-critical-hover) !important;
+        background: var(--p-color-bg-surface-critical) !important;
       }
+
       svg {
         fill: var(--p-color-text-critical);
       }
     }
+
+    &.Polaris-ActionList--disabled:hover {
+      background: transparent !important;
+    }
+  }
+
+  .Polaris-ActionList__Prefix svg,
+  .Polaris-ActionList__Suffix svg {
+    fill: var(--p-color-icon);
   }
 }
