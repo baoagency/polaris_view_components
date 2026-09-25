@@ -11,9 +11,20 @@ export default class extends Controller {
       this.element.style.overflow = "hidden"
       this.element.classList.add("Polaris-Collapsible--isFullyClosed")
     }
+    this.updateTriggers()
   }
 
   get isClosed() {
     return this.element.classList.contains("Polaris-Collapsible--isFullyClosed")
+  }
+
+  // Private
+
+  updateTriggers() {
+    if (!this.element.id) return
+
+    document.querySelectorAll(`[aria-controls="${CSS.escape(this.element.id)}"]`).forEach((trigger) => {
+      trigger.setAttribute("aria-expanded", !this.isClosed)
+    })
   }
 }
