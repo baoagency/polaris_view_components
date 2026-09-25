@@ -1,0 +1,13 @@
+.Polaris-Collapsible__Trigger {
+  .Polaris-Button__Icon:last-child .Polaris-Icon {
+    transition: transform var(--p-motion-duration-100) var(--p-motion-ease-out);
+  }
+
+  &[aria-expanded="true"] .Polaris-Button__Icon:last-child .Polaris-Icon {
+    transform: rotate(180deg);
+  }
+
+  & + .Polaris-Collapsible {
+    margin-top: var(--p-space-400);
+  }
+}

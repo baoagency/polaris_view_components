@@ -375,7 +375,13 @@
     box-shadow: none;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless::before {
       content: none;
-    }.Polaris--hidden {
+    }.Polaris-Collapsible__Trigger .Polaris-Button__Icon:last-child .Polaris-Icon {
+    transition: transform var(--p-motion-duration-100) var(--p-motion-ease-out);
+  }.Polaris-Collapsible__Trigger[aria-expanded="true"] .Polaris-Button__Icon:last-child .Polaris-Icon {
+    transform: rotate(180deg);
+  }.Polaris-Collapsible__Trigger + .Polaris-Collapsible {
+    margin-top: var(--p-space-400);
+  }.Polaris--hidden {
   display: none !important;
 }/* Add missing 1/4 section for layout */@media (min-width: 30.625em) {
   .Polaris-Layout__Section--oneFourth {

@@ -5,11 +5,14 @@ module Polaris
     def initialize(
       expand_on_print: false,
       open: false,
+      title: nil,
       **system_arguments
     )
       @expand_on_print = expand_on_print
       @open = open
+      @title = title
       @system_arguments = system_arguments
+      @system_arguments[:id] ||= "polaris-collapsible-#{SecureRandom.hex(4)}" if @title.present?
     end
 
     def system_arguments
@@ -31,7 +34,28 @@ module Polaris
     end
 
     def call
-      render(Polaris::BaseComponent.new(**system_arguments)) { content }
+      collapsible = render(Polaris::BaseComponent.new(**system_arguments)) { content }
+      return collapsible if @title.blank?
+
+      tag.div { safe_join([trigger, collapsible]) }
+    end
+
+    private
+
+    def trigger
+      id = @system_arguments[:id]
+
+      polaris_button(
+        plain: true,
+        disclosure: :down,
+        classes: "Polaris-Collapsible__Trigger",
+        aria: {expanded: @open, controls: id},
+        data: {
+          controller: "polaris",
+          target: "##{id}",
+          action: "polaris#toggleCollapsible"
+        }
+      ) { @title }
     end
   end
 end
