@@ -17,6 +17,7 @@ class Polaris::Card::SectionComponent < Polaris::Component
     @system_arguments[:classes] = class_names(
       @system_arguments[:classes],
       "Polaris-LegacyCard__Section": !unstyled,
+      "Polaris-LegacyCard__Section--unstyled": unstyled,
       "Polaris-LegacyCard__Section--flush": flush,
       "Polaris-LegacyCard__Section--subdued": subdued,
       "Polaris-LegacyCard__Section--fullWidth": full_width,
@@ -25,7 +26,7 @@ class Polaris::Card::SectionComponent < Polaris::Component
     )
 
     @title = title
-    @actions = actions.map { |a| a.merge(plain: true) }
+    @actions = actions
   end
 
   class Polaris::Card::SubsectionComponent < Polaris::Component

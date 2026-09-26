@@ -34,7 +34,7 @@ module Polaris
       Polaris::ButtonComponent.new(**system_arguments)
     end
     renders_one :dismiss_button, ->(**system_arguments) do
-      render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
+      render Polaris::ButtonComponent.new(plain: true, aria: {label: "Dismiss"}, **system_arguments) do |button|
         button.with_icon(name: "XSmallIcon")
       end
     end

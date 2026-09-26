@@ -1,1 +1,8 @@
-<%= polaris_button(loading: true) { "Save product" } %>
+<%= polaris_button_group do |group| %>
+  <% group.with_button(loading: true) { "Save product" } %>
+  <% group.with_button(loading: true, primary: true) { "Saving product..." } %>
+  <% group.with_button(loading: true, primary: true, destructive: true) { "Deleting product..." } %>
+  <% group.with_button(loading: true, plain: true, monochrome: true, remove_underline: true) { "Processing shipment..." } %>
+  <% group.with_button(loading: true, icon_name: "PlusCircleIcon", aria: {label: "Add product"}) %>
+  <% group.with_button(loading: true, disclosure: true) { "More actions" } %>
+<% end %>

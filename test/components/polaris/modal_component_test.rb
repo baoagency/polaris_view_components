@@ -58,6 +58,13 @@ class ModalComponentTest < Minitest::Test
     assert_selector "button[data-custom-close]", visible: :all
   end
 
+  def test_without_title_keeps_close_button
+    render_inline(Polaris::ModalComponent.new(title: false)) { "Content" }
+
+    assert_no_selector ".Polaris-Modal-Header", visible: :all
+    assert_selector '.Polaris-Modal-Dialog__Modal > button[aria-label="Close"][data-action="polaris-modal#close"]', visible: :all
+  end
+
   def test_multiple_sections
     render_inline(Polaris::ModalComponent.new(title: "Title")) do |modal|
       modal.with_section { "Section1" }

@@ -1,12 +1,99 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone {
+  --p-color-input-bg-surface-hover: var(--p-color-bg-surface-hover);
   border-radius: var(--p-border-radius-control);
 
-  &::after {
+  &::after,
+  &.Polaris-DropZone--hasOutline:not(.Polaris-DropZone--focused)::after {
     border-radius: var(--p-border-radius-control);
-    border-color: var(--p-color-input-border);
+    border-width: var(--p-border-width-0165);
   }
+
+  &.Polaris-DropZone--sizeExtraLarge,
+  &.Polaris-DropZone--sizeLarge { min-height: 7.5rem; }
+
+  .Polaris-DropZone__Container::after { border-radius: var(--p-border-radius-control); }
 
   .Polaris-DropZone__Overlay {
     border-radius: var(--p-border-radius-control);
+    background-color: var(--p-color-bg-surface-hover);
+    padding: var(--p-space-200);
+
+    .Polaris-Text--root {
+      font-size: var(--p-font-size-325);
+      line-height: var(--p-font-line-height-500);
+      font-weight: var(--p-font-weight-regular);
+      letter-spacing: inherit;
+    }
+  }
+
+  .Polaris-DropZone-FileUpload { min-height: inherit; }
+
+  .Polaris-DropZone-FileUpload__Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--p-space-200);
+  }
+
+  .Polaris-DropZone-FileUpload__UploadIcon { display: none; }
+
+  .Polaris-DropZone-FileUpload__Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--p-border-radius-full);
+    padding: var(--p-space-150) var(--p-space-300);
+    background: var(--p-color-bg-fill-secondary);
+    color: var(--p-color-text);
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-400);
+    font-weight: var(--p-font-weight-medium);
+  }
+
+  .Polaris-DropZone-FileUpload__HelpText {
+    color: var(--p-color-text-secondary);
+    font-size: var(--p-font-size-300);
+    line-height: 1.125rem;
+  }
+
+  &:not(.Polaris-DropZone--isDisabled) .Polaris-DropZone-FileUpload__Button {
+    &:hover { background: var(--p-color-bg-fill-secondary-hover); }
+    &:active { background: var(--p-color-bg-fill-secondary-active); }
+  }
+
+  &.Polaris-DropZone--sizeMedium .Polaris-DropZone-FileUpload { padding: var(--p-space-400); }
+
+  &.Polaris-DropZone--sizeSmall {
+    min-height: 2.5rem;
+    aspect-ratio: 1;
+
+    .Polaris-DropZone-FileUpload { padding: var(--p-space-200); }
+    .Polaris-DropZone-FileUpload__UploadIcon { display: block; }
+    .Polaris-DropZone-FileUpload__Button,
+    .Polaris-DropZone-FileUpload__HelpText { display: none; }
+  }
+
+  &.Polaris-DropZone--hasError {
+    --p-color-input-border: var(--p-color-border-critical-secondary);
+    --p-color-input-border-hover: var(--p-color-border-critical-secondary);
+    --p-color-input-bg-surface-hover: var(--p-color-bg-surface-critical);
+    background: var(--p-color-bg-surface-critical);
+
+    &:hover { background: var(--p-color-bg-surface-critical); }
+    &::after { border-color: var(--p-color-border-critical-secondary); }
+    .Polaris-DropZone__Overlay { background: var(--p-color-bg-surface-critical); }
+  }
+
+  &.Polaris-DropZone--isDisabled {
+    background: var(--p-color-bg-surface-disabled);
+    cursor: default;
+
+    &::after { border-color: var(--p-color-bg-surface-disabled); }
+    .Polaris-DropZone-FileUpload__Button {
+      background: var(--p-color-bg-fill-disabled);
+      color: var(--p-color-text-disabled);
+    }
+    .Polaris-DropZone-FileUpload__HelpText { color: var(--p-color-text-disabled); }
+    .Polaris-DropZone-FileUpload__UploadIcon .Polaris-Icon { fill: var(--p-color-icon-disabled); }
   }
 }

@@ -66,10 +66,13 @@ module Polaris
     def container_arguments
       @container_arguments.tap do |args|
         args[:classes] = class_names(
-          args[:classes]
+          args[:classes],
+          "Polaris-ResourceItem__Container"
         )
         args[:position] = :relative
         args[:padding] = "3"
+        args[:padding_inline_start] ||= "4"
+        args[:padding_inline_end] ||= "4"
         args[:z_index] = "var(--pc-resource-item-content-stacking-order)"
       end
     end

@@ -40,4 +40,10 @@ class DropzoneComponentPreview < ViewComponent::Preview
 
   def small_sized
   end
+
+  def disabled
+  end
+
+  def with_error
+  end
 end

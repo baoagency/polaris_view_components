@@ -13,7 +13,7 @@
             <div class="Polaris-Page-Header__BreadcrumbWrapper">
               <%= polaris_box(max_width: "100%", padding_inline_end: "2", print_hidden: true) do %>
                 <nav role="navigation">
-                  <a class="Polaris-Breadcrumbs__Breadcrumb" href="<%= @back_url %>" data-polaris-unstyled="true">
+                  <a class="Polaris-Breadcrumbs__Breadcrumb" href="<%= @back_url %>" aria-label="Back" data-polaris-unstyled="true">
                     <span class="Polaris-Breadcrumbs__ContentWrapper">
                       <span class="Polaris-Breadcrumbs__Icon">
                         <%= polaris_icon(name: "ArrowLeftIcon") %>
@@ -108,9 +108,9 @@
                 <% if has_pagination? %>
                   <div class="Polaris-Page-Header__PaginationWrapper">
                     <nav aria-label="Pagination">
-                      <%= polaris_button_group(segmented: @pagination_label.blank?) do |group| %>
+                      <%= polaris_button_group(spacing: :extra_tight) do |group| %>
                         <% group.with_item do %>
-                          <%= polaris_button(url: @prev_url, outline: true, disabled: @prev_url.blank?) do |button| %>
+                          <%= polaris_button(url: @prev_url, outline: true, disabled: @prev_url.blank?, aria: {label: "Previous page"}) do |button| %>
                             <% button.with_icon(name: "ChevronLeftIcon") %>
                           <% end %>
                         <% end %>
@@ -120,7 +120,7 @@
                           <% end %>
                         <% end %>
                         <% group.with_item do %>
-                          <%= polaris_button(url: @next_url, outline: true, disabled: @next_url.blank?) do |button| %>
+                          <%= polaris_button(url: @next_url, outline: true, disabled: @next_url.blank?, aria: {label: "Next page"}) do |button| %>
                             <% button.with_icon(name: "ChevronRightIcon") %>
                           <% end %>
                         <% end %>

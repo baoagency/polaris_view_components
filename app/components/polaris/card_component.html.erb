@@ -1,8 +1,4 @@
 <%= render Polaris::BaseComponent.new(**system_arguments) do %>
-  <% if tabs.present? %>
-    <%= tabs %>
-  <% end %>
-
   <% if header.present? %>
     <%= header %>
   <% end %>
@@ -11,51 +7,57 @@
     <%= render Polaris::Card::HeaderComponent.new(title: @title, actions: @actions) %>
   <% end %>
 
-  <% if sections.present? %>
-    <% sections.each do |section| %>
-      <%= section %>
+  <div class="Polaris-LegacyCard__Surface">
+    <% if tabs.present? %>
+      <%= tabs %>
     <% end %>
-  <% end %>
 
-  <% if content.present? %>
-    <% if @sectioned %>
-      <%= render Polaris::Card::SectionComponent.new do %>
+    <% if sections.present? %>
+      <% sections.each do |section| %>
+        <%= section %>
+      <% end %>
+    <% end %>
+
+    <% if content.present? %>
+      <% if @sectioned %>
+        <%= render Polaris::Card::SectionComponent.new do %>
+          <%= content %>
+        <% end %>
+      <% else %>
         <%= content %>
       <% end %>
-    <% else %>
-      <%= content %>
     <% end %>
-  <% end %>
 
-  <% if render_footer? %>
-    <div class="<%= footer_classes %>">
-      <%= polaris_button_group do |group| %>
-        <% if @footer_action_alignment == :right %>
-          <% secondary_footer_actions.each do |secondary_footer_action| %>
-            <% group.with_item do %>
-              <%= secondary_footer_action %>
+    <% if render_footer? %>
+      <div class="<%= footer_classes %>">
+        <%= polaris_button_group do |group| %>
+          <% if @footer_action_alignment == :right %>
+            <% secondary_footer_actions.each do |secondary_footer_action| %>
+              <% group.with_item do %>
+                <%= secondary_footer_action %>
+              <% end %>
             <% end %>
-          <% end %>
 
-          <% if primary_footer_action %>
-            <% group.with_item do %>
-              <%= primary_footer_action %>
+            <% if primary_footer_action %>
+              <% group.with_item do %>
+                <%= primary_footer_action %>
+              <% end %>
             <% end %>
-          <% end %>
-        <% else %>
-          <% if primary_footer_action %>
-            <% group.with_item do %>
-              <%= primary_footer_action %>
+          <% else %>
+            <% if primary_footer_action %>
+              <% group.with_item do %>
+                <%= primary_footer_action %>
+              <% end %>
             <% end %>
-          <% end %>
 
-          <% secondary_footer_actions.each do |secondary_footer_action| %>
-            <% group.with_item do %>
-              <%= secondary_footer_action %>
+            <% secondary_footer_actions.each do |secondary_footer_action| %>
+              <% group.with_item do %>
+                <%= secondary_footer_action %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

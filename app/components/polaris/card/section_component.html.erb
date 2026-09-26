@@ -2,7 +2,7 @@
   <% if @title.present? && @title.is_a?(String) %>
     <div class="Polaris-LegacyCard__SectionHeader">
       <% if @actions.present? %>
-        <%= polaris_stack(alignment: :trailing) do |stack| %>
+        <%= polaris_stack(alignment: :center) do |stack| %>
           <% stack.with_item(fill: true) do %>
             <%= polaris_text(variant: :headingSm, as: :h3) { @title } %>
           <% end %>

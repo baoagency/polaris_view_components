@@ -24,7 +24,7 @@ class BannerComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Banner" do
-      assert_selector ".Polaris-Banner__DismissButton > .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly"
+      assert_selector ".Polaris-Banner__DismissButton > .Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly[aria-label='Dismiss']"
     end
   end
 
@@ -34,7 +34,7 @@ class BannerComponentTest < Minitest::Test
       banner.with_secondary_action(url: "/secondary") { "Secondary Action" }
     end
 
-    assert_selector ".Polaris-Banner .Polaris-Banner__ContentWrapper" do
+    assert_selector ".Polaris-Banner .Polaris-Banner__Actions" do
       assert_selector ".Polaris-ButtonGroup" do
         assert_selector ".Polaris-ButtonGroup__Item", count: 2
         assert_selector ".Polaris-ButtonGroup__Item:nth-child(1)" do
@@ -85,5 +85,27 @@ class BannerComponentTest < Minitest::Test
     end
 
     assert_selector ".Polaris-Banner.Polaris-Banner--withinContentContainer"
+  end
+
+  def test_banner_without_icon_preserves_title_content_and_actions
+    render_inline(Polaris::BannerComponent.new(title: "Review products", hide_icon: true)) do |banner|
+      banner.with_action(url: "/products") { "Review" }
+      "Some products need attention."
+    end
+
+    assert_selector ".Polaris-Banner__Heading h2", text: "Review products"
+    assert_no_selector ".Polaris-Banner__InlineIcon"
+    assert_selector ".Polaris-Banner__Message", text: "Some products need attention."
+    assert_selector ".Polaris-Banner__Actions a[href='/products']", text: "Review"
+  end
+
+  def test_banner_with_only_actions
+    render_inline(Polaris::BannerComponent.new(hide_icon: true)) do |banner|
+      banner.with_secondary_action(url: "/help") { "Get help" }
+    end
+
+    assert_no_selector ".Polaris-Banner__Heading"
+    assert_no_selector ".Polaris-Banner__Message"
+    assert_selector ".Polaris-Banner__Actions a[href='/help']", text: "Get help"
   end
 end

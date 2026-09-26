@@ -13,7 +13,7 @@ class CalloutCardComponentTest < Minitest::Test
       "Callout Text"
     end
 
-    assert_selector ".Polaris-LegacyCard > .Polaris-CalloutCard__Container > .Polaris-LegacyCard__Section > .Polaris-CalloutCard" do
+    assert_selector ".Polaris-LegacyCard > .Polaris-LegacyCard__Surface.Polaris-CalloutCard__Container > .Polaris-LegacyCard__Section > .Polaris-CalloutCard" do
       assert_selector ".Polaris-CalloutCard__Content" do
         assert_selector ".Polaris-CalloutCard__Title", text: "Callout Title"
         assert_selector ".Polaris-TextContainer", text: "Callout Text"
@@ -37,9 +37,10 @@ class CalloutCardComponentTest < Minitest::Test
         assert_selector ".Polaris-Button", text: "Primary Action"
       end
       assert_selector ".Polaris-ButtonGroup__Item:nth-child(2)" do
-        assert_selector ".Polaris-Button--plain", text: "Secondary Action"
+        assert_selector ".Polaris-Button--plain.Polaris-Button--monochrome.Polaris-Button--removeUnderline", text: "Secondary Action"
       end
     end
+    assert_no_selector "img"
   end
 
   def test_dismissible_callout_card
@@ -52,7 +53,7 @@ class CalloutCardComponentTest < Minitest::Test
 
     assert_selector ".Polaris-CalloutCard__Container.Polaris-CalloutCard--hasDismiss" do
       assert_selector ".Polaris-CalloutCard__Dismiss" do
-        assert_selector ".Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly"
+        assert_selector ".Polaris-Button.Polaris-Button--plain.Polaris-Button--iconOnly[aria-label='Dismiss card']"
       end
     end
   end
