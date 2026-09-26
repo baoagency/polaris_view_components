@@ -19,6 +19,15 @@ module Polaris
     }
     TEXT_ALIGN_OPTIONS = TEXT_ALIGN_MAPPINGS.keys
 
+    SPINNER_HTML = <<~HTML.html_safe.freeze
+      <span class="Polaris-Button__Spinner" role="status" aria-label="Loading">
+        <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle class="Polaris-Button__SpinnerTrack" r="14" stroke-width="3" cx="22" cy="22" />
+          <circle class="Polaris-Button__SpinnerIndicator" pathLength="10" r="14" stroke-width="3" cx="22" cy="22" />
+        </svg>
+      </span>
+    HTML
+
     DISCLOSURE_DEFAULT = false
     DISCLOSURE_OPTIONS = [true, false, :down, :up, :select, :horizontal_dots]
 
@@ -99,6 +108,10 @@ module Polaris
         "Polaris-Button--iconOnly": (icon.present? || @icon_name.present?) && content.blank?
       )
       @system_arguments
+    end
+
+    def loading_spinner
+      SPINNER_HTML if @loading
     end
 
     def html_options

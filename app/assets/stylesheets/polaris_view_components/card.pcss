@@ -1,5 +1,6 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
   --pc-card-surface-bg: var(--p-color-bg-surface);
+  --pc-card-radius: var(--p-border-radius-container);
 
   background: transparent;
   border: none;
@@ -51,7 +52,7 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
   & > .Polaris-LegacyCard__Surface {
     min-width: 0;
     background: var(--pc-card-surface-bg);
-    border-radius: var(--p-border-radius-container);
+    border-radius: var(--pc-card-radius);
     box-shadow: var(--p-shadow-container);
 
     & > .Polaris-LegacyCard__Section {
@@ -61,13 +62,13 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
       &:last-child { padding-bottom: var(--p-space-400); }
 
       &:first-child {
-        border-top-left-radius: var(--p-border-radius-container);
-        border-top-right-radius: var(--p-border-radius-container);
+        border-top-left-radius: var(--pc-card-radius);
+        border-top-right-radius: var(--pc-card-radius);
       }
 
       &:last-child {
-        border-bottom-left-radius: var(--p-border-radius-container);
-        border-bottom-right-radius: var(--p-border-radius-container);
+        border-bottom-left-radius: var(--pc-card-radius);
+        border-bottom-right-radius: var(--pc-card-radius);
       }
 
       &.Polaris-LegacyCard__Section--subdued {
@@ -86,12 +87,12 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
 
         img { display: block; width: 100%; }
         &:first-child img {
-          border-top-left-radius: var(--p-border-radius-container);
-          border-top-right-radius: var(--p-border-radius-container);
+          border-top-left-radius: var(--pc-card-radius);
+          border-top-right-radius: var(--pc-card-radius);
         }
         &:last-child img {
-          border-bottom-left-radius: var(--p-border-radius-container);
-          border-bottom-right-radius: var(--p-border-radius-container);
+          border-bottom-left-radius: var(--pc-card-radius);
+          border-bottom-right-radius: var(--pc-card-radius);
         }
       }
     }
@@ -105,4 +106,17 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
   &.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }
 
   &.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }
+}
+
+/* Pages have no side padding on small screens, so cards run edge to edge. */
+@media (max-width: 30.6225em) {
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
+    --pc-card-radius: 0;
+
+    & > .Polaris-LegacyCard__Header { padding-inline: var(--p-space-400); }
+  }
+
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner.Polaris-Banner--withinPage {
+    border-radius: 0;
+  }
 }

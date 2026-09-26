@@ -91,7 +91,7 @@ class ButtonComponentTest < Minitest::Test
     render_inline(Polaris::ButtonComponent.new(loading: true)) { "Button" }
 
     assert_selector "button.Polaris-Button--loading[disabled=disabled]" do
-      assert_selector ".Polaris-Button__Spinner"
+      assert_selector "button > .Polaris-Button__Spinner"
     end
   end
 
