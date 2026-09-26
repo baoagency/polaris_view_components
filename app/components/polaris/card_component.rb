@@ -2,10 +2,10 @@
 
 module Polaris
   class CardComponent < Polaris::Component
-    FOOTER_ACTION_ALIGNMENT_DEFAULT = :right
+    FOOTER_ACTION_ALIGNMENT_DEFAULT = :left
     FOOTER_ACTION_ALIGNMENT_MAPPINGS = {
-      FOOTER_ACTION_ALIGNMENT_DEFAULT => "",
-      :left => "Polaris-LegacyCard__LeftJustified"
+      right: "",
+      left: "Polaris-LegacyCard__LeftJustified"
     }
     FOOTER_ACTION_ALIGNMENT_OPTIONS = FOOTER_ACTION_ALIGNMENT_MAPPINGS.keys
 

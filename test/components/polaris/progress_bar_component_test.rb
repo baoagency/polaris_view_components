@@ -1,12 +1,13 @@
 require "test_helper"
 
-class DisplayTextComponentTest < Minitest::Test
+class ProgressBarComponentTest < Minitest::Test
   include Polaris::ComponentTestHelpers
 
   def test_default
     render_inline(Polaris::ProgressBarComponent.new(progress: 75))
 
     assert_selector ".Polaris-ProgressBar .Polaris-ProgressBar__Label", text: "75%"
+    assert_selector ".Polaris-ProgressBar--colorPrimary"
   end
 
   def test_size_option
@@ -20,6 +21,10 @@ class DisplayTextComponentTest < Minitest::Test
   end
 
   def test_color_option
+    render_inline(Polaris::ProgressBarComponent.new(progress: 50, color: :highlight))
+
+    assert_selector ".Polaris-ProgressBar--colorHighlight", count: 1
+
     render_inline(Polaris::ProgressBarComponent.new(progress: 70, color: :primary))
 
     assert_selector ".Polaris-ProgressBar--colorPrimary", count: 1

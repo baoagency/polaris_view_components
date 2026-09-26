@@ -75,7 +75,11 @@ class Polaris::ResourceItem::ShortcutActionsComponent < Polaris::Component
       @system_arguments.tap do |opts|
         opts[:url] = @url
         opts[:size] = :slim unless @persist_actions
-        opts[:plain] = true if @persist_actions
+        if @persist_actions
+          opts[:plain] = true
+          opts[:monochrome] = true
+          opts[:remove_underline] = true
+        end
       end
     end
 

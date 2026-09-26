@@ -4,21 +4,21 @@ html[class~="Polaris-Summer-Editions-2023"] {
   .Polaris-RadioButton__Backdrop {
     border: none;
     background-color: var(--p-color-input-bg-surface);
-    box-shadow: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem rgba(0, 0, 0, 0.2);
+    box-shadow: var(--p-shadow-input-strong);
   }
 
   .Polaris-Checkbox__Backdrop {
     border-radius: var(--p-border-radius-100);
   }
 
-  .Polaris-Checkbox__ChoiceLabel:hover .Polaris-Checkbox__Backdrop,
-  .Polaris-Choice:hover .Polaris-Checkbox__Input:not(:checked, :disabled) + .Polaris-Checkbox__Backdrop,
-  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:not(:checked, :disabled) + .Polaris-RadioButton__Backdrop,
-  .Polaris-Choice:hover .Polaris-RadioButton__Input:not(:checked, :disabled) + .Polaris-RadioButton__Backdrop {
-    background-color: var(--p-color-input-bg-surface);
-    box-shadow: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem rgba(0, 0, 0, 0.35);
+  :is(.Polaris-Choice, .Polaris-Checkbox__ChoiceLabel, .Polaris-OptionList-Option__CheckboxLabel):hover .Polaris-Checkbox__Input:not(:checked, :disabled, .Polaris-Checkbox__Input--indeterminate) + .Polaris-Checkbox__Backdrop,
+  :is(.Polaris-Choice, .Polaris-RadioButton__ChoiceLabel):hover .Polaris-RadioButton__Input:not(:checked, :disabled) + .Polaris-RadioButton__Backdrop {
+    background-color: var(--p-color-input-bg-surface-hover);
+    box-shadow: var(--p-shadow-input-strong);
   }
 
+  :is(.Polaris-Choice, .Polaris-Checkbox__ChoiceLabel, .Polaris-OptionList-Option__CheckboxLabel):hover .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop,
+  .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):focus-visible + .Polaris-Checkbox__Backdrop,
   .Polaris-Checkbox__Input:checked + .Polaris-Checkbox__Backdrop,
   .Polaris-Checkbox__Input.Polaris-Checkbox__Input--indeterminate + .Polaris-Checkbox__Backdrop,
   .Polaris-RadioButton__Input:checked:not([disabled]) + .Polaris-RadioButton__Backdrop,
@@ -29,13 +29,17 @@ html[class~="Polaris-Summer-Editions-2023"] {
   }
 
   .Polaris-Checkbox__Input:disabled + .Polaris-Checkbox__Backdrop,
-  .Polaris-RadioButton__Input:disabled + .Polaris-RadioButton__Backdrop {
+  .Polaris-RadioButton__Input:disabled + .Polaris-RadioButton__Backdrop,
+  .Polaris-Checkbox__ChoiceLabel:hover .Polaris-Checkbox__Input:disabled + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:disabled + .Polaris-RadioButton__Backdrop {
     background-color: var(--p-color-bg-fill-disabled);
     box-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.08);
   }
 
   .Polaris-Checkbox__Input:disabled:checked + .Polaris-Checkbox__Backdrop,
-  .Polaris-RadioButton__Input:disabled:checked + .Polaris-RadioButton__Backdrop {
+  .Polaris-RadioButton__Input:disabled:checked + .Polaris-RadioButton__Backdrop,
+  .Polaris-Checkbox__ChoiceLabel:hover .Polaris-Checkbox__Input:disabled:is(:checked, .Polaris-Checkbox__Input--indeterminate) + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:disabled:checked + .Polaris-RadioButton__Backdrop {
     background-color: var(--p-color-bg-fill-brand-disabled);
     box-shadow: none;
   }
@@ -45,7 +49,14 @@ html[class~="Polaris-Summer-Editions-2023"] {
     box-shadow: var(--p-shadow-input-critical);
   }
 
-  .Polaris-Checkbox--error .Polaris-Checkbox__Input:checked + .Polaris-Checkbox__Backdrop {
+  .Polaris-Choice:hover .Polaris-Checkbox--error .Polaris-Checkbox__Input:not(:checked, :disabled, .Polaris-Checkbox__Input--indeterminate) + .Polaris-Checkbox__Backdrop,
+  .Polaris-Checkbox--error .Polaris-Checkbox__Input:not(:checked, :disabled, .Polaris-Checkbox__Input--indeterminate):focus-visible + .Polaris-Checkbox__Backdrop {
+    background-color: var(--p-color-input-bg-surface-hover);
+    box-shadow: var(--p-shadow-input-critical);
+  }
+
+  .Polaris-Checkbox--error .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop,
+  .Polaris-Choice:hover .Polaris-Checkbox--error .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop {
     background-color: var(--p-color-bg-fill-critical);
     box-shadow: none !important;
   }

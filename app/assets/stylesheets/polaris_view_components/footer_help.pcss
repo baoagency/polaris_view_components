@@ -1,5 +1,29 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-FooterHelp {
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+
   .Polaris-FooterHelp__Text {
     font-size: var(--p-font-size-325);
+    letter-spacing: inherit;
+    max-width: 100%;
+  }
+
+  .Polaris-Link {
+    color: inherit;
+    border-radius: var(--p-border-radius-100);
+    text-decoration: underline;
+
+    &:hover,
+    &:active { color: inherit; }
+
+    &:focus:not(:focus-visible) { outline: none; }
+
+    &:focus-visible {
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+      outline-offset: var(--p-space-050);
+      text-decoration: none;
+    }
   }
 }

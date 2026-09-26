@@ -312,7 +312,7 @@ class Button extends Controller {
     } else {
       this.disabledValue = true;
       this.button.classList.add("Polaris-Button--disabled", "Polaris-Button--loading");
-      this.buttonContent.insertAdjacentHTML("afterbegin", this.spinnerHTML);
+      this.button.insertAdjacentHTML("afterbegin", this.spinnerHTML);
     }
   }
   disableWithoutLoader(event) {
@@ -340,7 +340,7 @@ class Button extends Controller {
     return this.button.querySelector(".Polaris-Button__Spinner");
   }
   get spinnerHTML() {
-    return `\n      <span class="Polaris-Button__Spinner">\n        <span class="Polaris-Spinner Polaris-Spinner--sizeSmall">\n          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">\n            <path d="M7.229 1.173a9.25 9.25 0 1011.655 11.412 1.25 1.25 0 10-2.4-.698 6.75 6.75 0 11-8.506-8.329 1.25 1.25 0 10-.75-2.385z"></path>\n          </svg>\n        </span>\n      </span>\n    `;
+    return `\n      <span class="Polaris-Button__Spinner" role="status" aria-label="Loading">\n        <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">\n          <circle class="Polaris-Button__SpinnerTrack" r="14" stroke-width="3" cx="22" cy="22"></circle>\n          <circle class="Polaris-Button__SpinnerIndicator" pathLength="10" r="14" stroke-width="3" cx="22" cy="22"></circle>\n        </svg>\n      </span>\n    `;
   }
 }
 

@@ -12,7 +12,7 @@ class Polaris::Card::HeaderComponent < Polaris::Component
     )
 
     @title = title
-    @actions = actions.map { |a| a.merge(plain: true) }
+    @actions = actions
   end
 
   def simple?

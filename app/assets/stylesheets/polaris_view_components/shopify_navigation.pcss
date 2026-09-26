@@ -84,6 +84,11 @@
   outline: none;
 }
 
+.shp-Navigation_Link:focus-visible .shp-Navigation_LinkText {
+  outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+  outline-offset: var(--p-space-025);
+}
+
 @media (min-width: 40em) {
   .shp-Navigation_Link {
     font-size: 14px;
@@ -114,7 +119,7 @@
   letter-spacing: -0.01em;
 }
 
-[aria-selected='true'],
+.shp-Navigation_Link[aria-selected='true'],
 .shp-Navigation_Link:focus .shp-Navigation_LinkText {
   color: var(--p-color-text);
 }

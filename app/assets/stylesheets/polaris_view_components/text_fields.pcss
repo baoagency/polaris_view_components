@@ -72,44 +72,76 @@ html[class~="Polaris-Summer-Editions-2023"] {
     color: var(--p-color-text-secondary);
   }
 
-  .Polaris-TextField:not(.Polaris-TextField--disabled, .Polaris-TextField--error, .Polaris-TextField--readOnly) > .Polaris-TextField__Input:hover:not(:focus-visible) ~ .Polaris-TextField__Backdrop {
-    border: none;
-    background-color: var(--p-color-input-bg-surface);
-    box-shadow: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem rgba(0, 0, 0, 0.2);
+  /* Hover applies to the whole control, including prefixes and suffixes. */
+  @media (min-width: 48rem), (pointer: fine) {
+    .Polaris-TextField:not(.Polaris-TextField--disabled, .Polaris-TextField--readOnly):hover > .Polaris-TextField__Backdrop,
+    .Polaris-TextField:not(.Polaris-TextField--disabled):not(.Polaris-TextField--error):not(.Polaris-TextField--readOnly) > .Polaris-TextField__Input:hover:not(:focus-visible) ~ .Polaris-TextField__Backdrop {
+      background-color: var(--p-color-bg-surface-hover);
+      border: none;
+      box-shadow: var(--p-shadow-input);
+    }
+
+    .Polaris-TextField--error:not(.Polaris-TextField--disabled, .Polaris-TextField--readOnly):hover > .Polaris-TextField__Backdrop,
+    .Polaris-TextField--error .Polaris-TextField__Input:hover ~ .Polaris-TextField__Backdrop {
+      background-color: var(--p-color-bg-surface-hover);
+      box-shadow: var(--p-shadow-input-critical);
+    }
   }
 
-  .Polaris-TextField--focus > .Polaris-TextField__Input ~ .Polaris-TextField__Backdrop,
-  .Polaris-TextField--focus > .Polaris-TextField__VerticalContent ~ .Polaris-TextField__Backdrop,
-  .Polaris-TextField:focus-within > .Polaris-TextField__Input ~ .Polaris-TextField__Backdrop,
-  .Polaris-TextField__Input:focus-visible ~ .Polaris-TextField__Backdrop {
+  .Polaris-TextField:not(.Polaris-TextField--disabled, .Polaris-TextField--readOnly):is(.Polaris-TextField--focus, :focus-within) > .Polaris-TextField__Backdrop {
     border: none;
     outline: none;
-    background-color: var(--p-color-input-bg-surface);
+    background-color: var(--p-color-input-bg-surface-active);
     box-shadow: var(--p-shadow-input-focus);
   }
 
-  .Polaris-TextField--error > .Polaris-TextField__Input ~ .Polaris-TextField__Backdrop,
-  .Polaris-TextField--error .Polaris-TextField__Input:hover ~ .Polaris-TextField__Backdrop {
+  .Polaris-TextField--error > .Polaris-TextField__Input ~ .Polaris-TextField__Backdrop {
     border: none;
-    background-color: var(--p-color-input-bg-surface);
     box-shadow: var(--p-shadow-input-critical);
   }
 
-  .Polaris-TextField--error.Polaris-TextField--focus > .Polaris-TextField__Input ~ .Polaris-TextField__Backdrop,
-  .Polaris-TextField--error .Polaris-TextField__Input:focus-visible ~ .Polaris-TextField__Backdrop {
+  .Polaris-TextField--error:not(.Polaris-TextField--disabled, .Polaris-TextField--readOnly):is(.Polaris-TextField--focus, :focus-within) > .Polaris-TextField__Backdrop {
+    background-color: var(--p-color-input-bg-surface-active);
     box-shadow: var(--p-shadow-input-critical-focus);
   }
 
-  .Polaris-TextField--disabled > .Polaris-TextField__Backdrop,
-  .Polaris-TextField--readOnly > .Polaris-TextField__Backdrop,
-  .Polaris-TextField--readOnly.Polaris-TextField--focus > .Polaris-TextField__Backdrop {
-    background-color: var(--p-color-bg-surface-secondary);
+  .Polaris-TextField--disabled > .Polaris-TextField__Backdrop {
+    background-color: var(--p-color-input-bg-surface);
     box-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.1);
+  }
+
+  .Polaris-TextField--readOnly > .Polaris-TextField__Backdrop {
+    background-color: var(--p-color-bg-surface-disabled);
+    box-shadow: none;
+  }
+
+  .Polaris-TextField--readOnly .Polaris-TextField__Input {
+    color: var(--p-color-text-secondary);
+  }
+
+  .Polaris-TextField--readOnly > .Polaris-TextField__Input:focus-visible ~ .Polaris-TextField__Backdrop {
+    border: none;
+    outline: none;
+    box-shadow: var(--p-shadow-input-focus);
   }
 
   .Polaris-TextField__Prefix,
   .Polaris-TextField__Suffix {
     color: var(--p-color-text-secondary);
+  }
+
+  .Polaris-TextField__Prefix {
+    margin-right: var(--p-space-100);
+  }
+
+  .Polaris-TextField__Suffix {
+    margin-left: var(--p-space-100);
+  }
+
+  .Polaris-TextField--disabled .Polaris-TextField__Input::placeholder,
+  .Polaris-TextField--disabled .Polaris-TextField__Prefix,
+  .Polaris-TextField--disabled .Polaris-TextField__Suffix {
+    color: var(--p-color-text-disabled);
   }
 
   .Polaris-TextField__Spinner {
@@ -145,33 +177,36 @@ html[class~="Polaris-Summer-Editions-2023"] {
     fill: #707070;
   }
 
-  .Polaris-Select:not(.Polaris-Select--disabled, .Polaris-Select--error):hover .Polaris-Select__Backdrop {
+  .Polaris-Select:not(.Polaris-Select--disabled):not(.Polaris-Select--error):hover .Polaris-Select__Backdrop {
     border: none;
-    background-color: var(--p-color-input-bg-surface);
-    box-shadow: 0 0.125rem 0.1875rem -0.0625rem rgba(0, 0, 0, 0.04), 0 0.1875rem 0.25rem -0.09375rem rgba(0, 0, 0, 0.04), 0 0 0 0.0625rem rgba(0, 0, 0, 0.2);
+    background-color: var(--p-color-input-bg-surface-hover);
+    box-shadow: var(--p-shadow-input);
   }
 
-  .Polaris-Select:not(.Polaris-Select--disabled, .Polaris-Select--error) .Polaris-Select__Input:active ~ .Polaris-Select__Backdrop {
-    background-color: var(--p-color-input-bg-surface);
-    box-shadow: var(--p-shadow-input-focus);
-  }
-
-  .Polaris-Select__Input:focus-visible ~ .Polaris-Select__Backdrop {
+  .Polaris-Select:not(.Polaris-Select--disabled):not(.Polaris-Select--error):focus-within .Polaris-Select__Backdrop {
     border: none;
     outline: none;
-    background-color: var(--p-color-input-bg-surface);
+    background-color: var(--p-color-input-bg-surface-active);
     box-shadow: var(--p-shadow-input-focus);
   }
 
-  .Polaris-Select--error .Polaris-Select__Backdrop,
-  .Polaris-Select--error .Polaris-Select__Input:focus-visible ~ .Polaris-Select__Backdrop {
+  .Polaris-Select--error .Polaris-Select__Backdrop {
     border: none;
     background-color: var(--p-color-input-bg-surface);
     box-shadow: var(--p-shadow-input-critical);
   }
 
+  .Polaris-Select--error:not(.Polaris-Select--disabled):hover .Polaris-Select__Backdrop {
+    background-color: var(--p-color-input-bg-surface-hover);
+  }
+
+  .Polaris-Select--error:not(.Polaris-Select--disabled):focus-within .Polaris-Select__Backdrop {
+    background-color: var(--p-color-input-bg-surface-active);
+    box-shadow: var(--p-shadow-input-critical-focus);
+  }
+
   .Polaris-Select--disabled .Polaris-Select__Backdrop {
-    background-color: var(--p-color-bg-surface-secondary);
+    background-color: var(--p-color-input-bg-surface);
     box-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.1);
   }
 }

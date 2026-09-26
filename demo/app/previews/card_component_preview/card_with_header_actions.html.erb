@@ -4,3 +4,13 @@
 ) do %>
   <p>View a summary of your online store’s performance.</p>
 <% end %>
+
+<%= polaris_card(
+  title: "Shipping labels",
+  actions: [
+    { content: "Print", url: "#" },
+    { content: "Buy labels", url: "#", primary: true }
+  ]
+) do %>
+  <p>3 orders are ready to ship.</p>
+<% end %>

@@ -1,4 +1,6 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable {
+  border-radius: var(--p-border-radius-container);
+
   .Polaris-DataTable__TableRow {
     content-visibility: auto;
     contain-intrinsic-size: auto 250px;
@@ -15,6 +17,22 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable {
       .Polaris-DataTable__Heading--flush
     ):last-child {
     padding-right: var(--p-space-400);
+  }
+}
+
+/* Edge-to-edge tables share the card's outline with adjacent sections. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface > :is(
+  .Polaris-LegacyCard__Section--unstyled,
+  .Polaris-LegacyCard__Section--flush
+) {
+  &:not(:first-child) > div > .Polaris-DataTable {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &:not(:last-child) > div > .Polaris-DataTable {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 

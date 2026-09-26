@@ -34,7 +34,7 @@ class PaginationComponentTest < Minitest::Test
     assert_selector ".Polaris-Page-Header--hasNavigation" do
       assert_selector ".Polaris-Page-Header__Row" do
         assert_selector ".Polaris-Page-Header__BreadcrumbWrapper nav" do
-          assert_selector "a.Polaris-Breadcrumbs__Breadcrumb[href='/back']" do
+          assert_selector "a.Polaris-Breadcrumbs__Breadcrumb[href='/back'][aria-label='Back']" do
             assert_selector ".Polaris-Breadcrumbs__ContentWrapper > .Polaris-Breadcrumbs__Icon > .Polaris-Icon"
           end
         end

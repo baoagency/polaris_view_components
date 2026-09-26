@@ -1,19 +1,18 @@
 <% button_content = capture do %>
   <%= render Polaris::BaseComponent.new(tag: @tag, **system_arguments) do %>
+    <% if @loading %>
+      <span class="Polaris-Button__Spinner" role="status" aria-label="Loading">
+        <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle class="Polaris-Button__SpinnerTrack" r="14" stroke-width="3" cx="22" cy="22" />
+          <circle class="Polaris-Button__SpinnerIndicator" pathLength="10" r="14" stroke-width="3" cx="22" cy="22" />
+        </svg>
+      </span>
+    <% end %>
     <span class="Polaris-Button__Content">
-      <% if @loading %>
-        <span class="Polaris-Button__Spinner">
-          <%= polaris_spinner(size: :small) %>
-        </span>
-      <% end %>
-
       <% if icon.present? || @icon_name.present? %>
         <div class="Polaris-Button__Icon">
           <%= icon.presence || polaris_icon(name: @icon_name) %>
         </div>
-        <% if content.present? && !@plain %>
-          &nbsp;
-        <% end %>
       <% end %>
 
       <% if content.present? %>

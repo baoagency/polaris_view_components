@@ -1,85 +1,108 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
-  .Polaris-LegacyCard__Header {
-    padding-top: var(--p-space-400);
-  }
+  --pc-card-surface-bg: var(--p-color-bg-surface);
 
-  .Polaris-LegacyCard__Header+.Polaris-LegacyCard__Section {
-    padding-top: var(--p-space-200);
-  }
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 
-  .Polaris-LegacyCard__Section {
-    padding: var(--p-space-400) var(--p-space-400) var(--p-space-200);
+  &::before { content: none; }
 
-    &+.Polaris-LegacyCard__Section {
-      padding-top: var(--p-space-200);
-    }
+  & + .Polaris-LegacyCard { margin-top: var(--p-space-600); }
 
-    &:last-child {
-      padding-bottom: var(--p-space-400);
-    }
+  .Polaris-LegacyCard__Header,
+  .Polaris-LegacyCard__SectionHeader {
+    .Polaris-ButtonGroup {
+      margin: 0;
+      gap: var(--p-space-200);
 
-    &.Polaris-LegacyCard__Section--flush {
-      padding: 0;
-
-      img {
-        border-top-left-radius: var(--p-border-radius-container);
-        border-top-right-radius: var(--p-border-radius-container);
-        width: 100%;
-      }
+      & > .Polaris-ButtonGroup__Item { margin: 0; }
     }
   }
 
-  .Polaris-LegacyCard__Section--subdued {
-    padding-top: var(--p-space-300);
-    padding-bottom: var(--p-space-300);
+  & > .Polaris-LegacyCard__Header {
+    display: flex;
+    align-items: center;
+    min-height: 1.75rem;
+    padding: 0;
+    margin-bottom: var(--p-space-300);
+    overflow-wrap: anywhere;
 
-    &:last-child {
-      padding-bottom: var(--p-space-400);
+    .Polaris-Text--headingMd {
+      font-size: 0.9375rem;
+      line-height: 1.375rem;
+      letter-spacing: -0.01em;
     }
-  }
 
-  .Polaris-LegacyCard__Footer {
-    padding-top: var(--p-space-100);
-  }
+    & > .Polaris-LegacyStack {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+      gap: var(--p-space-200);
+      align-items: center;
 
-  &.Polaris-LegacyCard--withoutTitle {
-    .Polaris-LegacyCard__Section:first-child {
-      padding-top: var(--p-space-400);
+      & > .Polaris-LegacyStack__Item { margin: 0; min-width: 0; }
+      & > .Polaris-LegacyStack__Item--fill { flex: 1 1 10rem; }
     }
+
+    .Polaris-Button--plain { margin: 0; }
   }
 
-  &.Polaris-LegacyCard--borderless {
-    border: none;
-    box-shadow: none;
-
-    &::before {
-      content: none;
-    }
-  }
-}
-
-@media (min-width: 30.625em) {
-  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
-    border: none;
+  & > .Polaris-LegacyCard__Surface {
+    min-width: 0;
+    background: var(--pc-card-surface-bg);
     border-radius: var(--p-border-radius-container);
     box-shadow: var(--p-shadow-container);
 
-    &::before {
-      content: none;
+    & > .Polaris-LegacyCard__Section {
+      padding: var(--p-space-400) var(--p-space-400) var(--p-space-200);
+
+      & + .Polaris-LegacyCard__Section { padding-top: var(--p-space-200); }
+      &:last-child { padding-bottom: var(--p-space-400); }
+
+      &:first-child {
+        border-top-left-radius: var(--p-border-radius-container);
+        border-top-right-radius: var(--p-border-radius-container);
+      }
+
+      &:last-child {
+        border-bottom-left-radius: var(--p-border-radius-container);
+        border-bottom-right-radius: var(--p-border-radius-container);
+      }
+
+      &.Polaris-LegacyCard__Section--subdued {
+        padding-top: var(--p-space-300);
+        padding-bottom: var(--p-space-300);
+
+        &:last-child { padding-bottom: var(--p-space-400); }
+      }
+
+      &.Polaris-LegacyCard__Section--fullWidth { padding-inline: 0; }
+
+      &:has(> .Polaris-LegacyFilters) { padding-bottom: var(--p-space-400); }
+
+      &.Polaris-LegacyCard__Section--flush {
+        padding: 0;
+
+        img { display: block; width: 100%; }
+        &:first-child img {
+          border-top-left-radius: var(--p-border-radius-container);
+          border-top-right-radius: var(--p-border-radius-container);
+        }
+        &:last-child img {
+          border-bottom-left-radius: var(--p-border-radius-container);
+          border-bottom-right-radius: var(--p-border-radius-container);
+        }
+      }
     }
 
-    .Polaris-LegacyCard__Section:first-child {
-      border-top-left-radius: var(--p-border-radius-container);
-      border-top-right-radius: var(--p-border-radius-container);
-    }
-
-    .Polaris-LegacyCard__Section:last-child {
-      border-bottom-left-radius: var(--p-border-radius-container);
-      border-bottom-right-radius: var(--p-border-radius-container);
-    }
-
-    &.Polaris-LegacyCard--borderless {
-      box-shadow: none;
+    & > .Polaris-LegacyCard__Footer {
+      padding-top: var(--p-space-100);
+      &:first-child { padding-top: var(--p-space-400); }
     }
   }
+
+  &.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }
+
+  &.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }
 }

@@ -2,10 +2,10 @@
 
 module Polaris
   class ProgressBarComponent < Polaris::Component
-    COLOR_DEFAULT = :highlight
+    COLOR_DEFAULT = :primary
     COLOR_MAPPINGS = {
-      COLOR_DEFAULT => "Polaris-ProgressBar--colorHighlight",
-      :primary => "Polaris-ProgressBar--colorPrimary",
+      COLOR_DEFAULT => "Polaris-ProgressBar--colorPrimary",
+      :highlight => "Polaris-ProgressBar--colorHighlight",
       :success => "Polaris-ProgressBar--colorSuccess",
       :critical => "Polaris-ProgressBar--colorCritical"
     }
@@ -46,7 +46,7 @@ module Polaris
           "Polaris-ProgressBar__IndicatorAppearDone"
         )
         args[:style] = styles_list(
-          "--pc-progress-bar-duration": @animated ? "500ms" : "0ms",
+          "--pc-progress-bar-duration": @animated ? "200ms" : "0ms",
           "--pc-progress-bar-percent": @progress / 100.0
         )
       end

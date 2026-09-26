@@ -3,30 +3,77 @@ html[class~="Polaris-Summer-Editions-2023"] {
     box-shadow: var(--p-shadow-dialog);
   }
 
-  @media (min-width: 48em) {
+  @media (min-width: 48em), (pointer: fine) {
+    .Polaris-Modal-Dialog__Container { justify-content: center; }
+
     .Polaris-Modal-Dialog__Modal {
+      position: relative;
+      width: 38.75rem;
+      max-width: calc(100vw - var(--p-space-800));
+      max-height: calc(100svh - 3.75rem);
+      margin: 0 auto;
       border-radius: var(--p-border-radius-dialog);
+
+      &.Polaris-Modal-Dialog--sizeSmall { width: 23.75rem; max-width: calc(100vw - var(--p-space-800)); }
+      &.Polaris-Modal-Dialog--sizeLarge { width: 61.25rem; max-width: calc(100vw - var(--p-space-800)); }
+      &.Polaris-Modal-Dialog--limitHeight { max-height: min(37.5rem, calc(100svh - 3.75rem)); }
     }
   }
 
   .Polaris-Modal-Header {
-    --pc-box-background: var(--p-color-bg-surface) !important;
+    --pc-box-background: transparent !important;
     --pc-box-border-block-end-width: 0 !important;
     --pc-box-padding-block-start-xs: var(--p-space-400) !important;
-    --pc-box-padding-block-end-xs: var(--p-space-200) !important;
+    --pc-box-padding-block-end-xs: var(--p-space-400) !important;
+    --pc-box-padding-inline-start-xs: var(--p-space-500) !important;
 
     .Polaris-Text--root {
       font-size: 0.9375rem;
+      font-weight: var(--p-font-weight-medium);
       line-height: 1.375rem;
     }
   }
 
-  .Polaris-Modal-Section:not(:last-of-type) {
+  .Polaris-Modal__Body { min-height: 0; }
+
+  .Polaris-Modal-Section {
     border-bottom: none;
+
+    > .Polaris-Box { padding: var(--p-space-100) var(--p-space-500); }
+    + .Polaris-Modal-Section { margin-top: var(--p-space-200); }
   }
 
-  .Polaris-Modal-Footer > .Polaris-Box {
-    --pc-box-border-block-start-width: 0 !important;
+  .Polaris-Modal-Dialog__Modal:not(:has(> .Polaris-Modal-Footer)) .Polaris-Modal-Section:last-child > .Polaris-Box {
+    padding-bottom: var(--p-space-400);
+  }
+
+  .Polaris-Modal-Dialog__Modal:not(:has(> .Polaris-Modal-Header)) .Polaris-Modal-Section:first-of-type > .Polaris-Box {
+    padding-top: var(--p-space-400);
+    padding-right: var(--p-space-1200);
+  }
+
+  .Polaris-Modal-Footer {
+    flex-shrink: 0;
+
+    > .Polaris-Box {
+      --pc-box-border-block-start-width: 0 !important;
+      padding-top: var(--p-space-300);
+    }
+
+    .Polaris-LegacyStack,
+    .Polaris-ButtonGroup { margin: 0; }
+
+    .Polaris-LegacyStack__Item,
+    .Polaris-ButtonGroup__Item { margin: 0; }
+
+    .Polaris-ButtonGroup { gap: var(--p-space-200); }
+
+    .Polaris-Button:not(.Polaris-Button--primary, .Polaris-Button--plain, .Polaris-Button--destructive, .Polaris-Button--disabled) {
+      --pc-button-bg: var(--p-color-bg-surface);
+      --pc-button-bg-hover: var(--p-color-bg-surface-hover);
+      --pc-button-bg-active: var(--p-color-bg-surface-hover);
+      --pc-button-shadow: var(--p-shadow-page-button);
+    }
   }
 
   .Polaris-Modal-CloseButton {
@@ -36,19 +83,33 @@ html[class~="Polaris-Summer-Editions-2023"] {
     width: 1.75rem;
     height: 1.75rem;
     padding: var(--p-space-100);
-    margin-right: calc(var(--p-space-100) * -1);
+    margin: 0;
     border-radius: var(--p-border-radius-full);
+    background: var(--p-color-bg-surface);
+    box-shadow: var(--p-shadow-page-button);
 
-    &:hover {
-      background: var(--p-color-bg-fill-transparent-hover);
-    }
+    &:hover,
+    &:active { background: var(--p-color-bg-surface-hover); }
 
-    &:active {
-      background: var(--p-color-bg-fill-transparent-active);
-    }
+    &::after { border-radius: var(--p-border-radius-full); }
+  }
 
-    &::after {
-      border-radius: var(--p-border-radius-full);
+  .Polaris-Modal-Dialog__Modal > .Polaris-Modal-CloseButton {
+    position: absolute;
+    top: var(--p-space-200);
+    right: var(--p-space-200);
+    z-index: 1;
+  }
+
+  @media (max-width: 47.9975em) and (pointer: coarse) {
+    .Polaris-Modal-Footer {
+      .Polaris-LegacyStack__Item,
+      .Polaris-ButtonGroup,
+      .Polaris-ButtonGroup__Item,
+      .Polaris-Button { width: 100%; }
+
+      .Polaris-LegacyStack__Item--fill { display: none; }
+      .Polaris-ButtonGroup { flex-direction: column-reverse; }
     }
   }
 }

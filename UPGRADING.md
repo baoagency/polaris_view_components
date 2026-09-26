@@ -2,7 +2,7 @@
 
 ## Upgrading to `v4.0.0`
 
-Version 4 updates the styles to the new Polaris design language used in the Shopify admin (the same look as [Polaris web components](https://shopify.dev/docs/api/app-home/web-components)). Components, their arguments, and the rendered markup are unchanged, so no application code changes are required.
+Version 4 updates the styles to the new Polaris design language used in the Shopify admin (the same look as [Polaris web components](https://shopify.dev/docs/api/app-home/web-components)). Existing component helpers and arguments remain available, but rendered markup and several defaults have changed. Review custom CSS, JavaScript, and tests that depend on the component DOM before upgrading.
 
 Visual changes to review in your app:
 
@@ -14,6 +14,17 @@ Visual changes to review in your app:
 - Typography uses regular (400) body text and medium (500) headings, set in the bundled `ShopifyInter` font (the Inter fork used in the Shopify admin), with Inter as a fallback for other scripts.
 
 If you override Polaris CSS custom properties (for example `--p-color-bg-app` or `--p-color-bg-fill-brand`), check that your overrides still apply, since many tokens have new values.
+
+Markup and default changes to account for:
+
+- Cards place the header outside a new `.Polaris-LegacyCard__Surface` wrapper, which contains tabs, sections, content, and footer actions. Update direct-child selectors accordingly. Unstyled sections now have a `.Polaris-LegacyCard__Section--unstyled` class.
+- Card footer actions default to left alignment, with the primary action first. Pass `footer_action_alignment: :right` to retain the previous alignment and order. Header and section actions now use normal buttons by default; pass `plain: true` on individual actions to retain link styling.
+- Banners use new heading, message, and action wrappers. Messages always appear below a heading, and action buttons occupy a separate row. Update selectors targeting the previous top-bar or content structure.
+- Loading buttons render `.Polaris-Button__Spinner` directly inside the button, alongside `.Polaris-Button__Content`. Both button and standalone spinners now use SVG circles instead of paths.
+- Callout illustrations have a new `.Polaris-CalloutCard__Illustration` wrapper and are omitted when no illustration is provided. Secondary actions default to tertiary styling; pass `monochrome: false, remove_underline: false` to retain plain link styling.
+- Resource-item shortcut actions expose a compact overflow menu on narrow or touch layouts. Persistent actions default to tertiary styling.
+- Drop zones use new upload-content, icon, and help-text wrappers. Review any custom selectors for the previous stack layout.
+- Progress bars default to the dark `:primary` color. Pass `color: :highlight` to retain the previous blue default.
 
 ## Upgrading to `v3.0.0`
 
