@@ -7,7 +7,7 @@ module Polaris
       Polaris::ButtonComponent.new(plain: plain, monochrome: monochrome, remove_underline: remove_underline, **system_arguments)
     end
     renders_one :dismiss_button, ->(**system_arguments) do
-      render Polaris::ButtonComponent.new(plain: true, monochrome: true, remove_underline: true, "aria-label": "Dismiss card", **system_arguments) do |button|
+      render Polaris::ButtonComponent.new(**{plain: true, monochrome: true, remove_underline: true, aria: {label: "Dismiss card"}}.deep_merge(system_arguments)) do |button|
         button.with_icon(name: "XSmallIcon")
       end
     end

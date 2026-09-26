@@ -57,4 +57,13 @@ class CalloutCardComponentTest < Minitest::Test
       end
     end
   end
+
+  def test_dismiss_button_custom_label
+    render_inline(Polaris::CalloutCardComponent.new(title: "Callout Title")) do |callout|
+      callout.with_dismiss_button(url: "#", aria: {label: "Hide tip"})
+    end
+
+    assert_selector ".Polaris-CalloutCard__Dismiss .Polaris-Button[aria-label='Hide tip']", count: 1
+    assert_no_selector "[aria-label='Dismiss card']"
+  end
 end

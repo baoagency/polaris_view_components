@@ -37,25 +37,28 @@ html[class~="Polaris-Summer-Editions-2023"] {
   }
 
   /* Style header buttons and popover activators without affecting menu items. */
-  .Polaris-ActionMenu-SecondaryAction > .Polaris-Button:not(.Polaris-Button--disabled),
-  .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button:not(.Polaris-Button--disabled) {
+  .Polaris-ActionMenu-SecondaryAction > .Polaris-Button,
+  .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button {
     border-radius: var(--p-border-radius-full) !important;
     background-color: var(--p-color-bg-surface) !important;
     box-shadow: var(--p-shadow-page-button) !important;
 
-    &:is(:hover, :focus) {
-      background-color: var(--p-color-bg-surface-hover) !important;
-      box-shadow: var(--p-shadow-page-button) !important;
+    &:not(.Polaris-Button--disabled) {
+      &:is(:hover, :focus) {
+        background-color: var(--p-color-bg-surface-hover) !important;
+        box-shadow: var(--p-shadow-page-button) !important;
+      }
+
+      &:active {
+        background-color: var(--p-color-bg-surface-active) !important;
+        box-shadow: var(--p-shadow-page-button) !important;
+      }
     }
 
-    &:active {
-      background-color: var(--p-color-bg-surface-active) !important;
-      box-shadow: var(--p-shadow-page-button) !important;
-    }
-
-    &[aria-disabled='true'] {
-      background-color: var(--p-color-bg-surface) !important;
+    &.Polaris-Button--disabled {
       color: var(--p-color-text-disabled);
+
+      svg { fill: var(--p-color-icon-disabled); }
     }
   }
 

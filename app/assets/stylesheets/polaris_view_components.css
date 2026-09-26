@@ -1061,6 +1061,7 @@
   }
 }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
   --pc-card-surface-bg: var(--p-color-bg-surface);
+  --pc-card-radius: var(--p-border-radius-container);
 
   background: transparent;
   border: none;
@@ -1089,30 +1090,40 @@
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Header > .Polaris-LegacyStack > .Polaris-LegacyStack__Item { margin: 0; min-width: 0; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Header > .Polaris-LegacyStack > .Polaris-LegacyStack__Item--fill { flex: 1 1 10rem; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Header .Polaris-Button--plain { margin: 0; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface {
     min-width: 0;
     background: var(--pc-card-surface-bg);
-    border-radius: var(--p-border-radius-container);
+    border-radius: var(--pc-card-radius);
     box-shadow: var(--p-shadow-container);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section {
       padding: var(--p-space-400) var(--p-space-400) var(--p-space-200);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section + .Polaris-LegacyCard__Section { padding-top: var(--p-space-200); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section:last-child { padding-bottom: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section:first-child {
-        border-top-left-radius: var(--p-border-radius-container);
-        border-top-right-radius: var(--p-border-radius-container);
+        border-top-left-radius: var(--pc-card-radius);
+        border-top-right-radius: var(--pc-card-radius);
       }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section:last-child {
-        border-bottom-left-radius: var(--p-border-radius-container);
-        border-bottom-right-radius: var(--p-border-radius-container);
+        border-bottom-left-radius: var(--pc-card-radius);
+        border-bottom-right-radius: var(--pc-card-radius);
       }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--subdued {
         padding-top: var(--p-space-300);
         padding-bottom: var(--p-space-300);
       }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--subdued:last-child { padding-bottom: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--fullWidth { padding-inline: 0; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section:has(> .Polaris-LegacyFilters) { padding-bottom: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--flush {
         padding: 0;
       }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--flush img { display: block; width: 100%; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--flush:first-child img {
-          border-top-left-radius: var(--p-border-radius-container);
-          border-top-right-radius: var(--p-border-radius-container);
+          border-top-left-radius: var(--pc-card-radius);
+          border-top-right-radius: var(--pc-card-radius);
         }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--flush:last-child img {
-          border-bottom-left-radius: var(--p-border-radius-container);
-          border-bottom-right-radius: var(--p-border-radius-container);
+          border-bottom-left-radius: var(--pc-card-radius);
+          border-bottom-right-radius: var(--pc-card-radius);
         }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer {
       padding-top: var(--p-space-100);
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer:first-child { padding-top: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }/* Checkbox and radio button */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Checkbox__Backdrop,
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer:first-child { padding-top: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }/* Pages have no side padding on small screens, so cards run edge to edge. */@media (max-width: 30.6225em) {
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
+    --pc-card-radius: 0;
+  }
+
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Header { padding-inline: var(--p-space-400); }
+
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner.Polaris-Banner--withinPage {
+    border-radius: 0;
+  }
+}/* Checkbox and radio button */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Checkbox__Backdrop,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-RadioButton__Backdrop {
     border: none;
     background-color: var(--p-color-input-bg-surface);
@@ -1371,7 +1382,7 @@
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled::after { border-color: var(--p-color-bg-surface-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled .Polaris-DropZone-FileUpload__Button {
       background: var(--p-color-bg-fill-disabled);
       color: var(--p-color-text-disabled);
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled .Polaris-DropZone-FileUpload__HelpText { color: var(--p-color-text-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled .Polaris-DropZone-FileUpload__UploadIcon .Polaris-Icon { fill: var(--p-color-icon-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-FooterHelp {
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled .Polaris-DropZone-FileUpload__HelpText { color: var(--p-color-text-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled .Polaris-DropZone-FileUpload__UploadIcon svg { fill: var(--p-color-icon-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-FooterHelp {
   flex-direction: column;
   align-items: center;
   margin: 0;
@@ -1662,21 +1673,20 @@
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Page-Header__BreadcrumbWrapper :is(a, button):active {
       background-color: var(--p-color-bg-surface-active);
       box-shadow: var(--p-shadow-page-button) !important;
-    }/* Style header buttons and popover activators without affecting menu items. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button:not(.Polaris-Button--disabled),
-  html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button:not(.Polaris-Button--disabled) {
+    }/* Style header buttons and popover activators without affecting menu items. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button,
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button {
     border-radius: var(--p-border-radius-full) !important;
     background-color: var(--p-color-bg-surface) !important;
     box-shadow: var(--p-shadow-page-button) !important;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button:not(.Polaris-Button--disabled):is(:hover, :focus), html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button:not(.Polaris-Button--disabled):is(:hover, :focus) {
-      background-color: var(--p-color-bg-surface-hover) !important;
-      box-shadow: var(--p-shadow-page-button) !important;
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button:not(.Polaris-Button--disabled):active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button:not(.Polaris-Button--disabled):active {
-      background-color: var(--p-color-bg-surface-active) !important;
-      box-shadow: var(--p-shadow-page-button) !important;
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button:not(.Polaris-Button--disabled)[aria-disabled='true'], html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button:not(.Polaris-Button--disabled)[aria-disabled='true'] {
-      background-color: var(--p-color-bg-surface) !important;
+        background-color: var(--p-color-bg-surface-hover) !important;
+        box-shadow: var(--p-shadow-page-button) !important;
+      }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button:not(.Polaris-Button--disabled):active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button:not(.Polaris-Button--disabled):active {
+        background-color: var(--p-color-bg-surface-active) !important;
+        box-shadow: var(--p-shadow-page-button) !important;
+      }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button.Polaris-Button--disabled, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button.Polaris-Button--disabled {
       color: var(--p-color-text-disabled);
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction--destructive > .Polaris-Button:not(.Polaris-Button--disabled) {
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > .Polaris-Button.Polaris-Button--disabled svg, html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button.Polaris-Button--disabled svg { fill: var(--p-color-icon-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction--destructive > .Polaris-Button:not(.Polaris-Button--disabled) {
     color: #7e100c !important;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionMenu-SecondaryAction--destructive > .Polaris-Button:not(.Polaris-Button--disabled) svg {
       fill: currentColor;

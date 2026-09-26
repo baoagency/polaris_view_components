@@ -25,6 +25,7 @@ Markup and default changes to account for:
 - Resource-item shortcut actions expose a compact overflow menu on narrow or touch layouts. Persistent actions default to tertiary styling.
 - Drop zones use new upload-content, icon, and help-text wrappers. Review any custom selectors for the previous stack layout.
 - Progress bars default to the dark `:primary` color. Pass `color: :highlight` to retain the previous blue default.
+- Modals without a title now show a close button in the top-right corner, matching titled modals.
 
 ## Upgrading to `v3.0.0`
 

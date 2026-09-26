@@ -18,17 +18,25 @@ export default class extends Controller {
   };
 
   connect() {
-    if (this.appendToBodyValue) {
-      const clonedTemplate = this.templateTarget.content.cloneNode(true);
-      this.target = clonedTemplate.firstElementChild;
-      document.body.appendChild(clonedTemplate);
+    // Popovers appended to the body are created on first open, so long lists don't add a popover per row up front.
+    if (!this.appendToBodyValue) {
+      this.target.style.display = "none";
     }
-
-    this.target.style.display = "none";
 
     if (this.activeValue) {
       this.show();
     }
+  }
+
+  ensureTarget() {
+    if (this.appendToBodyValue && !this._target) {
+      const clonedTemplate = this.templateTarget.content.cloneNode(true);
+      this.target = clonedTemplate.firstElementChild;
+      this.target.style.display = "none";
+      document.body.appendChild(clonedTemplate);
+    }
+
+    return this.target;
   }
 
   disconnect() {
@@ -66,6 +74,8 @@ export default class extends Controller {
   }
 
   toggle() {
+    this.ensureTarget();
+
     if (this.target.classList.contains(this.openClass)) {
       this.forceHide();
     } else {
@@ -74,6 +84,7 @@ export default class extends Controller {
   }
 
   show() {
+    this.ensureTarget();
     this.target.style.display = "block";
     this.target.classList.remove(this.closedClass);
     this.target.classList.add(this.openClass);
@@ -81,6 +92,7 @@ export default class extends Controller {
   }
 
   hide(event) {
+    if (!this.target) return;
     if (this.element.contains(event.target)) return;
     if (this.target.classList.contains(this.closedClass)) return;
     if (this.appendToBodyValue && this.target.contains(event.target)) return;
@@ -89,6 +101,8 @@ export default class extends Controller {
   }
 
   forceHide() {
+    if (!this.target) return;
+
     this.target.style.display = "none";
     this.target.classList.remove(this.openClass);
     this.target.classList.add(this.closedClass);
