@@ -36,8 +36,9 @@ html[class~="Polaris-Summer-Editions-2023"] {
     }
   }
 
-  /* Header actions */
-  .Polaris-ActionMenu-SecondaryAction :is(a, button) {
+  /* Style header buttons and popover activators without affecting menu items. */
+  .Polaris-ActionMenu-SecondaryAction > .Polaris-Button:not(.Polaris-Button--disabled),
+  .Polaris-ActionMenu-SecondaryAction > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button:not(.Polaris-Button--disabled) {
     border-radius: var(--p-border-radius-full) !important;
     background-color: var(--p-color-bg-surface) !important;
     box-shadow: var(--p-shadow-page-button) !important;
@@ -58,7 +59,7 @@ html[class~="Polaris-Summer-Editions-2023"] {
     }
   }
 
-  .Polaris-ActionMenu-SecondaryAction--destructive :is(a, button) {
+  .Polaris-ActionMenu-SecondaryAction--destructive > .Polaris-Button:not(.Polaris-Button--disabled) {
     color: #7e100c !important;
 
     svg {
@@ -66,7 +67,7 @@ html[class~="Polaris-Summer-Editions-2023"] {
     }
   }
 
-  .Polaris-ActionMenu-RollupActions__RollupActivator button[type='button'] {
+  .Polaris-ActionMenu-RollupActions__RollupActivator > [data-controller~='polaris-popover'] > [data-polaris-popover-target='activator'] > .Polaris-Button {
     border-radius: var(--p-border-radius-full);
     background: var(--p-color-bg-surface);
     box-shadow: var(--p-shadow-page-button);
@@ -81,11 +82,13 @@ html[class~="Polaris-Summer-Editions-2023"] {
     }
   }
 
-  .Polaris-Page-Header__PaginationWrapper [data-buttongroup-segmented='true'] {
+  .Polaris-Page-Header__PaginationWrapper .Polaris-ButtonGroup {
+    flex-wrap: nowrap;
+    margin: 0;
     gap: var(--p-space-100);
 
-    .Polaris-ButtonGroup__Item:not(:first-child) {
-      margin-left: 0;
+    .Polaris-ButtonGroup__Item {
+      margin: 0;
     }
 
     .Polaris-Button,

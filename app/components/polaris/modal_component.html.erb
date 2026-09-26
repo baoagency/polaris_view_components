@@ -50,6 +50,12 @@
               <% end %>
             <% end %>
           <% end %>
+        <% elsif close_button.present? %>
+          <%= close_button %>
+        <% else %>
+          <%= render(Polaris::BaseComponent.new(**close_button_arguments)) do %>
+            <%= polaris_icon(name: "XIcon", color: :base) %>
+          <% end %>
         <% end %>
 
         <% if @scrollable %>

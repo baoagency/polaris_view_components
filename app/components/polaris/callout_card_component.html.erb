@@ -1,11 +1,5 @@
 <%= render Polaris::BaseComponent.new(**@system_arguments) do %>
   <div class="<%= container_classes %>">
-    <% if dismiss_button %>
-      <div class="Polaris-CalloutCard__Dismiss">
-        <%= dismiss_button %>
-      </div>
-    <% end %>
-
     <div class="Polaris-LegacyCard__Section">
       <div class="Polaris-CalloutCard">
         <div class="Polaris-CalloutCard__Content">
@@ -39,8 +33,18 @@
           <% end %>
         </div>
 
-        <img class="<%= image_classes %>" src="<%= @illustration %>" alt="">
+        <% if @illustration.present? %>
+          <div class="Polaris-CalloutCard__Illustration">
+            <img class="<%= image_classes %>" src="<%= @illustration %>" alt="">
+          </div>
+        <% end %>
       </div>
+
+      <% if dismiss_button %>
+        <div class="Polaris-CalloutCard__Dismiss">
+          <%= dismiss_button %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

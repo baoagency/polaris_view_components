@@ -3,11 +3,11 @@
 module Polaris
   class CalloutCardComponent < Polaris::Component
     renders_one :primary_action, Polaris::ButtonComponent
-    renders_one :secondary_action, ->(plain: true, **system_arguments) do
-      Polaris::ButtonComponent.new(plain: plain, **system_arguments)
+    renders_one :secondary_action, ->(plain: true, monochrome: true, remove_underline: true, **system_arguments) do
+      Polaris::ButtonComponent.new(plain: plain, monochrome: monochrome, remove_underline: remove_underline, **system_arguments)
     end
     renders_one :dismiss_button, ->(**system_arguments) do
-      render Polaris::ButtonComponent.new(plain: true, **system_arguments) do |button|
+      render Polaris::ButtonComponent.new(plain: true, monochrome: true, remove_underline: true, "aria-label": "Dismiss card", **system_arguments) do |button|
         button.with_icon(name: "XSmallIcon")
       end
     end
@@ -30,6 +30,7 @@ module Polaris
 
     def container_classes
       class_names(
+        "Polaris-LegacyCard__Surface",
         "Polaris-CalloutCard__Container",
         "Polaris-CalloutCard--hasDismiss": dismiss_button.present?
       )
