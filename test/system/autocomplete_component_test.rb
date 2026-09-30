@@ -139,6 +139,41 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     assert_no_selector '[data-polaris-autocomplete-target="option"][data-label="Slow"]'
   end
 
+  def test_remote_autocomplete_uses_application_request_interceptor
+    with_preview("autocomplete_component/remote")
+
+    # Register interceptor through the application's @rails/request.js import
+    # and capture headers of outgoing fetch requests.
+    page.evaluate_async_script <<~JAVASCRIPT
+      const done = arguments[0]
+      window.capturedRequestHeaders = []
+      const originalFetch = window.fetch
+      window.fetch = (url, options = {}) => {
+        window.capturedRequestHeaders.push(options.headers || {})
+        return originalFetch(url, options)
+      }
+      import("@rails/request.js").then(({ RequestInterceptor }) => {
+        RequestInterceptor.register(async (request) => {
+          request.addHeader("Authorization", "Bearer test-token")
+        })
+        done()
+      })
+    JAVASCRIPT
+
+    remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
+    within remote_suggestions do
+      find(".Polaris-TextField__Input").set "Vint"
+    end
+
+    within ".Polaris-Popover__PopoverOverlay--open" do
+      assert_selector ".Polaris-OptionList-Option", text: "Vintage"
+    end
+
+    headers = page.evaluate_script("window.capturedRequestHeaders")
+    assert_equal 1, headers.size
+    assert_equal "Bearer test-token", headers.first["Authorization"]
+  end
+
   def test_empty_state
     with_preview("autocomplete_component/empty_state")
 
