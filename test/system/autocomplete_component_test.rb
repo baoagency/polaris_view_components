@@ -142,23 +142,29 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
   def test_remote_autocomplete_uses_application_request_interceptor
     with_preview("autocomplete_component/remote")
 
-    # Register interceptor through the application's @rails/request.js import
-    # and capture headers of outgoing fetch requests.
-    page.evaluate_async_script <<~JAVASCRIPT
-      const done = arguments[0]
+    # Capture headers of outgoing fetch requests and register an interceptor
+    # through the application's @rails/request.js import.
+    page.execute_script <<~JAVASCRIPT
       window.capturedRequestHeaders = []
       const originalFetch = window.fetch
       window.fetch = (url, options = {}) => {
         window.capturedRequestHeaders.push(options.headers || {})
         return originalFetch(url, options)
       }
-      import("@rails/request.js").then(({ RequestInterceptor }) => {
+
+      const script = document.createElement("script")
+      script.type = "module"
+      script.textContent = `
+        import { RequestInterceptor } from "@rails/request.js"
+
         RequestInterceptor.register(async (request) => {
           request.addHeader("Authorization", "Bearer test-token")
         })
-        done()
-      })
+        document.documentElement.classList.add("request-interceptor-registered")
+      `
+      document.head.appendChild(script)
     JAVASCRIPT
+    assert_selector "html.request-interceptor-registered"
 
     remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
     within remote_suggestions do
