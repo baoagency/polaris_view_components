@@ -139,6 +139,47 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     assert_no_selector '[data-polaris-autocomplete-target="option"][data-label="Slow"]'
   end
 
+  def test_remote_autocomplete_uses_application_request_interceptor
+    with_preview("autocomplete_component/remote")
+
+    # Capture headers of outgoing fetch requests and register an interceptor
+    # through the application's @rails/request.js import.
+    page.execute_script <<~JAVASCRIPT
+      window.capturedRequestHeaders = []
+      const originalFetch = window.fetch
+      window.fetch = (url, options = {}) => {
+        window.capturedRequestHeaders.push(options.headers || {})
+        return originalFetch(url, options)
+      }
+
+      const script = document.createElement("script")
+      script.type = "module"
+      script.textContent = `
+        import { RequestInterceptor } from "@rails/request.js"
+
+        RequestInterceptor.register(async (request) => {
+          request.addHeader("Authorization", "Bearer test-token")
+        })
+        document.documentElement.classList.add("request-interceptor-registered")
+      `
+      document.head.appendChild(script)
+    JAVASCRIPT
+    assert_selector "html.request-interceptor-registered"
+
+    remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
+    within remote_suggestions do
+      find(".Polaris-TextField__Input").set "Vint"
+    end
+
+    within ".Polaris-Popover__PopoverOverlay--open" do
+      assert_selector ".Polaris-OptionList-Option", text: "Vintage"
+    end
+
+    headers = page.evaluate_script("window.capturedRequestHeaders")
+    assert_equal 1, headers.size
+    assert_equal "Bearer test-token", headers.first["Authorization"]
+  end
+
   def test_empty_state
     with_preview("autocomplete_component/empty_state")
 
