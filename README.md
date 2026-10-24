@@ -44,7 +44,7 @@ Check out [UPGRADING.md](UPGRADING.md) for upgrade instructions.
 To get started:
 
 1. Run: `bundle install`
-1. Run: `pnpm install`
+1. Run: `pnpm install --frozen-lockfile`
 1. Run: `bin/dev`
 
 It will open the demo app with component previews on `localhost:4000`. You can change components and they will be updated on page reload. Component previews are located in `demo/app/previews`.

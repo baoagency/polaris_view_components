@@ -1,0 +1,22 @@
+# Layer 0 supply-chain defaults for every pnpm install (local, CI, agents).
+# Not a multi-package workspace; the root package is included by default.
+
+# Fail the install if any dependency tries to run a build script
+# that hasn't been explicitly allowed below
+strictDepBuilds: true
+
+# Fail if a package's trust level drops compared with earlier releases
+trustPolicy: no-downgrade
+
+# Only direct dependencies may come from git repos or tarball URLs
+blockExoticSubdeps: true
+
+# Don't install any version published less than 2 weeks ago
+minimumReleaseAge: 20160 # 14 days, minutes
+
+# Reviewed list of packages allowed (true) or denied (false) to run
+# install/build scripts. Unlisted packages are treated as unreviewed
+# and fail the install under strictDepBuilds.
+# Current tree: no dependency ships an install/postinstall script that
+# needs to run (only unused `prepare` scripts). Nothing to allow.
+allowBuilds: {}
