@@ -164,7 +164,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (6.4.2)
+    puma (8.0.2)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.4)
@@ -274,7 +274,7 @@ DEPENDENCIES
   listen
   lookbook (~> 2.3)
   polaris_view_components!
-  puma (~> 6.0)
+  puma (~> 8.0)
   rails (~> 8.1)
   sprockets-rails
   sqlite3
