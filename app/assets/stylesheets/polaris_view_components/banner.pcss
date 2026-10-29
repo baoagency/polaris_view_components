@@ -7,7 +7,6 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner {
   --pc-banner-action-hover: var(--p-color-bg-surface-info-active);
 
   position: relative;
-  container-type: inline-size;
   padding: 0;
   border: none;
   border-radius: var(--p-border-radius-container);
@@ -30,7 +29,7 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner {
   &.Polaris-Banner--statusWarning {
     --pc-banner-bg: var(--p-color-bg-surface-caution);
     --pc-banner-title: var(--p-color-text-caution);
-    --pc-banner-text: #573b00;
+    --pc-banner-text: #574100;
     --pc-banner-icon: var(--p-color-icon-caution);
     --pc-banner-action: var(--p-color-bg-surface-caution-hover);
     --pc-banner-action-hover: var(--p-color-bg-surface-caution-active);
@@ -38,7 +37,7 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner {
 
   &.Polaris-Banner--statusCritical {
     --pc-banner-bg: var(--p-color-bg-surface-critical);
-    --pc-banner-title: #680000;
+    --pc-banner-title: var(--p-color-text-critical-active);
     --pc-banner-text: #7e100c;
     --pc-banner-icon: var(--p-color-icon-critical);
     --pc-banner-action: var(--p-color-bg-surface-critical-hover);
@@ -150,12 +149,5 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner {
 
   @media (pointer: coarse) {
     .Polaris-Banner__DismissButton { opacity: 1; }
-  }
-
-  @container (max-width: 30rem) {
-    .Polaris-Banner__Actions {
-      .Polaris-ButtonGroup__Item { flex: 1 1 0; min-width: 0; }
-      .Polaris-Button { width: 100%; }
-    }
   }
 }

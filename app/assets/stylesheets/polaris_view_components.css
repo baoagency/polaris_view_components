@@ -270,21 +270,21 @@
   --p-color-bg-surface-brand-active: #ebebeb;
   --p-color-bg-surface-brand-selected: #ebebeb;
   --p-color-bg-surface-inverse: #1b1b1b;
-  --p-color-bg-surface-info: #d0f6ff;
+  --p-color-bg-surface-info: oklch(0.95 0.0448 212.63);
   --p-color-bg-surface-info-hover: #b2e9f6;
-  --p-color-bg-surface-info-active: #95e7fc;
-  --p-color-bg-surface-success: #e6fdd4;
-  --p-color-bg-surface-success-hover: #ccf5ae;
-  --p-color-bg-surface-success-active: #bbf88f;
-  --p-color-bg-surface-caution: #ffefcc;
-  --p-color-bg-surface-caution-hover: #ffe4a8;
-  --p-color-bg-surface-caution-active: #ffe08f;
-  --p-color-bg-surface-warning: #ffeddb;
-  --p-color-bg-surface-warning-hover: #ffe3c7;
-  --p-color-bg-surface-warning-active: #ffd1a5;
-  --p-color-bg-surface-critical: #ffe7e6;
-  --p-color-bg-surface-critical-hover: #ffd0cc;
-  --p-color-bg-surface-critical-active: #ffb3af;
+  --p-color-bg-surface-info-active: oklch(0.8821 0.0848 215.71);
+  --p-color-bg-surface-success: oklch(0.9672 0.0599 131.73);
+  --p-color-bg-surface-success-hover: oklch(0.9241 0.1033 132.55);
+  --p-color-bg-surface-success-active: oklch(0.9147 0.1488 133.17);
+  --p-color-bg-surface-caution: oklch(0.9662 0.0722 97.61);
+  --p-color-bg-surface-caution-hover: oklch(0.9468 0.1191 98.52);
+  --p-color-bg-surface-caution-active: oklch(0.9325 0.1496 98.46);
+  --p-color-bg-surface-warning: oklch(0.9557 0.035 67.45);
+  --p-color-bg-surface-warning-hover: oklch(0.9316 0.0545 67.18);
+  --p-color-bg-surface-warning-active: oklch(0.8907 0.0887 65.7);
+  --p-color-bg-surface-critical: oklch(0.947 0.03 20.5);
+  --p-color-bg-surface-critical-hover: oklch(0.897 0.0609 23.88);
+  --p-color-bg-surface-critical-active: oklch(0.8382 0.0956 22.58);
 
   /* Fills */
   --p-color-bg-fill-disabled: #00000008;
@@ -294,6 +294,7 @@
   --p-color-bg-fill-tertiary: #ddd;
   --p-color-bg-fill-tertiary-hover: #d0d0d0;
   --p-color-bg-fill-tertiary-active: #c0c0c0;
+  --p-color-bg-fill-transparent: #0000000d;
   --p-color-bg-fill-transparent-hover: #00000014;
   --p-color-bg-fill-transparent-active: #00000021;
   --p-color-bg-fill-transparent-selected: #00000021;
@@ -306,61 +307,62 @@
   --p-color-bg-fill-brand-selected: #101010;
   --p-color-bg-fill-brand-disabled: #00000021;
   --p-color-bg-fill-inverse: #1b1b1b;
-  --p-color-bg-fill-inverse-hover: #303030;
+  --p-color-bg-fill-inverse-hover: #4a4a4a;
   --p-color-bg-fill-inverse-active: #606060;
   --p-color-bg-fill-info: #5bc9eb;
   --p-color-bg-fill-info-hover: #3dbce5;
-  --p-color-bg-fill-info-active: #00b0de;
-  --p-color-bg-fill-info-secondary: #7de3fe;
-  --p-color-bg-fill-success: #5ccb00;
-  --p-color-bg-fill-success-hover: #4eac00;
-  --p-color-bg-fill-success-active: #408e00;
-  --p-color-bg-fill-success-secondary: #aafb6a;
-  --p-color-bg-fill-caution: #ffb837;
-  --p-color-bg-fill-caution-hover: #ffac07;
-  --p-color-bg-fill-caution-active: #de9500;
-  --p-color-bg-fill-caution-secondary: #ffdc72;
+  --p-color-bg-fill-info-active: oklch(0.7045 0.1543 225.11);
+  --p-color-bg-fill-info-secondary: oklch(0.8637 0.1018 216.95);
+  --p-color-bg-fill-success: #8ae156;
+  --p-color-bg-fill-success-hover: #75d63b;
+  --p-color-bg-fill-success-active: oklch(0.7477 0.2647 137.07);
+  --p-color-bg-fill-success-secondary: oklch(0.9053 0.1942 133.49);
+  --p-color-bg-fill-caution: #ffdd34;
+  --p-color-bg-fill-caution-hover: oklch(0.8849 0.2086 94.82);
+  --p-color-bg-fill-caution-active: oklch(0.7777 0.1833 90.68);
+  --p-color-bg-fill-caution-secondary: oklch(0.9167 0.1785 98);
   --p-color-bg-fill-warning: #ff8a3e;
-  --p-color-bg-fill-warning-hover: #ff771c;
-  --p-color-bg-fill-warning-active: #f46800;
-  --p-color-bg-fill-warning-secondary: #ffbf80;
-  --p-color-bg-fill-critical: #de0004;
-  --p-color-bg-fill-critical-hover: #d40004;
-  --p-color-bg-fill-critical-active: #b80004;
-  --p-color-bg-fill-critical-selected: #b80004;
-  --p-color-bg-fill-critical-secondary: #ffd0cc;
+  --p-color-bg-fill-warning-hover: oklch(0.7194 0.2136 47.51);
+  --p-color-bg-fill-warning-active: oklch(0.6819 0.2132 45.87);
+  --p-color-bg-fill-warning-secondary: oklch(0.8497 0.1229 65.04);
+  --p-color-bg-fill-critical: oklch(0.5656 0.2454 28.92);
+  --p-color-bg-fill-critical-hover: oklch(0.5462 0.2365 28.88);
+  --p-color-bg-fill-critical-active: oklch(0.4913 0.2122 28.82);
+  --p-color-bg-fill-critical-selected: oklch(0.4913 0.2122 28.82);
+  --p-color-bg-fill-critical-secondary: oklch(0.897 0.0609 23.88);
 
   /* Text */
   --p-color-text: #101010;
   --p-color-text-secondary: #4a4a4a;
   --p-color-text-disabled: #a6a6a6;
-  --p-color-text-link: #0048e3;
-  --p-color-text-link-hover: #0040ca;
+  --p-color-text-link: oklch(0.484 0.2413 262.8);
+  --p-color-text-link-hover: oklch(0.4441 0.2201 262.81);
   --p-color-text-link-active: #0d3faa;
-  --p-color-text-link-inverse: #7ea6ff;
+  --p-color-text-link-inverse: oklch(0.734 0.1449 264.63);
   --p-color-text-brand: #101010;
   --p-color-text-brand-hover: #101010;
-  --p-color-text-inverse: #fff;
+  --p-color-text-inverse: #fcfcfc;
   --p-color-text-inverse-secondary: #a6a6a6;
-  --p-color-text-info: #004253;
-  --p-color-text-info-hover: #004253;
-  --p-color-text-info-active: #002c38;
-  --p-color-text-info-on-bg-fill: #002c38;
-  --p-color-text-success: #183700;
-  --p-color-text-success-hover: #0f2400;
-  --p-color-text-success-active: #0f2400;
-  --p-color-text-success-on-bg-fill: #0f2400;
-  --p-color-text-caution: #432e00;
-  --p-color-text-caution-hover: #312100;
-  --p-color-text-caution-active: #312100;
-  --p-color-text-caution-on-bg-fill: #312100;
-  --p-color-text-warning: #532100;
-  --p-color-text-warning-hover: #381600;
-  --p-color-text-warning-active: #381600;
-  --p-color-text-warning-on-bg-fill: #381600;
-  --p-color-text-critical: #d40004;
-  --p-color-text-critical-hover: #b80004;
-  --p-color-text-critical-active: #8e0003;
+  --p-color-text-info: oklch(0.2715 0.0576 221.37);
+  --p-color-text-info-hover: oklch(0.2715 0.0576 221.37);
+  --p-color-text-info-active: oklch(0.2715 0.0576 221.37);
+  --p-color-text-info-on-bg-fill: oklch(0.2715 0.0576 221.37);
+  --p-color-text-success: oklch(0.2334 0.0796 134.14);
+  --p-color-text-success-hover: oklch(0.2334 0.0796 134.14);
+  --p-color-text-success-active: oklch(0.2334 0.0796 134.14);
+  --p-color-text-success-on-bg-fill: oklch(0.2334 0.0796 134.14);
+  --p-color-text-caution: oklch(0.2708 0.0638 90.28);
+  --p-color-text-caution-hover: oklch(0.2708 0.0638 90.28);
+  --p-color-text-caution-active: oklch(0.2708 0.0638 90.28);
+  --p-color-text-caution-on-bg-fill: oklch(0.2708 0.0638 90.28);
+  --p-color-text-warning: oklch(0.2475 0.0726 51.49);
+  --p-color-text-warning-hover: oklch(0.2475 0.0726 51.49);
+  --p-color-text-warning-active: oklch(0.2475 0.0726 51.49);
+  --p-color-text-warning-on-bg-fill: oklch(0.2475 0.0726 51.49);
+  --p-color-text-critical: oklch(0.5462 0.2365 28.88);
+  --p-color-text-critical-hover: oklch(0.4913 0.2122 28.82);
+  --p-color-text-critical-active: oklch(0.2121 0.0942 30.9);
+  --p-color-text-critical-secondary: #7e100c;
   --p-color-text-critical-on-bg-fill: #fff;
 
   /* Borders */
@@ -369,14 +371,14 @@
   --p-color-border-disabled: #f7f7f7;
   --p-color-border-secondary: #f2f2f2;
   --p-color-border-tertiary: #c0c0c0;
-  --p-color-border-focus: #4680ff;
+  --p-color-border-focus: oklch(0.6289 0.2036 263.44);
   --p-color-border-brand: #d0d0d0;
-  --p-color-border-info: #7de3fe;
-  --p-color-border-success: #bbf88f;
-  --p-color-border-caution: #ffe4a8;
-  --p-color-border-warning: #ffe3c7;
-  --p-color-border-critical: #e80004;
-  --p-color-border-critical-secondary: #ff9492;
+  --p-color-border-info: oklch(0.8637 0.1018 216.95);
+  --p-color-border-success: oklch(0.9147 0.1488 133.17);
+  --p-color-border-caution: oklch(0.9468 0.1191 98.52);
+  --p-color-border-warning: oklch(0.9316 0.0545 67.18);
+  --p-color-border-critical: oklch(0.5849 0.2543 28.97);
+  --p-color-border-critical-secondary: oklch(0.7794 0.1304 21.97);
   --p-color-border-inverse: #606060;
   --p-color-border-inverse-hover: #c0c0c0;
   --p-color-border-inverse-active: #d0d0d0;
@@ -390,12 +392,12 @@
   --p-color-icon-secondary-hover: #4a4a4a;
   --p-color-icon-secondary-active: #303030;
   --p-color-icon-brand: #0a0a0a;
-  --p-color-icon-inverse: #d0d0d0;
-  --p-color-icon-info: #00b0de;
-  --p-color-icon-success: #5ccb00;
-  --p-color-icon-caution: #ffac07;
-  --p-color-icon-warning: #ff771c;
-  --p-color-icon-critical: #e80004;
+  --p-color-icon-inverse: #fcfcfc;
+  --p-color-icon-info: oklch(0.7045 0.1543 225.11);
+  --p-color-icon-success: oklch(0.7477 0.2647 137.07);
+  --p-color-icon-caution: oklch(0.8849 0.2086 94.82);
+  --p-color-icon-warning: oklch(0.7194 0.2136 47.51);
+  --p-color-icon-critical: oklch(0.5849 0.2543 28.97);
 
   /* Inputs */
   --p-color-input-bg-surface: #fff;
@@ -403,21 +405,25 @@
   --p-color-input-bg-surface-active: #fff;
   --p-color-input-border: #8c8c8c;
   --p-color-input-border-hover: #606060;
-  --p-color-input-border-active: #4680ff;
+  --p-color-input-border-active: oklch(0.6289 0.2036 263.44);
 
   /* Avatars */
   --p-color-avatar-bg-fill: #a6a6a6;
   --p-color-avatar-text-on-bg-fill: #101010;
-  --p-color-avatar-one-bg-fill: #eb2abb;
+  --p-color-avatar-one-bg-fill: oklch(0.6465 0.2575 341.25);
   --p-color-avatar-one-text-on-bg-fill: #fff;
-  --p-color-avatar-two-bg-fill: #5ccb00;
+  --p-color-avatar-two-bg-fill: oklch(0.7477 0.2647 137.07);
   --p-color-avatar-two-text-on-bg-fill: #fff;
-  --p-color-avatar-three-bg-fill: #00b0de;
+  --p-color-avatar-three-bg-fill: oklch(0.7045 0.1543 225.11);
   --p-color-avatar-three-text-on-bg-fill: #fff;
-  --p-color-avatar-four-bg-fill: #0051fc;
+  --p-color-avatar-four-bg-fill: oklch(0.5238 0.2625 262.78);
   --p-color-avatar-four-text-on-bg-fill: #fff;
-  --p-color-avatar-five-bg-fill: #e80004;
+  --p-color-avatar-five-bg-fill: oklch(0.5849 0.2543 28.97);
   --p-color-avatar-five-text-on-bg-fill: #fff;
+  --p-color-avatar-six-bg-fill: oklch(0.8849 0.2086 94.82);
+  --p-color-avatar-six-text-on-bg-fill: #fff;
+  --p-color-avatar-seven-bg-fill: oklch(0.5169 0.2701 285.54);
+  --p-color-avatar-seven-text-on-bg-fill: #fff;
 
   /* Shadows */
   --p-shadow-container: 0 0 0.125rem 0 rgba(0, 0, 0, 0.24), 0 0.125rem 0.75rem 0 rgba(0, 0, 0, 0.02), 0 0.25rem 1rem 0 rgba(0, 0, 0, 0.02), 0 0.25rem 3rem 0 rgba(0, 0, 0, 0.02);
@@ -527,6 +533,23 @@
   --p-color-text-interactive-active: var(--p-color-text-link-active);
   --p-color-border-interactive: var(--p-color-border-focus);
   --p-color-icon-interactive: var(--p-color-text-link);
+  --p-color-icon-interactive-hover: var(--p-color-text-link-hover);
+  --p-color-icon-interactive-active: var(--p-color-text-link-active);
+  --p-color-text-emphasis: var(--p-color-text-link);
+  --p-color-text-emphasis-hover: var(--p-color-text-link-hover);
+  --p-color-text-emphasis-active: var(--p-color-text-link-active);
+  --p-color-icon-emphasis: var(--p-color-text-link);
+  --p-color-icon-emphasis-hover: var(--p-color-text-link-hover);
+  --p-color-icon-emphasis-active: var(--p-color-text-link-active);
+  --p-color-border-interactive-hover: var(--p-color-border-focus);
+  --p-color-border-interactive-active: var(--p-color-border-focus);
+  --p-color-border-emphasis-hover: var(--p-color-text-link-hover);
+  --p-color-border-info-subdued: var(--p-color-border-info);
+  --p-color-border-success-subdued: var(--p-color-border-success);
+  --p-color-border-caution-subdued: var(--p-color-border-caution);
+  --p-color-border-critical-subdued: var(--p-color-border-critical-secondary);
+  --p-color-backdrop-bg: #000000b5;
+  --p-color-bg-backdrop-experimental: var(--p-color-backdrop-bg);
 }/* Base typography */html[class~="Polaris-Summer-Editions-2023"] {
   font-feature-settings: "calt" on, "ss03" on, "cv02" on, "cv03" on, "cv04" on, "cv09" on;
 }html[class~="Polaris-Summer-Editions-2023"] body {
@@ -548,6 +571,23 @@
   .Polaris-Text--heading3xl
 ) {
   letter-spacing: -0.02em;
+}/* Links: standalone links are blue without an underline; links inside running
+   text follow the text color and stay underlined, like s-link. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link {
+  color: var(--p-color-text-link);
+  text-decoration: none;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.125em;
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link:hover {
+    color: var(--p-color-text-link-hover);
+    text-decoration: underline;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link:active { color: var(--p-color-text-link-active); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--removeUnderline {
+    text-decoration: none;
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--removeUnderline:hover { text-decoration: underline; }html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline), html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline):hover, html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline):active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline), html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline):hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline):active {
+    color: inherit;
+    text-decoration: underline;
+  }/* Critical text uses the dark admin tone; the brighter --p-color-text-critical
+   is kept for inline errors. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Text--root.Polaris-Text--critical {
+  color: var(--p-color-text-critical-active);
 }html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction a,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionMenu-SecondaryAction button,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-ActionList .Polaris-ActionList__Item {
@@ -592,6 +632,15 @@
     letter-spacing: -0.01em;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge svg {
     fill: currentColor;
+  }/* Progress pips sit in a 16px icon slot, like badge icons in the admin. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge:has(> .Polaris-Badge__PipContainer) {
+    padding-left: var(--p-space-100);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge .Polaris-Badge__PipContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge.Polaris-Badge--statusInfo {
     --pc-badge-bg: var(--p-color-bg-fill-info-secondary);
     --pc-badge-text: #01596f;
@@ -600,7 +649,7 @@
     --pc-badge-text: #214b03;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge.Polaris-Badge--statusAttention {
     --pc-badge-bg: var(--p-color-bg-fill-caution-secondary);
-    --pc-badge-text: #573b00;
+    --pc-badge-text: #574100;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge.Polaris-Badge--statusWarning {
     --pc-badge-bg: var(--p-color-bg-fill-warning-secondary);
     --pc-badge-text: #6f2e01;
@@ -624,7 +673,6 @@
   --pc-banner-action-hover: var(--p-color-bg-surface-info-active);
 
   position: relative;
-  container-type: inline-size;
   padding: 0;
   border: none;
   border-radius: var(--p-border-radius-container);
@@ -641,13 +689,13 @@
   }/* Web Components 2.0 maps warning banners to the amber caution palette. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner.Polaris-Banner--statusWarning {
     --pc-banner-bg: var(--p-color-bg-surface-caution);
     --pc-banner-title: var(--p-color-text-caution);
-    --pc-banner-text: #573b00;
+    --pc-banner-text: #574100;
     --pc-banner-icon: var(--p-color-icon-caution);
     --pc-banner-action: var(--p-color-bg-surface-caution-hover);
     --pc-banner-action-hover: var(--p-color-bg-surface-caution-active);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner.Polaris-Banner--statusCritical {
     --pc-banner-bg: var(--p-color-bg-surface-critical);
-    --pc-banner-title: #680000;
+    --pc-banner-title: var(--p-color-text-critical-active);
     --pc-banner-text: #7e100c;
     --pc-banner-icon: var(--p-color-icon-critical);
     --pc-banner-action: var(--p-color-bg-surface-critical-hover);
@@ -716,9 +764,6 @@
     html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner .Polaris-Banner__DismissButton { right: 0; }
   }@media (pointer: coarse) {
     html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner .Polaris-Banner__DismissButton { opacity: 1; }
-  }@container (max-width: 30rem) {
-      html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner .Polaris-Banner__Actions .Polaris-ButtonGroup__Item { flex: 1 1 0; min-width: 0; }
-      html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner .Polaris-Banner__Actions .Polaris-Button { width: 100%; }
   }/* Polaris no longer uses different button styling depending on the context,
    so we can override all buttons at once. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button {
   --pc-button-bg: var(--p-color-bg-fill-secondary);
@@ -811,7 +856,7 @@
     --pc-button-bg: var(--p-color-bg-surface-critical);
     --pc-button-bg-hover: var(--p-color-bg-surface-critical-hover);
     --pc-button-bg-active: var(--p-color-bg-surface-critical-active);
-    --pc-button-fg: #7e100c;
+    --pc-button-fg: var(--p-color-text-critical-secondary);
     --pc-button-icon: currentColor;
     --pc-button-shadow: none;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--destructive:hover svg,
@@ -874,8 +919,8 @@
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--monochrome.Polaris-Button--plain.Polaris-Button--removeUnderline.Polaris-Button--destructive:not(.Polaris-Button--disabled) {
       --pc-button-bg-hover: var(--p-color-bg-surface-critical);
       --pc-button-bg-active: var(--p-color-bg-surface-critical-hover);
-      --pc-button-fg: var(--p-color-text-critical);
-      --pc-button-fg-hover: var(--p-color-text-critical-hover);
+      --pc-button-fg: var(--p-color-text-critical-secondary);
+      --pc-button-fg-hover: var(--p-color-text-critical-secondary);
       --pc-button-icon: currentColor;
       color: var(--pc-button-fg);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Button.Polaris-Button--monochrome.Polaris-Button--plain.Polaris-Button--removeUnderline.Polaris-Button--destructive:not(.Polaris-Button--disabled):hover,
@@ -1067,7 +1112,7 @@
   border: none;
   border-radius: 0;
   box-shadow: none;
-}html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard::before { content: none; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard + .Polaris-LegacyCard { margin-top: var(--p-space-600); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Header .Polaris-ButtonGroup, html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__SectionHeader .Polaris-ButtonGroup {
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard::before { content: none; }/* Stacked cards are 16px apart, plus 16px above an outside header (like s-section). */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard + .Polaris-LegacyCard { margin-top: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard + .Polaris-LegacyCard:has(> .Polaris-LegacyCard__Header) { margin-top: var(--p-space-800); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Header .Polaris-ButtonGroup, html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__SectionHeader .Polaris-ButtonGroup {
       margin: 0;
       gap: var(--p-space-200);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__Header .Polaris-ButtonGroup > .Polaris-ButtonGroup__Item, html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard .Polaris-LegacyCard__SectionHeader .Polaris-ButtonGroup > .Polaris-ButtonGroup__Item { margin: 0; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Header {
@@ -1160,6 +1205,10 @@
     box-shadow: none !important;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Choice__Label {
     font-size: var(--p-font-size-325);
+  }/* Checkboxes are 14px, radio buttons 16px. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Choice__Control:has(> .Polaris-Checkbox) {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.0625rem;
   }.Polaris-Collapsible__Trigger .Polaris-Button__Icon:last-child .Polaris-Icon {
     transition: transform var(--p-motion-duration-100) var(--p-motion-ease-out);
   }.Polaris-Collapsible__Trigger[aria-expanded="true"] .Polaris-Button__Icon:last-child .Polaris-Icon {
@@ -1292,12 +1341,12 @@
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Heading:not(
       .Polaris-DataTable__Heading--flush
     ):first-child {
-    padding-left: var(--p-space-400);
+    padding-left: var(--p-space-300);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):last-child,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Heading:not(
       .Polaris-DataTable__Heading--flush
     ):last-child {
-    padding-right: var(--p-space-400);
+    padding-right: var(--p-space-300);
   }/* Edge-to-edge tables share the card's outline with adjacent sections. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface > :is(
   .Polaris-LegacyCard__Section--unstyled,
   .Polaris-LegacyCard__Section--flush
@@ -1319,6 +1368,9 @@
     font-weight: var(--p-font-weight-medium);
     line-height: 1.125rem;
     border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--header) {
+    padding-top: var(--p-space-150);
+    padding-bottom: var(--p-space-150);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell--sortable {
     padding-top: 0;
     padding-bottom: 0;
@@ -1407,14 +1459,15 @@
   border-radius: var(--p-border-radius-container);
 }html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexTable .Polaris-IndexTable__TableCell:not(.Polaris-IndexTable__TableCell--flush):first-child,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexTable .Polaris-IndexTable__TableHeading:not(.Polaris-IndexTable__TableHeading--flush):first-child {
-    padding-left: var(--p-space-400);
+    padding-left: var(--p-space-300);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexTable .Polaris-IndexTable__TableCell:not(.Polaris-IndexTable__TableCell--flush):last-child,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexTable .Polaris-IndexTable__TableHeading:not(.Polaris-IndexTable__TableHeading--flush):last-child {
-    padding-right: var(--p-space-400);
+    padding-right: var(--p-space-300);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexTable .Polaris-IndexTable__TableHeading {
     padding-top: var(--p-space-150);
     padding-bottom: var(--p-space-150);
     font-weight: var(--p-font-weight-medium);
+    line-height: 1.125rem;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexTable .Polaris-IndexTable__TableRow:not(:first-child) .Polaris-IndexTable__TableCell,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-IndexTable .Polaris-IndexTable__TableRow + .Polaris-IndexTable__TableRow {
     border-color: var(--p-color-border-secondary);
@@ -1423,15 +1476,21 @@
   }/* Avatar */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar.Polaris-Avatar--sizeExtraSmall {
     border-radius: 0.375rem;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar.Polaris-Avatar--sizeSmall {
-    border-radius: 0.4375rem;
+    border-radius: 0.5rem;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar.Polaris-Avatar--sizeMedium {
     border-radius: 0.5rem;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar.Polaris-Avatar--sizeLarge {
     border-radius: 0.625rem;
+  }/* Matches --p-border-radius-avatar from the admin theme where supported. */@supports (border-radius: round(30%, 0.125rem)) {
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar:not(.Polaris-Avatar--shapeRound) {
+      border-radius: clamp(0.375rem, round(30%, 0.125rem), 0.75rem);
+    }
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar.Polaris-Avatar--shapeRound {
     border-radius: var(--p-border-radius-full);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar .Polaris-Avatar__Text {
     font-weight: var(--p-font-weight-medium);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar .Polaris-Avatar__Svg text {
+    font-size: 1rem;
   }/* Thumbnail */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail::after {
     border-radius: var(--p-border-radius-300);
@@ -1440,7 +1499,12 @@
     border-radius: var(--p-border-radius-150);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail.Polaris-Thumbnail--sizeSmall,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail.Polaris-Thumbnail--sizeSmall::after {
-    border-radius: var(--p-border-radius-200);
+    border-radius: 0.625rem;
+  }/* Matches --p-border-radius-media from the admin theme where supported. */@supports (border-radius: round(25%, 0.125rem)) {
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail[class],
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail[class]::after {
+      border-radius: clamp(0.375rem, round(25%, 0.125rem), 0.75rem);
+    }
   }/* Progress bar */html[class~="Polaris-Summer-Editions-2023"] .Polaris-ProgressBar {
   --pc-progress-bar-background: var(--p-color-bg-surface-tertiary);
   border-radius: var(--p-border-radius-full);
@@ -1515,6 +1579,7 @@
       font-size: 0.9375rem;
       font-weight: var(--p-font-weight-medium);
       line-height: 1.375rem;
+      letter-spacing: -0.02em;
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal__Body { min-height: 0; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Section {
     border-bottom: none;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Section > .Polaris-Box { padding: var(--p-space-100) var(--p-space-500); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Section + .Polaris-Modal-Section { margin-top: var(--p-space-200); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Dialog__Modal:not(:has(> .Polaris-Modal-Footer)) .Polaris-Modal-Section:last-child > .Polaris-Box {
@@ -1992,17 +2057,20 @@
     color: var(--p-color-text-brand);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag {
   min-height: 1.25rem;
-  padding-inline: var(--p-space-150);
+  padding: var(--p-space-025) var(--p-space-200);
   border-radius: var(--p-border-radius-tag);
-  background-color: var(--p-color-bg-fill-secondary);
-  color: var(--p-color-text);
+  background-color: var(--p-color-bg-fill-transparent);
+  color: var(--p-color-text-secondary);
   font-size: var(--p-font-size-300);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-400);
-}html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--clickable:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--linkable:hover {
-      background: var(--p-color-bg-fill-secondary-hover);
+  line-height: 1.125rem;
+  letter-spacing: -0.005em;
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--removable {
+    padding-right: var(--p-space-050);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--clickable:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--linkable:hover {
+      background: var(--p-color-bg-fill-transparent-hover);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--clickable:active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--linkable:active {
-      background: var(--p-color-bg-fill-secondary-active);
+      background: var(--p-color-bg-fill-transparent-active);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--disabled {
     background: var(--p-color-bg-fill-disabled);
     color: var(--p-color-text-disabled);
@@ -2016,10 +2084,13 @@
     display: block;
   }/* Labels and help text */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Label__Text,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-ChoiceList__Title,
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-VerticalStack--fieldsetReset > legend,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-Labelled__LabelWrapper .Polaris-Label {
     font-weight: var(--p-font-weight-medium);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Labelled__LabelWrapper {
     margin-bottom: var(--p-space-150);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Labelled__HelpText {
+    margin-top: var(--p-space-150);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Labelled__HelpText,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-Choice__HelpText {
     color: var(--p-color-text-secondary);
@@ -2073,7 +2144,13 @@
     box-shadow: var(--p-shadow-input-focus);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField--error > .Polaris-TextField__Input ~ .Polaris-TextField__Backdrop {
     border: none;
+    background-color: var(--p-color-input-bg-surface);
     box-shadow: var(--p-shadow-input-critical);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField--multiline > .Polaris-TextField__Input {
+    padding-top: var(--p-space-150);
+    padding-bottom: var(--p-space-150);
+  }/* Labels of disabled fields are dimmed along with the field. */html[class~="Polaris-Summer-Editions-2023"] :is(.polaris-text-field-wrapper, .Polaris-Labelled):has(.Polaris-TextField--disabled, .Polaris-Select--disabled) .Polaris-Label__Text {
+    color: var(--p-color-text-disabled);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField--error:not(.Polaris-TextField--disabled, .Polaris-TextField--readOnly):is(.Polaris-TextField--focus, :focus-within) > .Polaris-TextField__Backdrop {
     background-color: var(--p-color-input-bg-surface-active);
     box-shadow: var(--p-shadow-input-critical-focus);
@@ -2112,8 +2189,8 @@
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Select__Backdrop::after {
       content: none;
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Select__Content {
-    min-height: 2rem;
-    padding: var(--p-space-150) var(--p-space-200) var(--p-space-150) var(--p-space-300);
+    min-height: 1.875rem;
+    padding: 0.3125rem var(--p-space-200) 0.3125rem var(--p-space-300);
     font-size: var(--p-font-size-325);
     line-height: var(--p-font-line-height-500);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Select__Icon svg {

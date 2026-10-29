@@ -5,7 +5,7 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar {
   }
 
   &.Polaris-Avatar--sizeSmall {
-    border-radius: 0.4375rem;
+    border-radius: 0.5rem;
   }
 
   &.Polaris-Avatar--sizeMedium {
@@ -16,12 +16,23 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar {
     border-radius: 0.625rem;
   }
 
+  /* Matches --p-border-radius-avatar from the admin theme where supported. */
+  @supports (border-radius: round(30%, 0.125rem)) {
+    &:not(.Polaris-Avatar--shapeRound) {
+      border-radius: clamp(0.375rem, round(30%, 0.125rem), 0.75rem);
+    }
+  }
+
   &.Polaris-Avatar--shapeRound {
     border-radius: var(--p-border-radius-full);
   }
 
   .Polaris-Avatar__Text {
     font-weight: var(--p-font-weight-medium);
+  }
+
+  .Polaris-Avatar__Svg text {
+    font-size: 1rem;
   }
 }
 
@@ -39,7 +50,15 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail {
 
   &.Polaris-Thumbnail--sizeSmall,
   &.Polaris-Thumbnail--sizeSmall::after {
-    border-radius: var(--p-border-radius-200);
+    border-radius: 0.625rem;
+  }
+
+  /* Matches --p-border-radius-media from the admin theme where supported. */
+  @supports (border-radius: round(25%, 0.125rem)) {
+    &[class],
+    &[class]::after {
+      border-radius: clamp(0.375rem, round(25%, 0.125rem), 0.75rem);
+    }
   }
 }
 

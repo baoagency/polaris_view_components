@@ -20,6 +20,20 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge {
     fill: currentColor;
   }
 
+  /* Progress pips sit in a 16px icon slot, like badge icons in the admin. */
+  &:has(> .Polaris-Badge__PipContainer) {
+    padding-left: var(--p-space-100);
+  }
+
+  .Polaris-Badge__PipContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+  }
+
   &.Polaris-Badge--statusInfo {
     --pc-badge-bg: var(--p-color-bg-fill-info-secondary);
     --pc-badge-text: #01596f;
@@ -32,7 +46,7 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Badge {
 
   &.Polaris-Badge--statusAttention {
     --pc-badge-bg: var(--p-color-bg-fill-caution-secondary);
-    --pc-badge-text: #573b00;
+    --pc-badge-text: #574100;
   }
 
   &.Polaris-Badge--statusWarning {

@@ -9,7 +9,9 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
 
   &::before { content: none; }
 
-  & + .Polaris-LegacyCard { margin-top: var(--p-space-600); }
+  /* Stacked cards are 16px apart, plus 16px above an outside header (like s-section). */
+  & + .Polaris-LegacyCard { margin-top: var(--p-space-400); }
+  & + .Polaris-LegacyCard:has(> .Polaris-LegacyCard__Header) { margin-top: var(--p-space-800); }
 
   .Polaris-LegacyCard__Header,
   .Polaris-LegacyCard__SectionHeader {

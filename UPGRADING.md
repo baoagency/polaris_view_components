@@ -11,6 +11,8 @@ Visual changes to review in your app:
 - Text fields, selects, checkboxes, and radio buttons use shadow outlines and a blue focus ring.
 - Banners use a full tinted background and filled status icons by default (`InfoFilledIcon`, `CheckCircleFilledIcon`, `AlertCircleFilledIcon`). Pass `icon:` to `polaris_banner` to keep a different icon. Badges and avatars use the new color palette.
 - Tabs are displayed as pills, and the `Navigation` sidebar uses the dark admin theme.
+- Standalone links are blue without an underline. Links inside running text (paragraphs, list items, `polaris_text`) inherit the text color and stay underlined.
+- Tags use a light translucent fill with secondary text color.
 - Typography uses regular (400) body text and medium (500) headings, set in the bundled `ShopifyInter` font (the Inter fork used in the Shopify admin), with Inter as a fallback for other scripts.
 
 If you override Polaris CSS custom properties (for example `--p-color-bg-app` or `--p-color-bg-fill-brand`), check that your overrides still apply, since many tokens have new values.
@@ -26,6 +28,7 @@ Markup and default changes to account for:
 - Drop zones use new upload-content, icon, and help-text wrappers. Review any custom selectors for the previous stack layout.
 - Progress bars default to the dark `:primary` color. Pass `color: :highlight` to retain the previous blue default.
 - Modals without a title now show a close button in the top-right corner, matching titled modals.
+- Avatars default to the rounded-square shape used in the admin. Pass `shape: :round` to retain circular avatars.
 
 ## Upgrading to `v3.0.0`
 

@@ -64,4 +64,11 @@ html[class~="Polaris-Summer-Editions-2023"] {
   .Polaris-Choice__Label {
     font-size: var(--p-font-size-325);
   }
+
+  /* Checkboxes are 14px, radio buttons 16px. */
+  .Polaris-Choice__Control:has(> .Polaris-Checkbox) {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.0625rem;
+  }
 }

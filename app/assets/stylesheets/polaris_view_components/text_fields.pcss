@@ -8,12 +8,17 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField {
 html[class~="Polaris-Summer-Editions-2023"] {
   .Polaris-Label__Text,
   .Polaris-ChoiceList__Title,
+  .Polaris-VerticalStack--fieldsetReset > legend,
   .Polaris-Labelled__LabelWrapper .Polaris-Label {
     font-weight: var(--p-font-weight-medium);
   }
 
   .Polaris-Labelled__LabelWrapper {
     margin-bottom: var(--p-space-150);
+  }
+
+  .Polaris-Labelled__HelpText {
+    margin-top: var(--p-space-150);
   }
 
   .Polaris-Labelled__HelpText,
@@ -97,7 +102,18 @@ html[class~="Polaris-Summer-Editions-2023"] {
 
   .Polaris-TextField--error > .Polaris-TextField__Input ~ .Polaris-TextField__Backdrop {
     border: none;
+    background-color: var(--p-color-input-bg-surface);
     box-shadow: var(--p-shadow-input-critical);
+  }
+
+  .Polaris-TextField--multiline > .Polaris-TextField__Input {
+    padding-top: var(--p-space-150);
+    padding-bottom: var(--p-space-150);
+  }
+
+  /* Labels of disabled fields are dimmed along with the field. */
+  :is(.polaris-text-field-wrapper, .Polaris-Labelled):has(.Polaris-TextField--disabled, .Polaris-Select--disabled) .Polaris-Label__Text {
+    color: var(--p-color-text-disabled);
   }
 
   .Polaris-TextField--error:not(.Polaris-TextField--disabled, .Polaris-TextField--readOnly):is(.Polaris-TextField--focus, :focus-within) > .Polaris-TextField__Backdrop {
@@ -167,8 +183,8 @@ html[class~="Polaris-Summer-Editions-2023"] {
   }
 
   .Polaris-Select__Content {
-    min-height: 2rem;
-    padding: var(--p-space-150) var(--p-space-200) var(--p-space-150) var(--p-space-300);
+    min-height: 1.875rem;
+    padding: 0.3125rem var(--p-space-200) 0.3125rem var(--p-space-300);
     font-size: var(--p-font-size-325);
     line-height: var(--p-font-line-height-500);
   }
