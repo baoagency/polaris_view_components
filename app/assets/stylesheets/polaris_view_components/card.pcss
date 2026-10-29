@@ -111,8 +111,12 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
 }
 
 /* Layout sections that open with an outside card header get the same extra 16px as stacked cards.
-   Sections that share the first row keep the default so they stay aligned. */
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Section:has(> .Polaris-LegacyCard:first-child > .Polaris-LegacyCard__Header):not(
+   The card may sit in one wrapper (a turbo frame, say). Sections that share the first row keep the
+   default so they stay aligned. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Section:has(
+  > .Polaris-LegacyCard:first-child > .Polaris-LegacyCard__Header,
+  > :first-child > .Polaris-LegacyCard:first-child > .Polaris-LegacyCard__Header
+):not(
   :first-child,
   .Polaris-Layout__Section:first-child + .Polaris-Layout__Section--secondary,
   .Polaris-Layout__Section--oneHalf:first-child + .Polaris-Layout__Section--oneHalf,
