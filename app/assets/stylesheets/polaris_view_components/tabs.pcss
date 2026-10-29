@@ -10,8 +10,19 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs__Wrapper {
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs {
   gap: var(--p-space-050);
 
+  /* Tabs that don't fit scroll in one row instead of wrapping. The inline padding keeps focus rings visible. */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-inline: var(--p-space-050);
+  margin-inline: calc(var(--p-space-050) * -1);
+
+  &::-webkit-scrollbar { display: none; }
+
+  /* Even 6px around the pills, like the index tabs in the admin. */
   .Polaris-LegacyTabs__Tab {
-    padding: var(--p-space-100) 0;
+    margin: 0;
+    padding: var(--p-space-150) 0;
   }
 
   .Polaris-LegacyTabs__Title {

@@ -16,7 +16,8 @@ html[class~="Polaris-Summer-Editions-2023"] {
 
       &.Polaris-Modal-Dialog--sizeSmall { width: 23.75rem; max-width: calc(100vw - var(--p-space-800)); }
       &.Polaris-Modal-Dialog--sizeLarge { width: 61.25rem; max-width: calc(100vw - var(--p-space-800)); }
-      &.Polaris-Modal-Dialog--limitHeight { max-height: min(37.5rem, calc(100svh - 3.75rem)); }
+      /* clamp() instead of min(), which LibSass rejects when apps import this CSS from Sass. */
+      &.Polaris-Modal-Dialog--limitHeight { max-height: clamp(0px, calc(100svh - 3.75rem), 37.5rem); }
     }
   }
 

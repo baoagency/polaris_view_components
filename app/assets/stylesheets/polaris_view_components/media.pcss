@@ -16,13 +16,6 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar {
     border-radius: 0.625rem;
   }
 
-  /* Matches --p-border-radius-avatar from the admin theme where supported. */
-  @supports (border-radius: round(30%, 0.125rem)) {
-    &:not(.Polaris-Avatar--shapeRound) {
-      border-radius: clamp(0.375rem, round(30%, 0.125rem), 0.75rem);
-    }
-  }
-
   &.Polaris-Avatar--shapeRound {
     border-radius: var(--p-border-radius-full);
   }
@@ -51,14 +44,6 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail {
   &.Polaris-Thumbnail--sizeSmall,
   &.Polaris-Thumbnail--sizeSmall::after {
     border-radius: 0.625rem;
-  }
-
-  /* Matches --p-border-radius-media from the admin theme where supported. */
-  @supports (border-radius: round(25%, 0.125rem)) {
-    &[class],
-    &[class]::after {
-      border-radius: clamp(0.375rem, round(25%, 0.125rem), 0.75rem);
-    }
   }
 }
 
@@ -110,7 +95,7 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Spinner {
     animation: var(--p-motion-keyframes-spin) 500ms linear infinite;
   }
 
-  .Polaris-Spinner__Track { stroke: rgb(0 0 0 / 18%); }
+  .Polaris-Spinner__Track { stroke: rgba(0, 0, 0, 0.18); }
 
   .Polaris-Spinner__Indicator {
     stroke: #1b1b1b;

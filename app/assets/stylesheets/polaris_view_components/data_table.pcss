@@ -20,17 +20,18 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable {
   }
 }
 
-/* Edge-to-edge tables share the card's outline with adjacent sections. */
-html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface > :is(
-  .Polaris-LegacyCard__Section--unstyled,
-  .Polaris-LegacyCard__Section--flush
-) {
-  &:not(:first-child) > div > .Polaris-DataTable {
+/* Inside cards, tables round only the corners they share with the card, so a header row below tabs, filters, or another section stays square. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface {
+  :is(.Polaris-DataTable, .Polaris-IndexTable) { border-radius: var(--pc-card-radius); }
+
+  :is(.Polaris-DataTable, .Polaris-IndexTable):not(:first-child),
+  :not(:first-child) :is(.Polaris-DataTable, .Polaris-IndexTable) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
 
-  &:not(:last-child) > div > .Polaris-DataTable {
+  :is(.Polaris-DataTable, .Polaris-IndexTable):not(:last-child),
+  :not(:last-child) :is(.Polaris-DataTable, .Polaris-IndexTable) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

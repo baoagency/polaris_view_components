@@ -1485,6 +1485,71 @@ const shift = function(options) {
   };
 };
 
+const size = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "size",
+    options: options,
+    async fn(state) {
+      const {placement: placement, rects: rects, platform: platform, elements: elements} = state;
+      const {apply: apply = (() => {}), ...detectOverflowOptions} = evaluate(options, state);
+      const overflow = await detectOverflow(state, detectOverflowOptions);
+      const side = getSide(placement);
+      const alignment = getAlignment(placement);
+      const isYAxis = getSideAxis(placement) === "y";
+      const {width: width, height: height} = rects.floating;
+      let heightSide;
+      let widthSide;
+      if (side === "top" || side === "bottom") {
+        heightSide = side;
+        widthSide = alignment === (await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)) ? "start" : "end") ? "left" : "right";
+      } else {
+        widthSide = side;
+        heightSide = alignment === "end" ? "top" : "bottom";
+      }
+      const overflowAvailableHeight = height - overflow[heightSide];
+      const overflowAvailableWidth = width - overflow[widthSide];
+      const noShift = !state.middlewareData.shift;
+      let availableHeight = overflowAvailableHeight;
+      let availableWidth = overflowAvailableWidth;
+      if (isYAxis) {
+        const maximumClippingWidth = width - overflow.left - overflow.right;
+        availableWidth = alignment || noShift ? min(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
+      } else {
+        const maximumClippingHeight = height - overflow.top - overflow.bottom;
+        availableHeight = alignment || noShift ? min(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
+      }
+      if (noShift && !alignment) {
+        const xMin = max(overflow.left, 0);
+        const xMax = max(overflow.right, 0);
+        const yMin = max(overflow.top, 0);
+        const yMax = max(overflow.bottom, 0);
+        if (isYAxis) {
+          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right));
+        } else {
+          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom));
+        }
+      }
+      await apply({
+        ...state,
+        availableWidth: availableWidth,
+        availableHeight: availableHeight
+      });
+      const nextDimensions = await platform.getDimensions(elements.floating);
+      if (width !== nextDimensions.width || height !== nextDimensions.height) {
+        return {
+          reset: {
+            rects: true
+          }
+        };
+      }
+      return {};
+    }
+  };
+};
+
 function getNodeName(node) {
   if (isNode(node)) {
     return (node.nodeName || "").toLowerCase();
@@ -2182,6 +2247,12 @@ class Popover extends Controller {
           fallbackStrategy: "bestFit"
         }), shift({
           padding: 5
+        }), size({
+          apply: ({rects: rects}) => {
+            if (this.fullWidth) {
+              this.target.style.width = `${rects.reference.width}px`;
+            }
+          }
         }) ]
       }).then((({x: x, y: y}) => {
         Object.assign(this.target.style, {
@@ -2225,6 +2296,9 @@ class Popover extends Controller {
     } else {
       return this.activatorTarget;
     }
+  }
+  get fullWidth() {
+    return this.target.querySelector(".Polaris-Popover--fullWidth") !== null;
   }
   get target() {
     if (this.hasPopoverTarget) {

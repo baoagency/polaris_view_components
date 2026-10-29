@@ -5,6 +5,7 @@ import {
   offset,
   flip,
   shift,
+  size,
 } from "@floating-ui/dom";
 
 export default class extends Controller {
@@ -63,6 +64,14 @@ export default class extends Controller {
             fallbackStrategy: "bestFit",
           }),
           shift({ padding: 5 }),
+          // Full width popovers match the activator, like autocomplete results under their field
+          size({
+            apply: ({ rects }) => {
+              if (this.fullWidth) {
+                this.target.style.width = `${rects.reference.width}px`;
+              }
+            },
+          }),
         ],
       }).then(({ x, y }) => {
         Object.assign(this.target.style, {
@@ -116,6 +125,10 @@ export default class extends Controller {
     } else {
       return this.activatorTarget;
     }
+  }
+
+  get fullWidth() {
+    return this.target.querySelector(".Polaris-Popover--fullWidth") !== null;
   }
 
   get target() {

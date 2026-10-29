@@ -1158,7 +1158,16 @@
           border-bottom-right-radius: var(--pc-card-radius);
         }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer {
       padding-top: var(--p-space-100);
-    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer:first-child { padding-top: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }/* Pages have no side padding on small screens, so cards run edge to edge. */@media (max-width: 30.6225em) {
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer:first-child { padding-top: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }/* Layout sections that open with an outside card header get the same extra 16px as stacked cards.
+   Sections that share the first row keep the default so they stay aligned. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Section:has(> .Polaris-LegacyCard:first-child > .Polaris-LegacyCard__Header):not(
+  :first-child,
+  .Polaris-Layout__Section:first-child + .Polaris-Layout__Section--secondary,
+  .Polaris-Layout__Section--oneHalf:first-child + .Polaris-Layout__Section--oneHalf,
+  .Polaris-Layout__Section--oneThird:first-child + .Polaris-Layout__Section--oneThird,
+  .Polaris-Layout__Section--oneThird:first-child + .Polaris-Layout__Section--oneThird + .Polaris-Layout__Section--oneThird
+) {
+  margin-top: var(--p-space-800);
+}/* Pages have no side padding on small screens, so cards run edge to edge. */@media (max-width: 30.6225em) {
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
     --pc-card-radius: 0;
   }
@@ -1347,16 +1356,10 @@
       .Polaris-DataTable__Heading--flush
     ):last-child {
     padding-right: var(--p-space-300);
-  }/* Edge-to-edge tables share the card's outline with adjacent sections. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface > :is(
-  .Polaris-LegacyCard__Section--unstyled,
-  .Polaris-LegacyCard__Section--flush
-):not(:first-child) > div > .Polaris-DataTable {
+  }/* Inside cards, tables round only the corners they share with the card, so a header row below tabs, filters, or another section stays square. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface :is(.Polaris-DataTable, .Polaris-IndexTable) { border-radius: var(--pc-card-radius); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface :is(.Polaris-DataTable, .Polaris-IndexTable):not(:first-child), html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface :not(:first-child) :is(.Polaris-DataTable, .Polaris-IndexTable) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface > :is(
-  .Polaris-LegacyCard__Section--unstyled,
-  .Polaris-LegacyCard__Section--flush
-):not(:last-child) > div > .Polaris-DataTable {
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface :is(.Polaris-DataTable, .Polaris-IndexTable):not(:last-child), html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface :not(:last-child) :is(.Polaris-DataTable, .Polaris-IndexTable) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__Cell--header {
@@ -1382,6 +1385,27 @@
     border-color: var(--p-color-border-secondary);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable .Polaris-DataTable__TableRow:hover .Polaris-DataTable__Cell {
     background-color: var(--p-color-bg-surface-hover);
+  }/* Rows are 12px apart (8px when tight), and the first and last rows leave the outer padding to the card section. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList {
+  --pc-description-list-spacing: var(--p-space-300);
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList.Polaris-DescriptionList--spacingTight { --pc-description-list-spacing: var(--p-space-200); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList .Polaris-DescriptionList__Term {
+    font-weight: var(--p-font-weight-medium);
+    padding: var(--pc-description-list-spacing) 0 var(--p-space-100);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList .Polaris-DescriptionList__Description {
+    padding: 0 0 var(--pc-description-list-spacing);
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList > .Polaris-DescriptionList__Term:first-child { padding-top: 0; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList > .Polaris-DescriptionList__Description:last-child { padding-bottom: 0; }@media (min-width: 30.625em) {
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList .Polaris-DescriptionList__Term {
+      padding: var(--pc-description-list-spacing) var(--p-space-400) var(--pc-description-list-spacing) 0;
+    }
+
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList .Polaris-DescriptionList__Description {
+      padding: var(--pc-description-list-spacing) 0;
+    }
+
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList > .Polaris-DescriptionList__Term:first-child,
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList > .Polaris-DescriptionList__Term:first-child + .Polaris-DescriptionList__Description { padding-top: 0; }
+
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList > .Polaris-DescriptionList__Term:nth-last-child(2),
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList > .Polaris-DescriptionList__Description:last-child { padding-bottom: 0; }
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone {
   --p-color-input-bg-surface-hover: var(--p-color-bg-surface-hover);
   border-radius: var(--p-border-radius-control);
@@ -1437,7 +1461,7 @@
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled .Polaris-DropZone-FileUpload__HelpText { color: var(--p-color-text-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--isDisabled .Polaris-DropZone-FileUpload__UploadIcon svg { fill: var(--p-color-icon-disabled); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-FooterHelp {
   flex-direction: column;
   align-items: center;
-  margin: 0;
+  margin: var(--p-space-500) 0;
   width: 100%;
 }html[class~="Polaris-Summer-Editions-2023"] .Polaris-FooterHelp .Polaris-FooterHelp__Text {
     font-size: var(--p-font-size-325);
@@ -1481,10 +1505,6 @@
     border-radius: 0.5rem;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar.Polaris-Avatar--sizeLarge {
     border-radius: 0.625rem;
-  }/* Matches --p-border-radius-avatar from the admin theme where supported. */@supports (border-radius: round(30%, 0.125rem)) {
-    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar:not(.Polaris-Avatar--shapeRound) {
-      border-radius: clamp(0.375rem, round(30%, 0.125rem), 0.75rem);
-    }
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar.Polaris-Avatar--shapeRound {
     border-radius: var(--p-border-radius-full);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar .Polaris-Avatar__Text {
@@ -1500,11 +1520,6 @@
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail.Polaris-Thumbnail--sizeSmall,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail.Polaris-Thumbnail--sizeSmall::after {
     border-radius: 0.625rem;
-  }/* Matches --p-border-radius-media from the admin theme where supported. */@supports (border-radius: round(25%, 0.125rem)) {
-    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail[class],
-    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail[class]::after {
-      border-radius: clamp(0.375rem, round(25%, 0.125rem), 0.75rem);
-    }
   }/* Progress bar */html[class~="Polaris-Summer-Editions-2023"] .Polaris-ProgressBar {
   --pc-progress-bar-background: var(--p-color-bg-surface-tertiary);
   border-radius: var(--p-border-radius-full);
@@ -1534,7 +1549,7 @@
     fill: none;
     transform-origin: center;
     animation: var(--p-motion-keyframes-spin) 500ms linear infinite;
-  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Spinner .Polaris-Spinner__Track { stroke: rgb(0 0 0 / 18%); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Spinner .Polaris-Spinner__Indicator {
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Spinner .Polaris-Spinner__Track { stroke: rgba(0, 0, 0, 0.18); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Spinner .Polaris-Spinner__Indicator {
     stroke: #1b1b1b;
     stroke-linecap: round;
     stroke-dasharray: 4, 6;
@@ -1568,7 +1583,8 @@
 
       html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Dialog__Modal.Polaris-Modal-Dialog--sizeSmall { width: 23.75rem; max-width: calc(100vw - var(--p-space-800)); }
       html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Dialog__Modal.Polaris-Modal-Dialog--sizeLarge { width: 61.25rem; max-width: calc(100vw - var(--p-space-800)); }
-      html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Dialog__Modal.Polaris-Modal-Dialog--limitHeight { max-height: min(37.5rem, calc(100svh - 3.75rem)); }
+      /* clamp() instead of min(), which LibSass rejects when apps import this CSS from Sass. */
+      html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Dialog__Modal.Polaris-Modal-Dialog--limitHeight { max-height: clamp(0px, calc(100svh - 3.75rem), 37.5rem); }
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Modal-Header {
     --pc-box-background: transparent !important;
     --pc-box-border-block-end-width: 0 !important;
@@ -2017,8 +2033,16 @@
     margin-bottom: 0 !important;
   }/* Legacy tabs are displayed as pills */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs {
   gap: var(--p-space-050);
-}html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs .Polaris-LegacyTabs__Tab {
-    padding: var(--p-space-100) 0;
+
+  /* Tabs that don't fit scroll in one row instead of wrapping. The inline padding keeps focus rings visible. */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-inline: var(--p-space-050);
+  margin-inline: calc(var(--p-space-050) * -1);
+}html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs::-webkit-scrollbar { display: none; }/* Even 6px around the pills, like the index tabs in the admin. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs .Polaris-LegacyTabs__Tab {
+    margin: 0;
+    padding: var(--p-space-150) 0;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs .Polaris-LegacyTabs__Title {
     min-height: 1.75rem;
     padding: var(--p-space-150) var(--p-space-300);

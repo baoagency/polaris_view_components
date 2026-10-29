@@ -110,6 +110,18 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
   &.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }
 }
 
+/* Layout sections that open with an outside card header get the same extra 16px as stacked cards.
+   Sections that share the first row keep the default so they stay aligned. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Section:has(> .Polaris-LegacyCard:first-child > .Polaris-LegacyCard__Header):not(
+  :first-child,
+  .Polaris-Layout__Section:first-child + .Polaris-Layout__Section--secondary,
+  .Polaris-Layout__Section--oneHalf:first-child + .Polaris-Layout__Section--oneHalf,
+  .Polaris-Layout__Section--oneThird:first-child + .Polaris-Layout__Section--oneThird,
+  .Polaris-Layout__Section--oneThird:first-child + .Polaris-Layout__Section--oneThird + .Polaris-Layout__Section--oneThird
+) {
+  margin-top: var(--p-space-800);
+}
+
 /* Pages have no side padding on small screens, so cards run edge to edge. */
 @media (max-width: 30.6225em) {
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {

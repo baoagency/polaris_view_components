@@ -10,9 +10,10 @@ Visual changes to review in your app:
 - Buttons are pill-shaped. Secondary buttons have a flat gray fill, primary buttons are black, and destructive buttons use a soft red fill.
 - Text fields, selects, checkboxes, and radio buttons use shadow outlines and a blue focus ring.
 - Banners use a full tinted background and filled status icons by default (`InfoFilledIcon`, `CheckCircleFilledIcon`, `AlertCircleFilledIcon`). Pass `icon:` to `polaris_banner` to keep a different icon. Badges and avatars use the new color palette.
-- Tabs are displayed as pills, and the `Navigation` sidebar uses the dark admin theme.
+- Tabs are displayed as pills and scroll in one row instead of wrapping when they don't fit. The `Navigation` sidebar uses the dark admin theme.
 - Standalone links are blue without an underline. Links inside running text (paragraphs, list items, `polaris_text`) inherit the text color and stay underlined.
 - Tags use a light translucent fill with secondary text color.
+- Description lists are more compact: rows are 12px apart (8px with `spacing: :tight`), the first and last rows add no padding beyond the card section, and terms use medium weight.
 - Typography uses regular (400) body text and medium (500) headings, set in the bundled `ShopifyInter` font (the Inter fork used in the Shopify admin), with Inter as a fallback for other scripts.
 
 If you override Polaris CSS custom properties (for example `--p-color-bg-app` or `--p-color-bg-fill-brand`), check that your overrides still apply, since many tokens have new values.
