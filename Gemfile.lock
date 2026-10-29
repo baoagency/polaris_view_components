@@ -170,7 +170,9 @@ GEM
     matrix (0.4.3)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.27.0)
+    minitest (6.0.6)
+      drb (~> 2.0)
+      prism (~> 1.5)
     net-imap (0.6.8)
       date
       net-protocol
@@ -376,7 +378,7 @@ DEPENDENCIES
   importmap-rails
   kamal (~> 2.8)
   lookbook (~> 2.3)
-  minitest (~> 5.0)
+  minitest (~> 6.0)
   polaris_view_components!
   pry
   puma (~> 8.0)

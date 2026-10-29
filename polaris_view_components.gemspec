@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "webdrivers", "~> 5.0"
   spec.add_development_dependency "selenium-webdriver", "~> 4.9.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "minitest", "~> 6.0"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "sprockets-rails"
   spec.add_development_dependency "kamal", "~> 2.8"
