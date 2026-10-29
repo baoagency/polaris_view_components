@@ -582,7 +582,7 @@
     text-decoration: underline;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link:active { color: var(--p-color-text-link-active); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--removeUnderline {
     text-decoration: none;
-  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--removeUnderline:hover { text-decoration: underline; }html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline), html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline):hover, html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline):active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline), html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline):hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline):active {
+  }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--removeUnderline:hover { text-decoration: underline; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:active { color: inherit; }html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline), html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline):hover, html[class~="Polaris-Summer-Editions-2023"] :is(p, li, dd, .Polaris-Text--root, .Polaris-TextContainer, .Polaris-Banner__Message) .Polaris-Link:not(.Polaris-Link--removeUnderline):active, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline), html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline):hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Link.Polaris-Link--monochrome:not(.Polaris-Link--removeUnderline):active {
     color: inherit;
     text-decoration: underline;
   }/* Critical text uses the dark admin tone; the brighter --p-color-text-critical
@@ -2065,7 +2065,8 @@
   font-weight: var(--p-font-weight-medium);
   line-height: 1.125rem;
   letter-spacing: -0.005em;
-}html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--removable {
+}/* The remove button fills the height, so it replaces the vertical padding. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--removable {
+    padding-block: 0;
     padding-right: var(--p-space-050);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--clickable:hover, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag.Polaris-Tag--linkable:hover {
       background: var(--p-color-bg-fill-transparent-hover);
@@ -2149,7 +2150,10 @@
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField--multiline > .Polaris-TextField__Input {
     padding-top: var(--p-space-150);
     padding-bottom: var(--p-space-150);
-  }/* Labels of disabled fields are dimmed along with the field. */html[class~="Polaris-Summer-Editions-2023"] :is(.polaris-text-field-wrapper, .Polaris-Labelled):has(.Polaris-TextField--disabled, .Polaris-Select--disabled) .Polaris-Label__Text {
+  }/* Labels of disabled fields are dimmed along with the field. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Labelled__LabelWrapper:has(
+    + .Polaris-Connected > .Polaris-Connected__Item--primary > .Polaris-TextField--disabled,
+    + .Polaris-Select--disabled
+  ) .Polaris-Label__Text {
     color: var(--p-color-text-disabled);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-TextField--error:not(.Polaris-TextField--disabled, .Polaris-TextField--readOnly):is(.Polaris-TextField--focus, :focus-within) > .Polaris-TextField__Backdrop {
     background-color: var(--p-color-input-bg-surface-active);

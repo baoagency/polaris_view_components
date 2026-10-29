@@ -9,7 +9,9 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Tag {
   line-height: 1.125rem;
   letter-spacing: -0.005em;
 
+  /* The remove button fills the height, so it replaces the vertical padding. */
   &.Polaris-Tag--removable {
+    padding-block: 0;
     padding-right: var(--p-space-050);
   }
 
