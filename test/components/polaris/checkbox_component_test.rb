@@ -39,6 +39,8 @@ class CheckboxComponentTest < Minitest::Test
     render_inline(Polaris::CheckboxComponent.new(label: "Label", checked: :indeterminate))
 
     assert_selector "input.Polaris-Checkbox__Input--indeterminate[type=checkbox][indeterminate]"
+    assert_selector ".Polaris-Checkbox__Icon > .Polaris-Checkbox__CheckIcon"
+    assert_selector ".Polaris-Checkbox__Icon > .Polaris-Checkbox__MinusIcon"
     assert_no_selector "[form]"
   end
 

@@ -99,6 +99,12 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
       }
     }
 
+    /* Tabs leave 8px below them, so a section under tabs starts 12px down, like
+       the 12px a bordered section leaves below its content. */
+    & > :is(.Polaris-LegacyTabs__Wrapper, :has(> .Polaris-LegacyTabs__Wrapper)) + .Polaris-LegacyCard__Section:not(.Polaris-LegacyCard__Section--flush) {
+      padding-top: var(--p-space-100);
+    }
+
     & > .Polaris-LegacyCard__Footer {
       padding-top: var(--p-space-100);
       &:first-child { padding-top: var(--p-space-400); }
@@ -136,5 +142,9 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Section:has(
 
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner.Polaris-Banner--withinPage {
     border-radius: 0;
+  }
+
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Annotation {
+    padding-left: var(--p-space-400);
   }
 }

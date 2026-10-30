@@ -1156,7 +1156,10 @@
         }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Section.Polaris-LegacyCard__Section--flush:last-child img {
           border-bottom-left-radius: var(--pc-card-radius);
           border-bottom-right-radius: var(--pc-card-radius);
-        }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer {
+        }/* Tabs leave 8px below them, so a section under tabs starts 12px down, like
+       the 12px a bordered section leaves below its content. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > :is(.Polaris-LegacyTabs__Wrapper, :has(> .Polaris-LegacyTabs__Wrapper)) + .Polaris-LegacyCard__Section:not(.Polaris-LegacyCard__Section--flush) {
+      padding-top: var(--p-space-100);
+    }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer {
       padding-top: var(--p-space-100);
     }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard > .Polaris-LegacyCard__Surface > .Polaris-LegacyCard__Footer:first-child { padding-top: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }/* Layout sections that open with an outside card header get the same extra 16px as stacked cards.
    The card may sit in one wrapper (a turbo frame, say). Sections that share the first row keep the
@@ -1180,6 +1183,10 @@
 
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner.Polaris-Banner--withinPage {
     border-radius: 0;
+  }
+
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Annotation {
+    padding-left: var(--p-space-400);
   }
 }/* Checkbox and radio button */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Checkbox__Backdrop,
   html[class~="Polaris-Summer-Editions-2023"] .Polaris-RadioButton__Backdrop {
@@ -1216,6 +1223,9 @@
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Checkbox--error .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop, html[class~="Polaris-Summer-Editions-2023"] .Polaris-Choice:hover .Polaris-Checkbox--error .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop {
     background-color: var(--p-color-bg-fill-critical);
     box-shadow: none !important;
+  }/* Both icons render, so toggling the indeterminate class in JS swaps them. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Checkbox__Input:not(.Polaris-Checkbox__Input--indeterminate) ~ .Polaris-Checkbox__Icon .Polaris-Checkbox__MinusIcon,
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Checkbox__Input--indeterminate ~ .Polaris-Checkbox__Icon .Polaris-Checkbox__CheckIcon {
+    display: none;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Choice__Label {
     font-size: var(--p-font-size-325);
   }/* Checkboxes are 14px, radio buttons 16px. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Choice__Control:has(> .Polaris-Checkbox) {

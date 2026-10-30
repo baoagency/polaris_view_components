@@ -61,6 +61,12 @@ html[class~="Polaris-Summer-Editions-2023"] {
     box-shadow: none !important;
   }
 
+  /* Both icons render, so toggling the indeterminate class in JS swaps them. */
+  .Polaris-Checkbox__Input:not(.Polaris-Checkbox__Input--indeterminate) ~ .Polaris-Checkbox__Icon .Polaris-Checkbox__MinusIcon,
+  .Polaris-Checkbox__Input--indeterminate ~ .Polaris-Checkbox__Icon .Polaris-Checkbox__CheckIcon {
+    display: none;
+  }
+
   .Polaris-Choice__Label {
     font-size: var(--p-font-size-325);
   }
