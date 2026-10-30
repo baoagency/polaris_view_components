@@ -1759,6 +1759,13 @@
     line-height: var(--p-font-line-height-700);
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-Header-Title__SubTitle {
     color: var(--p-color-text-secondary);
+  }/* Keeps the header the same height with or without a title badge. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Header-Title__TitleWithMetadataWrapper {
+    padding-block: 0;
+  }/* Centers the 28px back button on the 32px title line. It can't center in the
+     row, which a subtitle makes taller. Phones put the button on its own row. */@media (min-width: 30.625em) {
+    html[class~="Polaris-Summer-Editions-2023"] .Polaris-Page-Header--mediumTitle .Polaris-Page-Header__BreadcrumbWrapper {
+      margin-top: var(--p-space-050);
+    }
   }/* Back button */html[class~="Polaris-Summer-Editions-2023"] .Polaris-Page-Header__BreadcrumbWrapper :is(a, button) {
     border-radius: var(--p-border-radius-full);
     background-color: var(--p-color-bg-surface);
