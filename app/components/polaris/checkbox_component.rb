@@ -63,10 +63,6 @@ module Polaris
       @checked == :indeterminate
     end
 
-    def icon_name
-      indeterminate? ? "MinusIcon" : "CheckSmallIcon"
-    end
-
     def before_render
       validate!
     end

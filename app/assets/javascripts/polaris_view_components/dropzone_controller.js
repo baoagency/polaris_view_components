@@ -378,6 +378,8 @@ export default class extends Controller {
   }
 
   calculateSize () {
+    if (this.sizeValue === SIZES.SMALL) return SIZES.SMALL
+
     const width = this.element.getBoundingClientRect().width
 
     let size = SIZES.LARGE

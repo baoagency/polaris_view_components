@@ -90,6 +90,20 @@ class ResourceItemComponentTest < Minitest::Test
     end
   end
 
+  def test_shortcut_actions_have_a_mobile_menu
+    render_inline(Polaris::ResourceItemComponent.new) do |item|
+      item.with_shortcut_actions do |actions|
+        actions.with_button(url: "https://some-url", content: "View order")
+      end
+      "Content"
+    end
+
+    assert_selector ".Polaris-ResourceItem__Disclosure" do
+      assert_selector "button[aria-label='More actions']"
+      assert_selector "a[href='https://some-url']", text: "View order", visible: :all
+    end
+  end
+
   def test_item_with_persistent_shortcut_action
     render_inline(Polaris::ResourceItemComponent.new(persist_actions: true)) do |c|
       c.with_shortcut_actions do |shortcut_action|

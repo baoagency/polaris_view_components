@@ -1,0 +1,80 @@
+/* Checkbox and radio button */
+html[class~="Polaris-Summer-Editions-2023"] {
+  .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Backdrop {
+    border: none;
+    background-color: var(--p-color-input-bg-surface);
+    box-shadow: var(--p-shadow-input-strong);
+  }
+
+  .Polaris-Checkbox__Backdrop {
+    border-radius: var(--p-border-radius-100);
+  }
+
+  :is(.Polaris-Choice, .Polaris-Checkbox__ChoiceLabel, .Polaris-OptionList-Option__CheckboxLabel):hover .Polaris-Checkbox__Input:not(:checked, :disabled, .Polaris-Checkbox__Input--indeterminate) + .Polaris-Checkbox__Backdrop,
+  :is(.Polaris-Choice, .Polaris-RadioButton__ChoiceLabel):hover .Polaris-RadioButton__Input:not(:checked, :disabled) + .Polaris-RadioButton__Backdrop {
+    background-color: var(--p-color-input-bg-surface-hover);
+    box-shadow: var(--p-shadow-input-strong);
+  }
+
+  :is(.Polaris-Choice, .Polaris-Checkbox__ChoiceLabel, .Polaris-OptionList-Option__CheckboxLabel):hover .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop,
+  .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):focus-visible + .Polaris-Checkbox__Backdrop,
+  .Polaris-Checkbox__Input:checked + .Polaris-Checkbox__Backdrop,
+  .Polaris-Checkbox__Input.Polaris-Checkbox__Input--indeterminate + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Input:checked:not([disabled]) + .Polaris-RadioButton__Backdrop,
+  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:checked:not([disabled]) + .Polaris-RadioButton__Backdrop {
+    border: none;
+    background-color: var(--p-color-bg-fill-brand);
+    box-shadow: 0 0.0625rem 0.0625rem -0.03125rem rgba(0, 0, 0, 0.13), inset 0 0 0 0.03125rem rgba(0, 0, 0, 0.4), inset 0 0.09375rem 0.125rem -0.0625rem rgba(255, 255, 255, 0.42);
+  }
+
+  .Polaris-Checkbox__Input:disabled + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Input:disabled + .Polaris-RadioButton__Backdrop,
+  .Polaris-Checkbox__ChoiceLabel:hover .Polaris-Checkbox__Input:disabled + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:disabled + .Polaris-RadioButton__Backdrop {
+    background-color: var(--p-color-bg-fill-disabled);
+    box-shadow: 0 0 0 0.0625rem rgba(0, 0, 0, 0.08);
+  }
+
+  .Polaris-Checkbox__Input:disabled:checked + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__Input:disabled:checked + .Polaris-RadioButton__Backdrop,
+  .Polaris-Checkbox__ChoiceLabel:hover .Polaris-Checkbox__Input:disabled:is(:checked, .Polaris-Checkbox__Input--indeterminate) + .Polaris-Checkbox__Backdrop,
+  .Polaris-RadioButton__ChoiceLabel:hover .Polaris-RadioButton__Input:disabled:checked + .Polaris-RadioButton__Backdrop {
+    background-color: var(--p-color-bg-fill-brand-disabled);
+    box-shadow: none;
+  }
+
+  .Polaris-Checkbox--error .Polaris-Checkbox__Input + .Polaris-Checkbox__Backdrop {
+    background-color: var(--p-color-input-bg-surface);
+    box-shadow: var(--p-shadow-input-critical);
+  }
+
+  .Polaris-Choice:hover .Polaris-Checkbox--error .Polaris-Checkbox__Input:not(:checked, :disabled, .Polaris-Checkbox__Input--indeterminate) + .Polaris-Checkbox__Backdrop,
+  .Polaris-Checkbox--error .Polaris-Checkbox__Input:not(:checked, :disabled, .Polaris-Checkbox__Input--indeterminate):focus-visible + .Polaris-Checkbox__Backdrop {
+    background-color: var(--p-color-input-bg-surface-hover);
+    box-shadow: var(--p-shadow-input-critical);
+  }
+
+  .Polaris-Checkbox--error .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop,
+  .Polaris-Choice:hover .Polaris-Checkbox--error .Polaris-Checkbox__Input:is(:checked, .Polaris-Checkbox__Input--indeterminate):not(:disabled) + .Polaris-Checkbox__Backdrop {
+    background-color: var(--p-color-bg-fill-critical);
+    box-shadow: none !important;
+  }
+
+  /* Both icons render, so toggling the indeterminate class in JS swaps them. */
+  .Polaris-Checkbox__Input:not(.Polaris-Checkbox__Input--indeterminate) ~ .Polaris-Checkbox__Icon .Polaris-Checkbox__MinusIcon,
+  .Polaris-Checkbox__Input--indeterminate ~ .Polaris-Checkbox__Icon .Polaris-Checkbox__CheckIcon {
+    display: none;
+  }
+
+  .Polaris-Choice__Label {
+    font-size: var(--p-font-size-325);
+  }
+
+  /* Checkboxes are 14px, radio buttons 16px. */
+  .Polaris-Choice__Control:has(> .Polaris-Checkbox) {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.0625rem;
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "polaris-view-components",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "packageManager": "pnpm@12.15.0",
   "description": "ViewComponents for Polaris Design System",
   "main": "app/assets/javascripts/polaris_view_components.js",

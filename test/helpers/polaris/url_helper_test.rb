@@ -15,6 +15,13 @@ class Polaris::UrlHelperTest < ActionView::TestCase
     )
   end
 
+  test "polaris_button_to helper with loading state" do
+    html = Nokogiri::HTML.fragment(polaris_button_to("Name", "/url", loading: true))
+
+    assert html.at_css("button.Polaris-Button--loading.Polaris-Button--disabled > .Polaris-Button__Spinner")
+    assert_nil html.at_css(".Polaris-Button__Content .Polaris-Button__Spinner")
+  end
+
   test "polaris_link_to helper with name" do
     assert_dom_equal(
       %(<a plain="true" data-controller="test" href="/url" data-polaris-unstyled="true" class="Polaris-Link">Name</a>),

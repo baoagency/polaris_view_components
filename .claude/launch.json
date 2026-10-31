@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "demo",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd demo && bin/rails s -p 4000"],
+      "port": 4000
+    }
+  ]
+}

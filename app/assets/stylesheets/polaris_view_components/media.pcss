@@ -1,0 +1,126 @@
+/* Avatar */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Avatar {
+  &.Polaris-Avatar--sizeExtraSmall {
+    border-radius: 0.375rem;
+  }
+
+  &.Polaris-Avatar--sizeSmall {
+    border-radius: 0.5rem;
+  }
+
+  &.Polaris-Avatar--sizeMedium {
+    border-radius: 0.5rem;
+  }
+
+  &.Polaris-Avatar--sizeLarge {
+    border-radius: 0.625rem;
+  }
+
+  &.Polaris-Avatar--shapeRound {
+    border-radius: var(--p-border-radius-full);
+  }
+
+  .Polaris-Avatar__Text {
+    font-weight: var(--p-font-weight-medium);
+  }
+
+  .Polaris-Avatar__Svg text {
+    font-size: 1rem;
+  }
+}
+
+/* Thumbnail */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Thumbnail {
+  &,
+  &::after {
+    border-radius: var(--p-border-radius-300);
+  }
+
+  &.Polaris-Thumbnail--sizeExtraSmall,
+  &.Polaris-Thumbnail--sizeExtraSmall::after {
+    border-radius: var(--p-border-radius-150);
+  }
+
+  &.Polaris-Thumbnail--sizeSmall,
+  &.Polaris-Thumbnail--sizeSmall::after {
+    border-radius: 0.625rem;
+  }
+}
+
+/* Progress bar */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-ProgressBar {
+  --pc-progress-bar-background: var(--p-color-bg-surface-tertiary);
+  border-radius: var(--p-border-radius-full);
+
+  &.Polaris-ProgressBar--colorPrimary {
+    --pc-progress-bar-indicator: var(--p-color-bg-fill-brand);
+  }
+
+  .Polaris-ProgressBar__Indicator {
+    border-radius: var(--p-border-radius-full);
+    width: clamp(0%, calc(var(--pc-progress-bar-percent) * 100%), 100%);
+    transform: none;
+    transition: width var(--pc-progress-bar-duration) var(--p-motion-ease);
+  }
+
+  &.Polaris-ProgressBar--sizeSmall {
+    height: 0.25rem;
+  }
+
+  &.Polaris-ProgressBar--sizeMedium {
+    height: 0.375rem;
+  }
+
+  &.Polaris-ProgressBar--sizeLarge {
+    height: 0.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .Polaris-ProgressBar__Indicator { transition: none; }
+  }
+}
+
+/* Spinner: the web-component ring has a subdued track and a 40% foreground arc. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Spinner {
+  display: inline-flex;
+  flex-shrink: 0;
+  vertical-align: middle;
+  opacity: 1;
+  transition: opacity 150ms allow-discrete;
+
+  svg {
+    display: block;
+    fill: none;
+    transform-origin: center;
+    animation: var(--p-motion-keyframes-spin) 500ms linear infinite;
+  }
+
+  .Polaris-Spinner__Track { stroke: rgba(0, 0, 0, 0.18); }
+
+  .Polaris-Spinner__Indicator {
+    stroke: #1b1b1b;
+    stroke-linecap: round;
+    stroke-dasharray: 4, 6;
+  }
+
+  @starting-style { opacity: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    svg { animation: none; }
+  }
+}
+
+/* Skeletons */
+html[class~="Polaris-Summer-Editions-2023"] {
+  .Polaris-SkeletonBodyText,
+  .Polaris-SkeletonDisplayText__DisplayText,
+  .Polaris-SkeletonThumbnail {
+    border-radius: var(--p-border-radius-200);
+  }
+
+  .Polaris-SkeletonBodyText::after,
+  .Polaris-SkeletonDisplayText__DisplayText::after {
+    border-radius: var(--p-border-radius-200);
+  }
+}

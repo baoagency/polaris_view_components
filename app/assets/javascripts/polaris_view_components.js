@@ -312,7 +312,7 @@ class Button extends Controller {
     } else {
       this.disabledValue = true;
       this.button.classList.add("Polaris-Button--disabled", "Polaris-Button--loading");
-      this.buttonContent.insertAdjacentHTML("afterbegin", this.spinnerHTML);
+      this.button.insertAdjacentHTML("afterbegin", this.spinnerHTML);
     }
   }
   disableWithoutLoader(event) {
@@ -340,7 +340,7 @@ class Button extends Controller {
     return this.button.querySelector(".Polaris-Button__Spinner");
   }
   get spinnerHTML() {
-    return `\n      <span class="Polaris-Button__Spinner">\n        <span class="Polaris-Spinner Polaris-Spinner--sizeSmall">\n          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">\n            <path d="M7.229 1.173a9.25 9.25 0 1011.655 11.412 1.25 1.25 0 10-2.4-.698 6.75 6.75 0 11-8.506-8.329 1.25 1.25 0 10-.75-2.385z"></path>\n          </svg>\n        </span>\n      </span>\n    `;
+    return `\n      <span class="Polaris-Button__Spinner" role="status" aria-label="Loading">\n        <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">\n          <circle class="Polaris-Button__SpinnerTrack" r="14" stroke-width="3" cx="22" cy="22"></circle>\n          <circle class="Polaris-Button__SpinnerIndicator" pathLength="10" r="14" stroke-width="3" cx="22" cy="22"></circle>\n        </svg>\n      </span>\n    `;
   }
 }
 
@@ -694,6 +694,7 @@ class Dropzone extends Controller {
     this.previewRendered = false;
   }
   calculateSize() {
+    if (this.sizeValue === SIZES.SMALL) return SIZES.SMALL;
     const width = this.element.getBoundingClientRect().width;
     let size = SIZES.LARGE;
     if (width < 100) {
@@ -1485,6 +1486,71 @@ const shift = function(options) {
   };
 };
 
+const size = function(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: "size",
+    options: options,
+    async fn(state) {
+      const {placement: placement, rects: rects, platform: platform, elements: elements} = state;
+      const {apply: apply = (() => {}), ...detectOverflowOptions} = evaluate(options, state);
+      const overflow = await detectOverflow(state, detectOverflowOptions);
+      const side = getSide(placement);
+      const alignment = getAlignment(placement);
+      const isYAxis = getSideAxis(placement) === "y";
+      const {width: width, height: height} = rects.floating;
+      let heightSide;
+      let widthSide;
+      if (side === "top" || side === "bottom") {
+        heightSide = side;
+        widthSide = alignment === (await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)) ? "start" : "end") ? "left" : "right";
+      } else {
+        widthSide = side;
+        heightSide = alignment === "end" ? "top" : "bottom";
+      }
+      const overflowAvailableHeight = height - overflow[heightSide];
+      const overflowAvailableWidth = width - overflow[widthSide];
+      const noShift = !state.middlewareData.shift;
+      let availableHeight = overflowAvailableHeight;
+      let availableWidth = overflowAvailableWidth;
+      if (isYAxis) {
+        const maximumClippingWidth = width - overflow.left - overflow.right;
+        availableWidth = alignment || noShift ? min(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
+      } else {
+        const maximumClippingHeight = height - overflow.top - overflow.bottom;
+        availableHeight = alignment || noShift ? min(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
+      }
+      if (noShift && !alignment) {
+        const xMin = max(overflow.left, 0);
+        const xMax = max(overflow.right, 0);
+        const yMin = max(overflow.top, 0);
+        const yMax = max(overflow.bottom, 0);
+        if (isYAxis) {
+          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right));
+        } else {
+          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom));
+        }
+      }
+      await apply({
+        ...state,
+        availableWidth: availableWidth,
+        availableHeight: availableHeight
+      });
+      const nextDimensions = await platform.getDimensions(elements.floating);
+      if (width !== nextDimensions.width || height !== nextDimensions.height) {
+        return {
+          reset: {
+            rects: true
+          }
+        };
+      }
+      return {};
+    }
+  };
+};
+
 function getNodeName(node) {
   if (isNode(node)) {
     return (node.nodeName || "").toLowerCase();
@@ -2145,15 +2211,21 @@ class Popover extends Controller {
     textFieldActivator: Boolean
   };
   connect() {
-    if (this.appendToBodyValue) {
-      const clonedTemplate = this.templateTarget.content.cloneNode(true);
-      this.target = clonedTemplate.firstElementChild;
-      document.body.appendChild(clonedTemplate);
+    if (!this.appendToBodyValue) {
+      this.target.style.display = "none";
     }
-    this.target.style.display = "none";
     if (this.activeValue) {
       this.show();
     }
+  }
+  ensureTarget() {
+    if (this.appendToBodyValue && !this._target) {
+      const clonedTemplate = this.templateTarget.content.cloneNode(true);
+      this.target = clonedTemplate.firstElementChild;
+      this.target.style.display = "none";
+      document.body.appendChild(clonedTemplate);
+    }
+    return this.target;
   }
   disconnect() {
     if (this.cleanup) {
@@ -2176,6 +2248,12 @@ class Popover extends Controller {
           fallbackStrategy: "bestFit"
         }), shift({
           padding: 5
+        }), size({
+          apply: ({rects: rects}) => {
+            if (this.fullWidth) {
+              this.target.style.width = `${rects.reference.width}px`;
+            }
+          }
         }) ]
       }).then((({x: x, y: y}) => {
         Object.assign(this.target.style, {
@@ -2186,6 +2264,7 @@ class Popover extends Controller {
     }));
   }
   toggle() {
+    this.ensureTarget();
     if (this.target.classList.contains(this.openClass)) {
       this.forceHide();
     } else {
@@ -2193,18 +2272,21 @@ class Popover extends Controller {
     }
   }
   show() {
+    this.ensureTarget();
     this.target.style.display = "block";
     this.target.classList.remove(this.closedClass);
     this.target.classList.add(this.openClass);
     this.updatePosition();
   }
   hide(event) {
+    if (!this.target) return;
     if (this.element.contains(event.target)) return;
     if (this.target.classList.contains(this.closedClass)) return;
     if (this.appendToBodyValue && this.target.contains(event.target)) return;
     this.forceHide();
   }
   forceHide() {
+    if (!this.target) return;
     this.target.style.display = "none";
     this.target.classList.remove(this.openClass);
     this.target.classList.add(this.closedClass);
@@ -2215,6 +2297,9 @@ class Popover extends Controller {
     } else {
       return this.activatorTarget;
     }
+  }
+  get fullWidth() {
+    return this.target.querySelector(".Polaris-Popover--fullWidth") !== null;
   }
   get target() {
     if (this.hasPopoverTarget) {
@@ -2311,6 +2396,16 @@ class Select extends Controller {
     if (inlineError) {
       inlineError.remove();
     }
+  }
+}
+
+class Tabs extends Controller {
+  connect() {
+    const selectedTab = this.element.querySelector(".Polaris-LegacyTabs__Tab--selected");
+    if (!selectedTab) return;
+    const list = this.element.getBoundingClientRect();
+    const tab = selectedTab.getBoundingClientRect();
+    this.element.scrollLeft += tab.left - list.left - (list.width - tab.width) / 2;
   }
 }
 
@@ -2568,6 +2663,7 @@ function registerPolarisControllers(application) {
   application.register("polaris-resource-item", ResourceItem);
   application.register("polaris-scrollable", Scrollable);
   application.register("polaris-select", Select);
+  application.register("polaris-tabs", Tabs);
   application.register("polaris-text-field", TextField);
   application.register("polaris-toast", Toast);
   application.register("polaris-tooltip", Tooltip);

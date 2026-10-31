@@ -1,0 +1,34 @@
+/* Rows are 12px apart (8px when tight), and the first and last rows leave the outer padding to the card section. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-DescriptionList {
+  --pc-description-list-spacing: var(--p-space-300);
+
+  &.Polaris-DescriptionList--spacingTight { --pc-description-list-spacing: var(--p-space-200); }
+
+  .Polaris-DescriptionList__Term {
+    font-weight: var(--p-font-weight-medium);
+    padding: var(--pc-description-list-spacing) 0 var(--p-space-100);
+  }
+
+  .Polaris-DescriptionList__Description {
+    padding: 0 0 var(--pc-description-list-spacing);
+  }
+
+  & > .Polaris-DescriptionList__Term:first-child { padding-top: 0; }
+  & > .Polaris-DescriptionList__Description:last-child { padding-bottom: 0; }
+
+  @media (min-width: 30.625em) {
+    .Polaris-DescriptionList__Term {
+      padding: var(--pc-description-list-spacing) var(--p-space-400) var(--pc-description-list-spacing) 0;
+    }
+
+    .Polaris-DescriptionList__Description {
+      padding: var(--pc-description-list-spacing) 0;
+    }
+
+    & > .Polaris-DescriptionList__Term:first-child,
+    & > .Polaris-DescriptionList__Term:first-child + .Polaris-DescriptionList__Description { padding-top: 0; }
+
+    & > .Polaris-DescriptionList__Term:nth-last-child(2),
+    & > .Polaris-DescriptionList__Description:last-child { padding-bottom: 0; }
+  }
+}

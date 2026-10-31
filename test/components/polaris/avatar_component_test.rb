@@ -6,9 +6,15 @@ class AvatarComponentTest < Minitest::Test
   def test_renders_default_avatar
     render_inline(Polaris::AvatarComponent.new)
 
-    assert_selector "span.Polaris-Avatar.Polaris-Avatar--sizeMedium.Polaris-Avatar--styleOne[role=img]" do
+    assert_selector "span.Polaris-Avatar.Polaris-Avatar--sizeMedium.Polaris-Avatar--shapeSquare.Polaris-Avatar--styleOne[role=img]" do
       assert_selector "svg.Polaris-Avatar__Svg"
     end
+  end
+
+  def test_renders_round_avatar
+    render_inline(Polaris::AvatarComponent.new(shape: :round))
+
+    assert_selector "span.Polaris-Avatar.Polaris-Avatar--shapeRound"
   end
 
   def test_renders_customer_avatar

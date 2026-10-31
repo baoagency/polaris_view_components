@@ -7,4 +7,7 @@ class TabsComponentPreview < ViewComponent::Preview
 
   def with_badge
   end
+
+  def overflowing
+  end
 end

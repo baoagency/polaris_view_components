@@ -1,22 +1,85 @@
-.NavigationList {
-  padding-top: var(--p-space-3);
-  padding-bottom: var(--p-space-3);
+html[class~="Polaris-Summer-Editions-2023"] .NavigationList {
+  padding: 0;
+
+  > .Polaris-LegacyCard__Surface { padding: var(--p-space-200); }
 
   ul {
     margin: 0;
     padding-inline-start: 0;
+    list-style: none;
+  }
+
+  .Polaris-Navigation__ItemWrapper { padding: 0; }
+
+  .Polaris-Navigation__ItemInnerWrapper {
+    border-radius: var(--p-border-radius-control);
+    background: transparent;
+
+    &:hover { background: var(--p-color-bg-surface-hover); }
+    &:active { background: var(--p-color-bg-surface-active); }
+
+    &.Polaris-Navigation__ItemInnerWrapper--selected {
+      background: var(--p-color-bg-fill-secondary);
+    }
+
+    &.Polaris-Navigation__ItemInnerDisabled { background: transparent; }
   }
 
   .Polaris-Navigation__Item {
-    padding-bottom: var(--p-space-05);
-    padding-top: var(--p-space-05);
+    min-height: 2rem;
+    align-items: center;
+    gap: var(--p-space-200);
+    padding: var(--p-space-150) var(--p-space-200);
+    border-radius: var(--p-border-radius-control);
+    background: transparent;
+    color: var(--p-color-text);
+    font-size: var(--p-font-size-325);
+    line-height: var(--p-font-line-height-500);
+    font-weight: var(--p-font-weight-regular);
 
-    &.Polaris-Navigation__Item--selected {
-      background-color: var(--p-color-bg-surface-tertiary-hover);
+    &:hover,
+    &:active,
+    &:focus-visible { background: transparent; color: var(--p-color-text); }
+
+    &:focus-visible {
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+      outline-offset: var(--p-space-025);
     }
 
-    &:hover {
-      background-color: var(--p-color-bg-surface-tertiary);
-    }
+    &::before,
+    &::after { content: none; }
+
+    &.Polaris-Navigation__Item--disabled { color: var(--p-color-text-disabled); }
+  }
+
+  .Polaris-Navigation__Text {
+    min-width: 0;
+    margin: 0;
+    font-size: inherit;
+    font-weight: var(--p-font-weight-regular);
+    line-height: inherit;
+    overflow-wrap: anywhere;
+  }
+
+  .Polaris-Navigation__Item--selected .Polaris-Navigation__Text {
+    font-weight: var(--p-font-weight-medium);
+  }
+
+  .Polaris-Navigation__Icon {
+    margin: 0;
+    flex: 0 0 var(--p-space-500);
+    width: var(--p-space-500);
+    height: var(--p-space-500);
+
+    svg { fill: var(--p-color-icon-secondary); }
+  }
+
+  .Polaris-Navigation__Item--selected .Polaris-Navigation__Icon svg { fill: var(--p-color-icon); }
+  .Polaris-Navigation__Item--disabled .Polaris-Navigation__Icon svg { fill: var(--p-color-icon-disabled); }
+
+  .Polaris-Navigation__Badge {
+    margin: 0 0 0 auto;
+    flex-shrink: 0;
+    align-self: center;
   }
 }

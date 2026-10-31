@@ -18,6 +18,16 @@ class DropzoneComponentSystemTest < ApplicationSystemTestCase
     end
   end
 
+  def test_small_size_in_wide_container
+    with_preview("dropzone_component/small_sized_in_wide_container")
+    sleep 0.2 # Size is calculated after a debounce
+
+    assert_selector ".Polaris-DropZone.Polaris-DropZone--sizeSmall"
+    assert_selector ".Polaris-DropZone-FileUpload__UploadIcon"
+    assert_no_selector ".Polaris-DropZone-FileUpload__Button"
+    assert_no_selector ".Polaris-DropZone-FileUpload__HelpText"
+  end
+
   def test_submiting_file
     with_preview("form_builder_component/dropzone")
 

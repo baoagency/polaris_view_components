@@ -1,4 +1,6 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable {
+  border-radius: var(--p-border-radius-container);
+
   .Polaris-DataTable__TableRow {
     content-visibility: auto;
     contain-intrinsic-size: auto 250px;
@@ -7,13 +9,67 @@ html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable {
   .Polaris-DataTable__Heading:not(
       .Polaris-DataTable__Heading--flush
     ):first-child {
-    padding-left: var(--p-space-400);
+    padding-left: var(--p-space-300);
   }
 
   .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--flush):last-child,
   .Polaris-DataTable__Heading:not(
       .Polaris-DataTable__Heading--flush
     ):last-child {
-    padding-right: var(--p-space-400);
+    padding-right: var(--p-space-300);
+  }
+}
+
+/* Inside cards, tables round only the corners they share with the card, so a header row below tabs, filters, or another section stays square. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard__Surface {
+  :is(.Polaris-DataTable, .Polaris-IndexTable) { border-radius: var(--pc-card-radius); }
+
+  :is(.Polaris-DataTable, .Polaris-IndexTable):not(:first-child),
+  :not(:first-child) :is(.Polaris-DataTable, .Polaris-IndexTable) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  :is(.Polaris-DataTable, .Polaris-IndexTable):not(:last-child),
+  :not(:last-child) :is(.Polaris-DataTable, .Polaris-IndexTable) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-DataTable {
+  .Polaris-DataTable__Cell--header {
+    padding-top: var(--p-space-150);
+    padding-bottom: var(--p-space-150);
+    background-color: var(--p-color-bg-surface-secondary);
+    color: var(--p-color-text-secondary);
+    font-size: var(--p-font-size-300);
+    font-weight: var(--p-font-weight-medium);
+    line-height: 1.125rem;
+    border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
+  }
+
+  .Polaris-DataTable__Cell:not(.Polaris-DataTable__Cell--header) {
+    padding-top: var(--p-space-150);
+    padding-bottom: var(--p-space-150);
+  }
+
+  .Polaris-DataTable__Cell--sortable {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .Polaris-DataTable__Heading {
+    padding-top: var(--p-space-150);
+    padding-bottom: var(--p-space-150);
+  }
+
+  .Polaris-DataTable__TableRow + .Polaris-DataTable__TableRow .Polaris-DataTable__Cell,
+  .Polaris-DataTable__Cell--total {
+    border-color: var(--p-color-border-secondary);
+  }
+
+  .Polaris-DataTable__TableRow:hover .Polaris-DataTable__Cell {
+    background-color: var(--p-color-bg-surface-hover);
   }
 }

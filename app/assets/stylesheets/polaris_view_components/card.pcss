@@ -1,50 +1,150 @@
 html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
-  .Polaris-LegacyCard__Header {
-    padding-top: var(--p-space-400);
+  --pc-card-surface-bg: var(--p-color-bg-surface);
+  --pc-card-radius: var(--p-border-radius-container);
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  &::before { content: none; }
+
+  /* Stacked cards are 16px apart, plus 16px above an outside header (like s-section). */
+  & + .Polaris-LegacyCard { margin-top: var(--p-space-400); }
+  & + .Polaris-LegacyCard:has(> .Polaris-LegacyCard__Header) { margin-top: var(--p-space-800); }
+
+  .Polaris-LegacyCard__Header,
+  .Polaris-LegacyCard__SectionHeader {
+    .Polaris-ButtonGroup {
+      margin: 0;
+      gap: var(--p-space-200);
+
+      & > .Polaris-ButtonGroup__Item { margin: 0; }
+    }
   }
 
-  .Polaris-LegacyCard__Header+.Polaris-LegacyCard__Section {
-    padding-top: var(--p-space-200);
+  & > .Polaris-LegacyCard__Header {
+    display: flex;
+    align-items: center;
+    min-height: 1.75rem;
+    padding: 0;
+    margin-bottom: var(--p-space-300);
+    overflow-wrap: anywhere;
+
+    .Polaris-Text--headingMd {
+      font-size: 0.9375rem;
+      line-height: 1.375rem;
+      letter-spacing: -0.01em;
+    }
+
+    & > .Polaris-LegacyStack {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+      gap: var(--p-space-200);
+      align-items: center;
+
+      & > .Polaris-LegacyStack__Item { margin: 0; min-width: 0; }
+      & > .Polaris-LegacyStack__Item--fill { flex: 1 1 10rem; }
+    }
+
+    .Polaris-Button--plain { margin: 0; }
   }
 
-  .Polaris-LegacyCard__Section {
-    padding: var(--p-space-400) var(--p-space-400) var(--p-space-200);
+  & > .Polaris-LegacyCard__Surface {
+    min-width: 0;
+    background: var(--pc-card-surface-bg);
+    border-radius: var(--pc-card-radius);
+    box-shadow: var(--p-shadow-container);
 
-    &+.Polaris-LegacyCard__Section {
-      padding-top: var(--p-space-200);
-    }
+    & > .Polaris-LegacyCard__Section {
+      padding: var(--p-space-400) var(--p-space-400) var(--p-space-200);
 
-    &:last-child {
-      padding-bottom: var(--p-space-400);
-    }
+      & + .Polaris-LegacyCard__Section { padding-top: var(--p-space-200); }
+      &:last-child { padding-bottom: var(--p-space-400); }
 
-    &.Polaris-LegacyCard__Section--flush {
-      padding: 0;
+      &:first-child {
+        border-top-left-radius: var(--pc-card-radius);
+        border-top-right-radius: var(--pc-card-radius);
+      }
 
-      img {
-        border-top-left-radius: var(--p-border-radius-300);
-        border-top-right-radius: var(--p-border-radius-300);
-        width: 100%;
+      &:last-child {
+        border-bottom-left-radius: var(--pc-card-radius);
+        border-bottom-right-radius: var(--pc-card-radius);
+      }
+
+      &.Polaris-LegacyCard__Section--subdued {
+        padding-top: var(--p-space-300);
+        padding-bottom: var(--p-space-300);
+
+        &:last-child { padding-bottom: var(--p-space-400); }
+      }
+
+      &.Polaris-LegacyCard__Section--fullWidth { padding-inline: 0; }
+
+      &:has(> .Polaris-LegacyFilters) { padding-bottom: var(--p-space-400); }
+
+      &.Polaris-LegacyCard__Section--flush {
+        padding: 0;
+
+        img { display: block; width: 100%; }
+        &:first-child img {
+          border-top-left-radius: var(--pc-card-radius);
+          border-top-right-radius: var(--pc-card-radius);
+        }
+        &:last-child img {
+          border-bottom-left-radius: var(--pc-card-radius);
+          border-bottom-right-radius: var(--pc-card-radius);
+        }
       }
     }
-  }
 
-  .Polaris-LegacyCard__Footer {
-    padding-top: var(--p-space-100);
-  }
+    /* Tabs leave 8px below them, so a section under tabs starts 12px down, like
+       the 12px a bordered section leaves below its content. */
+    & > :is(.Polaris-LegacyTabs__Wrapper, :has(> .Polaris-LegacyTabs__Wrapper)) + .Polaris-LegacyCard__Section:not(.Polaris-LegacyCard__Section--flush) {
+      padding-top: var(--p-space-100);
+    }
 
-  &.Polaris-LegacyCard--withoutTitle {
-    .Polaris-LegacyCard__Section:first-child {
-      padding-top: var(--p-space-400);
+    & > .Polaris-LegacyCard__Footer {
+      padding-top: var(--p-space-100);
+      &:first-child { padding-top: var(--p-space-400); }
     }
   }
 
-  &.Polaris-LegacyCard--borderless {
-    border: none;
-    box-shadow: none;
+  &.Polaris-LegacyCard--subdued { --pc-card-surface-bg: var(--p-color-bg-surface-secondary); }
 
-    &::before {
-      content: none;
-    }
+  &.Polaris-LegacyCard--borderless > .Polaris-LegacyCard__Surface { box-shadow: none; }
+}
+
+/* Layout sections that open with an outside card header get the same extra 16px as stacked cards.
+   The card may sit in one wrapper (a turbo frame, say). Sections that share the first row keep the
+   default so they stay aligned. */
+html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Section:has(
+  > .Polaris-LegacyCard:first-child > .Polaris-LegacyCard__Header,
+  > :first-child > .Polaris-LegacyCard:first-child > .Polaris-LegacyCard__Header
+):not(
+  :first-child,
+  .Polaris-Layout__Section:first-child + .Polaris-Layout__Section--secondary,
+  .Polaris-Layout__Section--oneHalf:first-child + .Polaris-Layout__Section--oneHalf,
+  .Polaris-Layout__Section--oneThird:first-child + .Polaris-Layout__Section--oneThird,
+  .Polaris-Layout__Section--oneThird:first-child + .Polaris-Layout__Section--oneThird + .Polaris-Layout__Section--oneThird
+) {
+  margin-top: var(--p-space-800);
+}
+
+/* Pages have no side padding on small screens, so cards run edge to edge. */
+@media (max-width: 30.6225em) {
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyCard {
+    --pc-card-radius: 0;
+
+    & > .Polaris-LegacyCard__Header { padding-inline: var(--p-space-400); }
+  }
+
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Banner.Polaris-Banner--withinPage {
+    border-radius: 0;
+  }
+
+  html[class~="Polaris-Summer-Editions-2023"] .Polaris-Layout__Annotation {
+    padding-left: var(--p-space-400);
   }
 }

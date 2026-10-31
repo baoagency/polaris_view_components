@@ -11,6 +11,7 @@ import Popover from './popover_controller'
 import ResourceItem from './resource_item_controller'
 import Scrollable from './scrollable_controller'
 import Select from './select_controller'
+import Tabs from './tabs_controller'
 import TextField from './text_field_controller'
 import Toast from './toast_controller'
 import Tooltip from './tooltip_controller'
@@ -32,6 +33,7 @@ export function registerPolarisControllers(application) {
   application.register('polaris-resource-item', ResourceItem)
   application.register('polaris-scrollable', Scrollable)
   application.register('polaris-select', Select)
+  application.register('polaris-tabs', Tabs)
   application.register('polaris-text-field', TextField)
   application.register('polaris-toast', Toast)
   application.register('polaris-tooltip', Tooltip)

@@ -11,7 +11,7 @@ module Polaris
     }
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-    SHAPE_DEFAULT = :round
+    SHAPE_DEFAULT = :square
     SHAPE_MAPPINGS = {
       square: "Polaris-Avatar--shapeSquare",
       round: "Polaris-Avatar--shapeRound"
