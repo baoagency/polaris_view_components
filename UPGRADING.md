@@ -34,7 +34,7 @@ Markup and default changes to account for:
 - Callout illustrations have a new `.Polaris-CalloutCard__Illustration` wrapper and are omitted when no illustration is provided. Secondary actions default to tertiary styling; pass `monochrome: false, remove_underline: false` to retain plain link styling.
 - Resource-item shortcut actions expose a compact overflow menu on narrow or touch layouts. Persistent actions default to tertiary styling. Other actions stay invisible until the row is hovered or focused, so browser-driven tests need to hover the row first.
 - Popovers with `append_to_body: true` are created the first time they open. Their content, and any Stimulus controllers inside it, aren't on the page until then, so open the popover before looking up elements in it from JavaScript or tests.
-- Drop zones use new upload-content, icon, and help-text wrappers. Review any custom selectors for the previous stack layout.
+- Drop zones use new upload-content, icon, and help-text wrappers. Review any custom selectors for the previous stack layout. Drop zones with `size: :small` are now square and at most 120px wide, instead of filling a wide container. Set a width on the drop zone to make it wider.
 - Progress bars default to the dark `:primary` color. Pass `color: :highlight` to retain the previous blue default.
 - Modals without a title now show a close button in the top-right corner, matching titled modals. It can't be turned off, so check any title-less modal that merchants must not dismiss.
 - Avatars default to the rounded-square shape used in the admin. Pass `shape: :round` to retain circular avatars.
