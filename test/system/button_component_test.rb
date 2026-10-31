@@ -5,9 +5,9 @@ class ButtonComponentSystemTest < ApplicationSystemTestCase
     with_preview("button_component/tertiary_destructive")
 
     button = find_button("Remove")
-    button.assert_matches_style(color: "rgb(212, 0, 4)")
+    button.assert_matches_style(color: "rgb(126, 16, 12)")
     button.hover
-    button.assert_matches_style(color: "rgb(184, 0, 4)", "background-color": "rgb(255, 231, 230)")
+    button.assert_matches_style(color: "rgb(126, 16, 12)", "background-color": "oklch(0.947 0.03 20.5)")
   end
 
   def test_disable_with_actions
