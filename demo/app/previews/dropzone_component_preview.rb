@@ -41,6 +41,9 @@ class DropzoneComponentPreview < ViewComponent::Preview
   def small_sized
   end
 
+  def small_sized_in_wide_container
+  end
+
   def disabled
   end
 

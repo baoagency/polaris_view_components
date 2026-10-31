@@ -16,7 +16,7 @@ Visual changes to review in your app:
 - Buttons are pill-shaped. Secondary buttons have a flat gray fill, primary buttons are black, and destructive buttons use a soft red fill.
 - Text fields, selects, checkboxes, and radio buttons use shadow outlines and a blue focus ring.
 - Banners use a full tinted background and filled status icons by default (`InfoFilledIcon`, `CheckCircleFilledIcon`, `AlertCircleFilledIcon`). Pass `icon:` to `polaris_banner` to keep a different icon. Badges and avatars use the new color palette.
-- Tabs are displayed as pills and scroll in one row instead of wrapping when they don't fit. The `Navigation` sidebar uses the dark admin theme.
+- Tabs are displayed as pills. Tabs that don't fit scroll in one row instead of wrapping, and the selected tab scrolls into view when the page loads. The `Navigation` sidebar uses the dark admin theme.
 - Standalone links are blue without an underline. Links inside running text (paragraphs, list items, `polaris_text`) inherit the text color and stay underlined.
 - Tags use a light translucent fill with secondary text color.
 - Description lists are more compact: rows are 12px apart (8px with `spacing: :tight`), the first and last rows add no padding beyond the card section, and terms use medium weight.

@@ -22,6 +22,8 @@ module Polaris
       @system_arguments.tap do |opts|
         opts[:tag] = "ul"
         opts[:role] = "tablist"
+        opts[:data] ||= {}
+        prepend_option(opts[:data], :controller, "polaris-tabs")
         opts[:classes] = class_names(
           @system_arguments[:classes],
           "Polaris-LegacyTabs",

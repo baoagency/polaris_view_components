@@ -1459,6 +1459,7 @@
     line-height: 1.125rem;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone:not(.Polaris-DropZone--isDisabled) .Polaris-DropZone-FileUpload__Button:hover { background: var(--p-color-bg-fill-secondary-hover); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone:not(.Polaris-DropZone--isDisabled) .Polaris-DropZone-FileUpload__Button:active { background: var(--p-color-bg-fill-secondary-active); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--sizeMedium .Polaris-DropZone-FileUpload { padding: var(--p-space-400); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--sizeSmall {
     min-height: 2.5rem;
+    max-height: 7.5rem;
     aspect-ratio: 1;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--sizeSmall .Polaris-DropZone-FileUpload { padding: var(--p-space-200); }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--sizeSmall .Polaris-DropZone-FileUpload__UploadIcon { display: block; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--sizeSmall .Polaris-DropZone-FileUpload__Button,
     html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--sizeSmall .Polaris-DropZone-FileUpload__HelpText { display: none; }html[class~="Polaris-Summer-Editions-2023"] .Polaris-DropZone.Polaris-DropZone--hasError {
@@ -2058,10 +2059,10 @@
   /* Tabs that don't fit scroll in one row instead of wrapping. The inline padding keeps focus rings visible. */
   flex-wrap: nowrap;
   overflow-x: auto;
-  scrollbar-width: none;
+  scrollbar-width: thin;
   padding-inline: var(--p-space-050);
   margin-inline: calc(var(--p-space-050) * -1);
-}html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs::-webkit-scrollbar { display: none; }/* Even 6px around the pills, like the index tabs in the admin. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs .Polaris-LegacyTabs__Tab {
+}/* Even 6px around the pills, like the index tabs in the admin. */html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs .Polaris-LegacyTabs__Tab {
     margin: 0;
     padding: var(--p-space-150) 0;
   }html[class~="Polaris-Summer-Editions-2023"] .Polaris-LegacyTabs .Polaris-LegacyTabs__Title {

@@ -694,6 +694,7 @@ class Dropzone extends Controller {
     this.previewRendered = false;
   }
   calculateSize() {
+    if (this.sizeValue === SIZES.SMALL) return SIZES.SMALL;
     const width = this.element.getBoundingClientRect().width;
     let size = SIZES.LARGE;
     if (width < 100) {
@@ -2398,6 +2399,16 @@ class Select extends Controller {
   }
 }
 
+class Tabs extends Controller {
+  connect() {
+    const selectedTab = this.element.querySelector(".Polaris-LegacyTabs__Tab--selected");
+    if (!selectedTab) return;
+    const list = this.element.getBoundingClientRect();
+    const tab = selectedTab.getBoundingClientRect();
+    this.element.scrollLeft += tab.left - list.left - (list.width - tab.width) / 2;
+  }
+}
+
 class TextField extends Controller {
   static targets=[ "input", "clearButton", "characterCount" ];
   static classes=[ "hasValue", "clearButtonHidden" ];
@@ -2652,6 +2663,7 @@ function registerPolarisControllers(application) {
   application.register("polaris-resource-item", ResourceItem);
   application.register("polaris-scrollable", Scrollable);
   application.register("polaris-select", Select);
+  application.register("polaris-tabs", Tabs);
   application.register("polaris-text-field", TextField);
   application.register("polaris-toast", Toast);
   application.register("polaris-tooltip", Tooltip);

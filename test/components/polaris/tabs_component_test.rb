@@ -9,7 +9,7 @@ class TabsComponentTest < Minitest::Test
       tabs.with_tab(title: "With URL", url: "https://shopify.dev")
     end
 
-    assert_selector ".Polaris-LegacyTabs__Wrapper > ul.Polaris-LegacyTabs" do
+    assert_selector %(.Polaris-LegacyTabs__Wrapper > ul.Polaris-LegacyTabs[data-controller="polaris-tabs"]) do
       assert_selector "li.Polaris-LegacyTabs__TabContainer", count: 2
       assert_selector "li:nth-of-type(1)" do
         assert_selector "button.Polaris-LegacyTabs__Tab.Polaris-LegacyTabs__Tab--selected" do
