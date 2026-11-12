@@ -139,6 +139,39 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
     assert_no_selector '[data-polaris-autocomplete-target="option"][data-label="Slow"]'
   end
 
+  def test_remote_autocomplete_ignores_input_after_element_is_removed
+    with_preview("autocomplete_component/remote")
+    stub_slow_remote_results_and_capture_errors
+
+    remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
+    within remote_suggestions do
+      find(".Polaris-TextField__Input").set "Vint"
+    end
+    # Replace the autocomplete before the debounced search fires,
+    # like a Turbo Stream re-rendering a form after a failed submit.
+    replace_remote_autocomplete
+
+    sleep 1
+    assert_empty page.evaluate_script("window.autocompleteErrors")
+  end
+
+  def test_remote_autocomplete_ignores_response_after_element_is_removed
+    with_preview("autocomplete_component/remote")
+    stub_slow_remote_results_and_capture_errors
+
+    remote_suggestions = all('[data-controller="polaris-autocomplete"]')[1]
+    within remote_suggestions do
+      find(".Polaris-TextField__Input").set "Vint"
+    end
+    # Wait for the debounced search to start, then replace the
+    # autocomplete while the request is still pending.
+    assert_selector "html.autocomplete-request-started"
+    replace_remote_autocomplete
+
+    sleep 1
+    assert_empty page.evaluate_script("window.autocompleteErrors")
+  end
+
   def test_remote_autocomplete_uses_application_request_interceptor
     with_preview("autocomplete_component/remote")
 
@@ -200,5 +233,39 @@ class AutocompleteComponentSystemTest < ApplicationSystemTestCase
       find(".Polaris-OptionList-Option", text: "Vinyl").click
     end
     assert_field "tags", with: "Vinyl"
+  end
+
+  private
+
+  def stub_slow_remote_results_and_capture_errors
+    page.execute_script <<~JAVASCRIPT
+      window.autocompleteErrors = []
+      window.addEventListener("error", (event) => {
+        window.autocompleteErrors.push(String(event.message))
+      })
+      window.addEventListener("unhandledrejection", (event) => {
+        window.autocompleteErrors.push(String(event.reason))
+      })
+
+      window.fetch = (url) => {
+        document.documentElement.classList.add("autocomplete-request-started")
+        const query = new URL(url, window.location.origin).searchParams.get("q")
+        const results = `<li data-polaris-autocomplete-target="option" data-label="${query}">${query}</li>`
+
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(new Response(results, {
+            status: 200,
+            headers: {"Content-Type": "text/html"}
+          })), 400)
+        })
+      }
+    JAVASCRIPT
+  end
+
+  def replace_remote_autocomplete
+    page.execute_script <<~JAVASCRIPT
+      const element = document.querySelectorAll('[data-controller="polaris-autocomplete"]')[1]
+      element.replaceWith(element.cloneNode(true))
+    JAVASCRIPT
   end
 end

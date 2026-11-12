@@ -44,6 +44,10 @@ export default class extends Controller {
   }
 
   onInputChange = debounce(() => {
+    // The element may have been removed (e.g. replaced by a Turbo Stream)
+    // before the debounced callback fires.
+    if (!this.element.isConnected) return
+
     if (this.isRemote) {
       this.fetchResults()
     } else {
@@ -80,6 +84,9 @@ export default class extends Controller {
   }
 
   handleResults() {
+    // The popover controller is gone once the element has been disconnected.
+    if (!this.popoverController) return
+
     if (this.visibleOptions.length > 0) {
       this.hideEmptyState()
       this.popoverController.show()
@@ -119,6 +126,8 @@ export default class extends Controller {
     if (response.ok) {
       const results = await response.html
 
+      // Ignore responses that arrive after the element was removed from the page.
+      if (!this.element.isConnected) return
       if (requestId !== this.latestRequestId || query !== this.value) return
 
       this.resultsTarget.innerHTML = results
